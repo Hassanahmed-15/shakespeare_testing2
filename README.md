@@ -4,7 +4,7 @@ A secure, AI-powered Shakespeare analysis tool that uses serverless functions to
 
 ## Features
 
-- 🔒 **Secure API Key Storage** - API keys are stored server-side, never exposed to the browser
+- 🔒 **Secure API Key Storage** - API keys are stored server-side, never exposed to the browser 
 - 🎭 **Advanced Shakespeare Analysis** - Multiple analysis levels from basic to expert
 - 🤖 **Multiple AI Models** - Support for GPT-4o, GPT-4o Mini, GPT-4 Turbo, and GPT-3.5 Turbo
 - 📱 **Responsive Design** - Works perfectly on desktop and mobile devices
@@ -85,7 +85,7 @@ For enhanced Biblical allusion detection:
 
 ## Development
 
-To test locally with Netlify CLI:
+To test locally with Netlify CLI::
 
 ```bash
 npm install -g netlify-cli
