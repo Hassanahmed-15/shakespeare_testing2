@@ -1,108 +1,191 @@
-<!DOCTYPE html>
+can u see index2.html i want u to replace index.html with index2.html all the functinalites tht were in index.html should be present in index2.html nthing should be changed excepty the ui<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shakespeare Digital Variorum</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #000000;
-            color: #f9fafb;
+            font-family: 'Georgia', serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: #2c3e50;
             line-height: 1.6;
-            overflow-x: hidden;
         }
-
-        .app-container {
-            display: grid;
-            grid-template-columns: 300px 1fr 400px;
-            grid-template-rows: 80px 1fr 100px;
-            height: 100vh;
-            gap: 0;
-            background: #000000;
-        }
-
-        /* Header */
+        
         .header {
-            grid-column: 1 / -1;
-            background: #000000;
-            border-bottom: 1px solid #4b5563;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 30px;
-            position: relative;
+            text-align: center;
+            margin-bottom: 30px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
-
-        .header-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #f9fafb;
+        
+        h1 {
+            color: #8b4513;
+            margin: 0;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
-
-        .header-nav {
-            display: flex;
-            gap: 30px;
-            align-items: center;
+        
+        .subtitle {
+            color: #666;
+            font-style: italic;
+            margin-top: 10px;
         }
-
-        .nav-link {
-            color: #d1d5db;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.2s;
-        }
-
-        .nav-link:hover {
-            color: #f9fafb;
-        }
-
-        .explain-button {
-            background: #000;
-            color: #fff;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 6px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .explain-button:hover {
-            background: #333;
-            transform: translateY(-1px);
-        }
-
-        .explain-instruction {
-            color: #9ca3af;
-            font-size: 0.8rem;
-            margin-left: 15px;
-        }
-
-        /* Library Panel */
-        .library-panel {
-            grid-column: 1;
-            grid-row: 2;
-            background: #000000;
-            border-right: 1px solid #4b5563;
-            padding: 30px;
-            overflow-y: auto;
-        }
-
-        .library-title {
-            font-size: 1.2rem;
-            font-weight: 600;
+        
+        .main-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
             margin-bottom: 20px;
-            color: #f9fafb;
+        }
+        
+        .input-section, .output-section {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .api-section {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .api-group {
+            margin-bottom: 15px;
+        }
+        
+        .api-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #8b4513;
+        }
+        
+        .api-group input, .api-group select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+        
+        textarea {
+            width: 100%;
+            height: 300px;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Georgia', serif;
+            font-size: 16px;
+            resize: vertical;
+            line-height: 1.5;
+        }
+        
+        textarea:focus {
+            outline: none;
+            border-color: #8b4513;
+            box-shadow: 0 0 5px rgba(139, 69, 19, 0.3);
+        }
+        
+        .controls {
+            margin: 20px 0;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        select {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+            min-width: 150px;
+        }
+        
+        button {
+            background: linear-gradient(135deg, #8b4513 0%, #a0522d 100%);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        .explain-btn {
+            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+            font-size: 18px;
+            padding: 15px 30px;
+        }
+        
+        .result {
+            background: #f8f9fa;
+            border-left: 5px solid #8b4513;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            white-space: pre-wrap;
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+        }
+        
+        .loading {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            padding: 20px;
+        }
+        
+        .error {
+            color: #d32f2f;
+            background: #ffebee;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 10px 0;
+            border-left: 5px solid #d32f2f;
+        }
+        
+        .success {
+            color: #2e7d32;
+            background: #e8f5e8;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 10px 0;
+            border-left: 5px solid #2e7d32;
+        }
+        
+        .stats {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 10px 0;
+            font-size: 14px;
+            color: #1976d2;
         }
 
+        /* Additional styles for the complex functionality */
         .play-selector {
             display: flex;
             gap: 10px;
@@ -111,83 +194,33 @@
 
         .play-select {
             flex: 1;
-            background: #374151;
-            border: 1px solid #4b5563;
-            color: #f9fafb;
             padding: 10px;
+            border: 1px solid #ddd;
             border-radius: 6px;
             font-size: 0.9rem;
         }
 
         .go-button {
-            background: #000;
-            color: #fff;
-            border: none;
             padding: 10px 20px;
             border-radius: 6px;
             font-size: 0.9rem;
-            cursor: pointer;
-            transition: background 0.2s;
         }
 
-        .go-button:hover {
-            background: #333;
-        }
-
-
-
-        /* Main Content */
-        .main-content {
-            grid-column: 2;
-            grid-row: 2;
-            background: #000000;
-            padding: 30px;
-            overflow-y: auto;
-            position: relative;
-        }
-
-        .empty-state {
-            text-align: center;
-            padding: 60px 20px;
-            color: #9ca3af;
-        }
-
-        .empty-icon {
-            font-size: 3rem;
+        .library-title {
+            font-size: 1.2rem;
+            font-weight: 600;
             margin-bottom: 20px;
-            opacity: 0.5;
-        }
-
-        .empty-title {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: #f9fafb;
-        }
-
-        .empty-text {
-            margin-bottom: 30px;
-            line-height: 1.6;
-        }
-
-        .settings-button {
-            background: #000;
-            color: #fff;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 6px;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .settings-button:hover {
-            background: #333;
+            color: #8b4513;
         }
 
         .play-content {
             display: none;
-            max-width: 800px;
-            margin: 0 auto;
+            max-width: 1200px;
+            margin: 20px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         .scene-navigation {
@@ -198,9 +231,9 @@
         }
 
         .scene-button {
-            background: #374151;
-            color: #f9fafb;
-            border: 1px solid #4b5563;
+            background: #f8f9fa;
+            color: #2c3e50;
+            border: 1px solid #ddd;
             padding: 8px 16px;
             border-radius: 6px;
             font-size: 0.8rem;
@@ -209,23 +242,25 @@
         }
 
         .scene-button:hover {
-            background: #4b5563;
+            background: #e9ecef;
         }
 
         .scene-button.active {
-            background: #000;
-            border-color: #000;
+            background: #8b4513;
+            color: white;
+            border-color: #8b4513;
         }
 
         .play-text {
             font-family: 'Georgia', serif;
             font-size: 1.1rem;
             line-height: 1.8;
-            color: #f9fafb;
-            background: #000000;
+            color: #2c3e50;
+            background: white;
             padding: 30px;
             border-radius: 8px;
-            border: 1px solid #4b5563;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .play-line {
@@ -238,32 +273,32 @@
         }
 
         .play-line:hover {
-            background: #374151;
+            background: #f8f9fa;
         }
 
         .play-line.selected {
-            background: #f59e0b;
+            background: #ffc107;
             color: #000;
         }
 
         .play-line.range-selected {
-            background: #fbbf24;
+            background: #ffeb3b;
             color: #000;
         }
 
         .line-selection-info {
-            background: #374151;
-            border: 1px solid #f59e0b;
+            background: #e3f2fd;
+            border: 1px solid #2196f3;
             padding: 10px;
             border-radius: 6px;
             margin: 10px 0;
             font-size: 14px;
-            color: #f9fafb;
+            color: #1976d2;
         }
 
         .selected-lines {
-            background: #374151;
-            border: 2px solid #f59e0b;
+            background: #e3f2fd;
+            border: 2px solid #2196f3;
             padding: 15px;
             border-radius: 8px;
             margin: 10px 0;
@@ -287,21 +322,11 @@
             background: #c82333;
         }
 
-        /* Analysis Panel */
-        .analysis-panel {
-            grid-column: 3;
-            grid-row: 2;
-            background: #000000;
-            border-left: 1px solid #4b5563;
-            padding: 30px;
-            overflow-y: auto;
-        }
-
         .analysis-tabs {
             display: flex;
             gap: 2px;
             margin-bottom: 30px;
-            background: #374151;
+            background: #f8f9fa;
             border-radius: 6px;
             padding: 4px;
         }
@@ -309,7 +334,7 @@
         .analysis-tab {
             flex: 1;
             background: transparent;
-            color: #9ca3af;
+            color: #666;
             border: none;
             padding: 10px;
             border-radius: 4px;
@@ -319,31 +344,32 @@
         }
 
         .analysis-tab.active {
-            background: #000;
-            color: #fff;
+            background: #8b4513;
+            color: white;
         }
 
         .analysis-section {
-            background: #000000;
+            background: white;
             border-radius: 8px;
             padding: 20px;
             margin-bottom: 20px;
-            border: 1px solid #4b5563;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
         .analysis-title {
             font-size: 1rem;
             font-weight: 600;
             margin-bottom: 15px;
-            color: #f9fafb;
+            color: #8b4513;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .copy-button {
-            background: #000;
-            color: #fff;
+            background: #8b4513;
+            color: white;
             border: none;
             padding: 6px 12px;
             border-radius: 4px;
@@ -353,31 +379,18 @@
         }
 
         .copy-button:hover {
-            background: #333;
+            background: #a0522d;
         }
 
         .analysis-content {
-            color: #d1d5db;
+            color: #2c3e50;
             font-size: 0.9rem;
             line-height: 1.6;
         }
 
-        .result {
-            background: #000000;
-            border-left: 5px solid #f59e0b;
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 20px;
-            white-space: pre-wrap;
-            font-family: 'Georgia', serif;
-            line-height: 1.6;
-            max-height: 600px;
-            overflow-y: auto;
-        }
-
         .result.fullfathomfive {
-            background: #000000;
-            border-left: 5px solid #fbbf24;
+            background: #f8f9fa;
+            border-left: 5px solid #ffc107;
             padding: 30px;
             font-size: 1.1rem;
             line-height: 1.8;
@@ -385,11 +398,11 @@
         }
 
         .result.fullfathomfive h4 {
-            color: #fbbf24;
+            color: #8b4513;
             font-size: 1.3rem;
             margin-top: 25px;
             margin-bottom: 15px;
-            border-bottom: 2px solid #fbbf24;
+            border-bottom: 2px solid #8b4513;
             padding-bottom: 8px;
         }
 
@@ -398,24 +411,15 @@
             text-align: justify;
         }
 
-        .stats {
-            background: #374151;
-            padding: 15px;
-            border-radius: 6px;
-            margin: 10px 0;
-            font-size: 14px;
-            color: #f59e0b;
-        }
-
         .follow-up-section {
             margin-top: 20px;
         }
 
         .follow-up-input {
             width: 100%;
-            background: #1a1a1a;
-            border: 1px solid #4b5563;
-            color: #f9fafb;
+            background: white;
+            border: 1px solid #ddd;
+            color: #2c3e50;
             padding: 12px;
             border-radius: 6px;
             font-size: 0.9rem;
@@ -425,12 +429,12 @@
 
         .follow-up-input:focus {
             outline: none;
-            border-color: #f59e0b;
+            border-color: #8b4513;
         }
 
         .ask-button {
-            background: #000;
-            color: #fff;
+            background: #8b4513;
+            color: white;
             border: none;
             padding: 8px 16px;
             border-radius: 4px;
@@ -440,12 +444,12 @@
         }
 
         .ask-button:hover {
-            background: #333;
+            background: #a0522d;
         }
 
         .analyze-button {
-            background: #f59e0b;
-            color: #000;
+            background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+            color: white;
             border: none;
             padding: 12px 24px;
             border-radius: 6px;
@@ -458,14 +462,14 @@
         }
 
         .analyze-button:hover {
-            background: #fbbf24;
+            background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
             transform: translateY(-1px);
         }
 
         .line-analyze-button {
-            background: #374151;
-            color: #f9fafb;
-            border: 1px solid #4b5563;
+            background: #f8f9fa;
+            color: #2c3e50;
+            border: 1px solid #ddd;
             padding: 4px 8px;
             border-radius: 4px;
             font-size: 0.7rem;
@@ -475,7 +479,7 @@
         }
 
         .line-analyze-button:hover {
-            background: #4b5563;
+            background: #e9ecef;
         }
 
         .media-section, .research-section {
@@ -484,9 +488,9 @@
 
         .media-button, .research-button {
             width: 100%;
-            background: #374151;
-            color: #f9fafb;
-            border: 1px solid #4b5563;
+            background: #f8f9fa;
+            color: #2c3e50;
+            border: 1px solid #ddd;
             padding: 12px;
             border-radius: 6px;
             font-size: 0.9rem;
@@ -496,150 +500,139 @@
         }
 
         .media-button:hover, .research-button:hover {
-            background: #4b5563;
+            background: #e9ecef;
         }
 
-        /* Loading and Error States */
-        .loading {
+        .empty-state {
             text-align: center;
-            padding: 20px;
-            color: #9ca3af;
+            padding: 60px 20px;
+            color: #666;
         }
 
-        .error {
-            background: #dc2626;
-            color: #fff;
-            padding: 15px;
-            border-radius: 6px;
-            margin: 10px 0;
-            font-size: 0.9rem;
+        .empty-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            opacity: 0.5;
         }
 
-        .success {
-            color: #10b981;
-            background: #064e3b;
-            padding: 15px;
-            border-radius: 6px;
-            margin: 10px 0;
-            border-left: 5px solid #10b981;
-        }
-
-        /* Footer */
-        .footer {
-            grid-column: 1 / -1;
-            grid-row: 3;
-            background: #000000;
-            border-top: 1px solid #4b5563;
-            padding: 20px 30px;
-            text-align: center;
-        }
-
-        .footer-title {
-            font-size: 1rem;
-            font-weight: 600;
+        .empty-title {
+            font-size: 1.5rem;
             margin-bottom: 10px;
-            color: #f9fafb;
+            color: #8b4513;
         }
 
-        .footer-text {
-            color: #9ca3af;
-            font-size: 0.9rem;
+        .empty-text {
+            margin-bottom: 30px;
             line-height: 1.6;
         }
 
-        /* Responsive Design */
-        @media (max-width: 1200px) {
-            .app-container {
-                grid-template-columns: 250px 1fr 350px;
-            }
+        .settings-button {
+            background: linear-gradient(135deg, #8b4513 0%, #a0522d 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background 0.2s;
         }
 
+        .settings-button:hover {
+            background: linear-gradient(135deg, #a0522d 0%, #8b4513 100%);
+        }
+        
         @media (max-width: 768px) {
-            .app-container {
+            .main-container {
                 grid-template-columns: 1fr;
-                grid-template-rows: auto auto 1fr auto;
             }
             
-            .library-panel, .analysis-panel {
-                grid-column: 1;
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
             }
             
-            .library-panel {
-                grid-row: 2;
-                border-right: none;
-                border-bottom: 1px solid #4b5563;
-            }
-            
-            .main-content {
-                grid-row: 3;
-            }
-            
-            .analysis-panel {
-                grid-row: 4;
-                border-left: none;
-                border-top: 1px solid #4b5563;
+            button {
+                width: 100%;
             }
         }
     </style>
   </head>
   <body>
-    <div class="app-container">
-        <!-- Header -->
-        <header class="header">
-            <div class="header-title">Shakespeare Digital Variorum</div>
-            <div class="header-nav">
-                <a href="#" class="nav-link">Settings</a>
-                <a href="#" class="nav-link">About</a>
-                <button class="explain-button" onclick="explainHighlighted()">Explain Highlighted Text</button>
-                <span class="explain-instruction">Use your cursor to highlight text in the play, then click this button for analysis.</span>
-            </div>
-        </header>
+    <div class="header">
+        <h1>🎭 Shakespeare Digital Variorum</h1>
+        <div class="subtitle">Advanced AI-Powered Shakespeare Analysis</div>
+    </div>
 
-        <!-- Library Panel -->
-        <aside class="library-panel">
-            <h3 class="library-title">Library</h3>
+    <!-- API Configuration -->
+    <div class="api-section">
+        <h3>⚙️ Analysis Settings</h3>
+        <div class="api-group">
+            <label for="model">Model:</label>
+            <select id="model" onchange="saveModel()">
+                <option value="gpt-4o">GPT-4o (Most Capable)</option>
+                <option value="gpt-4o-mini" selected>GPT-4o Mini (Fast & Efficient)</option>
+                <option value="gpt-4-turbo">GPT-4 Turbo</option>
+                <option value="gpt-3.5-turbo">GPT-3.5 Turbo (Legacy)</option>
+            </select>
+            <small style="color: #6b7280; font-size: 12px;">Choose your preferred AI model</small>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <div class="input-section">
+            <h3>📚 Library & Text Selection</h3>
+            
+            <!-- Play Selection -->
             <div class="play-selector">
                 <select class="play-select" id="playSelect">
                     <option value="">Choose a Play</option>
                     <option value="macbeth">Macbeth</option>
                 </select>
-                <button class="go-button" onclick="loadPlay()">Go</button>
+                <button class="go-button" onclick="loadPlay()">Load Play</button>
             </div>
 
-
-
+            <!-- Line Selection Info -->
             <div class="line-selection-info">
                 <strong>Line Selection:</strong> 
                 <span id="selectionInfo">Click a line to select it, then click another to select a range (2-5 lines for Full Fathom Five).</span>
                 <button class="clear-selection" onclick="clearSelection()">Clear Selection</button>
             </div>
             <div id="selectedLinesDisplay" class="selected-lines"></div>
-        </aside>
 
-        <!-- Main Content -->
-        <main class="main-content">
-            <div class="empty-state" id="emptyState">
-                <div class="empty-icon">📚</div>
-                <h2 class="empty-title">Add a play to begin</h2>
-                <p class="empty-text">Select Macbeth from the library to begin reading and analyzing.</p>
-                <button class="settings-button">Open Settings</button>
+            <!-- Analysis Level Selection -->
+            <div class="controls">
+                <label for="analysisLevel">Analysis Level:</label>
+                <select id="analysisLevel">
+                    <option value="basic">Basic Analysis</option>
+                    <option value="detailed">Detailed Analysis</option>
+                    <option value="expert">Expert Analysis</option>
+                    <option value="fullfathomfive">Full Fathom Five</option>
+                </select>
+                
+                <button class="explain-btn" onclick="analyzeText()">🔍 Analyze Text</button>
             </div>
 
-            <div class="play-content" id="playContent">
-                <div class="scene-navigation" id="sceneNavigation"></div>
-                <div class="play-text" id="playText"></div>
-            </div>
-        </main>
-
-        <!-- Analysis Panel -->
-        <aside class="analysis-panel">
-            <div class="analysis-tabs">
-                <button class="analysis-tab active" onclick="switchTab('basic')">Basic</button>
-                <button class="analysis-tab" onclick="switchTab('detailed')">Detailed</button>
-                <button class="analysis-tab" onclick="switchTab('expert')">Expert</button>
-                <button class="analysis-tab" onclick="switchTab('fullfathomfive')">Full Fathom Five</button>
+            <!-- Follow-up Section -->
+            <div class="follow-up-section">
+                <input type="text" class="follow-up-input" placeholder="Ask a follow-up question..." id="followUpInput">
+                <button class="ask-button" onclick="askFollowUp()">Ask</button>
             </div>
 
+            <!-- Media and Research Buttons -->
+            <div class="media-section">
+                <button class="media-button" onclick="searchYouTube()">Search YouTube for this scene</button>
+            </div>
+
+            <div class="research-section">
+                <button class="research-button" onclick="searchJSTOR()">Search JSTOR for exact quotation</button>
+                <button class="research-button" onclick="searchGoogleScholar()">Search Google Scholar</button>
+            </div>
+        </div>
+        
+        <div class="output-section">
+            <h3>📊 Analysis Results</h3>
+            
             <!-- Analysis Section -->
             <div class="analysis-section" id="analysisSection">
                 <div class="analysis-title">
@@ -667,33 +660,21 @@
                 </div>
                 <div id="variorumResult"></div>
             </div>
+        </div>
+    </div>
 
-            <div class="follow-up-section">
-                <input type="text" class="follow-up-input" placeholder="Ask a follow-up question..." id="followUpInput">
-                <button class="ask-button" onclick="askFollowUp()">Ask</button>
-            </div>
+    <!-- Play Content (Hidden by default) -->
+    <div class="play-content" id="playContent" style="display: none;">
+        <div class="scene-navigation" id="sceneNavigation"></div>
+        <div class="play-text" id="playText"></div>
+    </div>
 
-            <div class="media-section">
-                <button class="media-button" onclick="searchYouTube()">Search YouTube for this scene</button>
-            </div>
-
-            <div class="research-section">
-                <button class="research-button" onclick="searchJSTOR()">Search JSTOR for exact quotation</button>
-                <button class="research-button" onclick="searchGoogleScholar()">Search Google Scholar</button>
-            </div>
-        </aside>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <h4 class="footer-title">About This Project</h4>
-            <p class="footer-text">
-                Shakespeare Digital Variorum combines centuries of scholarly commentary with AI analysis. 
-                All Shakespeare texts are public domain and based on the Folger Shakespeare Library editions.
-            </p>
-            <p class="footer-text">
-                Created by Jack David Carson, Massachusetts Institute of Technology · 2025 · Full Rights & Usage Information
-            </p>
-        </footer>
+    <!-- Empty State -->
+    <div class="empty-state" id="emptyState">
+        <div class="empty-icon">📚</div>
+        <h2 class="empty-title">Add a play to begin</h2>
+        <p class="empty-text">Select Macbeth from the library to begin reading and analyzing.</p>
+        <button class="settings-button">Open Settings</button>
     </div>
 
     <script>
@@ -827,12 +808,29 @@
             }
         }
 
+        function saveModel() {
+            const model = document.getElementById('model').value;
+            localStorage.setItem('shakespeare_model', model);
+        }
+
         // Load saved settings and data on page load
         document.addEventListener('DOMContentLoaded', async function() {
             console.log('🎭 Shakespeare Digital Variorum - Loading...');
             
-            // Set default model internally (not user-selectable)
-            const defaultModel = 'gpt-4o-mini';
+            // Load saved model setting
+            const savedModel = localStorage.getItem('shakespeare_model');
+            if (savedModel) {
+                document.getElementById('model').value = savedModel;
+            }
+
+            // Add event listener for analysis level selector
+            const analysisLevelSelect = document.getElementById('analysisLevel');
+            if (analysisLevelSelect) {
+                analysisLevelSelect.addEventListener('change', function() {
+                    currentTab = this.value;
+                    switchTab(this.value);
+                });
+            }
 
             // Initialize notes integration
             notesIntegration = new NotesIntegration();
@@ -893,23 +891,14 @@
             console.log('Clearing selection');
             selectedLines = [];
             firstSelectedLine = null;
-            
-            // Hide selected lines display
-            const selectedLinesDisplay = document.getElementById('selectedLinesDisplay');
-            if (selectedLinesDisplay) {
-                selectedLinesDisplay.style.display = 'none';
-            }
-            
-            // Clear all line selections
+            document.getElementById('selectedLinesDisplay').style.display = 'none';
             document.querySelectorAll('.play-line').forEach(line => {
                 line.classList.remove('selected', 'range-selected');
             });
             
             // Reset selection info
             const selectionInfo = document.getElementById('selectionInfo');
-            if (selectionInfo) {
-                selectionInfo.textContent = 'Click a line to select it, then click another to select a range (2-5 lines).';
-            }
+            selectionInfo.textContent = 'Click a line to select it, then click another to select a range (2-5 lines).';
             
             updateAnalysisPanel();
             console.log('Selection cleared');
@@ -980,12 +969,6 @@
         function selectLine(element, text, lineNum) {
             console.log('Selecting line:', lineNum, 'Text:', text);
             
-            // If clicking on already selected line, clear selection
-            if (element.classList.contains('selected') || element.classList.contains('range-selected')) {
-                clearSelection();
-                return;
-            }
-            
             if (!firstSelectedLine) {
                 // First selection
                 firstSelectedLine = lineNum;
@@ -1054,15 +1037,12 @@
 
         function displaySelectedLines() {
             const display = document.getElementById('selectedLinesDisplay');
-            if (display) {
-                if (selectedLines.length > 0) {
-                    display.innerHTML = '<strong>Selected Lines:</strong><br>' + 
-                        selectedLines.map((line, index) => `${index + 1}. ${line}`).join('<br>');
-                    display.style.display = 'block';
-                    console.log('Displaying selected lines:', selectedLines);
-                } else {
-                    display.style.display = 'none';
-                }
+            if (selectedLines.length > 0) {
+                display.innerHTML = '<strong>Selected Lines:</strong><br>' + 
+                    selectedLines.map((line, index) => `${index + 1}. ${line}`).join('<br>');
+                display.style.display = 'block';
+            } else {
+                display.style.display = 'none';
             }
         }
 
@@ -1071,18 +1051,15 @@
             const analysisInstruction = document.getElementById('analysisInstruction');
             const analyzeButton = document.getElementById('analyzeButton');
             
-            if (analysisContent && analysisInstruction && analyzeButton) {
-                if (selectedLines.length > 0) {
-                    const lineCount = selectedLines.length;
-                    analysisContent.textContent = `${currentPlay} · ${currentScene} · ${lineCount} line${lineCount > 1 ? 's' : ''} selected`;
-                    analysisInstruction.textContent = `Click "Analyze Text" to analyze ${lineCount} line${lineCount > 1 ? 's' : ''}.`;
-                    analyzeButton.style.display = 'block';
-                    console.log('Analysis panel updated for', lineCount, 'lines');
-                } else {
-                    analysisContent.textContent = 'Unknown Play · No text highlighted';
-                    analysisInstruction.textContent = 'Select text in the play to get AI-powered analysis.';
-                    analyzeButton.style.display = 'none';
-                }
+            if (selectedLines.length > 0) {
+                const lineCount = selectedLines.length;
+                analysisContent.textContent = `${currentPlay} · ${currentScene} · ${lineCount} line${lineCount > 1 ? 's' : ''} selected`;
+                analysisInstruction.textContent = `Click "Analyze Text" to analyze ${lineCount} line${lineCount > 1 ? 's' : ''}.`;
+                analyzeButton.style.display = 'block';
+            } else {
+                analysisContent.textContent = 'Unknown Play · No text highlighted';
+                analysisInstruction.textContent = 'Select text in the play to get AI-powered analysis.';
+                analyzeButton.style.display = 'none';
             }
         }
 
@@ -1090,6 +1067,12 @@
             if (selectedLines.length === 0) {
                 alert('Please select text in the play first.');
                 return;
+            }
+
+            // Get the current analysis level from the selector
+            const analysisLevelSelect = document.getElementById('analysisLevel');
+            if (analysisLevelSelect) {
+                currentTab = analysisLevelSelect.value;
             }
 
             const textToAnalyze = selectedLines.join('\n');
@@ -1180,8 +1163,12 @@
             const resultElement = document.getElementById(targetSection === 'analysis' ? 'analysisResult' : 'explanationResult');
             resultElement.innerHTML = '<div class="loading">🤔 Analyzing text with AI...</div>';
 
+            // Get the selected model from the UI
+            const modelSelect = document.getElementById('model');
+            const selectedModel = modelSelect ? modelSelect.value : 'gpt-4o-mini';
+            
             // Use different model and settings for Full Fathom Five
-            const model = currentTab === 'fullfathomfive' ? 'gpt-4o' : 'gpt-4o-mini';
+            const model = currentTab === 'fullfathomfive' ? 'gpt-4o' : selectedModel;
             const maxTokens = currentTab === 'fullfathomfive' ? 8000 : 3000;
 
             // Call the API
@@ -1242,9 +1229,11 @@
         function switchTab(tab) {
             currentTab = tab;
             
-            // Update tab buttons
-            document.querySelectorAll('.analysis-tab').forEach(t => t.classList.remove('active'));
-            event.target.classList.add('active');
+            // Update analysis level selector
+            const analysisLevelSelect = document.getElementById('analysisLevel');
+            if (analysisLevelSelect) {
+                analysisLevelSelect.value = tab;
+            }
             
             // Update analysis title
             const analysisTitle = document.getElementById('analysisTitle');
@@ -1298,7 +1287,8 @@
             }
 
             const analysisResult = document.getElementById('analysisResult');
-            const model = 'gpt-4o-mini'; // Use default model
+            const modelSelect = document.getElementById('model');
+            const model = modelSelect ? modelSelect.value : 'gpt-4o-mini';
             
             analysisResult.innerHTML = '<div class="loading">🤔 Processing follow-up question...</div>';
 
@@ -1412,35 +1402,6 @@
                 updateAnalysisPanel();
             }
         });
-
-        // Test function to verify line selection works
-        function testLineSelection() {
-            console.log('=== LINE SELECTION TEST ===');
-            console.log('Current selected lines:', selectedLines);
-            console.log('First selected line:', firstSelectedLine);
-            console.log('Current tab:', currentTab);
-            
-            // Test selecting lines 1, 2, 3, 4, 5
-            const testLines = document.querySelectorAll('.play-line');
-            console.log('Total lines found:', testLines.length);
-            
-            if (testLines.length >= 5) {
-                console.log('Testing 5-line selection...');
-                // Simulate clicking first line
-                const firstLine = testLines[0];
-                const firstLineNum = firstLine.getAttribute('data-line-num');
-                const firstLineText = firstLine.getAttribute('data-line-text');
-                console.log('First line:', firstLineNum, firstLineText);
-                
-                // Simulate clicking fifth line
-                const fifthLine = testLines[4];
-                const fifthLineNum = fifthLine.getAttribute('data-line-num');
-                const fifthLineText = fifthLine.getAttribute('data-line-text');
-                console.log('Fifth line:', fifthLineNum, fifthLineText);
-                
-                console.log('Line selection should work for 5 consecutive lines');
-            }
-        }
     </script>
   </body>
 </html>
