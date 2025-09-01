@@ -327,6 +327,14 @@ For this section, use the historical variorum notes provided below.
       userPrompt += `\n\nPlease provide a Full Fathom Five analysis following the exact format specified in the system prompt.`
       
       if (relevantNotes.length > 0) {
+        console.log('Adding notes to prompt. Total notes found:', relevantNotes.length)
+        relevantNotes.forEach((note, index) => {
+          console.log(`Note ${index + 1}: Line ${note.line}, ${note.notes.length} note entries`)
+          note.notes.forEach((noteText, noteIndex) => {
+            console.log(`  Note entry ${noteIndex + 1} length:`, noteText.length)
+          })
+        })
+        
         userPrompt += `\n\nHISTORICAL VARIORUM NOTES TO USE:`
         relevantNotes.forEach((note, index) => {
           userPrompt += `\n\n[Line ${note.line}] ${note.play}`
@@ -344,6 +352,10 @@ For this section, use the historical variorum notes provided below.
     // Get max_tokens from request or use default
     const maxTokens = (analysisMode === 'fullfathomfive' ? 16000 : 3000)
 
+    // Debug: Log the user prompt length
+    console.log('User prompt length:', userPrompt.length)
+    console.log('Max tokens:', maxTokens)
+    
     // Make the API call
     const completion = await openai.chat.completions.create({
       model: model,
@@ -360,6 +372,9 @@ For this section, use the historical variorum notes provided below.
       temperature: analysisMode === 'fullfathomfive' ? 0.3 : 0.7,
       max_tokens: maxTokens
     })
+    
+    // Debug: Log response length
+    console.log('Response length:', completion.choices[0].message.content.length)
 
     const response = completion.choices[0].message.content
 
