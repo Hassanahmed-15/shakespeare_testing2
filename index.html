@@ -5055,6 +5055,50 @@
             }
         }
 
+        function formatStructuredAnalysis(analysis, relevantNotes) {
+            console.log('=== FORMATTING STRUCTURED ANALYSIS ===');
+            console.log('Analysis sections:', Object.keys(analysis));
+            console.log('Relevant notes:', relevantNotes);
+            
+            let formattedContent = '';
+            
+            // Add Macbeth notes section if available
+            if (relevantNotes && relevantNotes.length > 0) {
+                formattedContent += '<div class="analysis-section">';
+                formattedContent += '<h4>Historical Variorum Notes</h4>';
+                formattedContent += '<div class="variorum-notes">';
+                
+                relevantNotes.forEach((note, index) => {
+                    formattedContent += `<div class="note-item">`;
+                    formattedContent += `<div class="note-header"><strong>${note.scene}, Line ${note.line}</strong></div>`;
+                    formattedContent += `<div class="note-text">"${note.play}"</div>`;
+                    formattedContent += `<div class="note-content">`;
+                    
+                    note.notes.forEach(noteText => {
+                        // Truncate very long notes for display
+                        const displayText = noteText.length > 500 ? noteText.substring(0, 500) + '...' : noteText;
+                        formattedContent += `<p>${displayText}</p>`;
+                    });
+                    
+                    formattedContent += `</div></div>`;
+                });
+                
+                formattedContent += '</div></div>';
+            }
+            
+            // Format each analysis section
+            for (const [sectionName, sectionContent] of Object.entries(analysis)) {
+                if (sectionContent && sectionContent.trim()) {
+                    formattedContent += '<div class="analysis-section">';
+                    formattedContent += `<h4>${sectionName}</h4>`;
+                    formattedContent += `<div class="section-content">${sectionContent}</div>`;
+                    formattedContent += '</div>';
+                }
+            }
+            
+            return formattedContent;
+        }
+
         function updateAnalysisWithStructuredData(data, text) {
             const analysisPanel = document.getElementById('analysisPanel');
             const wordCount = countWords(text);
@@ -5125,49 +5169,7 @@
             `;
         }
 
-        function formatStructuredAnalysis(analysis, relevantNotes) {
-            console.log('=== FORMATTING STRUCTURED ANALYSIS ===');
-            console.log('Analysis sections:', Object.keys(analysis));
-            console.log('Relevant notes:', relevantNotes);
-            
-            let formattedContent = '';
-            
-            // Add Macbeth notes section if available
-            if (relevantNotes && relevantNotes.length > 0) {
-                formattedContent += '<div class="analysis-section">';
-                formattedContent += '<h4>Historical Variorum Notes</h4>';
-                formattedContent += '<div class="variorum-notes">';
-                
-                relevantNotes.forEach((note, index) => {
-                    formattedContent += `<div class="note-item">`;
-                    formattedContent += `<div class="note-header"><strong>${note.scene}, Line ${note.line}</strong></div>`;
-                    formattedContent += `<div class="note-text">"${note.play}"</div>`;
-                    formattedContent += `<div class="note-content">`;
-                    
-                    note.notes.forEach(noteText => {
-                        // Truncate very long notes for display
-                        const displayText = noteText.length > 500 ? noteText.substring(0, 500) + '...' : noteText;
-                        formattedContent += `<p>${displayText}</p>`;
-                    });
-                    
-                    formattedContent += `</div></div>`;
-                });
-                
-                formattedContent += '</div></div>';
-            }
-            
-            // Format each analysis section
-            for (const [sectionName, sectionContent] of Object.entries(analysis)) {
-                if (sectionContent && sectionContent.trim()) {
-                    formattedContent += '<div class="analysis-section">';
-                    formattedContent += `<h4>${sectionName}</h4>`;
-                    formattedContent += `<div class="section-content">${sectionContent}</div>`;
-                    formattedContent += '</div>';
-                }
-            }
-            
-            return formattedContent;
-        }
+
 
         function updateAnalysisWithProgress(content, selectedText, callResults) {
             const analysisPanel = document.getElementById('analysisPanel');
@@ -5279,49 +5281,7 @@
             `;
         }
 
-        function formatStructuredAnalysis(analysis, relevantNotes) {
-            console.log('=== FORMATTING STRUCTURED ANALYSIS ===');
-            console.log('Analysis sections:', Object.keys(analysis));
-            console.log('Relevant notes:', relevantNotes);
-            
-            let formattedContent = '';
-            
-            // Add Macbeth notes section if available
-            if (relevantNotes && relevantNotes.length > 0) {
-                formattedContent += '<div class="analysis-section">';
-                formattedContent += '<h4>Historical Variorum Notes</h4>';
-                formattedContent += '<div class="variorum-notes">';
-                
-                relevantNotes.forEach((note, index) => {
-                    formattedContent += `<div class="note-item">`;
-                    formattedContent += `<div class="note-header"><strong>${note.scene}, Line ${note.line}</strong></div>`;
-                    formattedContent += `<div class="note-text">"${note.play}"</div>`;
-                    formattedContent += `<div class="note-content">`;
-                    
-                    note.notes.forEach(noteText => {
-                        // Truncate very long notes for display
-                        const displayText = noteText.length > 500 ? noteText.substring(0, 500) + '...' : noteText;
-                        formattedContent += `<p>${displayText}</p>`;
-                    });
-                    
-                    formattedContent += `</div></div>`;
-                });
-                
-                formattedContent += '</div></div>';
-            }
-            
-            // Format each analysis section
-            for (const [sectionName, sectionContent] of Object.entries(analysis)) {
-                if (sectionContent && sectionContent.trim()) {
-                    formattedContent += '<div class="analysis-section">';
-                    formattedContent += `<h4>${sectionName}</h4>`;
-                    formattedContent += `<div class="section-content">${sectionContent}</div>`;
-                    formattedContent += '</div>';
-                }
-            }
-            
-            return formattedContent;
-        }
+
 
         function formatAnalysisContent(content) {
             // Debug: Log the raw content to see what the AI is returning
