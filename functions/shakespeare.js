@@ -114,14 +114,21 @@ exports.handler = async (event, context) => {
     // Define analysis structure based on mode
     const analysisStructure = {
       basic: [
-        'Basic Analysis'
+        'Plain-Language Paraphrase',
+        'Synopsis',
+        'Key Words & Glosses',
+        'Pointers for Further Reading'
       ],
       expert: [
-        'Expert Analysis'
+        'Plain-Language Paraphrase',
+        'Synopsis',
+        'Language and Imagery',
+        'Literary and Thematic Analysis',
+        'Pointers for Further Reading'
       ],
       fullfathomfive: [
-        'Analysis (Very Deep)',
-        'New Variorum Analysis (Selected Lines Commentary)'
+        'Analysis',
+        'New Variorum Analysis'
       ]
     }
 
@@ -134,56 +141,83 @@ exports.handler = async (event, context) => {
     // Find relevant notes from Macbeth database (only for Full Fathom Five)
     const relevantNotes = analysisMode === 'fullfathomfive' ? await findRelevantNotes(text) : []
     
-    // Build the system prompt
-    let systemPrompt = `You are a Shakespeare scholar providing ${analysisMode} analysis.`
+    // Build the system prompt based on analysis mode
+    let systemPrompt = ''
+    const currentPlayName = 'Macbeth' // You can make this dynamic if needed
+    const currentSceneName = 'ACT 1, SCENE 1' // You can make this dynamic if needed
 
-    if (isMultipleLines) {
-      systemPrompt += `\n\nYou are analyzing ${lines.length} selected lines from Shakespeare's work. Provide a comprehensive analysis that considers the relationship between these lines and their combined meaning.`
-    }
+    if (analysisMode === 'basic') {
+      systemPrompt = `You are a university professor speaking to very smart undergraduates about Shakespeare.
 
-    if (analysisMode === 'expert') {
-      systemPrompt += `\n\nIn Expert mode, provide a detailed, scholarly interpretation that explores:
+IMPORTANT CONTEXT: You are analyzing text from the play "${currentPlayName}" (${currentSceneName}). Always refer to this specific play and scene in your analysis.
 
-- Themes and symbols
-- Historical/cultural context  
-- Stylistic and literary devices
-- Critical/theoretical perspectives
+CRITICAL: You MUST provide responses for ALL of these sections in exactly this order:
 
-This should be significantly more advanced than basic analysis, suitable for graduate students and scholars.`
-    }
+**Plain-Language Paraphrase:**
+**Synopsis:**
+**Key Words & Glosses:**
+**Pointers for Further Reading:**
 
-    if (analysisMode === 'fullfathomfive') {
-      systemPrompt += `\n\nIn Full Fathom Five mode, provide two distinct sections:
+FORMAT REQUIREMENTS:
+- Use EXACTLY the section headers shown above - do not change them
+- 2–4 sentences per section
+- Complete sentences and paragraphs
+- Clear, accessible language
+- Always reference "${currentPlayName}" and "${currentSceneName}" directly
+- Titles in <em>italics</em>, never in quotes or asterisks
+- Key Words format: "word" means definition; "word" means definition (preserve capitalization)`
+    } else if (analysisMode === 'expert') {
+      systemPrompt = `You are a Shakespeare scholar writing for advanced students.
 
-1. ANALYSIS (VERY DEEP): A comprehensive, line-aware, holistic reading of the entire passage. This must go deeper than Basic/Expert — connecting imagery, sound, rhythm, myth, and intertextual echoes.
+IMPORTANT CONTEXT: Analyze text from "${currentPlayName}" (${currentSceneName}).
 
-2. NEW VARIORUM ANALYSIS (SELECTED LINES COMMENTARY): Commentary only on the selected lines. For each line or group of lines:
-   - Quote the text
-   - Give focused commentary (wordplay, meaning, allusion, critical notes)
+FORMAT REQUIREMENTS:
+- Structure your response into these sections in this exact order:
 
-This should be the most comprehensive analysis possible - think doctoral-level scholarship.`
+**Plain-Language Paraphrase:**
+**Synopsis:**
+**Language and Imagery:**
+**Literary and Thematic Analysis:**
+**Pointers for Further Reading:**
+
+- Use essay-style paragraphs (no bullets/lists)
+- Each section should be 5–8 sentences
+- Clear but scholarly tone
+- Titles in <em>italics</em>, never in quotes or asterisks
+- Always reference "${currentPlayName}" and "${currentSceneName}"`
+    } else if (analysisMode === 'fullfathomfive') {
+      systemPrompt = `You are an expert Shakespearean critic giving the deepest possible analysis.
+
+IMPORTANT CONTEXT: You are analyzing "${currentPlayName}" (${currentSceneName}).
+
+CRITICAL: You MUST include these two sub-sections in exactly this order:
+
+**Analysis:**
+Provide a very deep, holistic analysis of the entire passage. Discuss language, imagery, symbolism, rhythm, structure, and interpretive depth in flowing scholarly paragraphs. Do not include historical reception or external plays — focus entirely on the passage itself.
+
+**New Variorum Analysis:**
+Provide line-by-line commentary ONLY for the line numbers passed in from macbeth-notes.json. Each note should show the exact commentary from the JSON, without additions or speculation. Format:
+[Line X] [Commentary from notes]
+
+FORMAT REQUIREMENTS:
+- Use EXACT headers ("Analysis:" and "New Variorum Analysis:")
+- Write in complete, flowing paragraphs
+- Keep strictly to the notes JSON for the Variorum section (no invented material)
+- Always reference "${currentPlayName}" and "${currentSceneName}"`
        
       // Add Macbeth notes if available
       if (relevantNotes.length > 0) {
-        systemPrompt += `\n\nIMPORTANT: You have access to historical variorum notes from the Macbeth database. Use these notes extensively in your analysis, especially in the "Historical Variorum Notes" section. Here are the relevant notes found:`
+        systemPrompt += `\n\nIMPORTANT: You have access to historical variorum notes from the Macbeth database. Here are the relevant notes found:`
         
         relevantNotes.forEach((note, index) => {
-          systemPrompt += `\n\nNote ${index + 1} (${note.scene}, Line ${note.line}):\n`
-          systemPrompt += `Text: "${note.play}"\n`
-          systemPrompt += `Historical Notes: ${note.notes.join(' ').substring(0, 2000)}...`
+          systemPrompt += `\n\n[Line ${note.line}] ${note.notes.join(' ')}`
         })
         
-        systemPrompt += `\n\nIntegrate these historical notes into your analysis, particularly in the "Historical Variorum Notes" section. Quote and reference these notes appropriately.`
+        systemPrompt += `\n\nUse these exact notes in your "New Variorum Analysis" section without additions or speculation.`
       }
     }
 
-    systemPrompt += `\n\nProvide analysis in the following structure:\n${structure.map(section => `- ${section}`).join('\n')}`
 
-    systemPrompt += `\n\nFormat your response as structured sections. For each section, provide comprehensive analysis that would be appropriate for ${analysisMode === 'basic' ? 'undergraduate students' : analysisMode === 'expert' ? 'graduate students and scholars' : 'advanced scholars and researchers'}.
-
-Use proper scholarly language and provide specific examples from Shakespeare's works when relevant. Include citations and references where appropriate.
-
-For the "New Variorum Analysis (Selected Lines Commentary)" section (in Full Fathom Five mode), provide line-by-line commentary with quoted text and focused analysis.`
 
     // Build the user prompt
     let userPrompt = `Text to analyze: "${text}"`
@@ -193,20 +227,14 @@ For the "New Variorum Analysis (Selected Lines Commentary)" section (in Full Fat
     }
 
     if (analysisMode === 'basic') {
-      userPrompt += `\n\nPlease provide a Basic Analysis: A simple, straightforward explanation of the passage's surface meaning and imagery.`
+      userPrompt += `\n\nPlease provide a Basic Analysis following the exact format specified in the system prompt.`
     } else if (analysisMode === 'expert') {
-      userPrompt += `\n\nPlease provide an Expert Analysis: A detailed, scholarly interpretation that explores themes and symbols, historical/cultural context, stylistic and literary devices, and critical/theoretical perspectives.`
+      userPrompt += `\n\nPlease provide an Expert Analysis following the exact format specified in the system prompt.`
     } else if (analysisMode === 'fullfathomfive') {
-      userPrompt += `\n\nPlease provide a Full Fathom Five analysis with two sections:
-
-1. ANALYSIS (VERY DEEP): A comprehensive, line-aware, holistic reading of the entire passage. This must go deeper than Basic/Expert — connecting imagery, sound, rhythm, myth, and intertextual echoes.
-
-2. NEW VARIORUM ANALYSIS (SELECTED LINES COMMENTARY): Commentary only on the selected lines. For each line or group of lines:
-   - Quote the text
-   - Give focused commentary (wordplay, meaning, allusion, critical notes)`
+      userPrompt += `\n\nPlease provide a Full Fathom Five analysis following the exact format specified in the system prompt.`
       
       if (relevantNotes.length > 0) {
-        userPrompt += `\n\nNote: Historical variorum notes have been found for this text. Please integrate these notes extensively into your analysis, particularly in the "New Variorum Analysis" section.`
+        userPrompt += `\n\nNote: Historical variorum notes have been found for this text. Use these exact notes in your "New Variorum Analysis" section without additions or speculation.`
       }
     } else {
       userPrompt += `\n\nPlease provide a comprehensive ${analysisMode} analysis of this text.`
