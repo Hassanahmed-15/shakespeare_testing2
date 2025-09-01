@@ -55,12 +55,120 @@ function getFallbackNotes(text) {
 // Function to find relevant notes from Macbeth database
 async function findRelevantNotes(text, scene = null) {
   try {
-    // Use fallback notes directly since external fetching was causing issues
+    console.log('Fetching Macbeth notes for:', text)
+    
+    // Try to fetch the macbeth_notes.json file using relative path (more reliable)
+    const urls = [
+      '/Public/Data/macbeth_notes.json',
+      'https://shakespeare-variorum.netlify.app/Public/Data/macbeth_notes.json',
+      'https://raw.githubusercontent.com/Hassanahmed-15/Shakespeare-Variorum/main/Public/Data/macbeth_notes.json'
+    ]
+    
+    let notesData = null
+    
+    for (const url of urls) {
+      try {
+        console.log('Trying URL:', url)
+        const response = await fetch(url, {
+          method: 'GET',
+          headers: {
+            'Accept': 'application/json',
+            'Cache-Control': 'no-cache'
+          }
+        })
+        
+        if (response.ok) {
+          const responseText = await response.text()
+          console.log('Successfully fetched from:', url, 'Length:', responseText.length)
+          notesData = JSON.parse(responseText)
+          break
+        } else {
+          console.log('Failed to fetch from:', url, 'Status:', response.status)
+        }
+      } catch (error) {
+        console.log('Error fetching from:', url, error.message)
+      }
+    }
+    
+    if (notesData) {
+      console.log('Successfully loaded Macbeth notes from file')
+      
+      // Extract line numbers from the text
+      const lines = text.split('\n').filter(line => line.trim().length > 0)
+      const foundNotes = []
+      
+      // Search through all scenes and lines for matches
+      for (const [sceneName, sceneData] of Object.entries(notesData)) {
+        for (const lineNumber in sceneData) {
+          const lineData = sceneData[lineNumber];
+          if (lineData && lineData.play) {
+            // Check if any of the selected lines match this play line
+            for (const line of lines) {
+              const searchText = line.toLowerCase().trim();
+              const playLine = lineData.play.toLowerCase().trim();
+              
+              // Multiple matching strategies (from notes-integration.js)
+              if (this.matchesText(playLine, searchText)) {
+                foundNotes.push({
+                  line: lineNumber,
+                  play: lineData.play,
+                  scene: sceneName,
+                  notes: lineData.notes || []
+                })
+                console.log(`Found notes for line ${lineNumber} in ${sceneName}: ${lineData.notes.length} entries`)
+              }
+            }
+          }
+        }
+      }
+      
+      if (foundNotes.length > 0) {
+        return foundNotes
+      }
+    }
+    
+    // Fallback to hardcoded notes if file fetch fails
     console.log('Using fallback notes for:', text)
     return getFallbackNotes(text)
   } catch (error) {
     console.error('Error loading Macbeth notes:', error)
-    return []
+    console.log('Using fallback notes for:', text)
+    return getFallbackNotes(text)
+  }
+  
+  // Check if the highlighted text matches the play line (from notes-integration.js)
+  function matchesText(playLine, searchText) {
+    // Exact match
+    if (playLine === searchText) {
+      return true;
+    }
+    
+    // Contains match (search text is part of play line)
+    if (playLine.includes(searchText) && searchText.length > 3) {
+      return true;
+    }
+    
+    // Play line is part of search text
+    if (searchText.includes(playLine) && playLine.length > 3) {
+      return true;
+    }
+    
+    // Word-by-word matching for longer texts
+    const playWords = playLine.split(/\s+/).filter(word => word.length > 2);
+    const searchWords = searchText.split(/\s+/).filter(word => word.length > 2);
+    
+    if (playWords.length > 0 && searchWords.length > 0) {
+      const matchingWords = playWords.filter(word => 
+        searchWords.some(searchWord => 
+          word.includes(searchWord) || searchWord.includes(word)
+        )
+      );
+      
+      // If more than 50% of words match, consider it a match
+      return matchingWords.length >= Math.min(playWords.length, searchWords.length) * 0.5;
+    }
+    
+    return false;
   }
 }
 
