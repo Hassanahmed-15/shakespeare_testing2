@@ -23,23 +23,55 @@ async function findRelevantNotes(text, scene = null) {
       for (const [lineKey, lineData] of Object.entries(sceneData)) {
         const playText = lineData.play ? lineData.play.toLowerCase() : ''
         
-        // Check for exact matches or partial matches
-        if (playText.includes(searchText) || searchText.includes(playText) || 
-            (playText.length > 10 && searchText.length > 10 && 
-             playText.split(' ').some(word => searchText.includes(word)) && 
-             searchText.split(' ').some(word => playText.includes(word)))) {
-          
+        // More precise matching - look for exact line matches first
+        if (playText === searchText) {
+          // Exact match - highest priority
           if (lineData.notes && lineData.notes.length > 0) {
             relevantNotes.push({
               scene: sceneKey,
               line: lineKey,
               play: lineData.play,
-              notes: lineData.notes
+              notes: lineData.notes,
+              matchType: 'exact'
             })
+          }
+        } else if (playText.includes(searchText) || searchText.includes(playText)) {
+          // Partial match - medium priority
+          if (lineData.notes && lineData.notes.length > 0) {
+            relevantNotes.push({
+              scene: sceneKey,
+              line: lineKey,
+              play: lineData.play,
+              notes: lineData.notes,
+              matchType: 'partial'
+            })
+          }
+        } else {
+          // Word-level matching for similar content
+          const searchWords = searchText.split(' ').filter(word => word.length > 3)
+          const playWords = playText.split(' ').filter(word => word.length > 3)
+          const matchingWords = searchWords.filter(word => playWords.includes(word))
+          
+          if (matchingWords.length >= Math.min(2, searchWords.length)) {
+            if (lineData.notes && lineData.notes.length > 0) {
+              relevantNotes.push({
+                scene: sceneKey,
+                line: lineKey,
+                play: lineData.play,
+                notes: lineData.notes,
+                matchType: 'word'
+              })
+            }
           }
         }
       }
     }
+    
+    // Sort by match quality (exact > partial > word) and return top 5
+    relevantNotes.sort((a, b) => {
+      const matchOrder = { 'exact': 3, 'partial': 2, 'word': 1 }
+      return matchOrder[b.matchType] - matchOrder[a.matchType]
+    })
     
     return relevantNotes.slice(0, 5) // Return up to 5 most relevant notes
   } catch (error) {
@@ -99,8 +131,8 @@ exports.handler = async (event, context) => {
     const lines = text.split('\n').filter(line => line.trim().length > 0)
     const isMultipleLines = lines.length >= 2 && lines.length <= 5
 
-    // Find relevant notes from Macbeth database
-    const relevantNotes = await findRelevantNotes(text)
+    // Find relevant notes from Macbeth database (only for Full Fathom Five)
+    const relevantNotes = analysisMode === 'fullfathomfive' ? await findRelevantNotes(text) : []
     
     // Build the system prompt
     let systemPrompt = `You are a Shakespeare scholar providing ${analysisMode} analysis.`
