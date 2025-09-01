@@ -343,22 +343,29 @@ For this section, use the historical variorum notes provided below.
             userPrompt += `\n${noteText}`
           })
         })
-        userPrompt += `\n\nCRITICAL INSTRUCTIONS: Use these EXACT notes in your "New Variorum Analysis" section. Copy them word for word without any changes, summaries, or modifications. Show ALL notes from the database, not just parts of them. DO NOT TRUNCATE OR CUT ANY NOTES. Include the complete, full text of every note. Even if the notes are very long, you MUST include the ENTIRE text. Do not stop mid-sentence or cut off any part. Format each note as: [Line X] [EXACT commentary text from notes]. Do not add any additional commentary or speculation.`
+        userPrompt += `\n\nCRITICAL INSTRUCTIONS: Use these EXACT notes in your "New Variorum Analysis" section. Copy them word for word without any changes, summaries, or modifications. Show ALL notes from the database, not just parts of them. DO NOT TRUNCATE OR CUT ANY NOTES. Include the complete, full text of every note. Even if the notes are very long, you MUST include the ENTIRE text. Do not stop mid-sentence or cut off any part. Format each note as: [Line X] [EXACT commentary text from notes]. Do not add any additional commentary or speculation.
+
+ABSOLUTE REQUIREMENT: Every single character of the provided notes must appear in your response. NO EXCEPTIONS. You must copy the notes exactly as provided, word for word, character for character. FAILURE TO INCLUDE COMPLETE NOTES WILL RESULT IN INCOMPLETE ANALYSIS.
+
+IMPORTANT: The notes above are the COMPLETE notes from the database. You MUST include ALL of them in your "New Variorum Analysis" section. Do not summarize, do not truncate, do not cut off. Copy them exactly as shown above.`
       }
     } else {
       userPrompt += `\n\nPlease provide a comprehensive ${analysisMode} analysis of this text.`
     }
 
     // Get max_tokens from request or use default
-    const maxTokens = (analysisMode === 'fullfathomfive' ? 16000 : 3000)
+    const maxTokens = (analysisMode === 'fullfathomfive' ? 32000 : 3000)
 
     // Debug: Log the user prompt length
     console.log('User prompt length:', userPrompt.length)
     console.log('Max tokens:', maxTokens)
     
+    // Use gpt-4o for full fathom five to handle longer responses better
+    const modelToUse = analysisMode === 'fullfathomfive' ? 'gpt-4o' : model
+    
     // Make the API call
     const completion = await openai.chat.completions.create({
-      model: model,
+      model: modelToUse,
       messages: [
         {
           role: "system",
