@@ -221,13 +221,7 @@ exports.handler = async (event, context) => {
     let relevantNotes = []
     if (analysisMode === 'fullfathomfive') {
       try {
-        // Set a quick timeout for notes loading
-        const notesPromise = findRelevantNotes(text)
-        const timeoutPromise = new Promise((_, reject) => 
-          setTimeout(() => reject(new Error('Notes timeout')), 3000)
-        )
-        
-        relevantNotes = await Promise.race([notesPromise, timeoutPromise])
+        relevantNotes = await findRelevantNotes(text)
         console.log('Macbeth notes loaded:', relevantNotes.length, 'notes found')
         console.log('Notes details:', relevantNotes)
       } catch (error) {
