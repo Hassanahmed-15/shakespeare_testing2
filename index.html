@@ -4877,7 +4877,9 @@
                 // Full Fathom Five now uses regular API call like other levels
                 
                 // Try the redirect path first for other levels
-                let response = await fetch('/api/shakespeare?v=' + Date.now(), {
+                // Use test function for Full Fathom Five to debug
+                const apiUrl = analysisMode === 'fullfathomfive' ? '/api/test-shakespeare' : '/api/shakespeare'
+                let response = await fetch(apiUrl + '?v=' + Date.now(), {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -4895,7 +4897,8 @@
                 // If that fails, try the direct function path
                 if (!response.ok) {
                     console.log('Redirect failed, trying direct function path...');
-                    response = await fetch('/.netlify/functions/shakespeare?v=' + Date.now(), {
+                    const directUrl = analysisMode === 'fullfathomfive' ? '/.netlify/functions/test-shakespeare' : '/.netlify/functions/shakespeare'
+                    response = await fetch(directUrl + '?v=' + Date.now(), {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'

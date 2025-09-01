@@ -63,7 +63,8 @@ async function findRelevantNotes(text, scene = null) {
     const urls = [
       'https://shakespeare-variorum.netlify.app/Public/Data/macbeth_notes.json',
       'https://raw.githubusercontent.com/Hassanahmed-15/Shakespeare-Variorum/main/Public/Data/macbeth_notes.json',
-      'https://github.com/Hassanahmed-15/Shakespeare-Variorum/raw/main/Public/Data/macbeth_notes.json'
+      'https://github.com/Hassanahmed-15/Shakespeare-Variorum/raw/main/Public/Data/macbeth_notes.json',
+      'https://incredible-lolly-62185c.netlify.app/Public/Data/macbeth_notes.json'
     ]
     
     let response = null
