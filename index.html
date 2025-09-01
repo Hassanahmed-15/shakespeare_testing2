@@ -2441,7 +2441,77 @@
         }
 
         // Settings navigation functionality
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Load Macbeth data from the JSON file
+            try {
+                console.log('🔄 Attempting to load Macbeth data...');
+                const response = await fetch('./Public/Data/macbeth_notes.json');
+                console.log('📡 Response status:', response.status, response.statusText);
+                
+                if (response.ok) {
+                    const macbethData = await response.json();
+                    console.log('✅ Macbeth data loaded successfully, size:', JSON.stringify(macbethData).length, 'characters');
+                    console.log('📚 Available scenes:', Object.keys(macbethData));
+                    
+                    // Add Macbeth to the plays object
+                    plays['macbeth'] = {
+                        name: 'Macbeth',
+                        originalFileName: 'macbeth',
+                        characters: [],
+                        acts: {},
+                        scenes: {}
+                    };
+                    
+                    // Parse the Macbeth data to extract acts and scenes
+                    if (macbethData) {
+                        let sceneCount = 0;
+                        let lineCount = 0;
+                        
+                        Object.keys(macbethData).forEach(sceneKey => {
+                            const sceneData = macbethData[sceneKey];
+                            if (sceneData && typeof sceneData === 'object') {
+                                // Extract scene content from the notes data
+                                const sceneContent = [];
+                                Object.keys(sceneData).forEach(lineNum => {
+                                    const lineData = sceneData[lineNum];
+                                    if (lineData && lineData.play) {
+                                        sceneContent.push(lineData.play);
+                                        lineCount++;
+                                    }
+                                });
+                                
+                                if (sceneContent.length > 0) {
+                                    plays['macbeth'].scenes[sceneKey] = sceneContent;
+                                    sceneCount++;
+                                    
+                                    // Group scenes by acts
+                                    const actMatch = sceneKey.match(/^ACT\s+([IVX0-9]+)/i);
+                                    if (actMatch) {
+                                        const actName = `ACT ${actMatch[1]}`;
+                                        if (!plays['macbeth'].acts[actName]) {
+                                            plays['macbeth'].acts[actName] = [];
+                                        }
+                                        plays['macbeth'].acts[actName].push(sceneKey);
+                                    }
+                                }
+                            }
+                        });
+                        
+                        console.log(`✅ Macbeth parsed successfully: ${sceneCount} scenes, ${lineCount} lines`);
+                        console.log('🎭 Macbeth plays object:', plays['macbeth']);
+                        
+                        // Update the UI to show Macbeth is available
+                        updatePlaySelector();
+                    }
+                } else {
+                    console.warn('❌ Could not load Macbeth data - Status:', response.status);
+                    console.warn('❌ Response text:', await response.text());
+                }
+            } catch (error) {
+                console.error('❌ Error loading Macbeth data:', error);
+                console.error('❌ Error stack:', error.stack);
+            }
+            
             // Add ARIA attributes to modals
             const settingsModal = document.getElementById('settingsModal');
             const aboutModal = document.getElementById('aboutModal');
