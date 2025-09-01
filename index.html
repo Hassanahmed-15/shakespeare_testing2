@@ -4603,15 +4603,9 @@
             // Reset analysis in progress flag
             analysisInProgress = false;
             
-            // Handle Full Fathom Five mode specially
-            if (mode === 'fullfathomfive') {
-                console.log('🌊 Using Full Fathom Five analysis');
-                handleFullFathomFiveAnalysis(textToAnalyze);
-            } else {
-                console.log('📚 Using regular analysis');
-                // For other modes, just do regular analysis
-                performAnalysis(textToAnalyze, mode);
-            }
+            // Use the proper API-based analysis function
+            console.log('📚 Using API-based analysis');
+            analyzeHighlightedText(textToAnalyze);
             
             // Ensure the analyze button remains visible and clickable
             const analyzeButton = document.getElementById('analyzeButton');
@@ -4705,7 +4699,7 @@
             }
             
             // Also perform regular analysis
-            performAnalysis(text, 'fullfathomfive');
+            analyzeHighlightedText(text);
         }
         
         function findNotesForLine(text, sceneName) {
@@ -4796,131 +4790,7 @@
             return formattedHTML;
         }
         
-        // Analysis function with different content for each mode
-        function performAnalysis(text, mode) {
-            console.log('Performing analysis for mode:', mode);
-            
-            const analysisResult = document.getElementById('analysisResult');
-            if (!analysisResult) return;
-            
-            let analysisContent = '';
-            
-            if (mode === 'basic') {
-                analysisContent = `
-                    <h3>Basic Analysis</h3>
-                    <div class="analysis-section">
-                        <h4>Plain-Language Paraphrase</h4>
-                        <p>The three witches are planning their next meeting. The first witch asks when they should meet again, suggesting they could meet during a storm (thunder, lightning, or rain). The second witch responds that they should meet when the chaos and confusion of battle is finished.</p>
-                    </div>
-                    
-                    <div class="analysis-section">
-                        <h4>Synopsis</h4>
-                        <p>This brief opening scene serves as a prologue to the main action. Three witches meet on a desolate heath during a storm to plan their next encounter. They decide to meet again after a battle is concluded, specifically to encounter Macbeth.</p>
-                    </div>
-                    
-                    <div class="analysis-section">
-                        <h4>Key Words & Glosses</h4>
-                        <ul>
-                            <li><strong>hurlyburly:</strong> tumult, confusion, uproar (especially of battle)</li>
-                            <li><strong>ere:</strong> before</li>
-                            <li><strong>set of sun:</strong> sunset</li>
-                            <li><strong>heath:</strong> open, uncultivated land covered with low shrubs</li>
-                        </ul>
-                    </div>
-                `;
-            } else if (mode === 'expert') {
-                analysisContent = `
-                    <h3>Expert Analysis</h3>
-                    <div class="analysis-section">
-                        <h4>Textual Variants</h4>
-                        <p>The First Folio (1623) text is generally considered authoritative for this scene. The line "When the hurlyburly's done" appears consistently across early editions, suggesting textual stability in this crucial opening.</p>
-                    </div>
-                    
-                    <div class="analysis-section">
-                        <h4>Plain-Language Paraphrase</h4>
-                        <p>The three witches are planning their next meeting. The first witch asks when they should meet again, suggesting they could meet during a storm. The second witch responds that they should meet when the chaos and confusion of battle is finished. This exchange establishes the witches' supernatural knowledge of future events.</p>
-                    </div>
-                    
-                    <div class="analysis-section">
-                        <h4>Language and Rhetoric</h4>
-                        <p>Shakespeare employs sophisticated rhetorical devices: Trochaic Tetrameter creates an otherworldly effect. Alliteration in "thunder, lightning" enhances the supernatural atmosphere. Pathetic Fallacy connects natural and human disorder.</p>
-                    </div>
-                    
-                    <div class="analysis-section">
-                        <h4>Historical Context</h4>
-                        <p>Written around 1606 during James I's reign, who had written Daemonologie (1597) about witchcraft. The play's portrayal of witches would have resonated with contemporary audiences who shared these beliefs.</p>
-                    </div>
-                    
-                    <div class="analysis-section">
-                        <h4>Sources</h4>
-                        <p>Shakespeare drew from Raphael Holinshed's Chronicles (1587) for the historical framework. However, the witches are largely Shakespeare's invention, as Holinshed mentions only "three women in strange and wild apparel."</p>
-                    </div>
-                    
-                    <div class="analysis-section">
-                        <h4>Critical Reception</h4>
-                        <p>Samuel Taylor Coleridge praised this opening scene for its atmospheric power, noting that it "strikes the key-note of the character of the whole drama." Modern critics focus on the scene's function as a prologue that establishes the supernatural framework.</p>
-                    </div>
-                `;
-            } else if (mode === 'fullfathomfive') {
-                analysisContent = `
-                    <h3>Full Fathom Five Analysis</h3>
-                    <div class="analysis-section">
-                        <h4>Commentary</h4>
-                        <p>This opening scene has been the subject of extensive critical commentary since the play's first performance. The witches' appearance and their prophetic dialogue establish the supernatural framework that will drive the entire tragedy. Critics have noted the scene's function as both prologue and prophecy, setting the tone for the play's exploration of fate, ambition, and the corruption of power.</p>
-                    </div>
-                    
-                    <div class="analysis-section">
-                        <h4>Textual Variants</h4>
-                        <p>The First Folio (1623) text is generally considered authoritative. The line "When the hurlyburly's done" appears consistently across early editions. Some editors have debated punctuation of "In thunder, lightning, or in rain?" with some preferring a comma after "lightning."</p>
-                    </div>
-                    
-                    <div class="analysis-section">
-                        <h4>Plain-Language Paraphrase</h4>
-                        <p>The three witches are planning their next meeting. The first witch asks when they should meet again, suggesting they could meet during a storm. The second witch responds that they should meet when the chaos and confusion of battle is finished. This exchange establishes the witches' supernatural knowledge of future events and their connection to both natural and political turmoil.</p>
-                    </div>
-                    
-                    <div class="analysis-section">
-                        <h4>Language and Rhetoric</h4>
-                        <p>Shakespeare employs sophisticated rhetorical devices: Trochaic Tetrameter creates an otherworldly, incantatory effect. Alliteration in "thunder, lightning" creates musical quality. Pathetic Fallacy mirrors psychological turmoil. Foreshadowing anticipates the battle. Dramatic Irony creates tension. Chiasmus creates balanced rhythm.</p>
-                    </div>
-                    
-                    <div class="analysis-section">
-                        <h4>Historical Context</h4>
-                        <p>Written around 1606 during James I's reign, who had written Daemonologie (1597) about witchcraft. The play was likely performed at court, making political implications significant. The witches' connection to natural world reflects contemporary beliefs about supernatural and natural order.</p>
-                    </div>
-                    
-                    <div class="analysis-section">
-                        <h4>Sources</h4>
-                        <p>Shakespeare drew from Raphael Holinshed's Chronicles (1587) for historical framework. However, the witches are largely Shakespeare's invention, as Holinshed mentions only "three women in strange and wild apparel." Shakespeare expanded this into the complex supernatural framework that drives the play.</p>
-                    </div>
-                    
-                    <div class="analysis-section">
-                        <h4>Literary Analysis</h4>
-                        <p>This scene functions as a microcosm of the entire play. The witches' meeting in chaos to plan future chaos establishes the central theme of order versus disorder. The trochaic meter creates unease that contrasts with human characters' iambic speech. The scene's structure mirrors the play's overall movement.</p>
-                    </div>
-                    
-                    <div class="analysis-section">
-                        <h4>Critical Reception</h4>
-                        <p>Samuel Taylor Coleridge praised this opening scene for its atmospheric power. Modern critics focus on the scene's function as a prologue. Feminist critics analyze the witches as representations of female power. Recent scholarship examines connection to contemporary beliefs about witchcraft.</p>
-                    </div>
-                    
-                    <div class="analysis-section">
-                        <h4>Similar phrases or themes in other plays</h4>
-                        <p>Supernatural prophecy appears in Julius Caesar with the Soothsayer's warning. Weather reflecting psychological states is found in King Lear. The witches' connection to natural world echoes themes in The Tempest. Fate versus free will is central to Romeo and Juliet.</p>
-                    </div>
-                `;
-            } else {
-                analysisContent = `
-                    <h3>Analysis Results for ${mode} mode</h3>
-                    <div class="analysis-section">
-                        <h4>Analysis</h4>
-                        <p>This is a ${mode} level analysis of the selected Shakespeare text.</p>
-                    </div>
-                `;
-            }
-            
-            analysisResult.innerHTML = `<div class="result">${analysisContent}</div>`;
-        }
+
         
         // Helper function to count words accurately
         function countWords(text) {
