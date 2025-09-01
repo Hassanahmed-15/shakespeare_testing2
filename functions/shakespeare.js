@@ -231,36 +231,76 @@ function processNotesWithData(notesData, text) {
   const lines = text.split('\n').filter(line => line.trim().length > 0)
   const foundNotes = []
   
-  // Search through all scenes and lines for matches (same logic as notes-integration.js)
-  for (const [sceneName, sceneData] of Object.entries(notesData)) {
-    for (const lineNumber in sceneData) {
-      const lineData = sceneData[lineNumber];
-      if (lineData && lineData.play) {
-        // Check if any of the selected lines match this play line
-        for (const line of lines) {
-          const searchText = line.toLowerCase().trim();
-          const playLine = lineData.play.toLowerCase().trim();
-          
-          // Multiple matching strategies (from notes-integration.js)
-          if (matchesText(playLine, searchText)) {
-            foundNotes.push({
-              line: lineNumber,
-              play: lineData.play,
-              scene: sceneName,
-              notes: lineData.notes || []
-            })
-            console.log(`Found notes for line ${lineNumber} in ${sceneName}: ${lineData.notes.length} entries`)
-          }
+  // Extract line numbers from the highlighted text first
+  const highlightedLineNumbers = []
+  for (const line of lines) {
+    // Try to extract line number from the text
+    const lineMatch = line.match(/^(\d+)\.?\s*(.*)/)
+    if (lineMatch) {
+      highlightedLineNumbers.push({
+        number: lineMatch[1],
+        text: lineMatch[2].trim()
+      })
+    } else {
+      // If no line number found, try to find it in the text
+      const numberMatch = line.match(/(\d+)/)
+      if (numberMatch) {
+        highlightedLineNumbers.push({
+          number: numberMatch[1],
+          text: line.trim()
+        })
+      }
+    }
+  }
+  
+  console.log('Highlighted line numbers:', highlightedLineNumbers)
+  
+  // Only search for the specific line numbers that were highlighted
+  const processedLineNumbers = new Set() // Track which line numbers we've already processed
+  
+  for (const highlightedLine of highlightedLineNumbers) {
+    const targetLineNumber = highlightedLine.number
+    
+    // Skip if we've already processed this line number
+    if (processedLineNumbers.has(targetLineNumber)) {
+      console.log(`Already processed line ${targetLineNumber}, skipping`)
+      continue
+    }
+    
+    // Search through all scenes for this specific line number
+    for (const [sceneName, sceneData] of Object.entries(notesData)) {
+      if (sceneData[targetLineNumber] && sceneData[targetLineNumber].play) {
+        const lineData = sceneData[targetLineNumber]
+        
+        // Check if the highlighted text matches this specific line
+        const searchText = highlightedLine.text.toLowerCase().trim()
+        const playLine = lineData.play.toLowerCase().trim()
+        
+        // Multiple matching strategies (from notes-integration.js)
+        if (matchesText(playLine, searchText)) {
+          foundNotes.push({
+            line: targetLineNumber,
+            play: lineData.play,
+            scene: sceneName,
+            notes: lineData.notes || []
+          })
+          console.log(`Found notes for line ${targetLineNumber} in ${sceneName}: ${lineData.notes.length} entries`)
+          processedLineNumbers.add(targetLineNumber) // Mark this line number as processed
+          break // Only take the first match for this line number to avoid duplicates
         }
       }
     }
   }
   
   if (foundNotes.length > 0) {
+    console.log(`Returning ${foundNotes.length} notes for specific line numbers`)
+    foundNotes.forEach((note, index) => {
+      console.log(`Note ${index + 1}: Line ${note.line} from ${note.scene} - ${note.notes.length} note entries`)
+    })
     return foundNotes
   }
   
-  console.log('No notes found, using fallback')
+  console.log('No specific line number notes found, using fallback')
   return getFallbackNotes(text)
 }
 
