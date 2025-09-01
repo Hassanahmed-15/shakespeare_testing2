@@ -2949,6 +2949,39 @@
             updateAnalysisPanel();
         }
         
+        // Debug function to test API calls
+        async function testAPICall(mode) {
+            console.log('🧪 Testing API call for mode:', mode);
+            
+            const testText = "When shall we three meet again? In thunder, lightning, or in rain?";
+            
+            try {
+                const response = await fetch('/.netlify/functions/shakespeare', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        text: testText,
+                        level: mode,
+                        mode: mode
+                    })
+                });
+                
+                const data = await response.json();
+                console.log('📊 API Response for', mode, ':', data);
+                
+                if (data.analysis && typeof data.analysis === 'object') {
+                    console.log('📋 Analysis sections for', mode, ':', Object.keys(data.analysis));
+                }
+                
+                return data;
+            } catch (error) {
+                console.error('❌ API Error for', mode, ':', error);
+                return null;
+            }
+        }
+
         // Make test functions available globally
         window.testAnalysis = testAnalysis;
         window.testFullFathomFive = testFullFathomFive;
@@ -2957,6 +2990,7 @@
         window.debugMacbethData = debugMacbethData;
         window.showMeWhatIsHappening = showMeWhatIsHappening;
         window.forceShowVariorum = forceShowVariorum;
+        window.testAPICall = testAPICall;
 
         // Modal functions
         function openSettings() {
