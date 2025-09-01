@@ -11,20 +11,41 @@ async function findRelevantNotes(text, scene = null) {
     const controller = new AbortController()
     const timeoutId = setTimeout(() => controller.abort(), 5000) // 5 second timeout
     
-    const response = await fetch('https://shakespeare-variorum.netlify.app/Public/Data/macbeth_notes.json', {
-      signal: controller.signal
-    })
+    // Try multiple URLs to find the notes
+    const urls = [
+      'https://shakespeare-variorum.netlify.app/Public/Data/macbeth_notes.json',
+      'https://raw.githubusercontent.com/Hassanahmed-15/Shakespeare-Variorum/main/Public/Data/macbeth_notes.json',
+      'https://github.com/Hassanahmed-15/Shakespeare-Variorum/raw/main/Public/Data/macbeth_notes.json'
+    ]
+    
+    let response = null
+    for (const url of urls) {
+      try {
+        console.log('Trying to fetch from:', url)
+        response = await fetch(url, { signal: controller.signal })
+        if (response.ok) {
+          console.log('Successfully fetched from:', url)
+          break
+        }
+      } catch (error) {
+        console.log('Failed to fetch from:', url, error.message)
+        continue
+      }
+    }
     
     clearTimeout(timeoutId)
     
-    if (!response.ok) {
-      console.error('Failed to load Macbeth notes:', response.status)
+    if (!response || !response.ok) {
+      console.error('Failed to load Macbeth notes from any URL')
       return []
     }
     
     const macbethNotes = await response.json()
     const relevantNotes = []
     const searchText = text.toLowerCase().trim()
+    
+    console.log('Searching for text:', searchText)
+    console.log('Available scenes:', Object.keys(macbethNotes))
     
     // Search through all scenes and lines
     for (const [sceneKey, sceneData] of Object.entries(macbethNotes)) {
@@ -35,6 +56,7 @@ async function findRelevantNotes(text, scene = null) {
         if (playText === searchText) {
           // Exact match - highest priority
           if (lineData.notes && lineData.notes.length > 0) {
+            console.log('Found exact match:', lineKey, lineData.play)
             relevantNotes.push({
               scene: sceneKey,
               line: lineKey,
