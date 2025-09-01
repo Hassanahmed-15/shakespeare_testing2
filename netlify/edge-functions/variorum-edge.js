@@ -1,3 +1,36 @@
+// Function to find relevant notes from Macbeth database
+function findRelevantNotes(text, macbethNotes) {
+  if (!macbethNotes) return []
+  
+  const relevantNotes = []
+  const searchText = text.toLowerCase().trim()
+  
+  // Search through all scenes and lines
+  for (const [sceneKey, sceneData] of Object.entries(macbethNotes)) {
+    for (const [lineKey, lineData] of Object.entries(sceneData)) {
+      const playText = lineData.play ? lineData.play.toLowerCase() : ''
+      
+      // Check for exact matches or partial matches
+      if (playText.includes(searchText) || searchText.includes(playText) || 
+          (playText.length > 10 && searchText.length > 10 && 
+           playText.split(' ').some(word => searchText.includes(word)) && 
+           searchText.split(' ').some(word => playText.includes(word)))) {
+        
+        if (lineData.notes && lineData.notes.length > 0) {
+          relevantNotes.push({
+            scene: sceneKey,
+            line: lineKey,
+            play: lineData.play,
+            notes: lineData.notes
+          })
+        }
+      }
+    }
+  }
+  
+  return relevantNotes.slice(0, 5) // Return up to 5 most relevant notes
+}
+
 export default async (request, context) => {
   // Handle CORS
   if (request.method === 'OPTIONS') {
@@ -24,6 +57,17 @@ export default async (request, context) => {
       });
     }
 
+    // Load Macbeth notes database
+    let macbethNotes = null;
+    try {
+      const notesResponse = await fetch('https://raw.githubusercontent.com/your-repo/Shakespeare-Variorum/main/Public/Data/macbeth_notes.json');
+      if (notesResponse.ok) {
+        macbethNotes = await notesResponse.json();
+      }
+    } catch (error) {
+      console.error('Error loading Macbeth notes:', error);
+    }
+
     if (request.method === 'POST') {
       const { text, playName, sceneName } = await request.json();
 
@@ -41,6 +85,9 @@ export default async (request, context) => {
       const currentPlayName = playName || 'Shakespeare';
       const currentSceneName = sceneName || 'scene';
 
+      // Find relevant notes from Macbeth database
+      const relevantNotes = findRelevantNotes(text, macbethNotes);
+
       // Create SSE stream
       const stream = new ReadableStream({
         async start(controller) {
@@ -49,13 +96,16 @@ export default async (request, context) => {
             controller.enqueue(new TextEncoder().encode('data: {"type": "start", "message": "Starting Full Fathom Five analysis..."}\n\n'));
 
             // Streamlined Full Fathom Five prompt
-            const fullPrompt = `You are a Shakespeare scholar providing a comprehensive but concise analysis in the style of the New Variorum editions. Focus on the most important scholarly insights.
+            let fullPrompt = `You are a Shakespeare scholar providing a comprehensive but concise analysis in the style of the New Variorum editions. Focus on the most important scholarly insights.
 
 CONTEXT: Analyzing "${text}" from ${currentPlayName} (${currentSceneName}).
 
 FORMAT:
 
 ## FULL FATHOM FIVE Analysis: "${text}" (${currentPlayName} ${currentSceneName})
+
+### VARIORUM COMMENTARY
+Traditional scholarly commentary and historical notes.
 
 ### TEXTUAL NOTES
 Brief mention of any significant textual variants between early editions (Q1, F1, etc.).
@@ -87,9 +137,22 @@ Brief mention of relevant modern critical approaches.
 Concise summary of the passage's significance.
 
 LENGTH: 600-800 words
-TONE: Scholarly but clear. Use <em>italics</em> for titles.
+TONE: Scholarly but clear. Use <em>italics</em> for titles.`;
 
-Analyze: "${text}"`;
+            // Add Macbeth notes if available
+            if (relevantNotes.length > 0) {
+              fullPrompt += `\n\nIMPORTANT: You have access to historical variorum notes from the Macbeth database. Use these notes extensively in your analysis, especially in the "VARIORUM COMMENTARY" section. Here are the relevant notes found:`;
+              
+              relevantNotes.forEach((note, index) => {
+                fullPrompt += `\n\nNote ${index + 1} (${note.scene}, Line ${note.line}):\n`;
+                fullPrompt += `Text: "${note.play}"\n`;
+                fullPrompt += `Historical Notes: ${note.notes.join(' ').substring(0, 1500)}...`;
+              });
+              
+              fullPrompt += `\n\nIntegrate these historical notes into your analysis, particularly in the "VARIORUM COMMENTARY" section. Quote and reference these notes appropriately.`;
+            }
+
+            fullPrompt += `\n\nAnalyze: "${text}"`;
 
             // Send section start
             controller.enqueue(new TextEncoder().encode('data: {"type": "section", "message": "TEXTUAL COLLATION"}\n\n'));

@@ -1,8 +1,54 @@
 const { OpenAI } = require('openai')
+const fs = require('fs')
+const path = require('path')
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 })
+
+// Load Macbeth notes database
+let macbethNotes = null
+try {
+  const notesPath = path.join(__dirname, '../Public/Data/macbeth_notes.json')
+  if (fs.existsSync(notesPath)) {
+    macbethNotes = JSON.parse(fs.readFileSync(notesPath, 'utf8'))
+  }
+} catch (error) {
+  console.error('Error loading Macbeth notes:', error)
+}
+
+// Function to find relevant notes from Macbeth database
+function findRelevantNotes(text, scene = null) {
+  if (!macbethNotes) return []
+  
+  const relevantNotes = []
+  const searchText = text.toLowerCase().trim()
+  
+  // Search through all scenes and lines
+  for (const [sceneKey, sceneData] of Object.entries(macbethNotes)) {
+    for (const [lineKey, lineData] of Object.entries(sceneData)) {
+      const playText = lineData.play ? lineData.play.toLowerCase() : ''
+      
+      // Check for exact matches or partial matches
+      if (playText.includes(searchText) || searchText.includes(playText) || 
+          (playText.length > 10 && searchText.length > 10 && 
+           playText.split(' ').some(word => searchText.includes(word)) && 
+           searchText.split(' ').some(word => playText.includes(word)))) {
+        
+        if (lineData.notes && lineData.notes.length > 0) {
+          relevantNotes.push({
+            scene: sceneKey,
+            line: lineKey,
+            play: lineData.play,
+            notes: lineData.notes
+          })
+        }
+      }
+    }
+  }
+  
+  return relevantNotes.slice(0, 5) // Return up to 5 most relevant notes
+}
 
 exports.handler = async (event, context) => {
   // Enable CORS
@@ -53,31 +99,33 @@ exports.handler = async (event, context) => {
         'Pointers for Further Reading'
       ],
       expert: [
-        'Textual Variants',
-        'Plain-Language Paraphrase',
-        'Language and Rhetoric',
-        'Synopsis',
-        'Key Words & Glosses',
-        'Historical Context',
-        'Sources',
-        'Literary Analysis',
-        'Critical Reception',
-        'Similar phrases or themes in other plays',
-        'Pointers for Further Reading'
+        'Advanced Textual Analysis',
+        'Metrical and Prosodic Analysis',
+        'Rhetorical Devices and Figures',
+        'Intertextual Connections',
+        'Critical Interpretations',
+        'Performance History',
+        'Editorial Commentary',
+        'Scholarly Debates',
+        'Thematic Analysis',
+        'Cultural Context',
+        'Further Research Directions'
       ],
       fullfathomfive: [
-        'Commentary',
-        'Textual Variants',
-        'Plain-Language Paraphrase',
-        'Language and Rhetoric',
-        'Synopsis',
-        'Key Words & Glosses',
-        'Historical Context',
-        'Sources',
-        'Literary Analysis',
-        'Critical Reception',
-        'Similar phrases or themes in other plays',
-        'Pointers for Further Reading'
+        'Variorum Commentary',
+        'Textual Variants and Collation',
+        'Historical Variorum Notes',
+        'Critical Reception Through Time',
+        'Performance Traditions',
+        'Editorial History',
+        'Source Materials',
+        'Linguistic Analysis',
+        'Metrical Analysis',
+        'Rhetorical Analysis',
+        'Thematic and Symbolic Analysis',
+        'Intertextual Echoes',
+        'Modern Critical Approaches',
+        'Scholarly Bibliography'
       ]
     }
 
@@ -87,6 +135,9 @@ exports.handler = async (event, context) => {
     const lines = text.split('\n').filter(line => line.trim().length > 0)
     const isMultipleLines = lines.length >= 2 && lines.length <= 5
 
+    // Find relevant notes from Macbeth database
+    const relevantNotes = findRelevantNotes(text)
+    
     // Build the system prompt
     let systemPrompt = `You are a Shakespeare scholar providing ${analysisMode} analysis.`
 
@@ -94,8 +145,25 @@ exports.handler = async (event, context) => {
       systemPrompt += `\n\nYou are analyzing ${lines.length} selected lines from Shakespeare's work. Provide a comprehensive analysis that considers the relationship between these lines and their combined meaning.`
     }
 
+    if (analysisMode === 'expert') {
+      systemPrompt += `\n\nIn Expert mode, you should provide ADVANCED SCHOLARLY analysis that goes significantly beyond basic analysis. This is graduate-level scholarship that includes:
+
+1. Sophisticated textual analysis with attention to editorial issues
+2. Detailed metrical and prosodic analysis
+3. Advanced rhetorical analysis identifying complex figures of speech
+4. Intertextual connections to other Shakespeare works and classical sources
+5. Critical interpretations from major scholars
+6. Performance history and theatrical traditions
+7. Editorial commentary and textual variants
+8. Scholarly debates and controversies
+9. Thematic analysis with cultural and historical context
+10. Directions for further research
+
+This should be significantly more advanced than basic analysis, suitable for graduate students and scholars.`
+    }
+
     if (analysisMode === 'fullfathomfive') {
-      systemPrompt += `\n\nIn Full Fathom Five mode, you should provide INSANELY DETAILED and COMPREHENSIVE analysis. This is the highest level of scholarly analysis available. You must:
+      systemPrompt += `\n\nIn Full Fathom Five mode, you should provide INSANELY DETAILED and COMPREHENSIVE analysis in the style of traditional variorum editions. This is the highest level of scholarly analysis available. You must:
 
 1. Provide EXTREMELY detailed analysis for each section
 2. Include extensive historical context and background
@@ -109,6 +177,19 @@ exports.handler = async (event, context) => {
 10. Reference contemporary scholarship and modern interpretations
 
 This should be the most comprehensive analysis possible - think doctoral-level scholarship. Each section should be extensive and thorough.`
+      
+      // Add Macbeth notes if available
+      if (relevantNotes.length > 0) {
+        systemPrompt += `\n\nIMPORTANT: You have access to historical variorum notes from the Macbeth database. Use these notes extensively in your analysis, especially in the "Historical Variorum Notes" section. Here are the relevant notes found:`
+        
+        relevantNotes.forEach((note, index) => {
+          systemPrompt += `\n\nNote ${index + 1} (${note.scene}, Line ${note.line}):\n`
+          systemPrompt += `Text: "${note.play}"\n`
+          systemPrompt += `Historical Notes: ${note.notes.join(' ').substring(0, 2000)}...`
+        })
+        
+        systemPrompt += `\n\nIntegrate these historical notes into your analysis, particularly in the "Historical Variorum Notes" section. Quote and reference these notes appropriately.`
+      }
     }
 
     systemPrompt += `\n\nProvide analysis in the following structure:\n${structure.map(section => `- ${section}`).join('\n')}`
@@ -126,8 +207,14 @@ For the Commentary section (in Full Fathom Five mode), provide traditional schol
       userPrompt += `\n\nThis selection contains ${lines.length} lines. Please provide analysis that considers both the individual lines and their relationship to each other.`
     }
 
-    if (analysisMode === 'fullfathomfive') {
+    if (analysisMode === 'expert') {
+      userPrompt += `\n\nPlease provide an ADVANCED EXPERT analysis of this text. This should be significantly more sophisticated than basic analysis, suitable for graduate students and scholars. Focus on advanced textual analysis, metrical patterns, rhetorical devices, intertextual connections, and scholarly interpretations.`
+    } else if (analysisMode === 'fullfathomfive') {
       userPrompt += `\n\nPlease provide an INSANELY DETAILED and COMPREHENSIVE Full Fathom Five analysis of this text. This should be the most thorough scholarly analysis possible - equivalent to doctoral-level research. Be extremely detailed in every section, providing extensive context, multiple interpretations, and thorough scholarly analysis.`
+      
+      if (relevantNotes.length > 0) {
+        userPrompt += `\n\nNote: Historical variorum notes have been found for this text. Please integrate these notes extensively into your analysis, particularly in the "Historical Variorum Notes" section.`
+      }
     } else {
       userPrompt += `\n\nPlease provide a comprehensive ${analysisMode} analysis of this text.`
     }
@@ -205,6 +292,7 @@ For the Commentary section (in Full Fathom Five mode), provide traditional schol
         mode: analysisMode,
         text: text,
         lineCount: lines.length,
+        relevantNotes: relevantNotes,
         usage: completion.usage
       })
     }
