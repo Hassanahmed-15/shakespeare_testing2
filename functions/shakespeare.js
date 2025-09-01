@@ -55,12 +55,61 @@ function getFallbackNotes(text) {
 // Function to find relevant notes from Macbeth database
 async function findRelevantNotes(text, scene = null) {
   try {
-    // Use fallback notes directly since external fetching was causing issues
+    console.log('Fetching Macbeth notes for:', text)
+    
+    // Try to fetch the actual macbeth_notes.json file
+    const response = await fetch('https://shakespeare-variorum.netlify.app/Public/Data/macbeth_notes.json')
+    if (response.ok) {
+      const notesData = await response.json()
+      console.log('Successfully loaded Macbeth notes from file')
+      
+      // Extract line numbers from the text
+      const lines = text.split('\n').filter(line => line.trim().length > 0)
+      const foundNotes = []
+      
+      for (const line of lines) {
+        // Try to extract line number from the text - look for patterns like "1." or just "1" at start
+        const lineMatch = line.match(/^(\d+)\.?\s*(.*)/)
+        if (lineMatch) {
+          const lineNumber = lineMatch[1]
+          const lineText = lineMatch[2] || line.trim()
+          if (notesData[lineNumber]) {
+            foundNotes.push({
+              line: lineNumber,
+              play: lineText,
+              notes: notesData[lineNumber]
+            })
+            console.log(`Found notes for line ${lineNumber}: ${lineText}`)
+          }
+        } else {
+          // Try alternative pattern - look for any number in the line
+          const altMatch = line.match(/(\d+)/)
+          if (altMatch) {
+            const lineNumber = altMatch[1]
+            if (notesData[lineNumber]) {
+              foundNotes.push({
+                line: lineNumber,
+                play: line.trim(),
+                notes: notesData[lineNumber]
+              })
+              console.log(`Found notes for line ${lineNumber} (alt pattern): ${line.trim()}`)
+            }
+          }
+        }
+      }
+      
+      if (foundNotes.length > 0) {
+        return foundNotes
+      }
+    }
+    
+    // Fallback to hardcoded notes if file fetch fails
     console.log('Using fallback notes for:', text)
     return getFallbackNotes(text)
   } catch (error) {
     console.error('Error loading Macbeth notes:', error)
-    return []
+    console.log('Using fallback notes for:', text)
+    return getFallbackNotes(text)
   }
 }
 
