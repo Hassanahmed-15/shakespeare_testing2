@@ -1869,37 +1869,38 @@
         
         /* Analysis section styling */
         .analysis-section {
-            margin-bottom: 25px;
-            padding-bottom: 20px;
+            margin-bottom: 15px;
+            padding-bottom: 12px;
             border-bottom: 1px solid #e5e7eb;
         }
         
         .analysis-section:last-child {
             border-bottom: none;
+            margin-bottom: 0;
         }
         
         .analysis-section h4 {
             color: #8b4513;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 600;
-            margin-bottom: 12px;
-            padding-bottom: 8px;
+            margin-bottom: 8px;
+            padding-bottom: 4px;
             border-bottom: 2px solid #f59e0b;
         }
         
         .analysis-section p {
-            margin-bottom: 12px;
-            line-height: 1.6;
+            margin-bottom: 8px;
+            line-height: 1.5;
         }
         
         .analysis-section ul {
             margin-left: 20px;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
         }
         
         .analysis-section li {
-            margin-bottom: 8px;
-            line-height: 1.5;
+            margin-bottom: 4px;
+            line-height: 1.4;
         }
 
         /* Researching animation */
@@ -2765,7 +2766,7 @@
                 currentTab = 'expert';
                 updateAnalysisPanel();
                 explainHighlighted();
-            }, 2000);
+            }, 3000);
             
             // Wait a bit, then test Full Fathom Five mode
             setTimeout(() => {
@@ -2773,13 +2774,58 @@
                 currentTab = 'fullfathomfive';
                 updateAnalysisPanel();
                 explainHighlighted();
-            }, 4000);
+            }, 6000);
+        }
+        
+        // Test function to verify variorum section is working
+        function testVariorumSection() {
+            console.log('🔍 Testing variorum section specifically...');
+            
+            // Set up test data
+            selectedLines = [
+                "First Witch: In thunder, lightning, or in rain?",
+                "Second Witch: When the hurlyburly's done,"
+            ];
+            currentScene = "ACT 1, SCENE 1";
+            currentTab = 'fullfathomfive';
+            
+            // Update UI
+            updateAnalysisPanel();
+            
+            // Check if variorum section is visible
+            const variorumSection = document.getElementById('variorumSection');
+            console.log('📋 Variorum section element:', variorumSection);
+            console.log('👁️ Variorum section display style:', variorumSection ? variorumSection.style.display : 'not found');
+            
+            // Test the commentary search
+            console.log('🔍 Testing commentary search...');
+            const notesData = findNotesForLine(selectedLines[0], currentScene);
+            console.log('📝 Notes data found:', notesData);
+            
+            if (notesData && notesData.notes && notesData.notes.length > 0) {
+                console.log('✅ Commentary found!');
+                const formattedNotes = formatNotes(notesData);
+                console.log('📖 Formatted notes length:', formattedNotes ? formattedNotes.length : 0);
+                
+                // Manually set the variorum result
+                const variorumResult = document.getElementById('variorumResult');
+                if (variorumResult && formattedNotes) {
+                    variorumResult.innerHTML = formattedNotes;
+                    console.log('✅ Variorum result set manually');
+                }
+            } else {
+                console.log('❌ No commentary found');
+            }
+            
+            // Run the full analysis
+            explainHighlighted();
         }
         
         // Make test functions available globally
         window.testAnalysis = testAnalysis;
         window.testFullFathomFive = testFullFathomFive;
         window.testAllModes = testAllModes;
+        window.testVariorumSection = testVariorumSection;
 
         // Modal functions
         function openSettings() {
@@ -4378,6 +4424,12 @@
             const mode = currentTab || 'basic';
             console.log('🎭 Analysis mode:', mode);
             
+            // Clear previous results first
+            const analysisResult = document.getElementById('analysisResult');
+            const variorumResult = document.getElementById('variorumResult');
+            if (analysisResult) analysisResult.innerHTML = '';
+            if (variorumResult) variorumResult.innerHTML = '';
+            
             // Handle Full Fathom Five mode specially
             if (mode === 'fullfathomfive') {
                 console.log('🌊 Using Full Fathom Five analysis');
@@ -4613,65 +4665,67 @@
                         <h3>Expert Analysis</h3>
                         <div class="analysis-section">
                             <h4>Textual Variants</h4>
-                            <p>The First Folio (1623) text is generally considered authoritative for this scene, though some modern editors have made minor punctuation adjustments. The line "When the hurlyburly's done" appears consistently across early editions, suggesting textual stability in this crucial opening.</p>
+                            <p>The First Folio (1623) text is generally considered authoritative for this scene, though some modern editors have made minor punctuation adjustments. The line "When the hurlyburly's done" appears consistently across early editions, suggesting textual stability in this crucial opening. However, some editors have debated the punctuation of "In thunder, lightning, or in rain?" with some preferring a comma after "lightning" while others maintain the original punctuation. The Oxford edition follows F1 closely, while the Arden edition makes minor adjustments for modern readers. The consistent appearance of these lines across Q1 (if it existed) and F1 suggests Shakespeare's careful composition of this atmospheric opening.</p>
                         </div>
                         
                         <div class="analysis-section">
                             <h4>Plain-Language Paraphrase</h4>
-                            <p>The three witches are planning their next meeting. The first witch asks when they should meet again, suggesting they could meet during a storm (thunder, lightning, or rain). The second witch responds that they should meet when the chaos and confusion of battle is finished.</p>
+                            <p>The three witches are planning their next meeting. The first witch asks when they should meet again, suggesting they could meet during a storm (thunder, lightning, or rain). The second witch responds that they should meet when the chaos and confusion of battle is finished. This exchange establishes the witches' supernatural knowledge of future events and their connection to both natural and political turmoil.</p>
                         </div>
                         
                         <div class="analysis-section">
                             <h4>Language and Rhetoric</h4>
-                            <p>Shakespeare employs several sophisticated rhetorical devices in this opening:</p>
+                            <p>Shakespeare employs several sophisticated rhetorical devices in this opening that establish the play's central themes:</p>
                             <ul>
-                                <li><strong>Trochaic Tetrameter:</strong> The witches speak in a distinctive rhythm (DUM-da DUM-da DUM-da DUM) that creates an otherworldly, incantatory effect, setting them apart from human characters who typically speak in iambic pentameter.</li>
-                                <li><strong>Alliteration:</strong> "thunder, lightning" creates a musical quality that enhances the supernatural atmosphere.</li>
-                                <li><strong>Pathetic Fallacy:</strong> The stormy weather mirrors the psychological and political turmoil that will engulf Scotland.</li>
-                                <li><strong>Foreshadowing:</strong> The mention of meeting "when the hurlyburly's done" anticipates the battle between Scotland and Norway that will be reported in the next scene.</li>
-                                <li><strong>Dramatic Irony:</strong> The audience knows these witches will lead Macbeth to his doom, while the characters do not.</li>
+                                <li><strong>Trochaic Tetrameter:</strong> The witches speak in a distinctive rhythm (DUM-da DUM-da DUM-da DUM) that creates an otherworldly, incantatory effect, setting them apart from human characters who typically speak in iambic pentameter. This metrical choice reflects their supernatural nature and creates a sense of unease.</li>
+                                <li><strong>Alliteration:</strong> "thunder, lightning" creates a musical quality that enhances the supernatural atmosphere while the repeated 'l' sounds create a liquid, flowing effect that suggests the witches' fluid, boundary-crossing nature.</li>
+                                <li><strong>Pathetic Fallacy:</strong> The stormy weather mirrors the psychological and political turmoil that will engulf Scotland, establishing the connection between natural and human disorder.</li>
+                                <li><strong>Foreshadowing:</strong> The mention of meeting "when the hurlyburly's done" anticipates the battle between Scotland and Norway that will be reported in the next scene, demonstrating the witches' prophetic knowledge.</li>
+                                <li><strong>Dramatic Irony:</strong> The audience knows these witches will lead Macbeth to his doom, while the characters do not, creating tension and anticipation.</li>
+                                <li><strong>Chiasmus:</strong> The structure "thunder, lightning, or in rain" creates a balanced, incantatory rhythm that enhances the supernatural atmosphere.</li>
                             </ul>
                         </div>
                         
                         <div class="analysis-section">
                             <h4>Synopsis</h4>
-                            <p>This brief opening scene (only 12 lines) serves as a prologue to the main action. Three witches meet on a desolate heath during a storm to plan their next encounter. They decide to meet again after a battle is concluded, specifically to encounter Macbeth. This scene establishes the supernatural element that will drive the play's central conflict and introduces the theme of fate versus free will.</p>
+                            <p>This brief opening scene (only 12 lines) serves as a prologue to the main action. Three witches meet on a desolate heath during a storm to plan their next encounter. They decide to meet again after a battle is concluded, specifically to encounter Macbeth. This scene establishes the supernatural element that will drive the play's central conflict and introduces the theme of fate versus free will. The scene's brevity creates a sense of urgency and foreboding, while the witches' casual discussion of meeting "when the battle's lost and won" suggests their supernatural knowledge of future events.</p>
                         </div>
                         
                         <div class="analysis-section">
                             <h4>Key Words & Glosses</h4>
                             <ul>
-                                <li><strong>hurlyburly:</strong> tumult, confusion, uproar (especially of battle) - from Middle English "hurlen" (to hurl) + "burlen" (to make a noise)</li>
-                                <li><strong>ere:</strong> before (archaic)</li>
-                                <li><strong>set of sun:</strong> sunset</li>
-                                <li><strong>heath:</strong> open, uncultivated land covered with low shrubs</li>
-                                <li><strong>Graymalkin:</strong> gray cat (familiar spirit of the first witch)</li>
+                                <li><strong>hurlyburly:</strong> tumult, confusion, uproar (especially of battle) - from Middle English "hurlen" (to hurl) + "burlen" (to make a noise). The word suggests both physical and metaphorical chaos.</li>
+                                <li><strong>ere:</strong> before (archaic) - from Old English "ær," indicating the witches' knowledge of future events.</li>
+                                <li><strong>set of sun:</strong> sunset - the witches' reference to sunset suggests their connection to the liminal time between day and night, good and evil.</li>
+                                <li><strong>heath:</strong> open, uncultivated land covered with low shrubs - the heath represents the wild, untamed nature of the witches and the disorder they bring.</li>
+                                <li><strong>Graymalkin:</strong> gray cat (familiar spirit of the first witch) - the name suggests the witches' connection to the animal world and their supernatural powers.</li>
+                                <li><strong>Paddock:</strong> toad (familiar spirit of the second witch) - another animal familiar that connects the witches to the natural world.</li>
                             </ul>
                         </div>
                         
                         <div class="analysis-section">
                             <h4>Historical Context</h4>
-                            <p>Written around 1606, <em>Macbeth</em> was composed during the reign of James I (James VI of Scotland), who had a particular interest in witchcraft. James had written a treatise called <em>Daemonologie</em> (1597) that detailed his beliefs about witches and their powers. The play's portrayal of witches would have resonated with contemporary audiences who shared these beliefs. The reference to "hurlyburly" likely alludes to the ongoing conflicts between England and Scotland that James I was working to resolve through his union of the crowns.</p>
+                            <p>Written around 1606, <em>Macbeth</em> was composed during the reign of James I (James VI of Scotland), who had a particular interest in witchcraft. James had written a treatise called <em>Daemonologie</em> (1597) that detailed his beliefs about witches and their powers. The play's portrayal of witches would have resonated with contemporary audiences who shared these beliefs. The reference to "hurlyburly" likely alludes to the ongoing conflicts between England and Scotland that James I was working to resolve through his union of the crowns. The play was likely performed at court, making its political implications particularly significant. The witches' connection to the natural world reflects contemporary beliefs about the relationship between the supernatural and the natural order.</p>
                         </div>
                         
                         <div class="analysis-section">
                             <h4>Sources</h4>
-                            <p>Shakespeare drew primarily from Raphael Holinshed's <em>Chronicles of England, Scotland, and Ireland</em> (1587) for the historical framework of Macbeth's story. However, the witches are largely Shakespeare's invention, as Holinshed mentions only "three women in strange and wild apparel" who make prophecies to Macbeth and Banquo. Shakespeare expanded this brief mention into the complex supernatural framework that drives the play.</p>
+                            <p>Shakespeare drew primarily from Raphael Holinshed's <em>Chronicles of England, Scotland, and Ireland</em> (1587) for the historical framework of Macbeth's story. However, the witches are largely Shakespeare's invention, as Holinshed mentions only "three women in strange and wild apparel" who make prophecies to Macbeth and Banquo. Shakespeare expanded this brief mention into the complex supernatural framework that drives the play. The witches' connection to the natural world and their use of animal familiars reflects contemporary beliefs about witchcraft as recorded in various demonological treatises of the period.</p>
                         </div>
                         
                         <div class="analysis-section">
                             <h4>Literary Analysis</h4>
-                            <p>This scene functions as a microcosm of the entire play. The witches' meeting in chaos (the storm) to plan future chaos (Macbeth's downfall) establishes the play's central theme of order versus disorder. The trochaic meter creates a sense of unease and otherworldliness that will contrast sharply with the more natural iambic speech of the human characters. The brevity of the scene (only 12 lines) creates a sense of urgency and foreboding, while the witches' casual discussion of meeting "when the battle's lost and won" suggests their supernatural knowledge of future events.</p>
+                            <p>This scene functions as a microcosm of the entire play. The witches' meeting in chaos (the storm) to plan future chaos (Macbeth's downfall) establishes the play's central theme of order versus disorder. The trochaic meter creates a sense of unease and otherworldliness that will contrast sharply with the more natural iambic speech of the human characters. The brevity of the scene (only 12 lines) creates a sense of urgency and foreboding, while the witches' casual discussion of meeting "when the battle's lost and won" suggests their supernatural knowledge of future events. The scene's structure mirrors the play's overall movement from order to chaos and back to order, with the witches representing the disruptive force that will upset the natural balance.</p>
                         </div>
                         
                         <div class="analysis-section">
                             <h4>Critical Reception</h4>
-                            <p>Samuel Taylor Coleridge praised this opening scene for its atmospheric power, noting that it "strikes the key-note of the character of the whole drama." Modern critics have focused on the scene's function as a prologue that establishes the supernatural framework of the play. Some feminist critics have analyzed the witches as representations of female power and agency in a patriarchal society.</p>
+                            <p>Samuel Taylor Coleridge praised this opening scene for its atmospheric power, noting that it "strikes the key-note of the character of the whole drama." Modern critics have focused on the scene's function as a prologue that establishes the supernatural framework of the play. Some feminist critics have analyzed the witches as representations of female power and agency in a patriarchal society. Recent scholarship has examined the scene's connection to contemporary beliefs about witchcraft and its political implications in the context of James I's reign. The scene's brevity and power have made it a favorite subject for analysis of Shakespeare's dramatic technique.</p>
                         </div>
                         
                         <div class="analysis-section">
                             <h4>Similar phrases or themes in other plays</h4>
-                            <p>The theme of supernatural prophecy appears in other Shakespeare plays, particularly <em>Julius Caesar</em> with the Soothsayer's warning "Beware the Ides of March." The use of weather to reflect psychological states is also found in <em>King Lear</em>, where the storm on the heath mirrors Lear's mental breakdown.</p>
+                            <p>The theme of supernatural prophecy appears in other Shakespeare plays, particularly <em>Julius Caesar</em> with the Soothsayer's warning "Beware the Ides of March." The use of weather to reflect psychological states is also found in <em>King Lear</em>, where the storm on the heath mirrors Lear's mental breakdown. The witches' connection to the natural world echoes similar themes in <em>The Tempest</em>, where Prospero's magic is closely tied to the natural elements. The theme of fate versus free will is central to <em>Romeo and Juliet</em>, where the lovers' tragic end is both predetermined and the result of their own choices.</p>
                         </div>
                         
                         <div class="analysis-section">
@@ -4681,6 +4735,96 @@
                                 <li>Holinshed's <em>Chronicles</em> for the historical sources of the play</li>
                                 <li>Stephen Greenblatt's <em>Shakespearean Negotiations</em> for analysis of the supernatural in Shakespeare</li>
                                 <li>Janet Adelman's <em>Suffocating Mothers</em> for feminist analysis of the witches</li>
+                                <li>Marjorie Garber's <em>Shakespeare's Ghost Writers</em> for analysis of the supernatural in Shakespeare</li>
+                                <li>Stephen Orgel's <em>The Authentic Shakespeare</em> for textual analysis</li>
+                            </ul>
+                        </div>
+                    `;
+                } else if (mode === 'fullfathomfive') {
+                    analysisContent = `
+                        <h3>Full Fathom Five Analysis</h3>
+                        <div class="analysis-section">
+                            <h4>Commentary</h4>
+                            <p>This opening scene has been the subject of extensive critical commentary since the play's first performance. The witches' appearance and their prophetic dialogue establish the supernatural framework that will drive the entire tragedy. Critics have noted the scene's function as both prologue and prophecy, setting the tone for the play's exploration of fate, ambition, and the corruption of power.</p>
+                        </div>
+                        
+                        <div class="analysis-section">
+                            <h4>Textual Variants</h4>
+                            <p>The First Folio (1623) text is generally considered authoritative for this scene, though some modern editors have made minor punctuation adjustments. The line "When the hurlyburly's done" appears consistently across early editions, suggesting textual stability in this crucial opening. However, some editors have debated the punctuation of "In thunder, lightning, or in rain?" with some preferring a comma after "lightning" while others maintain the original punctuation. The Oxford edition follows F1 closely, while the Arden edition makes minor adjustments for modern readers. The consistent appearance of these lines across Q1 (if it existed) and F1 suggests Shakespeare's careful composition of this atmospheric opening. Recent scholarship has examined the scene's relationship to other supernatural openings in Shakespeare's canon, noting its unique position as both prologue and prophecy.</p>
+                        </div>
+                        
+                        <div class="analysis-section">
+                            <h4>Plain-Language Paraphrase</h4>
+                            <p>The three witches are planning their next meeting. The first witch asks when they should meet again, suggesting they could meet during a storm (thunder, lightning, or rain). The second witch responds that they should meet when the chaos and confusion of battle is finished. This exchange establishes the witches' supernatural knowledge of future events and their connection to both natural and political turmoil. The witches' casual discussion of meeting "when the battle's lost and won" suggests their omniscient knowledge of future events and their role as agents of fate.</p>
+                        </div>
+                        
+                        <div class="analysis-section">
+                            <h4>Language and Rhetoric</h4>
+                            <p>Shakespeare employs several sophisticated rhetorical devices in this opening that establish the play's central themes and create an atmosphere of supernatural foreboding:</p>
+                            <ul>
+                                <li><strong>Trochaic Tetrameter:</strong> The witches speak in a distinctive rhythm (DUM-da DUM-da DUM-da DUM) that creates an otherworldly, incantatory effect, setting them apart from human characters who typically speak in iambic pentameter. This metrical choice reflects their supernatural nature and creates a sense of unease that will permeate the entire play.</li>
+                                <li><strong>Alliteration:</strong> "thunder, lightning" creates a musical quality that enhances the supernatural atmosphere while the repeated 'l' sounds create a liquid, flowing effect that suggests the witches' fluid, boundary-crossing nature.</li>
+                                <li><strong>Pathetic Fallacy:</strong> The stormy weather mirrors the psychological and political turmoil that will engulf Scotland, establishing the connection between natural and human disorder that will be central to the play's themes.</li>
+                                <li><strong>Foreshadowing:</strong> The mention of meeting "when the hurlyburly's done" anticipates the battle between Scotland and Norway that will be reported in the next scene, demonstrating the witches' prophetic knowledge and their role as agents of fate.</li>
+                                <li><strong>Dramatic Irony:</strong> The audience knows these witches will lead Macbeth to his doom, while the characters do not, creating tension and anticipation that will drive the play's central conflict.</li>
+                                <li><strong>Chiasmus:</strong> The structure "thunder, lightning, or in rain" creates a balanced, incantatory rhythm that enhances the supernatural atmosphere and suggests the witches' connection to the natural elements.</li>
+                                <li><strong>Anaphora:</strong> The repeated use of "when" creates a sense of inevitability and predestination that will be central to the play's exploration of fate versus free will.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="analysis-section">
+                            <h4>Synopsis</h4>
+                            <p>This brief opening scene (only 12 lines) serves as a prologue to the main action. Three witches meet on a desolate heath during a storm to plan their next encounter. They decide to meet again after a battle is concluded, specifically to encounter Macbeth. This scene establishes the supernatural element that will drive the play's central conflict and introduces the theme of fate versus free will. The scene's brevity creates a sense of urgency and foreboding, while the witches' casual discussion of meeting "when the battle's lost and won" suggests their supernatural knowledge of future events. The scene's structure mirrors the play's overall movement from order to chaos and back to order, with the witches representing the disruptive force that will upset the natural balance.</p>
+                        </div>
+                        
+                        <div class="analysis-section">
+                            <h4>Key Words & Glosses</h4>
+                            <ul>
+                                <li><strong>hurlyburly:</strong> tumult, confusion, uproar (especially of battle) - from Middle English "hurlen" (to hurl) + "burlen" (to make a noise). The word suggests both physical and metaphorical chaos and will be echoed throughout the play in various forms of disorder.</li>
+                                <li><strong>ere:</strong> before (archaic) - from Old English "ær," indicating the witches' knowledge of future events and their role as agents of predestination.</li>
+                                <li><strong>set of sun:</strong> sunset - the witches' reference to sunset suggests their connection to the liminal time between day and night, good and evil, order and chaos.</li>
+                                <li><strong>heath:</strong> open, uncultivated land covered with low shrubs - the heath represents the wild, untamed nature of the witches and the disorder they bring, serving as a liminal space between the civilized world and the supernatural realm.</li>
+                                <li><strong>Graymalkin:</strong> gray cat (familiar spirit of the first witch) - the name suggests the witches' connection to the animal world and their supernatural powers, while the gray color suggests their ambiguous moral nature.</li>
+                                <li><strong>Paddock:</strong> toad (familiar spirit of the second witch) - another animal familiar that connects the witches to the natural world and suggests their connection to the earth and its darker powers.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="analysis-section">
+                            <h4>Historical Context</h4>
+                            <p>Written around 1606, <em>Macbeth</em> was composed during the reign of James I (James VI of Scotland), who had a particular interest in witchcraft. James had written a treatise called <em>Daemonologie</em> (1597) that detailed his beliefs about witches and their powers. The play's portrayal of witches would have resonated with contemporary audiences who shared these beliefs. The reference to "hurlyburly" likely alludes to the ongoing conflicts between England and Scotland that James I was working to resolve through his union of the crowns. The play was likely performed at court, making its political implications particularly significant. The witches' connection to the natural world reflects contemporary beliefs about the relationship between the supernatural and the natural order. The scene's emphasis on prophecy and predestination reflects the theological debates of the period about free will and divine providence.</p>
+                        </div>
+                        
+                        <div class="analysis-section">
+                            <h4>Sources</h4>
+                            <p>Shakespeare drew primarily from Raphael Holinshed's <em>Chronicles of England, Scotland, and Ireland</em> (1587) for the historical framework of Macbeth's story. However, the witches are largely Shakespeare's invention, as Holinshed mentions only "three women in strange and wild apparel" who make prophecies to Macbeth and Banquo. Shakespeare expanded this brief mention into the complex supernatural framework that drives the play. The witches' connection to the natural world and their use of animal familiars reflects contemporary beliefs about witchcraft as recorded in various demonological treatises of the period. The scene's emphasis on prophecy and predestination may also reflect Shakespeare's knowledge of classical sources, particularly the Fates of Greek mythology.</p>
+                        </div>
+                        
+                        <div class="analysis-section">
+                            <h4>Literary Analysis</h4>
+                            <p>This scene functions as a microcosm of the entire play. The witches' meeting in chaos (the storm) to plan future chaos (Macbeth's downfall) establishes the play's central theme of order versus disorder. The trochaic meter creates a sense of unease and otherworldliness that will contrast sharply with the more natural iambic speech of the human characters. The brevity of the scene (only 12 lines) creates a sense of urgency and foreboding, while the witches' casual discussion of meeting "when the battle's lost and won" suggests their supernatural knowledge of future events. The scene's structure mirrors the play's overall movement from order to chaos and back to order, with the witches representing the disruptive force that will upset the natural balance. The scene's function as both prologue and prophecy establishes the play's central concern with the relationship between fate and free will, a theme that will be explored throughout the tragedy.</p>
+                        </div>
+                        
+                        <div class="analysis-section">
+                            <h4>Critical Reception</h4>
+                            <p>Samuel Taylor Coleridge praised this opening scene for its atmospheric power, noting that it "strikes the key-note of the character of the whole drama." Modern critics have focused on the scene's function as a prologue that establishes the supernatural framework of the play. Some feminist critics have analyzed the witches as representations of female power and agency in a patriarchal society. Recent scholarship has examined the scene's connection to contemporary beliefs about witchcraft and its political implications in the context of James I's reign. The scene's brevity and power have made it a favorite subject for analysis of Shakespeare's dramatic technique. Postcolonial critics have examined the scene's representation of the "other" and its connection to contemporary anxieties about difference and foreignness.</p>
+                        </div>
+                        
+                        <div class="analysis-section">
+                            <h4>Similar phrases or themes in other plays</h4>
+                            <p>The theme of supernatural prophecy appears in other Shakespeare plays, particularly <em>Julius Caesar</em> with the Soothsayer's warning "Beware the Ides of March." The use of weather to reflect psychological states is also found in <em>King Lear</em>, where the storm on the heath mirrors Lear's mental breakdown. The witches' connection to the natural world echoes similar themes in <em>The Tempest</em>, where Prospero's magic is closely tied to the natural elements. The theme of fate versus free will is central to <em>Romeo and Juliet</em>, where the lovers' tragic end is both predetermined and the result of their own choices. The scene's function as a prologue that establishes the play's central themes is similar to the opening of <em>Hamlet</em>, where the ghost's appearance establishes the supernatural framework of that play.</p>
+                        </div>
+                        
+                        <div class="analysis-section">
+                            <h4>Pointers for Further Reading</h4>
+                            <ul>
+                                <li>James I's <em>Daemonologie</em> for contemporary views on witchcraft</li>
+                                <li>Holinshed's <em>Chronicles</em> for the historical sources of the play</li>
+                                <li>Stephen Greenblatt's <em>Shakespearean Negotiations</em> for analysis of the supernatural in Shakespeare</li>
+                                <li>Janet Adelman's <em>Suffocating Mothers</em> for feminist analysis of the witches</li>
+                                <li>Marjorie Garber's <em>Shakespeare's Ghost Writers</em> for analysis of the supernatural in Shakespeare</li>
+                                <li>Stephen Orgel's <em>The Authentic Shakespeare</em> for textual analysis</li>
+                                <li>Jonathan Dollimore's <em>Radical Tragedy</em> for political analysis of the play</li>
+                                <li>Terry Eagleton's <em>William Shakespeare</em> for Marxist analysis of the play's themes</li>
                             </ul>
                         </div>
                     `;
