@@ -2604,6 +2604,7 @@
         function switchTab(tabName) {
             console.log('🔄 Switching to tab:', tabName);
             currentTab = tabName;
+            currentAnalysisMode = tabName; // Keep both variables in sync
             
             // Update tab buttons
             const tabButtons = document.querySelectorAll('.segment button');
@@ -4815,8 +4816,8 @@
             console.log('Analysis mode passed:', mode);
             console.log('Current analysis mode:', currentAnalysisMode);
             
-            // Use the passed mode or fall back to currentAnalysisMode
-            const analysisMode = mode || currentAnalysisMode || 'basic';
+            // Use the passed mode or fall back to currentTab
+            const analysisMode = mode || currentTab || 'basic';
             
             // Set analysis in progress flag to prevent highlight clearing
             analysisInProgress = true;
@@ -4833,7 +4834,7 @@
             
             // Get the correct title based on current mode
             let analysisTitle = 'Basic Analysis';
-            switch(currentAnalysisMode) {
+            switch(currentTab) {
                 case 'basic':
                     analysisTitle = 'Basic Analysis';
                     break;
@@ -4851,9 +4852,9 @@
             analysisPanel.innerHTML = `
                 <!-- Analysis Mode Selector -->
                 <div class="segment">
-                    <button onclick="switchTab('basic')" aria-pressed="${currentAnalysisMode === 'basic' ? 'true' : 'false'}">Basic</button>
-                    <button onclick="switchTab('expert')" aria-pressed="${currentAnalysisMode === 'expert' ? 'true' : 'false'}">Expert</button>
-                    <button onclick="switchTab('fullfathomfive')" aria-pressed="${currentAnalysisMode === 'fullfathomfive' ? 'true' : 'false'}">Full Fathom Five</button>
+                    <button onclick="switchTab('basic')" aria-pressed="${currentTab === 'basic' ? 'true' : 'false'}">Basic</button>
+                    <button onclick="switchTab('expert')" aria-pressed="${currentTab === 'expert' ? 'true' : 'false'}">Expert</button>
+                    <button onclick="switchTab('fullfathomfive')" aria-pressed="${currentTab === 'fullfathomfive' ? 'true' : 'false'}">Full Fathom Five</button>
                 </div>
 
                 <!-- AI Analysis Content -->
@@ -5060,9 +5061,9 @@
             const playName = currentPlay && plays[currentPlay] ? plays[currentPlay].name : 'Unknown Play';
             const playInfo = `<em>${playName}</em> · ${currentScene}`;
             
-            // Get the correct title based on current mode
+            // Get the correct title based on current tab
             let analysisTitle = 'Basic Analysis';
-            switch(data.mode) {
+            switch(currentTab) {
                 case 'basic':
                     analysisTitle = 'Basic Analysis';
                     break;
@@ -5083,9 +5084,9 @@
             analysisPanel.innerHTML = `
                 <!-- Analysis Mode Selector -->
                 <div class="segment">
-                    <button onclick="switchTab('basic')" aria-pressed="${data.mode === 'basic' ? 'true' : 'false'}">Basic</button>
-                    <button onclick="switchTab('expert')" aria-pressed="${data.mode === 'expert' ? 'true' : 'false'}">Expert</button>
-                    <button onclick="switchTab('fullfathomfive')" aria-pressed="${data.mode === 'fullfathomfive' ? 'true' : 'false'}">Full Fathom Five</button>
+                    <button onclick="switchTab('basic')" aria-pressed="${currentTab === 'basic' ? 'true' : 'false'}">Basic</button>
+                    <button onclick="switchTab('expert')" aria-pressed="${currentTab === 'expert' ? 'true' : 'false'}">Expert</button>
+                    <button onclick="switchTab('fullfathomfive')" aria-pressed="${currentTab === 'fullfathomfive' ? 'true' : 'false'}">Full Fathom Five</button>
                 </div>
 
                 <!-- Analyze Button -->
@@ -5209,7 +5210,7 @@
             
             // Format the content with proper sections (bypass for Full Fathom Five)
             let formattedContent;
-            if (currentAnalysisMode === 'fullfathomfive') {
+            if (currentTab === 'fullfathomfive') {
                 // For Full Fathom Five, apply paragraph formatting but not section formatting
                 formattedContent = content.replace(/\n\n/g, '</p><p>').replace(/\n/g, '<br>');
                 formattedContent = '<p>' + formattedContent + '</p>';
@@ -5219,7 +5220,7 @@
             
             // Get the correct title based on current mode
             let analysisTitle = 'Basic Analysis';
-            switch(currentAnalysisMode) {
+            switch(currentTab) {
                 case 'basic':
                     analysisTitle = 'Basic Analysis';
                     break;
@@ -5237,9 +5238,9 @@
             analysisPanel.innerHTML = `
                 <!-- Analysis Mode Selector -->
                 <div class="segment">
-                    <button onclick="switchTab('basic')" aria-pressed="${currentAnalysisMode === 'basic' ? 'true' : 'false'}">Basic</button>
-                    <button onclick="switchTab('expert')" aria-pressed="${currentAnalysisMode === 'expert' ? 'true' : 'false'}">Expert</button>
-                    <button onclick="switchTab('fullfathomfive')" aria-pressed="${currentAnalysisMode === 'fullfathomfive' ? 'true' : 'false'}">Full Fathom Five</button>
+                    <button onclick="switchTab('basic')" aria-pressed="${currentTab === 'basic' ? 'true' : 'false'}">Basic</button>
+                    <button onclick="switchTab('expert')" aria-pressed="${currentTab === 'expert' ? 'true' : 'false'}">Expert</button>
+                    <button onclick="switchTab('fullfathomfive')" aria-pressed="${currentTab === 'fullfathomfive' ? 'true' : 'false'}">Full Fathom Five</button>
                 </div>
 
                 <!-- Analyze Button -->
@@ -5828,40 +5829,7 @@
         // Analysis mode state
         let currentAnalysisMode = 'basic';
 
-        function switchTab(mode) {
-            currentAnalysisMode = mode;
-            
-            // Update button states
-            const buttons = document.querySelectorAll('.segment button');
-            buttons.forEach(btn => {
-                btn.setAttribute('aria-pressed', 'false');
-            });
-            
-            // Find and activate the correct button
-            const activeButton = document.querySelector(`.segment button[onclick*="${mode}"]`);
-            if (activeButton) {
-                activeButton.setAttribute('aria-pressed', 'true');
-            }
-            
-            // Update the analysis title based on mode
-            const analysisTitle = document.querySelector('.analysis-title');
-            if (analysisTitle) {
-                switch(mode) {
-                    case 'basic':
-                        analysisTitle.textContent = 'Basic Analysis';
-                        break;
 
-                    case 'expert':
-                        analysisTitle.textContent = 'Expert Analysis';
-                        break;
-                    case 'fullfathomfive':
-                        analysisTitle.textContent = 'Full Fathom Five Analysis';
-                        break;
-                }
-            }
-            
-            // Don't automatically re-analyze - user must click "Explain Highlighted Text" button
-        }
 
         function copyAnalysis() {
             const analysisContent = document.querySelector('.analysis-content');
@@ -5943,7 +5911,7 @@
                     body: JSON.stringify({
                         text: context,
                         level: 'followup', // Special follow-up level
-                        baseLevel: currentAnalysisMode || 'basic', // Base level for style consistency
+                        baseLevel: currentTab || 'basic', // Base level for style consistency
                         playName: currentPlay && plays[currentPlay] ? plays[currentPlay].name : 'Shakespeare',
                         sceneName: currentScene || 'scene'
                     })
