@@ -232,6 +232,7 @@ For this section, use the historical variorum notes provided below.
 - Display the EXACT notes linked to the line numbers passed in.  
 - Do NOT summarize, truncate, or modify the notes in any way.  
 - Do NOT invent or expand commentary beyond what is provided.  
+- Show ALL notes from the database, not just summaries.
 - Format each entry as:
 
 [Line X] [EXACT commentary text from the provided notes]
@@ -280,7 +281,7 @@ For this section, use the historical variorum notes provided below.
             userPrompt += `\n${noteText}`
           })
         })
-        userPrompt += `\n\nCRITICAL INSTRUCTIONS: Use these EXACT notes in your "New Variorum Analysis" section. Copy them word for word without any changes, summaries, or modifications. Format each note as: [Line X] [EXACT commentary text from notes]. Do not add any additional commentary or speculation.`
+        userPrompt += `\n\nCRITICAL INSTRUCTIONS: Use these EXACT notes in your "New Variorum Analysis" section. Copy them word for word without any changes, summaries, or modifications. Show ALL notes from the database, not just parts of them. Format each note as: [Line X] [EXACT commentary text from notes]. Do not add any additional commentary or speculation.`
       }
     } else {
       userPrompt += `\n\nPlease provide a comprehensive ${analysisMode} analysis of this text.`
