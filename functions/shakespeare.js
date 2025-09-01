@@ -191,15 +191,17 @@ Provide a very deep, holistic analysis of the entire passage. This section shoul
 
 **New Variorum Analysis:**
 For this section, use the historical variorum notes provided below.  
-- Only display the exact notes linked to the line numbers passed in.  
-- Do not invent or expand commentary beyond what is provided.  
+- Display the EXACT notes linked to the line numbers passed in.  
+- Do NOT summarize, truncate, or modify the notes in any way.  
+- Do NOT invent or expand commentary beyond what is provided.  
 - Format each entry as:
 
-[Line X] Commentary text from the provided notes
+[Line X] [EXACT commentary text from the provided notes]
 
 - If no note exists for a line, output: [Line X] No commentary available.
 - Notes must appear in the same order as the selected line numbers.
-- Do not include notes for lines that are not explicitly selected.`
+- Do not include notes for lines that are not explicitly selected.
+- IMPORTANT: Copy the notes exactly as provided, word for word, without any changes.`
        
       // Add Macbeth notes if available
       if (relevantNotes.length > 0) {
@@ -240,7 +242,7 @@ For this section, use the historical variorum notes provided below.
             userPrompt += `\n${noteText}`
           })
         })
-        userPrompt += `\n\nUse these exact notes in your "New Variorum Analysis" section. Format each note as: [Line X] [Commentary from notes]. Do not add any additional commentary or speculation.`
+        userPrompt += `\n\nCRITICAL INSTRUCTIONS: Use these EXACT notes in your "New Variorum Analysis" section. Copy them word for word without any changes, summaries, or modifications. Format each note as: [Line X] [EXACT commentary text from notes]. Do not add any additional commentary or speculation.`
       }
     } else {
       userPrompt += `\n\nPlease provide a comprehensive ${analysisMode} analysis of this text.`

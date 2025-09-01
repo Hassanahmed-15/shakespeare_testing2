@@ -5075,9 +5075,8 @@
                     formattedContent += `<div class="note-content">`;
                     
                     note.notes.forEach(noteText => {
-                        // Truncate very long notes for display
-                        const displayText = noteText.length > 500 ? noteText.substring(0, 500) + '...' : noteText;
-                        formattedContent += `<p>${displayText}</p>`;
+                        // Show full notes without truncation
+                        formattedContent += `<p>${noteText}</p>`;
                     });
                     
                     formattedContent += `</div></div>`;
