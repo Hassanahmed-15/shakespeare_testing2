@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Test - Shakespeare Variorum</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-section { margin: 20px 0; padding: 20px; border: 1px solid #ccc; }
+        button { padding: 10px 20px; margin: 5px; }
+        .result { background: #f5f5f5; padding: 10px; margin: 10px 0; white-space: pre-wrap; }
+        .error { color: red; }
+        .success { color: green; }
+    </style>
+</head>
+<body>
+    <h1>Shakespeare Variorum API Test</h1>
+    
+    <div class="test-section">
+        <h2>Test 1: Check if Macbeth notes are accessible</h2>
+        <button onclick="testMacbethNotes()">Test Macbeth Notes Access</button>
+        <div id="macbeth-result" class="result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Test 2: Test API endpoints</h2>
+        <button onclick="testAPIEndpoints()">Test API Endpoints</button>
+        <div id="api-result" class="result"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Test 3: Test with sample text</h2>
+        <input type="text" id="sampleText" value="When shall we three meet again" style="width: 300px;">
+        <button onclick="testWithText()">Test Analysis</button>
+        <div id="analysis-result" class="result"></div>
+    </div>
+
+    <script>
+        async function testMacbethNotes() {
+            const resultDiv = document.getElementById('macbeth-result');
+            resultDiv.innerHTML = 'Testing...';
+            
+            try {
+                const response = await fetch('./Public/Data/macbeth_notes.json');
+                if (response.ok) {
+                    const data = await response.json();
+                    resultDiv.innerHTML = `<span class="success">✅ SUCCESS!</span>\n\nMacbeth notes loaded successfully!\n\nScenes found: ${Object.keys(data).length}\n\nFirst scene: ${Object.keys(data)[0]}\n\nSample line from first scene:\n${JSON.stringify(Object.values(data)[0][Object.keys(Object.values(data)[0])[0]], null, 2)}`;
+                } else {
+                    resultDiv.innerHTML = `<span class="error">❌ FAILED!</span>\n\nStatus: ${response.status}\nStatus Text: ${response.statusText}`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<span class="error">❌ ERROR!</span>\n\n${error.message}`;
+            }
+        }
+        
+        async function testAPIEndpoints() {
+            const resultDiv = document.getElementById('api-result');
+            resultDiv.innerHTML = 'Testing...';
+            
+            const endpoints = [
+                { name: 'Local Netlify Function', url: '/.netlify/functions/shakespeare' },
+                { name: 'API Redirect', url: '/api/shakespeare' },
+                { name: 'Edge Function', url: '/api/variorum-edge' }
+            ];
+            
+            let results = '';
+            
+            for (const endpoint of endpoints) {
+                try {
+                    const response = await fetch(endpoint.url, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ text: 'test', level: 'basic' })
+                    });
+                    
+                    results += `${endpoint.name}: ${response.status} ${response.statusText}\n`;
+                } catch (error) {
+                    results += `${endpoint.name}: ERROR - ${error.message}\n`;
+                }
+            }
+            
+            resultDiv.innerHTML = `<span class="success">✅ API Test Complete!</span>\n\n${results}\n\nNote: Functions only work when deployed to Netlify, not locally.`;
+        }
+        
+        async function testWithText() {
+            const resultDiv = document.getElementById('analysis-result');
+            const text = document.getElementById('sampleText').value;
+            resultDiv.innerHTML = 'Testing...';
+            
+            try {
+                // Try the redirect path first
+                let response = await fetch('/api/shakespeare', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        text: text,
+                        level: 'basic',
+                        model: 'gpt-4o-mini'
+                    })
+                });
+                
+                if (!response.ok) {
+                    // Try direct function path
+                    response = await fetch('/.netlify/functions/shakespeare', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            text: text,
+                            level: 'basic',
+                            model: 'gpt-4o-mini'
+                        })
+                    });
+                }
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    resultDiv.innerHTML = `<span class="success">✅ SUCCESS!</span>\n\nAnalysis received!\n\nMode: ${data.mode}\nText: ${data.text}\nLine Count: ${data.lineCount}\n\nAnalysis sections: ${Object.keys(data.analysis || {}).join(', ')}\n\nRelevant Notes: ${data.relevantNotes ? data.relevantNotes.length : 0} found`;
+                } else {
+                    resultDiv.innerHTML = `<span class="error">❌ FAILED!</span>\n\nStatus: ${response.status}\nStatus Text: ${response.statusText}\n\nThis is expected when running locally. Functions only work when deployed to Netlify.`;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<span class="error">❌ ERROR!</span>\n\n${error.message}\n\nThis is expected when running locally. Functions only work when deployed to Netlify.`;
+            }
+        }
+        
+        // Auto-run tests on page load
+        window.onload = function() {
+            testMacbethNotes();
+            setTimeout(testAPIEndpoints, 1000);
+        };
+    </script>
+</body>
+</html>

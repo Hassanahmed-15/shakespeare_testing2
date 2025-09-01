@@ -60,7 +60,10 @@ export default async (request, context) => {
     // Load Macbeth notes database
     let macbethNotes = null;
     try {
-      const notesResponse = await fetch('https://raw.githubusercontent.com/your-repo/Shakespeare-Variorum/main/Public/Data/macbeth_notes.json');
+      // Try to load from the current site
+      const currentUrl = new URL(request.url);
+      const notesUrl = `${currentUrl.protocol}//${currentUrl.hostname}/Public/Data/macbeth_notes.json`;
+      const notesResponse = await fetch(notesUrl);
       if (notesResponse.ok) {
         macbethNotes = await notesResponse.json();
       }

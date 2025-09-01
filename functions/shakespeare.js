@@ -1,31 +1,41 @@
 const { OpenAI } = require('openai')
-const fs = require('fs')
-const path = require('path')
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 })
 
-// Load Macbeth notes database
+// Function to find relevant notes from Macbeth database
+// This will be populated when the function is called
 let macbethNotes = null
-try {
-  const notesPath = path.join(__dirname, '../Public/Data/macbeth_notes.json')
-  if (fs.existsSync(notesPath)) {
-    macbethNotes = JSON.parse(fs.readFileSync(notesPath, 'utf8'))
+
+// Load Macbeth notes from the public URL
+async function loadMacbethNotes() {
+  if (macbethNotes) return macbethNotes
+  
+  try {
+    // Try to load from the current site's public data
+    // This will work when deployed to Netlify
+    const response = await fetch('/Public/Data/macbeth_notes.json')
+    if (response.ok) {
+      macbethNotes = await response.json()
+      return macbethNotes
+    }
+  } catch (error) {
+    console.error('Error loading Macbeth notes:', error)
   }
-} catch (error) {
-  console.error('Error loading Macbeth notes:', error)
+  
+  return null
 }
 
-// Function to find relevant notes from Macbeth database
-function findRelevantNotes(text, scene = null) {
-  if (!macbethNotes) return []
+async function findRelevantNotes(text, scene = null) {
+  const notes = await loadMacbethNotes()
+  if (!notes) return []
   
   const relevantNotes = []
   const searchText = text.toLowerCase().trim()
   
   // Search through all scenes and lines
-  for (const [sceneKey, sceneData] of Object.entries(macbethNotes)) {
+  for (const [sceneKey, sceneData] of Object.entries(notes)) {
     for (const [lineKey, lineData] of Object.entries(sceneData)) {
       const playText = lineData.play ? lineData.play.toLowerCase() : ''
       
@@ -136,7 +146,7 @@ exports.handler = async (event, context) => {
     const isMultipleLines = lines.length >= 2 && lines.length <= 5
 
     // Find relevant notes from Macbeth database
-    const relevantNotes = findRelevantNotes(text)
+    const relevantNotes = await findRelevantNotes(text)
     
     // Build the system prompt
     let systemPrompt = `You are a Shakespeare scholar providing ${analysisMode} analysis.`
