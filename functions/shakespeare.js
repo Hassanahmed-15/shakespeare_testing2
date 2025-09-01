@@ -465,6 +465,19 @@ IMPORTANT: The notes above are the COMPLETE notes from the database. You MUST in
       analysis = { 'Analysis': response }
     }
 
+    // For Full Fathom Five, add the notes directly to the analysis object
+    if (analysisMode === 'fullfathomfive' && relevantNotes.length > 0) {
+      let notesContent = ''
+      relevantNotes.forEach((note, index) => {
+        notesContent += `[Line ${note.line}] ${note.play}\n`
+        note.notes.forEach((noteText, noteIndex) => {
+          notesContent += `${noteText}\n\n`
+        })
+      })
+      analysis['New Variorum Analysis'] = notesContent.trim()
+      console.log('Added notes directly to analysis, length:', notesContent.length)
+    }
+
     return {
       statusCode: 200,
       headers,
