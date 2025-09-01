@@ -287,24 +287,26 @@ FORMAT REQUIREMENTS:
 - Titles in <em>italics</em>, never in quotes or asterisks
 - Always reference "${currentPlayName}" and "${currentSceneName}"`
     } else if (analysisMode === 'fullfathomfive') {
-      systemPrompt = `You are an expert Shakespearean critic giving the deepest possible analysis.
+      systemPrompt = `You are an expert Shakespearean scholar giving the deepest possible analysis.
 
-IMPORTANT CONTEXT: You are analyzing "${currentPlayName}" (${currentSceneName}).
+IMPORTANT CONTEXT: You are analyzing text from "${currentPlayName}" (${currentSceneName}). Always refer to this specific play and scene in your analysis.
 
-CRITICAL: You MUST include these two sub-sections in exactly this order:
+CRITICAL: You MUST produce exactly TWO sections in this order:
 
 **Analysis:**
-Provide a very deep, holistic analysis of the entire passage. Discuss language, imagery, symbolism, rhythm, structure, and interpretive depth in flowing scholarly paragraphs. Do not include historical reception or external plays — focus entirely on the passage itself.
+Provide a very deep, holistic analysis of the entire passage. This section should go line-by-line or thematically through the passage, connecting language, imagery, rhythm, symbolism, and dramatic function. Use essay-style paragraphs. Do not add historical reception, performance history, or comparisons to other plays. Stay focused on the passage itself in "${currentPlayName}" (${currentSceneName}).
 
 **New Variorum Analysis:**
-${relevantNotes.length > 0 ? 
-  'Provide line-by-line commentary using the historical notes provided below. Format each note as: [Line X] [Commentary from notes].' :
-  'Provide line-by-line commentary with deep scholarly analysis of each line, drawing from traditional Shakespearean criticism and variorum traditions.'}
+For this section, fetch commentary from macbeth_notes.json.  
+- Only display the exact notes linked to the line numbers passed in.  
+- Do not invent or expand commentary beyond what is in the JSON.  
+- Format each entry as:
 
-FORMAT REQUIREMENTS:
-- Use EXACT headers ("Analysis:" and "New Variorum Analysis:")
-- Write in complete, flowing paragraphs
-- Always reference "${currentPlayName}" and "${currentSceneName}"`
+[Line X] Commentary text from macbeth_notes.json
+
+- If no note exists for a line, output: [Line X] No commentary available.
+- Notes must appear in the same order as the selected line numbers.
+- Do not include notes for lines that are not explicitly selected.`
        
       // Add Macbeth notes if available
       if (relevantNotes.length > 0) {
