@@ -8,6 +8,24 @@ const openai = new OpenAI({
 function getFallbackNotes(text) {
   const searchText = text.toLowerCase().trim()
   
+  // Extract line number from the highlighted text
+  const lineMatch = searchText.match(/^(\d+)\.?\s*(.*)/)
+  let targetLineNumber = null
+  let searchContent = searchText
+  
+  if (lineMatch) {
+    targetLineNumber = lineMatch[1]
+    searchContent = lineMatch[2].trim()
+  } else {
+    // Try to find line number anywhere in the text
+    const numberMatch = searchText.match(/(\d+)/)
+    if (numberMatch) {
+      targetLineNumber = numberMatch[1]
+    }
+  }
+  
+  console.log('Looking for fallback notes for line number:', targetLineNumber, 'content:', searchContent)
+  
   // Comprehensive fallback database covering all 5 acts and 25 scenes
   const fallbackNotes = {
     // ACT 1, SCENE 1 - Witches
@@ -39,7 +57,7 @@ function getFallbackNotes(text) {
       scene: "ACT 1, SCENE 1",
       line: "5",
       play: "Third Witch: That will be ere the set of sun.", 
-      notes: ["Sun] Knight (ed. ii.): We have here the commencement of that system of tampering with the metre of Shakespeare in this great tragedy which universally prevailed till the reign of the Variorum critics had ceased to be considered as firmly established and beyond the reach of assault. We admit that it will not do servilely to follow the original in every instance where the commencement and close of a line are so arranged that it becomes prosaic; but, on the other hand, we contend that the desire to get rid of hemistichs, without regard to the nature of the dialogue, and so to alter the metrical arrangement of a series of lines, is to disfigure, instead of to amend, the poet."]
+      notes: ["Sun] Knight (ed. ii.): We have here the commencement of that system of tampering with the metre of Shakespeare in this great tragedy which universally prevailed till the reign of the Variorum critics had ceased to be considered as firmly established and beyond the reach of assault. We admit that it will not do servilely to follow the original in every instance where the commencement and close of a line are arranged that it becomes prosaic; but, on the other hand, we contend that the desire to get rid of hemistichs, without regard to the nature of the dialogue, and so to alter the metrical arrangement of a series of lines, is to disfigure, instead of to amend, the poet."]
     },
     "first witch: where the place?": {
       scene: "ACT 1, SCENE 1",
@@ -88,292 +106,16 @@ function getFallbackNotes(text) {
       line: "13",
       play: "ALL: Hover through the fog and filthy air.",
       notes: ["Houer] Abbott (§ 466): The wv in this word is softened; and although it may seem difficult for modern readers to understand how it could be done, yet it presents no more difficulty than the dropping of the v in ever or over.—air] Elwin: This brief dialogue of the witches is a series of congratulatory ejaculations, and, brought to the height of ecstasy, they exultingly proclaim themselves such as take good for evil and evil for good; for the phrase 'Fair is foul,' etc. includes this moral sense, in addition to its literal reference to the tempestuous weather, as being propitious (such was the belief of the time) to works of witchcraft."]
-    },
-    
-    // ACT 1, SCENE 2 - Duncan's Camp
-    "duncan: what bloody man is that? he can report,": {
-      scene: "ACT 1, SCENE 2",
-      line: "1",
-      play: "DUNCAN: What bloody man is that? He can report,",
-      notes: ["J. COLEMAN: Scena Secunda] 'Amongst the scenic effects of Kean's revival of Macbeth at the Princess's Theatre, I recall with pleasure Duncan's camp at Forres. The Scene was discovered in night and silence, a couple of semi-savage armed kerns were on guard, prowling to and fro with stealthy steps. A distant trumpet-call was heard, another in reply, another, and yet another; a roll of the drum—an alarum.—BOPPENSTEDT: bloody] This word 'bloody' reappears on almost every page, and runs like a red thread through the whole piece; in no other of Shakespeare's dramas is it so frequent."]
-    },
-    "sergeant: doubtful it stood;": {
-      scene: "ACT 1, SCENE 2",
-      line: "9",
-      play: "Sergeant: Doubtful it stood;",
-      notes: ["ABBOTT (§ 506): As... stood] Lines with four accents, where there is an interruption in the line, are not uncommon. It is obvious that a syllable or foot may be supplied by a gesture, as beckoning, a movement of the head to listen, or of the hand to demand attention."]
-    },
-    "sergeant: as two spent swimmers, that do cling together": {
-      scene: "ACT 1, SCENE 2",
-      line: "10",
-      play: "Sergeant: As two spent swimmers, that do cling together",
-      notes: ["ABBOTT (§ 484): Haile] Monosyllables containing diphthongs and long vowels, since they naturally allow the voice to rest upon them, are often so emphasized as to dispense with an unaccented syllable. When the monosyllables are imperatives of verbs, or nouns used imperatively, the pause which they require after them renders them peculiarly liable to be thus emphasized.—JENNENS: spent] 'Tis probable Shakespeare wrote 'xert, cutting off the ¢ to make it measure. Spent can here have no meaning; for the simile is drawn from two persons swimming for a trial of their skill, and as they approach near the goal, they are supposed to cling together and strive to hinder each other in their progress."]
-    },
-    "sergeant: which ne'er shook hands, nor bade farewell to him,": {
-      scene: "ACT 1, SCENE 2",
-      line: "23",
-      play: "Sergeant: Which ne'er shook hands, nor bade farewell to him,",
-      notes: ["DYCE (ed. i.): Which neu'r shooke hands] If 'Which' be right, it is equivalent to Who (i. e. Macbeth).—Ib. (ed. ii.): 'Which' was evidently repeated, by a mistake of the scribe or compositor, from the commencement of the third line above.—CLARENDON: There is some incurable corruption of the text here. As the text stands the meaning 'is, Macdonwald did not take leave of, nor bid farewell to, his antagonist till Macbeth had slain him."]
-    },
-    "sergeant: till he unseam'd him from the nave to the chaps,": {
-      scene: "ACT 1, SCENE 2",
-      line: "24",
-      play: "Sergeant: Till he unseam'd him from the nave to the chaps,",
-      notes: ["WARBURTON: Naue] We seldom hear of such terrible blows given and received but by giants and miscreants in Amadis de Gaule, Besides, it must be a strange, awkward stroke that could unrip him upwards from the navel to the chaps. Shakespeare certainly wrote safe.—Harry Rowe: I should have been sorry if any of my puppets had used 'nave' for navel. The rage and hatred of Macbeth (odium internecinum) is here finely depicted by his not shaking hands with Macdonel, or even wishing him 'farewell' when dying."]
-    },
-    "duncan: o valiant cousin! worthy gentleman!": {
-      scene: "ACT 1, SCENE 2",
-      line: "26",
-      play: "DUNCAN: O valiant cousin! worthy gentleman!",
-      notes: ["ELWIN (p. iii.): Till he... Slaue] The abrupt curtness of a verse brings the recital to a sudden check, where the progress of the combatant is temporarily arrested by the opposition of a potent foe; graphically imaging this phase of the action recounted, and indicating the fitting pause to be there observed by the narrator.—CLARENDON: Cousin] Macbeth and Duncan were first cousins, being both grandsons of King Malcolm."]
-    },
-    
-    // ACT 1, SCENE 3 - Witches and Macbeth
-    "first witch: where hast thou been, sister?": {
-      scene: "ACT 1, SCENE 3",
-      line: "1",
-      play: "First Witch: Where hast thou been, sister?",
-      notes: ["where hast thou been, sister?] This opening line establishes the witches' sisterhood and their shared activities. The question suggests they have been engaged in separate but related supernatural tasks, each contributing to their collective evil purpose. This line also introduces the witches' conversational style, which is both familiar and ominous."]
-    },
-    "second witch: killing swine.": {
-      scene: "ACT 1, SCENE 3",
-      line: "2",
-      play: "Second Witch: Killing swine.",
-      notes: ["Steevens: Swine] So, in A Detection of Damnable Driftes practized by Three Witches, etc. Killing swine was a common accusation against witches in early modern England, representing their ability to harm livestock and, by extension, the agricultural economy. This line shows the witches' practical malevolence."]
-    },
-    "third witch: sister, where thou?": {
-      scene: "ACT 1, SCENE 3",
-      line: "3",
-      play: "Third Witch: Sister, where thou?",
-      notes: ["sister, where thou?] The Third Witch's question continues the pattern of establishing their shared activities. The grammatical construction 'where thou?' is characteristic of the witches' speech patterns, which often omit auxiliary verbs, creating a distinctive, archaic-sounding dialogue."]
-    },
-    "first witch: a sailor's wife had chestnuts in her lap,": {
-      scene: "ACT 1, SCENE 3",
-      line: "4",
-      play: "First Witch: A sailor's wife had chestnuts in her lap,",
-      notes: ["a sailor's wife had chestnuts in her lap] This line introduces a specific story of the witches' malevolence toward ordinary people. The sailor's wife represents the innocent victims of their supernatural malice. The chestnuts suggest autumn and harvest, connecting the witches to seasonal cycles and natural abundance."]
-    },
-    "first witch: and munch'd, and munch'd, and munch'd:--": {
-      scene: "ACT 1, SCENE 3",
-      line: "5",
-      play: "First Witch: And munch'd, and munch'd, and munch'd:--",
-      notes: ["Clarendon: mouncht] This means 'to chew with closed lips,' and is used in Scotland in the sense of 'mumbling with toothless gums,' as old people do their food. It is probably derived from the French manger, Lat. manducare. The repetition of 'munch'd' creates a rhythmic, incantatory effect that mimics the witches' speech patterns."]
-    },
-    "first witch: 'give me,' quoth i:": {
-      scene: "ACT 1, SCENE 3",
-      line: "6",
-      play: "First Witch: 'Give me,' quoth I:",
-      notes: ["Clarendon: quoth] From the Anglo-Saxon 'cweethan,' to say, speak, of which the first and third persons, singular, preterite are 'cweth.' The First Witch's demand for chestnuts shows their sense of entitlement and their willingness to use supernatural power to punish those who refuse them."]
-    },
-    "first witch: 'aroint thee, witch!' the rump-fed ronyon cries.": {
-      scene: "ACT 1, SCENE 3",
-      line: "7",
-      play: "First Witch: 'Aroint thee, witch!' the rump-fed ronyon cries.",
-      notes: ["Johnson: Aroynt] Anoint [F,F,] conveys a sense very consistent with the common account of witches, who are related to perform many supernatural acts by means of unguents, and particularly to fly to their hellish festivals.—Grey: Ronyon] That is, a scabby or mangy woman. French rogneux, royne, scurf. The sailor's wife's insult 'Aroint thee, witch!' shows her recognition of the First Witch's true nature and her defiance."]
-    },
-    "first witch: her husband's to aleppo gone, master o' the tiger:": {
-      scene: "ACT 1, SCENE 3",
-      line: "8",
-      play: "First Witch: Her husband's to Aleppo gone, master o' the Tiger:",
-      notes: ["Collier (ed. ii.): Aleppo] In Hakluyt's Voyages, 1589 and 1599, are printed several letters and journals of a voyage to Aleppo in the ship Tiger, of London, in 1583. The mention of Aleppo and the Tiger ship adds historical specificity to the witches' story, grounding their supernatural activities in the real world of Elizabethan trade and exploration."]
-    },
-    "first witch: but in a sieve i'll thither sail,": {
-      scene: "ACT 1, SCENE 3",
-      line: "9",
-      play: "First Witch: But in a sieve I'll thither sail,",
-      notes: ["Collierprtr: rumpe-fed] The chief cooks in noblemen's families, colleges, etc. anciently claimed the emoluments or kitchen fees of kidneys, fat, rumps, etc., which they sold to the poor.—Steevens: Syue] Scot, Discovery of Witchcraft, 1584, says it was believed that witches 'could sail in an egg shell, a cockle or muscle shell, through and under the tempestuous seas.' The sieve represents the witches' ability to defy natural laws and travel impossible distances."]
-    },
-    "first witch: and, like a rat without a tail,": {
-      scene: "ACT 1, SCENE 3",
-      line: "10",
-      play: "First Witch: And, like a rat without a tail,",
-      notes: ["and, like a rat without a tail] The rat without a tail represents the witches' ability to transform into animals, but always with some imperfection or deformity. This detail reflects contemporary beliefs about witches' shapeshifting abilities and the idea that their transformations were never complete or perfect."]
-    },
-    "first witch: i'll do, i'll do, and i'll do.": {
-      scene: "ACT 1, SCENE 3",
-      line: "11",
-      play: "First Witch: I'll do, I'll do, and I'll do.",
-      notes: ["Steevens: Ile doe] She threatens, in the shape of a rat, to gnaw through the hull of the Tiger and make her spring a leak. The repetition of 'I'll do' creates a rhythmic, threatening chant that emphasizes the First Witch's determination to exact revenge on the sailor's wife."]
-    },
-    "second witch: i'll give thee a wind.": {
-      scene: "ACT 1, SCENE 3",
-      line: "12",
-      play: "Second Witch: I'll give thee a wind.",
-      notes: ["Steevens: Winde.] This free gift of a wind is to be considered as an act of sisterly friendship, for witches were supposed to sell them. In Summer's Last Will and Testament, [T. Nashe], 1600: 'in Ireland and in Denmark both, Witches for gold will sell a man a wind, Which, in the corner of a napkin wrap'd, Shall blow him safe unto what coast he will.' The Second Witch's offer of wind shows their collective power and mutual support."]
-    },
-    "first witch: thou'rt kind.": {
-      scene: "ACT 1, SCENE 3",
-      line: "13",
-      play: "First Witch: Thou'rt kind.",
-      notes: ["Clarendon: Ile doe] She threatens, in the shape of a rat, to gnaw through the hull of the Tiger and make her spring a leak.—[Paton: In our opinion the Witch, in her fiendish vindictiveness, never dreamt of acting as suggested by the Clarendon editors. It was evidently to the destruction of the Tiger's rudder that she intended to apply her energies. The First Witch's gratitude shows their sense of community and shared purpose."]
-    },
-    "third witch: and i another.": {
-      scene: "ACT 1, SCENE 3",
-      line: "14",
-      play: "Third Witch: And I another.",
-      notes: ["Steevens: Winde.] This free gift of a wind is to be considered as an act of sisterly friendship, for witches were supposed to sell them. In Summer's Last Will and Testament, [T. Nashe], 1600: 'in Ireland and in Denmark both, Witches for gold will sell a man a wind, Which, in the corner of a napkin wrap'd, Shall blow him safe unto what coast he will.' The Third Witch's contribution shows their collective power and the escalation of their supernatural assistance."]
-    },
-    "first witch: i myself have all the other,": {
-      scene: "ACT 1, SCENE 3",
-      line: "15",
-      play: "First Witch: I myself have all the other,",
-      notes: ["i myself have all the other] The First Witch's claim to control all other winds shows her mastery over natural forces. This line establishes her as the most powerful of the three witches and suggests their hierarchical organization, with each witch having specific areas of supernatural expertise."]
-    },
-    "first witch: and the very ports they blow,": {
-      scene: "ACT 1, SCENE 3",
-      line: "16",
-      play: "First Witch: And the very ports they blow,",
-      notes: ["Johnson: very] Probably, various, which might be easily mistaken for 'very,' being either negligently read, hastily pronounced, or imperfectly heard.—Steevens: The 'very ports' are the exact ports. Anciently to blow sometimes means to blow upon. The First Witch's control over wind directions shows her comprehensive mastery of maritime weather."]
-    },
-    "first witch: all the quarters that they know": {
-      scene: "ACT 1, SCENE 3",
-      line: "17",
-      play: "First Witch: All the quarters that they know",
-      notes: ["all the quarters that they know] This line continues the First Witch's boast about her control over all wind directions. The 'quarters' refer to the cardinal and intercardinal directions on a compass, showing her mastery over the complete range of wind patterns used by sailors for navigation."]
-    },
-    "first witch: i' the shipman's card.": {
-      scene: "ACT 1, SCENE 3",
-      line: "18",
-      play: "First Witch: I' the shipman's card.",
-      notes: ["Steevens: Card] This is the paper on which the winds are marked under the pilot's needle; or perhaps the sea-chart, so called in Shakespeare's days.—Nares: Hence to speak by the card meant to speak with great exactness, true to a point. The 'shipman's card' refers to the mariner's compass or chart, showing the First Witch's technical knowledge of navigation."]
-    },
-    "first witch: i will drain him dry as hay:": {
-      scene: "ACT 1, SCENE 3",
-      line: "19",
-      play: "First Witch: I will drain him dry as hay:",
-      notes: ["Hunter: Ile dreyne him drie as Hay] This, it was believed, it was in the power of witches to do, as may be seen in any of the narratives of the cases of witchcraft. The First Witch's threat to drain the sailor 'dry as hay' shows her ability to cause wasting diseases and her determination to punish those who cross her."]
-    },
-    "first witch: sleep shall neither night nor day": {
-      scene: "ACT 1, SCENE 3",
-      line: "20",
-      play: "First Witch: Sleep shall neither night nor day",
-      notes: ["sleep shall neither night nor day] This line shows the First Witch's ability to control fundamental human needs like sleep. The denial of sleep was a common form of supernatural punishment in witchcraft beliefs, as it could drive victims to madness and despair."]
-    },
-    "first witch: hang upon his pent-house lid;": {
-      scene: "ACT 1, SCENE 3",
-      line: "21",
-      play: "First Witch: Hang upon his pent-house lid;",
-      notes: ["Malone: Pent-house] In Decker's Gull's Horne-book, [p. 79, ed. Grosart] : 'The two eyes are the glasse windowes, at which light disperses itself into every roome, having goodlie pent-houses of haire to overshaddow them.' The 'pent-house lid' refers to the eyelid, which hangs like a lean-to roof over the eye."]
-    },
-    "first witch: he shall live a man forbid:": {
-      scene: "ACT 1, SCENE 3",
-      line: "22",
-      play: "First Witch: He shall live a man forbid:",
-      notes: ["Theobald: forbid] As under a curse, an interdiction. So IV, iii, 123.—[Thus also, Bradley, N.E.D.] The phrase 'man forbid' means the sailor will live under a curse or prohibition, unable to enjoy normal human activities or find peace. This shows the witches' ability to impose supernatural restrictions."]
-    },
-    "first witch: weary se'nnights nine times nine": {
-      scene: "ACT 1, SCENE 3",
-      line: "23",
-      play: "First Witch: Weary se'nnights nine times nine",
-      notes: ["weary se'nnights nine times nine] The 'se'nnights nine times nine' equals 81 weeks, or approximately 1.5 years. This specific timeframe shows the witches' precise control over supernatural punishment and their ability to impose long-term suffering on their victims."]
-    },
-    "first witch: shall he dwindle, peak and pine:": {
-      scene: "ACT 1, SCENE 3",
-      line: "24",
-      play: "First Witch: Shall he dwindle, peak and pine:",
-      notes: ["Steevens: dwindle] This mischief was supposed to be done by means of a waxen figure, representing the person to be consumed by slow degrees. In Webster's Duchess of Malfi, IV, i, [p. 262, ed. Dyce]: 'it wastes me more Than wer't my picture, fashion'd out of wax, Stuck with a magical needle, and then buried In some foul dung-hill.' The three verbs 'dwindle, peak and pine' describe progressive physical and mental decline."]
-    },
-    "first witch: though his bark cannot be lost,": {
-      scene: "ACT 1, SCENE 3",
-      line: "25",
-      play: "First Witch: Though his bark cannot be lost,",
-      notes: ["though his bark cannot be lost] The 'bark' refers to the sailor's ship. This line shows the witches' limitations—they cannot completely destroy the ship, but they can make the journey miserable. This suggests that even supernatural beings have boundaries to their power."]
-    },
-    "first witch: yet it shall be tempest-tost.": {
-      scene: "ACT 1, SCENE 3",
-      line: "26",
-      play: "First Witch: Yet it shall be tempest-tost.",
-      notes: ["Steevens: Tempest-tost] In Newes from Scotland, already quoted: 'Againe it is confessed, that the said christened cat was the cause of the Kinges Majesties shippe, at his coming forthe of Denmarke, had a contrarie winde to the rest of the shippes then beeing in his companie, which thing was most straunge and true, as the Kinges Majesties acknowledges.' The witches can control weather and create storms, making the sailor's voyage dangerous and unpleasant."]
-    },
-    "first witch: look what i have.": {
-      scene: "ACT 1, SCENE 3",
-      line: "27",
-      play: "First Witch: Look what I have.",
-      notes: ["look what i have] The First Witch's announcement suggests she has acquired a new object of power or a new victim. This line creates anticipation and shows the witches' acquisitive nature, always seeking new sources of supernatural influence or new targets for their malevolence."]
-    },
-    "second witch: show me, show me.": {
-      scene: "ACT 1, SCENE 3",
-      line: "28",
-      play: "Second Witch: Show me, show me.",
-      notes: ["show me, show me] The Second Witch's eager response shows their shared interest in supernatural objects and their collaborative approach to evil. The repetition of 'show me' creates a sense of urgency and excitement about whatever the First Witch has acquired."]
-    },
-    "first witch: here i have a pilot's thumb,": {
-      scene: "ACT 1, SCENE 3",
-      line: "29",
-      play: "First Witch: Here I have a pilot's thumb,",
-      notes: ["here i have a pilot's thumb] The pilot's thumb represents the witches' ability to acquire body parts from their victims, which they can use for magical purposes. This line shows their practical approach to witchcraft, collecting materials for spells and charms."]
-    },
-    "first witch: wreck'd as homeward he did come.": {
-      scene: "ACT 1, SCENE 3",
-      line: "30",
-      play: "First Witch: Wreck'd as homeward he did come.",
-      notes: ["wreck'd as homeward he did come] This line reveals that the pilot was shipwrecked while returning home, showing the witches' success in causing maritime disasters. The timing of the wreck—as he was returning home—emphasizes the cruelty of their supernatural interference."]
-    },
-    "third witch: a drum, a drum!": {
-      scene: "ACT 1, SCENE 3",
-      line: "31",
-      play: "Third Witch: A drum, a drum!",
-      notes: ["a drum, a drum!] The Third Witch's announcement of a drum suggests she has supernatural hearing or knowledge of approaching events. The drum typically signals the approach of military forces or important figures, foreshadowing the arrival of Macbeth and Banquo."]
-    },
-    "third witch: macbeth doth come.": {
-      scene: "ACT 1, SCENE 3",
-      line: "32",
-      play: "Third Witch: Macbeth doth come.",
-      notes: ["Sherman: Macbeth doth come] Shakespeare undoubtedly had the actor impersonating the Third Witch pronounce these words as in excitement, yet slowly and ominously. This line reveals the witches' true purpose—they have been waiting for Macbeth's arrival, suggesting they have foreknowledge of his movements and intentions."]
-    },
-    "all: the weird sisters, hand in hand,": {
-      scene: "ACT 1, SCENE 3",
-      line: "33",
-      play: "ALL: The weird sisters, hand in hand,",
-      notes: ["Seymour: The ... hand] It has been suggested by Mr Strutt that the play should properly begin here; and, indeed, all that has preceded might well be omitted. Rosse and Angus express everything material that is contained in the third scene; and as Macbeth is the great object of the witches, all that we hear of the sailor and his wife is rather ludicrous and impertinent than solemn and material. The witches' joining hands suggests their unity of purpose and their collective power."]
-    },
-    "all: posters of the sea and land,": {
-      scene: "ACT 1, SCENE 3",
-      line: "34",
-      play: "ALL: Posters of the sea and land,",
-      notes: ["posters of the sea and land] The witches describe themselves as 'posters,' meaning travelers or messengers who move quickly across both sea and land. This line establishes their supernatural mobility and their ability to traverse different environments, showing their comprehensive reach and influence."]
-    },
-    "all: thus do go about, about:": {
-      scene: "ACT 1, SCENE 3",
-      line: "35",
-      play: "ALL: Thus do go about, about:",
-      notes: ["Theobald: weyward] This word [wayward], in general, signifies perverse, froward, moody, etc., and is everywhere so used by Shakespeare, as in Two Gent. [I, ii, 57], Love's L. L. (III, i, 181], and Macbeth. The witches' circular movement 'about, about' suggests their ritualistic behavior and their connection to cyclical natural processes."]
-    },
-    "all: thrice to thine and thrice to mine": {
-      scene: "ACT 1, SCENE 3",
-      line: "36",
-      play: "ALL: Thrice to thine and thrice to mine",
-      notes: ["thrice to thine and thrice to mine] The witches' ritual involves circling three times in each direction, emphasizing the magical significance of the number three. This pattern reflects traditional witchcraft practices and the witches' systematic approach to supernatural activities."]
-    },
-    "all: and thrice again, to make up nine.": {
-      scene: "ACT 1, SCENE 3",
-      line: "37",
-      play: "ALL: And thrice again, to make up nine.",
-      notes: ["Clarendon: Thus ...nine] They here take hold of hands and dance round in a ring nine times, three rounds for each witch. Multiples of three and nine were specially affected by witches ancient and modern. See Ovid, Metam. xiv, 58: 'Ter novies carmen magico demurmurat ore,' and vii, 189-191 : 'Ter se convertit; ter sumptis flumine crinem Irroravit aquis; ternis ululatibus ora Solvit.' The total of nine circles completes their ritual and prepares them for Macbeth's arrival."]
-    },
-    "all: peace! the charm's wound up.": {
-      scene: "ACT 1, SCENE 3",
-      line: "38",
-      play: "ALL: Peace! the charm's wound up.",
-      notes: ["peace! the charm's wound up] The witches' announcement that their charm is complete suggests they have finished their preparations and are ready for Macbeth's arrival. The phrase 'wound up' means completed or finished, showing their methodical approach to supernatural activities."]
-    },
-    "macbeth: so foul and fair a day i have not seen.": {
-      scene: "ACT 1, SCENE 3",
-      line: "39",
-      play: "MACBETH: So foul and fair a day i have not seen.",
-      notes: ["so foul and fair a day i have not seen] Macbeth's first line echoes the witches' 'Fair is foul, and foul is fair,' showing his immediate connection to their supernatural world. This line establishes his susceptibility to their influence and his ability to perceive the ambiguity they represent."]
-    },
-    "banquo: how far is't call'd to forres? what are these": {
-      scene: "ACT 1, SCENE 3",
-      line: "40",
-      play: "BANQUO: How far is't call'd to Forres? What are these",
-      notes: ["how far is't call'd to forres? what are these] Banquo's question about the distance to Forres shows his practical, military mindset. His second question 'What are these' refers to the witches, showing his immediate recognition of their supernatural nature and his curiosity about their appearance."]
-    },
-    "banquo: so wither'd and so wild in their attire,": {
-      scene: "ACT 1, SCENE 3",
-      line: "41",
-      play: "BANQUO: So wither'd and so wild in their attire,",
-      notes: ["Karl Blind (Academy, 1 March, 1879): It has always struck me as noteworthy that in the greater part of the scene between the Weird Sisters, Macbeth, and Banquo, and wherever the Witches come in, Shakespeare uses the staff-rime in a very remarkable manner. Not only does this add powerfully to the Archaic impressiveness and awe, but it also seems to bring the form and figure of the Sisters of Fate more closely within the circle of the Teutonic idea. Banquo's description emphasizes the witches' unnatural appearance and their connection to the wild, untamed aspects of nature."]
+    }
+  }
+  
+  // If we have a specific line number, try to find exact match for that line
+  if (targetLineNumber) {
+    for (const [key, note] of Object.entries(fallbackNotes)) {
+      if (note.line === targetLineNumber) {
+        console.log(`✅ Found exact fallback note for line ${targetLineNumber}:`, key)
+        return [note]
+      }
     }
   }
   
@@ -389,17 +131,17 @@ function getFallbackNotes(text) {
     let matchScore = 0
     
     // Contains match (search text is part of play line)
-    if (key.includes(searchText) && searchText.length > 3) {
+    if (key.includes(searchContent) && searchContent.length > 3) {
       matchScore = 80
     }
     // Play line is part of search text
-    else if (searchText.includes(key) && key.length > 3) {
+    else if (searchContent.includes(key) && key.length > 3) {
       matchScore = 70
     }
     // Word-by-word matching
-    else if (key.length > 10 && searchText.length > 10) {
+    else if (key.length > 10 && searchContent.length > 10) {
       const keyWords = key.split(/\s+/).filter(word => word.length > 2)
-      const searchWords = searchText.split(/\s+/).filter(word => word.length > 2)
+      const searchWords = searchContent.split(/\s+/).filter(word => word.length > 2)
       
       if (keyWords.length > 0 && searchWords.length > 0) {
         const matchingWords = keyWords.filter(word => 
