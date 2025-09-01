@@ -2665,8 +2665,8 @@
             if (selectedLines.length === 0) {
                 console.log('⚠️ No lines selected, testing with sample data');
                 selectedLines = [
-                    "First Witch: When shall we three meet again",
-                    "In thunder, lightning, or in rain?"
+                    "First Witch: In thunder, lightning, or in rain?",
+                    "Second Witch: When the hurlyburly's done,"
                 ];
                 currentScene = "ACT 1, SCENE 1";
                 updateAnalysisPanel();
@@ -2675,8 +2675,41 @@
             explainHighlighted();
         }
         
-        // Make test function available globally
+        // Test function specifically for Full Fathom Five
+        function testFullFathomFive() {
+            console.log('🌊 Testing Full Fathom Five functionality...');
+            
+            // Set up test data
+            selectedLines = [
+                "First Witch: In thunder, lightning, or in rain?",
+                "Second Witch: When the hurlyburly's done,"
+            ];
+            currentScene = "ACT 1, SCENE 1";
+            currentTab = 'fullfathomfive';
+            
+            // Update UI
+            updateAnalysisPanel();
+            
+            // Test the commentary search
+            console.log('🔍 Testing commentary search...');
+            const notesData = findNotesForLine(selectedLines[0], currentScene);
+            console.log('📝 Notes data found:', notesData);
+            
+            if (notesData && notesData.notes && notesData.notes.length > 0) {
+                console.log('✅ Commentary found!');
+                const formattedNotes = formatNotes(notesData);
+                console.log('📖 Formatted notes:', formattedNotes);
+            } else {
+                console.log('❌ No commentary found');
+            }
+            
+            // Run the full analysis
+            explainHighlighted();
+        }
+        
+        // Make test functions available globally
         window.testAnalysis = testAnalysis;
+        window.testFullFathomFive = testFullFathomFive;
 
         // Modal functions
         function openSettings() {
@@ -4356,19 +4389,28 @@
         }
         
         function findNotesForLine(text, sceneName) {
+            console.log('🔍 Searching for notes for text:', text);
+            console.log('🎭 Scene name:', sceneName);
+            
             if (!window.macbethData || !sceneName || !window.macbethData[sceneName]) {
+                console.log('❌ No macbeth data or scene name available');
                 return null;
             }
             
             const sceneNotes = window.macbethData[sceneName];
+            console.log('📖 Scene data found, searching through lines...');
             
             for (const lineNumber in sceneNotes) {
                 const lineData = sceneNotes[lineNumber];
                 if (lineData && lineData.play) {
+                    console.log(`🔍 Checking line ${lineNumber}: "${lineData.play}"`);
+                    
                     const playLine = lineData.play.toLowerCase().trim();
                     const searchText = text.toLowerCase().trim();
                     
                     if (matchesText(playLine, searchText)) {
+                        console.log('✅ Found matching line:', lineData.play);
+                        console.log('📝 Notes available:', lineData.notes ? lineData.notes.length : 0);
                         return {
                             lineNumber: lineNumber,
                             playLine: lineData.play,
@@ -4379,6 +4421,7 @@
                 }
             }
             
+            console.log('❌ No matching line found for text:', text);
             return null;
         }
         
@@ -4435,25 +4478,55 @@
             // Show analysis result
             const analysisResult = document.getElementById('analysisResult');
             if (analysisResult) {
-                analysisResult.innerHTML = `
-                    <div class="result">
+                let analysisContent = '';
+                
+                if (mode === 'basic') {
+                    analysisContent = `
+                        <h4>Basic Analysis</h4>
+                        <p><strong>Selected Text:</strong></p>
+                        <div style="background: #f8f9fa; padding: 15px; border-radius: 6px; margin: 10px 0; font-style: italic;">
+                            "${text}"
+                        </div>
+                        <p><strong>Analysis:</strong></p>
+                        <p>This opening scene establishes the supernatural atmosphere of Macbeth. The three witches meet in a storm, setting the tone for the play's themes of chaos, ambition, and fate.</p>
+                        <p><strong>Key Elements:</strong></p>
+                        <ul>
+                            <li><strong>Setting:</strong> Thunder, lightning, and rain create an ominous atmosphere</li>
+                            <li><strong>Characters:</strong> Three witches (weird sisters) who will influence Macbeth's fate</li>
+                            <li><strong>Foreshadowing:</strong> They plan to meet Macbeth, hinting at his tragic destiny</li>
+                            <li><strong>Theme:</strong> The disruption of natural order and the influence of supernatural forces</li>
+                        </ul>
+                    `;
+                } else if (mode === 'expert') {
+                    analysisContent = `
+                        <h4>Expert Analysis</h4>
+                        <p><strong>Selected Text:</strong></p>
+                        <div style="background: #f8f9fa; padding: 15px; border-radius: 6px; margin: 10px 0; font-style: italic;">
+                            "${text}"
+                        </div>
+                        <p><strong>Literary Analysis:</strong></p>
+                        <p>This scene employs several sophisticated literary techniques:</p>
+                        <ul>
+                            <li><strong>Trochaic Tetrameter:</strong> The witches speak in trochaic rhythm, creating an otherworldly, incantatory effect</li>
+                            <li><strong>Pathetic Fallacy:</strong> The storm mirrors the psychological turmoil that will engulf Scotland</li>
+                            <li><strong>Dramatic Irony:</strong> The audience knows these witches will lead Macbeth to his doom</li>
+                            <li><strong>Symbolism:</strong> The "hurlyburly" represents the chaos of battle and the disruption of natural order</li>
+                        </ul>
+                        <p><strong>Historical Context:</strong> Written during James I's reign, this reflects contemporary beliefs about witchcraft and the divine right of kings.</p>
+                    `;
+                } else {
+                    analysisContent = `
                         <h4>Analysis Results for ${mode} mode</h4>
                         <p><strong>Selected Text:</strong></p>
                         <div style="background: #f8f9fa; padding: 15px; border-radius: 6px; margin: 10px 0; font-style: italic;">
                             "${text}"
                         </div>
                         <p><strong>Analysis:</strong></p>
-                        <p>This is a ${mode} level analysis of the selected Shakespeare text. The analysis would include:</p>
-                        <ul>
-                            <li>Text interpretation and meaning</li>
-                            <li>Literary devices and techniques</li>
-                            <li>Historical and cultural context</li>
-                            <li>Character analysis and motivation</li>
-                            <li>Thematic connections</li>
-                        </ul>
-                        <p><em>Note: This is a demonstration. In the full version, this would be AI-generated analysis.</em></p>
-                    </div>
-                `;
+                        <p>This is a ${mode} level analysis of the selected Shakespeare text.</p>
+                    `;
+                }
+                
+                analysisResult.innerHTML = `<div class="result">${analysisContent}</div>`;
             }
         }
         
