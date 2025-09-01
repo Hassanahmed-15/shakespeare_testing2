@@ -111,7 +111,17 @@ exports.handler = async (event, context) => {
         'Pointers for Further Reading'
       ],
       fullfathomfive: [
-        'Analysis',
+        'Textual Variants',
+        'Plain-Language Paraphrase',
+        'Language and Rhetoric',
+        'Synopsis',
+        'Key Words & Glosses',
+        'Historical Context',
+        'Sources',
+        'Literary Analysis',
+        'Critical Reception',
+        'Similar phrases or themes in other plays',
+        'Pointers for Further Reading',
         'New Variorum Analysis'
       ]
     }
@@ -180,14 +190,42 @@ FORMAT REQUIREMENTS:
 - Titles in <em>italics</em>, never in quotes or asterisks
 - Always reference "${currentPlayName}" and "${currentSceneName}"`
     } else if (analysisMode === 'fullfathomfive') {
-      systemPrompt = `You are an expert Shakespearean scholar giving the deepest possible analysis.
+      console.log('Full Fathom Five level detected - using comprehensive prompt with Textual Variants and Language and Rhetoric sections');
+      console.log('DEBUG: Function version updated at', new Date().toISOString());
+      systemPrompt = `You are an expert Shakespearean scholar providing the most comprehensive analysis possible.
 
-IMPORTANT CONTEXT: You are analyzing text from "${currentPlayName}" (${currentSceneName}). Always refer to this specific play and scene in your analysis.
+IMPORTANT CONTEXT: You are analyzing text from the play "${currentPlayName}" (${currentSceneName}). Always refer to this specific play and scene in your analysis.
 
-CRITICAL: You MUST produce exactly TWO sections in this order:
+CRITICAL: You MUST provide responses for ALL of these sections in exactly this order. Do not skip any sections. EVERY section must be included:
 
-**Analysis:**
-Provide a very deep, holistic analysis of the entire passage. This section should go line-by-line or thematically through the passage, connecting language, imagery, rhythm, symbolism, and dramatic function. Use essay-style paragraphs. Do not add historical reception, performance history, or comparisons to other plays. Stay focused on the passage itself in "${currentPlayName}" (${currentSceneName}).
+**Textual Variants:** (REQUIRED - FIRST SECTION)  
+**Plain-Language Paraphrase:** (REQUIRED)  
+**Language and Rhetoric:** (REQUIRED - NEW SECTION)  
+**Synopsis:** (REQUIRED)  
+**Key Words & Glosses:** (REQUIRED)  
+**Historical Context:** (REQUIRED)  
+**Sources:** (REQUIRED)  
+**Literary Analysis:** (REQUIRED)  
+**Critical Reception:** (REQUIRED)  
+**Similar phrases or themes in other plays:** (REQUIRED)  
+**Pointers for Further Reading:** (REQUIRED)
+
+FORMAT REQUIREMENTS:  
+- Start each section with the exact heading format shown above (colons are already included).  
+- Provide 6–12 sentences per section; use complete, scholarly style.  
+- Use extensive critical citations from a broad range of critics.  
+- Always italicize titles using \`<em>italics</em>\`, never quote them or italicize author names.  
+- Use exact scholar names (e.g., A.C. Bradley), with full citation format.  
+- **Key Words & Glosses**: Use format \`"word" means [definition]; "word" means [definition]\`.  
+- **Textual Variants**: If none exist, say "Early editions are identical to Folger."  
+- **Language and Rhetoric**: Include (1) etymology from 1914 OED, (2) rhetorical devices, (3) meter & rhythm, with citations.
+
+CRITICAL CITATION REQUIREMENTS:  
+- Include at least one critic per century (18th–21st), at least one Marxist critic, plus 2–3 random others.  
+- Use full publication details.  
+- Do not modify scholar names.
+
+LENGTH: 800–1200 words total
 
 **New Variorum Analysis:**
 For this section, use the historical variorum notes provided below.  
