@@ -1905,6 +1905,53 @@
         
 
 
+        /* Variorum Notes Styling */
+        .variorum-notes {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 12px 0;
+        }
+        
+        .note-item {
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .note-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .note-header {
+            color: #8b4513;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .note-text {
+            font-style: italic;
+            color: #6c757d;
+            margin-bottom: 12px;
+            padding: 8px;
+            background: #ffffff;
+            border-left: 3px solid #8b4513;
+            border-radius: 4px;
+        }
+        
+        .note-content {
+            color: #495057;
+            line-height: 1.6;
+        }
+        
+        .note-content p {
+            margin-bottom: 8px;
+        }
+
         /* Researching animation */
         .researching {
             animation: pulse 1.5s ease-in-out infinite;
@@ -2604,62 +2651,17 @@
         function selectLine(element, text, lineIndex) {
             console.log('Selecting line:', lineIndex, 'Text:', text);
             
-            if (!firstSelectedLine) {
-                // First selection
-                firstSelectedLine = lineIndex;
-                selectedLines = [text];
-                element.classList.add('selected');
-                document.querySelectorAll('.play-line').forEach(line => {
-                    line.classList.remove('range-selected');
-                });
-                
-                console.log('First selection made:', selectedLines);
-            } else {
-                // Second selection - create range
-                const start = Math.min(firstSelectedLine, lineIndex);
-                const end = Math.max(firstSelectedLine, lineIndex);
-                const lineCount = end - start + 1;
-                
-                console.log('Creating range from', start, 'to', end, 'count:', lineCount);
-                
-                if (lineCount < 2) {
-                    alert('Please select at least 2 consecutive lines.');
-                    clearSelection();
-                    return;
-                }
-                
-                if (lineCount > 5) {
-                    alert('Please select between 2 and 5 consecutive lines. You selected ' + lineCount + ' lines.');
-                    clearSelection();
-                    return;
-                }
-                
-                // Clear previous selections
-                document.querySelectorAll('.play-line').forEach(line => {
-                    line.classList.remove('selected', 'range-selected');
-                });
-                
-                // Select range
-                selectedLines = [];
-                for (let i = start; i <= end; i++) {
-                    const lineElement = document.querySelector(`[data-line-index="${i}"]`);
-                    if (lineElement) {
-                        lineElement.classList.add('range-selected');
-                        const lineText = lineElement.textContent;
-                        if (lineText && lineText.trim() !== '') {
-                            selectedLines.push(lineText.trim());
-                            console.log('Added line to selection:', lineText.trim());
-                        }
-                    }
-                }
-                
-                console.log(`✅ Range selection complete: ${selectedLines.length} lines selected`);
-                console.log('Selected lines:', selectedLines);
-                
-                firstSelectedLine = null;
-                console.log('Range selection complete:', selectedLines);
-            }
+            // Clear all previous selections
+            document.querySelectorAll('.play-line').forEach(line => {
+                line.classList.remove('selected', 'range-selected');
+            });
             
+            // Add selection to current line
+            element.classList.add('selected');
+            selectedLines = [text.trim()];
+            firstSelectedLine = null;
+            
+            console.log('✅ Line selected:', selectedLines);
             updateAnalysisPanel();
         }
         
@@ -4916,7 +4918,11 @@
                 const data = await response.json();
                 console.log('Response data:', data);
                 
-                if (data.choices && data.choices[0] && data.choices[0].message) {
+                // Handle the new structured response format
+                if (data.analysis) {
+                    // New structured response with analysis sections and relevant notes
+                    updateAnalysisWithStructuredData(data, text);
+                } else if (data.choices && data.choices[0] && data.choices[0].message) {
                     const content = data.choices[0].message.content;
                     
                     // Handle multi-call results for Full Fathom Five
@@ -5036,6 +5042,117 @@
                 const analysisContent = document.querySelector('.analysis-content');
                 analysisContent.innerHTML = '<p style="color: red;">Error: ' + error.message + '</p>';
             }
+        }
+
+        function updateAnalysisWithStructuredData(data, text) {
+            const analysisPanel = document.getElementById('analysisPanel');
+            const wordCount = countWords(text);
+            const playName = currentPlay && plays[currentPlay] ? plays[currentPlay].name : 'Unknown Play';
+            const playInfo = `<em>${playName}</em> · ${currentScene}`;
+            
+            // Get the correct title based on current mode
+            let analysisTitle = 'Basic Analysis';
+            switch(data.mode) {
+                case 'basic':
+                    analysisTitle = 'Basic Analysis';
+                    break;
+                case 'expert':
+                    analysisTitle = 'Expert Analysis';
+                    break;
+                case 'fullfathomfive':
+                    analysisTitle = 'Full Fathom Five Analysis';
+                    break;
+            }
+            
+            // Format the structured analysis content
+            let formattedContent = '';
+            if (data.analysis) {
+                formattedContent = formatStructuredAnalysis(data.analysis, data.relevantNotes);
+            }
+            
+            analysisPanel.innerHTML = `
+                <!-- Analysis Mode Selector -->
+                <div class="segment">
+                    <button onclick="switchTab('basic')" aria-pressed="${data.mode === 'basic' ? 'true' : 'false'}">Basic</button>
+                    <button onclick="switchTab('expert')" aria-pressed="${data.mode === 'expert' ? 'true' : 'false'}">Expert</button>
+                    <button onclick="switchTab('fullfathomfive')" aria-pressed="${data.mode === 'fullfathomfive' ? 'true' : 'false'}">Full Fathom Five</button>
+                </div>
+
+                <!-- AI Analysis Content -->
+                <div class="analysis">
+                    <button class="copy-chip" onclick="copyAnalysis()">Copy</button>
+                    <div class="meta">${playInfo} — ${wordCount} ${wordCount === 1 ? 'word' : 'words'} selected</div>
+                    <div class="analysis-content">
+                        ${formattedContent}
+                    </div>
+                    
+                    <!-- Follow-up Section -->
+                    <h3>Ask a follow-up question</h3>
+                    <div class="follow-up-input">
+                        <input type="text" placeholder="Ask a follow-up question..." id="followUpQuestion">
+                        <button class="ask-btn" onclick="askFollowUp()">Ask</button>
+                    </div>
+
+                    <!-- Media Section -->
+                    <h3>Media</h3>
+                    <div class="media-actions">
+                        <button class="link-btn youtube" onclick="searchYouTube('scene')">Search YouTube for this scene</button>
+                    </div>
+
+                    <!-- Research Section -->
+                    <h3>Research</h3>
+                    <div class="research-actions">
+                        <button class="link-btn jstor" onclick="searchJSTOR('exact')">Search JSTOR for exact quotation</button>
+                        <button class="link-btn jstor" onclick="searchJSTOR('passage')">Search JSTOR for this passage/scene</button>
+                        <button class="link-btn scholar" onclick="searchGoogleScholar()">Google Scholar</button>
+                        <button class="link-btn ise" onclick="openInternetShakespeare()">Internet Shakespeare Editions</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function formatStructuredAnalysis(analysis, relevantNotes) {
+            console.log('=== FORMATTING STRUCTURED ANALYSIS ===');
+            console.log('Analysis sections:', Object.keys(analysis));
+            console.log('Relevant notes:', relevantNotes);
+            
+            let formattedContent = '';
+            
+            // Add Macbeth notes section if available
+            if (relevantNotes && relevantNotes.length > 0) {
+                formattedContent += '<div class="analysis-section">';
+                formattedContent += '<h4>Historical Variorum Notes</h4>';
+                formattedContent += '<div class="variorum-notes">';
+                
+                relevantNotes.forEach((note, index) => {
+                    formattedContent += `<div class="note-item">`;
+                    formattedContent += `<div class="note-header"><strong>${note.scene}, Line ${note.line}</strong></div>`;
+                    formattedContent += `<div class="note-text">"${note.play}"</div>`;
+                    formattedContent += `<div class="note-content">`;
+                    
+                    note.notes.forEach(noteText => {
+                        // Truncate very long notes for display
+                        const displayText = noteText.length > 500 ? noteText.substring(0, 500) + '...' : noteText;
+                        formattedContent += `<p>${displayText}</p>`;
+                    });
+                    
+                    formattedContent += `</div></div>`;
+                });
+                
+                formattedContent += '</div></div>';
+            }
+            
+            // Format each analysis section
+            for (const [sectionName, sectionContent] of Object.entries(analysis)) {
+                if (sectionContent && sectionContent.trim()) {
+                    formattedContent += '<div class="analysis-section">';
+                    formattedContent += `<h4>${sectionName}</h4>`;
+                    formattedContent += `<div class="section-content">${sectionContent}</div>`;
+                    formattedContent += '</div>';
+                }
+            }
+            
+            return formattedContent;
         }
 
         function updateAnalysisWithProgress(content, selectedText, callResults) {

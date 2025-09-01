@@ -5,9 +5,47 @@ const openai = new OpenAI({
 })
 
 // Function to find relevant notes from Macbeth database
-// For now, return empty array to avoid errors
-function findRelevantNotes(text, scene = null) {
-  return []
+async function findRelevantNotes(text, scene = null) {
+  try {
+    // Load Macbeth notes from the public URL
+    const response = await fetch('https://shakespeare-variorum.netlify.app/Public/Data/macbeth_notes.json')
+    if (!response.ok) {
+      console.error('Failed to load Macbeth notes:', response.status)
+      return []
+    }
+    
+    const macbethNotes = await response.json()
+    const relevantNotes = []
+    const searchText = text.toLowerCase().trim()
+    
+    // Search through all scenes and lines
+    for (const [sceneKey, sceneData] of Object.entries(macbethNotes)) {
+      for (const [lineKey, lineData] of Object.entries(sceneData)) {
+        const playText = lineData.play ? lineData.play.toLowerCase() : ''
+        
+        // Check for exact matches or partial matches
+        if (playText.includes(searchText) || searchText.includes(playText) || 
+            (playText.length > 10 && searchText.length > 10 && 
+             playText.split(' ').some(word => searchText.includes(word)) && 
+             searchText.split(' ').some(word => playText.includes(word)))) {
+          
+          if (lineData.notes && lineData.notes.length > 0) {
+            relevantNotes.push({
+              scene: sceneKey,
+              line: lineKey,
+              play: lineData.play,
+              notes: lineData.notes
+            })
+          }
+        }
+      }
+    }
+    
+    return relevantNotes.slice(0, 5) // Return up to 5 most relevant notes
+  } catch (error) {
+    console.error('Error loading Macbeth notes:', error)
+    return []
+  }
 }
 
 exports.handler = async (event, context) => {
@@ -96,7 +134,7 @@ exports.handler = async (event, context) => {
     const isMultipleLines = lines.length >= 2 && lines.length <= 5
 
     // Find relevant notes from Macbeth database
-    const relevantNotes = findRelevantNotes(text)
+    const relevantNotes = await findRelevantNotes(text)
     
     // Build the system prompt
     let systemPrompt = `You are a Shakespeare scholar providing ${analysisMode} analysis.`
@@ -137,8 +175,19 @@ This should be significantly more advanced than basic analysis, suitable for gra
 10. Reference contemporary scholarship and modern interpretations
 
 This should be the most comprehensive analysis possible - think doctoral-level scholarship. Each section should be extensive and thorough.`
-      
-
+       
+      // Add Macbeth notes if available
+      if (relevantNotes.length > 0) {
+        systemPrompt += `\n\nIMPORTANT: You have access to historical variorum notes from the Macbeth database. Use these notes extensively in your analysis, especially in the "Historical Variorum Notes" section. Here are the relevant notes found:`
+        
+        relevantNotes.forEach((note, index) => {
+          systemPrompt += `\n\nNote ${index + 1} (${note.scene}, Line ${note.line}):\n`
+          systemPrompt += `Text: "${note.play}"\n`
+          systemPrompt += `Historical Notes: ${note.notes.join(' ').substring(0, 2000)}...`
+        })
+        
+        systemPrompt += `\n\nIntegrate these historical notes into your analysis, particularly in the "Historical Variorum Notes" section. Quote and reference these notes appropriately.`
+      }
     }
 
     systemPrompt += `\n\nProvide analysis in the following structure:\n${structure.map(section => `- ${section}`).join('\n')}`
@@ -159,9 +208,11 @@ For the Commentary section (in Full Fathom Five mode), provide traditional schol
     if (analysisMode === 'expert') {
       userPrompt += `\n\nPlease provide an ADVANCED EXPERT analysis of this text. This should be significantly more sophisticated than basic analysis, suitable for graduate students and scholars. Focus on advanced textual analysis, metrical patterns, rhetorical devices, intertextual connections, and scholarly interpretations.`
     } else if (analysisMode === 'fullfathomfive') {
-      userPrompt += `\n\nPlease provide an INSANELY DETAILED and COMPREHENSIVE Full Fathom Five analysis of this text. This should be the most thorough scholarly analysis possible - equivalent to doctoral-level research. Be extremely detailed in every section, providing extensive context, multiple interpretations, and thorough scholarly analysis.`
+            userPrompt += `\n\nPlease provide an INSANELY DETAILED and COMPREHENSIVE Full Fathom Five analysis of this text. This should be the most thorough scholarly analysis possible - equivalent to doctoral-level research. Be extremely detailed in every section, providing extensive context, multiple interpretations, and thorough scholarly analysis.`
       
-
+      if (relevantNotes.length > 0) {
+        userPrompt += `\n\nNote: Historical variorum notes have been found for this text. Please integrate these notes extensively into your analysis, particularly in the "Historical Variorum Notes" section.`
+      }
     } else {
       userPrompt += `\n\nPlease provide a comprehensive ${analysisMode} analysis of this text.`
     }
@@ -244,6 +295,7 @@ For the Commentary section (in Full Fathom Five mode), provide traditional schol
         mode: analysisMode,
         text: text,
         lineCount: lines.length,
+        relevantNotes: relevantNotes,
         usage: completion.usage
       })
     }
