@@ -82,48 +82,14 @@ exports.handler = async (event, context) => {
     // Define analysis structure based on mode
     const analysisStructure = {
       basic: [
-        'Plain-Language Paraphrase',
-        'Synopsis',
-        'Key Words & Glosses',
-        'Pointers for Further Reading'
-      ],
-      detailed: [
-        'Plain-Language Paraphrase',
-        'Language and Rhetoric',
-        'Synopsis',
-        'Key Words & Glosses',
-        'Historical Context',
-        'Literary Analysis',
-        'Pointers for Further Reading'
+        'Basic Analysis'
       ],
       expert: [
-        'Advanced Textual Analysis',
-        'Metrical and Prosodic Analysis',
-        'Rhetorical Devices and Figures',
-        'Intertextual Connections',
-        'Critical Interpretations',
-        'Performance History',
-        'Editorial Commentary',
-        'Scholarly Debates',
-        'Thematic Analysis',
-        'Cultural Context',
-        'Further Research Directions'
+        'Expert Analysis'
       ],
       fullfathomfive: [
-        'Variorum Commentary',
-        'Textual Variants and Collation',
-        'Historical Variorum Notes',
-        'Critical Reception Through Time',
-        'Performance Traditions',
-        'Editorial History',
-        'Source Materials',
-        'Linguistic Analysis',
-        'Metrical Analysis',
-        'Rhetorical Analysis',
-        'Thematic and Symbolic Analysis',
-        'Intertextual Echoes',
-        'Modern Critical Approaches',
-        'Scholarly Bibliography'
+        'Analysis (Very Deep)',
+        'New Variorum Analysis (Selected Lines Commentary)'
       ]
     }
 
@@ -144,37 +110,26 @@ exports.handler = async (event, context) => {
     }
 
     if (analysisMode === 'expert') {
-      systemPrompt += `\n\nIn Expert mode, you should provide ADVANCED SCHOLARLY analysis that goes significantly beyond basic analysis. This is graduate-level scholarship that includes:
+      systemPrompt += `\n\nIn Expert mode, provide a detailed, scholarly interpretation that explores:
 
-1. Sophisticated textual analysis with attention to editorial issues
-2. Detailed metrical and prosodic analysis
-3. Advanced rhetorical analysis identifying complex figures of speech
-4. Intertextual connections to other Shakespeare works and classical sources
-5. Critical interpretations from major scholars
-6. Performance history and theatrical traditions
-7. Editorial commentary and textual variants
-8. Scholarly debates and controversies
-9. Thematic analysis with cultural and historical context
-10. Directions for further research
+- Themes and symbols
+- Historical/cultural context  
+- Stylistic and literary devices
+- Critical/theoretical perspectives
 
 This should be significantly more advanced than basic analysis, suitable for graduate students and scholars.`
     }
 
     if (analysisMode === 'fullfathomfive') {
-      systemPrompt += `\n\nIn Full Fathom Five mode, you should provide INSANELY DETAILED and COMPREHENSIVE analysis in the style of traditional variorum editions. This is the highest level of scholarly analysis available. You must:
+      systemPrompt += `\n\nIn Full Fathom Five mode, provide two distinct sections:
 
-1. Provide EXTREMELY detailed analysis for each section
-2. Include extensive historical context and background
-3. Reference multiple scholarly sources and interpretations
-4. Analyze every word, phrase, and literary device in depth
-5. Compare with similar passages across Shakespeare's works
-6. Include critical reception from multiple time periods
-7. Provide detailed textual variants and editorial history
-8. Analyze meter, rhythm, and poetic techniques extensively
-9. Include cultural, political, and social context
-10. Reference contemporary scholarship and modern interpretations
+1. ANALYSIS (VERY DEEP): A comprehensive, line-aware, holistic reading of the entire passage. This must go deeper than Basic/Expert — connecting imagery, sound, rhythm, myth, and intertextual echoes.
 
-This should be the most comprehensive analysis possible - think doctoral-level scholarship. Each section should be extensive and thorough.`
+2. NEW VARIORUM ANALYSIS (SELECTED LINES COMMENTARY): Commentary only on the selected lines. For each line or group of lines:
+   - Quote the text
+   - Give focused commentary (wordplay, meaning, allusion, critical notes)
+
+This should be the most comprehensive analysis possible - think doctoral-level scholarship.`
        
       // Add Macbeth notes if available
       if (relevantNotes.length > 0) {
@@ -192,11 +147,11 @@ This should be the most comprehensive analysis possible - think doctoral-level s
 
     systemPrompt += `\n\nProvide analysis in the following structure:\n${structure.map(section => `- ${section}`).join('\n')}`
 
-    systemPrompt += `\n\nFormat your response as structured sections. For each section, provide comprehensive analysis that would be appropriate for ${analysisMode === 'basic' ? 'undergraduate students' : analysisMode === 'detailed' ? 'advanced students' : analysisMode === 'expert' ? 'graduate students and scholars' : 'advanced scholars and researchers'}.
+    systemPrompt += `\n\nFormat your response as structured sections. For each section, provide comprehensive analysis that would be appropriate for ${analysisMode === 'basic' ? 'undergraduate students' : analysisMode === 'expert' ? 'graduate students and scholars' : 'advanced scholars and researchers'}.
 
 Use proper scholarly language and provide specific examples from Shakespeare's works when relevant. Include citations and references where appropriate.
 
-For the Commentary section (in Full Fathom Five mode), provide traditional scholarly commentary if available, or clearly state "No traditional commentary available for this text" and proceed with modern analysis.`
+For the "New Variorum Analysis (Selected Lines Commentary)" section (in Full Fathom Five mode), provide line-by-line commentary with quoted text and focused analysis.`
 
     // Build the user prompt
     let userPrompt = `Text to analyze: "${text}"`
@@ -205,13 +160,21 @@ For the Commentary section (in Full Fathom Five mode), provide traditional schol
       userPrompt += `\n\nThis selection contains ${lines.length} lines. Please provide analysis that considers both the individual lines and their relationship to each other.`
     }
 
-    if (analysisMode === 'expert') {
-      userPrompt += `\n\nPlease provide an ADVANCED EXPERT analysis of this text. This should be significantly more sophisticated than basic analysis, suitable for graduate students and scholars. Focus on advanced textual analysis, metrical patterns, rhetorical devices, intertextual connections, and scholarly interpretations.`
+    if (analysisMode === 'basic') {
+      userPrompt += `\n\nPlease provide a Basic Analysis: A simple, straightforward explanation of the passage's surface meaning and imagery.`
+    } else if (analysisMode === 'expert') {
+      userPrompt += `\n\nPlease provide an Expert Analysis: A detailed, scholarly interpretation that explores themes and symbols, historical/cultural context, stylistic and literary devices, and critical/theoretical perspectives.`
     } else if (analysisMode === 'fullfathomfive') {
-            userPrompt += `\n\nPlease provide an INSANELY DETAILED and COMPREHENSIVE Full Fathom Five analysis of this text. This should be the most thorough scholarly analysis possible - equivalent to doctoral-level research. Be extremely detailed in every section, providing extensive context, multiple interpretations, and thorough scholarly analysis.`
+      userPrompt += `\n\nPlease provide a Full Fathom Five analysis with two sections:
+
+1. ANALYSIS (VERY DEEP): A comprehensive, line-aware, holistic reading of the entire passage. This must go deeper than Basic/Expert — connecting imagery, sound, rhythm, myth, and intertextual echoes.
+
+2. NEW VARIORUM ANALYSIS (SELECTED LINES COMMENTARY): Commentary only on the selected lines. For each line or group of lines:
+   - Quote the text
+   - Give focused commentary (wordplay, meaning, allusion, critical notes)`
       
       if (relevantNotes.length > 0) {
-        userPrompt += `\n\nNote: Historical variorum notes have been found for this text. Please integrate these notes extensively into your analysis, particularly in the "Historical Variorum Notes" section.`
+        userPrompt += `\n\nNote: Historical variorum notes have been found for this text. Please integrate these notes extensively into your analysis, particularly in the "New Variorum Analysis" section.`
       }
     } else {
       userPrompt += `\n\nPlease provide a comprehensive ${analysisMode} analysis of this text.`
