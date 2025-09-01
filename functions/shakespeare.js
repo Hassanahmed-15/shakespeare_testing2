@@ -60,7 +60,9 @@ async function findRelevantNotes(text, scene = null) {
     // Try to fetch the actual macbeth_notes.json file
     const response = await fetch('https://shakespeare-variorum.netlify.app/Public/Data/macbeth_notes.json')
     if (response.ok) {
-      const notesData = await response.json()
+      const responseText = await response.text()
+      console.log('Raw response length:', responseText.length)
+      const notesData = JSON.parse(responseText)
       console.log('Successfully loaded Macbeth notes from file')
       console.log('Line 1 notes count:', notesData['1'] ? notesData['1'].notes.length : 'not found')
       
