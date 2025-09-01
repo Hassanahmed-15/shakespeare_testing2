@@ -77,7 +77,7 @@ async function findRelevantNotes(text, scene = null) {
             foundNotes.push({
               line: lineNumber,
               play: lineText,
-              notes: notesData[lineNumber]
+              notes: notesData[lineNumber].notes || []
             })
             console.log(`Found notes for line ${lineNumber}: ${lineText}`)
           }
@@ -90,7 +90,7 @@ async function findRelevantNotes(text, scene = null) {
               foundNotes.push({
                 line: lineNumber,
                 play: line.trim(),
-                notes: notesData[lineNumber]
+                notes: notesData[lineNumber].notes || []
               })
               console.log(`Found notes for line ${lineNumber} (alt pattern): ${line.trim()}`)
             }
