@@ -331,9 +331,8 @@ For this section, use the historical variorum notes provided below.
         relevantNotes.forEach((note, index) => {
           userPrompt += `\n\n[Line ${note.line}] ${note.play}`
           note.notes.forEach((noteText, noteIndex) => {
-            // Truncate very long notes to prevent API errors
-            const truncatedNote = noteText.length > 2000 ? noteText.substring(0, 2000) + '...' : noteText;
-            userPrompt += `\n${truncatedNote}`
+            // Include the complete, full text of every note
+            userPrompt += `\n${noteText}`
           })
         })
         userPrompt += `\n\nCRITICAL INSTRUCTIONS: Use these EXACT notes in your "New Variorum Analysis" section. Copy them word for word without any changes, summaries, or modifications. Show ALL notes from the database, not just parts of them. DO NOT TRUNCATE OR CUT ANY NOTES. Include the complete, full text of every note. Even if the notes are very long, you MUST include the ENTIRE text. Do not stop mid-sentence or cut off any part. Format each note as: [Line X] [EXACT commentary text from notes]. Do not add any additional commentary or speculation.`
@@ -343,7 +342,7 @@ For this section, use the historical variorum notes provided below.
     }
 
     // Get max_tokens from request or use default
-    const maxTokens = (analysisMode === 'fullfathomfive' ? 8000 : 3000)
+    const maxTokens = (analysisMode === 'fullfathomfive' ? 16000 : 3000)
 
     // Make the API call
     const completion = await openai.chat.completions.create({
