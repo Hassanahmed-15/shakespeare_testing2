@@ -105,9 +105,9 @@ exports.handler = async (event, context) => {
     }
   }
 
-  // Set a timeout for the entire function (25 seconds to stay under Netlify's 30s limit)
+  // Set a timeout for the entire function (20 seconds to stay under Netlify's 30s limit)
   const timeoutPromise = new Promise((_, reject) => {
-    setTimeout(() => reject(new Error('Function timeout')), 25000)
+    setTimeout(() => reject(new Error('Function timeout')), 20000)
   })
 
   try {
@@ -156,7 +156,13 @@ exports.handler = async (event, context) => {
     let relevantNotes = []
     if (analysisMode === 'fullfathomfive') {
       try {
-        relevantNotes = await findRelevantNotes(text)
+        // Set a quick timeout for notes loading
+        const notesPromise = findRelevantNotes(text)
+        const timeoutPromise = new Promise((_, reject) => 
+          setTimeout(() => reject(new Error('Notes timeout')), 3000)
+        )
+        
+        relevantNotes = await Promise.race([notesPromise, timeoutPromise])
         console.log('Macbeth notes loaded:', relevantNotes.length, 'notes found')
       } catch (error) {
         console.error('Failed to load Macbeth notes, continuing without them:', error.message)
@@ -219,13 +225,13 @@ CRITICAL: You MUST include these two sub-sections in exactly this order:
 Provide a very deep, holistic analysis of the entire passage. Discuss language, imagery, symbolism, rhythm, structure, and interpretive depth in flowing scholarly paragraphs. Do not include historical reception or external plays — focus entirely on the passage itself.
 
 **New Variorum Analysis:**
-Provide line-by-line commentary ONLY for the line numbers passed in from macbeth-notes.json. Each note should show the exact commentary from the JSON, without additions or speculation. Format:
-[Line X] [Commentary from notes]
+${relevantNotes.length > 0 ? 
+  'Provide line-by-line commentary using the historical notes provided below. Format each note as: [Line X] [Commentary from notes].' :
+  'Provide line-by-line commentary with deep scholarly analysis of each line, drawing from traditional Shakespearean criticism and variorum traditions.'}
 
 FORMAT REQUIREMENTS:
 - Use EXACT headers ("Analysis:" and "New Variorum Analysis:")
 - Write in complete, flowing paragraphs
-- Keep strictly to the notes JSON for the Variorum section (no invented material)
 - Always reference "${currentPlayName}" and "${currentSceneName}"`
        
       // Add Macbeth notes if available
