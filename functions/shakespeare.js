@@ -62,6 +62,7 @@ async function findRelevantNotes(text, scene = null) {
     if (response.ok) {
       const notesData = await response.json()
       console.log('Successfully loaded Macbeth notes from file')
+      console.log('Line 1 notes count:', notesData['1'] ? notesData['1'].notes.length : 'not found')
       
       // Extract line numbers from the text
       const lines = text.split('\n').filter(line => line.trim().length > 0)
