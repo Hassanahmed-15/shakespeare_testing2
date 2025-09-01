@@ -475,7 +475,6 @@ IMPORTANT: The notes above are the COMPLETE notes from the database. You MUST in
         })
       })
       analysis['New Variorum Analysis'] = notesContent.trim()
-      console.log('Added notes directly to analysis, length:', notesContent.length)
     }
 
     return {
