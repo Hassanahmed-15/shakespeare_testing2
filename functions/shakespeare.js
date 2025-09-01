@@ -354,7 +354,7 @@ IMPORTANT: The notes above are the COMPLETE notes from the database. You MUST in
     }
 
     // Get max_tokens from request or use default
-    const maxTokens = (analysisMode === 'fullfathomfive' ? 32000 : 3000)
+    const maxTokens = (analysisMode === 'fullfathomfive' ? 8000 : 3000)
 
     // Debug: Log the user prompt length
     console.log('User prompt length:', userPrompt.length)
@@ -382,6 +382,8 @@ IMPORTANT: The notes above are the COMPLETE notes from the database. You MUST in
     
     // Debug: Log response length
     console.log('Response length:', completion.choices[0].message.content.length)
+    console.log('Full response preview:', completion.choices[0].message.content.substring(0, 500))
+    console.log('Response ends with:', completion.choices[0].message.content.substring(completion.choices[0].message.content.length - 200))
 
     const response = completion.choices[0].message.content
 
@@ -421,6 +423,23 @@ IMPORTANT: The notes above are the COMPLETE notes from the database. You MUST in
     // Save the last section
     if (currentSection && currentContent.length > 0) {
       analysis[currentSection] = currentContent.join('\n').trim()
+    }
+
+    // Debug: Log what sections were found
+    console.log('Parsed sections:', Object.keys(analysis))
+    console.log('Looking for sections:', sections)
+    
+    // Check if New Variorum Analysis was captured
+    if (analysis['New Variorum Analysis']) {
+      console.log('New Variorum Analysis found, length:', analysis['New Variorum Analysis'].length)
+    } else {
+      console.log('New Variorum Analysis NOT found in parsed sections')
+      // Try to find it manually in the response
+      const variorumMatch = response.match(/\*\*New Variorum Analysis\*\*:?\s*([\s\S]*?)(?=\*\*|$)/i)
+      if (variorumMatch) {
+        console.log('Found New Variorum Analysis manually, length:', variorumMatch[1].length)
+        analysis['New Variorum Analysis'] = variorumMatch[1].trim()
+      }
     }
 
     // If parsing failed, return the raw response
