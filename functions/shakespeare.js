@@ -233,10 +233,13 @@ FORMAT REQUIREMENTS:
         systemPrompt += `\n\nIMPORTANT: You have access to historical variorum notes from the Macbeth database. Here are the relevant notes found:`
         
         relevantNotes.forEach((note, index) => {
-          systemPrompt += `\n\n[Line ${note.line}] ${note.notes.join(' ')}`
+          systemPrompt += `\n\n[Line ${note.line}] ${note.play}`
+          note.notes.forEach((noteText, noteIndex) => {
+            systemPrompt += `\n\nNote ${noteIndex + 1}: ${noteText}`
+          })
         })
         
-        systemPrompt += `\n\nUse these exact notes in your "New Variorum Analysis" section without additions or speculation.`
+        systemPrompt += `\n\nUse these exact notes in your "New Variorum Analysis" section. Format each note as: [Line X] [Commentary from notes]. Do not add any additional commentary or speculation.`
       }
     }
 
