@@ -434,11 +434,29 @@ IMPORTANT: The notes above are the COMPLETE notes from the database. You MUST in
       console.log('New Variorum Analysis found, length:', analysis['New Variorum Analysis'].length)
     } else {
       console.log('New Variorum Analysis NOT found in parsed sections')
-      // Try to find it manually in the response
-      const variorumMatch = response.match(/\*\*New Variorum Analysis\*\*:?\s*([\s\S]*?)(?=\*\*|$)/i)
-      if (variorumMatch) {
-        console.log('Found New Variorum Analysis manually, length:', variorumMatch[1].length)
-        analysis['New Variorum Analysis'] = variorumMatch[1].trim()
+      // Try multiple patterns to find it manually in the response
+      const patterns = [
+        /\*\*New Variorum Analysis\*\*:?\s*([\s\S]*?)(?=\*\*|$)/i,
+        /New Variorum Analysis:?\s*([\s\S]*?)(?=\*\*|$)/i,
+        /New Variorum Analysis:?\s*([\s\S]*)/i
+      ]
+      
+      for (const pattern of patterns) {
+        const variorumMatch = response.match(pattern)
+        if (variorumMatch) {
+          console.log('Found New Variorum Analysis manually with pattern, length:', variorumMatch[1].length)
+          analysis['New Variorum Analysis'] = variorumMatch[1].trim()
+          break
+        }
+      }
+      
+      // If still not found, try to find it by looking for the notes content
+      if (!analysis['New Variorum Analysis']) {
+        const notesMatch = response.match(/(\[Line \d+\].*?)(?=\*\*|$)/s)
+        if (notesMatch) {
+          console.log('Found notes content manually, length:', notesMatch[1].length)
+          analysis['New Variorum Analysis'] = notesMatch[1].trim()
+        }
       }
     }
 
