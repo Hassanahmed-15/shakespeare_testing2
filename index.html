@@ -4756,16 +4756,20 @@
             
             try {
                 // Call the real Netlify API
+                console.log('🚀 Sending API request with mode:', mode);
+                const requestBody = {
+                    text: text,
+                    level: mode,
+                    mode: mode
+                };
+                console.log('📤 Request body:', requestBody);
+                
                 const response = await fetch('/.netlify/functions/shakespeare', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify({
-                        text: text,
-                        level: mode,
-                        mode: mode
-                    })
+                    body: JSON.stringify(requestBody)
                 });
                 
                 if (!response.ok) {
