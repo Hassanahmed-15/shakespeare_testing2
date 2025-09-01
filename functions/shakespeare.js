@@ -234,6 +234,8 @@ For this section, use the historical variorum notes provided below.
 - Do NOT invent or expand commentary beyond what is provided.  
 - Show ALL notes from the database, not just summaries.
 - DO NOT CUT OR TRUNCATE ANY NOTES - include the complete, full text.
+- Even if notes are extremely long, you MUST include the ENTIRE text.
+- Do not stop mid-sentence or cut off any part of the notes.
 - Format each entry as:
 
 [Line X] [EXACT commentary text from the provided notes]
@@ -242,7 +244,7 @@ For this section, use the historical variorum notes provided below.
 - Notes must appear in the same order as the selected line numbers.
 - Do not include notes for lines that are not explicitly selected.
 - IMPORTANT: Copy the notes exactly as provided, word for word, without any changes.
-- CRITICAL: Include the complete, unabridged text of every note.`
+- CRITICAL: Include the complete, unabridged text of every note, no matter how long.`
        
       // Add Macbeth notes if available
       if (relevantNotes.length > 0) {
@@ -283,14 +285,14 @@ For this section, use the historical variorum notes provided below.
             userPrompt += `\n${noteText}`
           })
         })
-        userPrompt += `\n\nCRITICAL INSTRUCTIONS: Use these EXACT notes in your "New Variorum Analysis" section. Copy them word for word without any changes, summaries, or modifications. Show ALL notes from the database, not just parts of them. DO NOT TRUNCATE OR CUT ANY NOTES. Include the complete, full text of every note. Format each note as: [Line X] [EXACT commentary text from notes]. Do not add any additional commentary or speculation.`
+        userPrompt += `\n\nCRITICAL INSTRUCTIONS: Use these EXACT notes in your "New Variorum Analysis" section. Copy them word for word without any changes, summaries, or modifications. Show ALL notes from the database, not just parts of them. DO NOT TRUNCATE OR CUT ANY NOTES. Include the complete, full text of every note. Even if the notes are very long, you MUST include the ENTIRE text. Do not stop mid-sentence or cut off any part. Format each note as: [Line X] [EXACT commentary text from notes]. Do not add any additional commentary or speculation.`
       }
     } else {
       userPrompt += `\n\nPlease provide a comprehensive ${analysisMode} analysis of this text.`
     }
 
     // Get max_tokens from request or use default
-    const maxTokens = (analysisMode === 'fullfathomfive' ? 16000 : 3000)
+    const maxTokens = (analysisMode === 'fullfathomfive' ? 20000 : 3000)
 
     // Make the API call
     const completion = await openai.chat.completions.create({
