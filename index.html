@@ -4603,8 +4603,8 @@
             if (variorumContent) variorumContent.innerHTML = '';
             
             // Use the proper API-based analysis function
-            console.log('📚 Using API-based analysis');
-            analyzeHighlightedText(textToAnalyze);
+            console.log('📚 Using API-based analysis for mode:', mode);
+            analyzeHighlightedText(textToAnalyze, mode);
             
             // Ensure the analyze button remains visible and clickable
             const analyzeButton = document.getElementById('analyzeButton');
@@ -4612,6 +4612,15 @@
                 analyzeButton.style.display = 'block';
                 analyzeButton.disabled = false;
             }
+            
+            // Also ensure the button stays visible after analysis completes
+            setTimeout(() => {
+                const button = document.getElementById('analyzeButton');
+                if (button && selectedLines.length > 0) {
+                    button.style.display = 'block';
+                    button.disabled = false;
+                }
+            }, 1000);
         }
 
         // Full Fathom Five functionality
@@ -4798,12 +4807,16 @@
             return text.trim().split(/\s+/).filter(word => word.length > 0).length;
         }
 
-        async function analyzeHighlightedText(text) {
+        async function analyzeHighlightedText(text, mode = null) {
             console.log('=== ANALYZE FUNCTION CALLED - NEW CODE IS RUNNING ===');
             console.log('Text to analyze:', text);
             console.log('Current play:', currentPlay);
             console.log('Current scene:', currentScene);
-            console.log('Analysis mode:', currentAnalysisMode);
+            console.log('Analysis mode passed:', mode);
+            console.log('Current analysis mode:', currentAnalysisMode);
+            
+            // Use the passed mode or fall back to currentAnalysisMode
+            const analysisMode = mode || currentAnalysisMode || 'basic';
             
             // Set analysis in progress flag to prevent highlight clearing
             analysisInProgress = true;
@@ -4870,7 +4883,7 @@
                     },
                     body: JSON.stringify({
                         text: text,
-                        level: currentAnalysisMode,
+                        level: analysisMode,
                         model: 'gpt-4o-mini',
                         playName: playName,
                         sceneName: currentScene,
@@ -4888,7 +4901,7 @@
                         },
                         body: JSON.stringify({
                             text: text,
-                            level: currentAnalysisMode,
+                            level: analysisMode,
                             model: 'gpt-4o-mini',
                             playName: playName,
                             sceneName: currentScene,
@@ -5075,6 +5088,9 @@
                     <button onclick="switchTab('fullfathomfive')" aria-pressed="${data.mode === 'fullfathomfive' ? 'true' : 'false'}">Full Fathom Five</button>
                 </div>
 
+                <!-- Analyze Button -->
+                <button class="analyze-button" id="analyzeButton" onclick="explainHighlighted()" style="display: block;">Analyze Text</button>
+
                 <!-- AI Analysis Content -->
                 <div class="analysis">
                     <button class="copy-chip" onclick="copyAnalysis()">Copy</button>
@@ -5225,6 +5241,9 @@
                     <button onclick="switchTab('expert')" aria-pressed="${currentAnalysisMode === 'expert' ? 'true' : 'false'}">Expert</button>
                     <button onclick="switchTab('fullfathomfive')" aria-pressed="${currentAnalysisMode === 'fullfathomfive' ? 'true' : 'false'}">Full Fathom Five</button>
                 </div>
+
+                <!-- Analyze Button -->
+                <button class="analyze-button" id="analyzeButton" onclick="explainHighlighted()" style="display: block;">Analyze Text</button>
 
                 <!-- AI Analysis Content -->
                 <div class="analysis">
