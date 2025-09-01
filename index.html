@@ -2587,6 +2587,15 @@
             }
             
             console.log('✅ Tab switched to:', tabName);
+            
+            // Force show variorum section for Full Fathom Five
+            if (tabName === 'fullfathomfive') {
+                const variorumSection = document.getElementById('variorumSection');
+                if (variorumSection) {
+                    variorumSection.style.display = 'block';
+                    console.log('✅ Forced variorum section to show');
+                }
+            }
         }
         
         // Line selection functionality
@@ -2668,13 +2677,19 @@
             const analyzeButton = document.getElementById('analyzeButton');
             const variorumSection = document.getElementById('variorumSection');
             
+            console.log('🔄 Updating analysis panel for tab:', currentTab);
+            
             // Show/hide variorum section based on current tab
             if (variorumSection) {
                 if (currentTab === 'fullfathomfive') {
                     variorumSection.style.display = 'block';
+                    console.log('✅ Showing variorum section for Full Fathom Five');
                 } else {
                     variorumSection.style.display = 'none';
+                    console.log('❌ Hiding variorum section for', currentTab);
                 }
+            } else {
+                console.log('❌ Variorum section element not found');
             }
             
             if (selectedLines.length > 0) {
@@ -4538,6 +4553,7 @@
             
             // Set analysis mode based on current tab
             const mode = currentTab || 'basic';
+            console.log('🎯 Current tab/mode:', currentTab, '→', mode);
             console.log('🎭 Analysis mode:', mode);
             
             // Clear previous results first
