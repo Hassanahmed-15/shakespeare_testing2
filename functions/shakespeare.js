@@ -288,7 +288,7 @@ For this section, use the historical variorum notes provided below.
     }
 
     // Get max_tokens from request or use default
-    const maxTokens = (analysisMode === 'fullfathomfive' ? 8000 : 3000)
+    const maxTokens = (analysisMode === 'fullfathomfive' ? 12000 : 3000)
 
     // Make the API call
     const completion = await openai.chat.completions.create({

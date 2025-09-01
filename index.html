@@ -5062,10 +5062,20 @@
             
             let formattedContent = '';
             
-            // Add Macbeth notes section if available
+            // Format each analysis section FIRST (Analysis at the top)
+            for (const [sectionName, sectionContent] of Object.entries(analysis)) {
+                if (sectionContent && sectionContent.trim()) {
+                    formattedContent += '<div class="analysis-section">';
+                    formattedContent += `<h4>${sectionName}</h4>`;
+                    formattedContent += `<div class="section-content">${sectionContent}</div>`;
+                    formattedContent += '</div>';
+                }
+            }
+            
+            // Add Macbeth notes section LAST (New Variorum Analysis at the bottom)
             if (relevantNotes && relevantNotes.length > 0) {
                 formattedContent += '<div class="analysis-section">';
-                formattedContent += '<h4>Historical Variorum Notes</h4>';
+                formattedContent += '<h4>New Variorum Analysis</h4>';
                 formattedContent += '<div class="variorum-notes">';
                 
                 relevantNotes.forEach((note, index) => {
@@ -5083,16 +5093,6 @@
                 });
                 
                 formattedContent += '</div></div>';
-            }
-            
-            // Format each analysis section
-            for (const [sectionName, sectionContent] of Object.entries(analysis)) {
-                if (sectionContent && sectionContent.trim()) {
-                    formattedContent += '<div class="analysis-section">';
-                    formattedContent += `<h4>${sectionName}</h4>`;
-                    formattedContent += `<div class="section-content">${sectionContent}</div>`;
-                    formattedContent += '</div>';
-                }
             }
             
             return formattedContent;
