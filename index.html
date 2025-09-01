@@ -2781,6 +2781,13 @@
         function testVariorumSection() {
             console.log('🔍 Testing variorum section specifically...');
             
+            // Check if Macbeth data is loaded
+            console.log('📚 Macbeth data loaded:', !!window.macbethData);
+            if (window.macbethData) {
+                console.log('📖 Available scenes:', Object.keys(window.macbethData));
+                console.log('🎭 ACT 1, SCENE 1 data:', window.macbethData['ACT 1, SCENE 1']);
+            }
+            
             // Set up test data
             selectedLines = [
                 "First Witch: In thunder, lightning, or in rain?",
@@ -2794,7 +2801,12 @@
             
             // Check if variorum section is visible
             const variorumSection = document.getElementById('variorumSection');
+            const variorumContent = document.getElementById('variorumContent');
+            const variorumResult = document.getElementById('variorumResult');
+            
             console.log('📋 Variorum section element:', variorumSection);
+            console.log('📋 Variorum content element:', variorumContent);
+            console.log('📋 Variorum result element:', variorumResult);
             console.log('👁️ Variorum section display style:', variorumSection ? variorumSection.style.display : 'not found');
             
             // Test the commentary search
@@ -2807,18 +2819,38 @@
                 const formattedNotes = formatNotes(notesData);
                 console.log('📖 Formatted notes length:', formattedNotes ? formattedNotes.length : 0);
                 
-                // Manually set the variorum result
-                const variorumResult = document.getElementById('variorumResult');
+                // Manually set the variorum content
+                if (variorumContent && formattedNotes) {
+                    variorumContent.innerHTML = formattedNotes;
+                    console.log('✅ Variorum content set manually');
+                }
                 if (variorumResult && formattedNotes) {
                     variorumResult.innerHTML = formattedNotes;
                     console.log('✅ Variorum result set manually');
                 }
             } else {
                 console.log('❌ No commentary found');
+                // Show a test message
+                if (variorumContent) {
+                    variorumContent.innerHTML = '<div class="loading">TEST: This is a test message to verify the variorum section is working.</div>';
+                }
             }
             
             // Run the full analysis
             explainHighlighted();
+        }
+        
+        // Simple debug function to check Macbeth data
+        function debugMacbethData() {
+            console.log('🔍 Debugging Macbeth data...');
+            console.log('📚 Macbeth data loaded:', !!window.macbethData);
+            if (window.macbethData) {
+                console.log('📖 Available scenes:', Object.keys(window.macbethData));
+                console.log('🎭 ACT 1, SCENE 1 keys:', Object.keys(window.macbethData['ACT 1, SCENE 1'] || {}));
+                console.log('📝 First few lines:', window.macbethData['ACT 1, SCENE 1']);
+            } else {
+                console.log('❌ No Macbeth data found');
+            }
         }
         
         // Make test functions available globally
@@ -2826,6 +2858,7 @@
         window.testFullFathomFive = testFullFathomFive;
         window.testAllModes = testAllModes;
         window.testVariorumSection = testVariorumSection;
+        window.debugMacbethData = debugMacbethData;
 
         // Modal functions
         function openSettings() {
@@ -4427,8 +4460,10 @@
             // Clear previous results first
             const analysisResult = document.getElementById('analysisResult');
             const variorumResult = document.getElementById('variorumResult');
+            const variorumContent = document.getElementById('variorumContent');
             if (analysisResult) analysisResult.innerHTML = '';
             if (variorumResult) variorumResult.innerHTML = '';
+            if (variorumContent) variorumContent.innerHTML = '';
             
             // Handle Full Fathom Five mode specially
             if (mode === 'fullfathomfive') {
@@ -4450,6 +4485,7 @@
             
             const variorumSection = document.getElementById('variorumSection');
             const variorumResult = document.getElementById('variorumResult');
+            const variorumContent = document.getElementById('variorumContent');
             const analysisResult = document.getElementById('analysisResult');
             
             // Show the variorum section
@@ -4462,6 +4498,7 @@
             
             // Clear previous results
             if (variorumResult) variorumResult.innerHTML = '';
+            if (variorumContent) variorumContent.innerHTML = '';
             if (analysisResult) analysisResult.innerHTML = '';
             
             // Check for traditional commentary
@@ -4492,18 +4529,34 @@
                     }
                 }
                 
-                if (commentaryFound && variorumResult) {
-                    variorumResult.innerHTML = combinedCommentary;
-                    console.log('✅ Commentary displayed in variorum section');
-                } else if (variorumResult) {
-                    variorumResult.innerHTML = '<div class="loading">No traditional commentary found for selected lines.</div>';
+                if (commentaryFound) {
+                    if (variorumResult) {
+                        variorumResult.innerHTML = combinedCommentary;
+                        console.log('✅ Commentary displayed in variorum result');
+                    }
+                    if (variorumContent) {
+                        variorumContent.innerHTML = combinedCommentary;
+                        console.log('✅ Commentary displayed in variorum content');
+                    }
+                } else {
+                    const noCommentaryMsg = '<div class="loading">No traditional commentary found for selected lines.</div>';
+                    if (variorumResult) {
+                        variorumResult.innerHTML = noCommentaryMsg;
+                    }
+                    if (variorumContent) {
+                        variorumContent.innerHTML = noCommentaryMsg;
+                    }
                     console.log('⚠️ No commentary found for selected lines');
                 }
             } else {
+                const errorMsg = '<div class="loading">Traditional commentary database not loaded or scene not found.</div>';
                 if (variorumResult) {
-                    variorumResult.innerHTML = '<div class="loading">Traditional commentary database not loaded or scene not found.</div>';
-                    console.log('❌ Macbeth data or current scene not available');
+                    variorumResult.innerHTML = errorMsg;
                 }
+                if (variorumContent) {
+                    variorumContent.innerHTML = errorMsg;
+                }
+                console.log('❌ Macbeth data or current scene not available');
             }
             
             // Also perform regular analysis
