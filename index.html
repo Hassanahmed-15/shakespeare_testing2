@@ -1835,6 +1835,37 @@
             font-family: 'Georgia', serif;
             line-height: 1.6;
         }
+        
+        /* Variorum section styling */
+        #variorumSection {
+            background: #f8f9fa;
+            border: 2px solid #f59e0b;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .notes-header h4 {
+            color: #f59e0b;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        
+        .note-item {
+            background: #ffffff;
+            border-left: 3px solid #f59e0b;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .loading {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            padding: 20px;
+        }
 
         /* Researching animation */
         .researching {
@@ -2513,7 +2544,7 @@
                 }
                 
                 if (lineCount > 5) {
-                    alert('Please select between 2 and 5 consecutive lines.');
+                    alert('Please select between 2 and 5 consecutive lines. You selected ' + lineCount + ' lines.');
                     clearSelection();
                     return;
                 }
@@ -2530,12 +2561,15 @@
                     if (lineElement) {
                         lineElement.classList.add('range-selected');
                         const lineText = lineElement.textContent;
-                        if (lineText) {
-                            selectedLines.push(lineText);
-                            console.log('Added line to selection:', lineText);
+                        if (lineText && lineText.trim() !== '') {
+                            selectedLines.push(lineText.trim());
+                            console.log('Added line to selection:', lineText.trim());
                         }
                     }
                 }
+                
+                console.log(`✅ Range selection complete: ${selectedLines.length} lines selected`);
+                console.log('Selected lines:', selectedLines);
                 
                 firstSelectedLine = null;
                 console.log('Range selection complete:', selectedLines);
@@ -3518,7 +3552,15 @@
                     play.acts[actName].forEach(sceneName => {
                         const sceneItem = document.createElement('li');
                         sceneItem.className = 'sub-item';
-                        sceneItem.innerHTML = `<a href="#" onclick="loadScene('${sceneName}')" data-scene="${sceneName}">${sceneName.split(' - ')[1]}</a>`;
+                        
+                        // Extract proper scene name for display
+                        let displaySceneName = sceneName;
+                        const sceneMatch = sceneName.match(/SCENE\s+([IVX0-9]+)/i);
+                        if (sceneMatch) {
+                            displaySceneName = `Scene ${sceneMatch[1]}`;
+                        }
+                        
+                        sceneItem.innerHTML = `<a href="#" onclick="loadScene('${sceneName}')" data-scene="${sceneName}">${displaySceneName}</a>`;
                         navList.appendChild(sceneItem);
                     });
                 }
@@ -4168,12 +4210,22 @@
 
         // Full Fathom Five functionality
         function handleFullFathomFiveAnalysis(text) {
+            console.log('🔄 Starting Full Fathom Five analysis...');
+            console.log('📚 Macbeth data available:', !!window.macbethData);
+            console.log('🎭 Current scene:', currentScene);
+            console.log('📝 Selected lines:', selectedLines);
+            
             const variorumSection = document.getElementById('variorumSection');
             const variorumResult = document.getElementById('variorumResult');
             const analysisResult = document.getElementById('analysisResult');
             
             // Show the variorum section
-            if (variorumSection) variorumSection.style.display = 'block';
+            if (variorumSection) {
+                variorumSection.style.display = 'block';
+                console.log('✅ Variorum section displayed');
+            } else {
+                console.error('❌ Variorum section not found');
+            }
             
             // Clear previous results
             if (variorumResult) variorumResult.innerHTML = '';
@@ -4182,12 +4234,18 @@
             // Check for traditional commentary
             let commentaryFound = false;
             if (window.macbethData && currentScene) {
+                console.log('🔍 Searching for commentary in scene:', currentScene);
+                console.log('📖 Available scenes in macbethData:', Object.keys(window.macbethData));
+                
                 let combinedCommentary = '';
                 
                 // Check each selected line for commentary
                 for (let i = 0; i < selectedLines.length; i++) {
                     const line = selectedLines[i];
+                    console.log(`🔍 Searching for line: "${line}"`);
                     const notesData = findNotesForLine(line, currentScene);
+                    console.log('📝 Notes data found:', notesData);
+                    
                     if (notesData && notesData.notes && notesData.notes.length > 0) {
                         const formattedNotes = formatNotes(notesData);
                         if (formattedNotes) {
@@ -4196,21 +4254,27 @@
                                 combinedCommentary += '<hr style="margin: 20px 0; border: 1px solid #4b5563;">';
                             }
                             commentaryFound = true;
+                            console.log('✅ Commentary found for line:', i + 1);
                         }
                     }
                 }
                 
                 if (commentaryFound && variorumResult) {
                     variorumResult.innerHTML = combinedCommentary;
+                    console.log('✅ Commentary displayed in variorum section');
                 } else if (variorumResult) {
                     variorumResult.innerHTML = '<div class="loading">No traditional commentary found for selected lines.</div>';
+                    console.log('⚠️ No commentary found for selected lines');
                 }
             } else {
-                if (variorumResult) variorumResult.innerHTML = '<div class="loading">Traditional commentary database not loaded.</div>';
+                if (variorumResult) {
+                    variorumResult.innerHTML = '<div class="loading">Traditional commentary database not loaded or scene not found.</div>';
+                    console.log('❌ Macbeth data or current scene not available');
+                }
             }
             
             // Also perform regular analysis
-            performAnalysis(text, 'analysis');
+            performAnalysis(text, 'fullfathomfive');
         }
         
         function findNotesForLine(text, sceneName) {
@@ -4290,13 +4354,26 @@
         function performAnalysis(text, mode) {
             console.log('Performing analysis for mode:', mode);
             
-            // For now, just show a placeholder message
+            // Show analysis result
             const analysisResult = document.getElementById('analysisResult');
             if (analysisResult) {
                 analysisResult.innerHTML = `
                     <div class="result">
-                        <p>Analysis for "${text.substring(0, 100)}..." in ${mode} mode.</p>
-                        <p><em>This is a placeholder. The full analysis functionality will be implemented here.</em></p>
+                        <h4>Analysis Results for ${mode} mode</h4>
+                        <p><strong>Selected Text:</strong></p>
+                        <div style="background: #f8f9fa; padding: 15px; border-radius: 6px; margin: 10px 0; font-style: italic;">
+                            "${text}"
+                        </div>
+                        <p><strong>Analysis:</strong></p>
+                        <p>This is a ${mode} level analysis of the selected Shakespeare text. The analysis would include:</p>
+                        <ul>
+                            <li>Text interpretation and meaning</li>
+                            <li>Literary devices and techniques</li>
+                            <li>Historical and cultural context</li>
+                            <li>Character analysis and motivation</li>
+                            <li>Thematic connections</li>
+                        </ul>
+                        <p><em>Note: This is a demonstration. In the full version, this would be AI-generated analysis.</em></p>
                     </div>
                 `;
             }
