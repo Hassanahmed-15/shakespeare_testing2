@@ -1902,7 +1902,7 @@
             margin-bottom: 4px;
             line-height: 1.4;
         }
-        
+
 
 
         /* Variorum Notes Styling */
@@ -2653,14 +2653,14 @@
             console.log('Selecting line:', lineIndex, 'Text:', text);
             
             // Clear all previous selections
-            document.querySelectorAll('.play-line').forEach(line => {
-                line.classList.remove('selected', 'range-selected');
-            });
-            
+                document.querySelectorAll('.play-line').forEach(line => {
+                    line.classList.remove('selected', 'range-selected');
+                });
+                
             // Add selection to current line
             element.classList.add('selected');
             selectedLines = [text.trim()];
-            firstSelectedLine = null;
+                firstSelectedLine = null;
             
             console.log('✅ Line selected:', selectedLines);
             updateAnalysisPanel();
