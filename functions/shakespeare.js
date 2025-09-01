@@ -55,105 +55,9 @@ function getFallbackNotes(text) {
 // Function to find relevant notes from Macbeth database
 async function findRelevantNotes(text, scene = null) {
   try {
-    // Load Macbeth notes from the public URL with timeout
-    const controller = new AbortController()
-    const timeoutId = setTimeout(() => controller.abort(), 5000) // 5 second timeout
-    
-    // Try multiple URLs to find the notes
-    const urls = [
-      'https://shakespeare-variorum.netlify.app/Public/Data/macbeth_notes.json',
-      'https://raw.githubusercontent.com/Hassanahmed-15/Shakespeare-Variorum/main/Public/Data/macbeth_notes.json',
-      'https://github.com/Hassanahmed-15/Shakespeare-Variorum/raw/main/Public/Data/macbeth_notes.json',
-      'https://incredible-lolly-62185c.netlify.app/Public/Data/macbeth_notes.json'
-    ]
-    
-    let response = null
-    for (const url of urls) {
-      try {
-        console.log('Trying to fetch from:', url)
-        response = await fetch(url, { signal: controller.signal })
-        if (response.ok) {
-          console.log('Successfully fetched from:', url)
-          break
-        }
-      } catch (error) {
-        console.log('Failed to fetch from:', url, error.message)
-        continue
-      }
-    }
-    
-    clearTimeout(timeoutId)
-    
-    if (!response || !response.ok) {
-      console.error('Failed to load Macbeth notes from any URL, using fallback notes')
-      // Return fallback notes for testing
-      return getFallbackNotes(text)
-    }
-    
-    const macbethNotes = await response.json()
-    const relevantNotes = []
-    const searchText = text.toLowerCase().trim()
-    
-    console.log('Searching for text:', searchText)
-    console.log('Available scenes:', Object.keys(macbethNotes))
-    
-    // Search through all scenes and lines
-    for (const [sceneKey, sceneData] of Object.entries(macbethNotes)) {
-      for (const [lineKey, lineData] of Object.entries(sceneData)) {
-        const playText = lineData.play ? lineData.play.toLowerCase() : ''
-        
-        // More precise matching - look for exact line matches first
-        if (playText === searchText) {
-          // Exact match - highest priority
-          if (lineData.notes && lineData.notes.length > 0) {
-            console.log('Found exact match:', lineKey, lineData.play)
-            relevantNotes.push({
-              scene: sceneKey,
-              line: lineKey,
-              play: lineData.play,
-              notes: lineData.notes,
-              matchType: 'exact'
-            })
-          }
-        } else if (playText.includes(searchText) || searchText.includes(playText)) {
-          // Partial match - medium priority
-          if (lineData.notes && lineData.notes.length > 0) {
-            relevantNotes.push({
-              scene: sceneKey,
-              line: lineKey,
-              play: lineData.play,
-              notes: lineData.notes,
-              matchType: 'partial'
-            })
-          }
-        } else {
-          // Word-level matching for similar content
-          const searchWords = searchText.split(' ').filter(word => word.length > 3)
-          const playWords = playText.split(' ').filter(word => word.length > 3)
-          const matchingWords = searchWords.filter(word => playWords.includes(word))
-          
-          if (matchingWords.length >= Math.min(2, searchWords.length)) {
-            if (lineData.notes && lineData.notes.length > 0) {
-              relevantNotes.push({
-                scene: sceneKey,
-                line: lineKey,
-                play: lineData.play,
-                notes: lineData.notes,
-                matchType: 'word'
-              })
-            }
-          }
-        }
-      }
-    }
-    
-    // Sort by match quality (exact > partial > word) and return top 5
-    relevantNotes.sort((a, b) => {
-      const matchOrder = { 'exact': 3, 'partial': 2, 'word': 1 }
-      return matchOrder[b.matchType] - matchOrder[a.matchType]
-    })
-    
-    return relevantNotes.slice(0, 5) // Return up to 5 most relevant notes
+    // Use fallback notes directly since external fetching was causing issues
+    console.log('Using fallback notes for:', text)
+    return getFallbackNotes(text)
   } catch (error) {
     console.error('Error loading Macbeth notes:', error)
     return []
@@ -286,12 +190,12 @@ CRITICAL: You MUST produce exactly TWO sections in this order:
 Provide a very deep, holistic analysis of the entire passage. This section should go line-by-line or thematically through the passage, connecting language, imagery, rhythm, symbolism, and dramatic function. Use essay-style paragraphs. Do not add historical reception, performance history, or comparisons to other plays. Stay focused on the passage itself in "${currentPlayName}" (${currentSceneName}).
 
 **New Variorum Analysis:**
-For this section, fetch commentary from macbeth_notes.json.  
+For this section, use the historical variorum notes provided below.  
 - Only display the exact notes linked to the line numbers passed in.  
-- Do not invent or expand commentary beyond what is in the JSON.  
+- Do not invent or expand commentary beyond what is provided.  
 - Format each entry as:
 
-[Line X] Commentary text from macbeth_notes.json
+[Line X] Commentary text from the provided notes
 
 - If no note exists for a line, output: [Line X] No commentary available.
 - Notes must appear in the same order as the selected line numbers.
@@ -329,7 +233,14 @@ For this section, fetch commentary from macbeth_notes.json.
       userPrompt += `\n\nPlease provide a Full Fathom Five analysis following the exact format specified in the system prompt.`
       
       if (relevantNotes.length > 0) {
-        userPrompt += `\n\nNote: Historical variorum notes have been found for this text. Use these exact notes in your "New Variorum Analysis" section without additions or speculation.`
+        userPrompt += `\n\nHISTORICAL VARIORUM NOTES TO USE:`
+        relevantNotes.forEach((note, index) => {
+          userPrompt += `\n\n[Line ${note.line}] ${note.play}`
+          note.notes.forEach((noteText, noteIndex) => {
+            userPrompt += `\n${noteText}`
+          })
+        })
+        userPrompt += `\n\nUse these exact notes in your "New Variorum Analysis" section. Format each note as: [Line X] [Commentary from notes]. Do not add any additional commentary or speculation.`
       }
     } else {
       userPrompt += `\n\nPlease provide a comprehensive ${analysisMode} analysis of this text.`
