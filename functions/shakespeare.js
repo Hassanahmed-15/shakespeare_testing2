@@ -57,119 +57,126 @@ async function findRelevantNotes(text, scene = null) {
   try {
     console.log('Fetching Macbeth notes for:', text)
     
-    // Try to fetch the macbeth_notes.json file using relative path (more reliable)
-    const urls = [
-      '/Public/Data/macbeth_notes.json',
-      'https://shakespeare-variorum.netlify.app/Public/Data/macbeth_notes.json',
-      'https://raw.githubusercontent.com/Hassanahmed-15/Shakespeare-Variorum/main/Public/Data/macbeth_notes.json'
-    ]
-    
-    let notesData = null
-    
-    for (const url of urls) {
-      try {
-        console.log('Trying URL:', url)
-        const response = await fetch(url, {
-          method: 'GET',
-          headers: {
-            'Accept': 'application/json',
-            'Cache-Control': 'no-cache'
-          }
-        })
-        
-        if (response.ok) {
-          const responseText = await response.text()
-          console.log('Successfully fetched from:', url, 'Length:', responseText.length)
-          notesData = JSON.parse(responseText)
-          break
-        } else {
-          console.log('Failed to fetch from:', url, 'Status:', response.status)
-        }
-      } catch (error) {
-        console.log('Error fetching from:', url, error.message)
-      }
-    }
-    
-    if (notesData) {
-      console.log('Successfully loaded Macbeth notes from file')
+    // Use the same approach as notes-integration.js - more reliable
+    const response = await fetch('/Public/Data/macbeth_notes.json')
+    if (!response.ok) {
+      console.warn('Could not load macbeth_notes.json, trying fallback URLs')
       
-      // Extract line numbers from the text
-      const lines = text.split('\n').filter(line => line.trim().length > 0)
-      const foundNotes = []
+      // Fallback to external URLs if relative path fails
+      const fallbackUrls = [
+        'https://shakespeare-variorum.netlify.app/Public/Data/macbeth_notes.json',
+        'https://raw.githubusercontent.com/Hassanahmed-15/Shakespeare-Variorum/main/Public/Data/macbeth_notes.json'
+      ]
       
-      // Search through all scenes and lines for matches
-      for (const [sceneName, sceneData] of Object.entries(notesData)) {
-        for (const lineNumber in sceneData) {
-          const lineData = sceneData[lineNumber];
-          if (lineData && lineData.play) {
-            // Check if any of the selected lines match this play line
-            for (const line of lines) {
-              const searchText = line.toLowerCase().trim();
-              const playLine = lineData.play.toLowerCase().trim();
-              
-              // Multiple matching strategies (from notes-integration.js)
-              if (this.matchesText(playLine, searchText)) {
-                foundNotes.push({
-                  line: lineNumber,
-                  play: lineData.play,
-                  scene: sceneName,
-                  notes: lineData.notes || []
-                })
-                console.log(`Found notes for line ${lineNumber} in ${sceneName}: ${lineData.notes.length} entries`)
-              }
+      for (const url of fallbackUrls) {
+        try {
+          console.log('Trying fallback URL:', url)
+          const fallbackResponse = await fetch(url, {
+            method: 'GET',
+            headers: {
+              'Accept': 'application/json',
+              'Cache-Control': 'no-cache'
             }
+          })
+          
+          if (fallbackResponse.ok) {
+            const responseText = await fallbackResponse.text()
+            console.log('Successfully fetched from fallback:', url, 'Length:', responseText.length)
+            const notesData = JSON.parse(responseText)
+            return processNotesWithData(notesData, text)
           }
+        } catch (error) {
+          console.log('Error fetching from fallback:', url, error.message)
         }
       }
       
-      if (foundNotes.length > 0) {
-        return foundNotes
-      }
+      console.log('All fetch attempts failed, using fallback notes')
+      return getFallbackNotes(text)
     }
     
-    // Fallback to hardcoded notes if file fetch fails
-    console.log('Using fallback notes for:', text)
-    return getFallbackNotes(text)
+    // Successfully fetched from relative path
+    const notesData = await response.json()
+    console.log('Successfully loaded Macbeth notes from relative path')
+    return processNotesWithData(notesData, text)
+    
   } catch (error) {
     console.error('Error loading Macbeth notes:', error)
     console.log('Using fallback notes for:', text)
     return getFallbackNotes(text)
   }
+}
+
+// Helper function to process notes data (extracted from the main function)
+function processNotesWithData(notesData, text) {
+  const lines = text.split('\n').filter(line => line.trim().length > 0)
+  const foundNotes = []
   
-  // Check if the highlighted text matches the play line (from notes-integration.js)
-  function matchesText(playLine, searchText) {
-    // Exact match
-    if (playLine === searchText) {
-      return true;
+  // Search through all scenes and lines for matches (same logic as notes-integration.js)
+  for (const [sceneName, sceneData] of Object.entries(notesData)) {
+    for (const lineNumber in sceneData) {
+      const lineData = sceneData[lineNumber];
+      if (lineData && lineData.play) {
+        // Check if any of the selected lines match this play line
+        for (const line of lines) {
+          const searchText = line.toLowerCase().trim();
+          const playLine = lineData.play.toLowerCase().trim();
+          
+          // Multiple matching strategies (from notes-integration.js)
+          if (matchesText(playLine, searchText)) {
+            foundNotes.push({
+              line: lineNumber,
+              play: lineData.play,
+              scene: sceneName,
+              notes: lineData.notes || []
+            })
+            console.log(`Found notes for line ${lineNumber} in ${sceneName}: ${lineData.notes.length} entries`)
+          }
+        }
+      }
     }
-    
-    // Contains match (search text is part of play line)
-    if (playLine.includes(searchText) && searchText.length > 3) {
-      return true;
-    }
-    
-    // Play line is part of search text
-    if (searchText.includes(playLine) && playLine.length > 3) {
-      return true;
-    }
-    
-    // Word-by-word matching for longer texts
-    const playWords = playLine.split(/\s+/).filter(word => word.length > 2);
-    const searchWords = searchText.split(/\s+/).filter(word => word.length > 2);
-    
-    if (playWords.length > 0 && searchWords.length > 0) {
-      const matchingWords = playWords.filter(word => 
-        searchWords.some(searchWord => 
-          word.includes(searchWord) || searchWord.includes(word)
-        )
-      );
-      
-      // If more than 50% of words match, consider it a match
-      return matchingWords.length >= Math.min(playWords.length, searchWords.length) * 0.5;
-    }
-    
-    return false;
   }
+  
+  if (foundNotes.length > 0) {
+    return foundNotes
+  }
+  
+  console.log('No notes found, using fallback')
+  return getFallbackNotes(text)
+}
+
+// Check if the highlighted text matches the play line (from notes-integration.js)
+function matchesText(playLine, searchText) {
+  // Exact match
+  if (playLine === searchText) {
+    return true;
+  }
+  
+  // Contains match (search text is part of play line)
+  if (playLine.includes(searchText) && searchText.length > 3) {
+    return true;
+  }
+  
+  // Play line is part of search text
+  if (searchText.includes(playLine) && playLine.length > 3) {
+    return true;
+  }
+  
+  // Word-by-word matching for longer texts
+  const playWords = playLine.split(/\s+/).filter(word => word.length > 2);
+  const searchWords = searchText.split(/\s+/).filter(word => word.length > 2);
+  
+  if (playWords.length > 0 && searchWords.length > 0) {
+    const matchingWords = playWords.filter(word => 
+      searchWords.some(searchWord => 
+        word.includes(searchWord) || searchWord.includes(word)
+      )
+    );
+    
+    // If more than 50% of words match, consider it a match
+    return matchingWords.length >= Math.min(playWords.length, searchWords.length) * 0.5;
+  }
+  
+  return false;
 }
 
 
