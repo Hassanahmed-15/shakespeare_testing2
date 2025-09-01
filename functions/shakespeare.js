@@ -7,8 +7,16 @@ const openai = new OpenAI({
 // Function to find relevant notes from Macbeth database
 async function findRelevantNotes(text, scene = null) {
   try {
-    // Load Macbeth notes from the public URL
-    const response = await fetch('https://shakespeare-variorum.netlify.app/Public/Data/macbeth_notes.json')
+    // Load Macbeth notes from the public URL with timeout
+    const controller = new AbortController()
+    const timeoutId = setTimeout(() => controller.abort(), 5000) // 5 second timeout
+    
+    const response = await fetch('https://shakespeare-variorum.netlify.app/Public/Data/macbeth_notes.json', {
+      signal: controller.signal
+    })
+    
+    clearTimeout(timeoutId)
+    
     if (!response.ok) {
       console.error('Failed to load Macbeth notes:', response.status)
       return []
@@ -97,7 +105,13 @@ exports.handler = async (event, context) => {
     }
   }
 
+  // Set a timeout for the entire function (25 seconds to stay under Netlify's 30s limit)
+  const timeoutPromise = new Promise((_, reject) => {
+    setTimeout(() => reject(new Error('Function timeout')), 25000)
+  })
+
   try {
+    const mainPromise = (async () => {
     const { text, level = 'basic', model = 'gpt-4o-mini', mode } = JSON.parse(event.body)
 
     if (!text) {
@@ -139,7 +153,16 @@ exports.handler = async (event, context) => {
     const isMultipleLines = lines.length >= 2 && lines.length <= 5
 
     // Find relevant notes from Macbeth database (only for Full Fathom Five)
-    const relevantNotes = analysisMode === 'fullfathomfive' ? await findRelevantNotes(text) : []
+    let relevantNotes = []
+    if (analysisMode === 'fullfathomfive') {
+      try {
+        relevantNotes = await findRelevantNotes(text)
+        console.log('Macbeth notes loaded:', relevantNotes.length, 'notes found')
+      } catch (error) {
+        console.error('Failed to load Macbeth notes, continuing without them:', error.message)
+        relevantNotes = [] // Continue without notes if loading fails
+      }
+    }
     
     // Build the system prompt based on analysis mode
     let systemPrompt = ''
@@ -305,23 +328,27 @@ FORMAT REQUIREMENTS:
       analysis = { 'Analysis': response }
     }
 
-    return {
-      statusCode: 200,
-      headers,
-      body: JSON.stringify({
-        choices: [{
-          message: {
-            content: response
-          }
-        }],
-        analysis: analysis,
-        mode: analysisMode,
-        text: text,
-        lineCount: lines.length,
-        relevantNotes: relevantNotes,
-        usage: completion.usage
-      })
-    }
+      return {
+        statusCode: 200,
+        headers,
+        body: JSON.stringify({
+          choices: [{
+            message: {
+              content: response
+            }
+          }],
+          analysis: analysis,
+          mode: analysisMode,
+          text: text,
+          lineCount: lines.length,
+          relevantNotes: relevantNotes,
+          usage: completion.usage
+        })
+      }
+    })()
+
+    // Race between main function and timeout
+    return await Promise.race([mainPromise, timeoutPromise])
 
   } catch (error) {
     console.error('Error:', error)
