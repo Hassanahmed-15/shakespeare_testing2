@@ -347,7 +347,7 @@ For this section, fetch commentary from macbeth_notes.json.
     }
 
     // Get max_tokens from request or use default
-    const maxTokens = event.body.max_tokens || (analysisMode === 'fullfathomfive' ? 8000 : 3000)
+    const maxTokens = (analysisMode === 'fullfathomfive' ? 8000 : 3000)
 
     // Make the API call
     const completion = await openai.chat.completions.create({
