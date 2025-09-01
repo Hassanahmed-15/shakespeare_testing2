@@ -5065,6 +5065,10 @@
                 console.log('New Variorum Analysis found in analysis object!');
                 console.log('Length:', analysis['New Variorum Analysis'].length);
                 console.log('Preview:', analysis['New Variorum Analysis'].substring(0, 200));
+                console.log('Full content:', analysis['New Variorum Analysis']);
+            } else {
+                console.log('New Variorum Analysis NOT found in analysis object');
+                console.log('Available sections:', Object.keys(analysis));
             }
             
             let formattedContent = '';
