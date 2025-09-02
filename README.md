@@ -1,7 +1,7 @@
 # Shakespeare Digital Variorum
 
 A secure, AI-powered Shakespeare analysis tool that uses serverless functions to keep your API keys safe.
-
+ 
 ## Features
 
 - 🔒 **Secure API Key Storage** - API keys are stored server-side, never exposed to the browser 
