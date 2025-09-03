@@ -192,9 +192,9 @@ async function findRelevantNotes(text, scene = null) {
     
     // Fallback to external URLs if local file not available
     const urls = [
-      'https://shakespeare-variorum.netlify.app/Public/Data/macbeth_notes.json',
-      'https://raw.githubusercontent.com/Hassanahmed-15/Shakespeare-Variorum/main/Public/Data/macbeth_notes.json',
-      'https://github.com/Hassanahmed-15/Shakespeare-Variorum/raw/main/Public/Data/macbeth_notes.json'
+      'https://shakespeare-variorum.netlify.app/macbeth_notes_complete_expanded.json',
+      'https://raw.githubusercontent.com/Hassanahmed-15/Shakespeare-Variorum/main/macbeth_notes_complete_expanded.json',
+      'https://github.com/Hassanahmed-15/Shakespeare-Variorum/raw/main/macbeth_notes_complete_expanded.json'
     ]
     
     let notesData = null

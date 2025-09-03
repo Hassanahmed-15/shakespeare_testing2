@@ -35,7 +35,7 @@ class ShakespeareApp {
 
     async loadMacbethData() {
         try {
-            const response = await fetch('/Public/Data/macbeth_notes.json');
+            const response = await fetch('/macbeth_notes_complete_expanded.json');
             if (response.ok) {
                 this.macbethData = await response.json();
                 console.log('📚 Macbeth data loaded successfully');
