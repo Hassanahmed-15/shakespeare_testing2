@@ -6197,316 +6197,13 @@
             }
         }
 
-        // Macbeth Notes Connector - Integrated directly
-        class MacbethNotesConnector {
-            constructor() {
-                this.notesData = null;
-                this.isLoaded = false;
-                this.loadingPromise = null;
-            }
+        // Backend handles all database connections - no frontend processing needed
 
-            async loadNotesData() {
-                if (this.loadingPromise) {
-                    return this.loadingPromise;
-                }
-                this.loadingPromise = this._loadNotesData();
-                return this.loadingPromise;
-            }
-
-            async _loadNotesData() {
-                if (this.isLoaded && this.notesData) {
-                    return this.notesData;
-                }
-
-                try {
-                    console.log('🔄 Loading Macbeth notes database...');
-                    
-                    const possiblePaths = [
-                        './macbeth_notes_cleaned_play.json',
-                        'macbeth_notes_cleaned_play.json',
-                        '/macbeth_notes_cleaned_play.json'
-                    ];
-
-                    for (const path of possiblePaths) {
-                        try {
-                            console.log(`🔍 Trying to load from: ${path}`);
-                            const response = await fetch(path);
-                            
-                            if (response.ok) {
-                                const text = await response.text();
-                                this.notesData = JSON.parse(text);
-                                this.isLoaded = true;
-                                
-                                console.log('✅ Successfully loaded Macbeth notes database');
-                                console.log(`📊 Database contains ${Object.keys(this.notesData).length} scenes`);
-                                return this.notesData;
-                            }
-                        } catch (error) {
-                            console.log(`❌ Failed to load from ${path}: ${error.message}`);
-                        }
-                    }
-                    
-                    throw new Error('Could not load macbeth_notes_cleaned_play.json from any location');
-                    
-                } catch (error) {
-                    console.error('❌ Error loading Macbeth notes:', error);
-                    this.isLoaded = false;
-                    throw error;
-                }
-            }
-
-            findCommentaryByText(searchText) {
-                if (!this.isLoaded || !this.notesData) {
-                    console.warn('⚠️ Notes database not loaded');
-                    return [];
-                }
-
-                const results = [];
-                const searchLower = searchText.toLowerCase().trim();
-                
-                console.log(`🔍 Searching for text: "${searchText}"`);
-
-                const lineNumbers = this.extractLineNumbers(searchText);
-                
-                for (const [sceneKey, sceneData] of Object.entries(this.notesData)) {
-                    for (const [lineNumber, lineData] of Object.entries(sceneData)) {
-                        if (!lineData.play) continue;
-                        
-                        const playText = lineData.play.toLowerCase().trim();
-                        let matchScore = 0;
-                        let matchType = 'none';
-
-                        if (lineNumbers.length > 0 && lineNumbers.includes(parseInt(lineNumber))) {
-                            matchScore = 100;
-                            matchType = 'line_number';
-                        } 
-                        else if (playText === searchLower) {
-                            matchScore = 95;
-                            matchType = 'exact';
-                        }
-                        else if (searchLower.includes(playText) && playText.length > 5) {
-                            matchScore = 85;
-                            matchType = 'contains_play';
-                        }
-                        else if (playText.includes(searchLower) && searchLower.length > 5) {
-                            matchScore = 80;
-                            matchType = 'contains_search';
-                        }
-                        else {
-                            const wordMatch = this.calculateWordMatch(playText, searchLower);
-                            if (wordMatch > 0.4) {
-                                matchScore = Math.floor(wordMatch * 70);
-                                matchType = 'word_match';
-                            }
-                        }
-
-                        if (matchScore > 0) {
-                            const [act, scene] = this.parseSceneKey(sceneKey);
-                            results.push({
-                                act: act,
-                                scene: scene,
-                                lineNumber: parseInt(lineNumber),
-                                sceneKey: sceneKey,
-                                playText: lineData.play,
-                                notes: lineData.notes || [],
-                                hasNotes: lineData.notes && lineData.notes.length > 0,
-                                matchScore: matchScore,
-                                matchType: matchType
-                            });
-                        }
-                    }
-                }
-
-                results.sort((a, b) => b.matchScore - a.matchScore);
-                
-                console.log(`✅ Found ${results.length} matches for "${searchText}"`);
-                return results;
-            }
-
-            extractLineNumbers(text) {
-                const lineNumbers = [];
-                const matches = text.match(/\b(\d+)\.?\s/g);
-                
-                if (matches) {
-                    for (const match of matches) {
-                        const num = parseInt(match.replace(/[^\d]/g, ''));
-                        if (num > 0 && num < 1000) {
-                            lineNumbers.push(num);
-                        }
-                    }
-                }
-                
-                return lineNumbers;
-            }
-
-            calculateWordMatch(text1, text2) {
-                const words1 = text1.split(/\s+/).filter(word => word.length > 2);
-                const words2 = text2.split(/\s+/).filter(word => word.length > 2);
-                
-                if (words1.length === 0 || words2.length === 0) return 0;
-                
-                const matchingWords = words1.filter(word => 
-                    words2.some(searchWord => 
-                        word.includes(searchWord) || searchWord.includes(word)
-                    )
-                );
-                
-                return matchingWords.length / Math.min(words1.length, words2.length);
-            }
-
-            parseSceneKey(sceneKey) {
-                const actMatch = sceneKey.match(/ACT (\d+|[IVX]+)/i);
-                const sceneMatch = sceneKey.match(/SCENE (\d+|[IVX]+)/i);
-                
-                const act = actMatch ? actMatch[1] : '1';
-                const scene = sceneMatch ? sceneMatch[1] : '1';
-                
-                return [act, scene];
-            }
-
-            // Find commentary within a specific scene
-            findCommentaryInScene(searchText, sceneName) {
-                if (!this.isLoaded || !this.notesData) {
-                    console.warn('⚠️ Notes database not loaded');
-                    return null;
-                }
-
-                // Normalize scene name to match database format
-                let normalizedScene = sceneName;
-                if (sceneName && !sceneName.startsWith('ACT')) {
-                    // Convert "Act 1, Scene 1" to "ACT 1, SCENE 1"
-                    normalizedScene = sceneName.replace(/act/gi, 'ACT').replace(/scene/gi, 'SCENE');
-                }
-
-                console.log(`🔍 Searching in scene: "${normalizedScene}"`);
-
-                if (!this.notesData[normalizedScene]) {
-                    console.log(`❌ Scene not found in database: ${normalizedScene}`);
-                    return null;
-                }
-
-                const sceneData = this.notesData[normalizedScene];
-                const searchLower = searchText.toLowerCase().trim();
-                const lineNumbers = this.extractLineNumbers(searchText);
-                
-                let bestMatch = null;
-                let bestScore = 0;
-
-                // Search through all lines in this specific scene
-                for (const [lineNumber, lineData] of Object.entries(sceneData)) {
-                    if (!lineData.play) continue;
-                    
-                    const playText = lineData.play.toLowerCase().trim();
-                    let matchScore = 0;
-                    let matchType = 'none';
-
-                    // Prioritize line number matches
-                    if (lineNumbers.length > 0 && lineNumbers.includes(parseInt(lineNumber))) {
-                        matchScore = 100;
-                        matchType = 'line_number';
-                    } 
-                    else if (playText === searchLower) {
-                        matchScore = 95;
-                        matchType = 'exact';
-                    }
-                    else if (searchLower.includes(playText) && playText.length > 5) {
-                        matchScore = 85;
-                        matchType = 'contains_play';
-                    }
-                    else if (playText.includes(searchLower) && searchLower.length > 5) {
-                        matchScore = 80;
-                        matchType = 'contains_search';
-                    }
-                    else {
-                        const wordMatch = this.calculateWordMatch(playText, searchLower);
-                        if (wordMatch > 0.4) {
-                            matchScore = Math.floor(wordMatch * 70);
-                            matchType = 'word_match';
-                        }
-                    }
-
-                    if (matchScore > bestScore) {
-                        const [act, scene] = this.parseSceneKey(normalizedScene);
-                        bestMatch = {
-                            act: act,
-                            scene: scene,
-                            lineNumber: parseInt(lineNumber),
-                            sceneKey: normalizedScene,
-                            playText: lineData.play,
-                            notes: lineData.notes || [],
-                            hasNotes: lineData.notes && lineData.notes.length > 0,
-                            matchScore: matchScore,
-                            matchType: matchType
-                        };
-                        bestScore = matchScore;
-                    }
-                }
-
-                if (bestMatch) {
-                    console.log(`✅ Found scene-specific match: Line ${bestMatch.lineNumber}, ${bestMatch.matchType} (score: ${bestMatch.matchScore})`);
-                }
-
-                return bestMatch;
-            }
-
-            formatCommentary(commentaryData) {
-                if (!commentaryData || !commentaryData.hasNotes) {
-                    return `
-                        <div class="variorum-commentary">
-                            <h3>📚 New Variorum Analysis</h3>
-                            <p class="no-notes">No historical commentary available for this line.</p>
-                            <div class="line-info">
-                                <strong>Line:</strong> ${commentaryData ? commentaryData.playText : 'Unknown'}
-                                <br><strong>Location:</strong> ${commentaryData ? commentaryData.sceneKey + ', Line ' + commentaryData.lineNumber : 'Unknown'}
-                            </div>
-                        </div>
-                    `;
-                }
-
-                let html = `
-                    <div class="variorum-commentary">
-                        <h3>📚 New Variorum Analysis</h3>
-                        <div class="line-info">
-                            <strong>Line ${commentaryData.lineNumber}:</strong> "${commentaryData.playText}"
-                            <br><strong>Location:</strong> ${commentaryData.sceneKey}
-                        </div>
-                        <div class="commentary-content">
-                `;
-
-                commentaryData.notes.forEach((note, index) => {
-                    html += `
-                        <div class="note-entry">
-                            <div class="note-text">${this.formatNoteText(note)}</div>
-                        </div>
-                    `;
-                });
-
-                html += `
-                        </div>
-                    </div>
-                `;
-
-                return html;
-            }
-
-            formatNoteText(note) {
-                return note
-                    .replace(/\n/g, '<br>')
-                    .replace(/\[([^\]]+)\]/g, '<em>$1</em>')
-                    .replace(/—([^—]+)—/g, '<strong>$1</strong>')
-                    .replace(/\.\.\./g, '…');
-            }
-        }
-
-        // Create global instance
-        window.macbethNotesConnector = new MacbethNotesConnector();
-
-        // Enhanced explainHighlighted function with Macbeth commentary
-        async function explainHighlightedWithCommentary() {
-            console.log('🔍 explainHighlighted with commentary called');
+        // Use the original explainHighlighted function - backend now handles the database connection
+        async function explainHighlighted() {
+            console.log('🔍 explainHighlighted called');
             console.log('📝 Selected lines:', selectedLines);
             console.log('🎯 Current tab:', currentTab);
-            console.log('🎭 Current scene:', currentScene);
             
             if (selectedLines.length === 0) {
                 alert('Please select text in the play first.');
@@ -6516,68 +6213,24 @@
             const textToAnalyze = selectedLines.join('\n');
             console.log('📖 Text to analyze:', textToAnalyze);
             
-            // Try to find commentary from the Macbeth database
-            let commentary = null;
-            try {
-                await window.macbethNotesConnector.loadNotesData();
-                
-                // Try to match with current scene context first
-                if (currentScene) {
-                    console.log('🎯 Searching in context of:', currentScene);
-                    commentary = window.macbethNotesConnector.findCommentaryInScene(textToAnalyze, currentScene);
-                }
-                
-                // If no scene-specific match, search globally
-                if (!commentary) {
-                    const results = window.macbethNotesConnector.findCommentaryByText(textToAnalyze);
-                    if (results && results.length > 0) {
-                        commentary = results[0]; // Take the best match
-                    }
-                }
-                
-                if (commentary) {
-                    console.log('✅ Found commentary:', commentary);
-                }
-            } catch (error) {
-                console.error('❌ Error loading commentary:', error);
-            }
-
-            // Update the New Variorum Analysis section for ALL analysis levels
-            const variorumSection = document.getElementById('variorumSection');
-            const variorumContent = document.getElementById('variorumContent');
-            
-            if (variorumSection && variorumContent) {
-                variorumSection.style.display = 'block';
-                
-                if (commentary && commentary.hasNotes) {
-                    variorumContent.innerHTML = window.macbethNotesConnector.formatCommentary(commentary);
-                    console.log('✅ Updated variorum section with commentary');
-                } else {
-                    variorumContent.innerHTML = `
-                        <div class="no-commentary">
-                            <h3>📚 New Variorum Analysis</h3>
-                            <p>No historical commentary found for the selected text.</p>
-                            <p class="help-text">The database contains extensive commentary for all 5 acts of Macbeth. Try selecting a line with a line number (e.g., "5. When shall we three meet again").</p>
-                            <div class="search-info">
-                                <strong>Searched text:</strong> "${textToAnalyze}"<br>
-                                <strong>Current scene:</strong> ${currentScene || 'Unknown'}
-                            </div>
-                        </div>
-                    `;
-                    console.log('⚠️ No commentary found, showing placeholder');
-                }
-            }
-            
-            // Continue with the original analysis
+            // Set analysis mode based on current tab
             const mode = currentTab || 'basic';
+            console.log('🎯 Current tab/mode:', currentTab, '→', mode);
+            console.log('🎭 Analysis mode:', mode);
+            
+            // Clear previous results first
             const analysisResult = document.getElementById('analysisResult');
             const variorumResult = document.getElementById('variorumResult');
+            const variorumContent = document.getElementById('variorumContent');
             if (analysisResult) analysisResult.innerHTML = '';
             if (variorumResult) variorumResult.innerHTML = '';
+            if (variorumContent) variorumContent.innerHTML = '';
             
+            // Use the proper API-based analysis function - backend handles database connection
             console.log('📚 Using API-based analysis for mode:', mode);
             analyzeHighlightedText(textToAnalyze, mode);
             
+            // Ensure the analyze button remains visible and clickable
             const analyzeButton = document.getElementById('analyzeButton');
             if (analyzeButton) {
                 analyzeButton.style.display = 'block';
@@ -6602,20 +6255,8 @@
                 });
             }
             
-            // Initialize Macbeth Notes Connector
-            try {
-                await window.macbethNotesConnector.loadNotesData();
-                console.log('🎭 Macbeth Notes Connector ready!');
-                
-                // Replace the analyze button functionality
-                const analyzeButton = document.getElementById('analyzeButton');
-                if (analyzeButton) {
-                    analyzeButton.setAttribute('onclick', 'explainHighlightedWithCommentary()');
-                    console.log('✅ Analyze button enhanced with Macbeth commentary');
-                }
-            } catch (error) {
-                console.error('❌ Failed to initialize Macbeth Notes Connector:', error);
-            }
+            // Backend handles all Macbeth database connections
+            console.log('✅ Analysis system ready - backend will handle Macbeth commentary from JSON file');
             
             // Initialize Geneva Bible search
             initializeBibleSearch();
