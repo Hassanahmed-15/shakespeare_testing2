@@ -180,7 +180,7 @@ async function findRelevantNotes(text, scene = null) {
     
     // Try to fetch from the local server first (simple approach)
     try {
-      const response = await fetch('/Public/Data/macbeth_notes.json')
+      const response = await fetch('/macbeth_notes_cleaned_play.json')
       if (response.ok) {
         const notesData = await response.json()
         console.log('Successfully loaded Macbeth notes from local server')
@@ -243,6 +243,8 @@ function processNotesWithData(notesData, text) {
   const lines = text.split('\n').filter(line => line.trim().length > 0)
   const foundNotes = []
   
+  console.log('Processing text with comprehensive Macbeth database:', Object.keys(notesData).length, 'scenes available')
+  
   // Extract line numbers from the highlighted text first
   const highlightedLineNumbers = []
   for (const line of lines) {
@@ -267,9 +269,10 @@ function processNotesWithData(notesData, text) {
   
   console.log('Highlighted line numbers:', highlightedLineNumbers)
   
-  // Only search for the specific line numbers that were highlighted
-  const processedLineNumbers = new Set() // Track which line numbers we've already processed
+  // Track which line numbers we've already processed
+  const processedLineNumbers = new Set()
   
+  // Process each highlighted line number to ensure 100% coverage
   for (const highlightedLine of highlightedLineNumbers) {
     const targetLineNumber = highlightedLine.number
     
@@ -279,60 +282,69 @@ function processNotesWithData(notesData, text) {
       continue
     }
     
-    // Search through all scenes for this specific line number
+    let lineFound = false
+    
+    // Search through ALL scenes for this specific line number
     for (const [sceneName, sceneData] of Object.entries(notesData)) {
       if (sceneData[targetLineNumber] && sceneData[targetLineNumber].play) {
         const lineData = sceneData[targetLineNumber]
+        lineFound = true
         
-        // Check if the highlighted text matches this specific line
-        const searchText = highlightedLine.text.toLowerCase().trim()
-        const playLine = lineData.play.toLowerCase().trim()
+        // Always include the line data, regardless of text match
+        // This ensures 100% line coverage
+        const notes = lineData.notes || []
         
-        // Multiple matching strategies (from notes-integration.js)
-        if (matchesText(playLine, searchText)) {
-          foundNotes.push({
-            line: targetLineNumber,
-            play: lineData.play,
-            scene: sceneName,
-            notes: lineData.notes || []
-          })
-          console.log(`Found notes for line ${targetLineNumber} in ${sceneName}: ${lineData.notes.length} entries`)
-          processedLineNumbers.add(targetLineNumber) // Mark this line number as processed
-          break // Only take the first match for this line number to avoid duplicates
-        } else {
-          // If no match found, still include the notes if we have a line number match
-          // This ensures we get notes for any line number, even if text doesn't match exactly
-          console.log(`Text match failed for line ${targetLineNumber}, but including notes anyway`)
-          foundNotes.push({
-            line: targetLineNumber,
-            play: lineData.play,
-            scene: sceneName,
-            notes: lineData.notes || []
-          })
-          processedLineNumbers.add(targetLineNumber)
-          break
+        // If no notes available, add a placeholder
+        if (notes.length === 0) {
+          notes.push("No commentary available for this line.")
         }
+        
+        foundNotes.push({
+          line: targetLineNumber,
+          play: lineData.play,
+          scene: sceneName,
+          notes: notes,
+          hasNotes: notes.length > 0 && notes[0] !== "No commentary available for this line."
+        })
+        
+        console.log(`✅ Line ${targetLineNumber} from ${sceneName}: ${notes.length} note entries`)
+        processedLineNumbers.add(targetLineNumber)
+        break // Found the line, move to next highlighted line
       }
+    }
+    
+    // If line number not found in any scene, add a placeholder
+    if (!lineFound) {
+      console.log(`⚠️  Line ${targetLineNumber} not found in any scene, adding placeholder`)
+      foundNotes.push({
+        line: targetLineNumber,
+        play: `Line ${targetLineNumber} (text not found)`,
+        scene: "Unknown Scene",
+        notes: ["Line not found in database. Please check the line number."],
+        hasNotes: false
+      })
+      processedLineNumbers.add(targetLineNumber)
     }
   }
   
   if (foundNotes.length > 0) {
-    console.log(`Returning ${foundNotes.length} notes for specific line numbers`)
+    console.log(`✅ Returning ${foundNotes.length} notes with 100% line coverage`)
     foundNotes.forEach((note, index) => {
-      console.log(`Note ${index + 1}: Line ${note.line} from ${note.scene} - ${note.notes.length} note entries`)
+      const status = note.hasNotes ? "✅" : "⚠️"
+      console.log(`${status} Note ${index + 1}: Line ${note.line} from ${note.scene} - ${note.notes.length} entries`)
     })
     return foundNotes
   }
   
-  // If no line number matches found, try broader text search across all scenes
-  console.log('No specific line number notes found, trying broader text search...')
+  // If no line numbers found, try broader text search across all scenes
+  console.log('No line numbers found, trying broader text search...')
   const broaderMatches = searchAllScenesForText(notesData, text)
   if (broaderMatches.length > 0) {
     console.log(`Found ${broaderMatches.length} broader text matches`)
     return broaderMatches
   }
   
-  console.log('No notes found in database, using fallback')
+  console.log('No matches found in database, using fallback')
   return getFallbackNotes(text)
 }
 
@@ -353,12 +365,19 @@ function searchAllScenesForText(notesData, searchText) {
         
         // Check if the search text appears in this line
         if (playLine.includes(searchLower) || searchLower.includes(playLine)) {
+          // Ensure notes are always available
+          const notes = lineData.notes || []
+          if (notes.length === 0) {
+            notes.push("No commentary available for this line.")
+          }
+          
           results.push({
             line: lineNumber,
             play: lineData.play,
             scene: sceneName,
-            notes: lineData.notes || [],
-            matchType: 'text_search'
+            notes: notes,
+            matchType: 'text_search',
+            hasNotes: notes.length > 0 && notes[0] !== "No commentary available for this line."
           })
           
           // Limit results to avoid overwhelming
@@ -374,7 +393,7 @@ function searchAllScenesForText(notesData, searchText) {
     }
   }
   
-  console.log(`Found ${results.length} text matches across all scenes`)
+  console.log(`Found ${results.length} text matches across all scenes with 100% coverage`)
   return results
 }
 
