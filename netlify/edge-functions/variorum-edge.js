@@ -118,11 +118,11 @@ export default async (request, context) => {
     let macbethNotes = null;
     const notesUrls = [
       // Primary: Current site
-      `${new URL(request.url).protocol}//${new URL(request.url).hostname}/macbeth_notes_complete_expanded.json`,
-      // Fallback 1: Netlify deployment
-      'https://shakespeare-variorum.netlify.app/macbeth_notes_complete_expanded.json',
-      // Fallback 2: GitHub raw
-      'https://raw.githubusercontent.com/Hassanahmed-15/Shakespeare-Variorum/main/macbeth_notes_complete_expanded.json'
+      `${new URL(request.url).protocol}//${new URL(request.url).hostname}/macbeth_notes_cleaned_play.json`,
+      // Fallback 1: Public folder
+      `${new URL(request.url).protocol}//${new URL(request.url).hostname}/Public/Data/macbeth_notes_cleaned_play.json`,
+      // Fallback 2: Root level
+      `${new URL(request.url).protocol}//${new URL(request.url).hostname}/Public/macbeth_notes_cleaned_play.json`
     ];
     
     for (const notesUrl of notesUrls) {

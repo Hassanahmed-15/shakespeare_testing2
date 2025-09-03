@@ -1,6 +1,9 @@
 const { OpenAI } = require('openai')
-const fs = require('fs').promises
-const path = require('path')
+
+// Add fetch polyfill for Node.js environments that don't have it
+if (!global.fetch) {
+  global.fetch = require('node-fetch')
+}
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -51,36 +54,48 @@ function getFallbackNotes(text) {
 // Function to find relevant notes from Macbeth database
 async function findRelevantNotes(text, scene = null) {
   try {
-    console.log('Loading Macbeth notes from JSON file')
+    console.log('Loading Macbeth notes from URL (serverless environment)')
+    console.log('Input text:', text)
     
+    // For now, return empty array to avoid 502 errors while we debug
+    console.log('⚠️ Temporarily returning empty notes to avoid 502 errors')
+    return []
+    
+    /* TEMPORARILY DISABLED - WILL RE-ENABLE ONCE WE FIX 502 ISSUE
     let notesData = null;
-    const possiblePaths = [
-      path.join(process.cwd(), 'macbeth_notes_cleaned_play.json'),
-      path.join(process.cwd(), 'Public/Data/macbeth_notes_cleaned_play.json'),
-      path.join(__dirname, '../macbeth_notes_cleaned_play.json'),
-      path.join(__dirname, '../Public/Data/macbeth_notes_cleaned_play.json')
+    const baseUrl = process.env.URL || 'https://shakespeare-variorum.netlify.app';
+    const possibleUrls = [
+      `${baseUrl}/macbeth_notes_cleaned_play.json`,
+      `${baseUrl}/Public/Data/macbeth_notes_cleaned_play.json`,
+      'https://raw.githubusercontent.com/Hassanahmed-15/Shakespeare-Variorum/main/macbeth_notes_cleaned_play.json'
     ];
     
-    for (const filePath of possiblePaths) {
+    for (const url of possibleUrls) {
       try {
-        console.log(`Trying to load from: ${filePath}`);
-        const fileContent = await fs.readFile(filePath, 'utf8');
-        notesData = JSON.parse(fileContent);
-        console.log(`✅ Successfully loaded Macbeth notes from: ${filePath}`);
-        console.log(`📊 Database contains ${Object.keys(notesData).length} scenes`);
-        break;
+        console.log(`Trying to load from: ${url}`);
+        const response = await fetch(url, { timeout: 5000 });
+        if (response.ok) {
+          const fileContent = await response.text();
+          notesData = JSON.parse(fileContent);
+          console.log(`✅ Successfully loaded Macbeth notes from: ${url}`);
+          console.log(`📊 Database contains ${Object.keys(notesData).length} scenes`);
+          break;
+        } else {
+          console.log(`❌ HTTP ${response.status} from ${url}`);
+        }
       } catch (error) {
-        console.log(`❌ Failed to load from ${filePath}: ${error.message}`);
+        console.log(`❌ Failed to load from ${url}: ${error.message}`);
       }
     }
     
     if (!notesData) {
-      console.error('❌ Could not load macbeth_notes_cleaned_play.json from any location');
+      console.error('❌ Could not load macbeth_notes_cleaned_play.json from any URL');
       return getFallbackNotes(text);
     }
     
     console.log('✅ Successfully loaded Macbeth database with', Object.keys(notesData).length, 'scenes')
     return processNotesWithData(notesData, text)
+    */
     
   } catch (error) {
     console.error('Error loading Macbeth notes:', error)
@@ -353,11 +368,13 @@ exports.handler = async (event, context) => {
     let relevantNotes = []
     if (analysisMode === 'fullfathomfive') {
       try {
+        console.log('Attempting to load Macbeth notes...')
         relevantNotes = await findRelevantNotes(text)
         console.log('Macbeth notes loaded:', relevantNotes.length, 'notes found')
         console.log('Notes details:', relevantNotes)
       } catch (error) {
         console.error('Failed to load Macbeth notes, continuing without them:', error.message)
+        console.error('Error stack:', error.stack)
         relevantNotes = [] // Continue without notes if loading fails
       }
     }
