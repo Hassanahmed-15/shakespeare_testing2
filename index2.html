@@ -1360,25 +1360,6 @@
             margin: 0;
             white-space: pre;
             font-family: monospace;
-            cursor: pointer;
-            padding: 4px 8px;
-            border-radius: 4px;
-            transition: background-color 0.2s ease;
-            user-select: none;
-        }
-        
-        .play-line:hover {
-            background-color: rgba(0, 0, 0, 0.05);
-        }
-        
-        .play-line.selected {
-            background-color: #fbbf24;
-            color: #000;
-        }
-        
-        .play-line.range-selected {
-            background-color: #f59e0b;
-            color: #000;
         }
 
         .highlight {
@@ -1774,182 +1755,6 @@
         .analysis .copy-btn:hover {
             background: var(--panel);
             color: var(--ink-1);
-        }
-        
-        /* Additional styles for analysis elements */
-        .analysis-instruction {
-            color: var(--ink-3);
-            font-size: 14px;
-            margin: 10px 0;
-        }
-        
-        .analyze-button {
-            background: #000000;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 600;
-            margin: 15px 0;
-            width: 100%;
-            transition: all 0.2s ease;
-        }
-        
-        .analyze-button:hover {
-            background: #333333;
-        }
-        
-        .analysis-section {
-            background: white;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 20px 0;
-            border: 1px solid #ddd;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        .copy-button {
-            background: #8b4513;
-            color: white;
-            border: none;
-            padding: 6px 12px;
-            border-radius: 4px;
-            font-size: 0.7rem;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-        
-        .copy-button:hover {
-            background: #a0522d;
-        }
-        
-        .result {
-            background: #f8f9fa;
-            border-left: 5px solid #8b4513;
-            padding: 20px;
-            border-radius: 8px;
-            margin-top: 20px;
-            white-space: pre-wrap;
-            font-family: 'Georgia', serif;
-            line-height: 1.6;
-        }
-        
-        /* Variorum section styling */
-        #variorumSection {
-            background: #f8f9fa;
-            border: 2px solid #f59e0b;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 20px 0;
-        }
-        
-        .notes-header h4 {
-            color: #f59e0b;
-            margin-bottom: 10px;
-            font-size: 16px;
-        }
-        
-        .note-item {
-            background: #ffffff;
-            border-left: 3px solid #f59e0b;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 6px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        .loading {
-            text-align: center;
-            color: #666;
-            font-style: italic;
-            padding: 20px;
-        }
-        
-        /* Analysis section styling */
-        .analysis-section {
-            margin-bottom: 15px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid #e5e7eb;
-        }
-        
-        .analysis-section:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-        }
-        
-        .analysis-section h4 {
-            color: #8b4513;
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 8px;
-            padding-bottom: 4px;
-            border-bottom: 2px solid #f59e0b;
-        }
-        
-        .analysis-section p {
-            margin-bottom: 8px;
-            line-height: 1.5;
-        }
-        
-        .analysis-section ul {
-            margin-left: 20px;
-            margin-bottom: 8px;
-        }
-        
-        .analysis-section li {
-            margin-bottom: 4px;
-            line-height: 1.4;
-        }
-
-
-
-        /* Variorum Notes Styling */
-        .variorum-notes {
-            background: #f8f9fa;
-            border: 1px solid #e9ecef;
-            border-radius: 8px;
-            padding: 16px;
-            margin: 12px 0;
-        }
-        
-        .note-item {
-            margin-bottom: 20px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid #dee2e6;
-        }
-        
-        .note-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-        
-        .note-header {
-            color: #8b4513;
-            font-weight: 600;
-            margin-bottom: 8px;
-            font-size: 14px;
-        }
-        
-        .note-text {
-            font-style: italic;
-            color: #6c757d;
-            margin-bottom: 12px;
-            padding: 8px;
-            background: #ffffff;
-            border-left: 3px solid #8b4513;
-            border-radius: 4px;
-        }
-        
-        .note-content {
-            color: #495057;
-            line-height: 1.6;
-        }
-        
-        .note-content p {
-            margin-bottom: 8px;
         }
 
         /* Researching animation */
@@ -2529,9 +2334,9 @@
         <div class="analysis panel" id="analysisPanel">
             <!-- Analysis Mode Selector -->
             <div class="segment">
-                <button onclick="switchTab('basic')" aria-pressed="true">Basic</button>
-                <button onclick="switchTab('expert')" aria-pressed="false">Expert</button>
-                <button onclick="switchTab('fullfathomfive')" aria-pressed="false">Full Fathom Five</button>
+                <button onclick="setAnalysisMode('basic')" aria-pressed="true">Basic</button>
+                <button onclick="setAnalysisMode('expert')" aria-pressed="false">Expert</button>
+                <button onclick="setAnalysisMode('fullfathomfive')" aria-pressed="false">Full Fathom Five</button>
             </div>
 
             <!-- AI Analysis Content -->
@@ -2540,25 +2345,8 @@
                 <button class="copy-btn" onclick="copyAnalysis()">Copy</button>
             </div>
             <div class="meta">No play loaded</div>
-            <div class="analysis-content" id="analysisContent">
+            <div class="analysis-content">
                 <p>Highlight text in the play to get AI-powered analysis.</p>
-            </div>
-            <div class="analysis-instruction" id="analysisInstruction">
-                Select text in the play to get AI-powered analysis.
-            </div>
-            <button class="analyze-button" id="analyzeButton" onclick="explainHighlighted()" style="display: none;">Analyze Text</button>
-            <div id="analysisResult"></div>
-            
-            <!-- New Variorum Analysis Section (Full Fathom Five Only) -->
-            <div class="analysis-section" id="variorumSection" style="display: none;">
-                <div class="analysis-title">
-                    <span>New Variorum Analysis</span>
-                    <button class="copy-button" onclick="copyVariorum()">Copy</button>
-                </div>
-                <div class="analysis-content" id="variorumContent">
-                    Traditional commentary will appear here for Full Fathom Five mode.
-                </div>
-                <div id="variorumResult"></div>
             </div>
 
             <!-- Follow-up Section -->
@@ -2595,407 +2383,7 @@
         let currentScene = '';
         let analysisInProgress = false;
         
-        // Line selection variables
-        let selectedLines = [];
-        let firstSelectedLine = null;
-        let currentTab = 'basic';
-        
-        // Tab switching functionality
-        function switchTab(tabName) {
-            console.log('🔄 Switching to tab:', tabName);
-            currentTab = tabName;
-            currentAnalysisMode = tabName; // Keep both variables in sync
-            
-            // Update tab buttons
-            const tabButtons = document.querySelectorAll('.segment button');
-            tabButtons.forEach(btn => {
-                btn.setAttribute('aria-pressed', 'false');
-            });
-            
-            const activeButton = document.querySelector(`[onclick="switchTab('${tabName}')"]`);
-            if (activeButton) {
-                activeButton.setAttribute('aria-pressed', 'true');
-            }
-            
-            // Update analysis panel based on tab
-            updateAnalysisPanel();
-            
-            // Update analysis title
-            const analysisTitle = document.querySelector('.analysis-title');
-            if (analysisTitle) {
-                switch(tabName) {
-                    case 'basic':
-                        analysisTitle.textContent = 'Basic Analysis';
-                        break;
-                    case 'expert':
-                        analysisTitle.textContent = 'Expert Analysis';
-                        break;
-                    case 'fullfathomfive':
-                        analysisTitle.textContent = 'Full Fathom Five Analysis';
-                        break;
-                }
-            }
-            
-            console.log('✅ Tab switched to:', tabName);
-            
-            // Force show variorum section for Full Fathom Five
-            if (tabName === 'fullfathomfive') {
-                const variorumSection = document.getElementById('variorumSection');
-                if (variorumSection) {
-                    variorumSection.style.display = 'block';
-                    console.log('✅ Forced variorum section to show');
-                }
-            }
-        }
-        
-        // Line selection functionality
-        function selectLine(element, text, lineIndex) {
-            console.log('Selecting line:', lineIndex, 'Text:', text);
-            
-            // Clear all previous selections
-                document.querySelectorAll('.play-line').forEach(line => {
-                    line.classList.remove('selected', 'range-selected');
-                });
-                
-            // Add selection to current line
-            element.classList.add('selected');
-            selectedLines = [text.trim()];
-                firstSelectedLine = null;
-            
-            console.log('✅ Line selected:', selectedLines);
-            updateAnalysisPanel();
-        }
-        
-        function clearSelection() {
-            console.log('Clearing selection');
-            selectedLines = [];
-            firstSelectedLine = null;
-            document.querySelectorAll('.play-line').forEach(line => {
-                line.classList.remove('selected', 'range-selected');
-            });
-            updateAnalysisPanel();
-        }
-        
-        function updateAnalysisPanel() {
-            const analysisContent = document.getElementById('analysisContent');
-            const analysisInstruction = document.getElementById('analysisInstruction');
-            const analyzeButton = document.getElementById('analyzeButton');
-            const variorumSection = document.getElementById('variorumSection');
-            
-            console.log('🔄 Updating analysis panel for tab:', currentTab);
-            
-            // Show/hide variorum section based on current tab
-            if (variorumSection) {
-                if (currentTab === 'fullfathomfive') {
-                    variorumSection.style.display = 'block';
-                    console.log('✅ Showing variorum section for Full Fathom Five');
-                } else {
-                    variorumSection.style.display = 'none';
-                    console.log('❌ Hiding variorum section for', currentTab);
-                }
-            } else {
-                console.log('❌ Variorum section element not found');
-            }
-            
-            if (selectedLines.length > 0) {
-                const lineCount = selectedLines.length;
-                analysisContent.textContent = `${currentPlay} · ${currentScene} · ${lineCount} line${lineCount > 1 ? 's' : ''} selected`;
-                analysisInstruction.textContent = `Click "Analyze Text" to analyze ${lineCount} line${lineCount > 1 ? 's' : ''}.`;
-                analyzeButton.style.display = 'block';
-            } else {
-                analysisContent.textContent = 'Unknown Play · No text highlighted';
-                analysisInstruction.textContent = 'Select text in the play to get AI-powered analysis.';
-                analyzeButton.style.display = 'none';
-            }
-        }
-        
-        // Test function for debugging
-        function testAnalysis() {
-            console.log('🧪 Testing analysis functionality...');
-            console.log('Current tab:', currentTab);
-            console.log('Selected lines:', selectedLines);
-            console.log('Macbeth data loaded:', !!window.macbethData);
-            console.log('Current scene:', currentScene);
-            
-            // Test with sample data
-            if (selectedLines.length === 0) {
-                console.log('⚠️ No lines selected, testing with sample data');
-                selectedLines = [
-                    "First Witch: In thunder, lightning, or in rain?",
-                    "Second Witch: When the hurlyburly's done,"
-                ];
-                currentScene = "ACT 1, SCENE 1";
-                updateAnalysisPanel();
-            }
-            
-            explainHighlighted();
-        }
-        
-        // Test function specifically for Full Fathom Five
-        function testFullFathomFive() {
-            console.log('🌊 Testing Full Fathom Five functionality...');
-            
-            // Set up test data
-            selectedLines = [
-                "First Witch: In thunder, lightning, or in rain?",
-                "Second Witch: When the hurlyburly's done,"
-            ];
-            currentScene = "ACT 1, SCENE 1";
-            currentTab = 'fullfathomfive';
-            
-            // Update UI
-            updateAnalysisPanel();
-            
-            // Test the commentary search
-            console.log('🔍 Testing commentary search...');
-            const notesData = findNotesForLine(selectedLines[0], currentScene);
-            console.log('📝 Notes data found:', notesData);
-            
-            if (notesData && notesData.notes && notesData.notes.length > 0) {
-                console.log('✅ Commentary found!');
-                const formattedNotes = formatNotes(notesData);
-                console.log('📖 Formatted notes:', formattedNotes);
-            } else {
-                console.log('❌ No commentary found');
-            }
-            
-            // Run the full analysis
-            explainHighlighted();
-        }
-        
-        // Test function for all analysis modes
-        function testAllModes() {
-            console.log('🧪 Testing all analysis modes...');
-            
-            // Set up test data
-            selectedLines = [
-                "First Witch: In thunder, lightning, or in rain?",
-                "Second Witch: When the hurlyburly's done,"
-            ];
-            currentScene = "ACT 1, SCENE 1";
-            
-            // Test Basic mode
-            console.log('📚 Testing Basic mode...');
-            currentTab = 'basic';
-            updateAnalysisPanel();
-            explainHighlighted();
-            
-            // Wait a bit, then test Expert mode
-            setTimeout(() => {
-                console.log('🎓 Testing Expert mode...');
-                currentTab = 'expert';
-                updateAnalysisPanel();
-                explainHighlighted();
-            }, 3000);
-            
-            // Wait a bit, then test Full Fathom Five mode
-            setTimeout(() => {
-                console.log('🌊 Testing Full Fathom Five mode...');
-                currentTab = 'fullfathomfive';
-                updateAnalysisPanel();
-                explainHighlighted();
-            }, 6000);
-        }
-        
-        // Test function to verify variorum section is working
-        function testVariorumSection() {
-            console.log('🔍 Testing variorum section specifically...');
-            
-            // Check if Macbeth data is loaded
-            console.log('📚 Macbeth data loaded:', !!window.macbethData);
-            if (window.macbethData) {
-                console.log('📖 Available scenes:', Object.keys(window.macbethData));
-                console.log('🎭 ACT 1, SCENE 1 data:', window.macbethData['ACT 1, SCENE 1']);
-            }
-            
-            // Set up test data
-            selectedLines = [
-                "First Witch: In thunder, lightning, or in rain?",
-                "Second Witch: When the hurlyburly's done,"
-            ];
-            currentScene = "ACT 1, SCENE 1";
-            currentTab = 'fullfathomfive';
-            
-            // Update UI
-            updateAnalysisPanel();
-            
-            // Check if variorum section is visible
-            const variorumSection = document.getElementById('variorumSection');
-            const variorumContent = document.getElementById('variorumContent');
-            const variorumResult = document.getElementById('variorumResult');
-            
-            console.log('📋 Variorum section element:', variorumSection);
-            console.log('📋 Variorum content element:', variorumContent);
-            console.log('📋 Variorum result element:', variorumResult);
-            console.log('👁️ Variorum section display style:', variorumSection ? variorumSection.style.display : 'not found');
-            
-            // Test the commentary search
-            console.log('🔍 Testing commentary search...');
-            const notesData = findNotesForLine(selectedLines[0], currentScene);
-            console.log('📝 Notes data found:', notesData);
-            
-            if (notesData && notesData.notes && notesData.notes.length > 0) {
-                console.log('✅ Commentary found!');
-                const formattedNotes = formatNotes(notesData);
-                console.log('📖 Formatted notes length:', formattedNotes ? formattedNotes.length : 0);
-                
-                // Manually set the variorum content
-                if (variorumContent && formattedNotes) {
-                    variorumContent.innerHTML = formattedNotes;
-                    console.log('✅ Variorum content set manually');
-                }
-                if (variorumResult && formattedNotes) {
-                    variorumResult.innerHTML = formattedNotes;
-                    console.log('✅ Variorum result set manually');
-                }
-            } else {
-                console.log('❌ No commentary found');
-                // Show a test message
-                if (variorumContent) {
-                    variorumContent.innerHTML = '<div class="loading">TEST: This is a test message to verify the variorum section is working.</div>';
-                }
-            }
-            
-            // Run the full analysis
-            explainHighlighted();
-        }
-        
-        // Simple debug function to check Macbeth data
-        function debugMacbethData() {
-            console.log('🔍 Debugging Macbeth data...');
-            console.log('📚 Macbeth data loaded:', !!window.macbethData);
-            if (window.macbethData) {
-                console.log('📖 Available scenes:', Object.keys(window.macbethData));
-                console.log('🎭 ACT 1, SCENE 1 keys:', Object.keys(window.macbethData['ACT 1, SCENE 1'] || {}));
-                console.log('📝 First few lines:', window.macbethData['ACT 1, SCENE 1']);
-            } else {
-                console.log('❌ No Macbeth data found');
-            }
-        }
-        
-        // Simple test to show what's happening
-        function showMeWhatIsHappening() {
-            console.log('🔍 SHOWING YOU WHAT IS HAPPENING...');
-            
-            // Check Macbeth data
-            console.log('1. Macbeth data loaded:', !!window.macbethData);
-            if (window.macbethData) {
-                console.log('2. Available scenes:', Object.keys(window.macbethData));
-                const scene1 = window.macbethData['ACT 1, SCENE 1'];
-                if (scene1) {
-                    console.log('3. ACT 1, SCENE 1 has', Object.keys(scene1).length, 'lines');
-                    console.log('4. First line:', scene1['1']);
-                    console.log('5. Second line:', scene1['2']);
-                }
-            }
-            
-            // Check current state
-            console.log('6. Current tab:', currentTab);
-            console.log('7. Selected lines:', selectedLines);
-            console.log('8. Current scene:', currentScene);
-            
-            // Check HTML elements
-            const variorumSection = document.getElementById('variorumSection');
-            const variorumContent = document.getElementById('variorumContent');
-            console.log('9. Variorum section exists:', !!variorumSection);
-            console.log('10. Variorum content exists:', !!variorumContent);
-            console.log('11. Variorum section display:', variorumSection ? variorumSection.style.display : 'not found');
-            
-            // Test line matching
-            if (window.macbethData && selectedLines.length > 0) {
-                console.log('12. Testing line matching...');
-                const testLine = selectedLines[0];
-                console.log('13. Looking for line:', testLine);
-                const notesData = findNotesForLine(testLine, currentScene);
-                console.log('14. Notes found:', notesData);
-            }
-            
-            // Show a simple message in the variorum section
-            if (variorumContent) {
-                variorumContent.innerHTML = '<div style="background: #f0f0f0; padding: 20px; border: 2px solid #ff0000;"><h3>TEST MESSAGE</h3><p>If you can see this, the variorum section is working!</p><p>Check the console for detailed debugging info.</p></div>';
-                console.log('15. Test message added to variorum section');
-            }
-        }
-        
-        // Force show variorum section with test content
-        function forceShowVariorum() {
-            console.log('🔧 FORCING VARIORUM SECTION TO SHOW...');
-            
-            // Set up test data
-            selectedLines = ["First Witch: In thunder, lightning, or in rain?"];
-            currentScene = "ACT 1, SCENE 1";
-            currentTab = 'fullfathomfive';
-            
-            // Force show the variorum section
-            const variorumSection = document.getElementById('variorumSection');
-            const variorumContent = document.getElementById('variorumContent');
-            
-            if (variorumSection) {
-                variorumSection.style.display = 'block';
-                console.log('✅ Variorum section forced to show');
-            }
-            
-            if (variorumContent) {
-                variorumContent.innerHTML = `
-                    <div style="background: #fff3cd; padding: 20px; border: 2px solid #ffc107; border-radius: 8px;">
-                        <h3 style="color: #856404;">New Variorum Analysis - TEST</h3>
-                        <p><strong>Line:</strong> First Witch: In thunder, lightning, or in rain?</p>
-                        <div style="background: #f8f9fa; padding: 15px; margin: 10px 0; border-left: 3px solid #f59e0b;">
-                            <h4>Traditional Commentary:</h4>
-                            <p>This is a test message to show that the variorum section is working. The real commentary from the database should appear here when the line matching is working correctly.</p>
-                            <p><em>If you can see this message, the variorum section is displaying properly!</em></p>
-                        </div>
-                    </div>
-                `;
-                console.log('✅ Test content added to variorum section');
-            }
-            
-            // Update the analysis panel
-            updateAnalysisPanel();
-        }
-        
-        // Debug function to test API calls
-        async function testAPICall(mode) {
-            console.log('🧪 Testing API call for mode:', mode);
-            
-            const testText = "When shall we three meet again? In thunder, lightning, or in rain?";
-            
-            try {
-                const response = await fetch('/.netlify/functions/shakespeare', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        text: testText,
-                        level: mode,
-                        mode: mode
-                    })
-                });
-                
-                const data = await response.json();
-                console.log('📊 API Response for', mode, ':', data);
-                
-                if (data.analysis && typeof data.analysis === 'object') {
-                    console.log('📋 Analysis sections for', mode, ':', Object.keys(data.analysis));
-                }
-                
-                return data;
-            } catch (error) {
-                console.error('❌ API Error for', mode, ':', error);
-                return null;
-            }
-        }
-
-        // Make test functions available globally
-        window.testAnalysis = testAnalysis;
-        window.testFullFathomFive = testFullFathomFive;
-        window.testAllModes = testAllModes;
-        window.testVariorumSection = testVariorumSection;
-        window.debugMacbethData = debugMacbethData;
-        window.showMeWhatIsHappening = showMeWhatIsHappening;
-        window.forceShowVariorum = forceShowVariorum;
-        window.testAPICall = testAPICall;
+        // Cache removed for testing
 
         // Modal functions
         function openSettings() {
@@ -3053,80 +2441,7 @@
         }
 
         // Settings navigation functionality
-        document.addEventListener('DOMContentLoaded', async function() {
-            // Load Macbeth data from the JSON file
-            try {
-                console.log('🔄 Attempting to load Macbeth data...');
-                const response = await fetch('./Public/Data/macbeth_notes.json');
-                console.log('📡 Response status:', response.status, response.statusText);
-                
-                if (response.ok) {
-                    const macbethData = await response.json();
-                    console.log('✅ Macbeth data loaded successfully, size:', JSON.stringify(macbethData).length, 'characters');
-                    console.log('📚 Available scenes:', Object.keys(macbethData));
-                    
-                    // Store macbethData globally for Full Fathom Five commentary
-                    window.macbethData = macbethData;
-                    
-                    // Add Macbeth to the plays object
-                    plays['macbeth'] = {
-                        name: 'Macbeth',
-                        originalFileName: 'macbeth',
-                        characters: [],
-                        acts: {},
-                        scenes: {}
-                    };
-                    
-                    // Parse the Macbeth data to extract acts and scenes
-                    if (macbethData) {
-                        let sceneCount = 0;
-                        let lineCount = 0;
-                        
-                        Object.keys(macbethData).forEach(sceneKey => {
-                            const sceneData = macbethData[sceneKey];
-                            if (sceneData && typeof sceneData === 'object') {
-                                // Extract scene content from the notes data
-                                const sceneContent = [];
-                                Object.keys(sceneData).forEach(lineNum => {
-                                    const lineData = sceneData[lineNum];
-                                    if (lineData && lineData.play) {
-                                        sceneContent.push(lineData.play);
-                                        lineCount++;
-                                    }
-                                });
-                                
-                                if (sceneContent.length > 0) {
-                                    plays['macbeth'].scenes[sceneKey] = sceneContent;
-                                    sceneCount++;
-                                    
-                                    // Group scenes by acts
-                                    const actMatch = sceneKey.match(/^ACT\s+([IVX0-9]+)/i);
-                                    if (actMatch) {
-                                        const actName = `ACT ${actMatch[1]}`;
-                                        if (!plays['macbeth'].acts[actName]) {
-                                            plays['macbeth'].acts[actName] = [];
-                                        }
-                                        plays['macbeth'].acts[actName].push(sceneKey);
-                                    }
-                                }
-                            }
-                        });
-                        
-                        console.log(`✅ Macbeth parsed successfully: ${sceneCount} scenes, ${lineCount} lines`);
-                        console.log('🎭 Macbeth plays object:', plays['macbeth']);
-                        
-                        // Update the UI to show Macbeth is available
-                        updatePlaySelector();
-                    }
-                } else {
-                    console.warn('❌ Could not load Macbeth data - Status:', response.status);
-                    console.warn('❌ Response text:', await response.text());
-                }
-            } catch (error) {
-                console.error('❌ Error loading Macbeth data:', error);
-                console.error('❌ Error stack:', error.stack);
-            }
-            
+        document.addEventListener('DOMContentLoaded', function() {
             // Add ARIA attributes to modals
             const settingsModal = document.getElementById('settingsModal');
             const aboutModal = document.getElementById('aboutModal');
@@ -3942,15 +3257,7 @@
                     play.acts[actName].forEach(sceneName => {
                         const sceneItem = document.createElement('li');
                         sceneItem.className = 'sub-item';
-                        
-                        // Extract proper scene name for display
-                        let displaySceneName = sceneName;
-                        const sceneMatch = sceneName.match(/SCENE\s+([IVX0-9]+)/i);
-                        if (sceneMatch) {
-                            displaySceneName = `Scene ${sceneMatch[1]}`;
-                        }
-                        
-                        sceneItem.innerHTML = `<a href="#" onclick="loadScene('${sceneName}')" data-scene="${sceneName}">${displaySceneName}</a>`;
+                        sceneItem.innerHTML = `<a href="#" onclick="loadScene('${sceneName}')" data-scene="${sceneName}">${sceneName.split(' - ')[1]}</a>`;
                         navList.appendChild(sceneItem);
                     });
                 }
@@ -3999,20 +3306,8 @@
             // Display scene content
             const playText = document.getElementById('playText');
             const formattedContent = formatSceneContent(sceneContent);
-            
-            // Extract act and scene names for better display
-            let displayTitle = sceneName;
-            const actMatch = sceneName.match(/^ACT\s+([IVX0-9]+)/i);
-            const sceneMatch = sceneName.match(/SCENE\s+([IVX0-9]+)/i);
-            
-            if (actMatch && sceneMatch) {
-                displayTitle = `ACT ${actMatch[1]}, SCENE ${sceneMatch[1]}`;
-            } else if (actMatch) {
-                displayTitle = `ACT ${actMatch[1]}`;
-            }
-            
             playText.innerHTML = `
-                <div class="scene-title">${displayTitle}</div>
+                <div class="scene-title">${sceneName}</div>
                 <div class="scene-separator"></div>
                 ${formattedContent}
             `;
@@ -4030,14 +3325,14 @@
             let html = '';
             
             // Display each line exactly as it appears in the file, preserving whitespace
-            sceneContent.forEach((line, index) => {
+            sceneContent.forEach(line => {
                 // Don't trim - preserve original spacing and empty lines
                 if (line === '') {
                     // Empty line - preserve it
                     html += `<div class="play-line">&nbsp;</div>`;
                 } else {
-                    // Non-empty line - preserve original spacing and add click handler
-                    html += `<div class="play-line" data-line-index="${index}" onclick="selectLine(this, '${line.replace(/'/g, "\\'")}', ${index})">${line}</div>`;
+                    // Non-empty line - preserve original spacing
+                    html += `<div class="play-line">${line}</div>`;
                 }
             });
             
@@ -4578,229 +3873,20 @@
 
 
         function explainHighlighted() {
-            console.log('🔍 explainHighlighted called');
-            console.log('📝 Selected lines:', selectedLines);
-            console.log('🎯 Current tab:', currentTab);
+            console.log('=== EXPLAIN HIGHLIGHTED FUNCTION CALLED ===');
+            console.log('selectedText:', selectedText);
+            console.log('selectedText length:', selectedText ? selectedText.length : 0);
             
-            if (selectedLines.length === 0) {
-                alert('Please select text in the play first.');
+            if (!selectedText) {
+                alert('Please highlight some text first, then click "Explain Highlighted Text".');
                 return;
             }
             
-            const textToAnalyze = selectedLines.join('\n');
-            console.log('📖 Text to analyze:', textToAnalyze);
-            
-            // Set analysis mode based on current tab
-            const mode = currentTab || 'basic';
-            console.log('🎯 Current tab/mode:', currentTab, '→', mode);
-            console.log('🎭 Analysis mode:', mode);
-            
-            // Clear previous results first
-            const analysisResult = document.getElementById('analysisResult');
-            const variorumResult = document.getElementById('variorumResult');
-            const variorumContent = document.getElementById('variorumContent');
-            if (analysisResult) analysisResult.innerHTML = '';
-            if (variorumResult) variorumResult.innerHTML = '';
-            if (variorumContent) variorumContent.innerHTML = '';
-            
-            // Use the proper API-based analysis function
-            console.log('📚 Using API-based analysis for mode:', mode);
-            analyzeHighlightedText(textToAnalyze, mode);
-            
-            // Ensure the analyze button remains visible and clickable
-            const analyzeButton = document.getElementById('analyzeButton');
-            if (analyzeButton) {
-                analyzeButton.style.display = 'block';
-                analyzeButton.disabled = false;
-            }
-            
-            // Also ensure the button stays visible after analysis completes
-            setTimeout(() => {
-                const button = document.getElementById('analyzeButton');
-                if (button && selectedLines.length > 0) {
-                    button.style.display = 'block';
-                    button.disabled = false;
-                }
-            }, 1000);
+            console.log('Calling analyzeHighlightedText with:', selectedText);
+            // Call the serverless function to analyze the highlighted text
+            analyzeHighlightedText(selectedText);
         }
 
-        // Full Fathom Five functionality
-        function handleFullFathomFiveAnalysis(text) {
-            console.log('🔄 Starting Full Fathom Five analysis...');
-            console.log('📚 Macbeth data available:', !!window.macbethData);
-            console.log('🎭 Current scene:', currentScene);
-            console.log('📝 Selected lines:', selectedLines);
-            
-            const variorumSection = document.getElementById('variorumSection');
-            const variorumResult = document.getElementById('variorumResult');
-            const variorumContent = document.getElementById('variorumContent');
-            const analysisResult = document.getElementById('analysisResult');
-            
-            // Show the variorum section
-            if (variorumSection) {
-                variorumSection.style.display = 'block';
-                console.log('✅ Variorum section displayed');
-            } else {
-                console.error('❌ Variorum section not found');
-            }
-            
-            // Clear previous results
-            if (variorumResult) variorumResult.innerHTML = '';
-            if (variorumContent) variorumContent.innerHTML = '';
-            if (analysisResult) analysisResult.innerHTML = '';
-            
-            // Check for traditional commentary
-            let commentaryFound = false;
-            if (window.macbethData && currentScene) {
-                console.log('🔍 Searching for commentary in scene:', currentScene);
-                console.log('📖 Available scenes in macbethData:', Object.keys(window.macbethData));
-                
-                let combinedCommentary = '';
-                
-                // Check each selected line for commentary
-                for (let i = 0; i < selectedLines.length; i++) {
-                    const line = selectedLines[i];
-                    console.log(`🔍 Searching for line: "${line}"`);
-                    const notesData = findNotesForLine(line, currentScene);
-                    console.log('📝 Notes data found:', notesData);
-                    
-                    if (notesData && notesData.notes && notesData.notes.length > 0) {
-                        const formattedNotes = formatNotes(notesData);
-                        if (formattedNotes) {
-                            combinedCommentary += formattedNotes;
-                            if (i < selectedLines.length - 1) {
-                                combinedCommentary += '<hr style="margin: 20px 0; border: 1px solid #4b5563;">';
-                            }
-                            commentaryFound = true;
-                            console.log('✅ Commentary found for line:', i + 1);
-                        }
-                    }
-                }
-                
-                if (commentaryFound) {
-                    if (variorumResult) {
-                        variorumResult.innerHTML = combinedCommentary;
-                        console.log('✅ Commentary displayed in variorum result');
-                    }
-                    if (variorumContent) {
-                        variorumContent.innerHTML = combinedCommentary;
-                        console.log('✅ Commentary displayed in variorum content');
-                    }
-                } else {
-                    const noCommentaryMsg = '<div class="loading">No traditional commentary found for selected lines.</div>';
-                    if (variorumResult) {
-                        variorumResult.innerHTML = noCommentaryMsg;
-                    }
-                    if (variorumContent) {
-                        variorumContent.innerHTML = noCommentaryMsg;
-                    }
-                    console.log('⚠️ No commentary found for selected lines');
-                }
-            } else {
-                const errorMsg = '<div class="loading">Traditional commentary database not loaded or scene not found.</div>';
-                if (variorumResult) {
-                    variorumResult.innerHTML = errorMsg;
-                }
-                if (variorumContent) {
-                    variorumContent.innerHTML = errorMsg;
-                }
-                console.log('❌ Macbeth data or current scene not available');
-            }
-            
-            // Also perform regular analysis
-            analyzeHighlightedText(text);
-        }
-        
-        function findNotesForLine(text, sceneName) {
-            console.log('🔍 Searching for notes for text:', text);
-            console.log('🎭 Scene name:', sceneName);
-            
-            if (!window.macbethData || !sceneName || !window.macbethData[sceneName]) {
-                console.log('❌ No macbeth data or scene name available');
-                return null;
-            }
-            
-            const sceneNotes = window.macbethData[sceneName];
-            console.log('📖 Scene data found, searching through lines...');
-            
-            for (const lineNumber in sceneNotes) {
-                const lineData = sceneNotes[lineNumber];
-                if (lineData && lineData.play) {
-                    console.log(`🔍 Checking line ${lineNumber}: "${lineData.play}"`);
-                    
-                    const playLine = lineData.play.toLowerCase().trim();
-                    const searchText = text.toLowerCase().trim();
-                    
-                    if (matchesText(playLine, searchText)) {
-                        console.log('✅ Found matching line:', lineData.play);
-                        console.log('📝 Notes available:', lineData.notes ? lineData.notes.length : 0);
-                        return {
-                            lineNumber: lineNumber,
-                            playLine: lineData.play,
-                            notes: lineData.notes || [],
-                            scene: sceneName
-                        };
-                    }
-                }
-            }
-            
-            console.log('❌ No matching line found for text:', text);
-            return null;
-        }
-        
-        function matchesText(playLine, searchText) {
-            if (playLine === searchText) return true;
-            if (playLine.includes(searchText) && searchText.length > 3) return true;
-            if (searchText.includes(playLine) && playLine.length > 3) return true;
-            
-            const playWords = playLine.split(/\s+/).filter(word => word.length > 2);
-            const searchWords = searchText.split(/\s+/).filter(word => word.length > 2);
-            
-            if (playWords.length > 0 && searchWords.length > 0) {
-                const matchingWords = playWords.filter(word => 
-                    searchWords.some(searchWord => 
-                        word.includes(searchWord) || searchWord.includes(word)
-                    )
-                );
-                
-                return (matchingWords.length / playWords.length) > 0.5;
-            }
-            
-            return false;
-        }
-        
-        function formatNotes(notesData) {
-            console.log('📝 Formatting notes for:', notesData);
-            
-            if (!notesData || !notesData.notes || notesData.notes.length === 0) {
-                console.log('❌ No notes to format');
-                return null;
-            }
-            
-            let formattedHTML = `
-                <div class="notes-header">
-                    <h4 style="color: #f59e0b; margin-bottom: 10px;">Traditional Commentary</h4>
-                    <p style="font-style: italic; color: #9ca3af; margin-bottom: 15px;">
-                        Line ${notesData.lineNumber}: "${notesData.playLine}"
-                    </p>
-                </div>
-            `;
-            
-            notesData.notes.forEach((note, index) => {
-                console.log(`📖 Formatting note ${index + 1}:`, note.substring(0, 100) + '...');
-                formattedHTML += `
-                    <div class="note-item" style="margin-bottom: 15px; padding: 10px; background: #1a1a1a; border-radius: 6px; border-left: 3px solid #f59e0b;">
-                        <p style="margin: 0; line-height: 1.6;">${note}</p>
-                    </div>
-                    `;
-            });
-            
-            console.log('✅ Formatted notes HTML length:', formattedHTML.length);
-            return formattedHTML;
-        }
-        
-
-        
         // Helper function to count words accurately
         function countWords(text) {
             if (!text || typeof text !== 'string') return 0;
@@ -4808,16 +3894,12 @@
             return text.trim().split(/\s+/).filter(word => word.length > 0).length;
         }
 
-        async function analyzeHighlightedText(text, mode = null) {
+        async function analyzeHighlightedText(text) {
             console.log('=== ANALYZE FUNCTION CALLED - NEW CODE IS RUNNING ===');
             console.log('Text to analyze:', text);
             console.log('Current play:', currentPlay);
             console.log('Current scene:', currentScene);
-            console.log('Analysis mode passed:', mode);
-            console.log('Current analysis mode:', currentAnalysisMode);
-            
-            // Use the passed mode or fall back to currentTab
-            const analysisMode = mode || currentTab || 'basic';
+            console.log('Analysis mode:', currentAnalysisMode);
             
             // Set analysis in progress flag to prevent highlight clearing
             analysisInProgress = true;
@@ -4834,7 +3916,7 @@
             
             // Get the correct title based on current mode
             let analysisTitle = 'Basic Analysis';
-            switch(currentTab) {
+            switch(currentAnalysisMode) {
                 case 'basic':
                     analysisTitle = 'Basic Analysis';
                     break;
@@ -4852,9 +3934,9 @@
             analysisPanel.innerHTML = `
                 <!-- Analysis Mode Selector -->
                 <div class="segment">
-                    <button onclick="switchTab('basic')" aria-pressed="${currentTab === 'basic' ? 'true' : 'false'}">Basic</button>
-                    <button onclick="switchTab('expert')" aria-pressed="${currentTab === 'expert' ? 'true' : 'false'}">Expert</button>
-                    <button onclick="switchTab('fullfathomfive')" aria-pressed="${currentTab === 'fullfathomfive' ? 'true' : 'false'}">Full Fathom Five</button>
+                    <button onclick="setAnalysisMode('basic')" aria-pressed="${currentAnalysisMode === 'basic' ? 'true' : 'false'}">Basic</button>
+                    <button onclick="setAnalysisMode('expert')" aria-pressed="${currentAnalysisMode === 'expert' ? 'true' : 'false'}">Expert</button>
+                    <button onclick="setAnalysisMode('fullfathomfive')" aria-pressed="${currentAnalysisMode === 'fullfathomfive' ? 'true' : 'false'}">Full Fathom Five</button>
                 </div>
 
                 <!-- AI Analysis Content -->
@@ -4884,7 +3966,7 @@
                     },
                     body: JSON.stringify({
                         text: text,
-                        level: analysisMode,
+                        level: currentAnalysisMode,
                         model: 'gpt-4o-mini',
                         playName: playName,
                         sceneName: currentScene,
@@ -4902,7 +3984,7 @@
                         },
                         body: JSON.stringify({
                             text: text,
-                            level: analysisMode,
+                            level: currentAnalysisMode,
                             model: 'gpt-4o-mini',
                             playName: playName,
                             sceneName: currentScene,
@@ -4929,11 +4011,7 @@
                 const data = await response.json();
                 console.log('Response data:', data);
                 
-                // Handle the new structured response format
-                if (data.analysis) {
-                    // New structured response with analysis sections and relevant notes
-                    updateAnalysisWithStructuredData(data, text);
-                } else if (data.choices && data.choices[0] && data.choices[0].message) {
+                if (data.choices && data.choices[0] && data.choices[0].message) {
                     const content = data.choices[0].message.content;
                     
                     // Handle multi-call results for Full Fathom Five
@@ -5055,127 +4133,6 @@
             }
         }
 
-        function formatStructuredAnalysis(analysis, relevantNotes) {
-            console.log('=== FORMATTING STRUCTURED ANALYSIS ===');
-            console.log('Analysis sections:', Object.keys(analysis));
-            console.log('Relevant notes:', relevantNotes);
-            
-
-            
-            let formattedContent = '';
-            
-            // Format each analysis section FIRST (Analysis at the top)
-            for (const [sectionName, sectionContent] of Object.entries(analysis)) {
-                if (sectionContent && sectionContent.trim()) {
-                    formattedContent += '<div class="analysis-section">';
-                    formattedContent += `<h4>${sectionName}</h4>`;
-                    formattedContent += `<div class="section-content">${sectionContent}</div>`;
-                    formattedContent += '</div>';
-                }
-            }
-            
-            // Check if New Variorum Analysis is already in the analysis object (from backend)
-            if (analysis['New Variorum Analysis']) {
-                console.log('New Variorum Analysis found in analysis object, length:', analysis['New Variorum Analysis'].length);
-                // Don't add it again since it's already been added above
-            } else if (relevantNotes && relevantNotes.length > 0) {
-                // Fallback: Add Macbeth notes section LAST (New Variorum Analysis at the bottom)
-                formattedContent += '<div class="analysis-section">';
-                formattedContent += '<h4>New Variorum Analysis</h4>';
-                formattedContent += '<div class="variorum-notes">';
-                
-                relevantNotes.forEach((note, index) => {
-                    formattedContent += `<div class="note-item">`;
-                    formattedContent += `<div class="note-header"><strong>${note.scene}, Line ${note.line}</strong></div>`;
-                    formattedContent += `<div class="note-text">"${note.play}"</div>`;
-                    formattedContent += `<div class="note-content">`;
-                    
-                    note.notes.forEach(noteText => {
-                        // Show full notes without truncation
-                        formattedContent += `<p>${noteText}</p>`;
-                    });
-                    
-                    formattedContent += `</div></div>`;
-                });
-                
-                formattedContent += '</div></div>';
-            }
-            
-            return formattedContent;
-        }
-
-        function updateAnalysisWithStructuredData(data, text) {
-            const analysisPanel = document.getElementById('analysisPanel');
-            const wordCount = countWords(text);
-            const playName = currentPlay && plays[currentPlay] ? plays[currentPlay].name : 'Unknown Play';
-            const playInfo = `<em>${playName}</em> · ${currentScene}`;
-            
-            // Get the correct title based on current tab
-            let analysisTitle = 'Basic Analysis';
-            switch(currentTab) {
-                case 'basic':
-                    analysisTitle = 'Basic Analysis';
-                    break;
-                case 'expert':
-                    analysisTitle = 'Expert Analysis';
-                    break;
-                case 'fullfathomfive':
-                    analysisTitle = 'Full Fathom Five Analysis';
-                    break;
-            }
-            
-            // Format the structured analysis content
-            let formattedContent = '';
-            if (data.analysis) {
-                formattedContent = formatStructuredAnalysis(data.analysis, data.relevantNotes);
-            }
-            
-            analysisPanel.innerHTML = `
-                <!-- Analysis Mode Selector -->
-                <div class="segment">
-                    <button onclick="switchTab('basic')" aria-pressed="${currentTab === 'basic' ? 'true' : 'false'}">Basic</button>
-                    <button onclick="switchTab('expert')" aria-pressed="${currentTab === 'expert' ? 'true' : 'false'}">Expert</button>
-                    <button onclick="switchTab('fullfathomfive')" aria-pressed="${currentTab === 'fullfathomfive' ? 'true' : 'false'}">Full Fathom Five</button>
-                </div>
-
-                <!-- Analyze Button -->
-                <button class="analyze-button" id="analyzeButton" onclick="explainHighlighted()" style="display: block;">Analyze Text</button>
-
-                <!-- AI Analysis Content -->
-                <div class="analysis">
-                    <button class="copy-chip" onclick="copyAnalysis()">Copy</button>
-                    <div class="meta">${playInfo} — ${wordCount} ${wordCount === 1 ? 'word' : 'words'} selected</div>
-                    <div class="analysis-content">
-                        ${formattedContent}
-                    </div>
-                    
-                    <!-- Follow-up Section -->
-                    <h3>Ask a follow-up question</h3>
-                    <div class="follow-up-input">
-                        <input type="text" placeholder="Ask a follow-up question..." id="followUpQuestion">
-                        <button class="ask-btn" onclick="askFollowUp()">Ask</button>
-                    </div>
-
-                    <!-- Media Section -->
-                    <h3>Media</h3>
-                    <div class="media-actions">
-                        <button class="link-btn youtube" onclick="searchYouTube('scene')">Search YouTube for this scene</button>
-                    </div>
-
-                    <!-- Research Section -->
-                    <h3>Research</h3>
-                    <div class="research-actions">
-                        <button class="link-btn jstor" onclick="searchJSTOR('exact')">Search JSTOR for exact quotation</button>
-                        <button class="link-btn jstor" onclick="searchJSTOR('passage')">Search JSTOR for this passage/scene</button>
-                        <button class="link-btn scholar" onclick="searchGoogleScholar()">Google Scholar</button>
-                        <button class="link-btn ise" onclick="openInternetShakespeare()">Internet Shakespeare Editions</button>
-                    </div>
-                </div>
-            `;
-        }
-
-
-
         function updateAnalysisWithProgress(content, selectedText, callResults) {
             const analysisPanel = document.getElementById('analysisPanel');
             if (!analysisPanel) return;
@@ -5207,8 +4164,6 @@
             }
         }
 
-
-
         function updateAnalysis(content, text) {
             const analysisPanel = document.getElementById('analysisPanel');
             const wordCount = countWords(text);
@@ -5217,7 +4172,7 @@
             
             // Format the content with proper sections (bypass for Full Fathom Five)
             let formattedContent;
-            if (currentTab === 'fullfathomfive') {
+            if (currentAnalysisMode === 'fullfathomfive') {
                 // For Full Fathom Five, apply paragraph formatting but not section formatting
                 formattedContent = content.replace(/\n\n/g, '</p><p>').replace(/\n/g, '<br>');
                 formattedContent = '<p>' + formattedContent + '</p>';
@@ -5227,7 +4182,7 @@
             
             // Get the correct title based on current mode
             let analysisTitle = 'Basic Analysis';
-            switch(currentTab) {
+            switch(currentAnalysisMode) {
                 case 'basic':
                     analysisTitle = 'Basic Analysis';
                     break;
@@ -5245,13 +4200,10 @@
             analysisPanel.innerHTML = `
                 <!-- Analysis Mode Selector -->
                 <div class="segment">
-                    <button onclick="switchTab('basic')" aria-pressed="${currentTab === 'basic' ? 'true' : 'false'}">Basic</button>
-                    <button onclick="switchTab('expert')" aria-pressed="${currentTab === 'expert' ? 'true' : 'false'}">Expert</button>
-                    <button onclick="switchTab('fullfathomfive')" aria-pressed="${currentTab === 'fullfathomfive' ? 'true' : 'false'}">Full Fathom Five</button>
+                    <button onclick="setAnalysisMode('basic')" aria-pressed="${currentAnalysisMode === 'basic' ? 'true' : 'false'}">Basic</button>
+                    <button onclick="setAnalysisMode('expert')" aria-pressed="${currentAnalysisMode === 'expert' ? 'true' : 'false'}">Expert</button>
+                    <button onclick="setAnalysisMode('fullfathomfive')" aria-pressed="${currentAnalysisMode === 'fullfathomfive' ? 'true' : 'false'}">Full Fathom Five</button>
                 </div>
-
-                <!-- Analyze Button -->
-                <button class="analyze-button" id="analyzeButton" onclick="explainHighlighted()" style="display: block;">Analyze Text</button>
 
                 <!-- AI Analysis Content -->
                 <div class="analysis">
@@ -5285,8 +4237,6 @@
                 </div>
             `;
         }
-
-
 
         function formatAnalysisContent(content) {
             // Debug: Log the raw content to see what the AI is returning
@@ -5794,7 +4744,40 @@
         // Analysis mode state
         let currentAnalysisMode = 'basic';
 
+        function setAnalysisMode(mode) {
+            currentAnalysisMode = mode;
+            
+            // Update button states
+            const buttons = document.querySelectorAll('.segment button');
+            buttons.forEach(btn => {
+                btn.setAttribute('aria-pressed', 'false');
+            });
+            
+            // Find and activate the correct button
+            const activeButton = document.querySelector(`.segment button[onclick*="${mode}"]`);
+            if (activeButton) {
+                activeButton.setAttribute('aria-pressed', 'true');
+            }
+            
+            // Update the analysis title based on mode
+            const analysisTitle = document.querySelector('.analysis-title');
+            if (analysisTitle) {
+                switch(mode) {
+                    case 'basic':
+                        analysisTitle.textContent = 'Basic Analysis';
+                        break;
 
+                    case 'expert':
+                        analysisTitle.textContent = 'Expert Analysis';
+                        break;
+                    case 'fullfathomfive':
+                        analysisTitle.textContent = 'Full Fathom Five Analysis';
+                        break;
+                }
+            }
+            
+            // Don't automatically re-analyze - user must click "Explain Highlighted Text" button
+        }
 
         function copyAnalysis() {
             const analysisContent = document.querySelector('.analysis-content');
@@ -5815,29 +4798,8 @@
                     alert('Failed to copy analysis to clipboard');
                 });
             }
-                }
-        
-        function copyVariorum() {
-            const variorumResult = document.getElementById('variorumResult');
-            if (variorumResult) {
-                const textToCopy = variorumResult.innerText;
-                navigator.clipboard.writeText(textToCopy).then(() => {
-                    // Show a brief success message
-                    const copyBtn = document.querySelector('#variorumSection .copy-button');
-                    if (copyBtn) {
-                        const originalText = copyBtn.textContent;
-                        copyBtn.textContent = 'Copied!';
-                        setTimeout(() => {
-                            copyBtn.textContent = originalText;
-                        }, 1000);
-                    }
-                }).catch(err => {
-                    console.error('Failed to copy variorum text: ', err);
-                    alert('Failed to copy variorum commentary to clipboard');
-                });
-            }
         }
-        
+
         async function askFollowUp() {
             const question = document.getElementById('followUpQuestion').value.trim();
             if (!question) {
@@ -5876,7 +4838,7 @@
                     body: JSON.stringify({
                         text: context,
                         level: 'followup', // Special follow-up level
-                        baseLevel: currentTab || 'basic', // Base level for style consistency
+                        baseLevel: currentAnalysisMode || 'basic', // Base level for style consistency
                         playName: currentPlay && plays[currentPlay] ? plays[currentPlay].name : 'Shakespeare',
                         sceneName: currentScene || 'scene'
                     })

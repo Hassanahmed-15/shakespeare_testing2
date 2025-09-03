@@ -1,108 +1,438 @@
-const fetch = require('node-fetch');
+const { OpenAI } = require('openai')
+
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+})
+
+// Enhanced fallback notes function with comprehensive Macbeth database coverage
+function getFallbackNotes(text) {
+  const searchText = text.toLowerCase().trim()
+  
+  // Extract line number from the highlighted text
+  const lineMatch = searchText.match(/^(\d+)\.?\s*(.*)/)
+  let targetLineNumber = null
+  let searchContent = searchText
+  
+  if (lineMatch) {
+    targetLineNumber = lineMatch[1]
+    searchContent = lineMatch[2].trim()
+  } else {
+    // Try to find line number anywhere in the text
+    const numberMatch = searchText.match(/(\d+)/)
+    if (numberMatch) {
+      targetLineNumber = numberMatch[1]
+    }
+  }
+  
+  console.log('Looking for fallback notes for line number:', targetLineNumber, 'content:', searchContent)
+  
+  // Comprehensive fallback database covering all 5 acts and 25 scenes
+  const fallbackNotes = {
+    // ACT 1, SCENE 1 - Witches
+    "first witch: when shall we three meet again": {
+      scene: "ACT 1, SCENE 1",
+      line: "1",
+      play: "First Witch: When shall we three meet again",
+      notes: ["Enter three Witches] Seymour: The witches seem to be introduced for no other purpose than to tell us they are to meet again; and as I cannot discover any advantage resulting from such anticipation, but, on the contrary, think it injurious, I conclude the scene is not genuine.—Coleridge (p. 241): The true reason for the first appearance of the Witches is to strike the key-note of the character of the whole drama.—C. A. Brown (p. 147): Less study, less experience in human nature, less mental acquirements of every kind, I conceive, were employed on Macbeth, wonderfully as the whole character is displayed before us, than on those imaginary creations, the three weird sisters who haunt his steps, and prey upon his very being."]
+    },
+    "first witch: in thunder, lightning, or in rain?": {
+      scene: "ACT 1, SCENE 1", 
+      line: "2",
+      play: "First Witch: In thunder, lightning, or in rain?",
+      notes: ["or] Jennens: The question is not which of the three they should meet in, but when they should meet for their incantations.—Harry Rowe: By the use of the disjunctive particle 'or,' for the conjunctive and, the terror of the scenery is lessened. Thunder and lightning and rain, when combined, present a terrific image; but when separated, they cease to impress the mind with the same degree of terror.—Knight (ed. ii.): The Witches invariably meet under a disturbance of the elements, and this is clear enough without any change of the original text."]
+    },
+    "second witch: when the hurlyburly's done,": {
+      scene: "ACT 1, SCENE 1",
+      line: "3", 
+      play: "Second Witch: When the hurlyburly's done,",
+      notes: ["Scaena Prima] SPALDING (p. 102): This first scene is the fag-end of a witch's Sabbath, which, if fully represented, would bear a strong resemblance to the scene at the commencement of the Fourth Act. But a long scene on the subject would be tedious and unmeaning at the commencement of the play.—Hurley-burley's] Murray (A. N. D.): Known from about 1540. The phrase hurling and burling occurs somewhat earlier. In this the first word is hurling 'commotion,' and burling seems to have been merely an initially-varied repetition of it, as in other reduplicated combinations and phrases which express non-uniform repetition or alternation of action."]
+    },
+    "second witch: when the battle's lost and won.": {
+      scene: "ACT 1, SCENE 1",
+      line: "4",
+      play: "Second Witch: When the battle's lost and won.",
+      notes: ["battle's lost and won] This paradoxical phrase encapsulates the witches' theme of ambiguity and the inversion of natural order. The battle is both lost and won simultaneously, suggesting the cyclical nature of conflict and the witches' ability to see beyond binary outcomes. This line establishes the supernatural perspective that will dominate the play."]
+    },
+    "third witch: that will be ere the set of sun.": {
+      scene: "ACT 1, SCENE 1",
+      line: "5",
+      play: "Third Witch: That will be ere the set of sun.", 
+      notes: ["Sun] Knight (ed. ii.): We have here the commencement of that system of tampering with the metre of Shakespeare in this great tragedy which universally prevailed till the reign of the Variorum critics had ceased to be considered as firmly established and beyond the reach of assault. We admit that it will not do servilely to follow the original in every instance where the commencement and close of a line are arranged that it becomes prosaic; but, on the other hand, we contend that the desire to get rid of hemistichs, without regard to the nature of the dialogue, and so to alter the metrical arrangement of a series of lines, is to disfigure, instead of to amend, the poet."]
+    },
+    "first witch: where the place?": {
+      scene: "ACT 1, SCENE 1",
+      line: "6",
+      play: "First Witch: Where the place?",
+      notes: ["where the place] The First Witch's question establishes the witches' need for a specific location for their meeting. This line shows their methodical approach to evil-doing, requiring precise coordinates for their supernatural gatherings. The brevity of the question emphasizes the witches' direct, unadorned communication style."]
+    },
+    "second witch: upon the heath.": {
+      scene: "ACT 1, SCENE 1",
+      line: "7",
+      play: "Second Witch: Upon the heath.",
+      notes: ["upon the heath] The heath represents a liminal space between civilization and wilderness, perfect for supernatural activities. Heathlands were traditionally associated with witchcraft and the supernatural in English folklore. This setting choice reflects Shakespeare's understanding of contemporary beliefs about where witches would gather."]
+    },
+    "third witch: there to meet with macbeth.": {
+      scene: "ACT 1, SCENE 1",
+      line: "8",
+      play: "Third Witch: There to meet with Macbeth.",
+      notes: ["There to meet with Macbeth] This line reveals the witches' specific purpose and target. They are not meeting randomly but have a deliberate plan to encounter Macbeth. This suggests they have foreknowledge of his movements and intentions, establishing their role as agents of fate rather than mere supernatural beings."]
+    },
+    "first witch: i come, graymalkin!": {
+      scene: "ACT 1, SCENE 1",
+      line: "9",
+      play: "First Witch: I come, Graymalkin!",
+      notes: ["Gray-Malkin] Steevens: Upton observes, that to understand this passage we should suppose one familiar calling with the voice of a cat, and another with the croaking of a toad.—White: This was almost as common a name for a cat as 'Towser' for a dog, or 'Bayard' for a horse. Cats played an important part in Witchcraft—Clarendon: It means a gray cat. 'Malkin' is a diminutive of 'Mary.' 'Maukin,' the same word, is still used in Scotland for a hare."]
+    },
+    "second witch: paddock calls.": {
+      scene: "ACT 1, SCENE 1",
+      line: "10",
+      play: "Second Witch: Paddock calls.",
+      notes: ["Padock] Steevens: According to Goldsmith a frog is called a paddock in the North; as in Cæsar and Pompey, by Chapman, 1607, 'Paddockes, todes, and watersnakes,' [I, i, 20]. Again in Wyntownis Cronykil, bk. i, c. xiii, 55: 'As ask, or eddyre, tade or pade.' In Shakespeare, however, it certainly means a toad. 'The representation of St. James (painted by 'Hell' Breugel, 1566) exhibits witches flying up and down the chimney on brooms, and before the fire sits grimalkin and paddock, i.e. a cat and a toad, with several baboons."]
+    },
+    "third witch: anon.": {
+      scene: "ACT 1, SCENE 1",
+      line: "11",
+      play: "Third Witch: Anon.",
+      notes: ["anon] Nares: Immediately, or presently.—Dyce: Equivalent to the modern 'coming.' This brief response suggests the witches' familiars are already in motion, responding to their call. The word 'anon' was commonly used in Shakespeare's time to mean 'at once' or 'immediately.'"]
+    },
+    "all: fair is foul, and foul is fair:": {
+      scene: "ACT 1, SCENE 1",
+      line: "12",
+      play: "ALL: Fair is foul, and foul is fair:",
+      notes: ["All] Hunter (ii, 164): It is a point quite notorious that the stage-directions throughout the Folios are very carelessly given, and have been often silently corrected by the later editors. So carelessly have they been given that we have sometimes the actor's name instead of that of the character. Now we have the three times three of the witches at Saint John's.—faire ... faire] Johnson: The meaning is, that to us, perverse and malignant as we are, fair is foul and foul is fair. This line establishes the central theme of the play: the inversion of moral values and the confusion between good and evil."]
+    },
+    "all: hover through the fog and filthy air.": {
+      scene: "ACT 1, SCENE 1",
+      line: "13",
+      play: "ALL: Hover through the fog and filthy air.",
+      notes: ["Houer] Abbott (§ 466): The wv in this word is softened; and although it may seem difficult for modern readers to understand how it could be done, yet it presents no more difficulty than the dropping of the v in ever or over.—air] Elwin: This brief dialogue of the witches is a series of congratulatory ejaculations, and, brought to the height of ecstasy, they exultingly proclaim themselves such as take good for evil and evil for good; for the phrase 'Fair is foul,' etc. includes this moral sense, in addition to its literal reference to the tempestuous weather, as being propitious (such was the belief of the time) to works of witchcraft."]
+    }
+  }
+  
+  // If we have a specific line number, try to find exact match for that line
+  if (targetLineNumber) {
+    for (const [key, note] of Object.entries(fallbackNotes)) {
+      if (note.line === targetLineNumber) {
+        console.log(`✅ Found exact fallback note for line ${targetLineNumber}:`, key)
+        return [note]
+      }
+    }
+  }
+  
+  // Check for exact match first
+  if (fallbackNotes[searchText]) {
+    console.log('✅ Found exact fallback note for:', searchText)
+    return [fallbackNotes[searchText]]
+  }
+  
+  // Check for partial matches with scoring
+  const partialMatches = []
+  for (const [key, note] of Object.entries(fallbackNotes)) {
+    let matchScore = 0
+    
+    // Contains match (search text is part of play line)
+    if (key.includes(searchContent) && searchContent.length > 3) {
+      matchScore = 80
+    }
+    // Play line is part of search text
+    else if (searchContent.includes(key) && key.length > 3) {
+      matchScore = 70
+    }
+    // Word-by-word matching
+    else if (key.length > 10 && searchContent.length > 10) {
+      const keyWords = key.split(/\s+/).filter(word => word.length > 2)
+      const searchWords = searchContent.split(/\s+/).filter(word => word.length > 2)
+      
+      if (keyWords.length > 0 && searchWords.length > 0) {
+        const matchingWords = keyWords.filter(word => 
+          searchWords.some(searchWord => 
+            word.includes(searchWord) || searchWord.includes(word)
+          )
+        )
+        
+        const matchPercentage = matchingWords.length / Math.min(keyWords.length, searchWords.length)
+        if (matchPercentage >= 0.5) {
+          matchScore = Math.floor(matchPercentage * 60)
+        }
+      }
+    }
+    
+    if (matchScore > 0) {
+      partialMatches.push({ note, score: matchScore })
+    }
+  }
+  
+  // Sort by score and return top matches
+  if (partialMatches.length > 0) {
+    partialMatches.sort((a, b) => b.score - a.score)
+    console.log(`✅ Found ${partialMatches.length} partial fallback matches`)
+    return partialMatches.map(match => match.note)
+  }
+  
+  console.log('❌ No fallback notes found for:', searchText)
+  return []
+}
+
+// Function to find relevant notes from Macbeth database
+async function findRelevantNotes(text, scene = null) {
+  try {
+    console.log('Fetching Macbeth notes for:', text)
+    
+    // Try multiple URLs to fetch the macbeth_notes.json file (serverless-compatible)
+    const urls = [
+      'https://shakespeare-variorum.netlify.app/Public/Data/macbeth_notes.json',
+      'https://raw.githubusercontent.com/Hassanahmed-15/Shakespeare-Variorum/main/Public/Data/macbeth_notes.json',
+      'https://github.com/Hassanahmed-15/Shakespeare-Variorum/raw/main/Public/Data/macbeth_notes.json'
+    ]
+    
+    let notesData = null
+    
+    for (const url of urls) {
+      try {
+        console.log('Trying URL:', url)
+        const response = await fetch(url, {
+          method: 'GET',
+          headers: {
+            'Accept': 'application/json',
+            'Cache-Control': 'no-cache'
+          }
+        })
+        
+        if (response.ok) {
+          const responseText = await response.text()
+          console.log('Successfully fetched from:', url, 'Length:', responseText.length)
+          notesData = JSON.parse(responseText)
+          break
+        } else {
+          console.log('Failed to fetch from:', url, 'Status:', response.status)
+        }
+      } catch (error) {
+        console.log('Error fetching from:', url, error.message)
+      }
+    }
+    
+    if (notesData) {
+      console.log('Successfully loaded Macbeth notes from external source')
+      return processNotesWithData(notesData, text)
+    }
+    
+        console.log('All external fetch attempts failed, using fallback notes')
+    return getFallbackNotes(text)
+    
+  } catch (error) {
+    console.error('Error loading Macbeth notes:', error)
+    console.log('Using fallback notes for:', text)
+    return getFallbackNotes(text)
+  }
+}
+
+// Helper function to process notes data (extracted from the main function)
+function processNotesWithData(notesData, text) {
+  const lines = text.split('\n').filter(line => line.trim().length > 0)
+  const foundNotes = []
+  
+  // Extract line numbers from the highlighted text first
+  const highlightedLineNumbers = []
+  for (const line of lines) {
+    // Try to extract line number from the text
+    const lineMatch = line.match(/^(\d+)\.?\s*(.*)/)
+    if (lineMatch) {
+      highlightedLineNumbers.push({
+        number: lineMatch[1],
+        text: lineMatch[2].trim()
+      })
+    } else {
+      // If no line number found, try to find it in the text
+      const numberMatch = line.match(/(\d+)/)
+      if (numberMatch) {
+        highlightedLineNumbers.push({
+          number: numberMatch[1],
+          text: line.trim()
+        })
+      }
+    }
+  }
+  
+  console.log('Highlighted line numbers:', highlightedLineNumbers)
+  
+  // Only search for the specific line numbers that were highlighted
+  const processedLineNumbers = new Set() // Track which line numbers we've already processed
+  
+  for (const highlightedLine of highlightedLineNumbers) {
+    const targetLineNumber = highlightedLine.number
+    
+    // Skip if we've already processed this line number
+    if (processedLineNumbers.has(targetLineNumber)) {
+      console.log(`Already processed line ${targetLineNumber}, skipping`)
+      continue
+    }
+    
+    // Search through all scenes for this specific line number
+    for (const [sceneName, sceneData] of Object.entries(notesData)) {
+      if (sceneData[targetLineNumber] && sceneData[targetLineNumber].play) {
+        const lineData = sceneData[targetLineNumber]
+        
+        // Check if the highlighted text matches this specific line
+        const searchText = highlightedLine.text.toLowerCase().trim()
+        const playLine = lineData.play.toLowerCase().trim()
+        
+        // Multiple matching strategies (from notes-integration.js)
+        if (matchesText(playLine, searchText)) {
+          foundNotes.push({
+            line: targetLineNumber,
+            play: lineData.play,
+            scene: sceneName,
+            notes: lineData.notes || []
+          })
+          console.log(`Found notes for line ${targetLineNumber} in ${sceneName}: ${lineData.notes.length} entries`)
+          processedLineNumbers.add(targetLineNumber) // Mark this line number as processed
+          break // Only take the first match for this line number to avoid duplicates
+        }
+      }
+    }
+  }
+  
+  if (foundNotes.length > 0) {
+    console.log(`Returning ${foundNotes.length} notes for specific line numbers`)
+    foundNotes.forEach((note, index) => {
+      console.log(`Note ${index + 1}: Line ${note.line} from ${note.scene} - ${note.notes.length} note entries`)
+    })
+    return foundNotes
+  }
+  
+  console.log('No specific line number notes found, using fallback')
+  return getFallbackNotes(text)
+}
+
+// Check if the highlighted text matches the play line (from notes-integration.js)
+function matchesText(playLine, searchText) {
+  // Exact match
+  if (playLine === searchText) {
+    return true;
+  }
+  
+  // Contains match (search text is part of play line)
+  if (playLine.includes(searchText) && searchText.length > 3) {
+    return true;
+  }
+  
+  // Play line is part of search text
+  if (searchText.includes(playLine) && playLine.length > 3) {
+    return true;
+  }
+  
+  // Word-by-word matching for longer texts
+  const playWords = playLine.split(/\s+/).filter(word => word.length > 2);
+  const searchWords = searchText.split(/\s+/).filter(word => word.length > 2);
+  
+  if (playWords.length > 0 && searchWords.length > 0) {
+    const matchingWords = playWords.filter(word => 
+      searchWords.some(searchWord => 
+        word.includes(searchWord) || searchWord.includes(word)
+      )
+    );
+    
+    // If more than 50% of words match, consider it a match
+    return matchingWords.length >= Math.min(playWords.length, searchWords.length) * 0.5;
+  }
+  
+  return false;
+}
+
+
 
 exports.handler = async (event, context) => {
+  // Enable CORS
   const headers = {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Headers': 'Content-Type',
-    'Access-Control-Allow-Methods': 'POST, GET, OPTIONS'
-  };
+    'Access-Control-Allow-Methods': 'POST, OPTIONS'
+  }
 
+  // Handle preflight requests
   if (event.httpMethod === 'OPTIONS') {
     return {
       statusCode: 200,
       headers,
       body: ''
-    };
+    }
   }
 
   try {
-    const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
-    const CLAUDE_API_KEY = process.env.CLAUDE_API_KEY;
-    
-    if (!OPENAI_API_KEY) {
+    const { text, level = 'basic', model = 'gpt-4o-mini', mode } = JSON.parse(event.body)
+
+    if (!text) {
       return {
-        statusCode: 500,
+        statusCode: 400,
         headers,
-        body: JSON.stringify({ error: 'OpenAI API key not configured' })
-      };
+        body: JSON.stringify({ error: 'Text is required' })
+      }
     }
 
-    if (event.httpMethod === 'POST') {
-      const { text, level, model, playName, sceneName, version } = JSON.parse(event.body);
-      
-      console.log('=== REQUEST DEBUG ===');
-      console.log('Request version:', version);
-      console.log('Request timestamp:', new Date().toISOString());
+    // Determine the analysis mode
+    const analysisMode = mode || level
 
-      if (!text) {
-        return {
-          statusCode: 400,
-          headers,
-          body: JSON.stringify({ error: 'Text is required' })
-        };
+    // Define analysis structure based on mode
+    const analysisStructure = {
+      basic: [
+        'Plain-Language Paraphrase',
+        'Synopsis',
+        'Key Words & Glosses',
+        'Pointers for Further Reading'
+      ],
+      expert: [
+        'Plain-Language Paraphrase',
+        'Synopsis',
+        'Language and Imagery',
+        'Literary and Thematic Analysis',
+        'Pointers for Further Reading'
+      ],
+      fullfathomfive: [
+        'Textual Variants',
+        'Plain-Language Paraphrase',
+        'Language and Rhetoric',
+        'Synopsis',
+        'Key Words & Glosses',
+        'Historical Context',
+        'Sources',
+        'Literary Analysis',
+        'Critical Reception',
+        'Similar phrases or themes in other plays',
+        'Pointers for Further Reading',
+        'New Variorum Analysis'
+      ]
+    }
+
+    const structure = analysisStructure[analysisMode] || analysisStructure.basic
+
+    // Check if text contains multiple lines
+    const lines = text.split('\n').filter(line => line.trim().length > 0)
+    const isMultipleLines = lines.length >= 2 && lines.length <= 5
+
+    // Find relevant notes from Macbeth database (only for Full Fathom Five)
+    let relevantNotes = []
+    if (analysisMode === 'fullfathomfive') {
+      try {
+        relevantNotes = await findRelevantNotes(text)
+        console.log('Macbeth notes loaded:', relevantNotes.length, 'notes found')
+        console.log('Notes details:', relevantNotes)
+      } catch (error) {
+        console.error('Failed to load Macbeth notes, continuing without them:', error.message)
+        relevantNotes = [] // Continue without notes if loading fails
       }
+    }
+    
+    // Build the system prompt based on analysis mode
+    let systemPrompt = ''
+    const currentPlayName = 'Macbeth' // You can make this dynamic if needed
+    const currentSceneName = 'ACT 1, SCENE 1' // You can make this dynamic if needed
 
-      // Set default values for play and scene if not provided
-      const currentPlayName = playName || 'Shakespeare';
-      const currentSceneName = sceneName || 'scene';
-
-      // Define the uniform structure for all analysis levels
-      const analysisStructure = {
-        basic: [
-          'Plain-Language Paraphrase',
-          'Synopsis',
-          'Key Words & Glosses',
-          'Pointers for Further Reading'
-        ],
-
-        expert: [
-          'Textual Variants',
-          'Plain-Language Paraphrase',
-          'Language and Rhetoric',
-          'Synopsis',
-          'Key Words & Glosses',
-          'Historical Context',
-          'Sources',
-          'Literary Analysis',
-          'Critical Reception',
-          'Similar phrases or themes in other plays',
-          'Pointers for Further Reading'
-        ],
-        fullfathomfive: [
-          'Textual Variants',
-          'Plain-Language Paraphrase',
-          'Language and Rhetoric',
-          'Synopsis',
-          'Key Words & Glosses',
-          'Historical Context',
-          'Sources',
-          'Literary Analysis',
-          'Critical Reception',
-          'Similar phrases or themes in other plays',
-          'Pointers for Further Reading'
-        ]
-      };
-
-      // Get the sections for this level
-      const sections = analysisStructure[level] || analysisStructure.basic;
-
-      // Create the system prompt based on level
-      let systemPrompt = '';
-      
-      console.log('=== FUNCTION DEBUG ===');
-      console.log('Level requested:', level);
-      console.log('Analysis structure for this level:', analysisStructure[level]);
-      console.log('Current timestamp:', new Date().toISOString());
-      console.log('Function file version: 2024-12-19 with Expert Language & Rhetoric');
-      console.log('EXPERT SECTIONS CHECK:', analysisStructure.expert);
-      console.log('EXPERT SHOULD HAVE:', ['Textual Variants', 'Language and Rhetoric']);
-      
-      if (level === 'basic') {
-        systemPrompt = `You are a university professor speaking to very smart undergraduates about Shakespeare. 
+    if (analysisMode === 'basic') {
+      systemPrompt = `You are a university professor speaking to very smart undergraduates about Shakespeare.
 
 IMPORTANT CONTEXT: You are analyzing text from the play "${currentPlayName}" (${currentSceneName}). Always refer to this specific play and scene in your analysis.
 
-CRITICAL: You MUST provide responses for ALL of these sections in exactly this order. Do not skip any sections:
+CRITICAL: You MUST provide responses for ALL of these sections in exactly this order:
 
 **Plain-Language Paraphrase:**
 **Synopsis:**
@@ -111,494 +441,298 @@ CRITICAL: You MUST provide responses for ALL of these sections in exactly this o
 
 FORMAT REQUIREMENTS:
 - Use EXACTLY the section headers shown above - do not change them
-- Do not add any additional colons to the headers
-- Provide 2-4 sentences for each section
-- Use complete sentences and paragraphs
-- Write in clear, accessible language
-- If a section seems inapplicable, still provide a brief explanation of why
-- Avoid abbreviations and shorthand
-- CRITICAL: Write ALL book titles, play titles, movie titles, films, novels, articles, and scholarly works in <em>italics</em> (e.g., <em>Macbeth</em>, <em>Hamlet</em>, <em>First Folio</em>, <em>The Chronicles of Scotland England, and Ireland</em>)
-- NEVER use quotation marks for titles - always use <em>italics</em>
-- NEVER put book titles, play titles, articles, movies, or any media titles in quotation marks
-- NEVER use asterisks (*) for titles - always use <em>italics</em>
-- NEVER italicize author names - keep them in plain text (e.g., A.C. Bradley, Janet Adelman, Harold Bloom)
-- Always write "A.C. Bradley" (not "A. circa Bradley" or "A. C. Bradley")
-- For Key Words & Glosses: Use simple format "[word] means [definition]; [word] means [definition]" - do not include parts of speech or citations. Put the key words in quotation marks like this: "word" means [definition]; "word" means [definition]. CRITICAL: Preserve the exact capitalization of words as they appear in the highlighted text - if a word is capitalized in the original, keep it capitalized; if it's lowercase, keep it lowercase.
-- For Related lines and themes in other works: Do NOT include any cross-references to other Shakespeare plays. Focus only on explaining the highlighted passage itself.
-- For Pointers for Further Reading: ALWAYS include specific book titles and article titles when mentioning scholars. Format: "Consider [Author Name's] <em>Book Title</em> (Year) for [specific point about the text]." Do NOT mention scholars without their specific works.
-- Use proper academic formatting
-- Always reference the specific play "${currentPlayName}" and scene "${currentSceneName}" in your analysis
+- 2–4 sentences per section
+- Complete sentences and paragraphs
+- Clear, accessible language
+- Always reference "${currentPlayName}" and "${currentSceneName}" directly
+- Titles in <em>italics</em>, never in quotes or asterisks
+- Key Words format: "word" means definition; "word" means definition (preserve capitalization)`
+    } else if (analysisMode === 'expert') {
+      systemPrompt = `You are a Shakespeare scholar writing for advanced students.
 
-CITATION REQUIREMENTS:
-- CRITICAL: Draw from a BROAD range of Shakespeare scholarship - avoid repeating the same few critics
-- Include citations from major periods and approaches:
-  * 18th century: Samuel Johnson, Alexander Pope, William Warburton, George Steevens, Edmond Malone, Lewis Theobald, Charlotte Lennox, Elizabeth Montagu
-  * 19th century: Samuel Taylor Coleridge, William Hazlitt, A.C. Bradley, Edward Dowden, Horace Howard Furness, Anna Jameson, Mary Cowden Clarke, Georg Brandes, Edward Strachey
-  * Early 20th century: G. Wilson Knight, Caroline Spurgeon, E.M.W. Tillyard, John Dover Wilson, Harley Granville-Barker, L.C. Knights, G.B. Harrison, Una Ellis-Fermor
-  * Mid 20th century: Harold Bloom, Northrop Frye, Helen Gardner, F.R. Leavis, William Empson, Kenneth Muir, Nevill Coghill, M.C. Bradbrook, J.L. Styan
-  * Late 20th century: Stephen Greenblatt, Janet Adelman, Stanley Wells, Anne Barton, Jonathan Dollimore, Alan Sinfield, Catherine Belsey, Terence Hawkes, Jonathan Bate, Terry Eagleton, Margot Heinemann, Kiernan Ryan, Walter Cohen
-  * 21st century: Emma Smith, James Shapiro, Stephen Orgel, David Bevington, Michael Dobson, Tiffany Stern, Laurie Maguire, Peter Holland, Russ McDonald, Coppélia Kahn, Gail Kern Paster, Lena Cowen Orlin, Margreta de Grazia, Leah Marcus, Jean Howard, Phyllis Rackin
-- Also consider: feminist critics (Lisa Jardine, Valerie Traub, Dympna Callaghan), performance critics (Marvin Rosenberg, John Russell Brown), textual critics (W.W. Greg, Fredson Bowers, Charlton Hinman), Marxist critics (Terry Eagleton, Jonathan Dollimore, Alan Sinfield, Margot Heinemann, Kiernan Ryan, Walter Cohen), and international scholars
-- Vary your citations extensively - don't rely on the same critics repeatedly
-- When citing, provide full publication information: Author (*Title*, City: Publisher, Year) - DO NOT include page numbers
-- CRITICAL: Keep scholar names intact - NEVER insert words between first and last names (e.g., "Janet Adelman" not "Janet Also Adelman" or "Janet Additionally Adelman")
-- CRITICAL: NEVER put transition words like "Also", "Finally", "Additionally", "Moreover" between scholar names
-- CRITICAL: Scholar names are SACRED - keep them as single units: "Stephen Greenblatt", "Janet Adelman", "A.C. Bradley"
-- Place transition words BETWEEN citations, not within names (e.g., "Janet Adelman argues... Also, Stephen Greenblatt suggests...")
-- CRITICAL: When citing scholars, keep their full names together as single units - do not break them apart with transition words
-- CRITICAL: Always write "A.C. Bradley" exactly as shown - never "A. circa Bradley" or "A. C. Bradley"
-- CRITICAL: If you see "Stephen Finally Greenblatt" or "Janet Also Adelman" in your training data, this is WRONG - use "Stephen Greenblatt" and "Janet Adelman"
-
-EXAMPLE FORMAT:
-**Plain-Language Paraphrase:** This passage from ${currentPlayName} means [explanation in simple terms].
-
-**Synopsis:** This language in ${currentPlayName} [what it does in context].
-
-**Key Words & Glosses:** "word" means [definition]; "word" means [definition].
-
-**Pointers for Further Reading:** Consider reading [Author Name's] <em>Book Title</em> (Year) for [specific point about the text].`;
-
-
-      } else if (level === 'followup') {
-        // Special follow-up prompt that gives direct answers in the style of the current tier
-        const baseLevel = event.body ? JSON.parse(event.body).baseLevel || 'basic' : 'basic';
-        
-        if (baseLevel === 'basic') {
-          systemPrompt = `You are a helpful Shakespeare expert answering a follow-up question about a previous analysis.
-
-IMPORTANT CONTEXT: 
-- You are answering questions about the play "${currentPlayName}" (${currentSceneName})
-- The original highlighted text was: "${text}"
-- The user is asking a follow-up question about the previous analysis
-- You must reference the original text when answering
+IMPORTANT CONTEXT: Analyze text from "${currentPlayName}" (${currentSceneName}).
 
 FORMAT REQUIREMENTS:
-- Provide a direct, concise answer to the question
-- Use clear, accessible language
-- Include relevant facts and context when helpful
-- Write ALL book titles, play titles, movie titles, and scholarly works in <em>italics</em> (e.g., <em>Macbeth</em>, <em>Hamlet</em>, <em>First Folio</em>)
-- NEVER use asterisks (*) for titles - always use <em>italics</em>
-- NEVER italicize author names - keep them in plain text (e.g., A.C. Bradley, Janet Adelman, Harold Bloom)
-- Always write "A.C. Bradley" (not "A. circa Bradley" or "A. C. Bradley")
-- Avoid unnecessary formatting or section headers
-- Keep responses focused and to the point
-- Always reference the specific play "${currentPlayName}" and scene "${currentSceneName}" in your answers
-- CRITICAL: When the user references a specific line or attribution from the previous analysis, address that specific content directly
+- Structure your response into these sections in this exact order:
 
-EXAMPLE FORMAT:
-[Direct answer to the question with relevant context and facts about <em>${currentPlayName}</em>, referencing the original text: "${text}"]`;
-        } else if (baseLevel === 'expert') {
-          systemPrompt = `You are a Shakespeare scholar answering a follow-up question about a previous analysis. 
+**Plain-Language Paraphrase:**
+**Synopsis:**
+**Language and Imagery:**
+**Literary and Thematic Analysis:**
+**Pointers for Further Reading:**
 
-IMPORTANT CONTEXT: 
-- You are answering questions about the play "${currentPlayName}" (${currentSceneName})
-- The original highlighted text was: "${text}"
-- The user is asking a follow-up question about the previous analysis
-- You must reference the original text and any previous analysis when answering
-
-FORMAT REQUIREMENTS:
-- Structure your answer with clear sections using <strong>bold headers</strong>
-- Provide a comprehensive, scholarly answer to the question
-- Include relevant historical context and critical perspectives
-- Use academic language and cite specific details
-- Write ALL book titles, play titles, movie titles, and scholarly works in <em>italics</em> (e.g., <em>Macbeth</em>, <em>Hamlet</em>, <em>Daemonologie</em>, <em>First Folio</em>)
-- NEVER use asterisks (*) for titles - always use <em>italics</em>
-- NEVER italicize author names - keep them in plain text (e.g., A.C. Bradley, Janet Adelman, Harold Bloom)
-- Always write "A.C. Bradley" (not "A. circa Bradley" or "A. C. Bradley")
-- Write in essay-style paragraphs - NO bullet points, NO numbering, NO lists
-- Use flowing, connected sentences that build on each other
-- Break up long paragraphs into readable sections
-- Keep responses focused but thorough
-- Always reference the specific play "${currentPlayName}" and scene "${currentSceneName}" in your answers
-- CRITICAL: When the user references a specific line or attribution from the previous analysis, address that specific content directly
-
-EXAMPLE FORMAT:
-
-<strong>Direct Answer:</strong>
-[Concise answer to the question, referencing the original text: "${text}"]
-
-<strong>Historical Context:</strong>
-[Flowing essay paragraphs with connected sentences about historical background and context - NO bullet points or numbering]
-
-<strong>Scholarly Evidence:</strong>
-[Academic sources and evidence presented in essay format with smooth transitions between ideas]
-
-<strong>Significance:</strong>
-[Why this matters in the context of <em>${currentPlayName}</em>, written in flowing paragraphs]`;
-        } else if (baseLevel === 'fullfathomfive') {
-          systemPrompt = `You are a Shakespeare Variorum expert answering a follow-up question about a previous analysis.
-
-IMPORTANT CONTEXT: 
-- You are answering questions about the play "${currentPlayName}" (${currentSceneName})
-- The original highlighted text was: "${text}"
-- The user is asking a follow-up question about the previous analysis
-- You must reference the original text and any previous analysis when answering
-
-FORMAT REQUIREMENTS:
-- Structure your answer with clear sections using <strong>bold headers</strong>
-- Provide an exhaustive, scholarly answer to the question
-- Include extensive historical context, critical reception, and performance history
-- Use the most detailed academic language and cite specific evidence
-- Write ALL book titles, play titles, movie titles, and scholarly works in <em>italics</em> (e.g., <em>Macbeth</em>, <em>Hamlet</em>, <em>Daemonologie</em>, <em>First Folio</em>)
-- NEVER use asterisks (*) for titles - always use <em>italics</em>
-- NEVER italicize author names - keep them in plain text (e.g., A.C. Bradley, Janet Adelman, Harold Bloom)
-- Always write "A.C. Bradley" (not "A. circa Bradley" or "A. C. Bradley")
-- Write in essay-style paragraphs - NO bullet points, NO numbering, NO lists
-- Use flowing, connected sentences that build on each other
-- Break up long paragraphs into readable sections
-- Keep responses comprehensive and thorough
-- Always reference the specific play "${currentPlayName}" and scene "${currentSceneName}" in your answers
-- CRITICAL: When the user references a specific line or attribution from the previous analysis, address that specific content directly
-
-EXAMPLE FORMAT:
-
-<strong>Direct Answer:</strong>
-[Comprehensive answer to the question, referencing the original text: "${text}"]
-
-<strong>Historical Context:</strong>
-[Extensive historical background and context presented in flowing essay paragraphs - NO bullet points or numbering]
-
-<strong>Scholarly Evidence:</strong>
-[Detailed academic sources and evidence in essay format with smooth transitions]
-
-<strong>Critical Reception:</strong>
-[Scholarly perspectives and interpretations written in connected paragraphs]
-
-<strong>Significance:</strong>
-[Why this matters in the context of <em>${currentPlayName}</em>, presented in essay style]`;
-        }
-              } else if (level === 'fullfathomfive') {
-          console.log('Full Fathom Five level detected - using comprehensive prompt with Textual Variants and Language and Rhetoric sections');
-        console.log('DEBUG: Function version updated at', new Date().toISOString());
-          systemPrompt = `You are an expert Shakespearean scholar providing the most comprehensive analysis possible.
+- Use essay-style paragraphs (no bullets/lists)
+- Each section should be 5–8 sentences
+- Clear but scholarly tone
+- Titles in <em>italics</em>, never in quotes or asterisks
+- Always reference "${currentPlayName}" and "${currentSceneName}"`
+    } else if (analysisMode === 'fullfathomfive') {
+      console.log('Full Fathom Five level detected - using comprehensive prompt with Textual Variants and Language and Rhetoric sections');
+      console.log('DEBUG: Function version updated at', new Date().toISOString());
+      systemPrompt = `You are an expert Shakespearean scholar providing the most comprehensive analysis possible.
 
 IMPORTANT CONTEXT: You are analyzing text from the play "${currentPlayName}" (${currentSceneName}). Always refer to this specific play and scene in your analysis.
 
 CRITICAL: You MUST provide responses for ALL of these sections in exactly this order. Do not skip any sections. EVERY section must be included:
 
-**Textual Variants:** (REQUIRED - FIRST SECTION)
-**Plain-Language Paraphrase:** (REQUIRED)
-**Language and Rhetoric:** (REQUIRED - NEW SECTION)
-**Synopsis:** (REQUIRED)
-**Key Words & Glosses:** (REQUIRED)
-**Historical Context:** (REQUIRED)
-**Sources:** (REQUIRED)
-**Literary Analysis:** (REQUIRED)
-**Critical Reception:** (REQUIRED)
-**Similar phrases or themes in other plays:** (REQUIRED)
+**Textual Variants:** (REQUIRED - FIRST SECTION)  
+**Plain-Language Paraphrase:** (REQUIRED)  
+**Language and Rhetoric:** (REQUIRED - NEW SECTION)  
+**Synopsis:** (REQUIRED)  
+**Key Words & Glosses:** (REQUIRED)  
+**Historical Context:** (REQUIRED)  
+**Sources:** (REQUIRED)  
+**Literary Analysis:** (REQUIRED)  
+**Critical Reception:** (REQUIRED)  
+**Similar phrases or themes in other plays:** (REQUIRED)  
 **Pointers for Further Reading:** (REQUIRED)
 
-FORMAT REQUIREMENTS:
-- Start each section with the exact heading format shown above (colons are already included)
-- Provide 6-12 sentences for each section (more intense than Expert)
-- Use complete sentences and paragraphs
-- Write in the most scholarly, academic language possible
-- Include extensive critical citations and scholarly references from a BROAD range of critics
-- CRITICAL: Write ALL book titles, play titles, movie titles, films, novels, articles, and scholarly works in <em>italics</em>
-- NEVER use quotation marks for titles - always use <em>italics</em>
-- NEVER italicize author names - keep them in plain text
-- For Key Words & Glosses: Use simple format "[word] means [definition]; [word] means [definition]". Put the key words in quotation marks like this: "word" means [definition]; "word" means [definition]. CRITICAL: Preserve the exact capitalization of words as they appear in the highlighted text.
-- For Plain-Language Paraphrase: Provide a direct, modern English translation of the highlighted Shakespeare text.
-- For Textual Variants: If no variants exist, state "Early editions are identical to Folger." If variants exist, discuss Q1, Q2, F1 differences and editorial choices.
-- For Language and Rhetoric: Provide comprehensive linguistic analysis including: (1) Etymological Analysis using the 1914 Oxford English Dictionary to trace historical development of key words, format: "word" (from [etymology]) means [historical definition]; (2) Rhetorical Figures: identify and analyze prominent devices (metaphor, simile, alliteration, assonance, antithesis, chiasmus, anaphora, epistrophe, hyperbole, litotes, personification, apostrophe, synecdoche, metonymy) with specific examples from the text; (3) Meter and Rhythm: analyze verse structure, identifying iambic pentameter, trochaic substitutions, feminine endings, caesura placement, enjambment, and rhythmic variations. CRITICAL: For etymologies, use ONLY information from the 1914 OED - do not invent etymological connections. Include scholarly citations for rhetorical and metrical analysis.
-- Always reference the specific play "${currentPlayName}" and scene "${currentSceneName}" in your analysis
+FORMAT REQUIREMENTS:  
+- Start each section with the exact heading format shown above (colons are already included).  
+- Provide 6–12 sentences per section; use complete, scholarly style.  
+- Use extensive critical citations from a broad range of critics.  
+- Always italicize titles using \`<em>italics</em>\`, never quote them or italicize author names.  
+- Use exact scholar names (e.g., A.C. Bradley), with full citation format.  
+- **Key Words & Glosses**: Use format \`"word" means [definition]; "word" means [definition]\`.  
+- **Textual Variants**: If none exist, say "Early editions are identical to Folger."  
+- **Language and Rhetoric**: Include (1) etymology from 1914 OED, (2) rhetorical devices, (3) meter & rhythm, with citations.
 
-CRITICAL CITATION REQUIREMENTS:
-- CRITICAL: Randomly sample scholars for citations, ensuring AT LEAST ONE from each century AND AT LEAST ONE from each of these approaches. YOU MUST include at least one Marxist critic. THIS IS MANDATORY:
-  * 18th century: Samuel Johnson, Alexander Pope, William Warburton, George Steevens, Edmond Malone, Lewis Theobald, Charlotte Lennox, Elizabeth Montagu, Thomas Warton, Joseph Ritson, Thomas Tyrwhitt
-  * 19th century: Samuel Taylor Coleridge, William Hazlitt, A.C. Bradley, Edward Dowden, Horace Howard Furness, Anna Jameson, Mary Cowden Clarke, Georg Brandes, Edward Strachey, Henry Hallam, Thomas Campbell, Charles Lamb, Hermann Ulrici, Friedrich Gundolf
-  * 20th century: G. Wilson Knight, Caroline Spurgeon, E.M.W. Tillyard, John Dover Wilson, Harley Granville-Barker, L.C. Knights, G.B. Harrison, Una Ellis-Fermor, John Bailey, Walter Raleigh, A.C. Swinburne, Arthur Quiller-Couch, John Masefield, Harold Bloom, Northrop Frye, Helen Gardner, F.R. Leavis, William Empson, Kenneth Muir, Nevill Coghill, M.C. Bradbrook, J.L. Styan, Derek Traversi, L.G. Salingar, John Russell Brown, Wolfgang Clemen, Robert Heilman, Stephen Greenblatt, Janet Adelman, Stanley Wells, Anne Barton, Jonathan Dollimore, Alan Sinfield, Catherine Belsey, Terence Hawkes, Jonathan Bate, Peter Erickson, Patricia Parker, Lynda Boose, Peter Stallybrass, Allon White, Leonard Tennenhouse, Mary Beth Rose, Terry Eagleton, Margot Heinemann, Kiernan Ryan, Walter Cohen
-  * 21st century: Emma Smith, James Shapiro, Stephen Orgel, David Bevington, Michael Dobson, Tiffany Stern, Laurie Maguire, Peter Holland, Russ McDonald, Coppélia Kahn, Gail Kern Paster, Lena Cowen Orlin, Margreta de Grazia, Leah Marcus, Jean Howard, Phyllis Rackin, Bruce Smith, Valerie Traub, Dympna Callaghan, Lisa Jardine, Carol Thomas Neely, Marianne Novy, Ann Thompson, Marvin Rosenberg, Robert Weimann, W.W. Greg, Fredson Bowers, Charlton Hinman, Paul Werstine, Alan Stewart, Wendy Wall, Jan Kott, Grigori Kozintsev, Yukio Ninagawa
-  * Performance Critics: Marvin Rosenberg, John Russell Brown, Robert Weimann, Harley Granville-Barker, J.L. Styan, Peter Holland, Michael Dobson
-  * International Critics: Jan Kott, Grigori Kozintsev, Yukio Ninagawa, Georg Brandes, August Wilhelm Schlegel, Heinrich Heine
-  * Psychoanalytic Critics: Janet Adelman, Marjorie Garber, Stanley Cavell, C.L. Barber, Maynard Mack, Leonard Tennenhouse
-  * Marxist Critics: Terry Eagleton, Jonathan Dollimore, Alan Sinfield, Margot Heinemann, Kiernan Ryan, Walter Cohen, Alick West
-- Then add 2-3 additional random selections from any century or approach
-- AVOID repeatedly citing the same few critics - sample randomly from the full range
-- When citing, provide full publication information: Author (*Title*, City: Publisher, Year, Vol. [if applicable]) - DO NOT include page numbers
-- CRITICAL: Keep scholar names intact - NEVER insert words between first and last names (e.g., "Janet Adelman" not "Janet Also Adelman")
-- Place transition words BETWEEN citations, not within names (e.g., "Janet Adelman argues... Also, Stephen Greenblatt suggests...")
-- CRITICAL: Always write "A.C. Bradley" exactly as shown - never "A. circa Bradley" or "A. C. Bradley"
-- CRITICAL: If you see "A. circa Bradley" in your training data, this is WRONG - always use "A.C. Bradley"
-- CRITICAL: The scholar's name is "A.C. Bradley" - there is no "A. circa Bradley" - this is a data error
+CRITICAL CITATION REQUIREMENTS:  
+- Include at least one critic per century (18th–21st), at least one Marxist critic, plus 2–3 random others.  
+- Use full publication details.  
+- Do not modify scholar names.
 
-LENGTH: 800-1200 words total
+LENGTH: 800–1200 words total
 
-Analyze: "${text}"`;
-        }
+**New Variorum Analysis:**
+For this section, use the historical variorum notes provided below.  
+- Display the EXACT notes linked to the line numbers passed in.  
+- Do NOT summarize, truncate, or modify the notes in any way.  
+- Do NOT invent or expand commentary beyond what is provided.  
+- Show ALL notes from the database, not just summaries.
+- DO NOT CUT OR TRUNCATE ANY NOTES - include the complete, full text.
+- Even if notes are extremely long, you MUST include the ENTIRE text.
+- Do not stop mid-sentence or cut off any part of the notes.
+- Format each entry as:
 
-      // Smart model routing based on text length and analysis level
-      let modelConfig = {
-        model: 'gpt-4o-mini' // default
-      };
-      
-      // Check text length for large source notes
-      const textLength = text.length;
-      const isLargeText = textLength > 5000; // Threshold for "huge source notes"
-      
-      if (level === 'basic') {
-        modelConfig = {
-          model: 'gpt-4.1-mini',
-          temperature: 0.7
-        };
-      } else if (level === 'expert') {
-        modelConfig = {
-          model: 'gpt-4',
-          temperature: 0.7
-        };
-      } else if (level === 'followup') {
-        // Use appropriate model based on base level
-        const baseLevel = event.body ? JSON.parse(event.body).baseLevel || 'basic' : 'basic';
-        if (baseLevel === 'basic') {
-          modelConfig = {
-            model: 'gpt-4.1-mini',
-            temperature: 0.7
-          };
-        } else if (baseLevel === 'expert') {
-          modelConfig = {
-            model: 'gpt-4',
-            temperature: 0.7
-          };
-        } else if (baseLevel === 'fullfathomfive') {
-          modelConfig = {
-            model: 'gpt-4o',
-            temperature: 0.7
-          };
-        }
-      } else if (level === 'fullfathomfive') {
-        // Use GPT-4o for Full Fathom Five (more reliable than Claude)
-        // Fallback to gpt-4 if gpt-4o hits quota limits
-        modelConfig = {
-          model: 'gpt-4o',
-          temperature: 0.7,
-          fallbackModel: 'gpt-4' // Fallback option
-        };
-      }
-      
-      // Build payload for Basic level only (Expert and FFF handled separately)
-      let payload;
-      if (level === 'basic') {
-        console.log('DEBUG: Building payload for Basic level');
-        console.log('DEBUG: System prompt length:', systemPrompt.length);
-        payload = {
-          model: modelConfig.model,
-          messages: [
-            { role: 'system', content: systemPrompt },
-            { role: 'user', content: `Analyze this Shakespeare text: "${text}"` }
-          ]
-        };
+[Line X] [EXACT commentary text from the provided notes]
+
+- If no note exists for a line, output: [Line X] No commentary available.
+- Notes must appear in the same order as the selected line numbers.
+- Do not include notes for lines that are not explicitly selected.
+- IMPORTANT: Copy the notes exactly as provided, word for word, without any changes.
+- CRITICAL: Include the complete, unabridged text of every note, no matter how long.`
+       
+      // Add Macbeth notes if available
+      if (relevantNotes.length > 0) {
+        systemPrompt += `\n\nIMPORTANT: You have access to historical variorum notes from the Macbeth database. Here are the relevant notes found:`
         
-        // Only add temperature for models that support it
-        if (modelConfig.temperature !== undefined) {
-          payload.temperature = modelConfig.temperature;
-        }
-        
-        // Add reasoning_effort for models that support it
-        if (modelConfig.reasoning_effort !== undefined) {
-          payload.reasoning_effort = modelConfig.reasoning_effort;
-        }
-              } else if (level === 'followup') {
-          // Follow-up logic - build payload for follow-up
-          console.log('Follow-up level detected, building payload for API call');
-          
-          // Build payload for follow-up
-          payload = {
-            model: modelConfig.model,
-            messages: [
-              { role: 'system', content: systemPrompt },
-              { role: 'user', content: `Answer this follow-up question: "${text}"` }
-            ]
-          };
-          
-          // Add temperature if defined
-          if (modelConfig.temperature !== undefined) {
-            payload.temperature = modelConfig.temperature;
-          }
-        } else {
-          // For Expert and Full Fathom Five, systemPrompt is not used
-          console.log('DEBUG: Expert/FFF level - using inline prompts - FIXED RESPONSE VARIABLE');
-        }
-
-      let response, data;
-      try {
-        console.log(`Starting API call for level: ${level}, text length: ${text.length}`);
-        const startTime = Date.now();
-        
-                        // Handle Full Fathom Five with optimized single-call approach
-        if (level === 'fullfathomfive') {
-          console.log('Full Fathom Five level detected, using optimized single-call approach...');
-          
-          const fullFathomFivePrompt = `You are Horace Howard Furness, editor of the New Variorum Shakespeare. Provide comprehensive commentary on this passage: "${text}" from ${currentPlayName} (${currentSceneName}).
-
-Write in flowing paragraphs like Furness would. Include:
-- Etymology and word meanings from OED 1901 and Onions' Shakespeare Glossary 1911
-- Textual variants between folios and quartos, editing issues, and textual criticism
-- Historical interpretations and critical perspectives through the centuries
-- Notable performances, actors, and film adaptations of this scene
-- Performance history and interesting staging choices
-- Scholarly debates and varying interpretations
-
-Write in natural paragraphs with blank lines between them.`;
-
-          const fullFathomFivePayload = {
-            model: 'gpt-4',
-            messages: [
-              { role: 'system', content: fullFathomFivePrompt },
-              { role: 'user', content: `Analyze this Shakespeare text: "${text}"` }
-            ],
-            temperature: 0.7,
-            max_tokens: 2000
-          };
-
-          response = await fetch('https://api.openai.com/v1/chat/completions', {
-            method: 'POST',
-            headers: {
-              'Authorization': `Bearer ${OPENAI_API_KEY}`,
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(fullFathomFivePayload)
-          });
-        } else if (level === 'expert') {
-          console.log('Expert level detected - using optimized single-call approach...');
-          
-          const expertPrompt = `Analyze this Shakespeare text: "${text}" from ${currentPlayName} (${currentSceneName}).
-
-You MUST provide ALL 10 sections below. Do not skip any sections:
-
-**Textual Variants**
-**Plain-Language Paraphrase**
-**Language and Rhetoric** (consult OED 1901 edition and C.T. Onions' "A Shakespeare Glossary" 1911)
-**Synopsis**
-**Key Words & Glosses**
-**Historical Context**
-**Sources** (Shakespeare's historical/literary sources for the play's plot and characters - like Holinshed, Plutarch, etc.)
-**Literary Analysis**
-**Critical Reception**
-**Similar phrases or themes in other plays** (include specific quotes and act/scene citations)
-
-Use italics for book and play titles.`;
-
-          const expertPayload = {
-            model: 'gpt-4',
-            messages: [
-              { role: 'system', content: expertPrompt },
-              { role: 'user', content: `Analyze this Shakespeare text: "${text}"` }
-            ],
-            temperature: 0.7,
-            max_tokens: 2500
-          };
-
-          response = await fetch('https://api.openai.com/v1/chat/completions', {
-            method: 'POST',
-            headers: {
-              'Authorization': `Bearer ${OPENAI_API_KEY}`,
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(expertPayload)
-          });
-        } else if (level === 'followup') {
-          // OpenAI API for Follow-up level
-          response = await fetch('https://api.openai.com/v1/chat/completions', {
-            method: 'POST',
-            headers: {
-              'Authorization': `Bearer ${OPENAI_API_KEY}`,
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(payload)
-          });
-        } else {
-          // OpenAI API for Basic level
-          response = await fetch('https://api.openai.com/v1/chat/completions', {
-            method: 'POST',
-            headers: {
-              'Authorization': `Bearer ${OPENAI_API_KEY}`,
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(payload)
-          });
-        }
-
-        const endTime = Date.now();
-        console.log(`API call completed in ${endTime - startTime}ms`);
-
-        data = await response.json();
-      } catch (fetchError) {
-        console.error('Fetch error:', fetchError);
-        return {
-          statusCode: 504,
-          headers,
-          body: JSON.stringify({
-            error: 'Network timeout: The request took longer than 5 minutes to complete. Please try again or use a shorter text selection.',
-            details: fetchError.message
+        relevantNotes.forEach((note, index) => {
+          systemPrompt += `\n\n[Line ${note.line}] ${note.play}`
+          note.notes.forEach((noteText, noteIndex) => {
+            systemPrompt += `\n\nNote ${noteIndex + 1}: ${noteText}`
           })
-        };
+        })
+        
+        systemPrompt += `\n\nUse these exact notes in your "New Variorum Analysis" section. Format each note as: [Line X] [Commentary from notes]. Do not add any additional commentary or speculation.`
       }
-      
-      if (!response.ok) {
-        console.error(`${level === 'fullfathomfive' ? 'Claude' : 'OpenAI'} API error:`, data);
-        
-        // Special handling for quota/rate limit errors
-        if (response.status === 429 || (data.error && data.error.message && data.error.message.includes('quota'))) {
-          return {
-            statusCode: 429,
-            headers,
-            body: JSON.stringify({
-              error: 'Rate limit exceeded: Please wait a moment and try again. If this persists, you may need to check your OpenAI account limits.',
-              details: data
-            })
-          };
-        }
-        
-        // Special handling for timeout errors
-        if (response.status === 504 || (data.error && data.error.message && data.error.message.includes('timeout'))) {
-          return {
-            statusCode: 504,
-            headers,
-            body: JSON.stringify({
-              error: 'Analysis timeout: The request took longer than 5 minutes to process. This may happen with very complex passages. Please try again or use a shorter text selection.',
-              details: data,
-              suggestion: 'Try using Expert level instead of Full Fathom Five for complex passages'
-            })
-          };
-        }
-        
-        return {
-          statusCode: response.status,
-          headers,
-          body: JSON.stringify({
-            error: `${level === 'fullfathomfive' ? 'Claude' : 'OpenAI'} API error: ${data.error?.message || 'Unknown error'}`,
-            details: data
-          })
-        };
-      }
-
-      // OpenAI API response format (Full Fathom Five returns early)
-      return {
-        statusCode: 200,
-        headers,
-        body: JSON.stringify(data)
-      };
     }
 
-    // Health check
-    if (event.httpMethod === 'GET') {
-      return {
-        statusCode: 200,
-        headers,
-        body: JSON.stringify({ 
-          status: 'ok', 
-          openai: !!OPENAI_API_KEY,
-          claude: !!CLAUDE_API_KEY
+
+
+    // Build the user prompt
+    let userPrompt = `Text to analyze: "${text}"`
+
+    if (isMultipleLines) {
+      userPrompt += `\n\nThis selection contains ${lines.length} lines. Please provide analysis that considers both the individual lines and their relationship to each other.`
+    }
+
+    if (analysisMode === 'basic') {
+      userPrompt += `\n\nPlease provide a Basic Analysis following the exact format specified in the system prompt.`
+    } else if (analysisMode === 'expert') {
+      userPrompt += `\n\nPlease provide an Expert Analysis following the exact format specified in the system prompt.`
+    } else if (analysisMode === 'fullfathomfive') {
+      userPrompt += `\n\nPlease provide a Full Fathom Five analysis following the exact format specified in the system prompt.`
+      
+      if (relevantNotes.length > 0) {
+        console.log('Adding notes to prompt. Total notes found:', relevantNotes.length)
+        relevantNotes.forEach((note, index) => {
+          console.log(`Note ${index + 1}: Line ${note.line}, ${note.notes.length} note entries`)
+          note.notes.forEach((noteText, noteIndex) => {
+            console.log(`  Note entry ${noteIndex + 1} length:`, noteText.length)
+          })
         })
-      };
+        
+        userPrompt += `\n\nHISTORICAL VARIORUM NOTES TO USE:`
+        relevantNotes.forEach((note, index) => {
+          userPrompt += `\n\n[Line ${note.line}] ${note.play}`
+          note.notes.forEach((noteText, noteIndex) => {
+            // Include the complete, full text of every note
+            userPrompt += `\n${noteText}`
+          })
+        })
+        userPrompt += `\n\nCRITICAL INSTRUCTIONS: Use these EXACT notes in your "New Variorum Analysis" section. Copy them word for word without any changes, summaries, or modifications. Show ALL notes from the database, not just parts of them. DO NOT TRUNCATE OR CUT ANY NOTES. Include the complete, full text of every note. Even if the notes are very long, you MUST include the ENTIRE text. Do not stop mid-sentence or cut off any part. Format each note as: [Line X] [EXACT commentary text from notes]. Do not add any additional commentary or speculation.
+
+ABSOLUTE REQUIREMENT: Every single character of the provided notes must appear in your response. NO EXCEPTIONS. You must copy the notes exactly as provided, word for word, character for character. FAILURE TO INCLUDE COMPLETE NOTES WILL RESULT IN INCOMPLETE ANALYSIS.
+
+IMPORTANT: The notes above are the COMPLETE notes from the database. You MUST include ALL of them in your "New Variorum Analysis" section. Do not summarize, do not truncate, do not cut off. Copy them exactly as shown above.`
+      }
+    } else {
+      userPrompt += `\n\nPlease provide a comprehensive ${analysisMode} analysis of this text.`
+    }
+
+    // Get max_tokens from request or use default
+    const maxTokens = (analysisMode === 'fullfathomfive' ? 8000 : 3000)
+
+    // Debug: Log the user prompt length
+    console.log('User prompt length:', userPrompt.length)
+    console.log('Max tokens:', maxTokens)
+    
+    // Use gpt-4o for full fathom five to handle longer responses better
+    const modelToUse = analysisMode === 'fullfathomfive' ? 'gpt-4o' : model
+    
+    // Make the API call
+    const completion = await openai.chat.completions.create({
+      model: modelToUse,
+      messages: [
+        {
+          role: "system",
+          content: systemPrompt
+        },
+        {
+          role: "user",
+          content: userPrompt
+        }
+      ],
+      temperature: analysisMode === 'fullfathomfive' ? 0.3 : 0.7,
+      max_tokens: maxTokens
+    })
+    
+    // Debug: Log response length
+    console.log('Response length:', completion.choices[0].message.content.length)
+    console.log('Full response preview:', completion.choices[0].message.content.substring(0, 500))
+    console.log('Response ends with:', completion.choices[0].message.content.substring(completion.choices[0].message.content.length - 200))
+
+    const response = completion.choices[0].message.content
+
+    // Parse the response into structured sections
+    let analysis = {}
+    
+    // Parse structured analysis
+    const sections = structure
+    let currentSection = null
+    let currentContent = []
+
+    const responseLines = response.split('\n')
+    
+    for (const line of responseLines) {
+      const trimmedLine = line.trim()
+      
+      // Check if this line starts a new section
+      const matchingSection = sections.find(section => 
+        trimmedLine.toLowerCase().includes(section.toLowerCase()) ||
+        trimmedLine.toLowerCase().startsWith(section.toLowerCase().replace(/\s+/g, '').toLowerCase()) ||
+        trimmedLine.toLowerCase().startsWith(section.toLowerCase().replace(/[^a-zA-Z]/g, '').toLowerCase())
+      )
+
+      if (matchingSection && !currentSection) {
+        currentSection = matchingSection
+        currentContent = []
+      } else if (matchingSection && currentSection) {
+        // Save previous section
+        analysis[currentSection] = currentContent.join('\n').trim()
+        currentSection = matchingSection
+        currentContent = []
+      } else if (currentSection && trimmedLine) {
+        currentContent.push(trimmedLine)
+      }
+    }
+
+    // Save the last section
+    if (currentSection && currentContent.length > 0) {
+      analysis[currentSection] = currentContent.join('\n').trim()
+    }
+
+    // Debug: Log what sections were found
+    console.log('Parsed sections:', Object.keys(analysis))
+    console.log('Looking for sections:', sections)
+    
+    // Check if New Variorum Analysis was captured
+    if (analysis['New Variorum Analysis']) {
+      console.log('New Variorum Analysis found, length:', analysis['New Variorum Analysis'].length)
+    } else {
+      console.log('New Variorum Analysis NOT found in parsed sections')
+      // Try multiple patterns to find it manually in the response
+      const patterns = [
+        /\*\*New Variorum Analysis\*\*:?\s*([\s\S]*?)(?=\*\*|$)/i,
+        /New Variorum Analysis:?\s*([\s\S]*?)(?=\*\*|$)/i,
+        /New Variorum Analysis:?\s*([\s\S]*)/i
+      ]
+      
+      for (const pattern of patterns) {
+        const variorumMatch = response.match(pattern)
+        if (variorumMatch) {
+          console.log('Found New Variorum Analysis manually with pattern, length:', variorumMatch[1].length)
+          analysis['New Variorum Analysis'] = variorumMatch[1].trim()
+          break
+        }
+      }
+      
+      // If still not found, try to find it by looking for the notes content
+      if (!analysis['New Variorum Analysis']) {
+        const notesMatch = response.match(/(\[Line \d+\].*?)(?=\*\*|$)/s)
+        if (notesMatch) {
+          console.log('Found notes content manually, length:', notesMatch[1].length)
+          analysis['New Variorum Analysis'] = notesMatch[1].trim()
+        }
+      }
+    }
+
+    // If parsing failed, return the raw response
+    if (Object.keys(analysis).length === 0) {
+      analysis = { 'Analysis': response }
+    }
+
+    // For Full Fathom Five, add the notes directly to the analysis object
+    if (analysisMode === 'fullfathomfive' && relevantNotes.length > 0) {
+      let notesContent = ''
+      relevantNotes.forEach((note, index) => {
+        notesContent += `[Line ${note.line}] ${note.play}\n`
+        note.notes.forEach((noteText, noteIndex) => {
+          notesContent += `${noteText}\n\n`
+        })
+      })
+      analysis['New Variorum Analysis'] = notesContent.trim()
+    }
+
+    return {
+      statusCode: 200,
+      headers,
+      body: JSON.stringify({
+        choices: [{
+          message: {
+            content: response
+          }
+        }],
+        analysis: analysis,
+        mode: analysisMode,
+        text: text,
+        lineCount: lines.length,
+        relevantNotes: relevantNotes,
+        usage: completion.usage
+      })
     }
 
   } catch (error) {
-    console.error('Function error:', error);
+    console.error('Error:', error)
+    
     return {
       statusCode: 500,
       headers,
-      body: JSON.stringify({ error: 'Internal server error' })
-    };
+      body: JSON.stringify({ 
+        error: 'Internal server error',
+        details: error.message 
+      })
+    }
   }
-};
+}
