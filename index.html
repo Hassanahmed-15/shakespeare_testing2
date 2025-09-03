@@ -3096,7 +3096,9 @@
                                 });
                                 
                                 if (sceneContent.length > 0) {
-                                    plays['macbeth'].scenes[sceneKey] = sceneContent;
+                                    // Apply speaker name optimization to the scene content
+                                    const optimizedContent = optimizeSpeakerNames(sceneContent);
+                                    plays['macbeth'].scenes[sceneKey] = optimizedContent;
                                     sceneCount++;
                                     
                                     // Group scenes by acts
@@ -3662,8 +3664,6 @@
 
                 // Collect scene content and detect character names
                 if (inScene && currentScene && trimmedLine) {
-                    play.scenes[currentScene].push(line); // Store original line with spacing
-                    
                     // Check if this line is a character name (all caps, reasonable length)
                     if (trimmedLine.match(/^[A-Z\s]+$/) && 
                         trimmedLine.length > 2 && 
@@ -3674,6 +3674,9 @@
                         !trimmedLine.includes('SCENE')) {
                         characterSet.add(trimmedLine);
                     }
+                    
+                    // Store the line (we'll process speaker repetition in formatSceneContent)
+                    play.scenes[currentScene].push(line);
                 }
             }
             
@@ -3697,6 +3700,42 @@
         // Simple pass-through - return lines exactly as they are
         function groupDialogueBySpeaker(lines) {
             return lines; // No processing, just return the lines as-is
+        }
+
+        // Optimize speaker names by removing repetition for consecutive lines
+        function optimizeSpeakerNames(sceneContent) {
+            if (!sceneContent || sceneContent.length === 0) {
+                return sceneContent;
+            }
+            
+            const optimizedContent = [];
+            let currentSpeaker = '';
+            
+            sceneContent.forEach((line, index) => {
+                // Check if this line is a speaker name
+                if (isSpeakerName(line)) {
+                    currentSpeaker = line;
+                    // Show speaker name for first occurrence
+                    optimizedContent.push(line);
+                } else {
+                    // Check if this line is dialogue from the same speaker
+                    const trimmedLine = line.trim();
+                    if (trimmedLine && currentSpeaker && !isSpeakerName(trimmedLine) && !isStageDirection(trimmedLine)) {
+                        // This is dialogue from the same speaker - don't repeat the name
+                        // Just add the dialogue line without the speaker name
+                        optimizedContent.push(line);
+                    } else {
+                        // This is a new speaker or different type of line - show as normal
+                        optimizedContent.push(line);
+                        // Reset current speaker if this line is not dialogue
+                        if (!trimmedLine || isSpeakerName(trimmedLine) || isStageDirection(trimmedLine)) {
+                            currentSpeaker = '';
+                        }
+                    }
+                }
+            });
+            
+            return optimizedContent;
         }
 
         // Alternative parsing method for plays that don't follow standard format
@@ -4028,6 +4067,9 @@
             }
             
             let html = '';
+            let currentSpeaker = '';
+            
+            console.log('formatSceneContent called with', sceneContent.length, 'lines');
             
             // Display each line exactly as it appears in the file, preserving whitespace
             sceneContent.forEach((line, index) => {
@@ -4036,11 +4078,32 @@
                     // Empty line - preserve it
                     html += `<div class="play-line">&nbsp;</div>`;
                 } else {
-                    // Non-empty line - preserve original spacing and add click handler
-                    html += `<div class="play-line" data-line-index="${index}" onclick="selectLine(this, '${line.replace(/'/g, "\\'")}', ${index})">${line}</div>`;
+                    // Check if this line is a speaker name
+                    if (isSpeakerName(line)) {
+                        console.log('Found speaker name:', line);
+                        currentSpeaker = line;
+                        // Show speaker name for first occurrence
+                        html += `<div class="play-line" data-line-index="${index}" onclick="selectLine(this, '${line.replace(/'/g, "\\'")}', ${index})">${line}</div>`;
+                    } else {
+                        // Check if this line is dialogue from the same speaker
+                        const trimmedLine = line.trim();
+                        if (trimmedLine && currentSpeaker && !isSpeakerName(trimmedLine) && !isStageDirection(trimmedLine)) {
+                            // This is dialogue from the same speaker - don't repeat the name
+                            console.log('Same speaker dialogue:', trimmedLine);
+                            html += `<div class="play-line" data-line-index="${index}" onclick="selectLine(this, '${line.replace(/'/g, "\\'")}', ${index})">${line}</div>`;
+                        } else {
+                            // This is a new speaker or different type of line - show as normal
+                            html += `<div class="play-line" data-line-index="${index}" onclick="selectLine(this, '${line.replace(/'/g, "\\'")}', ${index})">${line}</div>`;
+                            // Reset current speaker if this line is not dialogue
+                            if (!trimmedLine || isSpeakerName(trimmedLine) || isStageDirection(trimmedLine)) {
+                                currentSpeaker = '';
+                            }
+                        }
+                    }
                 }
             });
             
+            console.log('formatSceneContent completed, currentSpeaker:', currentSpeaker);
             return html;
         }
         
@@ -4057,14 +4120,20 @@
                              !line.includes('ACT') &&
                              !line.includes('SCENE');
             
-            if (!isAllCaps) return false;
+            if (!isAllCaps) {
+                console.log('isSpeakerName: Not all caps for line:', line);
+                return false;
+            }
             
             // If we have a current play, cross-reference with character list
             if (currentPlay && plays[currentPlay] && plays[currentPlay].characters) {
-                return plays[currentPlay].characters.includes(line);
+                const result = plays[currentPlay].characters.includes(line);
+                console.log('isSpeakerName: Character check for', line, ':', result);
+                return result;
             }
             
             // Fallback to just checking if it looks like a speaker name
+            console.log('isSpeakerName: Fallback true for line:', line);
             return true;
         }
         

@@ -2977,8 +2977,6 @@
 
                 // Collect scene content and detect character names
                 if (inScene && currentScene && trimmedLine) {
-                    play.scenes[currentScene].push(line); // Store original line with spacing
-                    
                     // Check if this line is a character name (all caps, reasonable length)
                     if (trimmedLine.match(/^[A-Z\s]+$/) && 
                         trimmedLine.length > 2 && 
@@ -2989,6 +2987,9 @@
                         !trimmedLine.includes('SCENE')) {
                         characterSet.add(trimmedLine);
                     }
+                    
+                    // Store the line (we'll process speaker repetition in formatSceneContent)
+                    play.scenes[currentScene].push(line);
                 }
             }
             
@@ -3012,6 +3013,46 @@
         // Simple pass-through - return lines exactly as they are
         function groupDialogueBySpeaker(lines) {
             return lines; // No processing, just return the lines as-is
+        }
+
+        // Optimize speaker names by removing repetition for consecutive lines
+        function optimizeSpeakerNames(sceneContent) {
+            if (!sceneContent || sceneContent.length === 0) {
+                return sceneContent;
+            }
+            
+            const optimizedContent = [];
+            let currentSpeaker = '';
+            
+            sceneContent.forEach((line, index) => {
+                // Check if this line is a speaker name
+                if (isSpeakerName(line)) {
+                    currentSpeaker = line;
+                    // Show speaker name for first occurrence
+                    optimizedContent.push(line);
+                } else {
+                    // Check if this line is dialogue from the same speaker
+                    const trimmedLine = line.trim();
+                    if (trimmedLine && currentSpeaker && !isSpeakerName(trimmedLine) && !isStageDirection(trimmedLine)) {
+                        // This is dialogue from the same speaker - don't repeat the name
+                        // Just add the dialogue line without the speaker name
+                        optimizedContent.push(line);
+                        // Reset current speaker if this line is not dialogue
+                        if (!trimmedLine || isSpeakerName(trimmedLine) || isStageDirection(trimmedLine)) {
+                            currentSpeaker = '';
+                        }
+                    } else {
+                        // This is a new speaker or different type of line - show as normal
+                        optimizedContent.push(line);
+                        // Reset current speaker if this line is not dialogue
+                        if (!trimmedLine || isSpeakerName(trimmedLine) || isStageDirection(trimmedLine)) {
+                            currentSpeaker = '';
+                        }
+                    }
+                }
+            });
+            
+            return optimizedContent;
         }
 
         // Alternative parsing method for plays that don't follow standard format
@@ -3323,16 +3364,35 @@
             }
             
             let html = '';
+            let currentSpeaker = '';
             
             // Display each line exactly as it appears in the file, preserving whitespace
-            sceneContent.forEach(line => {
+            sceneContent.forEach((line, index) => {
                 // Don't trim - preserve original spacing and empty lines
                 if (line === '') {
                     // Empty line - preserve it
                     html += `<div class="play-line">&nbsp;</div>`;
                 } else {
-                    // Non-empty line - preserve original spacing
-                    html += `<div class="play-line">${line}</div>`;
+                    // Check if this line is a speaker name
+                    if (isSpeakerName(line)) {
+                        currentSpeaker = line;
+                        // Show speaker name for first occurrence
+                        html += `<div class="play-line">${line}</div>`;
+                    } else {
+                        // Check if this line is dialogue from the same speaker
+                        const trimmedLine = line.trim();
+                        if (trimmedLine && currentSpeaker && !isSpeakerName(trimmedLine) && !isStageDirection(trimmedLine)) {
+                            // This is dialogue from the same speaker - don't repeat the name
+                            html += `<div class="play-line">${line}</div>`;
+                        } else {
+                            // This is a new speaker or different type of line - show as normal
+                            html += `<div class="play-line">${line}</div>`;
+                            // Reset current speaker if this line is not dialogue
+                            if (!trimmedLine || isSpeakerName(trimmedLine) || isStageDirection(trimmedLine)) {
+                                currentSpeaker = '';
+                            }
+                        }
+                    }
                 }
             });
             
