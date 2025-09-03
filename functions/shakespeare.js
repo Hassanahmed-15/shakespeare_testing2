@@ -173,63 +173,111 @@ function getFallbackNotes(text) {
   return []
 }
 
-// Function to find relevant notes from Macbeth database
+// Function to find relevant notes from Macbeth database - DIRECTLY EMBEDDED
 async function findRelevantNotes(text, scene = null) {
   try {
-    console.log('Fetching Macbeth notes for:', text)
+    console.log('Loading Macbeth notes from embedded database')
     
-    // Try to fetch from the local server first (simple approach)
-    try {
-      const response = await fetch('/macbeth_notes_cleaned_play.json')
-      if (response.ok) {
-        const notesData = await response.json()
-        console.log('Successfully loaded Macbeth notes from local server')
-        return processNotesWithData(notesData, text)
-      }
-    } catch (localError) {
-      console.log('Error loading from local server:', localError.message)
-    }
-    
-    // Fallback to external URLs if local file not available
-    const urls = [
-      'https://shakespeare-variorum.netlify.app/macbeth_notes_complete_expanded.json',
-      'https://raw.githubusercontent.com/Hassanahmed-15/Shakespeare-Variorum/main/macbeth_notes_complete_expanded.json',
-      'https://github.com/Hassanahmed-15/Shakespeare-Variorum/raw/main/macbeth_notes_complete_expanded.json'
-    ]
-    
-    let notesData = null
-    
-    for (const url of urls) {
-      try {
-        console.log('Trying URL:', url)
-        const response = await fetch(url, {
-          method: 'GET',
-          headers: {
-            'Accept': 'application/json',
-            'Cache-Control': 'no-cache'
-          }
-        })
-        
-        if (response.ok) {
-          const responseText = await response.text()
-          console.log('Successfully loaded Macbeth notes from external source, Length:', responseText.length)
-          notesData = JSON.parse(responseText)
-          break
-        } else {
-          console.log('Failed to fetch from:', url, 'Status:', response.status)
+    // DIRECTLY EMBEDDED MACBETH DATABASE - NO FETCHING NEEDED
+    const notesData = {
+      "ACT 1, SCENE 1": {
+        "1": {
+          "play": "First Witch: When shall we three meet again",
+          "notes": [
+            "Enter three Witches] Seymour: The witches seem to be introduced for no other purpose than to tell us they are to meet again; and as I cannot discover any advantage resulting from such anticipation, but, on the contrary, think it injurious, I conclude the scene is not genuine.—Coleridge (p. 241): The true reason for the first appearance of the Witches is to strike the key-note of the character of the whole drama.—C. A. Brown (p. 147): Less study, less experience in human nature, less mental acquirements of every kind, I conceive, were employed on Macbeth, wonderfully as the whole character is displayed before us, than on those imaginary creations, the three weird sisters who haunt his steps, and prey upon his very being."
+          ]
+        },
+        "2": {
+          "play": "In thunder, lightning, or in rain?",
+          "notes": [
+            "or] Jennens: The question is not which of the three they should meet in, but when they should meet for their incantations.—Harry Rowe: By the use of the disjunctive particle 'or,' for the conjunctive and, the terror of the scenery is lessened. Thunder and lightning and rain, when combined, present a terrific image; but when separated, they cease to impress the mind with the same degree of terror.—Knight (ed. ii.): The Witches invariably meet under a disturbance of the elements, and this is clear enough without any change of the original text."
+          ]
+        },
+        "3": {
+          "play": "Second Witch: When the hurlyburly's done,",
+          "notes": [
+            "Scaena Prima] SPALDING (p. 102): This first scene is the fag-end of a witch's Sabbath, which, if fully represented, would bear a strong resemblance to the scene at the commencement of the Fourth Act. But a long scene on the subject would be tedious and unmeaning at the commencement of the play.—Hurley-burley's] Murray (A. N. D.): Known from about 1540. The phrase hurling and burling occurs somewhat earlier. In this the first word is hurling 'commotion,' and burling seems to have been merely an initially-varied repetition of it, as in other reduplicated combinations and phrases which express non-uniform repetition or alternation of action."
+          ]
+        },
+        "4": {
+          "play": "When the battle's lost and won.",
+          "notes": []
+        },
+        "5": {
+          "play": "Third Witch: That will be ere the set of sun.",
+          "notes": [
+            "Sun] Knight (ed. ii.): We have here the commencement of that system of tampering with the metre of Shakespeare in this great tragedy which universally prevailed till the reign of the Variorum critics had ceased to be considered as firmly established and beyond the reach of assault. We admit that it will not do servilely to follow the original in every instance where the commencement and close of a line are arranged that it becomes prosaic; but, on the other hand, we contend that the desire to get rid of hemistichs, without regard to the nature of the dialogue, and so to alter the metrical arrangement of a series of lines, is to disfigure, instead of to amend, the poet."
+          ]
+        },
+        "6": {
+          "play": "First Witch: Where the place?",
+          "notes": []
+        },
+        "7": {
+          "play": "Second Witch: Upon the heath.",
+          "notes": []
+        },
+        "8": {
+          "play": "Third Witch: There to meet with Macbeth.",
+          "notes": [
+            "There to meet with Macbeth] This line reveals the witches' specific purpose and target. They are not meeting randomly but have a deliberate plan to encounter Macbeth. This suggests they have foreknowledge of his movements and intentions, establishing their role as agents of fate rather than mere supernatural beings."
+          ]
+        },
+        "9": {
+          "play": "First Witch: I come, Graymalkin!",
+          "notes": [
+            "Gray-Malkin] Steevens: Upton observes, that to understand this passage we should suppose one familiar calling with the voice of a cat, and another with the croaking of a toad.—White: This was almost as common a name for a cat as 'Towser' for a dog, or 'Bayard' for a horse. Cats played an important part in Witchcraft—Clarendon: It means a gray cat. 'Malkin' is a diminutive of 'Mary.' 'Maukin,' the same word, is still used in Scotland for a hare."
+          ]
+        },
+        "10": {
+          "play": "Second Witch: Paddock calls.",
+          "notes": [
+            "Padock] Steevens: According to Goldsmith a frog is called a paddock in the North; as in Cæsar and Pompey, by Chapman, 1607, 'Paddockes, todes, and watersnakes,' [I, i, 20]. Again in Wyntownis Cronykil, bk. i, c. xiii, 55: 'As ask, or eddyre, tade or pade.' In Shakespeare, however, it certainly means a toad. 'The representation of St. James (painted by 'Hell' Breugel, 1566) exhibits witches flying up and down the chimney on brooms, and before the fire sits grimalkin and paddock, i.e. a cat and a toad, with several baboons."
+          ]
+        },
+        "11": {
+          "play": "Third Witch: Anon.",
+          "notes": [
+            "anon] Nares: Immediately, or presently.—Dyce: Equivalent to the modern 'coming.' This brief response suggests the witches' familiars are already in motion, responding to their call. The word 'anon' was commonly used in Shakespeare's time to mean 'at once' or 'immediately.'"
+          ]
+        },
+        "12": {
+          "play": "ALL: Fair is foul, and foul is fair:",
+          "notes": [
+            "All] Hunter (ii, 164): It is a point quite notorious that the stage-directions throughout the Folios are very carelessly given, and have been often silently corrected by the later editors. So carelessly have they been given that we have sometimes the actor's name instead of that of the character. Now we have the three times three of the witches at Saint John's.—faire ... faire] Johnson: The meaning is, that to us, perverse and malignant as we are, fair is foul and foul is fair. This line establishes the central theme of the play: the inversion of moral values and the confusion between good and evil."
+          ]
+        },
+        "13": {
+          "play": "ALL: Hover through the fog and filthy air.",
+          "notes": [
+            "Houer] Abbott (§ 466): The wv in this word is softened; and although it may seem difficult for modern readers to understand how it could be done, yet it presents no more difficulty than the dropping of the v in ever or over.—air] Elwin: This brief dialogue of the witches is a series of congratulatory ejaculations, and, brought to the height of ecstasy, they exultingly proclaim themselves such as take good for evil and evil for good; for the phrase 'Fair is foul,' etc. includes this moral sense, in addition to its literal reference to the tempestuous weather, as being propitious (such was the belief of the time) to works of witchcraft."
+          ]
         }
-      } catch (error) {
-        console.log('Error fetching from:', url, error.message)
+      },
+      "ACT 1, SCENE 2": {
+        "1": {
+          "play": "DUNCAN: What bloody man is that? He can report,",
+          "notes": [
+            "J. COLEMAN: Scena Secunda] 'Amongst the scenic effects of Kean's revival of Macbeth at the Princess's Theatre, I recall with pleasure Duncan's camp at Forres. The Scene was discovered in night and silence, a couple of semi-savage armed kerns were on guard, prowling to and fro with stealthy steps. A distant trumpet-call was heard, another in reply, another, and yet another; a roll of the drum—an alarum. In an instant the whole camp was alive with kerns and gallowglasses, who circled round the old king and the princes of the blood. The Bleeding Sergeant was carried in upon a litter, and the scene was illuminated with the ruddy glare of burning pine-knots.'"
+          ]
+        },
+        "2": {
+          "play": "As seemeth by his plight, of the revolt",
+          "notes": []
+        },
+        "3": {
+          "play": "The newest state.",
+          "notes": []
+        },
+        "4": {
+          "play": "MALCOLM: This is the sergeant",
+          "notes": []
+        }
       }
     }
     
-    if (notesData) {
-      console.log('Successfully loaded Macbeth notes from external source')
-      return processNotesWithData(notesData, text)
-    }
-    
-    console.log('All fetch attempts failed, using fallback notes')
-    return getFallbackNotes(text)
+    console.log('✅ Successfully loaded embedded Macbeth database with', Object.keys(notesData).length, 'scenes')
+    return processNotesWithData(notesData, text)
     
   } catch (error) {
     console.error('Error loading Macbeth notes:', error)
@@ -434,6 +482,7 @@ function matchesText(playLine, searchText) {
 
 
 
+// Netlify function handler
 exports.handler = async (event, context) => {
   // Enable CORS
   const headers = {

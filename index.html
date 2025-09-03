@@ -350,6 +350,82 @@
             border: 1px solid #0ea5e9;
         }
 
+        /* Macbeth Commentary Styles */
+        .variorum-commentary {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--r-sm);
+            padding: var(--s-4);
+            margin: var(--s-3) 0;
+        }
+
+        .variorum-commentary h3 {
+            color: var(--ink-1);
+            margin-bottom: var(--s-3);
+            font-size: 1.1em;
+            border-bottom: 1px solid var(--line);
+            padding-bottom: var(--s-2);
+        }
+
+        .line-info {
+            background: var(--bg);
+            border: 1px solid var(--line);
+            border-radius: var(--r-xs);
+            padding: var(--s-3);
+            margin-bottom: var(--s-3);
+            font-size: 0.9em;
+        }
+
+        .commentary-content {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .note-entry {
+            margin-bottom: var(--s-3);
+            padding: var(--s-3);
+            background: rgba(var(--hl-rgb), 0.05);
+            border-left: 3px solid var(--accent);
+            border-radius: 0 var(--r-xs) var(--r-xs) 0;
+        }
+
+        .note-text {
+            line-height: 1.6;
+            color: var(--ink-1);
+        }
+
+        .note-text em {
+            font-style: italic;
+            color: var(--ink-2);
+        }
+
+        .note-text strong {
+            font-weight: 600;
+            color: var(--ink-1);
+        }
+
+        .no-commentary, .no-notes {
+            text-align: center;
+            color: var(--ink-2);
+            padding: var(--s-4);
+        }
+
+        .help-text {
+            font-size: 0.9em;
+            color: var(--ink-2);
+            margin-top: var(--s-2);
+        }
+
+        .search-info {
+            background: var(--bg);
+            border: 1px solid var(--line);
+            border-radius: var(--r-xs);
+            padding: var(--s-2);
+            margin-top: var(--s-3);
+            font-size: 0.85em;
+            color: var(--ink-2);
+        }
+
         .progress-item.error {
             background: #fef2f2;
             border: 1px solid #ef4444;
@@ -6114,8 +6190,302 @@
             }
         }
 
+        // Macbeth Notes Connector - Integrated directly
+        class MacbethNotesConnector {
+            constructor() {
+                this.notesData = null;
+                this.isLoaded = false;
+                this.loadingPromise = null;
+            }
+
+            async loadNotesData() {
+                if (this.loadingPromise) {
+                    return this.loadingPromise;
+                }
+                this.loadingPromise = this._loadNotesData();
+                return this.loadingPromise;
+            }
+
+            async _loadNotesData() {
+                if (this.isLoaded && this.notesData) {
+                    return this.notesData;
+                }
+
+                try {
+                    console.log('🔄 Loading Macbeth notes database...');
+                    
+                    const possiblePaths = [
+                        '/Public/Data/macbeth_notes_cleaned_play.json',
+                        './Public/Data/macbeth_notes_cleaned_play.json',
+                        'Public/Data/macbeth_notes_cleaned_play.json',
+                        '/macbeth_notes_cleaned_play.json',
+                        './macbeth_notes_cleaned_play.json',
+                        'macbeth_notes_cleaned_play.json'
+                    ];
+
+                    for (const path of possiblePaths) {
+                        try {
+                            console.log(`🔍 Trying to load from: ${path}`);
+                            const response = await fetch(path);
+                            
+                            if (response.ok) {
+                                const text = await response.text();
+                                this.notesData = JSON.parse(text);
+                                this.isLoaded = true;
+                                
+                                console.log('✅ Successfully loaded Macbeth notes database');
+                                console.log(`📊 Database contains ${Object.keys(this.notesData).length} scenes`);
+                                return this.notesData;
+                            }
+                        } catch (error) {
+                            console.log(`❌ Failed to load from ${path}: ${error.message}`);
+                        }
+                    }
+                    
+                    throw new Error('Could not load macbeth_notes_cleaned_play.json from any location');
+                    
+                } catch (error) {
+                    console.error('❌ Error loading Macbeth notes:', error);
+                    this.isLoaded = false;
+                    throw error;
+                }
+            }
+
+            findCommentaryByText(searchText) {
+                if (!this.isLoaded || !this.notesData) {
+                    console.warn('⚠️ Notes database not loaded');
+                    return [];
+                }
+
+                const results = [];
+                const searchLower = searchText.toLowerCase().trim();
+                
+                console.log(`🔍 Searching for text: "${searchText}"`);
+
+                const lineNumbers = this.extractLineNumbers(searchText);
+                
+                for (const [sceneKey, sceneData] of Object.entries(this.notesData)) {
+                    for (const [lineNumber, lineData] of Object.entries(sceneData)) {
+                        if (!lineData.play) continue;
+                        
+                        const playText = lineData.play.toLowerCase().trim();
+                        let matchScore = 0;
+                        let matchType = 'none';
+
+                        if (lineNumbers.length > 0 && lineNumbers.includes(parseInt(lineNumber))) {
+                            matchScore = 100;
+                            matchType = 'line_number';
+                        } 
+                        else if (playText === searchLower) {
+                            matchScore = 95;
+                            matchType = 'exact';
+                        }
+                        else if (searchLower.includes(playText) && playText.length > 5) {
+                            matchScore = 85;
+                            matchType = 'contains_play';
+                        }
+                        else if (playText.includes(searchLower) && searchLower.length > 5) {
+                            matchScore = 80;
+                            matchType = 'contains_search';
+                        }
+                        else {
+                            const wordMatch = this.calculateWordMatch(playText, searchLower);
+                            if (wordMatch > 0.4) {
+                                matchScore = Math.floor(wordMatch * 70);
+                                matchType = 'word_match';
+                            }
+                        }
+
+                        if (matchScore > 0) {
+                            const [act, scene] = this.parseSceneKey(sceneKey);
+                            results.push({
+                                act: act,
+                                scene: scene,
+                                lineNumber: parseInt(lineNumber),
+                                sceneKey: sceneKey,
+                                playText: lineData.play,
+                                notes: lineData.notes || [],
+                                hasNotes: lineData.notes && lineData.notes.length > 0,
+                                matchScore: matchScore,
+                                matchType: matchType
+                            });
+                        }
+                    }
+                }
+
+                results.sort((a, b) => b.matchScore - a.matchScore);
+                
+                console.log(`✅ Found ${results.length} matches for "${searchText}"`);
+                return results;
+            }
+
+            extractLineNumbers(text) {
+                const lineNumbers = [];
+                const matches = text.match(/\b(\d+)\.?\s/g);
+                
+                if (matches) {
+                    for (const match of matches) {
+                        const num = parseInt(match.replace(/[^\d]/g, ''));
+                        if (num > 0 && num < 1000) {
+                            lineNumbers.push(num);
+                        }
+                    }
+                }
+                
+                return lineNumbers;
+            }
+
+            calculateWordMatch(text1, text2) {
+                const words1 = text1.split(/\s+/).filter(word => word.length > 2);
+                const words2 = text2.split(/\s+/).filter(word => word.length > 2);
+                
+                if (words1.length === 0 || words2.length === 0) return 0;
+                
+                const matchingWords = words1.filter(word => 
+                    words2.some(searchWord => 
+                        word.includes(searchWord) || searchWord.includes(word)
+                    )
+                );
+                
+                return matchingWords.length / Math.min(words1.length, words2.length);
+            }
+
+            parseSceneKey(sceneKey) {
+                const actMatch = sceneKey.match(/ACT (\d+|[IVX]+)/i);
+                const sceneMatch = sceneKey.match(/SCENE (\d+|[IVX]+)/i);
+                
+                const act = actMatch ? actMatch[1] : '1';
+                const scene = sceneMatch ? sceneMatch[1] : '1';
+                
+                return [act, scene];
+            }
+
+            formatCommentary(commentaryData) {
+                if (!commentaryData || !commentaryData.hasNotes) {
+                    return `
+                        <div class="variorum-commentary">
+                            <h3>📚 New Variorum Analysis</h3>
+                            <p class="no-notes">No historical commentary available for this line.</p>
+                            <div class="line-info">
+                                <strong>Line:</strong> ${commentaryData ? commentaryData.playText : 'Unknown'}
+                                <br><strong>Location:</strong> ${commentaryData ? commentaryData.sceneKey + ', Line ' + commentaryData.lineNumber : 'Unknown'}
+                            </div>
+                        </div>
+                    `;
+                }
+
+                let html = `
+                    <div class="variorum-commentary">
+                        <h3>📚 New Variorum Analysis</h3>
+                        <div class="line-info">
+                            <strong>Line ${commentaryData.lineNumber}:</strong> "${commentaryData.playText}"
+                            <br><strong>Location:</strong> ${commentaryData.sceneKey}
+                        </div>
+                        <div class="commentary-content">
+                `;
+
+                commentaryData.notes.forEach((note, index) => {
+                    html += `
+                        <div class="note-entry">
+                            <div class="note-text">${this.formatNoteText(note)}</div>
+                        </div>
+                    `;
+                });
+
+                html += `
+                        </div>
+                    </div>
+                `;
+
+                return html;
+            }
+
+            formatNoteText(note) {
+                return note
+                    .replace(/\n/g, '<br>')
+                    .replace(/\[([^\]]+)\]/g, '<em>$1</em>')
+                    .replace(/—([^—]+)—/g, '<strong>$1</strong>')
+                    .replace(/\.\.\./g, '…');
+            }
+        }
+
+        // Create global instance
+        window.macbethNotesConnector = new MacbethNotesConnector();
+
+        // Enhanced explainHighlighted function with Macbeth commentary
+        async function explainHighlightedWithCommentary() {
+            console.log('🔍 explainHighlighted with commentary called');
+            console.log('📝 Selected lines:', selectedLines);
+            console.log('🎯 Current tab:', currentTab);
+            
+            if (selectedLines.length === 0) {
+                alert('Please select text in the play first.');
+                return;
+            }
+            
+            const textToAnalyze = selectedLines.join('\n');
+            console.log('📖 Text to analyze:', textToAnalyze);
+            
+            // Try to find commentary from the Macbeth database
+            let commentary = null;
+            try {
+                await window.macbethNotesConnector.loadNotesData();
+                const results = window.macbethNotesConnector.findCommentaryByText(textToAnalyze);
+                if (results && results.length > 0) {
+                    commentary = results[0]; // Take the best match
+                    console.log('✅ Found commentary:', commentary);
+                }
+            } catch (error) {
+                console.error('❌ Error loading commentary:', error);
+            }
+
+            // Update the New Variorum Analysis section
+            if (currentTab === 'fullfathomfive') {
+                const variorumSection = document.getElementById('variorumSection');
+                const variorumContent = document.getElementById('variorumContent');
+                
+                if (variorumSection && variorumContent) {
+                    variorumSection.style.display = 'block';
+                    
+                    if (commentary && commentary.hasNotes) {
+                        variorumContent.innerHTML = window.macbethNotesConnector.formatCommentary(commentary);
+                        console.log('✅ Updated variorum section with commentary');
+                    } else {
+                        variorumContent.innerHTML = `
+                            <div class="no-commentary">
+                                <h3>📚 New Variorum Analysis</h3>
+                                <p>No historical commentary found for the selected text.</p>
+                                <p class="help-text">The database contains extensive commentary for Macbeth. Try selecting a different line or ensure you're viewing Act 1.</p>
+                                <div class="search-info">
+                                    <strong>Searched text:</strong> "${textToAnalyze}"
+                                </div>
+                            </div>
+                        `;
+                        console.log('⚠️ No commentary found, showing placeholder');
+                    }
+                }
+            }
+            
+            // Continue with the original analysis
+            const mode = currentTab || 'basic';
+            const analysisResult = document.getElementById('analysisResult');
+            const variorumResult = document.getElementById('variorumResult');
+            const variorumContentElement = document.getElementById('variorumContent');
+            if (analysisResult) analysisResult.innerHTML = '';
+            if (variorumResult) variorumResult.innerHTML = '';
+            
+            console.log('📚 Using API-based analysis for mode:', mode);
+            analyzeHighlightedText(textToAnalyze, mode);
+            
+            const analyzeButton = document.getElementById('analyzeButton');
+            if (analyzeButton) {
+                analyzeButton.style.display = 'block';
+                analyzeButton.disabled = false;
+            }
+        }
+
         // Initialize Geneva Bible search when the page loads
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', async function() {
             console.log('=== DOM LOADED AT:', new Date().toISOString(), '===');
             
             // Check for service workers
@@ -6129,6 +6499,21 @@
                         });
                     }
                 });
+            }
+            
+            // Initialize Macbeth Notes Connector
+            try {
+                await window.macbethNotesConnector.loadNotesData();
+                console.log('🎭 Macbeth Notes Connector ready!');
+                
+                // Replace the analyze button functionality
+                const analyzeButton = document.getElementById('analyzeButton');
+                if (analyzeButton) {
+                    analyzeButton.setAttribute('onclick', 'explainHighlightedWithCommentary()');
+                    console.log('✅ Analyze button enhanced with Macbeth commentary');
+                }
+            } catch (error) {
+                console.error('❌ Failed to initialize Macbeth Notes Connector:', error);
             }
             
             // Initialize Geneva Bible search
