@@ -12,9 +12,9 @@ class NotesIntegration {
     // Load the notes data from macbeth_notes.json
     async loadNotes() {
         try {
-            const response = await fetch('/Public/Data/macbeth_notes.json');
+            const response = await fetch('/macbeth_notes_complete_expanded.json');
             if (!response.ok) {
-                console.warn('Could not load macbeth_notes.json');
+                console.warn('Could not load macbeth_notes_complete_expanded.json');
                 return false;
             }
             this.notesData = await response.json();

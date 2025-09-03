@@ -118,11 +118,11 @@ export default async (request, context) => {
     let macbethNotes = null;
     const notesUrls = [
       // Primary: Current site
-      `${new URL(request.url).protocol}//${new URL(request.url).hostname}/Public/Data/macbeth_notes.json`,
+      `${new URL(request.url).protocol}//${new URL(request.url).hostname}/macbeth_notes_complete_expanded.json`,
       // Fallback 1: Netlify deployment
-      'https://shakespeare-variorum.netlify.app/Public/Data/macbeth_notes.json',
+      'https://shakespeare-variorum.netlify.app/macbeth_notes_complete_expanded.json',
       // Fallback 2: GitHub raw
-      'https://raw.githubusercontent.com/Hassanahmed-15/Shakespeare-Variorum/main/Public/Data/macbeth_notes.json'
+      'https://raw.githubusercontent.com/Hassanahmed-15/Shakespeare-Variorum/main/macbeth_notes_complete_expanded.json'
     ];
     
     for (const notesUrl of notesUrls) {
