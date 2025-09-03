@@ -57,28 +57,37 @@ async function findRelevantNotes(text, scene = null) {
     console.log('Loading Macbeth notes from URL (serverless environment)')
     console.log('Input text:', text)
     
-    // For now, return empty array to avoid 502 errors while we debug
-    console.log('⚠️ Temporarily returning empty notes to avoid 502 errors')
-    return []
-    
-    /* TEMPORARILY DISABLED - WILL RE-ENABLE ONCE WE FIX 502 ISSUE
     let notesData = null;
     const baseUrl = process.env.URL || 'https://shakespeare-variorum.netlify.app';
     const possibleUrls = [
       `${baseUrl}/macbeth_notes_cleaned_play.json`,
       `${baseUrl}/Public/Data/macbeth_notes_cleaned_play.json`,
+      'https://raw.githubusercontent.com/Hassanahmed-15/Shakespeare-Variorum/main/Public/Data/macbeth_notes_cleaned_play.json',
       'https://raw.githubusercontent.com/Hassanahmed-15/Shakespeare-Variorum/main/macbeth_notes_cleaned_play.json'
     ];
     
     for (const url of possibleUrls) {
       try {
         console.log(`Trying to load from: ${url}`);
-        const response = await fetch(url, { timeout: 5000 });
+        const response = await fetch(url, { 
+          method: 'GET',
+          headers: {
+            'Accept': 'application/json',
+            'Cache-Control': 'no-cache'
+          }
+        });
+        
         if (response.ok) {
           const fileContent = await response.text();
+          console.log(`Response size: ${fileContent.length} characters`);
+          
           notesData = JSON.parse(fileContent);
           console.log(`✅ Successfully loaded Macbeth notes from: ${url}`);
           console.log(`📊 Database contains ${Object.keys(notesData).length} scenes`);
+          
+          // Log first few scene names for verification
+          const sceneNames = Object.keys(notesData).slice(0, 3);
+          console.log(`📋 First scenes: ${sceneNames.join(', ')}`);
           break;
         } else {
           console.log(`❌ HTTP ${response.status} from ${url}`);
@@ -95,10 +104,10 @@ async function findRelevantNotes(text, scene = null) {
     
     console.log('✅ Successfully loaded Macbeth database with', Object.keys(notesData).length, 'scenes')
     return processNotesWithData(notesData, text)
-    */
     
   } catch (error) {
     console.error('Error loading Macbeth notes:', error)
+    console.error('Error stack:', error.stack)
     console.log('Using fallback notes for:', text)
     return getFallbackNotes(text)
   }
@@ -333,14 +342,16 @@ exports.handler = async (event, context) => {
         'Plain-Language Paraphrase',
         'Synopsis',
         'Key Words & Glosses',
-        'Pointers for Further Reading'
+        'Pointers for Further Reading',
+        'New Variorum Analysis'
       ],
       expert: [
         'Plain-Language Paraphrase',
         'Synopsis',
         'Language and Imagery',
         'Literary and Thematic Analysis',
-        'Pointers for Further Reading'
+        'Pointers for Further Reading',
+        'New Variorum Analysis'
       ],
       fullfathomfive: [
         'Textual Variants',
@@ -364,19 +375,24 @@ exports.handler = async (event, context) => {
     const lines = text.split('\n').filter(line => line.trim().length > 0)
     const isMultipleLines = lines.length >= 2 && lines.length <= 5
 
-    // Find relevant notes from Macbeth database (only for Full Fathom Five)
+    // Find relevant notes from Macbeth database (for ALL analysis levels)
     let relevantNotes = []
-    if (analysisMode === 'fullfathomfive') {
-      try {
-        console.log('Attempting to load Macbeth notes...')
-        relevantNotes = await findRelevantNotes(text)
-        console.log('Macbeth notes loaded:', relevantNotes.length, 'notes found')
-        console.log('Notes details:', relevantNotes)
-      } catch (error) {
-        console.error('Failed to load Macbeth notes, continuing without them:', error.message)
-        console.error('Error stack:', error.stack)
-        relevantNotes = [] // Continue without notes if loading fails
+    try {
+      console.log('Attempting to load Macbeth notes for all analysis levels...')
+      relevantNotes = await findRelevantNotes(text)
+      console.log('Macbeth notes loaded:', relevantNotes.length, 'notes found')
+      if (relevantNotes.length > 0) {
+        console.log('Notes details:', relevantNotes.map(note => ({
+          line: note.line,
+          scene: note.scene,
+          notesCount: note.notes.length,
+          hasNotes: note.hasNotes
+        })))
       }
+    } catch (error) {
+      console.error('Failed to load Macbeth notes, continuing without them:', error.message)
+      console.error('Error stack:', error.stack)
+      relevantNotes = [] // Continue without notes if loading fails
     }
     
     // Build the system prompt based on analysis mode
@@ -395,6 +411,7 @@ CRITICAL: You MUST provide responses for ALL of these sections in exactly this o
 **Synopsis:**
 **Key Words & Glosses:**
 **Pointers for Further Reading:**
+**New Variorum Analysis:**
 
 FORMAT REQUIREMENTS:
 - Use EXACTLY the section headers shown above - do not change them
@@ -403,7 +420,16 @@ FORMAT REQUIREMENTS:
 - Clear, accessible language
 - Always reference "${currentPlayName}" and "${currentSceneName}" directly
 - Titles in <em>italics</em>, never in quotes or asterisks
-- Key Words format: "word" means definition; "word" means definition (preserve capitalization)`
+- Key Words format: "word" means definition; "word" means definition (preserve capitalization)
+
+**New Variorum Analysis:**
+For this section, use the historical variorum notes provided below.
+- Display the EXACT notes linked to the line numbers passed in.
+- Do NOT summarize, truncate, or modify the notes in any way.
+- Show ALL notes from the database, not just summaries.
+- Format each entry as: [Line X] [EXACT commentary text from the provided notes]
+- If no note exists for a line, output: [Line X] No commentary available.
+- IMPORTANT: Copy the notes exactly as provided, word for word, without any changes.`
     } else if (analysisMode === 'expert') {
       systemPrompt = `You are a Shakespeare scholar writing for advanced students.
 
@@ -417,12 +443,22 @@ FORMAT REQUIREMENTS:
 **Language and Imagery:**
 **Literary and Thematic Analysis:**
 **Pointers for Further Reading:**
+**New Variorum Analysis:**
 
 - Use essay-style paragraphs (no bullets/lists)
 - Each section should be 5–8 sentences
 - Clear but scholarly tone
 - Titles in <em>italics</em>, never in quotes or asterisks
-- Always reference "${currentPlayName}" and "${currentSceneName}"`
+- Always reference "${currentPlayName}" and "${currentSceneName}"
+
+**New Variorum Analysis:**
+For this section, use the historical variorum notes provided below.
+- Display the EXACT notes linked to the line numbers passed in.
+- Do NOT summarize, truncate, or modify the notes in any way.
+- Show ALL notes from the database, not just summaries.
+- Format each entry as: [Line X] [EXACT commentary text from the provided notes]
+- If no note exists for a line, output: [Line X] No commentary available.
+- IMPORTANT: Copy the notes exactly as provided, word for word, without any changes.`
     } else if (analysisMode === 'fullfathomfive') {
       console.log('Full Fathom Five level detected - using comprehensive prompt with Textual Variants and Language and Rhetoric sections');
       console.log('DEBUG: Function version updated at', new Date().toISOString());
@@ -480,19 +516,21 @@ For this section, use the historical variorum notes provided below.
 - IMPORTANT: Copy the notes exactly as provided, word for word, without any changes.
 - CRITICAL: Include the complete, unabridged text of every note, no matter how long.`
        
-      // Add Macbeth notes if available
-      if (relevantNotes.length > 0) {
-        systemPrompt += `\n\nIMPORTANT: You have access to historical variorum notes from the Macbeth database. Here are the relevant notes found:`
-        
-        relevantNotes.forEach((note, index) => {
-          systemPrompt += `\n\n[Line ${note.line}] ${note.play}`
-          note.notes.forEach((noteText, noteIndex) => {
-            systemPrompt += `\n\nNote ${noteIndex + 1}: ${noteText}`
+              // Add Macbeth notes if available (for all analysis levels)
+        if (relevantNotes.length > 0) {
+          systemPrompt += `\n\nIMPORTANT: You have access to historical variorum notes from the Macbeth database. Here are the relevant notes found:`
+          
+          relevantNotes.forEach((note, index) => {
+            systemPrompt += `\n\n[Line ${note.line}] ${note.play}`
+            note.notes.forEach((noteText, noteIndex) => {
+              systemPrompt += `\n\nNote ${noteIndex + 1}: ${noteText}`
+            })
           })
-        })
-        
-        systemPrompt += `\n\nUse these exact notes in your "New Variorum Analysis" section. Format each note as: [Line X] [Commentary from notes]. Do not add any additional commentary or speculation.`
-      }
+          
+          systemPrompt += `\n\nUse these exact notes in your "New Variorum Analysis" section. Format each note as: [Line X] [Commentary from notes]. Do not add any additional commentary or speculation.`
+        } else {
+          systemPrompt += `\n\nNOTE: No historical variorum notes were found for this text in the database. In the "New Variorum Analysis" section, state: "No historical commentary found for the selected text in the database."`
+        }
     }
 
     // Build the user prompt
@@ -502,36 +540,37 @@ For this section, use the historical variorum notes provided below.
       userPrompt += `\n\nThis selection contains ${lines.length} lines. Please provide analysis that considers both the individual lines and their relationship to each other.`
     }
 
+    // Add notes to user prompt for ALL analysis levels
+    if (relevantNotes.length > 0) {
+      console.log('Adding notes to prompt. Total notes found:', relevantNotes.length)
+      relevantNotes.forEach((note, index) => {
+        console.log(`Note ${index + 1}: Line ${note.line}, ${note.notes.length} note entries`)
+        note.notes.forEach((noteText, noteIndex) => {
+          console.log(`  Note entry ${noteIndex + 1} length:`, noteText.length)
+        })
+      })
+      
+      userPrompt += `\n\nHISTORICAL VARIORUM NOTES TO USE:`
+      relevantNotes.forEach((note, index) => {
+        userPrompt += `\n\n[Line ${note.line}] ${note.play}`
+        note.notes.forEach((noteText, noteIndex) => {
+          // Include the complete, full text of every note
+          userPrompt += `\n${noteText}`
+        })
+      })
+      userPrompt += `\n\nCRITICAL INSTRUCTIONS: Use these EXACT notes in your "New Variorum Analysis" section. Copy them word for word without any changes, summaries, or modifications. Show ALL notes from the database, not just parts of them. DO NOT TRUNCATE OR CUT ANY NOTES. Include the complete, full text of every note. Even if the notes are very long, you MUST include the ENTIRE text. Do not stop mid-sentence or cut off any part. Format each note as: [Line X] [EXACT commentary text from notes]. Do not add any additional commentary or speculation.
+
+ABSOLUTE REQUIREMENT: Every single character of the provided notes must appear in your response. NO EXCEPTIONS. You must copy the notes exactly as provided, word for word, character for character. FAILURE TO INCLUDE COMPLETE NOTES WILL RESULT IN INCOMPLETE ANALYSIS.
+
+IMPORTANT: The notes above are the COMPLETE notes from the database. You MUST include ALL of them in your "New Variorum Analysis" section. Do not summarize, do not truncate, do not cut off. Copy them exactly as shown above.`
+    }
+
     if (analysisMode === 'basic') {
       userPrompt += `\n\nPlease provide a Basic Analysis following the exact format specified in the system prompt.`
     } else if (analysisMode === 'expert') {
       userPrompt += `\n\nPlease provide an Expert Analysis following the exact format specified in the system prompt.`
     } else if (analysisMode === 'fullfathomfive') {
       userPrompt += `\n\nPlease provide a Full Fathom Five analysis following the exact format specified in the system prompt.`
-      
-      if (relevantNotes.length > 0) {
-        console.log('Adding notes to prompt. Total notes found:', relevantNotes.length)
-        relevantNotes.forEach((note, index) => {
-          console.log(`Note ${index + 1}: Line ${note.line}, ${note.notes.length} note entries`)
-          note.notes.forEach((noteText, noteIndex) => {
-            console.log(`  Note entry ${noteIndex + 1} length:`, noteText.length)
-          })
-        })
-        
-        userPrompt += `\n\nHISTORICAL VARIORUM NOTES TO USE:`
-        relevantNotes.forEach((note, index) => {
-          userPrompt += `\n\n[Line ${note.line}] ${note.play}`
-          note.notes.forEach((noteText, noteIndex) => {
-            // Include the complete, full text of every note
-            userPrompt += `\n${noteText}`
-          })
-        })
-        userPrompt += `\n\nCRITICAL INSTRUCTIONS: Use these EXACT notes in your "New Variorum Analysis" section. Copy them word for word without any changes, summaries, or modifications. Show ALL notes from the database, not just parts of them. DO NOT TRUNCATE OR CUT ANY NOTES. Include the complete, full text of every note. Even if the notes are very long, you MUST include the ENTIRE text. Do not stop mid-sentence or cut off any part. Format each note as: [Line X] [EXACT commentary text from notes]. Do not add any additional commentary or speculation.
-
-ABSOLUTE REQUIREMENT: Every single character of the provided notes must appear in your response. NO EXCEPTIONS. You must copy the notes exactly as provided, word for word, character for character. FAILURE TO INCLUDE COMPLETE NOTES WILL RESULT IN INCOMPLETE ANALYSIS.
-
-IMPORTANT: The notes above are the COMPLETE notes from the database. You MUST include ALL of them in your "New Variorum Analysis" section. Do not summarize, do not truncate, do not cut off. Copy them exactly as shown above.`
-      }
     } else {
       userPrompt += `\n\nPlease provide a comprehensive ${analysisMode} analysis of this text.`
     }
@@ -648,8 +687,8 @@ IMPORTANT: The notes above are the COMPLETE notes from the database. You MUST in
       analysis = { 'Analysis': response }
     }
 
-    // For Full Fathom Five, add the notes directly to the analysis object
-    if (analysisMode === 'fullfathomfive' && relevantNotes.length > 0) {
+    // For ALL analysis levels, add the notes directly to the analysis object
+    if (relevantNotes.length > 0) {
       let notesContent = ''
       relevantNotes.forEach((note, index) => {
         notesContent += `[Line ${note.line}] ${note.play}\n`
@@ -658,6 +697,8 @@ IMPORTANT: The notes above are the COMPLETE notes from the database. You MUST in
         })
       })
       analysis['New Variorum Analysis'] = notesContent.trim()
+    } else {
+      analysis['New Variorum Analysis'] = 'No historical commentary found for the selected text in the database.'
     }
 
     return {
