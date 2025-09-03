@@ -178,7 +178,19 @@ async function findRelevantNotes(text, scene = null) {
   try {
     console.log('Fetching Macbeth notes for:', text)
     
-    // Try multiple URLs to fetch the macbeth_notes.json file (serverless-compatible)
+    // Try to fetch from the local server first (simple approach)
+    try {
+      const response = await fetch('/Public/Data/macbeth_notes.json')
+      if (response.ok) {
+        const notesData = await response.json()
+        console.log('Successfully loaded Macbeth notes from local server')
+        return processNotesWithData(notesData, text)
+      }
+    } catch (localError) {
+      console.log('Error loading from local server:', localError.message)
+    }
+    
+    // Fallback to external URLs if local file not available
     const urls = [
       'https://shakespeare-variorum.netlify.app/macbeth_notes_complete_expanded.json',
       'https://raw.githubusercontent.com/Hassanahmed-15/Shakespeare-Variorum/main/macbeth_notes_complete_expanded.json',
@@ -200,7 +212,7 @@ async function findRelevantNotes(text, scene = null) {
         
         if (response.ok) {
           const responseText = await response.text()
-          console.log('Successfully fetched from:', url, 'Length:', responseText.length)
+          console.log('Successfully loaded from:', url, 'Length:', responseText.length)
           notesData = JSON.parse(responseText)
           break
         } else {
@@ -216,7 +228,7 @@ async function findRelevantNotes(text, scene = null) {
       return processNotesWithData(notesData, text)
     }
     
-        console.log('All external fetch attempts failed, using fallback notes')
+    console.log('All fetch attempts failed, using fallback notes')
     return getFallbackNotes(text)
     
   } catch (error) {
@@ -303,6 +315,8 @@ function processNotesWithData(notesData, text) {
   console.log('No specific line number notes found, using fallback')
   return getFallbackNotes(text)
 }
+
+
 
 // Check if the highlighted text matches the play line (from notes-integration.js)
 function matchesText(playLine, searchText) {
