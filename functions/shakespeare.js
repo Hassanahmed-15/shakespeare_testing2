@@ -458,7 +458,8 @@ CRITICAL: You MUST provide responses for ALL of these sections in exactly this o
 **Literary Analysis:** (REQUIRED)  
 **Critical Reception:** (REQUIRED)  
 **Similar phrases or themes in other plays:** (REQUIRED)  
-**Pointers for Further Reading:** (REQUIRED)
+**Pointers for Further Reading:** (REQUIRED)  
+**New Variorum Analysis:** (REQUIRED)
 
 FORMAT REQUIREMENTS:  
 - Start each section with the exact heading format shown above (colons are already included).  
