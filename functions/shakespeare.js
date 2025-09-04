@@ -59,9 +59,10 @@ async function findRelevantNotes(text, scene = null) {
     
     let notesData = null;
     const baseUrl = process.env.URL || 'https://shakespeare-variorum.netlify.app';
+    const timestamp = Date.now();
     const possibleUrls = [
-      `${baseUrl}/macbeth_notes_cleaned_play.json`,
-      `${baseUrl}/Public/Data/macbeth_notes_cleaned_play.json`,
+      `${baseUrl}/macbeth_notes_cleaned_play.json?v=${timestamp}`,
+      `${baseUrl}/Public/Data/macbeth_notes_cleaned_play.json?v=${timestamp}`,
       'https://raw.githubusercontent.com/Hassanahmed-15/Shakespeare-Variorum/main/Public/Data/macbeth_notes_cleaned_play.json',
       'https://raw.githubusercontent.com/Hassanahmed-15/Shakespeare-Variorum/main/macbeth_notes_cleaned_play.json'
     ];
@@ -73,7 +74,9 @@ async function findRelevantNotes(text, scene = null) {
           method: 'GET',
           headers: {
             'Accept': 'application/json',
-            'Cache-Control': 'no-cache'
+            'Cache-Control': 'no-cache, no-store, must-revalidate',
+            'Pragma': 'no-cache',
+            'Expires': '0'
           }
         });
         
