@@ -377,10 +377,10 @@ exports.handler = async (event, context) => {
 
     // Find relevant notes from Macbeth database (for ALL analysis levels)
     let relevantNotes = []
-    try {
+      try {
       console.log('Attempting to load Macbeth notes for all analysis levels...')
-      relevantNotes = await findRelevantNotes(text)
-      console.log('Macbeth notes loaded:', relevantNotes.length, 'notes found')
+        relevantNotes = await findRelevantNotes(text)
+        console.log('Macbeth notes loaded:', relevantNotes.length, 'notes found')
       if (relevantNotes.length > 0) {
         console.log('Notes details:', relevantNotes.map(note => ({
           line: note.line,
@@ -389,10 +389,10 @@ exports.handler = async (event, context) => {
           hasNotes: note.hasNotes
         })))
       }
-    } catch (error) {
-      console.error('Failed to load Macbeth notes, continuing without them:', error.message)
+      } catch (error) {
+        console.error('Failed to load Macbeth notes, continuing without them:', error.message)
       console.error('Error stack:', error.stack)
-      relevantNotes = [] // Continue without notes if loading fails
+        relevantNotes = [] // Continue without notes if loading fails
     }
     
     // Build the system prompt based on analysis mode
@@ -517,20 +517,20 @@ For this section, use the historical variorum notes provided below.
 - CRITICAL: Include the complete, unabridged text of every note, no matter how long.`
        
               // Add Macbeth notes if available (for all analysis levels)
-        if (relevantNotes.length > 0) {
-          systemPrompt += `\n\nIMPORTANT: You have access to historical variorum notes from the Macbeth database. Here are the relevant notes found:`
-          
-          relevantNotes.forEach((note, index) => {
-            systemPrompt += `\n\n[Line ${note.line}] ${note.play}`
-            note.notes.forEach((noteText, noteIndex) => {
-              systemPrompt += `\n\nNote ${noteIndex + 1}: ${noteText}`
-            })
+      if (relevantNotes.length > 0) {
+        systemPrompt += `\n\nIMPORTANT: You have access to historical variorum notes from the Macbeth database. Here are the relevant notes found:`
+        
+        relevantNotes.forEach((note, index) => {
+          systemPrompt += `\n\n[Line ${note.line}] ${note.play}`
+          note.notes.forEach((noteText, noteIndex) => {
+            systemPrompt += `\n\nNote ${noteIndex + 1}: ${noteText}`
           })
-          
-          systemPrompt += `\n\nUse these exact notes in your "New Variorum Analysis" section. Format each note as: [Line X] [Commentary from notes]. Do not add any additional commentary or speculation.`
+        })
+        
+        systemPrompt += `\n\nUse these exact notes in your "New Variorum Analysis" section. Format each note as: [Line X] [Commentary from notes]. Do not add any additional commentary or speculation.`
         } else {
           systemPrompt += `\n\nNOTE: No historical variorum notes were found for this text in the database. In the "New Variorum Analysis" section, state: "No historical commentary found for the selected text in the database."`
-        }
+      }
     }
 
     // Build the user prompt
@@ -541,29 +541,29 @@ For this section, use the historical variorum notes provided below.
     }
 
     // Add notes to user prompt for ALL analysis levels
-    if (relevantNotes.length > 0) {
-      console.log('Adding notes to prompt. Total notes found:', relevantNotes.length)
-      relevantNotes.forEach((note, index) => {
-        console.log(`Note ${index + 1}: Line ${note.line}, ${note.notes.length} note entries`)
-        note.notes.forEach((noteText, noteIndex) => {
-          console.log(`  Note entry ${noteIndex + 1} length:`, noteText.length)
+      if (relevantNotes.length > 0) {
+        console.log('Adding notes to prompt. Total notes found:', relevantNotes.length)
+        relevantNotes.forEach((note, index) => {
+          console.log(`Note ${index + 1}: Line ${note.line}, ${note.notes.length} note entries`)
+          note.notes.forEach((noteText, noteIndex) => {
+            console.log(`  Note entry ${noteIndex + 1} length:`, noteText.length)
+          })
         })
-      })
-      
-      userPrompt += `\n\nHISTORICAL VARIORUM NOTES TO USE:`
-      relevantNotes.forEach((note, index) => {
-        userPrompt += `\n\n[Line ${note.line}] ${note.play}`
-        note.notes.forEach((noteText, noteIndex) => {
-          // Include the complete, full text of every note
-          userPrompt += `\n${noteText}`
+        
+        userPrompt += `\n\nHISTORICAL VARIORUM NOTES TO USE:`
+        relevantNotes.forEach((note, index) => {
+          userPrompt += `\n\n[Line ${note.line}] ${note.play}`
+          note.notes.forEach((noteText, noteIndex) => {
+            // Include the complete, full text of every note
+            userPrompt += `\n${noteText}`
+          })
         })
-      })
-      userPrompt += `\n\nCRITICAL INSTRUCTIONS: Use these EXACT notes in your "New Variorum Analysis" section. Copy them word for word without any changes, summaries, or modifications. Show ALL notes from the database, not just parts of them. DO NOT TRUNCATE OR CUT ANY NOTES. Include the complete, full text of every note. Even if the notes are very long, you MUST include the ENTIRE text. Do not stop mid-sentence or cut off any part. Format each note as: [Line X] [EXACT commentary text from notes]. Do not add any additional commentary or speculation.
+        userPrompt += `\n\nCRITICAL INSTRUCTIONS: Use these EXACT notes in your "New Variorum Analysis" section. Copy them word for word without any changes, summaries, or modifications. Show ALL notes from the database, not just parts of them. DO NOT TRUNCATE OR CUT ANY NOTES. Include the complete, full text of every note. Even if the notes are very long, you MUST include the ENTIRE text. Do not stop mid-sentence or cut off any part. Format each note as: [Line X] [EXACT commentary text from notes]. Do not add any additional commentary or speculation.
 
 ABSOLUTE REQUIREMENT: Every single character of the provided notes must appear in your response. NO EXCEPTIONS. You must copy the notes exactly as provided, word for word, character for character. FAILURE TO INCLUDE COMPLETE NOTES WILL RESULT IN INCOMPLETE ANALYSIS.
 
 IMPORTANT: The notes above are the COMPLETE notes from the database. You MUST include ALL of them in your "New Variorum Analysis" section. Do not summarize, do not truncate, do not cut off. Copy them exactly as shown above.`
-    }
+      }
 
     if (analysisMode === 'basic') {
       userPrompt += `\n\nPlease provide a Basic Analysis following the exact format specified in the system prompt.`
