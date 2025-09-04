@@ -3135,7 +3135,7 @@
             // Load Macbeth data from the JSON file
             try {
                 console.log('🔄 Attempting to load Macbeth data...');
-                const response = await fetch('./macbeth_notes_cleaned_play_updated.json?v=' + Date.now());
+                const response = await fetch('./Public/Data/macbeth_notes_cleaned_play.json?v=' + Date.now());
                 console.log('📡 Response status:', response.status, response.statusText);
                 
                 if (response.ok) {
@@ -3203,8 +3203,11 @@
                         console.log('🎭 Macbeth plays object:', plays['macbeth']);
                         
                         // Update the UI to show Macbeth is available
+                        console.log('🎭 About to update UI - plays object:', plays);
+                        console.log('🎭 Macbeth in plays:', plays['macbeth']);
                         updatePlaySelector();
                         updateLibraryPlays();
+                        console.log('🎭 UI update completed');
                     }
                 } else {
                     console.warn('❌ Could not load Macbeth data - Status:', response.status);
@@ -3919,31 +3922,38 @@
 
         // Update library plays list
         function updateLibraryPlays() {
-            console.log('updateLibraryPlays called');
-            console.log('plays object:', plays);
-            console.log('Number of plays:', Object.keys(plays).length);
+            console.log('🔍 updateLibraryPlays called');
+            console.log('🔍 plays object:', plays);
+            console.log('🔍 Number of plays:', Object.keys(plays).length);
+            console.log('🔍 Play keys:', Object.keys(plays));
             
             const container = document.getElementById('libraryPlays');
+            console.log('🔍 Container element:', container);
             if (!container) {
-                console.error('libraryPlays element not found');
+                console.error('❌ libraryPlays element not found');
                 return;
             }
+            console.log('✅ Container found, proceeding with update');
             
             container.innerHTML = '';
             
             if (Object.keys(plays).length === 0) {
                 container.innerHTML = '<p style="color: #6c757d; font-style: italic;">No plays in library yet.</p>';
-                console.log('No plays to display');
+                console.log('❌ No plays to display');
                 return;
             }
+            console.log('✅ Found plays to display:', Object.keys(plays));
             
             // Sort plays alphabetically by name
             const sortedPlays = Object.keys(plays).sort((a, b) => {
                 return plays[a].name.localeCompare(plays[b].name);
             });
             
+            console.log('🔍 Sorted plays:', sortedPlays);
             sortedPlays.forEach(playName => {
+                console.log('🔍 Processing play:', playName);
                 const play = plays[playName];
+                console.log('🔍 Play data:', play);
                 const playItem = document.createElement('div');
                 playItem.className = 'library-item';
                 
@@ -3960,8 +3970,11 @@
                     </div>
                     <button class="delete-play" onclick="deletePlay('${playName}')">Delete</button>
                 `;
+                console.log('🔍 Appending play item to container');
                 container.appendChild(playItem);
+                console.log('✅ Play item appended successfully');
             });
+            console.log('🔍 All play items processed');
         }
 
         // Delete a play from library
