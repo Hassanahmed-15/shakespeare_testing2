@@ -61,8 +61,8 @@ async function findRelevantNotes(text, scene = null) {
     const baseUrl = process.env.URL || 'https://shakespeare-variorum.netlify.app';
     const timestamp = Date.now();
     const possibleUrls = [
-      `${baseUrl}/macbeth_notes_cleaned_play.json?v=${timestamp}`,
       `${baseUrl}/Public/Data/macbeth_notes_cleaned_play.json?v=${timestamp}`,
+      `${baseUrl}/macbeth_notes_cleaned_play.json?v=${timestamp}`,
       'https://raw.githubusercontent.com/Hassanahmed-15/Shakespeare-Variorum/main/Public/Data/macbeth_notes_cleaned_play.json',
       'https://raw.githubusercontent.com/Hassanahmed-15/Shakespeare-Variorum/main/macbeth_notes_cleaned_play.json'
     ];
@@ -82,11 +82,21 @@ async function findRelevantNotes(text, scene = null) {
         
         if (response.ok) {
           const fileContent = await response.text();
+          console.log(`✅ SUCCESS: Loaded from ${url}`);
           console.log(`Response size: ${fileContent.length} characters`);
           
           notesData = JSON.parse(fileContent);
           console.log(`✅ Successfully loaded Macbeth notes from: ${url}`);
           console.log(`📊 Database contains ${Object.keys(notesData).length} scenes`);
+          
+          // Check if this is the updated version by looking for a specific line
+          const firstScene = Object.keys(notesData)[0];
+          if (firstScene && notesData[firstScene]) {
+            const firstLine = Object.keys(notesData[firstScene])[0];
+            if (firstLine && notesData[firstScene][firstLine]) {
+              console.log(`🔍 First line content: "${notesData[firstScene][firstLine].play}"`);
+            }
+          }
           
           // Log first few scene names for verification
           const sceneNames = Object.keys(notesData).slice(0, 3);
