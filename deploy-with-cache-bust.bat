@@ -6,7 +6,7 @@ echo %date% %time% > deploy-timestamp.txt
 
 REM Commit all changes
 git add .
-git commit -m "Deploy with cache-busting - %date% %time%"
+git commit -m "Deploy with macbeth_notes_integration_play.json and cache-busting - %date% %time%"
 
 REM Push to trigger deployment
 git push origin main

@@ -55,12 +55,16 @@ async function findRelevantNotes(text, scene = null) {
     
     let notesData = null;
       const possiblePaths = [
+    path.join(process.cwd(), 'macbeth_notes_integration_play.json'),
     path.join(process.cwd(), 'macbeth_notes_cleaned_play_updated.json'),
     path.join(process.cwd(), 'macbeth_notes_cleaned_play.json'),
+    path.join(process.cwd(), 'Public/Data/macbeth_notes_integration_play.json'),
     path.join(process.cwd(), 'Public/Data/macbeth_notes_cleaned_play_updated.json'),
     path.join(process.cwd(), 'Public/Data/macbeth_notes_cleaned_play.json'),
+    path.join(__dirname, '../macbeth_notes_integration_play.json'),
     path.join(__dirname, '../macbeth_notes_cleaned_play_updated.json'),
     path.join(__dirname, '../macbeth_notes_cleaned_play.json'),
+    path.join(__dirname, '../Public/Data/macbeth_notes_integration_play.json'),
     path.join(__dirname, '../Public/Data/macbeth_notes_cleaned_play_updated.json'),
     path.join(__dirname, '../Public/Data/macbeth_notes_cleaned_play.json')
   ];
@@ -79,7 +83,7 @@ async function findRelevantNotes(text, scene = null) {
     }
     
     if (!notesData) {
-      console.error('❌ Could not load macbeth_notes_cleaned_play_updated.json from any location');
+      console.error('❌ Could not load macbeth_notes_integration_play.json from any location');
       return getFallbackNotes(text);
     }
     
