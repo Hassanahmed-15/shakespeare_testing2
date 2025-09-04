@@ -54,12 +54,16 @@ async function findRelevantNotes(text, scene = null) {
     console.log('Loading Macbeth notes from JSON file')
     
     let notesData = null;
-    const possiblePaths = [
-      path.join(process.cwd(), 'macbeth_notes_cleaned_play.json'),
-      path.join(process.cwd(), 'Public/Data/macbeth_notes_cleaned_play.json'),
-      path.join(__dirname, '../macbeth_notes_cleaned_play.json'),
-      path.join(__dirname, '../Public/Data/macbeth_notes_cleaned_play.json')
-    ];
+      const possiblePaths = [
+    path.join(process.cwd(), 'macbeth_notes_cleaned_play_updated.json'),
+    path.join(process.cwd(), 'macbeth_notes_cleaned_play.json'),
+    path.join(process.cwd(), 'Public/Data/macbeth_notes_cleaned_play_updated.json'),
+    path.join(process.cwd(), 'Public/Data/macbeth_notes_cleaned_play.json'),
+    path.join(__dirname, '../macbeth_notes_cleaned_play_updated.json'),
+    path.join(__dirname, '../macbeth_notes_cleaned_play.json'),
+    path.join(__dirname, '../Public/Data/macbeth_notes_cleaned_play_updated.json'),
+    path.join(__dirname, '../Public/Data/macbeth_notes_cleaned_play.json')
+  ];
     
     for (const filePath of possiblePaths) {
       try {
@@ -75,7 +79,7 @@ async function findRelevantNotes(text, scene = null) {
     }
     
     if (!notesData) {
-      console.error('❌ Could not load macbeth_notes_cleaned_play.json from any location');
+      console.error('❌ Could not load macbeth_notes_cleaned_play_updated.json from any location');
       return getFallbackNotes(text);
     }
     
