@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-age=0">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Last-Modified" content="0">
+    <meta http-equiv="ETag" content="0">
     <title>Shakespeare Digital Variorum</title>
-    <link rel="stylesheet" href="styles/tokens.css?v=1.2">
+    <link rel="stylesheet" href="styles/tokens.css?v=1.3">
     <style>
         * {
             margin: 0;
@@ -348,6 +350,82 @@
         .progress-item.complete {
             background: #f0f9ff;
             border: 1px solid #0ea5e9;
+        }
+
+        /* Macbeth Commentary Styles */
+        .variorum-commentary {
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--r-sm);
+            padding: var(--s-4);
+            margin: var(--s-3) 0;
+        }
+
+        .variorum-commentary h3 {
+            color: var(--ink-1);
+            margin-bottom: var(--s-3);
+            font-size: 1.1em;
+            border-bottom: 1px solid var(--line);
+            padding-bottom: var(--s-2);
+        }
+
+        .line-info {
+            background: var(--bg);
+            border: 1px solid var(--line);
+            border-radius: var(--r-xs);
+            padding: var(--s-3);
+            margin-bottom: var(--s-3);
+            font-size: 0.9em;
+        }
+
+        .commentary-content {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .note-entry {
+            margin-bottom: var(--s-3);
+            padding: var(--s-3);
+            background: rgba(var(--hl-rgb), 0.05);
+            border-left: 3px solid var(--accent);
+            border-radius: 0 var(--r-xs) var(--r-xs) 0;
+        }
+
+        .note-text {
+            line-height: 1.6;
+            color: var(--ink-1);
+        }
+
+        .note-text em {
+            font-style: italic;
+            color: var(--ink-2);
+        }
+
+        .note-text strong {
+            font-weight: 600;
+            color: var(--ink-1);
+        }
+
+        .no-commentary, .no-notes {
+            text-align: center;
+            color: var(--ink-2);
+            padding: var(--s-4);
+        }
+
+        .help-text {
+            font-size: 0.9em;
+            color: var(--ink-2);
+            margin-top: var(--s-2);
+        }
+
+        .search-info {
+            background: var(--bg);
+            border: 1px solid var(--line);
+            border-radius: var(--r-xs);
+            padding: var(--s-2);
+            margin-top: var(--s-3);
+            font-size: 0.85em;
+            color: var(--ink-2);
         }
 
         .progress-item.error {
@@ -3057,7 +3135,7 @@
             // Load Macbeth data from the JSON file
             try {
                 console.log('🔄 Attempting to load Macbeth data...');
-                const response = await fetch('./Public/Data/macbeth_notes.json');
+                const response = await fetch('Public/Data/macbeth_notes_cleaned_play.json?v=' + Date.now());
                 console.log('📡 Response status:', response.status, response.statusText);
                 
                 if (response.ok) {
@@ -3067,6 +3145,13 @@
                     
                     // Store macbethData globally for Full Fathom Five commentary
                     window.macbethData = macbethData;
+                    
+                    // Also populate the notes connector with the same data
+                    if (window.macbethNotesConnector) {
+                        window.macbethNotesConnector.notesData = macbethData;
+                        window.macbethNotesConnector.isLoaded = true;
+                        console.log('🔗 Notes connector synchronized with loaded data');
+                    }
                     
                     // Add Macbeth to the plays object
                     plays['macbeth'] = {
@@ -3096,7 +3181,9 @@
                                 });
                                 
                                 if (sceneContent.length > 0) {
-                                    plays['macbeth'].scenes[sceneKey] = sceneContent;
+                                    // Apply speaker name optimization to the scene content
+                                    const optimizedContent = optimizeSpeakerNames(sceneContent);
+                                    plays['macbeth'].scenes[sceneKey] = optimizedContent;
                                     sceneCount++;
                                     
                                     // Group scenes by acts
@@ -3116,11 +3203,16 @@
                         console.log('🎭 Macbeth plays object:', plays['macbeth']);
                         
                         // Update the UI to show Macbeth is available
+                        console.log('🎭 About to update UI - plays object:', plays);
+                        console.log('🎭 Macbeth in plays:', plays['macbeth']);
                         updatePlaySelector();
+                        updateLibraryPlays();
+                        console.log('🎭 UI update completed');
                     }
                 } else {
                     console.warn('❌ Could not load Macbeth data - Status:', response.status);
                     console.warn('❌ Response text:', await response.text());
+                    console.warn('❌ Tried to fetch from: ./Public/Data/macbeth_notes_cleaned_play.json');
                 }
             } catch (error) {
                 console.error('❌ Error loading Macbeth data:', error);
@@ -3662,8 +3754,6 @@
 
                 // Collect scene content and detect character names
                 if (inScene && currentScene && trimmedLine) {
-                    play.scenes[currentScene].push(line); // Store original line with spacing
-                    
                     // Check if this line is a character name (all caps, reasonable length)
                     if (trimmedLine.match(/^[A-Z\s]+$/) && 
                         trimmedLine.length > 2 && 
@@ -3674,6 +3764,9 @@
                         !trimmedLine.includes('SCENE')) {
                         characterSet.add(trimmedLine);
                     }
+                    
+                    // Store the line (we'll process speaker repetition in formatSceneContent)
+                    play.scenes[currentScene].push(line);
                 }
             }
             
@@ -3697,6 +3790,42 @@
         // Simple pass-through - return lines exactly as they are
         function groupDialogueBySpeaker(lines) {
             return lines; // No processing, just return the lines as-is
+        }
+
+        // Optimize speaker names by removing repetition for consecutive lines
+        function optimizeSpeakerNames(sceneContent) {
+            if (!sceneContent || sceneContent.length === 0) {
+                return sceneContent;
+            }
+            
+            const optimizedContent = [];
+            let currentSpeaker = '';
+            
+            sceneContent.forEach((line, index) => {
+                // Check if this line is a speaker name
+                if (isSpeakerName(line)) {
+                    currentSpeaker = line;
+                    // Show speaker name for first occurrence
+                    optimizedContent.push(line);
+                } else {
+                    // Check if this line is dialogue from the same speaker
+                    const trimmedLine = line.trim();
+                    if (trimmedLine && currentSpeaker && !isSpeakerName(trimmedLine) && !isStageDirection(trimmedLine)) {
+                        // This is dialogue from the same speaker - don't repeat the name
+                        // Just add the dialogue line without the speaker name
+                        optimizedContent.push(line);
+                    } else {
+                        // This is a new speaker or different type of line - show as normal
+                        optimizedContent.push(line);
+                        // Reset current speaker if this line is not dialogue
+                        if (!trimmedLine || isSpeakerName(trimmedLine) || isStageDirection(trimmedLine)) {
+                            currentSpeaker = '';
+                        }
+                    }
+                }
+            });
+            
+            return optimizedContent;
         }
 
         // Alternative parsing method for plays that don't follow standard format
@@ -3794,31 +3923,38 @@
 
         // Update library plays list
         function updateLibraryPlays() {
-            console.log('updateLibraryPlays called');
-            console.log('plays object:', plays);
-            console.log('Number of plays:', Object.keys(plays).length);
+            console.log('🔍 updateLibraryPlays called');
+            console.log('🔍 plays object:', plays);
+            console.log('🔍 Number of plays:', Object.keys(plays).length);
+            console.log('🔍 Play keys:', Object.keys(plays));
             
             const container = document.getElementById('libraryPlays');
+            console.log('🔍 Container element:', container);
             if (!container) {
-                console.error('libraryPlays element not found');
+                console.error('❌ libraryPlays element not found');
                 return;
             }
+            console.log('✅ Container found, proceeding with update');
             
             container.innerHTML = '';
             
             if (Object.keys(plays).length === 0) {
                 container.innerHTML = '<p style="color: #6c757d; font-style: italic;">No plays in library yet.</p>';
-                console.log('No plays to display');
+                console.log('❌ No plays to display');
                 return;
             }
+            console.log('✅ Found plays to display:', Object.keys(plays));
             
             // Sort plays alphabetically by name
             const sortedPlays = Object.keys(plays).sort((a, b) => {
                 return plays[a].name.localeCompare(plays[b].name);
             });
             
+            console.log('🔍 Sorted plays:', sortedPlays);
             sortedPlays.forEach(playName => {
+                console.log('🔍 Processing play:', playName);
                 const play = plays[playName];
+                console.log('🔍 Play data:', play);
                 const playItem = document.createElement('div');
                 playItem.className = 'library-item';
                 
@@ -3835,8 +3971,11 @@
                     </div>
                     <button class="delete-play" onclick="deletePlay('${playName}')">Delete</button>
                 `;
+                console.log('🔍 Appending play item to container');
                 container.appendChild(playItem);
+                console.log('✅ Play item appended successfully');
             });
+            console.log('🔍 All play items processed');
         }
 
         // Delete a play from library
@@ -4028,6 +4167,9 @@
             }
             
             let html = '';
+            let currentSpeaker = '';
+            
+            console.log('formatSceneContent called with', sceneContent.length, 'lines');
             
             // Display each line exactly as it appears in the file, preserving whitespace
             sceneContent.forEach((line, index) => {
@@ -4036,11 +4178,32 @@
                     // Empty line - preserve it
                     html += `<div class="play-line">&nbsp;</div>`;
                 } else {
-                    // Non-empty line - preserve original spacing and add click handler
-                    html += `<div class="play-line" data-line-index="${index}" onclick="selectLine(this, '${line.replace(/'/g, "\\'")}', ${index})">${line}</div>`;
+                    // Check if this line is a speaker name
+                    if (isSpeakerName(line)) {
+                        console.log('Found speaker name:', line);
+                        currentSpeaker = line;
+                        // Show speaker name for first occurrence
+                        html += `<div class="play-line" data-line-index="${index}" onclick="selectLine(this, '${line.replace(/'/g, "\\'")}', ${index})">${line}</div>`;
+                    } else {
+                        // Check if this line is dialogue from the same speaker
+                        const trimmedLine = line.trim();
+                        if (trimmedLine && currentSpeaker && !isSpeakerName(trimmedLine) && !isStageDirection(trimmedLine)) {
+                            // This is dialogue from the same speaker - don't repeat the name
+                            console.log('Same speaker dialogue:', trimmedLine);
+                            html += `<div class="play-line" data-line-index="${index}" onclick="selectLine(this, '${line.replace(/'/g, "\\'")}', ${index})">${line}</div>`;
+                        } else {
+                            // This is a new speaker or different type of line - show as normal
+                            html += `<div class="play-line" data-line-index="${index}" onclick="selectLine(this, '${line.replace(/'/g, "\\'")}', ${index})">${line}</div>`;
+                            // Reset current speaker if this line is not dialogue
+                            if (!trimmedLine || isSpeakerName(trimmedLine) || isStageDirection(trimmedLine)) {
+                                currentSpeaker = '';
+                            }
+                        }
+                    }
                 }
             });
             
+            console.log('formatSceneContent completed, currentSpeaker:', currentSpeaker);
             return html;
         }
         
@@ -4057,14 +4220,20 @@
                              !line.includes('ACT') &&
                              !line.includes('SCENE');
             
-            if (!isAllCaps) return false;
+            if (!isAllCaps) {
+                console.log('isSpeakerName: Not all caps for line:', line);
+                return false;
+            }
             
             // If we have a current play, cross-reference with character list
             if (currentPlay && plays[currentPlay] && plays[currentPlay].characters) {
-                return plays[currentPlay].characters.includes(line);
+                const result = plays[currentPlay].characters.includes(line);
+                console.log('isSpeakerName: Character check for', line, ':', result);
+                return result;
             }
             
             // Fallback to just checking if it looks like a speaker name
+            console.log('isSpeakerName: Fallback true for line:', line);
             return true;
         }
         
@@ -6045,8 +6214,49 @@
             }
         }
 
+        // Backend handles all database connections - no frontend processing needed
+
+        // Use the original explainHighlighted function - backend now handles the database connection
+        async function explainHighlighted() {
+            console.log('🔍 explainHighlighted called');
+            console.log('📝 Selected lines:', selectedLines);
+            console.log('🎯 Current tab:', currentTab);
+            
+            if (selectedLines.length === 0) {
+                alert('Please select text in the play first.');
+                return;
+            }
+            
+            const textToAnalyze = selectedLines.join('\n');
+            console.log('📖 Text to analyze:', textToAnalyze);
+            
+            // Set analysis mode based on current tab
+            const mode = currentTab || 'basic';
+            console.log('🎯 Current tab/mode:', currentTab, '→', mode);
+            console.log('🎭 Analysis mode:', mode);
+            
+            // Clear previous results first
+            const analysisResult = document.getElementById('analysisResult');
+            const variorumResult = document.getElementById('variorumResult');
+            const variorumContent = document.getElementById('variorumContent');
+            if (analysisResult) analysisResult.innerHTML = '';
+            if (variorumResult) variorumResult.innerHTML = '';
+            if (variorumContent) variorumContent.innerHTML = '';
+            
+            // Use the proper API-based analysis function - backend handles database connection
+            console.log('📚 Using API-based analysis for mode:', mode);
+            analyzeHighlightedText(textToAnalyze, mode);
+            
+            // Ensure the analyze button remains visible and clickable
+            const analyzeButton = document.getElementById('analyzeButton');
+            if (analyzeButton) {
+                analyzeButton.style.display = 'block';
+                analyzeButton.disabled = false;
+            }
+        }
+
         // Initialize Geneva Bible search when the page loads
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', async function() {
             console.log('=== DOM LOADED AT:', new Date().toISOString(), '===');
             
             // Check for service workers
@@ -6061,6 +6271,9 @@
                     }
                 });
             }
+            
+            // Backend handles all Macbeth database connections
+            console.log('✅ Analysis system ready - backend will handle Macbeth commentary from JSON file');
             
             // Initialize Geneva Bible search
             initializeBibleSearch();
