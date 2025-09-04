@@ -3135,7 +3135,7 @@
             // Load Macbeth data from the JSON file
             try {
                 console.log('🔄 Attempting to load Macbeth data...');
-                const response = await fetch('./macbeth_notes_integration_play.json?v=' + Date.now());
+                const response = await fetch('./macbeth_notes_cleaned_play_updated.json?v=' + Date.now());
                 console.log('📡 Response status:', response.status, response.statusText);
                 
                 if (response.ok) {
