@@ -496,7 +496,7 @@ For this section, use the historical variorum notes provided below.
 - IMPORTANT: Copy the notes exactly as provided, word for word, without any changes.
 - CRITICAL: Include the complete, unabridged text of every note, no matter how long.`
        
-              // Add Macbeth notes if available (for all analysis levels)
+      // Add Macbeth notes if available (for fullfathomfive level)
       if (relevantNotes.length > 0) {
         systemPrompt += `\n\nIMPORTANT: You have access to historical variorum notes from the Macbeth database. Here are the relevant notes found:`
         
