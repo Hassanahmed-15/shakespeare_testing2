@@ -2636,6 +2636,24 @@
                     Traditional commentary will appear here for Full Fathom Five mode.
                 </div>
                 <div id="variorumResult"></div>
+                
+                <!-- Who are the Critics Button -->
+                <div class="critics-button-container" id="criticsButtonContainer" style="display: none; margin-top: 15px;">
+                    <button class="btn btn-secondary" onclick="showCritics()" style="width: 100%;">
+                        📚 Who are the New Variorum Critics?
+                    </button>
+                </div>
+                
+                <!-- Critics Information Display -->
+                <div class="critics-info" id="criticsInfo" style="display: none; margin-top: 15px;">
+                    <div class="analysis-title">
+                        <span>📚 New Variorum Critics & Bibliography</span>
+                        <button class="copy-button" onclick="copyCritics()">Copy</button>
+                    </div>
+                    <div class="analysis-content" id="criticsContent">
+                        Loading critics information...
+                    </div>
+                </div>
             </div>
 
             <!-- Follow-up Section -->
@@ -2937,6 +2955,8 @@
                 if (variorumContent && formattedNotes) {
                     variorumContent.innerHTML = formattedNotes;
                     console.log('✅ Variorum content set manually');
+                    // Show the critics button when variorum content is loaded
+                    showCriticsButton();
                 }
                 if (variorumResult && formattedNotes) {
                     variorumResult.innerHTML = formattedNotes;
