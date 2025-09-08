@@ -11,6 +11,16 @@
     <title>Shakespeare Digital Variorum</title>
     <link rel="stylesheet" href="styles/tokens.css?v=1.3">
     <style>
+        /* Critics button - hidden by default, shown only in Full Fathom Five */
+        .critics-button-container {
+            display: none;
+        }
+        
+        /* Show critics button when in Full Fathom Five mode */
+        .full-fathom-five .critics-button-container {
+            display: block !important;
+        }
+        
         * {
             margin: 0;
             padding: 0;
@@ -2638,7 +2648,7 @@
                 <div id="variorumResult"></div>
                 
                 <!-- Who are the Critics Button -->
-                <div class="critics-button-container" id="criticsButtonContainer" style="display: none; margin-top: 15px;">
+                <div class="critics-button-container" id="criticsButtonContainer" style="margin-top: 15px;">
                     <button class="btn btn-secondary" onclick="showCritics()" style="width: 100%;">
                         📚 Who are the New Variorum Critics?
                     </button>
@@ -2741,14 +2751,13 @@
                     console.log('✅ Forced variorum section to show');
                 }
                 
-                // Always show critics button for Full Fathom Five mode
-                const criticsButtonContainer = document.getElementById('criticsButtonContainer');
-                if (criticsButtonContainer) {
-                    criticsButtonContainer.style.display = 'block';
-                    console.log('✅ Forced critics button to show for Full Fathom Five');
-                } else {
-                    console.log('❌ Critics button container not found');
-                }
+                // Add CSS class to body to show critics button
+                document.body.classList.add('full-fathom-five');
+                console.log('✅ Added full-fathom-five class to body');
+            } else {
+                // Remove CSS class when not in Full Fathom Five
+                document.body.classList.remove('full-fathom-five');
+                console.log('❌ Removed full-fathom-five class from body');
             }
         }
         
