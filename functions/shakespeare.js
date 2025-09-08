@@ -324,31 +324,56 @@ async function handleCriticsAnalysis(body, headers) {
 
     console.log('🔍 Critics analysis requested for text length:', text.length)
 
+    // First, extract critic names from the text
+    const nameExtraction = await openai.chat.completions.create({
+      model: 'gpt-4o-mini',
+      messages: [
+        {
+          role: 'system',
+          content: `Extract ONLY the critic/scholar names mentioned in the provided text. Look for patterns like "Name:", "Name, Work Title, Year", or "Name says". Return ONLY a comma-separated list of names found. Do not add any names not explicitly mentioned.`
+        },
+        {
+          role: 'user',
+          content: `Find the critic names in this text: "${text}"`
+        }
+      ],
+      temperature: 0.1,
+      max_tokens: 100
+    })
+
+    const foundNames = nameExtraction.choices[0].message.content.trim()
+    console.log('🔍 Found critic names:', foundNames)
+
+    if (!foundNames || foundNames.toLowerCase().includes('no critics') || foundNames.toLowerCase().includes('none found')) {
+      return {
+        statusCode: 200,
+        headers,
+        body: JSON.stringify({
+          choices: [{
+            message: {
+              content: '<h2>📚 New Variorum Critics & Bibliography</h2><p>No critics with sufficient bibliographic information found in this analysis.</p>'
+            }
+          }],
+          usage: { total_tokens: 0 }
+        })
+      }
+    }
+
+    // Then get information about only those specific critics
     const completion = await openai.chat.completions.create({
       model: 'gpt-4o-mini',
       messages: [
         {
           role: 'system',
-          content: `I will give you a Shakespeare commentary text. Your job is to:
-
-1. Read the text and find names of critics/scholars mentioned
-2. For each critic you find, tell me who they are and what they wrote
-3. Only write about critics whose names actually appear in the text I give you
-4. Do not write about famous critics like Bradley, Johnson, or Bloom unless their names are in the text
-
-Be helpful and informative, but stick strictly to the critics mentioned in the text.`
+          content: `Provide biographical information and bibliography for the specific critics listed. Use HTML formatting with <h2>, <h3>, <p>, <strong>, <em>, and <ul><li> tags. Do not add any critics not in the provided list.`
         },
         {
           role: 'user',
-          content: `Please read this Shakespeare commentary text and tell me about the critics mentioned in it:
-
-"${text}"
-
-I want to know about the specific critics whose names appear in this text. Please format your response with HTML tags and start with <h2>📚 New Variorum Critics & Bibliography</h2>`
+          content: `Provide information about these specific critics only: ${foundNames}. Format as HTML starting with <h2>📚 New Variorum Critics & Bibliography</h2>`
         }
       ],
       temperature: 0.3,
-      max_tokens: 2000
+      max_tokens: 1500
     })
 
     const response = completion.choices[0].message.content

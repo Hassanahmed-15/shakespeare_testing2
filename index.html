@@ -6455,8 +6455,8 @@
                 console.log('🚀 Making API call to extract critics information...');
                 console.log('📝 Sending text:', variorumText.substring(0, 200) + '...');
                 
-                // Call OpenAI to extract bibliography and get author introductions
-                const response = await fetch('/.netlify/functions/shakespeare', {
+                // Try the direct function path first
+                let response = await fetch('/.netlify/functions/shakespeare', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -6473,10 +6473,39 @@
                 
                 console.log('📡 API response status:', response.status);
                 
+                // If direct function fails, try the redirect path
+                if (!response.ok && response.status === 504) {
+                    console.log('🔄 Direct function timed out, trying redirect path...');
+                    response = await fetch('/api/shakespeare', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            text: variorumText,
+                            level: 'critics',
+                            model: 'gpt-4o-mini',
+                            playName: currentPlay && plays[currentPlay] ? plays[currentPlay].name : 'Macbeth',
+                            sceneName: currentScene || 'Unknown Scene',
+                            version: '2024-12-19-critics-analysis'
+                        })
+                    });
+                }
+                
                 if (!response.ok) {
-                    const errorText = await response.text();
+                    let errorText = 'Unknown error';
+                    try {
+                        errorText = await response.text();
+                    } catch (e) {
+                        console.error('Could not read error response:', e);
+                    }
                     console.error('❌ API error:', errorText);
-                    throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+                    
+                    if (response.status === 504) {
+                        throw new Error('The request timed out. The analysis might be too complex. Please try with shorter text.');
+                    } else {
+                        throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+                    }
                 }
                 
                 const data = await response.json();
