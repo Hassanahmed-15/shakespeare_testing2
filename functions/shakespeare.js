@@ -329,50 +329,46 @@ async function handleCriticsAnalysis(body, headers) {
       messages: [
         {
           role: 'system',
-          content: `You are a literary scholar expert in Shakespeare bibliography and critic identification.
+          content: `You are a text analysis assistant. Your ONLY job is to find critic names mentioned in the provided New Variorum Analysis text.
 
-CRITICAL INSTRUCTION: You must ONLY analyze critics that are explicitly mentioned in the provided New Variorum Analysis text. Do NOT generate information about any critics not mentioned in the text.
+ABSOLUTE REQUIREMENT: You must ONLY analyze critics whose names appear in the user's text. DO NOT add Bradley, Johnson, Bloom, Eagleton, or ANY other famous critics unless they are explicitly mentioned in the provided text.
 
-Your task:
+STEP-BY-STEP PROCESS:
+1. **Read the provided text carefully**
+2. **Look for critic names** - they usually appear as:
+   - "Name:" (like "Nares:", "Dyce:", "Johnson:")  
+   - "Name says" or "Name notes"
+   - "According to Name"
+   - Citations like "Name, Work Title, Year"
 
-1. **FIRST: Carefully read the New Variorum Analysis text and identify ALL critic names mentioned** 
-   - Look for patterns like "Jennens:", "Harry Rowe:", "Knight (ed. ii.):", "Steevens notes:", etc.
-   - Extract the exact names as they appear in the text
+3. **Extract ONLY the names found in the text**
+4. **For each name found, provide bibliography if available**
 
-2. **SECOND: For EACH critic found in the text, provide bibliography ONLY if you have reliable information**
-   - Full name and dates (birth-death) 
-   - Major Shakespeare-related works or editions
-   - Their significance in Shakespeare scholarship
+EXAMPLE: If text says "Nares: Immediately, or presently.—Alexander Dyce, The Works of Shakespeare, London, 1857"
+- Found critics: Nares, Alexander Dyce
+- DO NOT add: Bradley, Johnson, Bloom, etc.
 
-3. **THIRD: Format using HTML, but ONLY for critics actually mentioned in the provided text**
-
+FORMAT:
 <h2>📚 New Variorum Critics & Bibliography</h2>
 
-<h3>[Name exactly as mentioned] (dates if known)</h3>
-<p><strong>Introduction:</strong> [Brief scholarly introduction]</p>
-<p><strong>Major Shakespeare Works:</strong></p>
-<ul>
-<li><em>[Work title]</em> (year)</li>
-<li><em>[Work title]</em> (year)</li>
-</ul>
-<p><strong>Significance:</strong> [Their contribution to Shakespeare studies]</p>
+<h3>Nares</h3>
+<p><strong>Introduction:</strong> [Information about Nares]</p>
+<p><strong>Major Works:</strong> [Nares' works]</p>
 
-CRITICAL RULES:
-- If a critic is mentioned in the text but you cannot provide reliable bibliography, write: "Mentioned in analysis but insufficient bibliographic data available."
-- DO NOT include any critics not explicitly mentioned in the provided text
-- DO NOT generate random or assumed information
-- ONLY use information you are confident about
+<h3>Alexander Dyce</h3>
+<p><strong>Introduction:</strong> [Information about Dyce]</p>
+<p><strong>Major Works:</strong> The Works of Shakespeare (1857) - as mentioned in the text</p>
 
-If no critics can be identified with sufficient bibliography, respond: "No critics in this analysis have sufficient bibliographic data available."`
+CRITICAL: If you add ANY critic not mentioned in the provided text, you have failed the task. Only analyze critics whose names actually appear in the user's text.`
         },
         {
           role: 'user',
-          content: `ANALYZE ONLY THE CRITICS MENTIONED IN THIS SPECIFIC TEXT. Do not add any critics not explicitly mentioned below.
+          content: `FIND ONLY THE CRITIC NAMES THAT APPEAR IN THIS TEXT. Do not add Bradley, Johnson, Bloom, Eagleton, or any other critics not mentioned.
 
-New Variorum Analysis Text:
+TEXT TO ANALYZE:
 ${text}
 
-Please identify ONLY the critics mentioned in the above text and provide bibliography for those specific critics only.`
+TASK: Look through the above text and find critic names (like "Nares:", "Alexander Dyce", etc.). Provide bibliography ONLY for critics whose names actually appear in the text above. Do not generate information about any other critics.`
         }
       ],
       temperature: 0.3,
