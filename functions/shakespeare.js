@@ -331,50 +331,48 @@ async function handleCriticsAnalysis(body, headers) {
           role: 'system',
           content: `You are a literary scholar expert in Shakespeare bibliography and critic identification.
 
-Your task is to analyze New Variorum Analysis text and extract bibliographic information ONLY for critics who have substantial bibliography available.
+CRITICAL INSTRUCTION: You must ONLY analyze critics that are explicitly mentioned in the provided New Variorum Analysis text. Do NOT generate information about any critics not mentioned in the text.
 
-IMPORTANT RULES:
-1. **Only include critics with known major works and clear biographical information**
-2. **Skip critics with insufficient bibliographic data**
-3. **Use proper HTML formatting for bold text**
-4. **Be selective - quality over quantity**
+Your task:
 
-When you receive a New Variorum Analysis passage:
+1. **FIRST: Carefully read the New Variorum Analysis text and identify ALL critic names mentioned** 
+   - Look for patterns like "Jennens:", "Harry Rowe:", "Knight (ed. ii.):", "Steevens notes:", etc.
+   - Extract the exact names as they appear in the text
 
-1. **Identify critics mentioned** (e.g., "Jennens:", "Harry Rowe:", "Knight (ed. ii.)")
+2. **SECOND: For EACH critic found in the text, provide bibliography ONLY if you have reliable information**
+   - Full name and dates (birth-death) 
+   - Major Shakespeare-related works or editions
+   - Their significance in Shakespeare scholarship
 
-2. **Only include critics where you can provide:**
-   - Full name and dates (birth-death)
-   - At least 2-3 major works or editions
-   - Clear significance in Shakespeare scholarship
-
-3. **Format your response using HTML:**
+3. **THIRD: Format using HTML, but ONLY for critics actually mentioned in the provided text**
 
 <h2>📚 New Variorum Critics & Bibliography</h2>
 
-<h3>Edward Capell (1713-1781)</h3>
-<p><strong>Introduction:</strong> English Shakespearean scholar and editor, known for his meticulous textual work and the first attempt at a complete collation of early texts.</p>
-<p><strong>Major Works:</strong></p>
+<h3>[Name exactly as mentioned] (dates if known)</h3>
+<p><strong>Introduction:</strong> [Brief scholarly introduction]</p>
+<p><strong>Major Shakespeare Works:</strong></p>
 <ul>
-<li><em>Mr. William Shakespeare his Comedies, Histories, and Tragedies</em> (1767-68)</li>
-<li><em>Notes and Various Readings to Shakespeare</em> (1779-83)</li>
+<li><em>[Work title]</em> (year)</li>
+<li><em>[Work title]</em> (year)</li>
 </ul>
-<p><strong>Significance:</strong> Pioneer in textual criticism who established many editorial principles still used today.</p>
+<p><strong>Significance:</strong> [Their contribution to Shakespeare studies]</p>
 
-<h3>Samuel Johnson (1709-1784)</h3>
-<p><strong>Introduction:</strong> Renowned lexicographer and literary critic whose Shakespeare edition was highly influential.</p>
-<p><strong>Major Works:</strong></p>
-<ul>
-<li><em>The Plays of William Shakespeare</em> (1765)</li>
-<li><em>Preface to Shakespeare</em> (1765)</li>
-</ul>
-<p><strong>Significance:</strong> His critical insights and editorial notes shaped Shakespeare interpretation for generations.</p>
+CRITICAL RULES:
+- If a critic is mentioned in the text but you cannot provide reliable bibliography, write: "Mentioned in analysis but insufficient bibliographic data available."
+- DO NOT include any critics not explicitly mentioned in the provided text
+- DO NOT generate random or assumed information
+- ONLY use information you are confident about
 
-**ONLY include critics with substantial bibliography. Skip any critic where you cannot provide at least 2 major works and biographical details.**`
+If no critics can be identified with sufficient bibliography, respond: "No critics in this analysis have sufficient bibliographic data available."`
         },
         {
           role: 'user',
-          content: `Please analyze this New Variorum Analysis text and extract the complete bibliography with scholar introductions:\n\n${text}`
+          content: `ANALYZE ONLY THE CRITICS MENTIONED IN THIS SPECIFIC TEXT. Do not add any critics not explicitly mentioned below.
+
+New Variorum Analysis Text:
+${text}
+
+Please identify ONLY the critics mentioned in the above text and provide bibliography for those specific critics only.`
         }
       ],
       temperature: 0.3,
