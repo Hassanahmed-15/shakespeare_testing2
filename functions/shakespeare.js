@@ -329,21 +329,31 @@ async function handleCriticsAnalysis(body, headers) {
     
     const foundNamesArray = []
     
+    // Exclude obvious non-critics
+    const excludeNames = ['william shakespeare', 'shakespeare', 'first witch', 'second witch', 'third witch', 'macbeth', 'lady macbeth', 'duncan', 'banquo']
+    
     // Pattern 1: Name followed by colon (e.g., "Nares:", "Johnson:")
     const colonPattern = /([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)\s*:/g
     let match
     while ((match = colonPattern.exec(text)) !== null) {
       const name = match[1].trim()
-      if (!foundNamesArray.includes(name)) {
+      const nameLower = name.toLowerCase()
+      
+      // Skip if it's an excluded name or already found
+      if (!excludeNames.includes(nameLower) && !foundNamesArray.includes(name)) {
         foundNamesArray.push(name)
       }
     }
     
     // Pattern 2: Citation format (e.g., "Alexander Dyce, The Works of Shakespeare, 1857")
-    const citationPattern = /([A-Z][a-z]+\s+[A-Z][a-z]+),\s+[^,]+,\s+\d{4}/g
+    // Also handle variations like "Alexander Dyce, The Works of Shakespeare, London, 1857"
+    const citationPattern = /([A-Z][a-z]+\s+[A-Z][a-z]+),\s+[^—]+,\s+(?:[^,]+,\s+)?\d{4}/g
     while ((match = citationPattern.exec(text)) !== null) {
       const name = match[1].trim()
-      if (!foundNamesArray.includes(name)) {
+      const nameLower = name.toLowerCase()
+      
+      // Skip if it's an excluded name or already found
+      if (!excludeNames.includes(nameLower) && !foundNamesArray.includes(name)) {
         foundNamesArray.push(name)
       }
     }
