@@ -2734,6 +2734,22 @@
                     line.classList.remove('selected', 'range-selected');
                 });
                 
+            // Clear previous analysis results when selecting a new line
+            const analysisResult = document.getElementById('analysisResult');
+            const variorumResult = document.getElementById('variorumResult');
+            const variorumContent = document.getElementById('variorumContent');
+            const analysisPanel = document.getElementById('analysisPanel');
+            
+            if (analysisResult) analysisResult.innerHTML = '';
+            if (variorumResult) variorumResult.innerHTML = '';
+            if (variorumContent) variorumContent.innerHTML = '';
+            
+            // Clear any existing analysis content in the panel and reset to default
+            const existingAnalysisContent = analysisPanel ? analysisPanel.querySelector('.analysis-content') : null;
+            if (existingAnalysisContent) {
+                existingAnalysisContent.innerHTML = '<p>Highlight text in the play to get AI-powered analysis.</p>';
+            }
+                
             // Add selection to current line
             element.classList.add('selected');
             selectedLines = [text.trim()];
