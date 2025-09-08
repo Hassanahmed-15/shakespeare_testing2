@@ -4764,13 +4764,21 @@
             console.log('🎯 Current tab/mode:', currentTab, '→', mode);
             console.log('🎭 Analysis mode:', mode);
             
-            // Clear previous results first
+            // Clear previous results first - clear ALL analysis content immediately
             const analysisResult = document.getElementById('analysisResult');
             const variorumResult = document.getElementById('variorumResult');
             const variorumContent = document.getElementById('variorumContent');
+            const analysisPanel = document.getElementById('analysisPanel');
+            
             if (analysisResult) analysisResult.innerHTML = '';
             if (variorumResult) variorumResult.innerHTML = '';
             if (variorumContent) variorumContent.innerHTML = '';
+            
+            // Clear any existing analysis content in the panel
+            const existingAnalysisContent = analysisPanel ? analysisPanel.querySelector('.analysis-content') : null;
+            if (existingAnalysisContent) {
+                existingAnalysisContent.innerHTML = '<p style="font-family: var(--ui); font-style: italic;">Processing...</p>';
+            }
             
             // Use the proper API-based analysis function
             console.log('📚 Using API-based analysis for mode:', mode);
