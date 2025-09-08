@@ -19,6 +19,11 @@
   to = "/.netlify/functions/test-shakespeare"
   status = 200
 
+[[redirects]]
+  from = "/api/test-debug"
+  to = "/.netlify/functions/test-debug"
+  status = 200
+
 [[headers]]
   for = "*.json"
   [headers.values]
