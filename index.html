@@ -2800,6 +2800,15 @@
                 if (currentTab === 'fullfathomfive') {
                     variorumSection.style.display = 'block';
                     console.log('✅ Showing variorum section for Full Fathom Five');
+                    
+                    // Check if there's already variorum content and show critics button
+                    const variorumContent = document.getElementById('variorumContent');
+                    if (variorumContent && variorumContent.innerHTML && 
+                        variorumContent.innerHTML.trim() !== '' && 
+                        !variorumContent.innerHTML.includes('Traditional commentary will appear here')) {
+                        console.log('✅ Found existing variorum content, showing critics button');
+                        showCriticsButton();
+                    }
                 } else {
                     variorumSection.style.display = 'none';
                     console.log('❌ Hiding variorum section for', currentTab);
@@ -4898,6 +4907,8 @@
                     if (variorumContent) {
                         variorumContent.innerHTML = combinedCommentary;
                         console.log('✅ Commentary displayed in variorum content');
+                        // Show the critics button when variorum content is loaded
+                        showCriticsButton();
                     }
                 } else {
                     const noCommentaryMsg = '<div class="loading">No traditional commentary found for selected lines.</div>';
@@ -6307,6 +6318,129 @@
             }
             
             return null;
+        }
+
+        // Critics functionality
+        async function showCritics() {
+            console.log('🔍 showCritics called');
+            
+            // Get the New Variorum Analysis content
+            const variorumContent = document.getElementById('variorumContent');
+            if (!variorumContent) {
+                console.error('No variorum content found');
+                return;
+            }
+            
+            const variorumText = variorumContent.textContent || variorumContent.innerText;
+            if (!variorumText || variorumText.trim().length === 0) {
+                alert('No New Variorum Analysis content found. Please analyze some text first.');
+                return;
+            }
+            
+            console.log('📖 Variorum content length:', variorumText.length);
+            
+            // Show the critics info section and hide the button
+            const criticsInfo = document.getElementById('criticsInfo');
+            const criticsButtonContainer = document.getElementById('criticsButtonContainer');
+            const criticsContent = document.getElementById('criticsContent');
+            
+            if (criticsInfo) criticsInfo.style.display = 'block';
+            if (criticsButtonContainer) criticsButtonContainer.style.display = 'none';
+            if (criticsContent) criticsContent.innerHTML = '<p style="font-family: var(--ui); font-style: italic;">Processing critics information...</p>';
+            
+            try {
+                // Call OpenAI to extract bibliography and get author introductions
+                const response = await fetch('/.netlify/functions/shakespeare', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        text: variorumText,
+                        level: 'critics',
+                        model: 'gpt-4o-mini',
+                        playName: currentPlay && plays[currentPlay] ? plays[currentPlay].name : 'Macbeth',
+                        sceneName: currentScene || 'Unknown Scene',
+                        version: '2024-12-19-critics-analysis'
+                    })
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                const data = await response.json();
+                
+                if (data.choices && data.choices[0] && data.choices[0].message) {
+                    const criticsAnalysis = data.choices[0].message.content;
+                    displayCriticsInfo(criticsAnalysis);
+                } else {
+                    throw new Error('Invalid response format from API');
+                }
+                
+            } catch (error) {
+                console.error('Error getting critics information:', error);
+                if (criticsContent) {
+                    criticsContent.innerHTML = `
+                        <div class="error">
+                            <p>Error loading critics information: ${error.message}</p>
+                            <button class="btn btn-primary" onclick="showCritics()">Try Again</button>
+                        </div>
+                    `;
+                }
+                // Show the button again if there was an error
+                if (criticsButtonContainer) criticsButtonContainer.style.display = 'block';
+            }
+        }
+        
+        function displayCriticsInfo(content) {
+            const criticsContent = document.getElementById('criticsContent');
+            if (!criticsContent) return;
+            
+            // Format the content for better display
+            const formattedContent = content
+                .replace(/\*\*(.*?)\*\*/g, '<h4>$1</h4>')
+                .replace(/\n\n/g, '</p><p>')
+                .replace(/\n/g, '<br>')
+                .replace(/^/, '<p>')
+                .replace(/$/, '</p>')
+                .replace(/<p><\/p>/g, '');
+            
+            criticsContent.innerHTML = `
+                <div class="critics-analysis">
+                    ${formattedContent}
+                </div>
+            `;
+        }
+        
+        function copyCritics() {
+            const criticsContent = document.getElementById('criticsContent');
+            if (!criticsContent) return;
+            
+            const textContent = criticsContent.textContent || criticsContent.innerText;
+            navigator.clipboard.writeText(textContent).then(() => {
+                console.log('Critics information copied to clipboard');
+            }).catch(err => {
+                console.error('Failed to copy critics information:', err);
+            });
+        }
+        
+        // Helper function to show critics button when variorum content is loaded
+        function showCriticsButton() {
+            const criticsButtonContainer = document.getElementById('criticsButtonContainer');
+            const criticsInfo = document.getElementById('criticsInfo');
+            
+            if (criticsButtonContainer) {
+                criticsButtonContainer.style.display = 'block';
+                console.log('✅ Critics button shown');
+            } else {
+                console.log('❌ Critics button container not found');
+            }
+            
+            // Hide any previous critics info when new content is loaded
+            if (criticsInfo) {
+                criticsInfo.style.display = 'none';
+            }
         }
 
     </script>
