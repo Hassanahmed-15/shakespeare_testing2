@@ -379,24 +379,21 @@ async function handleCriticsAnalysis(body, headers) {
 
     console.log('✅ Regex extraction complete, proceeding with:', foundNames)
 
-    // Then get information about only those specific critics
-    const completion = await openai.chat.completions.create({
-      model: 'gpt-4o-mini',
-      messages: [
-        {
-          role: 'system',
-          content: `Provide biographical information and bibliography ONLY for these exact critics: ${foundNames}. Use HTML formatting. Do not add any other critics. If you add any critic not in the list, you have failed.`
-        },
-        {
-          role: 'user',
-          content: `Write about ONLY these critics: ${foundNames}. Format as HTML starting with <h2>📚 New Variorum Critics & Bibliography</h2>. Do not add Bradley, Eagleton, Johnson, or any other critics not listed.`
-        }
-      ],
-      temperature: 0.2,
-      max_tokens: 1000
-    })
-
-    const response = completion.choices[0].message.content
+    // Generate HTML output using the bibliography data
+    let htmlOutput = '<h2>📚 New Variorum Critics & Bibliography</h2>\n'
+    
+    if (foundNamesArray.length === 0) {
+      htmlOutput += '<p>No critics with sufficient bibliographic information found in this analysis.</p>'
+    } else {
+      for (const name of foundNamesArray) {
+        const bibliographicInfo = bibliographyData[name]
+        htmlOutput += `\n<h3>${name}</h3>\n`
+        htmlOutput += `<p><strong>Bibliographic Information:</strong> ${bibliographicInfo}</p>\n`
+        htmlOutput += `<p><strong>Context:</strong> Mentioned in the New Variorum Analysis of this passage.</p>\n`
+      }
+    }
+    
+    console.log('✅ Generated HTML output for critics:', foundNames)
 
     return {
       statusCode: 200,
@@ -404,10 +401,10 @@ async function handleCriticsAnalysis(body, headers) {
       body: JSON.stringify({
         choices: [{
           message: {
-            content: response
+            content: htmlOutput
           }
         }],
-        usage: completion.usage
+        usage: { total_tokens: foundNamesArray.length * 10 }
       })
     }
 
