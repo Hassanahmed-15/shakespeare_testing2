@@ -324,36 +324,32 @@ async function handleCriticsAnalysis(body, headers) {
 
     console.log('🔍 Critics analysis requested for text length:', text.length)
 
-    // First, extract critic names from the text
+    // Extract critic names using regex patterns instead of AI
     console.log('📝 Input text for name extraction:', text)
     
-    const nameExtraction = await openai.chat.completions.create({
-      model: 'gpt-4o-mini',
-      messages: [
-        {
-          role: 'system',
-          content: `You are a text scanner. Look at the provided text and find ONLY the names that appear before a colon (:) or in a citation format. 
-
-For example:
-- If you see "Nares: comment" → return "Nares"
-- If you see "Alexander Dyce, The Works of Shakespeare, 1857" → return "Alexander Dyce"
-- If you see "Johnson says" → return "Johnson"
-
-Return ONLY the names you actually see in the text. Do not add Bradley, Eagleton, or any other famous critics unless they appear in the text.
-
-Format: Just list the names separated by commas, nothing else.`
-        },
-        {
-          role: 'user',
-          content: `Scan this exact text and find critic names: "${text}"`
-        }
-      ],
-      temperature: 0.0,
-      max_tokens: 50
-    })
-
-    const foundNames = nameExtraction.choices[0].message.content.trim()
-    console.log('🔍 Found critic names:', foundNames)
+    const foundNamesArray = []
+    
+    // Pattern 1: Name followed by colon (e.g., "Nares:", "Johnson:")
+    const colonPattern = /([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)\s*:/g
+    let match
+    while ((match = colonPattern.exec(text)) !== null) {
+      const name = match[1].trim()
+      if (!foundNamesArray.includes(name)) {
+        foundNamesArray.push(name)
+      }
+    }
+    
+    // Pattern 2: Citation format (e.g., "Alexander Dyce, The Works of Shakespeare, 1857")
+    const citationPattern = /([A-Z][a-z]+\s+[A-Z][a-z]+),\s+[^,]+,\s+\d{4}/g
+    while ((match = citationPattern.exec(text)) !== null) {
+      const name = match[1].trim()
+      if (!foundNamesArray.includes(name)) {
+        foundNamesArray.push(name)
+      }
+    }
+    
+    const foundNames = foundNamesArray.join(', ')
+    console.log('🔍 Found critic names using regex:', foundNames)
     console.log('🔍 Original text contained:', text.substring(0, 200))
 
     if (!foundNames || foundNames.toLowerCase().includes('no critics') || foundNames.toLowerCase().includes('none found')) {
@@ -371,29 +367,7 @@ Format: Just list the names separated by commas, nothing else.`
       }
     }
 
-    // Validate the found names - reject if they contain common false positives
-    const invalidNames = ['bradley', 'eagleton', 'johnson', 'hazlitt', 'knights', 'greenblatt', 'adelman']
-    const foundNamesLower = foundNames.toLowerCase()
-    
-    for (const invalidName of invalidNames) {
-      if (foundNamesLower.includes(invalidName) && !text.toLowerCase().includes(invalidName + ':') && !text.toLowerCase().includes(invalidName + ',')) {
-        console.log('❌ Detected false positive critic name:', invalidName)
-        return {
-          statusCode: 200,
-          headers,
-          body: JSON.stringify({
-            choices: [{
-              message: {
-                content: '<h2>📚 New Variorum Critics & Bibliography</h2><p>Error: AI attempted to add critics not mentioned in the source text. Please try again.</p>'
-              }
-            }],
-            usage: { total_tokens: 0 }
-          })
-        }
-      }
-    }
-
-    console.log('✅ Name validation passed, proceeding with:', foundNames)
+    console.log('✅ Regex extraction complete, proceeding with:', foundNames)
 
     // Then get information about only those specific critics
     const completion = await openai.chat.completions.create({
