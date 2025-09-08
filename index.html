@@ -2401,8 +2401,7 @@
         <div class="header-nav">
             <button class="nav-btn" onclick="openSettings()">Settings</button>
             <button class="nav-btn" onclick="openAbout()">About</button>
-            <button class="explain-btn" onclick="explainHighlighted()">Explain Highlighted Text</button>
-            <span class="instruction-text">Use your cursor to highlight text in the play, then click this button for analysis.</span>
+            <span class="instruction-text">Use your cursor to highlight text in the play for analysis.</span>
         </div>
     </div>
 
@@ -2777,11 +2776,12 @@
             
             if (selectedLines.length > 0) {
                 const lineCount = selectedLines.length;
-                analysisContent.textContent = `${currentPlay} · ${currentScene} · ${lineCount} line${lineCount > 1 ? 's' : ''} selected`;
+                const playName = currentPlay && plays[currentPlay] ? plays[currentPlay].name : (currentPlay ? currentPlay.charAt(0).toUpperCase() + currentPlay.slice(1) : 'Unknown Play');
+                analysisContent.textContent = `${playName} · ${currentScene} · ${lineCount} line${lineCount > 1 ? 's' : ''} selected`;
                 analysisInstruction.textContent = `Click "Analyze Text" to analyze ${lineCount} line${lineCount > 1 ? 's' : ''}.`;
                 analyzeButton.style.display = 'block';
             } else {
-                analysisContent.textContent = 'Unknown Play · No text highlighted';
+                analysisContent.textContent = 'No play loaded · No text highlighted';
                 analysisInstruction.textContent = 'Select text in the play to get AI-powered analysis.';
                 analyzeButton.style.display = 'none';
             }
