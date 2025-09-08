@@ -6216,45 +6216,6 @@
 
         // Backend handles all database connections - no frontend processing needed
 
-        // Use the original explainHighlighted function - backend now handles the database connection
-        async function explainHighlighted() {
-            console.log('🔍 explainHighlighted called');
-            console.log('📝 Selected lines:', selectedLines);
-            console.log('🎯 Current tab:', currentTab);
-            
-            if (selectedLines.length === 0) {
-                alert('Please select text in the play first.');
-                return;
-            }
-            
-            const textToAnalyze = selectedLines.join('\n');
-            console.log('📖 Text to analyze:', textToAnalyze);
-            
-            // Set analysis mode based on current tab
-            const mode = currentTab || 'basic';
-            console.log('🎯 Current tab/mode:', currentTab, '→', mode);
-            console.log('🎭 Analysis mode:', mode);
-            
-            // Clear previous results first
-            const analysisResult = document.getElementById('analysisResult');
-            const variorumResult = document.getElementById('variorumResult');
-            const variorumContent = document.getElementById('variorumContent');
-            if (analysisResult) analysisResult.innerHTML = '';
-            if (variorumResult) variorumResult.innerHTML = '';
-            if (variorumContent) variorumContent.innerHTML = '';
-            
-            // Use the proper API-based analysis function - backend handles database connection
-            console.log('📚 Using API-based analysis for mode:', mode);
-            analyzeHighlightedText(textToAnalyze, mode);
-            
-            // Ensure the analyze button remains visible and clickable
-            const analyzeButton = document.getElementById('analyzeButton');
-            if (analyzeButton) {
-                analyzeButton.style.display = 'block';
-                analyzeButton.disabled = false;
-            }
-        }
-
         // Initialize Geneva Bible search when the page loads
         document.addEventListener('DOMContentLoaded', async function() {
             console.log('=== DOM LOADED AT:', new Date().toISOString(), '===');
