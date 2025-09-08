@@ -5102,6 +5102,15 @@
                         <p style="font-family: var(--ui); font-style: italic;">Processing.</p>
                     </div>
                 </div>
+                
+                <!-- Critics Button - Show during processing for Full Fathom Five -->
+                ${analysisMode === 'fullfathomfive' ? `
+                <div class="critics-button-container" style="margin-top: 15px;">
+                    <button class="btn btn-secondary" onclick="showCritics()" style="width: 100%;">
+                        📚 Who are the New Variorum Critics?
+                    </button>
+                </div>
+                ` : ''}
             `;
             
             try {
@@ -5405,6 +5414,15 @@
                         <button class="link-btn ise" onclick="openInternetShakespeare()">Internet Shakespeare Editions</button>
                     </div>
                 </div>
+                
+                <!-- Critics Button - Added directly to analysis panel for Full Fathom Five -->
+                ${currentTab === 'fullfathomfive' ? `
+                <div class="critics-button-container" style="margin-top: 15px;">
+                    <button class="btn btn-secondary" onclick="showCritics()" style="width: 100%;">
+                        📚 Who are the New Variorum Critics?
+                    </button>
+                </div>
+                ` : ''}
             `;
             
             // Show critics button if we're in Full Fathom Five mode
@@ -5523,6 +5541,15 @@
                         <button class="link-btn ise" onclick="openInternetShakespeare()">Internet Shakespeare Editions</button>
                     </div>
                 </div>
+                
+                <!-- Critics Button - Added directly to analysis panel for Full Fathom Five -->
+                ${currentTab === 'fullfathomfive' ? `
+                <div class="critics-button-container" style="margin-top: 15px;">
+                    <button class="btn btn-secondary" onclick="showCritics()" style="width: 100%;">
+                        📚 Who are the New Variorum Critics?
+                    </button>
+                </div>
+                ` : ''}
             `;
             
             // Show critics button if we're in Full Fathom Five mode
