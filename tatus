@@ -1,0 +1,10 @@
+[33m1b5c8c5[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m issues fixed
+[33md77ecd6[m syntax issues fixed
+[33m1b9bbec[m ui fixed
+[33maa2496e[m UI fixed
+[33m09de913[m UI fixed
+[33mbff002b[m json file fixed
+[33m3b2e29e[m fixed
+[33m5975f36[m Fix JSON path to Public/Data/macbeth_notes_cleaned_play.json
+[33maddf911[m Fix JSON path to Public/Data/macbeth_notes_cleaned_play.json
+[33m666a84d[m Fix Macbeth not appearing in library - add updateLibraryPlays call
