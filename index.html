@@ -2740,6 +2740,15 @@
                     variorumSection.style.display = 'block';
                     console.log('✅ Forced variorum section to show');
                 }
+                
+                // Always show critics button for Full Fathom Five mode
+                const criticsButtonContainer = document.getElementById('criticsButtonContainer');
+                if (criticsButtonContainer) {
+                    criticsButtonContainer.style.display = 'block';
+                    console.log('✅ Forced critics button to show for Full Fathom Five');
+                } else {
+                    console.log('❌ Critics button container not found');
+                }
             }
         }
         
@@ -2812,6 +2821,16 @@
                 } else {
                     variorumSection.style.display = 'none';
                     console.log('❌ Hiding variorum section for', currentTab);
+                    
+                    // Hide critics button when not in Full Fathom Five mode
+                    const criticsButtonContainer = document.getElementById('criticsButtonContainer');
+                    const criticsInfo = document.getElementById('criticsInfo');
+                    if (criticsButtonContainer) {
+                        criticsButtonContainer.style.display = 'none';
+                    }
+                    if (criticsInfo) {
+                        criticsInfo.style.display = 'none';
+                    }
                 }
             } else {
                 console.log('❌ Variorum section element not found');
@@ -6440,6 +6459,25 @@
             // Hide any previous critics info when new content is loaded
             if (criticsInfo) {
                 criticsInfo.style.display = 'none';
+            }
+        }
+        
+        // Debug function to manually show critics button (call from console)
+        function debugShowCriticsButton() {
+            console.log('🔧 Debug: Forcing critics button to show');
+            const criticsButtonContainer = document.getElementById('criticsButtonContainer');
+            const variorumSection = document.getElementById('variorumSection');
+            
+            if (variorumSection) {
+                variorumSection.style.display = 'block';
+                console.log('✅ Debug: Variorum section shown');
+            }
+            
+            if (criticsButtonContainer) {
+                criticsButtonContainer.style.display = 'block';
+                console.log('✅ Debug: Critics button container shown');
+            } else {
+                console.log('❌ Debug: Critics button container not found');
             }
         }
 
