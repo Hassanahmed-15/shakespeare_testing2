@@ -329,31 +329,25 @@ async function handleCriticsAnalysis(body, headers) {
     
     const foundNamesArray = []
     
-    // Exclude obvious non-critics
-    const excludeNames = ['william shakespeare', 'shakespeare', 'first witch', 'second witch', 'third witch', 'macbeth', 'lady macbeth', 'duncan', 'banquo']
-    
     // Pattern 1: Name followed by colon (e.g., "Nares:", "Johnson:")
     const colonPattern = /([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)\s*:/g
     let match
     while ((match = colonPattern.exec(text)) !== null) {
       const name = match[1].trim()
-      const nameLower = name.toLowerCase()
       
-      // Skip if it's an excluded name or already found
-      if (!excludeNames.includes(nameLower) && !foundNamesArray.includes(name)) {
+      // Only include if it's in our whitelist
+      if (validCritics[name] && !foundNamesArray.includes(name)) {
         foundNamesArray.push(name)
       }
     }
     
     // Pattern 2: Citation format (e.g., "Alexander Dyce, The Works of Shakespeare, 1857")
-    // Also handle variations like "Alexander Dyce, The Works of Shakespeare, London, 1857"
     const citationPattern = /([A-Z][a-z]+\s+[A-Z][a-z]+),\s+[^—]+,\s+(?:[^,]+,\s+)?\d{4}/g
     while ((match = citationPattern.exec(text)) !== null) {
       const name = match[1].trim()
-      const nameLower = name.toLowerCase()
       
-      // Skip if it's an excluded name or already found
-      if (!excludeNames.includes(nameLower) && !foundNamesArray.includes(name)) {
+      // Only include if it's in our whitelist
+      if (validCritics[name] && !foundNamesArray.includes(name)) {
         foundNamesArray.push(name)
       }
     }
@@ -362,7 +356,7 @@ async function handleCriticsAnalysis(body, headers) {
     console.log('🔍 Found critic names using regex:', foundNames)
     console.log('🔍 Original text contained:', text.substring(0, 200))
 
-    if (!foundNames || foundNames.toLowerCase().includes('no critics') || foundNames.toLowerCase().includes('none found')) {
+    if (!foundNames || foundNamesArray.length === 0) {
       return {
         statusCode: 200,
         headers,
@@ -386,7 +380,7 @@ async function handleCriticsAnalysis(body, headers) {
       htmlOutput += '<p>No critics with sufficient bibliographic information found in this analysis.</p>'
     } else {
       for (const name of foundNamesArray) {
-        const bibliographicInfo = bibliographyData[name]
+        const bibliographicInfo = validCritics[name]
         htmlOutput += `\n<h3>${name}</h3>\n`
         htmlOutput += `<p><strong>Bibliographic Information:</strong> ${bibliographicInfo}</p>\n`
         htmlOutput += `<p><strong>Context:</strong> Mentioned in the New Variorum Analysis of this passage.</p>\n`
