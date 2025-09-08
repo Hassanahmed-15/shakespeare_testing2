@@ -6372,7 +6372,6 @@
         // Critics functionality
         async function showCritics() {
             console.log('🔍 showCritics called');
-            alert('Critics button clicked! Check console for details.');
             
             // Get the New Variorum Analysis content - try multiple sources
             let variorumText = '';
@@ -6448,11 +6447,14 @@
                 }
                 
                 const data = await response.json();
+                console.log('📊 API response data:', data);
                 
                 if (data.choices && data.choices[0] && data.choices[0].message) {
                     const criticsAnalysis = data.choices[0].message.content;
+                    console.log('📚 Critics analysis received:', criticsAnalysis.substring(0, 300) + '...');
                     displayCriticsInfo(criticsAnalysis);
                 } else {
+                    console.error('❌ Invalid response format:', data);
                     throw new Error('Invalid response format from API');
                 }
                 
@@ -6472,8 +6474,13 @@
         }
         
         function displayCriticsInfo(content) {
+            console.log('🎨 displayCriticsInfo called with content length:', content.length);
             const criticsContent = document.getElementById('criticsContent');
-            if (!criticsContent) return;
+            if (!criticsContent) {
+                console.error('❌ criticsContent element not found');
+                return;
+            }
+            console.log('✅ criticsContent element found, updating display');
             
             // Format the content for better display
             const formattedContent = content
