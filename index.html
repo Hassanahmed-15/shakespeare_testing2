@@ -6372,17 +6372,39 @@
         // Critics functionality
         async function showCritics() {
             console.log('🔍 showCritics called');
+            alert('Critics button clicked! Check console for details.');
             
-            // Get the New Variorum Analysis content
+            // Get the New Variorum Analysis content - try multiple sources
+            let variorumText = '';
+            
+            // First try variorumContent
             const variorumContent = document.getElementById('variorumContent');
-            if (!variorumContent) {
-                console.error('No variorum content found');
-                return;
+            if (variorumContent && variorumContent.textContent) {
+                variorumText = variorumContent.textContent || variorumContent.innerText;
+                console.log('📖 Got content from variorumContent:', variorumText.length, 'characters');
             }
             
-            const variorumText = variorumContent.textContent || variorumContent.innerText;
+            // If no content, try the main analysis content (for Full Fathom Five)
             if (!variorumText || variorumText.trim().length === 0) {
-                alert('No New Variorum Analysis content found. Please analyze some text first.');
+                const analysisContent = document.querySelector('.analysis-content');
+                if (analysisContent && analysisContent.textContent) {
+                    variorumText = analysisContent.textContent || analysisContent.innerText;
+                    console.log('📖 Got content from analysis-content:', variorumText.length, 'characters');
+                }
+            }
+            
+            // If still no content, try variorumResult
+            if (!variorumText || variorumText.trim().length === 0) {
+                const variorumResult = document.getElementById('variorumResult');
+                if (variorumResult && variorumResult.textContent) {
+                    variorumText = variorumResult.textContent || variorumResult.innerText;
+                    console.log('📖 Got content from variorumResult:', variorumText.length, 'characters');
+                }
+            }
+            
+            if (!variorumText || variorumText.trim().length === 0) {
+                alert('No analysis content found. Please analyze some text first in Full Fathom Five mode.');
+                console.error('No analysis content found in any source');
                 return;
             }
             
@@ -6398,6 +6420,9 @@
             if (criticsContent) criticsContent.innerHTML = '<p style="font-family: var(--ui); font-style: italic;">Processing critics information...</p>';
             
             try {
+                console.log('🚀 Making API call to extract critics information...');
+                console.log('📝 Sending text:', variorumText.substring(0, 200) + '...');
+                
                 // Call OpenAI to extract bibliography and get author introductions
                 const response = await fetch('/.netlify/functions/shakespeare', {
                     method: 'POST',
@@ -6414,8 +6439,12 @@
                     })
                 });
                 
+                console.log('📡 API response status:', response.status);
+                
                 if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+                    const errorText = await response.text();
+                    console.error('❌ API error:', errorText);
+                    throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
                 }
                 
                 const data = await response.json();
