@@ -317,6 +317,91 @@ function matchesText(playLine, searchText) {
   return false;
 }
 
+// Handle critics analysis requests
+async function handleCriticsAnalysis(body, headers) {
+  try {
+    const { text } = JSON.parse(body)
+
+    console.log('🔍 Critics analysis requested for text length:', text.length)
+
+    const completion = await openai.chat.completions.create({
+      model: 'gpt-4o-mini',
+      messages: [
+        {
+          role: 'system',
+          content: `You are a literary scholar expert in Shakespeare bibliography and critic identification.
+
+Your task is to analyze New Variorum Analysis text and extract complete bibliographic information about the critics and scholars mentioned, along with brief introductions for each.
+
+When you receive a New Variorum Analysis passage, you should:
+
+1. **Extract all critic/scholar names** mentioned in the text (e.g., "Jennens:", "Harry Rowe:", "Knight (ed. ii.)")
+
+2. **Provide complete bibliographic information** for each critic, including:
+   - Full name and dates (birth-death)
+   - Major works and editions they're known for
+   - Their significance in Shakespeare scholarship
+   - The specific work being cited (if identifiable)
+
+3. **Format your response** as a structured bibliography with brief introductions:
+
+**Format Example:**
+# New Variorum Critics & Bibliography
+
+## Edward Capell (1713-1781)
+**Introduction:** English Shakespearean scholar and editor, known for his meticulous textual work and the first attempt at a complete collation of early texts.
+**Major Works:** 
+- *Mr. William Shakespeare his Comedies, Histories, and Tragedies* (1767-68)
+- *Notes and Various Readings to Shakespeare* (1779-83)
+**Significance:** Pioneer in textual criticism who established many editorial principles still used today.
+
+## Samuel Johnson (1709-1784)
+**Introduction:** Renowned lexicographer and literary critic whose Shakespeare edition was highly influential.
+**Major Works:**
+- *The Plays of William Shakespeare* (1765)
+- *Preface to Shakespeare* (1765)
+**Significance:** His critical insights and editorial notes shaped Shakespeare interpretation for generations.
+
+Be thorough and scholarly in your approach. If you cannot identify a specific critic, note that and provide what information you can determine from context.`
+        },
+        {
+          role: 'user',
+          content: `Please analyze this New Variorum Analysis text and extract the complete bibliography with scholar introductions:\n\n${text}`
+        }
+      ],
+      temperature: 0.3,
+      max_tokens: 2000
+    })
+
+    const response = completion.choices[0].message.content
+
+    return {
+      statusCode: 200,
+      headers,
+      body: JSON.stringify({
+        choices: [{
+          message: {
+            content: response
+          }
+        }],
+        usage: completion.usage
+      })
+    }
+
+  } catch (error) {
+    console.error('Error in critics analysis:', error)
+
+    return {
+      statusCode: 500,
+      headers,
+      body: JSON.stringify({
+        error: 'Internal server error',
+        details: error.message
+      })
+    }
+  }
+}
+
 // Netlify function handler
 exports.handler = async (event, context) => {
   // Enable CORS
@@ -348,6 +433,11 @@ exports.handler = async (event, context) => {
 
     // Determine the analysis mode
     const analysisMode = mode || level
+
+    // Handle critics analysis mode specially
+    if (analysisMode === 'critics') {
+      return handleCriticsAnalysis(event.body, headers)
+    }
 
     // Define analysis structure based on mode
     const analysisStructure = {
