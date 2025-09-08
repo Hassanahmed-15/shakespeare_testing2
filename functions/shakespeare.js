@@ -331,38 +331,46 @@ async function handleCriticsAnalysis(body, headers) {
           role: 'system',
           content: `You are a literary scholar expert in Shakespeare bibliography and critic identification.
 
-Your task is to analyze New Variorum Analysis text and extract complete bibliographic information about the critics and scholars mentioned, along with brief introductions for each.
+Your task is to analyze New Variorum Analysis text and extract bibliographic information ONLY for critics who have substantial bibliography available.
 
-When you receive a New Variorum Analysis passage, you should:
+IMPORTANT RULES:
+1. **Only include critics with known major works and clear biographical information**
+2. **Skip critics with insufficient bibliographic data**
+3. **Use proper HTML formatting for bold text**
+4. **Be selective - quality over quantity**
 
-1. **Extract all critic/scholar names** mentioned in the text (e.g., "Jennens:", "Harry Rowe:", "Knight (ed. ii.)")
+When you receive a New Variorum Analysis passage:
 
-2. **Provide complete bibliographic information** for each critic, including:
+1. **Identify critics mentioned** (e.g., "Jennens:", "Harry Rowe:", "Knight (ed. ii.)")
+
+2. **Only include critics where you can provide:**
    - Full name and dates (birth-death)
-   - Major works and editions they're known for
-   - Their significance in Shakespeare scholarship
-   - The specific work being cited (if identifiable)
+   - At least 2-3 major works or editions
+   - Clear significance in Shakespeare scholarship
 
-3. **Format your response** as a structured bibliography with brief introductions:
+3. **Format your response using HTML:**
 
-**Format Example:**
-# New Variorum Critics & Bibliography
+<h2>📚 New Variorum Critics & Bibliography</h2>
 
-## Edward Capell (1713-1781)
-**Introduction:** English Shakespearean scholar and editor, known for his meticulous textual work and the first attempt at a complete collation of early texts.
-**Major Works:** 
-- *Mr. William Shakespeare his Comedies, Histories, and Tragedies* (1767-68)
-- *Notes and Various Readings to Shakespeare* (1779-83)
-**Significance:** Pioneer in textual criticism who established many editorial principles still used today.
+<h3>Edward Capell (1713-1781)</h3>
+<p><strong>Introduction:</strong> English Shakespearean scholar and editor, known for his meticulous textual work and the first attempt at a complete collation of early texts.</p>
+<p><strong>Major Works:</strong></p>
+<ul>
+<li><em>Mr. William Shakespeare his Comedies, Histories, and Tragedies</em> (1767-68)</li>
+<li><em>Notes and Various Readings to Shakespeare</em> (1779-83)</li>
+</ul>
+<p><strong>Significance:</strong> Pioneer in textual criticism who established many editorial principles still used today.</p>
 
-## Samuel Johnson (1709-1784)
-**Introduction:** Renowned lexicographer and literary critic whose Shakespeare edition was highly influential.
-**Major Works:**
-- *The Plays of William Shakespeare* (1765)
-- *Preface to Shakespeare* (1765)
-**Significance:** His critical insights and editorial notes shaped Shakespeare interpretation for generations.
+<h3>Samuel Johnson (1709-1784)</h3>
+<p><strong>Introduction:</strong> Renowned lexicographer and literary critic whose Shakespeare edition was highly influential.</p>
+<p><strong>Major Works:</strong></p>
+<ul>
+<li><em>The Plays of William Shakespeare</em> (1765)</li>
+<li><em>Preface to Shakespeare</em> (1765)</li>
+</ul>
+<p><strong>Significance:</strong> His critical insights and editorial notes shaped Shakespeare interpretation for generations.</p>
 
-Be thorough and scholarly in your approach. If you cannot identify a specific critic, note that and provide what information you can determine from context.`
+**ONLY include critics with substantial bibliography. Skip any critic where you cannot provide at least 2 major works and biographical details.**`
         },
         {
           role: 'user',

@@ -11,9 +11,9 @@
     <title>Shakespeare Digital Variorum</title>
     <link rel="stylesheet" href="styles/tokens.css?v=1.3">
     <style>
-        /* Critics button - always visible in variorum section */
+        /* Critics button - controlled by JavaScript */
         .critics-button-container {
-            display: block !important;
+            display: none;
         }
         
         * {
@@ -5103,9 +5103,9 @@
                     </div>
                 </div>
                 
-                <!-- Critics Button - Show during processing for Full Fathom Five -->
+                <!-- Critics Button - Hidden during processing, shown after analysis completes -->
                 ${analysisMode === 'fullfathomfive' ? `
-                <div class="critics-button-container" style="margin-top: 15px;">
+                <div class="critics-button-container" id="criticsButtonContainer" style="display: none; margin-top: 15px;">
                     <button class="btn btn-secondary" onclick="showCritics()" style="width: 100%;">
                         📚 Who are the New Variorum Critics?
                     </button>
@@ -5428,7 +5428,7 @@
                 
                 <!-- Critics Button - Added directly to analysis panel for Full Fathom Five -->
                 ${currentTab === 'fullfathomfive' ? `
-                <div class="critics-button-container" style="margin-top: 15px;">
+                <div class="critics-button-container" id="criticsButtonContainer" style="display: block; margin-top: 15px;">
                     <button class="btn btn-secondary" onclick="showCritics()" style="width: 100%;">
                         📚 Who are the New Variorum Critics?
                     </button>
@@ -5566,7 +5566,7 @@
                 
                 <!-- Critics Button - Added directly to analysis panel for Full Fathom Five -->
                 ${currentTab === 'fullfathomfive' ? `
-                <div class="critics-button-container" style="margin-top: 15px;">
+                <div class="critics-button-container" id="criticsButtonContainer" style="display: block; margin-top: 15px;">
                     <button class="btn btn-secondary" onclick="showCritics()" style="width: 100%;">
                         📚 Who are the New Variorum Critics?
                     </button>
@@ -6515,20 +6515,14 @@
             }
             console.log('✅ criticsContent element found, updating display');
             
-            // Format the content for better display
-            const formattedContent = content
-                .replace(/\*\*(.*?)\*\*/g, '<h4>$1</h4>')
-                .replace(/\n\n/g, '</p><p>')
-                .replace(/\n/g, '<br>')
-                .replace(/^/, '<p>')
-                .replace(/$/, '</p>')
-                .replace(/<p><\/p>/g, '');
-            
+            // Content is already formatted as HTML from OpenAI, just display it directly
             criticsContent.innerHTML = `
                 <div class="critics-analysis">
-                    ${formattedContent}
+                    ${content}
                 </div>
             `;
+            
+            console.log('✅ Critics information displayed successfully');
         }
         
         function copyCritics() {
