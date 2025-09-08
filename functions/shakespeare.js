@@ -325,24 +325,36 @@ async function handleCriticsAnalysis(body, headers) {
     console.log('🔍 Critics analysis requested for text length:', text.length)
 
     // First, extract critic names from the text
+    console.log('📝 Input text for name extraction:', text)
+    
     const nameExtraction = await openai.chat.completions.create({
       model: 'gpt-4o-mini',
       messages: [
         {
           role: 'system',
-          content: `Extract ONLY the critic/scholar names mentioned in the provided text. Look for patterns like "Name:", "Name, Work Title, Year", or "Name says". Return ONLY a comma-separated list of names found. Do not add any names not explicitly mentioned.`
+          content: `You are a text scanner. Look at the provided text and find ONLY the names that appear before a colon (:) or in a citation format. 
+
+For example:
+- If you see "Nares: comment" → return "Nares"
+- If you see "Alexander Dyce, The Works of Shakespeare, 1857" → return "Alexander Dyce"
+- If you see "Johnson says" → return "Johnson"
+
+Return ONLY the names you actually see in the text. Do not add Bradley, Eagleton, or any other famous critics unless they appear in the text.
+
+Format: Just list the names separated by commas, nothing else.`
         },
         {
           role: 'user',
-          content: `Find the critic names in this text: "${text}"`
+          content: `Scan this exact text and find critic names: "${text}"`
         }
       ],
-      temperature: 0.1,
-      max_tokens: 100
+      temperature: 0.0,
+      max_tokens: 50
     })
 
     const foundNames = nameExtraction.choices[0].message.content.trim()
     console.log('🔍 Found critic names:', foundNames)
+    console.log('🔍 Original text contained:', text.substring(0, 200))
 
     if (!foundNames || foundNames.toLowerCase().includes('no critics') || foundNames.toLowerCase().includes('none found')) {
       return {
@@ -359,21 +371,45 @@ async function handleCriticsAnalysis(body, headers) {
       }
     }
 
+    // Validate the found names - reject if they contain common false positives
+    const invalidNames = ['bradley', 'eagleton', 'johnson', 'hazlitt', 'knights', 'greenblatt', 'adelman']
+    const foundNamesLower = foundNames.toLowerCase()
+    
+    for (const invalidName of invalidNames) {
+      if (foundNamesLower.includes(invalidName) && !text.toLowerCase().includes(invalidName + ':') && !text.toLowerCase().includes(invalidName + ',')) {
+        console.log('❌ Detected false positive critic name:', invalidName)
+        return {
+          statusCode: 200,
+          headers,
+          body: JSON.stringify({
+            choices: [{
+              message: {
+                content: '<h2>📚 New Variorum Critics & Bibliography</h2><p>Error: AI attempted to add critics not mentioned in the source text. Please try again.</p>'
+              }
+            }],
+            usage: { total_tokens: 0 }
+          })
+        }
+      }
+    }
+
+    console.log('✅ Name validation passed, proceeding with:', foundNames)
+
     // Then get information about only those specific critics
     const completion = await openai.chat.completions.create({
       model: 'gpt-4o-mini',
       messages: [
         {
           role: 'system',
-          content: `Provide biographical information and bibliography for the specific critics listed. Use HTML formatting with <h2>, <h3>, <p>, <strong>, <em>, and <ul><li> tags. Do not add any critics not in the provided list.`
+          content: `Provide biographical information and bibliography ONLY for these exact critics: ${foundNames}. Use HTML formatting. Do not add any other critics. If you add any critic not in the list, you have failed.`
         },
         {
           role: 'user',
-          content: `Provide information about these specific critics only: ${foundNames}. Format as HTML starting with <h2>📚 New Variorum Critics & Bibliography</h2>`
+          content: `Write about ONLY these critics: ${foundNames}. Format as HTML starting with <h2>📚 New Variorum Critics & Bibliography</h2>. Do not add Bradley, Eagleton, Johnson, or any other critics not listed.`
         }
       ],
-      temperature: 0.3,
-      max_tokens: 1500
+      temperature: 0.2,
+      max_tokens: 1000
     })
 
     const response = completion.choices[0].message.content
