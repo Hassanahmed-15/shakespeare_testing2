@@ -11,13 +11,8 @@
     <title>Shakespeare Digital Variorum</title>
     <link rel="stylesheet" href="styles/tokens.css?v=1.3">
     <style>
-        /* Critics button - hidden by default, shown only in Full Fathom Five */
+        /* Critics button - always visible in variorum section */
         .critics-button-container {
-            display: none;
-        }
-        
-        /* Show critics button when in Full Fathom Five mode */
-        .full-fathom-five .critics-button-container {
             display: block !important;
         }
         
@@ -2751,13 +2746,8 @@
                     console.log('✅ Forced variorum section to show');
                 }
                 
-                // Add CSS class to body to show critics button
-                document.body.classList.add('full-fathom-five');
-                console.log('✅ Added full-fathom-five class to body');
-            } else {
-                // Remove CSS class when not in Full Fathom Five
-                document.body.classList.remove('full-fathom-five');
-                console.log('❌ Removed full-fathom-five class from body');
+                // Critics button is now always visible via CSS
+                console.log('✅ Full Fathom Five mode - critics button should be visible');
             }
         }
         
@@ -2831,15 +2821,7 @@
                     variorumSection.style.display = 'none';
                     console.log('❌ Hiding variorum section for', currentTab);
                     
-                    // Hide critics button when not in Full Fathom Five mode
-                    const criticsButtonContainer = document.getElementById('criticsButtonContainer');
-                    const criticsInfo = document.getElementById('criticsInfo');
-                    if (criticsButtonContainer) {
-                        criticsButtonContainer.style.display = 'none';
-                    }
-                    if (criticsInfo) {
-                        criticsInfo.style.display = 'none';
-                    }
+                    // Critics button controlled by CSS now - no hiding needed
                 }
             } else {
                 console.log('❌ Variorum section element not found');
