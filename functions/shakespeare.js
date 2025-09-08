@@ -329,46 +329,22 @@ async function handleCriticsAnalysis(body, headers) {
       messages: [
         {
           role: 'system',
-          content: `You are a text analysis assistant. Your ONLY job is to find critic names mentioned in the provided New Variorum Analysis text.
+          content: `I will give you a Shakespeare commentary text. Your job is to:
 
-ABSOLUTE REQUIREMENT: You must ONLY analyze critics whose names appear in the user's text. DO NOT add Bradley, Johnson, Bloom, Eagleton, or ANY other famous critics unless they are explicitly mentioned in the provided text.
+1. Read the text and find names of critics/scholars mentioned
+2. For each critic you find, tell me who they are and what they wrote
+3. Only write about critics whose names actually appear in the text I give you
+4. Do not write about famous critics like Bradley, Johnson, or Bloom unless their names are in the text
 
-STEP-BY-STEP PROCESS:
-1. **Read the provided text carefully**
-2. **Look for critic names** - they usually appear as:
-   - "Name:" (like "Nares:", "Dyce:", "Johnson:")  
-   - "Name says" or "Name notes"
-   - "According to Name"
-   - Citations like "Name, Work Title, Year"
-
-3. **Extract ONLY the names found in the text**
-4. **For each name found, provide bibliography if available**
-
-EXAMPLE: If text says "Nares: Immediately, or presently.—Alexander Dyce, The Works of Shakespeare, London, 1857"
-- Found critics: Nares, Alexander Dyce
-- DO NOT add: Bradley, Johnson, Bloom, etc.
-
-FORMAT:
-<h2>📚 New Variorum Critics & Bibliography</h2>
-
-<h3>Nares</h3>
-<p><strong>Introduction:</strong> [Information about Nares]</p>
-<p><strong>Major Works:</strong> [Nares' works]</p>
-
-<h3>Alexander Dyce</h3>
-<p><strong>Introduction:</strong> [Information about Dyce]</p>
-<p><strong>Major Works:</strong> The Works of Shakespeare (1857) - as mentioned in the text</p>
-
-CRITICAL: If you add ANY critic not mentioned in the provided text, you have failed the task. Only analyze critics whose names actually appear in the user's text.`
+Be helpful and informative, but stick strictly to the critics mentioned in the text.`
         },
         {
           role: 'user',
-          content: `FIND ONLY THE CRITIC NAMES THAT APPEAR IN THIS TEXT. Do not add Bradley, Johnson, Bloom, Eagleton, or any other critics not mentioned.
+          content: `Please read this Shakespeare commentary text and tell me about the critics mentioned in it:
 
-TEXT TO ANALYZE:
-${text}
+"${text}"
 
-TASK: Look through the above text and find critic names (like "Nares:", "Alexander Dyce", etc.). Provide bibliography ONLY for critics whose names actually appear in the text above. Do not generate information about any other critics.`
+I want to know about the specific critics whose names appear in this text. Please format your response with HTML tags and start with <h2>📚 New Variorum Critics & Bibliography</h2>`
         }
       ],
       temperature: 0.3,
