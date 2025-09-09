@@ -2636,16 +2636,16 @@ u<!DOCTYPE html>
                 <div class="analysis-title">
                     <span>New Variorum Analysis</span>
                     <button class="copy-button" onclick="copyVariorum()">Copy</button>
-                </div>
-                
+            </div>
+            
                 <!-- New Variorum Buttons - Moved inside section right under heading -->
                 <div class="critics-button-container" id="criticsButtonContainer" style="margin-top: 10px; margin-bottom: 15px;">
-                    <button class="btn btn-secondary" onclick="showCritics()" style="width: 100%; margin-bottom: 10px;">
-                        📚 Who are the New Variorum Critics?
-                    </button>
-                    <button class="btn btn-info" onclick="showNVInfo()" style="width: 100%;">
-                        ℹ️ What is the New Variorum Shakespeare?
-                    </button>
+                <button class="btn btn-secondary" onclick="showCritics()" style="width: 100%; margin-bottom: 10px;">
+                    📚 Who are the New Variorum Critics?
+                </button>
+                <button class="btn btn-info" onclick="showNVInfo()" style="width: 100%;">
+                    ℹ️ What is the New Variorum Shakespeare?
+                </button>
                 </div>
                 
                 <div class="analysis-content" id="variorumContent">
@@ -2771,9 +2771,9 @@ u<!DOCTYPE html>
             console.log('Selecting line:', lineIndex, 'Text:', text);
             
             // Clear all previous selections
-            document.querySelectorAll('.play-line').forEach(line => {
-                line.classList.remove('selected', 'range-selected');
-            });
+                document.querySelectorAll('.play-line').forEach(line => {
+                    line.classList.remove('selected', 'range-selected');
+                });
                 
             // Clear ALL previous analysis results and reset to default state
             const analysisResult = document.getElementById('analysisResult');
@@ -2795,8 +2795,8 @@ u<!DOCTYPE html>
             // Reset analysis panel to default state
             if (analysisPanel) {
                 const existingAnalysisContent = analysisPanel.querySelector('.analysis-content');
-                if (existingAnalysisContent) {
-                    existingAnalysisContent.innerHTML = '<p>Highlight text in the play to get AI-powered analysis.</p>';
+            if (existingAnalysisContent) {
+                existingAnalysisContent.innerHTML = '<p>Highlight text in the play to get AI-powered analysis.</p>';
                 }
                 
                 // Hide the analyze button initially
@@ -2815,7 +2815,7 @@ u<!DOCTYPE html>
             // Add selection to current line
             element.classList.add('selected');
             selectedLines = [text.trim()];
-            firstSelectedLine = null;
+                firstSelectedLine = null;
             
             console.log('✅ Line selected:', selectedLines);
             updateAnalysisPanel();
@@ -5184,7 +5184,17 @@ u<!DOCTYPE html>
                     </div>
                 </div>
                 
-                <!-- Critics Button - Now embedded in analysis content after New Variorum Analysis section -->
+                <!-- Critics Button - Added directly to analysis panel for Full Fathom Five -->
+                ${currentTab === 'fullfathomfive' ? `
+                <div class="critics-button-container" id="criticsButtonContainer" style="display: block; margin-top: 10px; margin-bottom: 15px;">
+                    <button class="btn btn-secondary" onclick="showCritics()" style="width: 100%; margin-bottom: 10px;">
+                        📚 Who are the New Variorum Critics?
+                    </button>
+                    <button class="btn btn-info" onclick="showNVInfo()" style="width: 100%;">
+                        ℹ️ What is the New Variorum Shakespeare?
+                    </button>
+                </div>
+                ` : ''}
                 
                 <!-- Critics Information Display - Embedded in analysis panel -->
                 <div class="critics-info" id="criticsInfo" style="display: none; margin-top: 10px; margin-bottom: 15px;">
@@ -5511,7 +5521,17 @@ u<!DOCTYPE html>
                     </div>
                 </div>
                 
-                <!-- Critics Button - Now embedded in analysis content after New Variorum Analysis section -->
+                <!-- Critics Button - Added directly to analysis panel for Full Fathom Five -->
+                ${currentTab === 'fullfathomfive' ? `
+                <div class="critics-button-container" id="criticsButtonContainer" style="display: block; margin-top: 10px; margin-bottom: 15px;">
+                    <button class="btn btn-secondary" onclick="showCritics()" style="width: 100%; margin-bottom: 10px;">
+                        📚 Who are the New Variorum Critics?
+                    </button>
+                    <button class="btn btn-info" onclick="showNVInfo()" style="width: 100%;">
+                        ℹ️ What is the New Variorum Shakespeare?
+                    </button>
+                </div>
+                ` : ''}
                 
                 <!-- Critics Information Display - Embedded in analysis panel -->
                 <div class="critics-info" id="criticsInfo" style="display: none; margin-top: 10px; margin-bottom: 15px;">
@@ -5541,66 +5561,9 @@ u<!DOCTYPE html>
                 console.log('✅ Structured analysis complete, showing critics button for Full Fathom Five');
                 showCriticsButton();
                 
-                // Add buttons after New Variorum Analysis section
-                addButtonsAfterNewVariorumAnalysis();
             }
         }
 
-        // Function to add buttons after New Variorum Analysis section
-        function addButtonsAfterNewVariorumAnalysis() {
-            // Find the New Variorum Analysis section
-            const analysisContent = document.querySelector('.analysis-content');
-            if (!analysisContent) return;
-            
-            // Look for the New Variorum Analysis heading
-            const newVariorumHeading = analysisContent.querySelector('h4');
-            if (!newVariorumHeading || !newVariorumHeading.textContent.includes('New Variorum Analysis')) {
-                console.log('New Variorum Analysis heading not found');
-                return;
-            }
-            
-            // Check if buttons already exist
-            const existingButtons = analysisContent.querySelector('.critics-button-container');
-            if (existingButtons) {
-                console.log('Buttons already exist, skipping');
-                return;
-            }
-            
-            // Find the parent section of the New Variorum Analysis
-            const newVariorumSection = newVariorumHeading.closest('.analysis-section');
-            if (!newVariorumSection) {
-                console.log('New Variorum Analysis section not found');
-                return;
-            }
-            
-            // Create the button container
-            const buttonContainer = document.createElement('div');
-            buttonContainer.className = 'critics-button-container';
-            buttonContainer.style.cssText = 'margin-top: 10px; margin-bottom: 15px;';
-            
-            // Create the critics button
-            const criticsButton = document.createElement('button');
-            criticsButton.className = 'btn btn-secondary';
-            criticsButton.style.cssText = 'width: 100%; margin-bottom: 10px;';
-            criticsButton.textContent = '📚 Who are the New Variorum Critics?';
-            criticsButton.onclick = showCritics;
-            
-            // Create the NV info button
-            const nvInfoButton = document.createElement('button');
-            nvInfoButton.className = 'btn btn-info';
-            nvInfoButton.style.cssText = 'width: 100%;';
-            nvInfoButton.textContent = 'ℹ️ What is the New Variorum Shakespeare?';
-            nvInfoButton.onclick = showNVInfo;
-            
-            // Add buttons to container
-            buttonContainer.appendChild(criticsButton);
-            buttonContainer.appendChild(nvInfoButton);
-            
-            // Insert the button container after the New Variorum Analysis section
-            newVariorumSection.parentNode.insertBefore(buttonContainer, newVariorumSection.nextSibling);
-            
-            console.log('✅ Buttons added after New Variorum Analysis section');
-        }
 
         function updateAnalysisWithProgress(content, selectedText, callResults) {
             const analysisPanel = document.getElementById('analysisPanel');
@@ -5710,7 +5673,17 @@ u<!DOCTYPE html>
                     </div>
                 </div>
                 
-                <!-- Critics Button - Now embedded in analysis content after New Variorum Analysis section -->
+                <!-- Critics Button - Added directly to analysis panel for Full Fathom Five -->
+                ${currentTab === 'fullfathomfive' ? `
+                <div class="critics-button-container" id="criticsButtonContainer" style="display: block; margin-top: 10px; margin-bottom: 15px;">
+                    <button class="btn btn-secondary" onclick="showCritics()" style="width: 100%; margin-bottom: 10px;">
+                        📚 Who are the New Variorum Critics?
+                    </button>
+                    <button class="btn btn-info" onclick="showNVInfo()" style="width: 100%;">
+                        ℹ️ What is the New Variorum Shakespeare?
+                    </button>
+                </div>
+                ` : ''}
                 
                 <!-- Critics Information Display - Embedded in analysis panel -->
                 <div class="critics-info" id="criticsInfo" style="display: none; margin-top: 10px; margin-bottom: 15px;">
@@ -5740,8 +5713,6 @@ u<!DOCTYPE html>
                 console.log('✅ Analysis complete, showing critics button for Full Fathom Five');
                 showCriticsButton();
                 
-                // Add buttons after New Variorum Analysis section
-                addButtonsAfterNewVariorumAnalysis();
             }
         }
 
