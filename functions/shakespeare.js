@@ -579,7 +579,7 @@ FORMAT REQUIREMENTS:
 - Complete sentences and paragraphs
 - Clear, accessible language
 - Always reference "${currentPlayName}" and "${currentSceneName}" directly
-- Titles in <em>italics</em>, never in quotes or asterisks
+- CRITICAL: Always italicize play titles using <em>italics</em>, never use asterisks (*) or quotes around titles
 - Key Words format: "word" means definition; "word" means definition (preserve capitalization)`
     } else if (analysisMode === 'expert') {
       systemPrompt = `You are a Shakespeare scholar writing for advanced students.
@@ -598,7 +598,7 @@ FORMAT REQUIREMENTS:
 - Use essay-style paragraphs (no bullets/lists)
 - Each section should be 5–8 sentences
 - Clear but scholarly tone
-- Titles in <em>italics</em>, never in quotes or asterisks
+- CRITICAL: Always italicize play titles using <em>italics</em>, never use asterisks (*) or quotes around titles
 - Always reference "${currentPlayName}" and "${currentSceneName}"`
     } else if (analysisMode === 'fullfathomfive') {
       console.log('Full Fathom Five level detected - using comprehensive prompt with Textual Variants and Language and Rhetoric sections');

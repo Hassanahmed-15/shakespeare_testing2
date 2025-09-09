@@ -2844,7 +2844,7 @@ u<!DOCTYPE html>
             if (selectedLines.length > 0) {
                 const lineCount = selectedLines.length;
                 const playName = currentPlay && plays[currentPlay] ? plays[currentPlay].name : 'Unknown Play';
-                analysisContent.textContent = `${playName} · ${currentScene} · ${lineCount} line${lineCount > 1 ? 's' : ''} selected`;
+                analysisContent.textContent = `${playName} · ${currentScene} · line selected`;
                 analysisInstruction.textContent = `Click "Analyze Text" to analyze ${lineCount} line${lineCount > 1 ? 's' : ''}.`;
                 analyzeButton.style.display = 'block';
             } else {
