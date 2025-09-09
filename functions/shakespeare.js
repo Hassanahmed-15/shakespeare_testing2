@@ -323,6 +323,7 @@ async function handleCriticsAnalysis(body, headers) {
     const { text } = JSON.parse(body)
 
     console.log('🔍 Critics analysis requested for text length:', text.length)
+    console.log('🔍 Using updated whitelist system')
 
     // Whitelist of valid critics with their bibliographic information
     const validCritics = {
