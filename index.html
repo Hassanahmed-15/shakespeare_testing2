@@ -626,7 +626,7 @@ u<!DOCTYPE html>
         }
 
         .play-name-section {
-            margin-top: 15px;
+            margin-top: 10px; margin-bottom: 15px;
             padding-top: 15px;
             border-top: 1px solid #e9ecef;
         }
@@ -774,7 +774,7 @@ u<!DOCTYPE html>
             color: #000000;
             padding: 10px 15px;
             border-radius: 4px;
-            margin-top: 15px;
+            margin-top: 10px; margin-bottom: 15px;
             border: 1px solid #000000;
             display: none;
         }
@@ -784,7 +784,7 @@ u<!DOCTYPE html>
             color: #721c24;
             padding: 10px 15px;
             border-radius: 4px;
-            margin-top: 15px;
+            margin-top: 10px; margin-bottom: 15px;
             border: 1px solid #f5c6cb;
             display: none;
         }
@@ -1197,7 +1197,7 @@ u<!DOCTYPE html>
         }
         
         .bulk-rename-section {
-            margin-top: 15px;
+            margin-top: 10px; margin-bottom: 15px;
         }
         
         .bulk-rename-list {
@@ -2637,24 +2637,25 @@ u<!DOCTYPE html>
                     <span>New Variorum Analysis</span>
                     <button class="copy-button" onclick="copyVariorum()">Copy</button>
                 </div>
+                
+                <!-- New Variorum Buttons - Moved inside section right under heading -->
+                <div class="critics-button-container" id="criticsButtonContainer" style="margin-top: 10px; margin-bottom: 15px;">
+                    <button class="btn btn-secondary" onclick="showCritics()" style="width: 100%; margin-bottom: 10px;">
+                        📚 Who are the New Variorum Critics?
+                    </button>
+                    <button class="btn btn-info" onclick="showNVInfo()" style="width: 100%;">
+                        ℹ️ What is the New Variorum Shakespeare?
+                    </button>
+                </div>
+                
                 <div class="analysis-content" id="variorumContent">
                     Traditional commentary will appear here for Full Fathom Five mode.
                 </div>
                 <div id="variorumResult"></div>
             </div>
             
-            <!-- Who are the Critics Button - MOVED OUTSIDE VARIORUM SECTION -->
-            <div class="critics-button-container" id="criticsButtonContainer" style="margin-top: 15px;">
-                <button class="btn btn-secondary" onclick="showCritics()" style="width: 100%; margin-bottom: 10px;">
-                    📚 Who are the New Variorum Critics?
-                </button>
-                <button class="btn btn-info" onclick="showNVInfo()" style="width: 100%;">
-                    ℹ️ What is the New Variorum Shakespeare?
-                </button>
-            </div>
-            
             <!-- Critics Information Display -->
-            <div class="critics-info" id="criticsInfo" style="display: none; margin-top: 15px;">
+            <div class="critics-info" id="criticsInfo" style="display: none; margin-top: 10px; margin-bottom: 15px;">
                 <div class="analysis-title">
                     <span>📚 New Variorum Critics & Bibliography</span>
                     <button class="copy-button" onclick="copyCritics()">Copy</button>
@@ -2665,7 +2666,7 @@ u<!DOCTYPE html>
             </div>
             
             <!-- New Variorum Information Display -->
-            <div class="critics-info" id="nvInfo" style="display: none; margin-top: 15px;">
+            <div class="critics-info" id="nvInfo" style="display: none; margin-top: 10px; margin-bottom: 15px;">
                 <div class="analysis-title">
                     <span>ℹ️ What is the New Variorum Shakespeare?</span>
                     <button class="copy-button" onclick="copyNVInfo()">Copy</button>
@@ -5120,7 +5121,7 @@ u<!DOCTYPE html>
                 
                 <!-- Critics Button - Hidden during processing, shown after analysis completes -->
                 ${analysisMode === 'fullfathomfive' ? `
-                <div class="critics-button-container" id="criticsButtonContainer" style="display: none; margin-top: 15px;">
+                <div class="critics-button-container" id="criticsButtonContainer" style="display: none; margin-top: 10px; margin-bottom: 15px;">
                     <button class="btn btn-secondary" onclick="showCritics()" style="width: 100%; margin-bottom: 10px;">
                         📚 Who are the New Variorum Critics?
                     </button>
@@ -5130,7 +5131,7 @@ u<!DOCTYPE html>
                 </div>
                 
                 <!-- Critics Information Display - Embedded in analysis panel -->
-                <div class="critics-info" id="criticsInfo" style="display: none; margin-top: 15px;">
+                <div class="critics-info" id="criticsInfo" style="display: none; margin-top: 10px; margin-bottom: 15px;">
                     <div class="analysis-title">
                         <span>📚 New Variorum Critics & Bibliography</span>
                         <button class="copy-button" onclick="copyCritics()">Copy</button>
@@ -5140,7 +5141,7 @@ u<!DOCTYPE html>
                     </div>
                 </div>
                 
-                <div class="critics-info" id="nvInfo" style="display: none; margin-top: 15px;">
+                <div class="critics-info" id="nvInfo" style="display: none; margin-top: 10px; margin-bottom: 15px;">
                     <div class="analysis-title">
                         <span>ℹ️ What is the New Variorum Shakespeare?</span>
                         <button class="copy-button" onclick="copyNVInfo()">Copy</button>
@@ -5456,7 +5457,7 @@ u<!DOCTYPE html>
                 
                 <!-- Critics Button - Added directly to analysis panel for Full Fathom Five -->
                 ${currentTab === 'fullfathomfive' ? `
-                <div class="critics-button-container" id="criticsButtonContainer" style="display: block; margin-top: 15px;">
+                <div class="critics-button-container" id="criticsButtonContainer" style="display: block; margin-top: 10px; margin-bottom: 15px;">
                     <button class="btn btn-secondary" onclick="showCritics()" style="width: 100%; margin-bottom: 10px;">
                         📚 Who are the New Variorum Critics?
                     </button>
@@ -5466,7 +5467,7 @@ u<!DOCTYPE html>
                 </div>
                 
                 <!-- Critics Information Display - Embedded in analysis panel -->
-                <div class="critics-info" id="criticsInfo" style="display: none; margin-top: 15px;">
+                <div class="critics-info" id="criticsInfo" style="display: none; margin-top: 10px; margin-bottom: 15px;">
                     <div class="analysis-title">
                         <span>📚 New Variorum Critics & Bibliography</span>
                         <button class="copy-button" onclick="copyCritics()">Copy</button>
@@ -5476,7 +5477,7 @@ u<!DOCTYPE html>
                     </div>
                 </div>
                 
-                <div class="critics-info" id="nvInfo" style="display: none; margin-top: 15px;">
+                <div class="critics-info" id="nvInfo" style="display: none; margin-top: 10px; margin-bottom: 15px;">
                     <div class="analysis-title">
                         <span>ℹ️ What is the New Variorum Shakespeare?</span>
                         <button class="copy-button" onclick="copyNVInfo()">Copy</button>
@@ -5607,7 +5608,7 @@ u<!DOCTYPE html>
                 
                 <!-- Critics Button - Added directly to analysis panel for Full Fathom Five -->
                 ${currentTab === 'fullfathomfive' ? `
-                <div class="critics-button-container" id="criticsButtonContainer" style="display: block; margin-top: 15px;">
+                <div class="critics-button-container" id="criticsButtonContainer" style="display: block; margin-top: 10px; margin-bottom: 15px;">
                     <button class="btn btn-secondary" onclick="showCritics()" style="width: 100%; margin-bottom: 10px;">
                         📚 Who are the New Variorum Critics?
                     </button>
@@ -5617,7 +5618,7 @@ u<!DOCTYPE html>
                 </div>
                 
                 <!-- Critics Information Display - Embedded in analysis panel -->
-                <div class="critics-info" id="criticsInfo" style="display: none; margin-top: 15px;">
+                <div class="critics-info" id="criticsInfo" style="display: none; margin-top: 10px; margin-bottom: 15px;">
                     <div class="analysis-title">
                         <span>📚 New Variorum Critics & Bibliography</span>
                         <button class="copy-button" onclick="copyCritics()">Copy</button>
@@ -5627,7 +5628,7 @@ u<!DOCTYPE html>
                     </div>
                 </div>
                 
-                <div class="critics-info" id="nvInfo" style="display: none; margin-top: 15px;">
+                <div class="critics-info" id="nvInfo" style="display: none; margin-top: 10px; margin-bottom: 15px;">
                     <div class="analysis-title">
                         <span>ℹ️ What is the New Variorum Shakespeare?</span>
                         <button class="copy-button" onclick="copyNVInfo()">Copy</button>
