@@ -2765,6 +2765,88 @@
                 activeButton.setAttribute('aria-pressed', 'true');
             }
             
+            // Reset analysis panel to default state when switching tabs
+            const analysisPanel = document.getElementById('analysisPanel');
+            const analysisResult = document.getElementById('analysisResult');
+            const variorumResult = document.getElementById('variorumResult');
+            const variorumContent = document.getElementById('variorumContent');
+            const criticsInfo = document.getElementById('criticsInfo');
+            const nvInfo = document.getElementById('nvInfo');
+            
+            // Clear all analysis content
+            if (analysisResult) analysisResult.innerHTML = '';
+            if (variorumResult) variorumResult.innerHTML = '';
+            if (variorumContent) variorumContent.innerHTML = '';
+            
+            // Hide any open info panels
+            if (criticsInfo) criticsInfo.style.display = 'none';
+            if (nvInfo) nvInfo.style.display = 'none';
+            
+            // Scroll the analysis panel to the top
+            if (analysisPanel) {
+                analysisPanel.scrollTop = 0;
+            }
+            
+            // Reset analysis panel to default state by restoring original HTML
+            if (analysisPanel) {
+                analysisPanel.innerHTML = `
+                    <!-- Analysis Mode Selector -->
+                    <div class="segment">
+                        <button onclick="switchTab('basic')" aria-pressed="${currentTab === 'basic' ? 'true' : 'false'}">Basic</button>
+                        <button onclick="switchTab('expert')" aria-pressed="${currentTab === 'expert' ? 'true' : 'false'}">Expert</button>
+                        <button onclick="switchTab('fullfathomfive')" aria-pressed="${currentTab === 'fullfathomfive' ? 'true' : 'false'}">Full Fathom Five</button>
+                    </div>
+
+                    <!-- AI Analysis Content -->
+                    <div class="analysis-header">
+                        <div class="analysis-title">${tabName === 'basic' ? 'Basic' : tabName === 'expert' ? 'Expert' : 'Full Fathom Five'} Analysis</div>
+                        <button class="copy-btn" onclick="copyAnalysis()">Copy</button>
+                    </div>
+                    <div class="meta" style="display: none;">No play loaded</div>
+                    <div class="analysis-content" id="analysisContent">
+                        <p>Highlight text in the play to get AI-powered analysis.</p>
+                    </div>
+                    <div class="analysis-instruction" id="analysisInstruction">
+                        Select text in the play to get AI-powered analysis.
+                    </div>
+                    <button class="analyze-button" id="analyzeButton" onclick="explainHighlighted()" style="display: none;">Analyze Text</button>
+                    <div id="analysisResult"></div>
+                    
+                    <!-- New Variorum Analysis Section (Full Fathom Five Only) -->
+                    <div class="analysis-section" id="variorumSection" style="display: none;">
+                        <div class="analysis-title">
+                            <span>New Variorum Analysis</span>
+                            <button class="copy-button" onclick="copyVariorum()">Copy</button>
+                        </div>
+                        <div class="analysis-content" id="variorumContent">
+                            Traditional commentary will appear here for Full Fathom Five mode.
+                        </div>
+                        <div id="variorumResult"></div>
+                        
+                        <!-- Button Outputs - Within New Variorum Analysis Section -->
+                        <div class="critics-info" id="criticsInfo" style="display: none; margin-top: 20px; margin-bottom: 15px; padding-top: 15px; border-top: 1px solid #e5e7eb;">
+                            <div class="analysis-title">
+                                <span>📚 New Variorum Critics & Bibliography</span>
+                                <button class="copy-button" onclick="copyCritics()">Copy</button>
+                            </div>
+                            <div class="analysis-content" id="criticsContent">
+                                Loading critics information...
+                            </div>
+                        </div>
+                        
+                        <div class="critics-info" id="nvInfo" style="display: none; margin-top: 20px; margin-bottom: 15px; padding-top: 15px; border-top: 1px solid #e5e7eb;">
+                            <div class="analysis-title">
+                                <span>ℹ️ What is the New Variorum Shakespeare?</span>
+                                <button class="copy-button" onclick="copyNVInfo()">Copy</button>
+                            </div>
+                            <div class="analysis-content" id="nvContent">
+                                <!-- New Variorum information will be displayed here -->
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+            
             // Update analysis panel based on tab
             updateAnalysisPanel();
             
