@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+u<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -11,6 +11,11 @@
     <title>Shakespeare Digital Variorum</title>
     <link rel="stylesheet" href="styles/tokens.css?v=1.3">
     <style>
+        /* Critics button - controlled by JavaScript */
+        .critics-button-container {
+            display: none;
+        }
+        
         * {
             margin: 0;
             padding: 0;
@@ -2401,8 +2406,7 @@
         <div class="header-nav">
             <button class="nav-btn" onclick="openSettings()">Settings</button>
             <button class="nav-btn" onclick="openAbout()">About</button>
-            <button class="explain-btn" onclick="explainHighlighted()">Explain Highlighted Text</button>
-            <span class="instruction-text">Use your cursor to highlight text in the play, then click this button for analysis.</span>
+            <span class="instruction-text">Use your cursor to highlight text in the play for analysis.</span>
         </div>
     </div>
 
@@ -2617,7 +2621,7 @@
                 <div class="analysis-title">Basic Analysis</div>
                 <button class="copy-btn" onclick="copyAnalysis()">Copy</button>
             </div>
-            <div class="meta">No play loaded</div>
+            <div class="meta" style="display: none;">No play loaded</div>
             <div class="analysis-content" id="analysisContent">
                 <p>Highlight text in the play to get AI-powered analysis.</p>
             </div>
@@ -2637,6 +2641,38 @@
                     Traditional commentary will appear here for Full Fathom Five mode.
                 </div>
                 <div id="variorumResult"></div>
+            </div>
+            
+            <!-- Who are the Critics Button - MOVED OUTSIDE VARIORUM SECTION -->
+            <div class="critics-button-container" id="criticsButtonContainer" style="margin-top: 15px;">
+                <button class="btn btn-secondary" onclick="showCritics()" style="width: 100%; margin-bottom: 10px;">
+                    📚 Who are the New Variorum Critics?
+                </button>
+                <button class="btn btn-info" onclick="showNVInfo()" style="width: 100%;">
+                    ℹ️ What is the New Variorum Shakespeare?
+                </button>
+            </div>
+            
+            <!-- Critics Information Display -->
+            <div class="critics-info" id="criticsInfo" style="display: none; margin-top: 15px;">
+                <div class="analysis-title">
+                    <span>📚 New Variorum Critics & Bibliography</span>
+                    <button class="copy-button" onclick="copyCritics()">Copy</button>
+                </div>
+                <div class="analysis-content" id="criticsContent">
+                    Loading critics information...
+                </div>
+            </div>
+            
+            <!-- New Variorum Information Display -->
+            <div class="critics-info" id="nvInfo" style="display: none; margin-top: 15px;">
+                <div class="analysis-title">
+                    <span>ℹ️ What is the New Variorum Shakespeare?</span>
+                    <button class="copy-button" onclick="copyNVInfo()">Copy</button>
+                </div>
+                <div class="analysis-content" id="nvContent">
+                    <!-- New Variorum information will be displayed here -->
+                </div>
             </div>
 
             <!-- Follow-up Section -->
@@ -2723,6 +2759,9 @@
                     variorumSection.style.display = 'block';
                     console.log('✅ Forced variorum section to show');
                 }
+                
+                // Critics button is now always visible via CSS
+                console.log('✅ Full Fathom Five mode - critics button should be visible');
             }
         }
         
@@ -2734,6 +2773,22 @@
                 document.querySelectorAll('.play-line').forEach(line => {
                     line.classList.remove('selected', 'range-selected');
                 });
+                
+            // Clear previous analysis results when selecting a new line
+            const analysisResult = document.getElementById('analysisResult');
+            const variorumResult = document.getElementById('variorumResult');
+            const variorumContent = document.getElementById('variorumContent');
+            const analysisPanel = document.getElementById('analysisPanel');
+            
+            if (analysisResult) analysisResult.innerHTML = '';
+            if (variorumResult) variorumResult.innerHTML = '';
+            if (variorumContent) variorumContent.innerHTML = '';
+            
+            // Clear any existing analysis content in the panel and reset to default
+            const existingAnalysisContent = analysisPanel ? analysisPanel.querySelector('.analysis-content') : null;
+            if (existingAnalysisContent) {
+                existingAnalysisContent.innerHTML = '<p>Highlight text in the play to get AI-powered analysis.</p>';
+            }
                 
             // Add selection to current line
             element.classList.add('selected');
@@ -2767,9 +2822,20 @@
                 if (currentTab === 'fullfathomfive') {
                     variorumSection.style.display = 'block';
                     console.log('✅ Showing variorum section for Full Fathom Five');
+                    
+                    // Check if there's already variorum content and show critics button
+                    const variorumContent = document.getElementById('variorumContent');
+                    if (variorumContent && variorumContent.innerHTML && 
+                        variorumContent.innerHTML.trim() !== '' && 
+                        !variorumContent.innerHTML.includes('Traditional commentary will appear here')) {
+                        console.log('✅ Found existing variorum content, showing critics button');
+                        showCriticsButton();
+                    }
                 } else {
                     variorumSection.style.display = 'none';
                     console.log('❌ Hiding variorum section for', currentTab);
+                    
+                    // Critics button controlled by CSS now - no hiding needed
                 }
             } else {
                 console.log('❌ Variorum section element not found');
@@ -2777,7 +2843,8 @@
             
             if (selectedLines.length > 0) {
                 const lineCount = selectedLines.length;
-                analysisContent.textContent = `${currentPlay} · ${currentScene} · ${lineCount} line${lineCount > 1 ? 's' : ''} selected`;
+                const playName = currentPlay && plays[currentPlay] ? plays[currentPlay].name : 'Unknown Play';
+                analysisContent.textContent = `${playName} · ${currentScene} · ${lineCount} line${lineCount > 1 ? 's' : ''} selected`;
                 analysisInstruction.textContent = `Click "Analyze Text" to analyze ${lineCount} line${lineCount > 1 ? 's' : ''}.`;
                 analyzeButton.style.display = 'block';
             } else {
@@ -2921,6 +2988,8 @@
                 if (variorumContent && formattedNotes) {
                     variorumContent.innerHTML = formattedNotes;
                     console.log('✅ Variorum content set manually');
+                    // Show the critics button when variorum content is loaded
+                    showCriticsButton();
                 }
                 if (variorumResult && formattedNotes) {
                     variorumResult.innerHTML = formattedNotes;
@@ -4764,13 +4833,21 @@
             console.log('🎯 Current tab/mode:', currentTab, '→', mode);
             console.log('🎭 Analysis mode:', mode);
             
-            // Clear previous results first
+            // Clear previous results first - clear ALL analysis content immediately
             const analysisResult = document.getElementById('analysisResult');
             const variorumResult = document.getElementById('variorumResult');
             const variorumContent = document.getElementById('variorumContent');
+            const analysisPanel = document.getElementById('analysisPanel');
+            
             if (analysisResult) analysisResult.innerHTML = '';
             if (variorumResult) variorumResult.innerHTML = '';
             if (variorumContent) variorumContent.innerHTML = '';
+            
+            // Clear any existing analysis content in the panel
+            const existingAnalysisContent = analysisPanel ? analysisPanel.querySelector('.analysis-content') : null;
+            if (existingAnalysisContent) {
+                existingAnalysisContent.innerHTML = '<p style="font-family: var(--ui); font-style: italic;">Processing...</p>';
+            }
             
             // Use the proper API-based analysis function
             console.log('📚 Using API-based analysis for mode:', mode);
@@ -4854,6 +4931,8 @@
                     if (variorumContent) {
                         variorumContent.innerHTML = combinedCommentary;
                         console.log('✅ Commentary displayed in variorum content');
+                        // Show the critics button when variorum content is loaded
+                        showCriticsButton();
                     }
                 } else {
                     const noCommentaryMsg = '<div class="loading">No traditional commentary found for selected lines.</div>';
@@ -5037,6 +5116,39 @@
                         <p style="font-family: var(--ui); font-style: italic;">Processing.</p>
                     </div>
                 </div>
+                
+                <!-- Critics Button - Hidden during processing, shown after analysis completes -->
+                ${analysisMode === 'fullfathomfive' ? `
+                <div class="critics-button-container" id="criticsButtonContainer" style="display: none; margin-top: 15px;">
+                    <button class="btn btn-secondary" onclick="showCritics()" style="width: 100%; margin-bottom: 10px;">
+                        📚 Who are the New Variorum Critics?
+                    </button>
+                    <button class="btn btn-info" onclick="showNVInfo()" style="width: 100%;">
+                        ℹ️ What is the New Variorum Shakespeare?
+                    </button>
+                </div>
+                
+                <!-- Critics Information Display - Embedded in analysis panel -->
+                <div class="critics-info" id="criticsInfo" style="display: none; margin-top: 15px;">
+                    <div class="analysis-title">
+                        <span>📚 New Variorum Critics & Bibliography</span>
+                        <button class="copy-button" onclick="copyCritics()">Copy</button>
+                    </div>
+                    <div class="analysis-content" id="criticsContent">
+                        Loading critics information...
+                    </div>
+                </div>
+                
+                <div class="critics-info" id="nvInfo" style="display: none; margin-top: 15px;">
+                    <div class="analysis-title">
+                        <span>ℹ️ What is the New Variorum Shakespeare?</span>
+                        <button class="copy-button" onclick="copyNVInfo()">Copy</button>
+                    </div>
+                    <div class="analysis-content" id="nvContent">
+                        <!-- New Variorum information will be displayed here -->
+                    </div>
+                </div>
+                ` : ''}
             `;
             
             try {
@@ -5340,7 +5452,46 @@
                         <button class="link-btn ise" onclick="openInternetShakespeare()">Internet Shakespeare Editions</button>
                     </div>
                 </div>
+                
+                <!-- Critics Button - Added directly to analysis panel for Full Fathom Five -->
+                ${currentTab === 'fullfathomfive' ? `
+                <div class="critics-button-container" id="criticsButtonContainer" style="display: block; margin-top: 15px;">
+                    <button class="btn btn-secondary" onclick="showCritics()" style="width: 100%; margin-bottom: 10px;">
+                        📚 Who are the New Variorum Critics?
+                    </button>
+                    <button class="btn btn-info" onclick="showNVInfo()" style="width: 100%;">
+                        ℹ️ What is the New Variorum Shakespeare?
+                    </button>
+                </div>
+                
+                <!-- Critics Information Display - Embedded in analysis panel -->
+                <div class="critics-info" id="criticsInfo" style="display: none; margin-top: 15px;">
+                    <div class="analysis-title">
+                        <span>📚 New Variorum Critics & Bibliography</span>
+                        <button class="copy-button" onclick="copyCritics()">Copy</button>
+                    </div>
+                    <div class="analysis-content" id="criticsContent">
+                        Loading critics information...
+                    </div>
+                </div>
+                
+                <div class="critics-info" id="nvInfo" style="display: none; margin-top: 15px;">
+                    <div class="analysis-title">
+                        <span>ℹ️ What is the New Variorum Shakespeare?</span>
+                        <button class="copy-button" onclick="copyNVInfo()">Copy</button>
+                    </div>
+                    <div class="analysis-content" id="nvContent">
+                        <!-- New Variorum information will be displayed here -->
+                    </div>
+                </div>
+                ` : ''}
             `;
+            
+            // Show critics button if we're in Full Fathom Five mode
+            if (currentTab === 'fullfathomfive') {
+                console.log('✅ Structured analysis complete, showing critics button for Full Fathom Five');
+                showCriticsButton();
+            }
         }
 
 
@@ -5452,7 +5603,46 @@
                         <button class="link-btn ise" onclick="openInternetShakespeare()">Internet Shakespeare Editions</button>
                     </div>
                 </div>
+                
+                <!-- Critics Button - Added directly to analysis panel for Full Fathom Five -->
+                ${currentTab === 'fullfathomfive' ? `
+                <div class="critics-button-container" id="criticsButtonContainer" style="display: block; margin-top: 15px;">
+                    <button class="btn btn-secondary" onclick="showCritics()" style="width: 100%; margin-bottom: 10px;">
+                        📚 Who are the New Variorum Critics?
+                    </button>
+                    <button class="btn btn-info" onclick="showNVInfo()" style="width: 100%;">
+                        ℹ️ What is the New Variorum Shakespeare?
+                    </button>
+                </div>
+                
+                <!-- Critics Information Display - Embedded in analysis panel -->
+                <div class="critics-info" id="criticsInfo" style="display: none; margin-top: 15px;">
+                    <div class="analysis-title">
+                        <span>📚 New Variorum Critics & Bibliography</span>
+                        <button class="copy-button" onclick="copyCritics()">Copy</button>
+                    </div>
+                    <div class="analysis-content" id="criticsContent">
+                        Loading critics information...
+                    </div>
+                </div>
+                
+                <div class="critics-info" id="nvInfo" style="display: none; margin-top: 15px;">
+                    <div class="analysis-title">
+                        <span>ℹ️ What is the New Variorum Shakespeare?</span>
+                        <button class="copy-button" onclick="copyNVInfo()">Copy</button>
+                    </div>
+                    <div class="analysis-content" id="nvContent">
+                        <!-- New Variorum information will be displayed here -->
+                    </div>
+                </div>
+                ` : ''}
             `;
+            
+            // Show critics button if we're in Full Fathom Five mode
+            if (currentTab === 'fullfathomfive') {
+                console.log('✅ Analysis complete, showing critics button for Full Fathom Five');
+                showCriticsButton();
+            }
         }
 
 
@@ -6216,45 +6406,6 @@
 
         // Backend handles all database connections - no frontend processing needed
 
-        // Use the original explainHighlighted function - backend now handles the database connection
-        async function explainHighlighted() {
-            console.log('🔍 explainHighlighted called');
-            console.log('📝 Selected lines:', selectedLines);
-            console.log('🎯 Current tab:', currentTab);
-            
-            if (selectedLines.length === 0) {
-                alert('Please select text in the play first.');
-                return;
-            }
-            
-            const textToAnalyze = selectedLines.join('\n');
-            console.log('📖 Text to analyze:', textToAnalyze);
-            
-            // Set analysis mode based on current tab
-            const mode = currentTab || 'basic';
-            console.log('🎯 Current tab/mode:', currentTab, '→', mode);
-            console.log('🎭 Analysis mode:', mode);
-            
-            // Clear previous results first
-            const analysisResult = document.getElementById('analysisResult');
-            const variorumResult = document.getElementById('variorumResult');
-            const variorumContent = document.getElementById('variorumContent');
-            if (analysisResult) analysisResult.innerHTML = '';
-            if (variorumResult) variorumResult.innerHTML = '';
-            if (variorumContent) variorumContent.innerHTML = '';
-            
-            // Use the proper API-based analysis function - backend handles database connection
-            console.log('📚 Using API-based analysis for mode:', mode);
-            analyzeHighlightedText(textToAnalyze, mode);
-            
-            // Ensure the analyze button remains visible and clickable
-            const analyzeButton = document.getElementById('analyzeButton');
-            if (analyzeButton) {
-                analyzeButton.style.display = 'block';
-                analyzeButton.disabled = false;
-            }
-        }
-
         // Initialize Geneva Bible search when the page loads
         document.addEventListener('DOMContentLoaded', async function() {
             console.log('=== DOM LOADED AT:', new Date().toISOString(), '===');
@@ -6302,6 +6453,276 @@
             }
             
             return null;
+        }
+
+        // Critics functionality
+        async function showCritics() {
+            console.log('🔍 showCritics called');
+            
+            // Get the New Variorum Analysis content - try multiple sources
+            let variorumText = '';
+            
+            // First try variorumContent
+            const variorumContent = document.getElementById('variorumContent');
+            if (variorumContent && variorumContent.textContent) {
+                variorumText = variorumContent.textContent || variorumContent.innerText;
+                console.log('📖 Got content from variorumContent:', variorumText.length, 'characters');
+            }
+            
+            // If no content, try the main analysis content (for Full Fathom Five)
+            if (!variorumText || variorumText.trim().length === 0) {
+                const analysisContent = document.querySelector('.analysis-content');
+                if (analysisContent && analysisContent.textContent) {
+                    variorumText = analysisContent.textContent || analysisContent.innerText;
+                    console.log('📖 Got content from analysis-content:', variorumText.length, 'characters');
+                }
+            }
+            
+            // If still no content, try variorumResult
+            if (!variorumText || variorumText.trim().length === 0) {
+                const variorumResult = document.getElementById('variorumResult');
+                if (variorumResult && variorumResult.textContent) {
+                    variorumText = variorumResult.textContent || variorumResult.innerText;
+                    console.log('📖 Got content from variorumResult:', variorumText.length, 'characters');
+                }
+            }
+            
+            if (!variorumText || variorumText.trim().length === 0) {
+                alert('No analysis content found. Please analyze some text first in Full Fathom Five mode.');
+                console.error('No analysis content found in any source');
+                return;
+            }
+            
+            console.log('📖 Variorum content length:', variorumText.length);
+            
+            // Show the critics info section and hide the button
+            const criticsInfo = document.getElementById('criticsInfo');
+            const criticsButtonContainer = document.getElementById('criticsButtonContainer');
+            const criticsContent = document.getElementById('criticsContent');
+            
+            if (criticsInfo) criticsInfo.style.display = 'block';
+            // Keep the button visible - don't hide it
+            if (criticsContent) criticsContent.innerHTML = '<p style="font-family: var(--ui); font-style: italic;">Processing critics information...</p>';
+            
+            try {
+                console.log('🚀 Making API call to extract critics information...');
+                console.log('📝 Sending text:', variorumText.substring(0, 200) + '...');
+                
+                // Try the direct function path first
+                let response = await fetch('/.netlify/functions/shakespeare', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        text: variorumText,
+                        level: 'critics',
+                        model: 'gpt-4o-mini',
+                        playName: currentPlay && plays[currentPlay] ? plays[currentPlay].name : 'Macbeth',
+                        sceneName: currentScene || 'Unknown Scene',
+                        version: '2024-12-19-critics-analysis'
+                    })
+                });
+                
+                console.log('📡 API response status:', response.status);
+                
+                // If direct function fails, try the redirect path
+                if (!response.ok && response.status === 504) {
+                    console.log('🔄 Direct function timed out, trying redirect path...');
+                    response = await fetch('/api/shakespeare', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            text: variorumText,
+                            level: 'critics',
+                            model: 'gpt-4o-mini',
+                            playName: currentPlay && plays[currentPlay] ? plays[currentPlay].name : 'Macbeth',
+                            sceneName: currentScene || 'Unknown Scene',
+                            version: '2024-12-19-critics-analysis'
+                        })
+                    });
+                }
+                
+                if (!response.ok) {
+                    let errorText = 'Unknown error';
+                    try {
+                        errorText = await response.text();
+                    } catch (e) {
+                        console.error('Could not read error response:', e);
+                    }
+                    console.error('❌ API error:', errorText);
+                    
+                    if (response.status === 504) {
+                        throw new Error('The request timed out. The analysis might be too complex. Please try with shorter text.');
+                    } else {
+                        throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+                    }
+                }
+                
+                const data = await response.json();
+                console.log('📊 API response data:', data);
+                
+                if (data.choices && data.choices[0] && data.choices[0].message) {
+                    const criticsAnalysis = data.choices[0].message.content;
+                    console.log('📚 Critics analysis received:', criticsAnalysis.substring(0, 300) + '...');
+                    displayCriticsInfo(criticsAnalysis);
+                } else {
+                    console.error('❌ Invalid response format:', data);
+                    throw new Error('Invalid response format from API');
+                }
+                
+            } catch (error) {
+                console.error('Error getting critics information:', error);
+                if (criticsContent) {
+                    criticsContent.innerHTML = `
+                        <div class="error">
+                            <p>Error loading critics information: ${error.message}</p>
+                            <button class="btn btn-primary" onclick="showCritics()">Try Again</button>
+                        </div>
+                    `;
+                }
+                // Show the button again if there was an error
+                if (criticsButtonContainer) criticsButtonContainer.style.display = 'block';
+            }
+        }
+        
+        function displayCriticsInfo(content) {
+            console.log('🎨 displayCriticsInfo called with content length:', content.length);
+            const criticsContent = document.getElementById('criticsContent');
+            if (!criticsContent) {
+                console.error('❌ criticsContent element not found');
+                return;
+            }
+            console.log('✅ criticsContent element found, updating display');
+            
+            // Content is already formatted as HTML from OpenAI, just display it directly
+            criticsContent.innerHTML = `
+                <div class="critics-analysis">
+                    ${content}
+                </div>
+            `;
+            
+            console.log('✅ Critics information displayed successfully');
+        }
+        
+        function copyCritics() {
+            const criticsContent = document.getElementById('criticsContent');
+            if (!criticsContent) return;
+            
+            const textContent = criticsContent.textContent || criticsContent.innerText;
+            navigator.clipboard.writeText(textContent).then(() => {
+                console.log('Critics information copied to clipboard');
+            }).catch(err => {
+                console.error('Failed to copy critics information:', err);
+            });
+        }
+        
+        function showNVInfo() {
+            console.log('🔍 showNVInfo called');
+            
+            // Show the NV info section
+            const nvInfo = document.getElementById('nvInfo');
+            const nvContent = document.getElementById('nvContent');
+            
+            if (nvInfo) nvInfo.style.display = 'block';
+            if (nvContent) {
+                nvContent.innerHTML = `
+                    <div class="nv-analysis">
+                        <h3>📚 The New Variorum Shakespeare Project</h3>
+                        
+                        <p><strong>The New Variorum Shakespeare</strong> was a monumental scholarly project that began in the late 19th century and continued into the early 20th century. It represents one of the most comprehensive attempts to document the entire editorial and critical history of Shakespeare's works.</p>
+                        
+                        <h4>🎯 Project Goals</h4>
+                        <ul>
+                            <li><strong>Comprehensive Documentation:</strong> To collect and preserve every significant variant reading, emendation, and critical comment on Shakespeare's texts</li>
+                            <li><strong>Historical Preservation:</strong> To document the evolution of Shakespeare scholarship from the First Folio (1623) through the 19th century</li>
+                            <li><strong>Editorial Authority:</strong> To establish definitive texts based on the most reliable early editions</li>
+                            <li><strong>Critical Heritage:</strong> To preserve the insights and interpretations of generations of Shakespeare scholars</li>
+                        </ul>
+                        
+                        <h4>📖 What Makes It "New"</h4>
+                        <p>The "New" Variorum was distinguished from earlier variorum editions by its unprecedented scope and systematic approach. It included:</p>
+                        <ul>
+                            <li><strong>Complete Textual Apparatus:</strong> Every significant variant reading from quartos, folios, and major editions</li>
+                            <li><strong>Comprehensive Commentary:</strong> Critical notes from hundreds of scholars, editors, and commentators</li>
+                            <li><strong>Historical Context:</strong> Information about performance history, sources, and cultural background</li>
+                            <li><strong>Bibliographical Details:</strong> Complete publication information for every cited work</li>
+                        </ul>
+                        
+                        <h4>👥 Key Figures</h4>
+                        <p>The project was spearheaded by the <strong>Modern Language Association of America</strong> and involved many of the most distinguished Shakespeare scholars of the era, including:</p>
+                        <ul>
+                            <li><strong>Horace Howard Furness</strong> - The original editor who established the format and standards</li>
+                            <li><strong>H. H. Furness, Jr.</strong> - Continued his father's work</li>
+                            <li><strong>Various Academic Editors</strong> - Each play was assigned to a specialist scholar</li>
+                        </ul>
+                        
+                        <h4>📚 Legacy and Impact</h4>
+                        <p>The New Variorum Shakespeare remains one of the most important resources for Shakespeare scholarship. It provides:</p>
+                        <ul>
+                            <li><strong>Historical Perspective:</strong> A window into how Shakespeare was understood and interpreted in different eras</li>
+                            <li><strong>Textual Authority:</strong> The foundation for many modern editions of Shakespeare's works</li>
+                            <li><strong>Research Resource:</strong> An invaluable tool for scholars studying the reception and interpretation of Shakespeare</li>
+                            <li><strong>Cultural Documentation:</strong> Evidence of how Shakespeare's works have been adapted and understood across centuries</li>
+                        </ul>
+                        
+                        <p><em>The New Variorum represents the culmination of 19th-century Shakespeare scholarship and continues to influence how we understand and study Shakespeare today.</em></p>
+                    </div>
+                `;
+            }
+            
+            console.log('✅ New Variorum information displayed successfully');
+        }
+        
+        function copyNVInfo() {
+            const nvContent = document.getElementById('nvContent');
+            if (!nvContent) return;
+            
+            const textContent = nvContent.textContent || nvContent.innerText;
+            navigator.clipboard.writeText(textContent).then(() => {
+                console.log('New Variorum information copied to clipboard');
+            }).catch(err => {
+                console.error('Failed to copy New Variorum information:', err);
+            });
+        }
+        
+        // Helper function to show critics button when variorum content is loaded
+        function showCriticsButton() {
+            const criticsButtonContainer = document.getElementById('criticsButtonContainer');
+            const criticsInfo = document.getElementById('criticsInfo');
+            
+            if (criticsButtonContainer) {
+                criticsButtonContainer.style.display = 'block';
+                console.log('✅ Critics button shown');
+            } else {
+                console.log('❌ Critics button container not found');
+            }
+            
+            // Hide any previous critics info when new content is loaded
+            if (criticsInfo) {
+                criticsInfo.style.display = 'none';
+            }
+        }
+        
+        // Debug function to manually show critics button (call from console)
+        function debugShowCriticsButton() {
+            console.log('🔧 Debug: Forcing critics button to show');
+            const criticsButtonContainer = document.getElementById('criticsButtonContainer');
+            const variorumSection = document.getElementById('variorumSection');
+            
+            if (variorumSection) {
+                variorumSection.style.display = 'block';
+                console.log('✅ Debug: Variorum section shown');
+            }
+            
+            if (criticsButtonContainer) {
+                criticsButtonContainer.style.display = 'block';
+                console.log('✅ Debug: Critics button container shown');
+            } else {
+                console.log('❌ Debug: Critics button container not found');
+            }
         }
 
     </script>

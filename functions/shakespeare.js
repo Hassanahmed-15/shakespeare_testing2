@@ -317,6 +317,149 @@ function matchesText(playLine, searchText) {
   return false;
 }
 
+// Handle critics analysis requests
+async function handleCriticsAnalysis(body, headers) {
+  try {
+    const { text } = JSON.parse(body)
+
+    console.log('🔍 Critics analysis requested for text length:', text.length)
+
+    // Extract critic names and their bibliographic information from the text
+    const foundCritics = []
+    
+    // Pattern 1: Name followed by colon (e.g., "Nares:", "Johnson:")
+    const colonPattern = /([A-Z][a-z]+(?:\s+[A-Z][a-z]+)*)\s*:/g
+    let match
+    while ((match = colonPattern.exec(text)) !== null) {
+      const name = match[1].trim()
+      const nameLower = name.toLowerCase()
+      
+      // Skip obvious non-critics
+      if (!['william', 'shakespeare', 'first', 'second', 'third', 'witch', 'macbeth', 'lady', 'duncan', 'banquo'].includes(nameLower)) {
+        foundCritics.push({ name, type: 'colon' })
+      }
+    }
+    
+    // Pattern 2: Citation format (e.g., "Alexander Dyce, The Works of Shakespeare, London, 1857")
+    const citationPattern = /([A-Z][a-z]+\s+[A-Z][a-z]+),\s+([^—]+),\s+(?:[^,]+,\s+)?\d{4}/g
+    while ((match = citationPattern.exec(text)) !== null) {
+      const name = match[1].trim()
+      const work = match[2].trim()
+      foundCritics.push({ name, work, type: 'citation' })
+    }
+    
+    console.log('🔍 Found critics:', foundCritics.map(c => c.name).join(', '))
+
+    if (foundCritics.length === 0) {
+      return {
+        statusCode: 200,
+        headers,
+        body: JSON.stringify({
+          choices: [{
+            message: {
+              content: '<h2>📚 New Variorum Critics & Bibliography</h2><p>No critics found in this analysis.</p>'
+            }
+          }],
+          usage: { total_tokens: 0 }
+        })
+      }
+    }
+
+    // Send to OpenAI to generate structured introductions
+    const criticsList = foundCritics.map(c => c.name).join(', ')
+    const bibliographicInfo = foundCritics.map(c => 
+      c.work ? `${c.name}: ${c.work}` : c.name
+    ).join('\n')
+
+    // Create a timeout promise
+    const timeoutPromise = new Promise((_, reject) => {
+      setTimeout(() => reject(new Error('Request timeout')), 25000) // 25 second timeout
+    })
+
+    const fetchPromise = fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        model: 'gpt-3.5-turbo',
+        messages: [
+          {
+            role: 'system',
+            content: `You are a Shakespeare scholar. Generate a short, structured introduction for each critic mentioned in the New Variorum Analysis. 
+
+Format each entry as:
+<h3>Critic Name</h3>
+<p><strong>Introduction:</strong> [2-3 sentences about who they are and their significance]</p>
+<p><strong>Bibliographic Information:</strong> [exact citation from the text]</p>
+
+Only include critics that are actually mentioned in the provided text. Be concise and scholarly.`
+          },
+          {
+            role: 'user',
+            content: `Based on this New Variorum Analysis text, generate introductions for these critics: ${criticsList}
+
+Bibliographic information found:
+${bibliographicInfo}
+
+Original text excerpt:
+${text.substring(0, 300)}`
+          }
+        ],
+        max_tokens: 1000,
+        temperature: 0.3
+      })
+    })
+
+    const openaiResponse = await Promise.race([fetchPromise, timeoutPromise])
+
+    if (!openaiResponse.ok) {
+      throw new Error(`OpenAI API error: ${openaiResponse.status}`)
+    }
+
+    const openaiData = await openaiResponse.json()
+    const generatedContent = openaiData.choices[0].message.content
+
+    return {
+      statusCode: 200,
+      headers,
+      body: JSON.stringify({
+        choices: [{
+          message: {
+            content: `<h2>📚 New Variorum Critics & Bibliography</h2>\n${generatedContent}`
+          }
+        }],
+        usage: openaiData.usage
+      })
+    }
+
+  } catch (error) {
+    console.error('Error in critics analysis:', error)
+
+    // Handle timeout specifically
+    if (error.message === 'Request timeout') {
+      return {
+        statusCode: 504,
+        headers,
+        body: JSON.stringify({
+          error: 'Request timeout',
+          details: 'The critics analysis request timed out. Please try again with a shorter text selection.'
+        })
+      }
+    }
+
+    return {
+      statusCode: 500,
+      headers,
+      body: JSON.stringify({
+        error: 'Internal server error',
+        details: error.message
+      })
+    }
+  }
+}
+
 // Netlify function handler
 exports.handler = async (event, context) => {
   // Enable CORS
@@ -348,6 +491,11 @@ exports.handler = async (event, context) => {
 
     // Determine the analysis mode
     const analysisMode = mode || level
+
+    // Handle critics analysis mode specially
+    if (analysisMode === 'critics') {
+      return handleCriticsAnalysis(event.body, headers)
+    }
 
     // Define analysis structure based on mode
     const analysisStructure = {
