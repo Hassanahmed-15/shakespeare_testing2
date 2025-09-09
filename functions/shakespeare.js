@@ -371,7 +371,12 @@ async function handleCriticsAnalysis(body, headers) {
       c.work ? `${c.name}: ${c.work}` : c.name
     ).join('\n')
 
-    const openaiResponse = await fetch('https://api.openai.com/v1/chat/completions', {
+    // Create a timeout promise
+    const timeoutPromise = new Promise((_, reject) => {
+      setTimeout(() => reject(new Error('Request timeout')), 25000) // 25 second timeout
+    })
+
+    const fetchPromise = fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`,
@@ -399,13 +404,15 @@ Bibliographic information found:
 ${bibliographicInfo}
 
 Original text excerpt:
-${text.substring(0, 500)}`
+${text.substring(0, 300)}`
           }
         ],
-        max_tokens: 1500,
+        max_tokens: 1000,
         temperature: 0.3
       })
     })
+
+    const openaiResponse = await Promise.race([fetchPromise, timeoutPromise])
 
     if (!openaiResponse.ok) {
       throw new Error(`OpenAI API error: ${openaiResponse.status}`)
@@ -429,6 +436,18 @@ ${text.substring(0, 500)}`
 
   } catch (error) {
     console.error('Error in critics analysis:', error)
+
+    // Handle timeout specifically
+    if (error.message === 'Request timeout') {
+      return {
+        statusCode: 504,
+        headers,
+        body: JSON.stringify({
+          error: 'Request timeout',
+          details: 'The critics analysis request timed out. Please try again with a shorter text selection.'
+        })
+      }
+    }
 
     return {
       statusCode: 500,
