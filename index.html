@@ -164,20 +164,20 @@
         }
 
         .btn-info {
-            background: #ffffff;
-            color: #000000;
+            background: #000000;
+            color: #ffffff;
             border: 1px solid #000000;
             padding: 10px 14px;
         }
 
         .btn-info:hover {
-            background: #f5f5f5;
+            background: #333333;
             border-color: #333333;
         }
 
         .btn-info:active {
             transform: translateY(1px);
-            background: #e5e5e5;
+            background: #1a1a1a;
         }
 
         .btn-ghost {
@@ -2675,10 +2675,10 @@
                 <!-- New Variorum Buttons - Right under the title -->
                 <div class="critics-button-container" id="criticsButtonContainer" style="margin-top: 10px; margin-bottom: 15px;">
                     <button class="btn btn-secondary" onclick="showCritics()" style="width: 100%; margin-bottom: 10px;">
-                        📚 Who are the New Variorum Critics?
+                        Who are the New Variorum Critics?
                     </button>
                     <button class="btn btn-info" onclick="showNVInfo()" style="width: 100%;">
-                        ℹ️ What is the New Variorum Shakespeare?
+                        What is the New Variorum Shakespeare?
                     </button>
                 </div>
                 
@@ -5425,8 +5425,8 @@
                     // Add buttons specifically for New Variorum Analysis section
                     if (sectionName === 'New Variorum Analysis') {
                         formattedContent += '<div class="critics-button-container" style="margin-top: 10px; margin-bottom: 15px;">';
-                        formattedContent += '<button class="btn btn-secondary" onclick="showCritics()" style="width: 100%; margin-bottom: 10px;">📚 Who are the New Variorum Critics?</button>';
-                        formattedContent += '<button class="btn btn-info" onclick="showNVInfo()" style="width: 100%;">ℹ️ What is the New Variorum Shakespeare?</button>';
+                        formattedContent += '<button class="btn btn-secondary" onclick="showCritics()" style="width: 100%; margin-bottom: 10px;">Who are the New Variorum Critics?</button>';
+                        formattedContent += '<button class="btn btn-info" onclick="showNVInfo()" style="width: 100%;">What is the New Variorum Shakespeare?</button>';
                         formattedContent += '</div>';
                         
                         // Add button outputs within the same section
@@ -6494,53 +6494,14 @@
         }
 
         // Critics functionality
-        async function showCritics() {
+        function showCritics() {
             console.log('🔍 showCritics called');
             
-            // Get the New Variorum Analysis content - try multiple sources
-            let variorumText = '';
-            
-            // First try variorumContent
-            const variorumContent = document.getElementById('variorumContent');
-            if (variorumContent && variorumContent.textContent) {
-                variorumText = variorumContent.textContent || variorumContent.innerText;
-                console.log('📖 Got content from variorumContent:', variorumText.length, 'characters');
-            }
-            
-            // If no content, try the main analysis content (for Full Fathom Five)
-            if (!variorumText || variorumText.trim().length === 0) {
-                const analysisContent = document.querySelector('.analysis-content');
-                if (analysisContent && analysisContent.textContent) {
-                    variorumText = analysisContent.textContent || analysisContent.innerText;
-                    console.log('📖 Got content from analysis-content:', variorumText.length, 'characters');
-                }
-            }
-            
-            // If still no content, try variorumResult
-            if (!variorumText || variorumText.trim().length === 0) {
-                const variorumResult = document.getElementById('variorumResult');
-                if (variorumResult && variorumResult.textContent) {
-                    variorumText = variorumResult.textContent || variorumResult.innerText;
-                    console.log('📖 Got content from variorumResult:', variorumText.length, 'characters');
-                }
-            }
-            
-            if (!variorumText || variorumText.trim().length === 0) {
-                alert('No analysis content found. Please analyze some text first in Full Fathom Five mode.');
-                console.error('No analysis content found in any source');
-                return;
-            }
-            
-            console.log('📖 Variorum content length:', variorumText.length);
-            
-            // Show the critics info section and hide the button
+            // Show the critics info section
             const criticsInfo = document.getElementById('criticsInfo');
-            const criticsButtonContainer = document.getElementById('criticsButtonContainer');
             const criticsContent = document.getElementById('criticsContent');
             
             if (criticsInfo) criticsInfo.style.display = 'block';
-            // Keep the button visible - don't hide it
-            if (criticsContent) criticsContent.innerHTML = '<p style="font-family: var(--ui); font-style: italic;">Processing critics information...</p>';
             
             try {
                 console.log('🚀 Making API call to extract critics information...');
