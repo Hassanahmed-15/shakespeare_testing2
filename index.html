@@ -5407,6 +5407,15 @@
                 if (sectionContent && sectionContent.trim()) {
                     formattedContent += '<div class="analysis-section">';
                     formattedContent += `<h4>${sectionName}</h4>`;
+                    
+                    // Add buttons specifically for New Variorum Analysis section
+                    if (sectionName === 'New Variorum Analysis') {
+                        formattedContent += '<div class="critics-button-container" style="margin-top: 10px; margin-bottom: 15px;">';
+                        formattedContent += '<button class="btn btn-secondary" onclick="showCritics()" style="width: 100%; margin-bottom: 10px;">📚 Who are the New Variorum Critics?</button>';
+                        formattedContent += '<button class="btn btn-info" onclick="showNVInfo()" style="width: 100%;">ℹ️ What is the New Variorum Shakespeare?</button>';
+                        formattedContent += '</div>';
+                    }
+                    
                     formattedContent += `<div class="section-content">${sectionContent}</div>`;
                     formattedContent += '</div>';
                 }
@@ -5420,6 +5429,10 @@
                 // Fallback: Add Macbeth notes section LAST (New Variorum Analysis at the bottom)
                 formattedContent += '<div class="analysis-section">';
                 formattedContent += '<h4>New Variorum Analysis</h4>';
+                formattedContent += '<div class="critics-button-container" style="margin-top: 10px; margin-bottom: 15px;">';
+                formattedContent += '<button class="btn btn-secondary" onclick="showCritics()" style="width: 100%; margin-bottom: 10px;">📚 Who are the New Variorum Critics?</button>';
+                formattedContent += '<button class="btn btn-info" onclick="showNVInfo()" style="width: 100%;">ℹ️ What is the New Variorum Shakespeare?</button>';
+                formattedContent += '</div>';
                 formattedContent += '<div class="variorum-notes">';
                 
                 relevantNotes.forEach((note, index) => {
