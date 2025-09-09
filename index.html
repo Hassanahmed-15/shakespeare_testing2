@@ -6824,25 +6824,6 @@
                 console.error('Failed to copy New Variorum information:', err);
             });
         }
-                } else {
-                    console.error('❌ Invalid response format:', data);
-                    throw new Error('Invalid response format from API');
-                }
-                
-            } catch (error) {
-                console.error('Error getting critics information:', error);
-                if (criticsContent) {
-                    criticsContent.innerHTML = `
-                        <div class="error">
-                            <p>Error loading critics information: ${error.message}</p>
-                            <button class="btn btn-primary" onclick="showCritics()">Try Again</button>
-                        </div>
-                    `;
-                }
-                // Show the button again if there was an error
-                if (criticsButtonContainer) criticsButtonContainer.style.display = 'block';
-            }
-        }
         
         function displayCriticsInfo(content) {
             console.log('🎨 displayCriticsInfo called with content length:', content.length);
