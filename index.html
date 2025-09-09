@@ -2941,10 +2941,18 @@
                 console.log('❌ Variorum section element not found');
             }
             
-            // Always keep the analysis panel in default state
-            analysisContent.textContent = 'Highlight text in the play to get AI-powered analysis.';
-            analysisInstruction.textContent = 'Select text in the play to get AI-powered analysis.';
-            analyzeButton.style.display = 'none';
+            if (selectedLines.length > 0) {
+                const lineCount = selectedLines.length;
+                const playName = currentPlay && plays[currentPlay] ? plays[currentPlay].name : 'Unknown Play';
+                // Show just the selected line text instead of the two separate messages
+                analysisContent.textContent = selectedLines[0];
+                analysisInstruction.textContent = ''; // Hide the instruction text
+                analyzeButton.style.display = 'block';
+            } else {
+                analysisContent.textContent = 'Select text in the play to get AI-powered analysis.';
+                analysisInstruction.textContent = '';
+                analyzeButton.style.display = 'none';
+            }
         }
         
         // Test function for debugging
