@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+u<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -2645,8 +2645,11 @@
             
             <!-- Who are the Critics Button - MOVED OUTSIDE VARIORUM SECTION -->
             <div class="critics-button-container" id="criticsButtonContainer" style="margin-top: 15px;">
-                <button class="btn btn-secondary" onclick="showCritics()" style="width: 100%;">
+                <button class="btn btn-secondary" onclick="showCritics()" style="width: 100%; margin-bottom: 10px;">
                     📚 Who are the New Variorum Critics?
+                </button>
+                <button class="btn btn-info" onclick="showNVInfo()" style="width: 100%;">
+                    ℹ️ What is the New Variorum Shakespeare?
                 </button>
             </div>
             
@@ -2658,6 +2661,17 @@
                 </div>
                 <div class="analysis-content" id="criticsContent">
                     Loading critics information...
+                </div>
+            </div>
+            
+            <!-- New Variorum Information Display -->
+            <div class="critics-info" id="nvInfo" style="display: none; margin-top: 15px;">
+                <div class="analysis-title">
+                    <span>ℹ️ What is the New Variorum Shakespeare?</span>
+                    <button class="copy-button" onclick="copyNVInfo()">Copy</button>
+                </div>
+                <div class="analysis-content" id="nvContent">
+                    <!-- New Variorum information will be displayed here -->
                 </div>
             </div>
 
@@ -5106,8 +5120,11 @@
                 <!-- Critics Button - Hidden during processing, shown after analysis completes -->
                 ${analysisMode === 'fullfathomfive' ? `
                 <div class="critics-button-container" id="criticsButtonContainer" style="display: none; margin-top: 15px;">
-                    <button class="btn btn-secondary" onclick="showCritics()" style="width: 100%;">
+                    <button class="btn btn-secondary" onclick="showCritics()" style="width: 100%; margin-bottom: 10px;">
                         📚 Who are the New Variorum Critics?
+                    </button>
+                    <button class="btn btn-info" onclick="showNVInfo()" style="width: 100%;">
+                        ℹ️ What is the New Variorum Shakespeare?
                     </button>
                 </div>
                 
@@ -5119,6 +5136,16 @@
                     </div>
                     <div class="analysis-content" id="criticsContent">
                         Loading critics information...
+                    </div>
+                </div>
+                
+                <div class="critics-info" id="nvInfo" style="display: none; margin-top: 15px;">
+                    <div class="analysis-title">
+                        <span>ℹ️ What is the New Variorum Shakespeare?</span>
+                        <button class="copy-button" onclick="copyNVInfo()">Copy</button>
+                    </div>
+                    <div class="analysis-content" id="nvContent">
+                        <!-- New Variorum information will be displayed here -->
                     </div>
                 </div>
                 ` : ''}
@@ -5429,8 +5456,11 @@
                 <!-- Critics Button - Added directly to analysis panel for Full Fathom Five -->
                 ${currentTab === 'fullfathomfive' ? `
                 <div class="critics-button-container" id="criticsButtonContainer" style="display: block; margin-top: 15px;">
-                    <button class="btn btn-secondary" onclick="showCritics()" style="width: 100%;">
+                    <button class="btn btn-secondary" onclick="showCritics()" style="width: 100%; margin-bottom: 10px;">
                         📚 Who are the New Variorum Critics?
+                    </button>
+                    <button class="btn btn-info" onclick="showNVInfo()" style="width: 100%;">
+                        ℹ️ What is the New Variorum Shakespeare?
                     </button>
                 </div>
                 
@@ -5442,6 +5472,16 @@
                     </div>
                     <div class="analysis-content" id="criticsContent">
                         Loading critics information...
+                    </div>
+                </div>
+                
+                <div class="critics-info" id="nvInfo" style="display: none; margin-top: 15px;">
+                    <div class="analysis-title">
+                        <span>ℹ️ What is the New Variorum Shakespeare?</span>
+                        <button class="copy-button" onclick="copyNVInfo()">Copy</button>
+                    </div>
+                    <div class="analysis-content" id="nvContent">
+                        <!-- New Variorum information will be displayed here -->
                     </div>
                 </div>
                 ` : ''}
@@ -5567,8 +5607,11 @@
                 <!-- Critics Button - Added directly to analysis panel for Full Fathom Five -->
                 ${currentTab === 'fullfathomfive' ? `
                 <div class="critics-button-container" id="criticsButtonContainer" style="display: block; margin-top: 15px;">
-                    <button class="btn btn-secondary" onclick="showCritics()" style="width: 100%;">
+                    <button class="btn btn-secondary" onclick="showCritics()" style="width: 100%; margin-bottom: 10px;">
                         📚 Who are the New Variorum Critics?
+                    </button>
+                    <button class="btn btn-info" onclick="showNVInfo()" style="width: 100%;">
+                        ℹ️ What is the New Variorum Shakespeare?
                     </button>
                 </div>
                 
@@ -5580,6 +5623,16 @@
                     </div>
                     <div class="analysis-content" id="criticsContent">
                         Loading critics information...
+                    </div>
+                </div>
+                
+                <div class="critics-info" id="nvInfo" style="display: none; margin-top: 15px;">
+                    <div class="analysis-title">
+                        <span>ℹ️ What is the New Variorum Shakespeare?</span>
+                        <button class="copy-button" onclick="copyNVInfo()">Copy</button>
+                    </div>
+                    <div class="analysis-content" id="nvContent">
+                        <!-- New Variorum information will be displayed here -->
                     </div>
                 </div>
                 ` : ''}
@@ -6563,6 +6616,75 @@
                 console.log('Critics information copied to clipboard');
             }).catch(err => {
                 console.error('Failed to copy critics information:', err);
+            });
+        }
+        
+        function showNVInfo() {
+            console.log('🔍 showNVInfo called');
+            
+            // Show the NV info section
+            const nvInfo = document.getElementById('nvInfo');
+            const nvContent = document.getElementById('nvContent');
+            
+            if (nvInfo) nvInfo.style.display = 'block';
+            if (nvContent) {
+                nvContent.innerHTML = `
+                    <div class="nv-analysis">
+                        <h3>📚 The New Variorum Shakespeare Project</h3>
+                        
+                        <p><strong>The New Variorum Shakespeare</strong> was a monumental scholarly project that began in the late 19th century and continued into the early 20th century. It represents one of the most comprehensive attempts to document the entire editorial and critical history of Shakespeare's works.</p>
+                        
+                        <h4>🎯 Project Goals</h4>
+                        <ul>
+                            <li><strong>Comprehensive Documentation:</strong> To collect and preserve every significant variant reading, emendation, and critical comment on Shakespeare's texts</li>
+                            <li><strong>Historical Preservation:</strong> To document the evolution of Shakespeare scholarship from the First Folio (1623) through the 19th century</li>
+                            <li><strong>Editorial Authority:</strong> To establish definitive texts based on the most reliable early editions</li>
+                            <li><strong>Critical Heritage:</strong> To preserve the insights and interpretations of generations of Shakespeare scholars</li>
+                        </ul>
+                        
+                        <h4>📖 What Makes It "New"</h4>
+                        <p>The "New" Variorum was distinguished from earlier variorum editions by its unprecedented scope and systematic approach. It included:</p>
+                        <ul>
+                            <li><strong>Complete Textual Apparatus:</strong> Every significant variant reading from quartos, folios, and major editions</li>
+                            <li><strong>Comprehensive Commentary:</strong> Critical notes from hundreds of scholars, editors, and commentators</li>
+                            <li><strong>Historical Context:</strong> Information about performance history, sources, and cultural background</li>
+                            <li><strong>Bibliographical Details:</strong> Complete publication information for every cited work</li>
+                        </ul>
+                        
+                        <h4>👥 Key Figures</h4>
+                        <p>The project was spearheaded by the <strong>Modern Language Association of America</strong> and involved many of the most distinguished Shakespeare scholars of the era, including:</p>
+                        <ul>
+                            <li><strong>Horace Howard Furness</strong> - The original editor who established the format and standards</li>
+                            <li><strong>H. H. Furness, Jr.</strong> - Continued his father's work</li>
+                            <li><strong>Various Academic Editors</strong> - Each play was assigned to a specialist scholar</li>
+                        </ul>
+                        
+                        <h4>📚 Legacy and Impact</h4>
+                        <p>The New Variorum Shakespeare remains one of the most important resources for Shakespeare scholarship. It provides:</p>
+                        <ul>
+                            <li><strong>Historical Perspective:</strong> A window into how Shakespeare was understood and interpreted in different eras</li>
+                            <li><strong>Textual Authority:</strong> The foundation for many modern editions of Shakespeare's works</li>
+                            <li><strong>Research Resource:</strong> An invaluable tool for scholars studying the reception and interpretation of Shakespeare</li>
+                            <li><strong>Cultural Documentation:</strong> Evidence of how Shakespeare's works have been adapted and understood across centuries</li>
+                        </ul>
+                        
+                        <p><em>The New Variorum represents the culmination of 19th-century Shakespeare scholarship and continues to influence how we understand and study Shakespeare today.</em></p>
+                    </div>
+                `;
+            }
+            
+            console.log('✅ New Variorum information displayed successfully');
+        }
+        
+        function copyNVInfo() {
+            const nvContent = document.getElementById('nvContent');
+            if (!nvContent) return;
+            
+            const textContent = nvContent.textContent || nvContent.innerText;
+            navigator.clipboard.writeText(textContent).then(() => {
+                console.log('New Variorum information copied to clipboard');
+            }).catch(err => {
+                console.error('Failed to copy New Variorum information:', err);
             });
         }
         
