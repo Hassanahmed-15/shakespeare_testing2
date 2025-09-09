@@ -2825,6 +2825,11 @@
             if (criticsInfo) criticsInfo.style.display = 'none';
             if (nvInfo) nvInfo.style.display = 'none';
             
+            // Scroll the analysis panel to the top
+            if (analysisPanel) {
+                analysisPanel.scrollTop = 0;
+            }
+            
             // Reset analysis panel to default state
             if (analysisPanel) {
                 // Reset analysis content to default
