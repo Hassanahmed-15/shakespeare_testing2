@@ -5417,16 +5417,6 @@ u<!DOCTYPE html>
             if (analysis['New Variorum Analysis']) {
                 console.log('New Variorum Analysis found in analysis object, length:', analysis['New Variorum Analysis'].length);
                 // Don't add it again since it's already been added above
-                
-                // Add buttons right after New Variorum Analysis section
-                formattedContent += '<div class="critics-button-container" style="margin-top: 10px; margin-bottom: 15px;">';
-                formattedContent += '<button class="btn btn-secondary" onclick="showCritics()" style="width: 100%; margin-bottom: 10px;">';
-                formattedContent += '📚 Who are the New Variorum Critics?';
-                formattedContent += '</button>';
-                formattedContent += '<button class="btn btn-info" onclick="showNVInfo()" style="width: 100%;">';
-                formattedContent += 'ℹ️ What is the New Variorum Shakespeare?';
-                formattedContent += '</button>';
-                formattedContent += '</div>';
             } else if (relevantNotes && relevantNotes.length > 0) {
                 // Fallback: Add Macbeth notes section LAST (New Variorum Analysis at the bottom)
                 formattedContent += '<div class="analysis-section">';
@@ -5448,16 +5438,6 @@ u<!DOCTYPE html>
                 });
                 
                 formattedContent += '</div></div>';
-                
-                // Add buttons right after New Variorum Analysis section
-                formattedContent += '<div class="critics-button-container" style="margin-top: 10px; margin-bottom: 15px;">';
-                formattedContent += '<button class="btn btn-secondary" onclick="showCritics()" style="width: 100%; margin-bottom: 10px;">';
-                formattedContent += '📚 Who are the New Variorum Critics?';
-                formattedContent += '</button>';
-                formattedContent += '<button class="btn btn-info" onclick="showNVInfo()" style="width: 100%;">';
-                formattedContent += 'ℹ️ What is the New Variorum Shakespeare?';
-                formattedContent += '</button>';
-                formattedContent += '</div>';
             }
             
             return formattedContent;
@@ -5560,10 +5540,67 @@ u<!DOCTYPE html>
             if (currentTab === 'fullfathomfive') {
                 console.log('✅ Structured analysis complete, showing critics button for Full Fathom Five');
                 showCriticsButton();
+                
+                // Add buttons after New Variorum Analysis section
+                addButtonsAfterNewVariorumAnalysis();
             }
         }
 
-
+        // Function to add buttons after New Variorum Analysis section
+        function addButtonsAfterNewVariorumAnalysis() {
+            // Find the New Variorum Analysis section
+            const analysisContent = document.querySelector('.analysis-content');
+            if (!analysisContent) return;
+            
+            // Look for the New Variorum Analysis heading
+            const newVariorumHeading = analysisContent.querySelector('h4');
+            if (!newVariorumHeading || !newVariorumHeading.textContent.includes('New Variorum Analysis')) {
+                console.log('New Variorum Analysis heading not found');
+                return;
+            }
+            
+            // Check if buttons already exist
+            const existingButtons = analysisContent.querySelector('.critics-button-container');
+            if (existingButtons) {
+                console.log('Buttons already exist, skipping');
+                return;
+            }
+            
+            // Find the parent section of the New Variorum Analysis
+            const newVariorumSection = newVariorumHeading.closest('.analysis-section');
+            if (!newVariorumSection) {
+                console.log('New Variorum Analysis section not found');
+                return;
+            }
+            
+            // Create the button container
+            const buttonContainer = document.createElement('div');
+            buttonContainer.className = 'critics-button-container';
+            buttonContainer.style.cssText = 'margin-top: 10px; margin-bottom: 15px;';
+            
+            // Create the critics button
+            const criticsButton = document.createElement('button');
+            criticsButton.className = 'btn btn-secondary';
+            criticsButton.style.cssText = 'width: 100%; margin-bottom: 10px;';
+            criticsButton.textContent = '📚 Who are the New Variorum Critics?';
+            criticsButton.onclick = showCritics;
+            
+            // Create the NV info button
+            const nvInfoButton = document.createElement('button');
+            nvInfoButton.className = 'btn btn-info';
+            nvInfoButton.style.cssText = 'width: 100%;';
+            nvInfoButton.textContent = 'ℹ️ What is the New Variorum Shakespeare?';
+            nvInfoButton.onclick = showNVInfo;
+            
+            // Add buttons to container
+            buttonContainer.appendChild(criticsButton);
+            buttonContainer.appendChild(nvInfoButton);
+            
+            // Insert the button container after the New Variorum Analysis section
+            newVariorumSection.parentNode.insertBefore(buttonContainer, newVariorumSection.nextSibling);
+            
+            console.log('✅ Buttons added after New Variorum Analysis section');
+        }
 
         function updateAnalysisWithProgress(content, selectedText, callResults) {
             const analysisPanel = document.getElementById('analysisPanel');
@@ -5702,6 +5739,9 @@ u<!DOCTYPE html>
             if (currentTab === 'fullfathomfive') {
                 console.log('✅ Analysis complete, showing critics button for Full Fathom Five');
                 showCriticsButton();
+                
+                // Add buttons after New Variorum Analysis section
+                addButtonsAfterNewVariorumAnalysis();
             }
         }
 
