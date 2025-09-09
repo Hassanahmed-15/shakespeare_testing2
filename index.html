@@ -2844,12 +2844,13 @@ u<!DOCTYPE html>
             if (selectedLines.length > 0) {
                 const lineCount = selectedLines.length;
                 const playName = currentPlay && plays[currentPlay] ? plays[currentPlay].name : 'Unknown Play';
-                analysisContent.textContent = `${playName} · ${currentScene} · line selected`;
-                analysisInstruction.textContent = `Click "Analyze Text" to analyze ${lineCount} line${lineCount > 1 ? 's' : ''}.`;
+                // Show just the selected line text instead of the two separate messages
+                analysisContent.textContent = selectedLines[0];
+                analysisInstruction.textContent = ''; // Hide the instruction text
                 analyzeButton.style.display = 'block';
             } else {
-                analysisContent.textContent = 'Unknown Play · No text highlighted';
-                analysisInstruction.textContent = 'Select text in the play to get AI-powered analysis.';
+                analysisContent.textContent = 'Select text in the play to get AI-powered analysis.';
+                analysisInstruction.textContent = '';
                 analyzeButton.style.display = 'none';
             }
         }
