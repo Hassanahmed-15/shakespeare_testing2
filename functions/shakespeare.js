@@ -568,10 +568,12 @@ IMPORTANT CONTEXT: You are analyzing text from the play "${currentPlayName}" (${
 
 CRITICAL WARNING: Do NOT default to Act 1, Scene 1 in your synopsis. The current scene is ${currentSceneName}. Your synopsis must focus specifically on the events and context of ${currentSceneName}, not the opening scene of the play.
 
+SYNOPSIS REQUIREMENT: Your synopsis must begin with "In ${currentSceneName} of Macbeth" and describe the specific events of that scene. If you write "In Act 1, Scene 1" when the current scene is ${currentSceneName}, your response will be incorrect.
+
 CRITICAL: You MUST provide responses for ALL of these sections in exactly this order:
 
 **Plain-Language Paraphrase:**
-**Synopsis:** (Focus on the specific events and context of ${currentSceneName}, not Act 1, Scene 1)
+**Synopsis:** (MUST begin with "In ${currentSceneName} of Macbeth" - do NOT write "In Act 1, Scene 1" unless that is actually the current scene)
 **Key Words & Glosses:**
 **Pointers for Further Reading:**
 
@@ -590,11 +592,13 @@ IMPORTANT CONTEXT: Analyze text from "${currentPlayName}" (${currentSceneName}).
 
 CRITICAL WARNING: Do NOT default to Act 1, Scene 1 in your synopsis. The current scene is ${currentSceneName}. Your synopsis must focus specifically on the events and context of ${currentSceneName}, not the opening scene of the play.
 
+SYNOPSIS REQUIREMENT: Your synopsis must begin with "In ${currentSceneName} of Macbeth" and describe the specific events of that scene. If you write "In Act 1, Scene 1" when the current scene is ${currentSceneName}, your response will be incorrect.
+
 FORMAT REQUIREMENTS:
 - Structure your response into these sections in this exact order:
 
 **Plain-Language Paraphrase:**
-**Synopsis:** (Focus on the specific events and context of ${currentSceneName}, not Act 1, Scene 1)
+**Synopsis:** (MUST begin with "In ${currentSceneName} of Macbeth" - do NOT write "In Act 1, Scene 1" unless that is actually the current scene)
 **Language and Imagery:**
 **Literary and Thematic Analysis:**
 **Pointers for Further Reading:**
@@ -612,6 +616,8 @@ FORMAT REQUIREMENTS:
 IMPORTANT CONTEXT: You are analyzing text from the play "${currentPlayName}" (${currentSceneName}). Always refer to this specific play and scene in your analysis.
 
 CRITICAL WARNING: Do NOT default to Act 1, Scene 1 in your synopsis. The current scene is ${currentSceneName}. Your synopsis must focus specifically on the events and context of ${currentSceneName}, not the opening scene of the play.
+
+SYNOPSIS REQUIREMENT: Your synopsis must begin with "In ${currentSceneName} of Macbeth" and describe the specific events of that scene. If you write "In Act 1, Scene 1" when the current scene is ${currentSceneName}, your response will be incorrect.
 
 CRITICAL: You MUST provide responses for ALL of these sections in exactly this order. Do not skip any sections. EVERY section must be included:
 
@@ -722,6 +728,9 @@ IMPORTANT: The notes above are the COMPLETE notes from the database. You MUST in
     } else {
       userPrompt += `\n\nPlease provide a comprehensive ${analysisMode} analysis of this text.`
     }
+    
+    // Add critical scene reminder
+    userPrompt += `\n\nCRITICAL SCENE REMINDER: The current scene is ${currentSceneName}. Your synopsis MUST begin with "In ${currentSceneName} of Macbeth" and describe the specific events of that scene. Do NOT write "In Act 1, Scene 1" unless that is actually the current scene.`
 
     // Get max_tokens from request or use default
     const maxTokens = (analysisMode === 'fullfathomfive' ? 8000 : 3000)
