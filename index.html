@@ -839,6 +839,46 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
         }
 
+        /* NV Info content styling - match About section formatting */
+        .nv-info {
+            line-height: 1.8;
+            color: #2d3748;
+            font-size: 1.05em;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        .nv-info p {
+            margin-bottom: 25px;
+            text-align: justify;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        .nv-info h4 {
+            font: 600 16px Inter, system-ui;
+            color: var(--ink-1);
+            margin: var(--s-4) 0 var(--s-2);
+        }
+
+        /* Critics Info content styling - match About section formatting */
+        .critics-info {
+            line-height: 1.8;
+            color: #2d3748;
+            font-size: 1.05em;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        .critics-info p {
+            margin-bottom: 25px;
+            text-align: justify;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        .critics-info h4 {
+            font: 600 16px Inter, system-ui;
+            color: var(--ink-1);
+            margin: var(--s-4) 0 var(--s-2);
+        }
+
         .about-footer {
             margin-top: 30px;
             padding-top: 20px;
@@ -5163,9 +5203,9 @@
             let metaText = '';
             if (selectedText && wordCount > 0) {
                 const wordText = wordCount === 1 ? 'word' : 'words';
-                metaText = `<em>${playName}</em> · ${currentScene} · ${wordCount} ${wordText} highlighted`;
+                metaText = currentScene && currentScene !== '' ? `<em>${playName}</em> · ${currentScene} · ${wordCount} ${wordText} highlighted` : `<em>${playName}</em> · ${wordCount} ${wordText} highlighted`;
             } else {
-                metaText = `<em>${playName}</em> · ${currentScene} · No text highlighted`;
+                metaText = currentScene && currentScene !== '' ? `<em>${playName}</em> · ${currentScene} · No text highlighted` : `<em>${playName}</em> · No text highlighted`;
             }
             
             console.log('Generated metaText:', metaText);
@@ -5683,7 +5723,7 @@
             const analysisPanel = document.getElementById('analysisPanel');
             const wordCount = countWords(text);
             const wordText = wordCount === 1 ? 'word' : 'words';
-            const playInfo = `${playName}, ${currentScene}, ${wordCount} ${wordText} highlighted`;
+            const playInfo = currentScene && currentScene !== '' ? `${playName}, ${currentScene}, ${wordCount} ${wordText} highlighted` : `${playName}, ${wordCount} ${wordText} highlighted`;
             
             // Get the correct title based on current mode
             let analysisTitle = 'Basic Analysis';
@@ -5715,7 +5755,7 @@
                     <div class="analysis-title">${analysisTitle}</div>
                 </div>
                 <div class="analysis">
-                    <div class="meta" style="font-weight: bold;"><em>${playName}</em> · ${currentScene} · ${wordCount} ${wordCount === 1 ? 'word' : 'words'} highlighted</div>
+                    <div class="meta" style="font-weight: bold;">${currentScene && currentScene !== '' ? `<em>${playName}</em> · ${currentScene} · ${wordCount} ${wordCount === 1 ? 'word' : 'words'} highlighted` : `<em>${playName}</em> · ${wordCount} ${wordCount === 1 ? 'word' : 'words'} highlighted`}</div>
                     <div class="analysis-content">
                         <p style="font-family: var(--ui); font-style: italic;">Processing.</p>
                     </div>
@@ -6035,7 +6075,7 @@
             const analysisPanel = document.getElementById('analysisPanel');
             const wordCount = countWords(text);
             const playName = currentPlay && plays[currentPlay] ? plays[currentPlay].name : 'Unknown Play';
-            const playInfo = `<em>${playName}</em> · ${currentScene}`;
+            const playInfo = currentScene && currentScene !== '' ? `<em>${playName}</em> · ${currentScene}` : `<em>${playName}</em>`;
             
             // Get the correct title based on current tab
             let analysisTitle = 'Basic Analysis';
@@ -6162,7 +6202,7 @@
             const analysisPanel = document.getElementById('analysisPanel');
             const wordCount = countWords(text);
             const playName = currentPlay && plays[currentPlay] ? plays[currentPlay].name : 'Unknown Play';
-            const playInfo = `<em>${playName}</em> · ${currentScene}`;
+            const playInfo = currentScene && currentScene !== '' ? `<em>${playName}</em> · ${currentScene}` : `<em>${playName}</em>`;
             
             // Format the content with proper sections (bypass for Full Fathom Five)
             let formattedContent;
