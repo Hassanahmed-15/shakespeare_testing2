@@ -367,7 +367,11 @@ exports.handler = async (event, context) => {
     // Build the system prompt based on analysis mode
     let systemPrompt = ''
     const currentPlayName = event.body.playName || 'Macbeth'
-    const currentSceneName = event.body.sceneName || 'ACT 1, SCENE 1'
+    const currentSceneName = event.body.sceneName || 'Unknown Scene'
+    
+    // Debug: Log the scene information
+    console.log('🎭 DEBUG: Received sceneName from frontend:', event.body.sceneName)
+    console.log('🎭 DEBUG: Using currentSceneName:', currentSceneName)
 
     if (analysisMode === 'basic') {
       systemPrompt = `You are a university professor speaking to very smart undergraduates about Shakespeare.
@@ -664,7 +668,7 @@ IMPORTANT: The notes above are the COMPLETE notes from the database. You MUST in
     let processedResponse = response;
     
     // If the current scene is NOT Act 1, Scene 1, replace any hardcoded references
-    if (currentSceneName !== 'ACT 1, SCENE 1') {
+    if (currentSceneName !== 'ACT 1, SCENE 1' && currentSceneName !== 'Unknown Scene') {
       console.log('🔧 POST-PROCESSING: Replacing hardcoded Act 1, Scene 1 references with', currentSceneName);
       
       // Replace synopsis references

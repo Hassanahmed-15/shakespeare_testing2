@@ -559,7 +559,11 @@ exports.handler = async (event, context) => {
     // Build the system prompt based on analysis mode
     let systemPrompt = ''
     const currentPlayName = event.body.playName || 'Macbeth'
-    const currentSceneName = event.body.sceneName || 'ACT 1, SCENE 1'
+    const currentSceneName = event.body.sceneName || 'Unknown Scene'
+    
+    // Debug: Log the scene information
+    console.log('🎭 DEBUG: Received sceneName from frontend:', event.body.sceneName)
+    console.log('🎭 DEBUG: Using currentSceneName:', currentSceneName)
 
     if (analysisMode === 'basic') {
       systemPrompt = `You are a university professor speaking to very smart undergraduates about Shakespeare.
@@ -864,28 +868,47 @@ IMPORTANT: The notes above are the COMPLETE notes from the database. You MUST in
     let processedResponse = response;
     
     // If the current scene is NOT Act 1, Scene 1, replace any hardcoded references
-    if (currentSceneName !== 'ACT 1, SCENE 1') {
+    if (currentSceneName !== 'ACT 1, SCENE 1' && currentSceneName !== 'Unknown Scene') {
       console.log('🔧 POST-PROCESSING: Replacing hardcoded Act 1, Scene 1 references with', currentSceneName);
       
-      // Replace synopsis references
-      processedResponse = processedResponse.replace(
-        /In ACT 1, SCENE 1 of Macbeth/g,
-        `In ${currentSceneName} of Macbeth`
-      );
-      processedResponse = processedResponse.replace(
-        /In Act 1, Scene 1 of Macbeth/g,
-        `In ${currentSceneName} of Macbeth`
-      );
-      processedResponse = processedResponse.replace(
-        /In ACT 1, SCENE 1/g,
-        `In ${currentSceneName}`
-      );
-      processedResponse = processedResponse.replace(
-        /In Act 1, Scene 1/g,
-        `In ${currentSceneName}`
-      );
+      // Replace ALL possible variations of Act 1, Scene 1
+      const patterns = [
+        /In ACT 1, SCENE 1 of Macbeth/gi,
+        /In Act 1, Scene 1 of Macbeth/gi,
+        /In ACT 1, SCENE 1/gi,
+        /In Act 1, Scene 1/gi,
+        /ACT 1, SCENE 1 of Macbeth/gi,
+        /Act 1, Scene 1 of Macbeth/gi,
+        /ACT 1, SCENE 1/gi,
+        /Act 1, Scene 1/gi,
+        /In ACT 1 SCENE 1/gi,
+        /In Act 1 Scene 1/gi,
+        /ACT 1 SCENE 1/gi,
+        /Act 1 Scene 1/gi,
+        /In ACT I, SCENE I/gi,
+        /In Act I, Scene I/gi,
+        /ACT I, SCENE I/gi,
+        /Act I, Scene I/gi,
+        /In ACT I SCENE I/gi,
+        /In Act I Scene I/gi,
+        /ACT I SCENE I/gi,
+        /Act I Scene I/gi
+      ];
       
-      console.log('🔧 POST-PROCESSING: Response content updated');
+      patterns.forEach(pattern => {
+        processedResponse = processedResponse.replace(pattern, (match) => {
+          // Preserve the case of the original match
+          if (match.includes('ACT') && match.includes('SCENE')) {
+            return match.replace(/ACT 1, SCENE 1|ACT 1 SCENE 1|ACT I, SCENE I|ACT I SCENE I/gi, currentSceneName);
+          } else if (match.includes('Act') && match.includes('Scene')) {
+            return match.replace(/Act 1, Scene 1|Act 1 Scene 1|Act I, Scene I|Act I Scene I/gi, currentSceneName);
+          } else {
+            return match.replace(/ACT 1, SCENE 1|ACT 1 SCENE 1|ACT I, SCENE I|ACT I SCENE I|Act 1, Scene 1|Act 1 Scene 1|Act I, Scene I|Act I Scene I/gi, currentSceneName);
+          }
+        });
+      });
+      
+      console.log('🔧 POST-PROCESSING: Response content updated with', patterns.length, 'pattern replacements');
     }
 
     return {
