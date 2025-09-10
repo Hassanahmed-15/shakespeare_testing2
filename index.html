@@ -6694,21 +6694,21 @@
             // Convert asterisks to bold tags
             processed = processed.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
             
-            // Convert single asterisks to italics (for emphasis) - more aggressive
+            // Convert single asterisks to italics (for emphasis) - NUCLEAR APPROACH
             console.log('🔍 DEBUG: Before asterisk conversion:', processed.includes('*'));
-            processed = processed.replace(/\*([^*]+?)\*/g, '<em>$1</em>');
+            processed = processed.replace(/\*([^*]+?)\*/g, '<span style="font-style: italic;">$1</span>');
             
-            // Specific conversion for common play titles
-            processed = processed.replace(/\*Macbeth\*/g, '<em>Macbeth</em>');
-            processed = processed.replace(/\*Hamlet\*/g, '<em>Hamlet</em>');
-            processed = processed.replace(/\*Romeo and Juliet\*/g, '<em>Romeo and Juliet</em>');
-            processed = processed.replace(/\*King Lear\*/g, '<em>King Lear</em>');
-            processed = processed.replace(/\*Othello\*/g, '<em>Othello</em>');
-            processed = processed.replace(/\*A Midsummer Night's Dream\*/g, '<em>A Midsummer Night\'s Dream</em>');
-            processed = processed.replace(/\*The Tempest\*/g, '<em>The Tempest</em>');
-            processed = processed.replace(/\*Twelfth Night\*/g, '<em>Twelfth Night</em>');
-            processed = processed.replace(/\*Much Ado About Nothing\*/g, '<em>Much Ado About Nothing</em>');
-            processed = processed.replace(/\*As You Like It\*/g, '<em>As You Like It</em>');
+            // Specific conversion for common play titles - FORCE ITALICS
+            processed = processed.replace(/\*Macbeth\*/g, '<span style="font-style: italic;">Macbeth</span>');
+            processed = processed.replace(/\*Hamlet\*/g, '<span style="font-style: italic;">Hamlet</span>');
+            processed = processed.replace(/\*Romeo and Juliet\*/g, '<span style="font-style: italic;">Romeo and Juliet</span>');
+            processed = processed.replace(/\*King Lear\*/g, '<span style="font-style: italic;">King Lear</span>');
+            processed = processed.replace(/\*Othello\*/g, '<span style="font-style: italic;">Othello</span>');
+            processed = processed.replace(/\*A Midsummer Night's Dream\*/g, '<span style="font-style: italic;">A Midsummer Night\'s Dream</span>');
+            processed = processed.replace(/\*The Tempest\*/g, '<span style="font-style: italic;">The Tempest</span>');
+            processed = processed.replace(/\*Twelfth Night\*/g, '<span style="font-style: italic;">Twelfth Night</span>');
+            processed = processed.replace(/\*Much Ado About Nothing\*/g, '<span style="font-style: italic;">Much Ado About Nothing</span>');
+            processed = processed.replace(/\*As You Like It\*/g, '<span style="font-style: italic;">As You Like It</span>');
             
             console.log('🔍 DEBUG: After asterisk conversion:', processed.includes('*'));
             console.log('🔍 DEBUG: Sample processed content:', processed.substring(0, 200));

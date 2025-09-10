@@ -764,29 +764,29 @@ IMPORTANT: The notes above are the COMPLETE notes from the database. You MUST in
     console.log('🔍 DEBUG: Original response contains asterisks:', response.includes('*'))
     console.log('🔍 DEBUG: Sample of original response:', response.substring(0, 200))
     
-    // Try multiple patterns to catch all asterisk cases
-    response = response.replace(/\*([^*]+)\*/g, '<em>$1</em>')  // *text*
-    response = response.replace(/\*([^*\n]+)\*/g, '<em>$1</em>')  // *text* with newlines
-    response = response.replace(/\*([^*\s]+)\*/g, '<em>$1</em>')  // *text* with spaces
+    // Try multiple patterns to catch all asterisk cases - NUCLEAR APPROACH
+    response = response.replace(/\*([^*]+)\*/g, '<span style="font-style: italic;">$1</span>')  // *text*
+    response = response.replace(/\*([^*\n]+)\*/g, '<span style="font-style: italic;">$1</span>')  // *text* with newlines
+    response = response.replace(/\*([^*\s]+)\*/g, '<span style="font-style: italic;">$1</span>')  // *text* with spaces
     
     // Extra aggressive conversion for Expert mode
     if (analysisMode === 'expert') {
       console.log('🔍 DEBUG: Applying extra Expert mode asterisk conversion')
-      response = response.replace(/\*([^*]+?)\*/g, '<em>$1</em>')  // More aggressive pattern
-      response = response.replace(/\*([^*\n\r]+?)\*/g, '<em>$1</em>')  // Handle line breaks
-      response = response.replace(/\*([^*\s\n\r]+?)\*/g, '<em>$1</em>')  // Handle spaces and breaks
+      response = response.replace(/\*([^*]+?)\*/g, '<span style="font-style: italic;">$1</span>')  // More aggressive pattern
+      response = response.replace(/\*([^*\n\r]+?)\*/g, '<span style="font-style: italic;">$1</span>')  // Handle line breaks
+      response = response.replace(/\*([^*\s\n\r]+?)\*/g, '<span style="font-style: italic;">$1</span>')  // Handle spaces and breaks
       
-      // Specific conversion for common play titles
-      response = response.replace(/\*Macbeth\*/g, '<em>Macbeth</em>')
-      response = response.replace(/\*Hamlet\*/g, '<em>Hamlet</em>')
-      response = response.replace(/\*Romeo and Juliet\*/g, '<em>Romeo and Juliet</em>')
-      response = response.replace(/\*King Lear\*/g, '<em>King Lear</em>')
-      response = response.replace(/\*Othello\*/g, '<em>Othello</em>')
-      response = response.replace(/\*A Midsummer Night's Dream\*/g, '<em>A Midsummer Night\'s Dream</em>')
-      response = response.replace(/\*The Tempest\*/g, '<em>The Tempest</em>')
-      response = response.replace(/\*Twelfth Night\*/g, '<em>Twelfth Night</em>')
-      response = response.replace(/\*Much Ado About Nothing\*/g, '<em>Much Ado About Nothing</em>')
-      response = response.replace(/\*As You Like It\*/g, '<em>As You Like It</em>')
+      // Specific conversion for common play titles - FORCE ITALICS
+      response = response.replace(/\*Macbeth\*/g, '<span style="font-style: italic;">Macbeth</span>')
+      response = response.replace(/\*Hamlet\*/g, '<span style="font-style: italic;">Hamlet</span>')
+      response = response.replace(/\*Romeo and Juliet\*/g, '<span style="font-style: italic;">Romeo and Juliet</span>')
+      response = response.replace(/\*King Lear\*/g, '<span style="font-style: italic;">King Lear</span>')
+      response = response.replace(/\*Othello\*/g, '<span style="font-style: italic;">Othello</span>')
+      response = response.replace(/\*A Midsummer Night's Dream\*/g, '<span style="font-style: italic;">A Midsummer Night\'s Dream</span>')
+      response = response.replace(/\*The Tempest\*/g, '<span style="font-style: italic;">The Tempest</span>')
+      response = response.replace(/\*Twelfth Night\*/g, '<span style="font-style: italic;">Twelfth Night</span>')
+      response = response.replace(/\*Much Ado About Nothing\*/g, '<span style="font-style: italic;">Much Ado About Nothing</span>')
+      response = response.replace(/\*As You Like It\*/g, '<span style="font-style: italic;">As You Like It</span>')
     }
     
     console.log('🔍 DEBUG: After conversion contains asterisks:', response.includes('*'))
@@ -834,29 +834,29 @@ IMPORTANT: The notes above are the COMPLETE notes from the database. You MUST in
     for (const section in analysis) {
       if (analysis[section]) {
         console.log(`🔍 DEBUG: Section "${section}" before conversion contains asterisks:`, analysis[section].includes('*'))
-        // Try multiple patterns to catch all asterisk cases
-        analysis[section] = analysis[section].replace(/\*([^*]+)\*/g, '<em>$1</em>')  // *text*
-        analysis[section] = analysis[section].replace(/\*([^*\n]+)\*/g, '<em>$1</em>')  // *text* with newlines
-        analysis[section] = analysis[section].replace(/\*([^*\s]+)\*/g, '<em>$1</em>')  // *text* with spaces
+        // Try multiple patterns to catch all asterisk cases - NUCLEAR APPROACH
+        analysis[section] = analysis[section].replace(/\*([^*]+)\*/g, '<span style="font-style: italic;">$1</span>')  // *text*
+        analysis[section] = analysis[section].replace(/\*([^*\n]+)\*/g, '<span style="font-style: italic;">$1</span>')  // *text* with newlines
+        analysis[section] = analysis[section].replace(/\*([^*\s]+)\*/g, '<span style="font-style: italic;">$1</span>')  // *text* with spaces
         
         // Extra aggressive conversion for Expert mode
         if (analysisMode === 'expert') {
           console.log(`🔍 DEBUG: Applying extra Expert mode conversion to section "${section}"`)
-          analysis[section] = analysis[section].replace(/\*([^*]+?)\*/g, '<em>$1</em>')  // More aggressive pattern
-          analysis[section] = analysis[section].replace(/\*([^*\n\r]+?)\*/g, '<em>$1</em>')  // Handle line breaks
-          analysis[section] = analysis[section].replace(/\*([^*\s\n\r]+?)\*/g, '<em>$1</em>')  // Handle spaces and breaks
+          analysis[section] = analysis[section].replace(/\*([^*]+?)\*/g, '<span style="font-style: italic;">$1</span>')  // More aggressive pattern
+          analysis[section] = analysis[section].replace(/\*([^*\n\r]+?)\*/g, '<span style="font-style: italic;">$1</span>')  // Handle line breaks
+          analysis[section] = analysis[section].replace(/\*([^*\s\n\r]+?)\*/g, '<span style="font-style: italic;">$1</span>')  // Handle spaces and breaks
           
-          // Specific conversion for common play titles
-          analysis[section] = analysis[section].replace(/\*Macbeth\*/g, '<em>Macbeth</em>')
-          analysis[section] = analysis[section].replace(/\*Hamlet\*/g, '<em>Hamlet</em>')
-          analysis[section] = analysis[section].replace(/\*Romeo and Juliet\*/g, '<em>Romeo and Juliet</em>')
-          analysis[section] = analysis[section].replace(/\*King Lear\*/g, '<em>King Lear</em>')
-          analysis[section] = analysis[section].replace(/\*Othello\*/g, '<em>Othello</em>')
-          analysis[section] = analysis[section].replace(/\*A Midsummer Night's Dream\*/g, '<em>A Midsummer Night\'s Dream</em>')
-          analysis[section] = analysis[section].replace(/\*The Tempest\*/g, '<em>The Tempest</em>')
-          analysis[section] = analysis[section].replace(/\*Twelfth Night\*/g, '<em>Twelfth Night</em>')
-          analysis[section] = analysis[section].replace(/\*Much Ado About Nothing\*/g, '<em>Much Ado About Nothing</em>')
-          analysis[section] = analysis[section].replace(/\*As You Like It\*/g, '<em>As You Like It</em>')
+          // Specific conversion for common play titles - FORCE ITALICS
+          analysis[section] = analysis[section].replace(/\*Macbeth\*/g, '<span style="font-style: italic;">Macbeth</span>')
+          analysis[section] = analysis[section].replace(/\*Hamlet\*/g, '<span style="font-style: italic;">Hamlet</span>')
+          analysis[section] = analysis[section].replace(/\*Romeo and Juliet\*/g, '<span style="font-style: italic;">Romeo and Juliet</span>')
+          analysis[section] = analysis[section].replace(/\*King Lear\*/g, '<span style="font-style: italic;">King Lear</span>')
+          analysis[section] = analysis[section].replace(/\*Othello\*/g, '<span style="font-style: italic;">Othello</span>')
+          analysis[section] = analysis[section].replace(/\*A Midsummer Night's Dream\*/g, '<span style="font-style: italic;">A Midsummer Night\'s Dream</span>')
+          analysis[section] = analysis[section].replace(/\*The Tempest\*/g, '<span style="font-style: italic;">The Tempest</span>')
+          analysis[section] = analysis[section].replace(/\*Twelfth Night\*/g, '<span style="font-style: italic;">Twelfth Night</span>')
+          analysis[section] = analysis[section].replace(/\*Much Ado About Nothing\*/g, '<span style="font-style: italic;">Much Ado About Nothing</span>')
+          analysis[section] = analysis[section].replace(/\*As You Like It\*/g, '<span style="font-style: italic;">As You Like It</span>')
         }
         
         console.log(`🔍 DEBUG: Section "${section}" after conversion contains asterisks:`, analysis[section].includes('*'))
