@@ -502,15 +502,13 @@ exports.handler = async (event, context) => {
       basic: [
         'Plain-Language Paraphrase',
         'Synopsis',
-        'Key Words & Glosses',
-        'Pointers for Further Reading'
+        'Key Words & Glosses'
       ],
       expert: [
         'Plain-Language Paraphrase',
         'Synopsis',
         'Language and Imagery',
-        'Literary and Thematic Analysis',
-        'Pointers for Further Reading'
+        'Literary and Thematic Analysis'
       ],
       fullfathomfive: [
         'Textual Variants',
@@ -523,7 +521,6 @@ exports.handler = async (event, context) => {
         'Literary Analysis',
         'Critical Reception',
         'Similar phrases or themes in other plays',
-        'Pointers for Further Reading',
         'New Variorum Analysis'
       ]
     }
@@ -558,68 +555,71 @@ exports.handler = async (event, context) => {
     
     // Build the system prompt based on analysis mode
     let systemPrompt = ''
-    const currentPlayName = 'Macbeth' // You can make this dynamic if needed
-    const currentSceneName = 'ACT 1, SCENE 1' // You can make this dynamic if needed
+    const currentPlayName = event.body.playName || 'Macbeth'
+    const currentSceneName = event.body.sceneName || null
+    
+    // Debug: Log the scene information
+    console.log('🎭 DEBUG: Received sceneName from frontend:', event.body.sceneName)
+    console.log('🎭 DEBUG: Using currentSceneName:', currentSceneName)
 
     if (analysisMode === 'basic') {
       systemPrompt = `You are a university professor speaking to very smart undergraduates about Shakespeare.
 
-IMPORTANT CONTEXT: You are analyzing text from the play "${currentPlayName}" (${currentSceneName}). Always refer to this specific play and scene in your analysis.
+IMPORTANT CONTEXT: You are analyzing text from a Shakespearean play. Focus on the content and meaning of the selected text without mentioning specific scenes, acts, or play names.
 
 CRITICAL: You MUST provide responses for ALL of these sections in exactly this order:
 
 **Plain-Language Paraphrase:**
-**Synopsis:**
+**Synopsis:** (Do NOT mention any specific scene, act, or play name. Just describe the content and context of the selected text.)
 **Key Words & Glosses:**
-**Pointers for Further Reading:**
 
 FORMAT REQUIREMENTS:
 - Use EXACTLY the section headers shown above - do not change them
 - 2–4 sentences per section
 - Complete sentences and paragraphs
 - Clear, accessible language
-- Always reference "${currentPlayName}" and "${currentSceneName}" directly
+- Always reference "${currentPlayName}" directly
 - CRITICAL: Always italicize play titles using <em>italics</em>, never use asterisks (*) or quotes around titles
 - Key Words format: "word" means definition; "word" means definition (preserve capitalization)`
     } else if (analysisMode === 'expert') {
       systemPrompt = `You are a Shakespeare scholar writing for advanced students.
 
-IMPORTANT CONTEXT: Analyze text from "${currentPlayName}" (${currentSceneName}).
+IMPORTANT CONTEXT: Analyze text from "${currentPlayName}".
+
+CRITICAL WARNING: Do NOT mention any specific scenes, acts, or play names in your analysis. Focus on the content and meaning of the selected text.
 
 FORMAT REQUIREMENTS:
 - Structure your response into these sections in this exact order:
 
 **Plain-Language Paraphrase:**
-**Synopsis:**
+**Synopsis:** (Do NOT mention any specific scene, act, or play name. Just describe the content and context of the selected text.)
 **Language and Imagery:**
 **Literary and Thematic Analysis:**
-**Pointers for Further Reading:**
 
 - Use essay-style paragraphs (no bullets/lists)
 - Each section should be 5–8 sentences
 - Clear but scholarly tone
-- CRITICAL: Always italicize play titles using <em>italics</em>, never use asterisks (*) or quotes around titles
-- Always reference "${currentPlayName}" and "${currentSceneName}"`
+- CRITICAL: Always italicize play titles using <em>italics</em>, never use asterisks (*) or quotes around titles. Example: <em>Macbeth</em> not *Macbeth* or "Macbeth"
+- Always reference "${currentPlayName}"`
     } else if (analysisMode === 'fullfathomfive') {
       console.log('Full Fathom Five level detected - using comprehensive prompt with Textual Variants and Language and Rhetoric sections');
       console.log('DEBUG: Function version updated at', new Date().toISOString());
       systemPrompt = `You are an expert Shakespearean scholar providing the most comprehensive analysis possible.
 
-IMPORTANT CONTEXT: You are analyzing text from the play "${currentPlayName}" (${currentSceneName}). Always refer to this specific play and scene in your analysis.
+IMPORTANT CONTEXT: You are analyzing text from a Shakespearean play. Focus on the content and meaning of the selected text without mentioning specific scenes, acts, or play names.
 
 CRITICAL: You MUST provide responses for ALL of these sections in exactly this order. Do not skip any sections. EVERY section must be included:
 
 **Textual Variants:** (REQUIRED - FIRST SECTION)  
 **Plain-Language Paraphrase:** (REQUIRED)  
 **Language and Rhetoric:** (REQUIRED - NEW SECTION)  
-**Synopsis:** (REQUIRED)  
+**Synopsis:** (REQUIRED - Focus on the content and meaning of the selected text without mentioning specific scenes)  
 **Key Words & Glosses:** (REQUIRED)  
 **Historical Context:** (REQUIRED)  
 **Sources:** (REQUIRED)  
 **Literary Analysis:** (REQUIRED)  
 **Critical Reception:** (REQUIRED)  
 **Similar phrases or themes in other plays:** (REQUIRED)  
-**Pointers for Further Reading:** (REQUIRED)  
 **New Variorum Analysis:** (REQUIRED)
 
 FORMAT REQUIREMENTS:  
@@ -716,6 +716,9 @@ IMPORTANT: The notes above are the COMPLETE notes from the database. You MUST in
     } else {
       userPrompt += `\n\nPlease provide a comprehensive ${analysisMode} analysis of this text.`
     }
+    
+    // Add critical instruction to avoid scene references
+    userPrompt += `\n\nCRITICAL INSTRUCTION: Do NOT mention any specific scenes, acts, or play names in your synopsis. Focus only on the content and meaning of the selected text.`
 
     // Get max_tokens from request or use default
     const maxTokens = (analysisMode === 'fullfathomfive' ? 8000 : 3000)
@@ -749,7 +752,41 @@ IMPORTANT: The notes above are the COMPLETE notes from the database. You MUST in
     console.log('Full response preview:', completion.choices[0].message.content.substring(0, 500))
     console.log('Response ends with:', completion.choices[0].message.content.substring(completion.choices[0].message.content.length - 200))
 
-    const response = completion.choices[0].message.content
+    let response = completion.choices[0].message.content
+
+    // Convert asterisks to proper HTML italics
+    console.log('🔍 DEBUG: Original response contains asterisks:', response.includes('*'))
+    console.log('🔍 DEBUG: Sample of original response:', response.substring(0, 200))
+    
+    // NUCLEAR APPROACH - Try EVERY possible asterisk pattern
+    response = response.replace(/\*([^*]+)\*/g, '<span style="font-style: italic;">$1</span>')  // *text*
+    response = response.replace(/\*([^*\n]+)\*/g, '<span style="font-style: italic;">$1</span>')  // *text* with newlines
+    response = response.replace(/\*([^*\s]+)\*/g, '<span style="font-style: italic;">$1</span>')  // *text* with spaces
+    response = response.replace(/\*\s*([^*]+?)\s*\*/g, '<span style="font-style: italic;">$1</span>')  // * text * with spaces
+    response = response.replace(/\*([^*]*?)\*/g, '<span style="font-style: italic;">$1</span>')  // Most aggressive - any character
+    
+    // Extra aggressive conversion for Expert mode
+    if (analysisMode === 'expert') {
+      console.log('🔍 DEBUG: Applying extra Expert mode asterisk conversion')
+      response = response.replace(/\*([^*]+?)\*/g, '<span style="font-style: italic;">$1</span>')  // More aggressive pattern
+      response = response.replace(/\*([^*\n\r]+?)\*/g, '<span style="font-style: italic;">$1</span>')  // Handle line breaks
+      response = response.replace(/\*([^*\s\n\r]+?)\*/g, '<span style="font-style: italic;">$1</span>')  // Handle spaces and breaks
+      
+      // Specific conversion for common play titles - FORCE ITALICS
+      response = response.replace(/\*Macbeth\*/g, '<span style="font-style: italic;">Macbeth</span>')
+      response = response.replace(/\*Hamlet\*/g, '<span style="font-style: italic;">Hamlet</span>')
+      response = response.replace(/\*Romeo and Juliet\*/g, '<span style="font-style: italic;">Romeo and Juliet</span>')
+      response = response.replace(/\*King Lear\*/g, '<span style="font-style: italic;">King Lear</span>')
+      response = response.replace(/\*Othello\*/g, '<span style="font-style: italic;">Othello</span>')
+      response = response.replace(/\*A Midsummer Night's Dream\*/g, '<span style="font-style: italic;">A Midsummer Night\'s Dream</span>')
+      response = response.replace(/\*The Tempest\*/g, '<span style="font-style: italic;">The Tempest</span>')
+      response = response.replace(/\*Twelfth Night\*/g, '<span style="font-style: italic;">Twelfth Night</span>')
+      response = response.replace(/\*Much Ado About Nothing\*/g, '<span style="font-style: italic;">Much Ado About Nothing</span>')
+      response = response.replace(/\*As You Like It\*/g, '<span style="font-style: italic;">As You Like It</span>')
+    }
+    
+    console.log('🔍 DEBUG: After conversion contains asterisks:', response.includes('*'))
+    console.log('🔍 DEBUG: Sample of converted response:', response.substring(0, 200))
 
     // Parse the response into structured sections
     let analysis = {}
@@ -787,6 +824,41 @@ IMPORTANT: The notes above are the COMPLETE notes from the database. You MUST in
     // Save the last section
     if (currentSection && currentContent.length > 0) {
       analysis[currentSection] = currentContent.join('\n').trim()
+    }
+
+    // Convert asterisks to italics in all sections
+    for (const section in analysis) {
+      if (analysis[section]) {
+        console.log(`🔍 DEBUG: Section "${section}" before conversion contains asterisks:`, analysis[section].includes('*'))
+        // NUCLEAR APPROACH - Try EVERY possible asterisk pattern
+        analysis[section] = analysis[section].replace(/\*([^*]+)\*/g, '<span style="font-style: italic;">$1</span>')  // *text*
+        analysis[section] = analysis[section].replace(/\*([^*\n]+)\*/g, '<span style="font-style: italic;">$1</span>')  // *text* with newlines
+        analysis[section] = analysis[section].replace(/\*([^*\s]+)\*/g, '<span style="font-style: italic;">$1</span>')  // *text* with spaces
+        analysis[section] = analysis[section].replace(/\*\s*([^*]+?)\s*\*/g, '<span style="font-style: italic;">$1</span>')  // * text * with spaces
+        analysis[section] = analysis[section].replace(/\*([^*]*?)\*/g, '<span style="font-style: italic;">$1</span>')  // Most aggressive - any character
+        
+        // Extra aggressive conversion for Expert mode
+        if (analysisMode === 'expert') {
+          console.log(`🔍 DEBUG: Applying extra Expert mode conversion to section "${section}"`)
+          analysis[section] = analysis[section].replace(/\*([^*]+?)\*/g, '<span style="font-style: italic;">$1</span>')  // More aggressive pattern
+          analysis[section] = analysis[section].replace(/\*([^*\n\r]+?)\*/g, '<span style="font-style: italic;">$1</span>')  // Handle line breaks
+          analysis[section] = analysis[section].replace(/\*([^*\s\n\r]+?)\*/g, '<span style="font-style: italic;">$1</span>')  // Handle spaces and breaks
+          
+          // Specific conversion for common play titles - FORCE ITALICS
+          analysis[section] = analysis[section].replace(/\*Macbeth\*/g, '<span style="font-style: italic;">Macbeth</span>')
+          analysis[section] = analysis[section].replace(/\*Hamlet\*/g, '<span style="font-style: italic;">Hamlet</span>')
+          analysis[section] = analysis[section].replace(/\*Romeo and Juliet\*/g, '<span style="font-style: italic;">Romeo and Juliet</span>')
+          analysis[section] = analysis[section].replace(/\*King Lear\*/g, '<span style="font-style: italic;">King Lear</span>')
+          analysis[section] = analysis[section].replace(/\*Othello\*/g, '<span style="font-style: italic;">Othello</span>')
+          analysis[section] = analysis[section].replace(/\*A Midsummer Night's Dream\*/g, '<span style="font-style: italic;">A Midsummer Night\'s Dream</span>')
+          analysis[section] = analysis[section].replace(/\*The Tempest\*/g, '<span style="font-style: italic;">The Tempest</span>')
+          analysis[section] = analysis[section].replace(/\*Twelfth Night\*/g, '<span style="font-style: italic;">Twelfth Night</span>')
+          analysis[section] = analysis[section].replace(/\*Much Ado About Nothing\*/g, '<span style="font-style: italic;">Much Ado About Nothing</span>')
+          analysis[section] = analysis[section].replace(/\*As You Like It\*/g, '<span style="font-style: italic;">As You Like It</span>')
+        }
+        
+        console.log(`🔍 DEBUG: Section "${section}" after conversion contains asterisks:`, analysis[section].includes('*'))
+      }
     }
 
     // Debug: Log what sections were found
@@ -845,13 +917,28 @@ IMPORTANT: The notes above are the COMPLETE notes from the database. You MUST in
       }
     }
 
+    // Post-process the response to remove any scene references
+    let processedResponse = response;
+    
+    // Remove any scene references from the synopsis
+    processedResponse = processedResponse.replace(
+      /In (ACT \d+, SCENE \d+|Act \d+, Scene \d+|Unknown Scene) of Macbeth/g,
+      'In this passage'
+    );
+    processedResponse = processedResponse.replace(
+      /In (ACT \d+, SCENE \d+|Act \d+, Scene \d+|Unknown Scene)/g,
+      'In this passage'
+    );
+    
+    console.log('🔧 POST-PROCESSING: Removed scene references from response');
+
     return {
       statusCode: 200,
       headers,
       body: JSON.stringify({
         choices: [{
           message: {
-            content: response
+            content: processedResponse
           }
         }],
         analysis: analysis,

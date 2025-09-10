@@ -366,18 +366,22 @@ exports.handler = async (event, context) => {
     
     // Build the system prompt based on analysis mode
     let systemPrompt = ''
-    const currentPlayName = 'Macbeth' // You can make this dynamic if needed
-    const currentSceneName = 'ACT 1, SCENE 1' // You can make this dynamic if needed
+    const currentPlayName = event.body.playName || 'Macbeth'
+    const currentSceneName = event.body.sceneName || 'Unknown Scene'
+    
+    // Debug: Log the scene information
+    console.log('🎭 DEBUG: Received sceneName from frontend:', event.body.sceneName)
+    console.log('🎭 DEBUG: Using currentSceneName:', currentSceneName)
 
     if (analysisMode === 'basic') {
       systemPrompt = `You are a university professor speaking to very smart undergraduates about Shakespeare.
 
-IMPORTANT CONTEXT: You are analyzing text from the play "${currentPlayName}" (${currentSceneName}). Always refer to this specific play and scene in your analysis.
+IMPORTANT CONTEXT: You are analyzing text from a Shakespearean play. Focus on the content and meaning of the selected text without mentioning specific scenes, acts, or play names.
 
 CRITICAL: You MUST provide responses for ALL of these sections in exactly this order:
 
 **Plain-Language Paraphrase:**
-**Synopsis:**
+**Synopsis:** (Do NOT mention any specific scene, act, or play name. Just describe the content and context of the selected text.)
 **Key Words & Glosses:**
 **Pointers for Further Reading:**
 
@@ -394,11 +398,15 @@ FORMAT REQUIREMENTS:
 
 IMPORTANT CONTEXT: Analyze text from "${currentPlayName}" (${currentSceneName}).
 
+CRITICAL WARNING: Do NOT default to Act 1, Scene 1 in your synopsis. The current scene is ${currentSceneName}. Your synopsis must focus specifically on the events and context of ${currentSceneName}, not the opening scene of the play.
+
+SYNOPSIS REQUIREMENT: Your synopsis must begin with "In ${currentSceneName} of Macbeth" and describe the specific events of that scene. If you write "In Act 1, Scene 1" when the current scene is ${currentSceneName}, your response will be incorrect.
+
 FORMAT REQUIREMENTS:
 - Structure your response into these sections in this exact order:
 
 **Plain-Language Paraphrase:**
-**Synopsis:**
+**Synopsis:** (Do NOT mention any specific scene, act, or play name. Just describe the content and context of the selected text.)
 **Language and Imagery:**
 **Literary and Thematic Analysis:**
 **Pointers for Further Reading:**
@@ -413,14 +421,14 @@ FORMAT REQUIREMENTS:
       console.log('DEBUG: Function version updated at', new Date().toISOString());
       systemPrompt = `You are an expert Shakespearean scholar providing the most comprehensive analysis possible.
 
-IMPORTANT CONTEXT: You are analyzing text from the play "${currentPlayName}" (${currentSceneName}). Always refer to this specific play and scene in your analysis.
+IMPORTANT CONTEXT: You are analyzing text from a Shakespearean play. Focus on the content and meaning of the selected text without mentioning specific scenes, acts, or play names.
 
 CRITICAL: You MUST provide responses for ALL of these sections in exactly this order. Do not skip any sections. EVERY section must be included:
 
 **Textual Variants:** (REQUIRED - FIRST SECTION)  
 **Plain-Language Paraphrase:** (REQUIRED)  
 **Language and Rhetoric:** (REQUIRED - NEW SECTION)  
-**Synopsis:** (REQUIRED)  
+**Synopsis:** (REQUIRED - Focus on the specific events and context of ${currentSceneName}, not Act 1, Scene 1)  
 **Key Words & Glosses:** (REQUIRED)  
 **Historical Context:** (REQUIRED)  
 **Sources:** (REQUIRED)  
@@ -520,6 +528,9 @@ IMPORTANT: The notes above are the COMPLETE notes from the database. You MUST in
     } else {
       userPrompt += `\n\nPlease provide a comprehensive ${analysisMode} analysis of this text.`
     }
+    
+    // Add critical instruction to avoid scene references
+    userPrompt += `\n\nCRITICAL INSTRUCTION: Do NOT mention any specific scenes, acts, or play names in your synopsis. Focus only on the content and meaning of the selected text.`
 
     // Get max_tokens from request or use default
     const maxTokens = (analysisMode === 'fullfathomfive' ? 8000 : 3000)
@@ -645,13 +656,28 @@ IMPORTANT: The notes above are the COMPLETE notes from the database. You MUST in
       analysis['New Variorum Analysis'] = notesContent.trim()
     }
 
+    // Post-process the response to remove any scene references
+    let processedResponse = response;
+    
+    // Remove any scene references from the synopsis
+    processedResponse = processedResponse.replace(
+      /In (ACT \d+, SCENE \d+|Act \d+, Scene \d+|Unknown Scene) of Macbeth/g,
+      'In this passage'
+    );
+    processedResponse = processedResponse.replace(
+      /In (ACT \d+, SCENE \d+|Act \d+, Scene \d+|Unknown Scene)/g,
+      'In this passage'
+    );
+    
+    console.log('🔧 POST-PROCESSING: Removed scene references from response');
+
     return {
       statusCode: 200,
       headers,
       body: JSON.stringify({
         choices: [{
           message: {
-            content: response
+            content: processedResponse
           }
         }],
         analysis: analysis,
