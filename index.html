@@ -6688,15 +6688,31 @@
             
             console.log('=== PROCESSING CONTENT FOR FORMATTING ===');
             console.log('Original content:', content);
+            console.log('🔍 DEBUG: Content contains asterisks:', content.includes('*'));
+            console.log('🔍 DEBUG: All asterisk positions:', [...content.matchAll(/\*/g)].map(m => m.index));
             
             let processed = content;
             
             // Convert asterisks to bold tags
             processed = processed.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
             
-            // Convert single asterisks to italics (for emphasis) - NUCLEAR APPROACH
+            // NUCLEAR APPROACH - Try EVERY possible asterisk pattern
             console.log('🔍 DEBUG: Before asterisk conversion:', processed.includes('*'));
+            
+            // Pattern 1: Standard *text*
             processed = processed.replace(/\*([^*]+?)\*/g, '<span style="font-style: italic;">$1</span>');
+            
+            // Pattern 2: Handle asterisks with spaces
+            processed = processed.replace(/\*\s*([^*]+?)\s*\*/g, '<span style="font-style: italic;">$1</span>');
+            
+            // Pattern 3: Handle asterisks with newlines
+            processed = processed.replace(/\*([^*\n]+?)\*/g, '<span style="font-style: italic;">$1</span>');
+            
+            // Pattern 4: Handle asterisks with any whitespace
+            processed = processed.replace(/\*([^*\s]+?)\*/g, '<span style="font-style: italic;">$1</span>');
+            
+            // Pattern 5: Most aggressive - any character between asterisks
+            processed = processed.replace(/\*([^*]*?)\*/g, '<span style="font-style: italic;">$1</span>');
             
             // Specific conversion for common play titles - FORCE ITALICS
             processed = processed.replace(/\*Macbeth\*/g, '<span style="font-style: italic;">Macbeth</span>');
@@ -6712,6 +6728,7 @@
             
             console.log('🔍 DEBUG: After asterisk conversion:', processed.includes('*'));
             console.log('🔍 DEBUG: Sample processed content:', processed.substring(0, 200));
+            console.log('🔍 DEBUG: Final asterisk positions:', [...processed.matchAll(/\*/g)].map(m => m.index));
             
             // Convert shorthand to proper academic language
             processed = processed.replace(/\bvs\.\b/gi, 'versus');

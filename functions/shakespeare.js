@@ -764,10 +764,12 @@ IMPORTANT: The notes above are the COMPLETE notes from the database. You MUST in
     console.log('🔍 DEBUG: Original response contains asterisks:', response.includes('*'))
     console.log('🔍 DEBUG: Sample of original response:', response.substring(0, 200))
     
-    // Try multiple patterns to catch all asterisk cases - NUCLEAR APPROACH
+    // NUCLEAR APPROACH - Try EVERY possible asterisk pattern
     response = response.replace(/\*([^*]+)\*/g, '<span style="font-style: italic;">$1</span>')  // *text*
     response = response.replace(/\*([^*\n]+)\*/g, '<span style="font-style: italic;">$1</span>')  // *text* with newlines
     response = response.replace(/\*([^*\s]+)\*/g, '<span style="font-style: italic;">$1</span>')  // *text* with spaces
+    response = response.replace(/\*\s*([^*]+?)\s*\*/g, '<span style="font-style: italic;">$1</span>')  // * text * with spaces
+    response = response.replace(/\*([^*]*?)\*/g, '<span style="font-style: italic;">$1</span>')  // Most aggressive - any character
     
     // Extra aggressive conversion for Expert mode
     if (analysisMode === 'expert') {
@@ -834,10 +836,12 @@ IMPORTANT: The notes above are the COMPLETE notes from the database. You MUST in
     for (const section in analysis) {
       if (analysis[section]) {
         console.log(`🔍 DEBUG: Section "${section}" before conversion contains asterisks:`, analysis[section].includes('*'))
-        // Try multiple patterns to catch all asterisk cases - NUCLEAR APPROACH
+        // NUCLEAR APPROACH - Try EVERY possible asterisk pattern
         analysis[section] = analysis[section].replace(/\*([^*]+)\*/g, '<span style="font-style: italic;">$1</span>')  // *text*
         analysis[section] = analysis[section].replace(/\*([^*\n]+)\*/g, '<span style="font-style: italic;">$1</span>')  // *text* with newlines
         analysis[section] = analysis[section].replace(/\*([^*\s]+)\*/g, '<span style="font-style: italic;">$1</span>')  // *text* with spaces
+        analysis[section] = analysis[section].replace(/\*\s*([^*]+?)\s*\*/g, '<span style="font-style: italic;">$1</span>')  // * text * with spaces
+        analysis[section] = analysis[section].replace(/\*([^*]*?)\*/g, '<span style="font-style: italic;">$1</span>')  // Most aggressive - any character
         
         // Extra aggressive conversion for Expert mode
         if (analysisMode === 'expert') {
