@@ -3263,9 +3263,8 @@
                     currentScene = hash.replace('#', '').replace('scene-', '');
                     console.log('🎭 Set currentScene from URL hash:', currentScene);
                 } else {
-                    // Last resort: set to a default scene
-                    currentScene = 'ACT 5, SCENE 5'; // Default to the scene you mentioned
-                    console.log('🎭 Set currentScene to default:', currentScene);
+                    // No scene detected - leave currentScene empty
+                    console.log('🎭 No scene detected, leaving currentScene empty');
                 }
             }
             
@@ -5812,13 +5811,13 @@
                     }
                 }
                 
-                // Last resort: set to a default scene
+                // No scene detected - leave currentScene empty
                 if (!currentScene || currentScene === '') {
-                    currentScene = 'ACT 2, SCENE 2';
-                    console.log('🎭 FORCE FIX: Set currentScene to default:', currentScene);
+                    console.log('🎭 FORCE FIX: No scene detected, leaving currentScene empty');
                 }
                 console.log('Making API request...');
                 console.log('🎭 FINAL: currentScene being sent to API:', currentScene);
+                console.log('🎭 DEBUG: Will sceneName be included in request?', currentScene && currentScene !== '');
                 
                 // Full Fathom Five now uses regular API call like other levels
                 
@@ -5863,12 +5862,12 @@
                         }
                     }
                     
-                    // Last resort: set to a default scene
+                    // No scene detected - leave currentScene empty
                     if (!currentScene || currentScene === '') {
-                        currentScene = 'ACT 2, SCENE 2';
-                        console.log('🎭 FORCE FIX: Set currentScene to default:', currentScene);
+                        console.log('🎭 FORCE FIX: No scene detected, leaving currentScene empty');
                     }
                     console.log('🎭 FINAL: currentScene being sent to direct function:', currentScene);
+                    console.log('🎭 DEBUG: Will sceneName be included in direct function request?', currentScene && currentScene !== '');
                     response = await fetchWithTimeout('/.netlify/functions/shakespeare?v=' + Date.now(), {
                         method: 'POST',
                         headers: {
