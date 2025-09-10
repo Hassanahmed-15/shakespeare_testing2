@@ -6697,6 +6697,19 @@
             // Convert single asterisks to italics (for emphasis) - more aggressive
             console.log('🔍 DEBUG: Before asterisk conversion:', processed.includes('*'));
             processed = processed.replace(/\*([^*]+?)\*/g, '<em>$1</em>');
+            
+            // Specific conversion for common play titles
+            processed = processed.replace(/\*Macbeth\*/g, '<em>Macbeth</em>');
+            processed = processed.replace(/\*Hamlet\*/g, '<em>Hamlet</em>');
+            processed = processed.replace(/\*Romeo and Juliet\*/g, '<em>Romeo and Juliet</em>');
+            processed = processed.replace(/\*King Lear\*/g, '<em>King Lear</em>');
+            processed = processed.replace(/\*Othello\*/g, '<em>Othello</em>');
+            processed = processed.replace(/\*A Midsummer Night's Dream\*/g, '<em>A Midsummer Night\'s Dream</em>');
+            processed = processed.replace(/\*The Tempest\*/g, '<em>The Tempest</em>');
+            processed = processed.replace(/\*Twelfth Night\*/g, '<em>Twelfth Night</em>');
+            processed = processed.replace(/\*Much Ado About Nothing\*/g, '<em>Much Ado About Nothing</em>');
+            processed = processed.replace(/\*As You Like It\*/g, '<em>As You Like It</em>');
+            
             console.log('🔍 DEBUG: After asterisk conversion:', processed.includes('*'));
             console.log('🔍 DEBUG: Sample processed content:', processed.substring(0, 200));
             

@@ -604,7 +604,7 @@ FORMAT REQUIREMENTS:
 - Use essay-style paragraphs (no bullets/lists)
 - Each section should be 5–8 sentences
 - Clear but scholarly tone
-- CRITICAL: Always italicize play titles using <em>italics</em>, never use asterisks (*) or quotes around titles
+- CRITICAL: Always italicize play titles using <em>italics</em>, never use asterisks (*) or quotes around titles. Example: <em>Macbeth</em> not *Macbeth* or "Macbeth"
 - Always reference "${currentPlayName}"`
     } else if (analysisMode === 'fullfathomfive') {
       console.log('Full Fathom Five level detected - using comprehensive prompt with Textual Variants and Language and Rhetoric sections');
@@ -775,6 +775,18 @@ IMPORTANT: The notes above are the COMPLETE notes from the database. You MUST in
       response = response.replace(/\*([^*]+?)\*/g, '<em>$1</em>')  // More aggressive pattern
       response = response.replace(/\*([^*\n\r]+?)\*/g, '<em>$1</em>')  // Handle line breaks
       response = response.replace(/\*([^*\s\n\r]+?)\*/g, '<em>$1</em>')  // Handle spaces and breaks
+      
+      // Specific conversion for common play titles
+      response = response.replace(/\*Macbeth\*/g, '<em>Macbeth</em>')
+      response = response.replace(/\*Hamlet\*/g, '<em>Hamlet</em>')
+      response = response.replace(/\*Romeo and Juliet\*/g, '<em>Romeo and Juliet</em>')
+      response = response.replace(/\*King Lear\*/g, '<em>King Lear</em>')
+      response = response.replace(/\*Othello\*/g, '<em>Othello</em>')
+      response = response.replace(/\*A Midsummer Night's Dream\*/g, '<em>A Midsummer Night\'s Dream</em>')
+      response = response.replace(/\*The Tempest\*/g, '<em>The Tempest</em>')
+      response = response.replace(/\*Twelfth Night\*/g, '<em>Twelfth Night</em>')
+      response = response.replace(/\*Much Ado About Nothing\*/g, '<em>Much Ado About Nothing</em>')
+      response = response.replace(/\*As You Like It\*/g, '<em>As You Like It</em>')
     }
     
     console.log('🔍 DEBUG: After conversion contains asterisks:', response.includes('*'))
@@ -833,6 +845,18 @@ IMPORTANT: The notes above are the COMPLETE notes from the database. You MUST in
           analysis[section] = analysis[section].replace(/\*([^*]+?)\*/g, '<em>$1</em>')  // More aggressive pattern
           analysis[section] = analysis[section].replace(/\*([^*\n\r]+?)\*/g, '<em>$1</em>')  // Handle line breaks
           analysis[section] = analysis[section].replace(/\*([^*\s\n\r]+?)\*/g, '<em>$1</em>')  // Handle spaces and breaks
+          
+          // Specific conversion for common play titles
+          analysis[section] = analysis[section].replace(/\*Macbeth\*/g, '<em>Macbeth</em>')
+          analysis[section] = analysis[section].replace(/\*Hamlet\*/g, '<em>Hamlet</em>')
+          analysis[section] = analysis[section].replace(/\*Romeo and Juliet\*/g, '<em>Romeo and Juliet</em>')
+          analysis[section] = analysis[section].replace(/\*King Lear\*/g, '<em>King Lear</em>')
+          analysis[section] = analysis[section].replace(/\*Othello\*/g, '<em>Othello</em>')
+          analysis[section] = analysis[section].replace(/\*A Midsummer Night's Dream\*/g, '<em>A Midsummer Night\'s Dream</em>')
+          analysis[section] = analysis[section].replace(/\*The Tempest\*/g, '<em>The Tempest</em>')
+          analysis[section] = analysis[section].replace(/\*Twelfth Night\*/g, '<em>Twelfth Night</em>')
+          analysis[section] = analysis[section].replace(/\*Much Ado About Nothing\*/g, '<em>Much Ado About Nothing</em>')
+          analysis[section] = analysis[section].replace(/\*As You Like It\*/g, '<em>As You Like It</em>')
         }
         
         console.log(`🔍 DEBUG: Section "${section}" after conversion contains asterisks:`, analysis[section].includes('*'))
