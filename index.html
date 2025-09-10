@@ -5730,6 +5730,19 @@
                 console.log('Analyzing text:', text.substring(0, 100) + '...');
                 console.log('🎭 DEBUG: currentScene being sent to API:', currentScene);
                 console.log('🎭 DEBUG: playName being sent to API:', playName);
+                
+                // FORCE FIX: If currentScene is empty, try to get it from the UI
+                if (!currentScene || currentScene === '') {
+                    const metaElement = document.querySelector('.meta');
+                    if (metaElement) {
+                        const metaText = metaElement.textContent;
+                        const sceneMatch = metaText.match(/(ACT \d+, SCENE \d+)/);
+                        if (sceneMatch) {
+                            currentScene = sceneMatch[1];
+                            console.log('🎭 FORCE FIX: Set currentScene from meta element:', currentScene);
+                        }
+                    }
+                }
                 console.log('Making API request...');
                 
                 // Full Fathom Five now uses regular API call like other levels
@@ -5754,6 +5767,19 @@
                 if (!response.ok) {
                     console.log('Redirect failed, trying direct function path...');
                     console.log('🎭 DEBUG: currentScene being sent to direct function:', currentScene);
+                    
+                    // FORCE FIX: If currentScene is empty, try to get it from the UI
+                    if (!currentScene || currentScene === '') {
+                        const metaElement = document.querySelector('.meta');
+                        if (metaElement) {
+                            const metaText = metaElement.textContent;
+                            const sceneMatch = metaText.match(/(ACT \d+, SCENE \d+)/);
+                            if (sceneMatch) {
+                                currentScene = sceneMatch[1];
+                                console.log('🎭 FORCE FIX: Set currentScene from meta element:', currentScene);
+                            }
+                        }
+                    }
                     response = await fetch('/.netlify/functions/shakespeare?v=' + Date.now(), {
                         method: 'POST',
                         headers: {
