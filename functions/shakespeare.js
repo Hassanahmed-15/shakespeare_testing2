@@ -870,46 +870,6 @@ IMPORTANT: The notes above are the COMPLETE notes from the database. You MUST in
     );
     
     console.log('🔧 POST-PROCESSING: Removed scene references from response');
-      
-      // Replace ALL possible variations of Act 1, Scene 1
-      const patterns = [
-        /In ACT 1, SCENE 1 of Macbeth/gi,
-        /In Act 1, Scene 1 of Macbeth/gi,
-        /In ACT 1, SCENE 1/gi,
-        /In Act 1, Scene 1/gi,
-        /ACT 1, SCENE 1 of Macbeth/gi,
-        /Act 1, Scene 1 of Macbeth/gi,
-        /ACT 1, SCENE 1/gi,
-        /Act 1, Scene 1/gi,
-        /In ACT 1 SCENE 1/gi,
-        /In Act 1 Scene 1/gi,
-        /ACT 1 SCENE 1/gi,
-        /Act 1 Scene 1/gi,
-        /In ACT I, SCENE I/gi,
-        /In Act I, Scene I/gi,
-        /ACT I, SCENE I/gi,
-        /Act I, Scene I/gi,
-        /In ACT I SCENE I/gi,
-        /In Act I Scene I/gi,
-        /ACT I SCENE I/gi,
-        /Act I Scene I/gi
-      ];
-      
-      patterns.forEach(pattern => {
-        processedResponse = processedResponse.replace(pattern, (match) => {
-          // Preserve the case of the original match
-          if (match.includes('ACT') && match.includes('SCENE')) {
-            return match.replace(/ACT 1, SCENE 1|ACT 1 SCENE 1|ACT I, SCENE I|ACT I SCENE I/gi, currentSceneName);
-          } else if (match.includes('Act') && match.includes('Scene')) {
-            return match.replace(/Act 1, Scene 1|Act 1 Scene 1|Act I, Scene I|Act I Scene I/gi, currentSceneName);
-          } else {
-            return match.replace(/ACT 1, SCENE 1|ACT 1 SCENE 1|ACT I, SCENE I|ACT I SCENE I|Act 1, Scene 1|Act 1 Scene 1|Act I, Scene I|Act I Scene I/gi, currentSceneName);
-          }
-        });
-      });
-      
-      console.log('🔧 POST-PROCESSING: Response content updated with', patterns.length, 'pattern replacements');
-    }
 
     return {
       statusCode: 200,
