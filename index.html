@@ -3238,29 +3238,16 @@
             
             console.log('✅ Tab switched to:', tabName);
             
-            // Force show variorum section for Full Fathom Five
+            // Force hide variorum section for Full Fathom Five (until analyze is clicked)
             if (tabName === 'fullfathomfive') {
                 const variorumSection = document.getElementById('variorumSection');
                 if (variorumSection) {
-                    variorumSection.style.display = 'block';
-                    console.log('✅ Forced variorum section to show');
-                }
-                
-                // Hide the analyze button for Full Fathom Five mode
-                const analyzeButton = document.getElementById('analyzeButton');
-                if (analyzeButton) {
-                    analyzeButton.style.display = 'none';
-                    console.log('✅ Hidden analyze button for Full Fathom Five mode');
+                    variorumSection.style.display = 'none';
+                    console.log('✅ Hidden variorum section for Full Fathom Five until analyze is clicked');
                 }
                 
                 // Critics button is now always visible via CSS
                 console.log('✅ Full Fathom Five mode - critics button should be visible');
-            } else {
-                // Show the analyze button for Basic and Expert modes
-                const analyzeButton = document.getElementById('analyzeButton');
-                if (analyzeButton) {
-                    analyzeButton.style.display = 'none'; // Still hidden by default until text is selected
-                }
             }
         }
         
@@ -3461,22 +3448,12 @@
             // Show/hide variorum section based on current tab
             if (variorumSection) {
                 if (currentTab === 'fullfathomfive') {
-                    variorumSection.style.display = 'block';
-                    console.log('✅ Showing variorum section for Full Fathom Five');
-                    
-                    // Check if there's already variorum content and show critics button
-                    const variorumContent = document.getElementById('variorumContent');
-                    if (variorumContent && variorumContent.innerHTML && 
-                        variorumContent.innerHTML.trim() !== '' && 
-                        !variorumContent.innerHTML.includes('Traditional commentary will appear here')) {
-                        console.log('✅ Found existing variorum content, showing critics button');
-                        showCriticsButton();
-                    }
+                    // Keep variorum section hidden until analyze button is clicked
+                    variorumSection.style.display = 'none';
+                    console.log('✅ Keeping variorum section hidden for Full Fathom Five until analyze is clicked');
                 } else {
                     variorumSection.style.display = 'none';
                     console.log('❌ Hiding variorum section for', currentTab);
-                    
-                    // Critics button controlled by CSS now - no hiding needed
                 }
             } else {
                 console.log('❌ Variorum section element not found');
@@ -3488,14 +3465,7 @@
                 // Show just the selected line text instead of the two separate messages
                 analysisContent.textContent = selectedLines[0];
                 analysisInstruction.textContent = ''; // Hide the instruction text
-                
-                // Only show analyze button if not in Full Fathom Five mode
-                if (currentTab !== 'fullfathomfive') {
-                    analyzeButton.style.display = 'block';
-                } else {
-                    analyzeButton.style.display = 'none';
-                    console.log('✅ Keeping analyze button hidden for Full Fathom Five mode');
-                }
+                analyzeButton.style.display = 'block';
             } else {
                 analysisContent.textContent = 'Select text in the play to get AI-powered analysis.';
                 analysisInstruction.textContent = '';
