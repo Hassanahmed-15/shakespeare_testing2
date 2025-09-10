@@ -566,10 +566,12 @@ exports.handler = async (event, context) => {
 
 IMPORTANT CONTEXT: You are analyzing text from the play "${currentPlayName}" (${currentSceneName}). Always refer to this specific play and scene in your analysis.
 
+CRITICAL WARNING: Do NOT default to Act 1, Scene 1 in your synopsis. The current scene is ${currentSceneName}. Your synopsis must focus specifically on the events and context of ${currentSceneName}, not the opening scene of the play.
+
 CRITICAL: You MUST provide responses for ALL of these sections in exactly this order:
 
 **Plain-Language Paraphrase:**
-**Synopsis:**
+**Synopsis:** (Focus on the specific events and context of ${currentSceneName}, not Act 1, Scene 1)
 **Key Words & Glosses:**
 **Pointers for Further Reading:**
 
@@ -586,11 +588,13 @@ FORMAT REQUIREMENTS:
 
 IMPORTANT CONTEXT: Analyze text from "${currentPlayName}" (${currentSceneName}).
 
+CRITICAL WARNING: Do NOT default to Act 1, Scene 1 in your synopsis. The current scene is ${currentSceneName}. Your synopsis must focus specifically on the events and context of ${currentSceneName}, not the opening scene of the play.
+
 FORMAT REQUIREMENTS:
 - Structure your response into these sections in this exact order:
 
 **Plain-Language Paraphrase:**
-**Synopsis:**
+**Synopsis:** (Focus on the specific events and context of ${currentSceneName}, not Act 1, Scene 1)
 **Language and Imagery:**
 **Literary and Thematic Analysis:**
 **Pointers for Further Reading:**
@@ -607,12 +611,14 @@ FORMAT REQUIREMENTS:
 
 IMPORTANT CONTEXT: You are analyzing text from the play "${currentPlayName}" (${currentSceneName}). Always refer to this specific play and scene in your analysis.
 
+CRITICAL WARNING: Do NOT default to Act 1, Scene 1 in your synopsis. The current scene is ${currentSceneName}. Your synopsis must focus specifically on the events and context of ${currentSceneName}, not the opening scene of the play.
+
 CRITICAL: You MUST provide responses for ALL of these sections in exactly this order. Do not skip any sections. EVERY section must be included:
 
 **Textual Variants:** (REQUIRED - FIRST SECTION)  
 **Plain-Language Paraphrase:** (REQUIRED)  
 **Language and Rhetoric:** (REQUIRED - NEW SECTION)  
-**Synopsis:** (REQUIRED)  
+**Synopsis:** (REQUIRED - Focus on the specific events and context of ${currentSceneName}, not Act 1, Scene 1)  
 **Key Words & Glosses:** (REQUIRED)  
 **Historical Context:** (REQUIRED)  
 **Sources:** (REQUIRED)  
