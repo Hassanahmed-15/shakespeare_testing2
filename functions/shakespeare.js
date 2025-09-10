@@ -860,13 +860,41 @@ IMPORTANT: The notes above are the COMPLETE notes from the database. You MUST in
       }
     }
 
+    // NUCLEAR OPTION: Post-process the response to fix any hardcoded Act 1, Scene 1 references
+    let processedResponse = response;
+    
+    // If the current scene is NOT Act 1, Scene 1, replace any hardcoded references
+    if (currentSceneName !== 'ACT 1, SCENE 1') {
+      console.log('🔧 POST-PROCESSING: Replacing hardcoded Act 1, Scene 1 references with', currentSceneName);
+      
+      // Replace synopsis references
+      processedResponse = processedResponse.replace(
+        /In ACT 1, SCENE 1 of Macbeth/g,
+        `In ${currentSceneName} of Macbeth`
+      );
+      processedResponse = processedResponse.replace(
+        /In Act 1, Scene 1 of Macbeth/g,
+        `In ${currentSceneName} of Macbeth`
+      );
+      processedResponse = processedResponse.replace(
+        /In ACT 1, SCENE 1/g,
+        `In ${currentSceneName}`
+      );
+      processedResponse = processedResponse.replace(
+        /In Act 1, Scene 1/g,
+        `In ${currentSceneName}`
+      );
+      
+      console.log('🔧 POST-PROCESSING: Response content updated');
+    }
+
     return {
       statusCode: 200,
       headers,
       body: JSON.stringify({
         choices: [{
           message: {
-            content: response
+            content: processedResponse
           }
         }],
         analysis: analysis,
