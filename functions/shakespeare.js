@@ -568,16 +568,12 @@ exports.handler = async (event, context) => {
     if (analysisMode === 'basic') {
       systemPrompt = `You are a university professor speaking to very smart undergraduates about Shakespeare.
 
-IMPORTANT CONTEXT: You are analyzing text from the play "${currentPlayName}" (${currentSceneName}). Always refer to this specific play and scene in your analysis.
-
-CRITICAL WARNING: Do NOT default to Act 1, Scene 1 in your synopsis. The current scene is ${currentSceneName}. Your synopsis must focus specifically on the events and context of ${currentSceneName}, not the opening scene of the play.
-
-SYNOPSIS REQUIREMENT: Your synopsis must begin with "In ${currentSceneName} of Macbeth" and describe the specific events of that scene. If you write "In Act 1, Scene 1" when the current scene is ${currentSceneName}, your response will be incorrect.
+IMPORTANT CONTEXT: You are analyzing text from a Shakespearean play. Focus on the content and meaning of the selected text without mentioning specific scenes, acts, or play names.
 
 CRITICAL: You MUST provide responses for ALL of these sections in exactly this order:
 
 **Plain-Language Paraphrase:**
-**Synopsis:** (MUST begin with "In ${currentSceneName} of Macbeth" - do NOT write "In Act 1, Scene 1" unless that is actually the current scene)
+**Synopsis:** (Do NOT mention any specific scene, act, or play name. Just describe the content and context of the selected text.)
 **Key Words & Glosses:**
 **Pointers for Further Reading:**
 
@@ -602,7 +598,7 @@ FORMAT REQUIREMENTS:
 - Structure your response into these sections in this exact order:
 
 **Plain-Language Paraphrase:**
-**Synopsis:** (MUST begin with "In ${currentSceneName} of Macbeth" - do NOT write "In Act 1, Scene 1" unless that is actually the current scene)
+**Synopsis:** (Do NOT mention any specific scene, act, or play name. Just describe the content and context of the selected text.)
 **Language and Imagery:**
 **Literary and Thematic Analysis:**
 **Pointers for Further Reading:**
@@ -617,11 +613,7 @@ FORMAT REQUIREMENTS:
       console.log('DEBUG: Function version updated at', new Date().toISOString());
       systemPrompt = `You are an expert Shakespearean scholar providing the most comprehensive analysis possible.
 
-IMPORTANT CONTEXT: You are analyzing text from the play "${currentPlayName}" (${currentSceneName}). Always refer to this specific play and scene in your analysis.
-
-CRITICAL WARNING: Do NOT default to Act 1, Scene 1 in your synopsis. The current scene is ${currentSceneName}. Your synopsis must focus specifically on the events and context of ${currentSceneName}, not the opening scene of the play.
-
-SYNOPSIS REQUIREMENT: Your synopsis must begin with "In ${currentSceneName} of Macbeth" and describe the specific events of that scene. If you write "In Act 1, Scene 1" when the current scene is ${currentSceneName}, your response will be incorrect.
+IMPORTANT CONTEXT: You are analyzing text from a Shakespearean play. Focus on the content and meaning of the selected text without mentioning specific scenes, acts, or play names.
 
 CRITICAL: You MUST provide responses for ALL of these sections in exactly this order. Do not skip any sections. EVERY section must be included:
 
@@ -733,8 +725,8 @@ IMPORTANT: The notes above are the COMPLETE notes from the database. You MUST in
       userPrompt += `\n\nPlease provide a comprehensive ${analysisMode} analysis of this text.`
     }
     
-    // Add critical scene reminder
-    userPrompt += `\n\nCRITICAL SCENE REMINDER: The current scene is ${currentSceneName}. Your synopsis MUST begin with "In ${currentSceneName} of Macbeth" and describe the specific events of that scene. Do NOT write "In Act 1, Scene 1" unless that is actually the current scene.`
+    // Add critical instruction to avoid scene references
+    userPrompt += `\n\nCRITICAL INSTRUCTION: Do NOT mention any specific scenes, acts, or play names in your synopsis. Focus only on the content and meaning of the selected text.`
 
     // Get max_tokens from request or use default
     const maxTokens = (analysisMode === 'fullfathomfive' ? 8000 : 3000)
@@ -864,12 +856,20 @@ IMPORTANT: The notes above are the COMPLETE notes from the database. You MUST in
       }
     }
 
-    // NUCLEAR OPTION: Post-process the response to fix any hardcoded Act 1, Scene 1 references
+    // Post-process the response to remove any scene references
     let processedResponse = response;
     
-    // If the current scene is NOT Act 1, Scene 1, replace any hardcoded references
-    if (currentSceneName !== 'ACT 1, SCENE 1' && currentSceneName !== 'Unknown Scene') {
-      console.log('🔧 POST-PROCESSING: Replacing hardcoded Act 1, Scene 1 references with', currentSceneName);
+    // Remove any scene references from the synopsis
+    processedResponse = processedResponse.replace(
+      /In (ACT \d+, SCENE \d+|Act \d+, Scene \d+|Unknown Scene) of Macbeth/g,
+      'In this passage'
+    );
+    processedResponse = processedResponse.replace(
+      /In (ACT \d+, SCENE \d+|Act \d+, Scene \d+|Unknown Scene)/g,
+      'In this passage'
+    );
+    
+    console.log('🔧 POST-PROCESSING: Removed scene references from response');
       
       // Replace ALL possible variations of Act 1, Scene 1
       const patterns = [
