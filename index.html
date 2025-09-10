@@ -5731,19 +5731,33 @@
                 console.log('🎭 DEBUG: currentScene being sent to API:', currentScene);
                 console.log('🎭 DEBUG: playName being sent to API:', playName);
                 
-                // FORCE FIX: If currentScene is empty, try to get it from the UI
-                if (!currentScene || currentScene === '') {
-                    const metaElement = document.querySelector('.meta');
-                    if (metaElement) {
-                        const metaText = metaElement.textContent;
-                        const sceneMatch = metaText.match(/(ACT \d+, SCENE \d+)/);
-                        if (sceneMatch) {
-                            currentScene = sceneMatch[1];
-                            console.log('🎭 FORCE FIX: Set currentScene from meta element:', currentScene);
-                        }
+                // FORCE FIX: Always try to get the scene from the UI
+                const metaElement = document.querySelector('.meta');
+                if (metaElement) {
+                    const metaText = metaElement.textContent;
+                    const sceneMatch = metaText.match(/(ACT \d+, SCENE \d+)/);
+                    if (sceneMatch) {
+                        currentScene = sceneMatch[1];
+                        console.log('🎭 FORCE FIX: Set currentScene from meta element:', currentScene);
                     }
                 }
+                
+                // If still no scene, try to get it from the active nav link
+                if (!currentScene || currentScene === '') {
+                    const activeNavLink = document.querySelector('.nav-list a.active');
+                    if (activeNavLink) {
+                        currentScene = activeNavLink.getAttribute('data-scene') || activeNavLink.textContent.trim();
+                        console.log('🎭 FORCE FIX: Set currentScene from active nav:', currentScene);
+                    }
+                }
+                
+                // Last resort: set to a default scene
+                if (!currentScene || currentScene === '') {
+                    currentScene = 'ACT 2, SCENE 2';
+                    console.log('🎭 FORCE FIX: Set currentScene to default:', currentScene);
+                }
                 console.log('Making API request...');
+                console.log('🎭 FINAL: currentScene being sent to API:', currentScene);
                 
                 // Full Fathom Five now uses regular API call like other levels
                 
@@ -5768,18 +5782,32 @@
                     console.log('Redirect failed, trying direct function path...');
                     console.log('🎭 DEBUG: currentScene being sent to direct function:', currentScene);
                     
-                    // FORCE FIX: If currentScene is empty, try to get it from the UI
-                    if (!currentScene || currentScene === '') {
-                        const metaElement = document.querySelector('.meta');
-                        if (metaElement) {
-                            const metaText = metaElement.textContent;
-                            const sceneMatch = metaText.match(/(ACT \d+, SCENE \d+)/);
-                            if (sceneMatch) {
-                                currentScene = sceneMatch[1];
-                                console.log('🎭 FORCE FIX: Set currentScene from meta element:', currentScene);
-                            }
+                    // FORCE FIX: Always try to get the scene from the UI
+                    const metaElement = document.querySelector('.meta');
+                    if (metaElement) {
+                        const metaText = metaElement.textContent;
+                        const sceneMatch = metaText.match(/(ACT \d+, SCENE \d+)/);
+                        if (sceneMatch) {
+                            currentScene = sceneMatch[1];
+                            console.log('🎭 FORCE FIX: Set currentScene from meta element:', currentScene);
                         }
                     }
+                    
+                    // If still no scene, try to get it from the active nav link
+                    if (!currentScene || currentScene === '') {
+                        const activeNavLink = document.querySelector('.nav-list a.active');
+                        if (activeNavLink) {
+                            currentScene = activeNavLink.getAttribute('data-scene') || activeNavLink.textContent.trim();
+                            console.log('🎭 FORCE FIX: Set currentScene from active nav:', currentScene);
+                        }
+                    }
+                    
+                    // Last resort: set to a default scene
+                    if (!currentScene || currentScene === '') {
+                        currentScene = 'ACT 2, SCENE 2';
+                        console.log('🎭 FORCE FIX: Set currentScene to default:', currentScene);
+                    }
+                    console.log('🎭 FINAL: currentScene being sent to direct function:', currentScene);
                     response = await fetch('/.netlify/functions/shakespeare?v=' + Date.now(), {
                         method: 'POST',
                         headers: {
