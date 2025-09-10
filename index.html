@@ -2669,7 +2669,6 @@
             <div class="analysis-section" id="variorumSection" style="display: none;">
                 <div class="analysis-title">
                     <span>New Variorum Analysis</span>
-                    <button class="copy-button" onclick="copyVariorum()">Copy</button>
             </div>
             
                 <!-- New Variorum Buttons - Right under the title -->
@@ -2687,26 +2686,6 @@
                 </div>
                 <div id="variorumResult"></div>
                 
-                <!-- Button Outputs - Within New Variorum Analysis Section -->
-                <div class="critics-info" id="criticsInfo" style="display: none; margin-top: 20px; margin-bottom: 15px; padding-top: 15px; border-top: 1px solid #e5e7eb;">
-                <div class="analysis-title">
-                    <span>📚 New Variorum Critics & Bibliography</span>
-                    <button class="copy-button" onclick="copyCritics()">Copy</button>
-                </div>
-                <div class="analysis-content" id="criticsContent">
-                    Loading critics information...
-                </div>
-            </div>
-            
-                <div class="critics-info" id="nvInfo" style="display: none; margin-top: 20px; margin-bottom: 15px; padding-top: 15px; border-top: 1px solid #e5e7eb;">
-                <div class="analysis-title">
-                    <span>ℹ️ What is the New Variorum Shakespeare?</span>
-                    <button class="copy-button" onclick="copyNVInfo()">Copy</button>
-                </div>
-                <div class="analysis-content" id="nvContent">
-                    <!-- New Variorum information will be displayed here -->
-                    </div>
-                </div>
             </div>
 
             <!-- Follow-up Section -->
@@ -2823,26 +2802,6 @@
                         </div>
                         <div id="variorumResult"></div>
                         
-                        <!-- Button Outputs - Within New Variorum Analysis Section -->
-                        <div class="critics-info" id="criticsInfo" style="display: none; margin-top: 20px; margin-bottom: 15px; padding-top: 15px; border-top: 1px solid #e5e7eb;">
-                            <div class="analysis-title">
-                                <span>📚 New Variorum Critics & Bibliography</span>
-                                <button class="copy-button" onclick="copyCritics()">Copy</button>
-                            </div>
-                            <div class="analysis-content" id="criticsContent">
-                                Loading critics information...
-                            </div>
-                        </div>
-                        
-                        <div class="critics-info" id="nvInfo" style="display: none; margin-top: 20px; margin-bottom: 15px; padding-top: 15px; border-top: 1px solid #e5e7eb;">
-                            <div class="analysis-title">
-                                <span>ℹ️ What is the New Variorum Shakespeare?</span>
-                                <button class="copy-button" onclick="copyNVInfo()">Copy</button>
-                            </div>
-                            <div class="analysis-content" id="nvContent">
-                                <!-- New Variorum information will be displayed here -->
-                            </div>
-                        </div>
                     </div>
                 `;
             }
@@ -2948,26 +2907,6 @@
                         </div>
                         <div id="variorumResult"></div>
                         
-                        <!-- Button Outputs - Within New Variorum Analysis Section -->
-                        <div class="critics-info" id="criticsInfo" style="display: none; margin-top: 20px; margin-bottom: 15px; padding-top: 15px; border-top: 1px solid #e5e7eb;">
-                            <div class="analysis-title">
-                                <span>📚 New Variorum Critics & Bibliography</span>
-                                <button class="copy-button" onclick="copyCritics()">Copy</button>
-                            </div>
-                            <div class="analysis-content" id="criticsContent">
-                                Loading critics information...
-                            </div>
-                        </div>
-                        
-                        <div class="critics-info" id="nvInfo" style="display: none; margin-top: 20px; margin-bottom: 15px; padding-top: 15px; border-top: 1px solid #e5e7eb;">
-                            <div class="analysis-title">
-                                <span>ℹ️ What is the New Variorum Shakespeare?</span>
-                                <button class="copy-button" onclick="copyNVInfo()">Copy</button>
-                            </div>
-                            <div class="analysis-content" id="nvContent">
-                                <!-- New Variorum information will be displayed here -->
-                            </div>
-                        </div>
                     </div>
                 `;
             }
@@ -3211,6 +3150,8 @@
                     console.log('✅ Variorum content set manually');
                     // Show the critics button when variorum content is loaded
                     showCriticsButton();
+                    // Add Copy button to the analysis title when commentary appears
+                    addCopyButtonToVariorumTitle();
                 }
                 if (variorumResult && formattedNotes) {
                     variorumResult.innerHTML = formattedNotes;
@@ -5160,6 +5101,8 @@
                         console.log('✅ Commentary displayed in variorum content');
                         // Show the critics button when variorum content is loaded
                         showCriticsButton();
+                        // Add Copy button to the analysis title when commentary appears
+                        addCopyButtonToVariorumTitle();
                     }
                 } else {
                     const noCommentaryMsg = '<div class="loading">No traditional commentary found for selected lines.</div>';
@@ -5552,20 +5495,10 @@
                     // Add buttons specifically for New Variorum Analysis section
                     if (sectionName === 'New Variorum Analysis') {
                         formattedContent += '<div class="critics-button-container" style="margin-top: 10px; margin-bottom: 15px;">';
-                        formattedContent += '<button class="btn btn-secondary" onclick="showCritics()" style="width: 100%; margin-bottom: 10px;">Who are the New Variorum Critics?</button>';
-                        formattedContent += '<button class="btn btn-info" onclick="showNVInfo()" style="width: 100%;">What is the New Variorum Shakespeare?</button>';
+                        formattedContent += '<button class="btn btn-secondary" onclick="openCriticsModal()" style="width: 100%; margin-bottom: 10px;">Who are the New Variorum Critics?</button>';
+                        formattedContent += '<button class="btn btn-info" onclick="openNVModal()" style="width: 100%;">What is the New Variorum Shakespeare?</button>';
                         formattedContent += '</div>';
                         
-                        // Add button outputs within the same section
-                        formattedContent += '<div class="critics-info" id="criticsInfo" style="display: none; margin-top: 20px; margin-bottom: 15px; padding-top: 15px; border-top: 1px solid #e5e7eb;">';
-                        formattedContent += '<div class="analysis-title"><span>📚 New Variorum Critics & Bibliography</span><button class="copy-button" onclick="copyCritics()">Copy</button></div>';
-                        formattedContent += '<div class="analysis-content" id="criticsContent">Loading critics information...</div>';
-                        formattedContent += '</div>';
-                        
-                        formattedContent += '<div class="critics-info" id="nvInfo" style="display: none; margin-top: 20px; margin-bottom: 15px; padding-top: 15px; border-top: 1px solid #e5e7eb;">';
-                        formattedContent += '<div class="analysis-title"><span>ℹ️ What is the New Variorum Shakespeare?</span><button class="copy-button" onclick="copyNVInfo()">Copy</button></div>';
-                        formattedContent += '<div class="analysis-content" id="nvContent"><!-- New Variorum information will be displayed here --></div>';
-                        formattedContent += '</div>';
                     }
                     
                     formattedContent += `<div class="section-content">${sectionContent}</div>`;
@@ -7045,6 +6978,22 @@
             // Hide any previous critics info when new content is loaded
             if (criticsInfo) {
                 criticsInfo.style.display = 'none';
+            }
+        }
+
+        // Helper function to add Copy button to variorum title when commentary appears
+        function addCopyButtonToVariorumTitle() {
+            const variorumSection = document.getElementById('variorumSection');
+            if (variorumSection) {
+                const analysisTitle = variorumSection.querySelector('.analysis-title');
+                if (analysisTitle && !analysisTitle.querySelector('.copy-button')) {
+                    const copyButton = document.createElement('button');
+                    copyButton.className = 'copy-button';
+                    copyButton.textContent = 'Copy';
+                    copyButton.onclick = copyVariorum;
+                    analysisTitle.appendChild(copyButton);
+                    console.log('✅ Copy button added to variorum title');
+                }
             }
         }
         
