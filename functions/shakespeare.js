@@ -604,7 +604,7 @@ FORMAT REQUIREMENTS:
 - Use essay-style paragraphs (no bullets/lists)
 - Each section should be 5–8 sentences
 - Clear but scholarly tone
-- CRITICAL: Always italicize play titles using <em>italics</em>, never use asterisks (*) or quotes around titles
+- CRITICAL: Always italicize play titles using <em>italics</em>, never use asterisks (*) or quotes around titles. Use <em>Macbeth</em> not *Macbeth* or "Macbeth"
 - Always reference "${currentPlayName}"`
     } else if (analysisMode === 'fullfathomfive') {
       console.log('Full Fathom Five level detected - using comprehensive prompt with Textual Variants and Language and Rhetoric sections');
@@ -758,7 +758,10 @@ IMPORTANT: The notes above are the COMPLETE notes from the database. You MUST in
     console.log('Full response preview:', completion.choices[0].message.content.substring(0, 500))
     console.log('Response ends with:', completion.choices[0].message.content.substring(completion.choices[0].message.content.length - 200))
 
-    const response = completion.choices[0].message.content
+    let response = completion.choices[0].message.content
+
+    // Convert asterisks to proper HTML italics
+    response = response.replace(/\*([^*]+)\*/g, '<em>$1</em>')
 
     // Parse the response into structured sections
     let analysis = {}
@@ -796,6 +799,13 @@ IMPORTANT: The notes above are the COMPLETE notes from the database. You MUST in
     // Save the last section
     if (currentSection && currentContent.length > 0) {
       analysis[currentSection] = currentContent.join('\n').trim()
+    }
+
+    // Convert asterisks to italics in all sections
+    for (const section in analysis) {
+      if (analysis[section]) {
+        analysis[section] = analysis[section].replace(/\*([^*]+)\*/g, '<em>$1</em>')
+      }
     }
 
     // Debug: Log what sections were found
