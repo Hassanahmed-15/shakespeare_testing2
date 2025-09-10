@@ -559,7 +559,7 @@ exports.handler = async (event, context) => {
     // Build the system prompt based on analysis mode
     let systemPrompt = ''
     const currentPlayName = event.body.playName || 'Macbeth'
-    const currentSceneName = event.body.sceneName || 'Unknown Scene'
+    const currentSceneName = event.body.sceneName || null
     
     // Debug: Log the scene information
     console.log('🎭 DEBUG: Received sceneName from frontend:', event.body.sceneName)
@@ -582,17 +582,15 @@ FORMAT REQUIREMENTS:
 - 2–4 sentences per section
 - Complete sentences and paragraphs
 - Clear, accessible language
-- Always reference "${currentPlayName}" and "${currentSceneName}" directly
+- Always reference "${currentPlayName}" directly
 - CRITICAL: Always italicize play titles using <em>italics</em>, never use asterisks (*) or quotes around titles
 - Key Words format: "word" means definition; "word" means definition (preserve capitalization)`
     } else if (analysisMode === 'expert') {
       systemPrompt = `You are a Shakespeare scholar writing for advanced students.
 
-IMPORTANT CONTEXT: Analyze text from "${currentPlayName}" (${currentSceneName}).
+IMPORTANT CONTEXT: Analyze text from "${currentPlayName}".
 
-CRITICAL WARNING: Do NOT default to Act 1, Scene 1 in your synopsis. The current scene is ${currentSceneName}. Your synopsis must focus specifically on the events and context of ${currentSceneName}, not the opening scene of the play.
-
-SYNOPSIS REQUIREMENT: Your synopsis must begin with "In ${currentSceneName} of Macbeth" and describe the specific events of that scene. If you write "In Act 1, Scene 1" when the current scene is ${currentSceneName}, your response will be incorrect.
+CRITICAL WARNING: Do NOT mention any specific scenes, acts, or play names in your analysis. Focus on the content and meaning of the selected text.
 
 FORMAT REQUIREMENTS:
 - Structure your response into these sections in this exact order:
@@ -607,7 +605,7 @@ FORMAT REQUIREMENTS:
 - Each section should be 5–8 sentences
 - Clear but scholarly tone
 - CRITICAL: Always italicize play titles using <em>italics</em>, never use asterisks (*) or quotes around titles
-- Always reference "${currentPlayName}" and "${currentSceneName}"`
+- Always reference "${currentPlayName}"`
     } else if (analysisMode === 'fullfathomfive') {
       console.log('Full Fathom Five level detected - using comprehensive prompt with Textual Variants and Language and Rhetoric sections');
       console.log('DEBUG: Function version updated at', new Date().toISOString());
@@ -620,7 +618,7 @@ CRITICAL: You MUST provide responses for ALL of these sections in exactly this o
 **Textual Variants:** (REQUIRED - FIRST SECTION)  
 **Plain-Language Paraphrase:** (REQUIRED)  
 **Language and Rhetoric:** (REQUIRED - NEW SECTION)  
-**Synopsis:** (REQUIRED - Focus on the specific events and context of ${currentSceneName}, not Act 1, Scene 1)  
+**Synopsis:** (REQUIRED - Focus on the content and meaning of the selected text without mentioning specific scenes)  
 **Key Words & Glosses:** (REQUIRED)  
 **Historical Context:** (REQUIRED)  
 **Sources:** (REQUIRED)  

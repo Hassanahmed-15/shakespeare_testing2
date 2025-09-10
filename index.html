@@ -5832,7 +5832,6 @@
                         level: analysisMode,
                         model: 'gpt-4o-mini',
                         playName: playName,
-                        ...(currentScene && currentScene !== '' && { sceneName: currentScene }),
                         version: '2024-12-19-expert-fix'
                     })
                 });
@@ -5878,7 +5877,6 @@
                             level: analysisMode,
                             model: 'gpt-4o-mini',
                             playName: playName,
-                            ...(currentScene && currentScene !== '' && { sceneName: currentScene }),
                             version: '2024-12-19-expert-fix'
                         })
                     });
@@ -6011,8 +6009,7 @@
                     },
                     body: JSON.stringify({
                         text: text,
-                        playName: playName,
-                        ...(sceneName && sceneName !== '' && { sceneName: sceneName })
+                        playName: playName
                     })
                 });
                 
@@ -6898,9 +6895,9 @@
                 const sceneName = currentScene && currentScene !== '' ? currentScene : null;
                 
                 if (hasAnalysis && selectedText) {
-                    context = sceneName ? `Current play: ${playName} (${sceneName})\n\nOriginal text: "${selectedText}"\n\nCurrent analysis: ${currentAnalysis.innerText}\n\nFollow-up question: ${question}` : `Current play: ${playName}\n\nOriginal text: "${selectedText}"\n\nCurrent analysis: ${currentAnalysis.innerText}\n\nFollow-up question: ${question}`;
+                    context = `Current play: ${playName}\n\nOriginal text: "${selectedText}"\n\nCurrent analysis: ${currentAnalysis.innerText}\n\nFollow-up question: ${question}`;
                 } else {
-                    context = sceneName ? `Current play: ${playName} (${sceneName})\n\nQuestion: ${question}` : `Current play: ${playName}\n\nQuestion: ${question}`;
+                    context = `Current play: ${playName}\n\nQuestion: ${question}`;
                 }
                 
                 // Call the AI function with follow-up level and base level for style consistency
@@ -6913,8 +6910,7 @@
                         text: context,
                         level: 'followup', // Special follow-up level
                         baseLevel: currentTab || 'basic', // Base level for style consistency
-                        playName: currentPlay && plays[currentPlay] ? plays[currentPlay].name : 'Shakespeare',
-                        ...(currentScene && currentScene !== '' && { sceneName: currentScene })
+                        playName: currentPlay && plays[currentPlay] ? plays[currentPlay].name : 'Shakespeare'
                     })
                 });
                 
