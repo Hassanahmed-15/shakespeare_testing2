@@ -124,6 +124,23 @@
             color: var(--ink-1);
         }
 
+        .nav-text {
+            background: none;
+            border: none;
+            color: var(--ink-2);
+            cursor: pointer;
+            padding: 10px 16px;
+            border-radius: var(--r-sm);
+            font-size: 15px;
+            font-weight: 500;
+            font-family: var(--ui);
+        }
+
+        .nav-text:hover {
+            background: var(--panel);
+            color: var(--ink-1);
+        }
+
         .btn {
             border-radius: 12px;
             font-weight: 600;
@@ -2479,6 +2496,7 @@
     <div class="header">
         <h1>Shakespeare Digital Variorum</h1>
         <div class="header-nav">
+            <span class="nav-text" onclick="openHowToUse()">How To Use</span>
             <button class="nav-btn" onclick="openSettings()">Settings</button>
             <button class="nav-btn" onclick="openAbout()">About</button>
             <span class="instruction-text">Use your cursor to highlight text in the play for analysis.</span>
@@ -2612,6 +2630,34 @@
 
                     <h2>Contact & License</h2>
                     <p>Issues or corrections: <a href="mailto:jack@example.com">email</a>. License: CC BY-NC-SA 4.0 - Free to use for non-commercial, educational purposes with attribution.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- How To Use Modal -->
+    <div id="howToUseModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">How To Use</div>
+                <button class="modal-close" onclick="closeHowToUse()">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="about">
+                    <p>To use this site, begin by clicking on any line of the play. Each line opens three levels of analysis:</p>
+                    
+                    <ul>
+                        <li><strong>Basic</strong> provides a plain-language paraphrase and a straightforward explanation of the text.</li>
+                        <li><strong>Expert</strong> offers a more detailed discussion.</li>
+                        <li><strong>Full Fathom Five</strong> expands further, including extensive commentary and the notes from the New Variorum editions published between the late 19th and early 20th centuries.</li>
+                    </ul>
+                    
+                    <p>Not every play has a New Variorum edition; only 18 volumes were completed before the project ended in the early 20th century. Nevertheless, the series is widely regarded as the gold standard of Shakespeare scholarship, compiling centuries of commentary and editorial insight from the 17th century onward. For the first time, this site makes the New Variorum materials available online, opening a vast body of critical tradition to readers outside the library stacks.</p>
+                    
+                    <p>Beyond the written annotations, the site also connects each line to its broader cultural life. Buttons alongside the text may bring up film scene drawn from YouTube's extensive catalog of Shakespeare production that dramatize the very line you have selected. Other buttons link to JSTOR articles and additional scholarly resources on the Internet, offering direct access to research that situates the passage in its academic and historical context.</p>
+                    
+                    <p>Taken together, these features transform each line into a gateway: to the play's language, its centuries of interpretation, and its continuing presence on stage and screen.</p>
                 </div>
             </div>
         </div>
@@ -3765,6 +3811,14 @@
             document.getElementById('aboutModal').style.display = 'none';
         }
 
+        function openHowToUse() {
+            document.getElementById('howToUseModal').style.display = 'block';
+        }
+
+        function closeHowToUse() {
+            document.getElementById('howToUseModal').style.display = 'none';
+        }
+
         function openCriticsModal() {
             document.getElementById('criticsModal').style.display = 'block';
         }
@@ -3793,6 +3847,7 @@
         window.onclick = function(event) {
             const settingsModal = document.getElementById('settingsModal');
             const aboutModal = document.getElementById('aboutModal');
+            const howToUseModal = document.getElementById('howToUseModal');
             const criticsModal = document.getElementById('criticsModal');
             const nvModal = document.getElementById('nvModal');
             const rightsModal = document.getElementById('rightsModal');
@@ -3801,6 +3856,9 @@
             }
             if (event.target === aboutModal) {
                 closeAbout();
+            }
+            if (event.target === howToUseModal) {
+                closeHowToUse();
             }
             if (event.target === criticsModal) {
                 closeCriticsModal();
@@ -3950,6 +4008,9 @@
                     }
                     if (aboutModal && aboutModal.style.display === 'block') {
                         closeAbout();
+                    }
+                    if (howToUseModal && howToUseModal.style.display === 'block') {
+                        closeHowToUse();
                     }
                     if (criticsModal && criticsModal.style.display === 'block') {
                         closeCriticsModal();
