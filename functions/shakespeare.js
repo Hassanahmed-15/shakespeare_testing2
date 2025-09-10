@@ -604,7 +604,7 @@ FORMAT REQUIREMENTS:
 - Use essay-style paragraphs (no bullets/lists)
 - Each section should be 5–8 sentences
 - Clear but scholarly tone
-- CRITICAL: Always italicize play titles using <em>italics</em>, never use asterisks (*) or quotes around titles. Use <em>Macbeth</em> not *Macbeth* or "Macbeth"
+- CRITICAL: Always italicize play titles using <em>italics</em>, never use asterisks (*) or quotes around titles
 - Always reference "${currentPlayName}"`
     } else if (analysisMode === 'fullfathomfive') {
       console.log('Full Fathom Five level detected - using comprehensive prompt with Textual Variants and Language and Rhetoric sections');
@@ -769,6 +769,14 @@ IMPORTANT: The notes above are the COMPLETE notes from the database. You MUST in
     response = response.replace(/\*([^*\n]+)\*/g, '<em>$1</em>')  // *text* with newlines
     response = response.replace(/\*([^*\s]+)\*/g, '<em>$1</em>')  // *text* with spaces
     
+    // Extra aggressive conversion for Expert mode
+    if (analysisMode === 'expert') {
+      console.log('🔍 DEBUG: Applying extra Expert mode asterisk conversion')
+      response = response.replace(/\*([^*]+?)\*/g, '<em>$1</em>')  // More aggressive pattern
+      response = response.replace(/\*([^*\n\r]+?)\*/g, '<em>$1</em>')  // Handle line breaks
+      response = response.replace(/\*([^*\s\n\r]+?)\*/g, '<em>$1</em>')  // Handle spaces and breaks
+    }
+    
     console.log('🔍 DEBUG: After conversion contains asterisks:', response.includes('*'))
     console.log('🔍 DEBUG: Sample of converted response:', response.substring(0, 200))
 
@@ -818,6 +826,15 @@ IMPORTANT: The notes above are the COMPLETE notes from the database. You MUST in
         analysis[section] = analysis[section].replace(/\*([^*]+)\*/g, '<em>$1</em>')  // *text*
         analysis[section] = analysis[section].replace(/\*([^*\n]+)\*/g, '<em>$1</em>')  // *text* with newlines
         analysis[section] = analysis[section].replace(/\*([^*\s]+)\*/g, '<em>$1</em>')  // *text* with spaces
+        
+        // Extra aggressive conversion for Expert mode
+        if (analysisMode === 'expert') {
+          console.log(`🔍 DEBUG: Applying extra Expert mode conversion to section "${section}"`)
+          analysis[section] = analysis[section].replace(/\*([^*]+?)\*/g, '<em>$1</em>')  // More aggressive pattern
+          analysis[section] = analysis[section].replace(/\*([^*\n\r]+?)\*/g, '<em>$1</em>')  // Handle line breaks
+          analysis[section] = analysis[section].replace(/\*([^*\s\n\r]+?)\*/g, '<em>$1</em>')  // Handle spaces and breaks
+        }
+        
         console.log(`🔍 DEBUG: Section "${section}" after conversion contains asterisks:`, analysis[section].includes('*'))
       }
     }
