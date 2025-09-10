@@ -558,8 +558,8 @@ exports.handler = async (event, context) => {
     
     // Build the system prompt based on analysis mode
     let systemPrompt = ''
-    const currentPlayName = 'Macbeth' // You can make this dynamic if needed
-    const currentSceneName = 'ACT 1, SCENE 1' // You can make this dynamic if needed
+    const currentPlayName = event.body.playName || 'Macbeth'
+    const currentSceneName = event.body.sceneName || 'ACT 1, SCENE 1'
 
     if (analysisMode === 'basic') {
       systemPrompt = `You are a university professor speaking to very smart undergraduates about Shakespeare.
