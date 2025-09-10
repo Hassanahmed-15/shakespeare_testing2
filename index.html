@@ -5833,7 +5833,7 @@
                         level: analysisMode,
                         model: 'gpt-4o-mini',
                         playName: playName,
-                        sceneName: currentScene,
+                        ...(currentScene && currentScene !== '' && { sceneName: currentScene }),
                         version: '2024-12-19-expert-fix'
                     })
                 });
@@ -5879,7 +5879,7 @@
                             level: analysisMode,
                             model: 'gpt-4o-mini',
                             playName: playName,
-                            sceneName: currentScene,
+                            ...(currentScene && currentScene !== '' && { sceneName: currentScene }),
                             version: '2024-12-19-expert-fix'
                         })
                     });
@@ -6013,7 +6013,7 @@
                     body: JSON.stringify({
                         text: text,
                         playName: playName,
-                        sceneName: sceneName
+                        ...(sceneName && sceneName !== '' && { sceneName: sceneName })
                     })
                 });
                 
@@ -6896,12 +6896,12 @@
                 // Prepare the context for the follow-up question
                 let context = '';
                 const playName = currentPlay && plays[currentPlay] ? plays[currentPlay].name : 'Shakespeare';
-                const sceneName = currentScene || 'scene';
+                const sceneName = currentScene && currentScene !== '' ? currentScene : null;
                 
                 if (hasAnalysis && selectedText) {
-                    context = `Current play: ${playName} (${sceneName})\n\nOriginal text: "${selectedText}"\n\nCurrent analysis: ${currentAnalysis.innerText}\n\nFollow-up question: ${question}`;
+                    context = sceneName ? `Current play: ${playName} (${sceneName})\n\nOriginal text: "${selectedText}"\n\nCurrent analysis: ${currentAnalysis.innerText}\n\nFollow-up question: ${question}` : `Current play: ${playName}\n\nOriginal text: "${selectedText}"\n\nCurrent analysis: ${currentAnalysis.innerText}\n\nFollow-up question: ${question}`;
                 } else {
-                    context = `Current play: ${playName} (${sceneName})\n\nQuestion: ${question}`;
+                    context = sceneName ? `Current play: ${playName} (${sceneName})\n\nQuestion: ${question}` : `Current play: ${playName}\n\nQuestion: ${question}`;
                 }
                 
                 // Call the AI function with follow-up level and base level for style consistency
@@ -6915,7 +6915,7 @@
                         level: 'followup', // Special follow-up level
                         baseLevel: currentTab || 'basic', // Base level for style consistency
                         playName: currentPlay && plays[currentPlay] ? plays[currentPlay].name : 'Shakespeare',
-                        sceneName: currentScene || 'scene'
+                        ...(currentScene && currentScene !== '' && { sceneName: currentScene })
                     })
                 });
                 
@@ -6975,8 +6975,8 @@
         // Media and Research Functions
         function searchYouTube(type) {
             const playName = currentPlay && plays[currentPlay] ? plays[currentPlay].name : 'Shakespeare';
-            const sceneName = currentScene || 'scene';
-            const searchQuery = `${playName} ${sceneName} performance`;
+            const sceneName = currentScene && currentScene !== '' ? currentScene : null;
+            const searchQuery = sceneName ? `${playName} ${sceneName} performance` : `${playName} performance`;
             
             const url = `https://www.youtube.com/results?search_query=${encodeURIComponent(searchQuery)}`;
             window.open(url, '_blank');
@@ -7002,7 +7002,7 @@
 
         function searchGoogleScholar() {
             const playName = currentPlay && plays[currentPlay] ? plays[currentPlay].name : 'Shakespeare';
-            const sceneName = currentScene || 'scene';
+            const sceneName = currentScene && currentScene !== '' ? currentScene : null;
             
             // Extract Act information from the scene name
             let actInfo = '';
@@ -7017,8 +7017,10 @@
             let searchQuery = '';
             if (actInfo) {
                 searchQuery = `${playName} ${actInfo} Shakespeare`;
-            } else {
+            } else if (sceneName) {
                 searchQuery = `${playName} ${sceneName} Shakespeare`;
+            } else {
+                searchQuery = `${playName} Shakespeare`;
             }
             
             const url = `https://scholar.google.com/scholar?q=${encodeURIComponent(searchQuery)}`;
