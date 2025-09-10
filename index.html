@@ -3699,7 +3699,7 @@
             const testText = "When shall we three meet again? In thunder, lightning, or in rain?";
             
             try {
-                const response = await fetch('/.netlify/functions/shakespeare', {
+                const response = await fetchWithTimeout('/.netlify/functions/shakespeare', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -5701,6 +5701,27 @@
             return text.trim().split(/\s+/).filter(word => word.length > 0).length;
         }
 
+        // Helper function for fetch with timeout
+        async function fetchWithTimeout(url, options, timeoutMs = 30000) {
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+            
+            try {
+                const response = await fetch(url, {
+                    ...options,
+                    signal: controller.signal
+                });
+                clearTimeout(timeoutId);
+                return response;
+            } catch (error) {
+                clearTimeout(timeoutId);
+                if (error.name === 'AbortError') {
+                    throw new Error('Request timed out after 30 seconds. Please try again with a shorter text selection.');
+                }
+                throw error;
+            }
+        }
+
         async function analyzeHighlightedText(text, mode = null) {
             console.log('=== ANALYZE FUNCTION CALLED - NEW CODE IS RUNNING ===');
             console.log('Text to analyze:', text);
@@ -5802,7 +5823,7 @@
                 // Full Fathom Five now uses regular API call like other levels
                 
                 // Try the redirect path first for other levels
-                let response = await fetch('/api/shakespeare?v=' + Date.now(), {
+                let response = await fetchWithTimeout('/api/shakespeare?v=' + Date.now(), {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -5848,7 +5869,7 @@
                         console.log('🎭 FORCE FIX: Set currentScene to default:', currentScene);
                     }
                     console.log('🎭 FINAL: currentScene being sent to direct function:', currentScene);
-                    response = await fetch('/.netlify/functions/shakespeare?v=' + Date.now(), {
+                    response = await fetchWithTimeout('/.netlify/functions/shakespeare?v=' + Date.now(), {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
@@ -5873,6 +5894,8 @@
                     
                     if (response.status === 500 && errorData.error && errorData.error.includes('API key')) {
                         alert('OpenAI API key not configured. Please check your Netlify environment variables.');
+                    } else if (response.status === 504) {
+                        alert('Request timed out. The server is taking too long to respond. Please try again with a shorter text selection or try again later.');
                     } else {
                         throw new Error(`HTTP ${response.status}: ${errorData.error || 'Unknown error'}`);
                     }
@@ -5910,6 +5933,8 @@
                     alert('Network error. Please check your internet connection and try again.');
                 } else if (error.message.includes('API key')) {
                     alert('OpenAI API key not configured. Please check your Netlify environment variables.');
+                } else if (error.message.includes('504') || error.message.includes('Gateway Timeout')) {
+                    alert('Request timed out. The server is taking too long to respond. Please try again with a shorter text selection or try again later.');
                 } else {
                     alert(`Error analyzing text: ${error.message}. Please try again.`);
                 }
@@ -6880,7 +6905,7 @@
                 }
                 
                 // Call the AI function with follow-up level and base level for style consistency
-                const response = await fetch('/.netlify/functions/shakespeare', {
+                const response = await fetchWithTimeout('/.netlify/functions/shakespeare', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
