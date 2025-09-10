@@ -2576,6 +2576,56 @@
         </div>
     </div>
 
+    <!-- Critics Modal -->
+    <div id="criticsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title" id="critics-modal-title">Who are the New Variorum Critics?</div>
+                <button class="modal-close" onclick="closeCriticsModal()">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="critics-info">
+                    <h4>Who are the New Variorum critics?</h4>
+                    <p>The New Variorum editions draw on an extraordinary range of voices—from 18th-century pioneers who first attempted to restore Shakespeare's "corrupted" text, through Victorian scholars who brought scientific rigor to textual criticism, to early 20th-century critics who revolutionized our understanding of Shakespeare's language and stagecraft.</p>
+                    
+                    <p>When reading the New Variorum notes, you'll encounter a dizzying array of abbreviated names and cryptic references: "CAPELL," "THEOBALD," "MALONE," "SCHMIDT." These aren't just footnotes—they represent real people who dedicated their lives to understanding Shakespeare. Behind each abbreviation is a scholar with their own fascinating story: Alexander Pope, the great poet who produced one of the first "modern" Shakespeare editions (1725); Samuel Johnson, whose 1765 edition contained brilliant interpretive notes that are still quoted today; Edmond Malone, who pioneered the historical study of Shakespeare's texts in the late 18th century; or Alexander Schmidt, whose Shakespeare Lexicon (1874-75) remains indispensable for understanding Elizabethan word meanings.</p>
+                    
+                    <p>The Variorum's democratic approach means you'll find everyone from famous literary critics to obscure German philologists, from actor-managers sharing performance insights to amateur scholars who made single brilliant observations. Furness included them all, believing that truth about Shakespeare could come from anywhere.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NV Info Modal -->
+    <div id="nvModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title" id="nv-modal-title">What is the New Variorum Shakespeare?</div>
+                <button class="modal-close" onclick="closeNVModal()">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="nv-info">
+                    <h4>What is the New Variorum Shakespeare?</h4>
+                    <p>The New Variorum Shakespeare is a comprehensive scholarly edition of Shakespeare's works that has been the gold standard of Shakespearean scholarship for over a century. Each volume brings together the most important critical commentary, textual analysis, and historical context in a single, comprehensive annotated edition.</p>
+                    
+                    <p>Founded by Horace Howard Furness in the late 19th century, the New Variorum series represents the most thorough compilation of Shakespearean scholarship ever assembled. Each play includes:</p>
+                    
+                    <ul>
+                        <li>Complete text with detailed textual notes</li>
+                        <li>Comprehensive critical commentary from centuries of scholarship</li>
+                        <li>Historical context and performance history</li>
+                        <li>Source materials and influences</li>
+                        <li>Extensive bibliography of scholarly works</li>
+                    </ul>
+                    
+                    <p>The New Variorum editions are essential resources for serious Shakespearean study, providing access to the full range of critical interpretation and scholarly debate that has surrounded Shakespeare's works for over four centuries.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Rights & Attribution Modal -->
     <div id="rightsModal" class="modal">
         <div class="modal-content">
@@ -2673,10 +2723,10 @@
             
                 <!-- New Variorum Buttons - Right under the title -->
                 <div class="critics-button-container" id="criticsButtonContainer" style="margin-top: 10px; margin-bottom: 15px;">
-                <button class="btn btn-secondary" onclick="showCritics()" style="width: 100%; margin-bottom: 10px;">
+                <button class="btn btn-secondary" onclick="openCriticsModal()" style="width: 100%; margin-bottom: 10px;">
                         Who are the New Variorum Critics?
                 </button>
-                <button class="btn btn-info" onclick="showNVInfo()" style="width: 100%;">
+                <button class="btn btn-info" onclick="openNVModal()" style="width: 100%;">
                         What is the New Variorum Shakespeare?
                 </button>
             </div>
@@ -2779,7 +2829,6 @@
                     <!-- AI Analysis Content -->
                     <div class="analysis-header">
                         <div class="analysis-title">${tabName === 'basic' ? 'Basic' : tabName === 'expert' ? 'Expert' : 'Full Fathom Five'} Analysis</div>
-                        <button class="copy-btn" onclick="copyAnalysis()">Copy</button>
                     </div>
                     <div class="meta" style="display: none;">No play loaded</div>
                     <div class="analysis-content" id="analysisContent">
@@ -2884,7 +2933,6 @@
                     <!-- AI Analysis Content -->
                     <div class="analysis-header">
                         <div class="analysis-title">Basic Analysis</div>
-                        <button class="copy-btn" onclick="copyAnalysis()">Copy</button>
                     </div>
                     <div class="meta" style="display: none;">No play loaded</div>
                     <div class="analysis-content" id="analysisContent">
@@ -3337,6 +3385,22 @@
             document.getElementById('aboutModal').style.display = 'none';
         }
 
+        function openCriticsModal() {
+            document.getElementById('criticsModal').style.display = 'block';
+        }
+
+        function closeCriticsModal() {
+            document.getElementById('criticsModal').style.display = 'none';
+        }
+
+        function openNVModal() {
+            document.getElementById('nvModal').style.display = 'block';
+        }
+
+        function closeNVModal() {
+            document.getElementById('nvModal').style.display = 'none';
+        }
+
         function openRights() {
             document.getElementById('rightsModal').style.display = 'block';
         }
@@ -3349,12 +3413,20 @@
         window.onclick = function(event) {
             const settingsModal = document.getElementById('settingsModal');
             const aboutModal = document.getElementById('aboutModal');
+            const criticsModal = document.getElementById('criticsModal');
+            const nvModal = document.getElementById('nvModal');
             const rightsModal = document.getElementById('rightsModal');
             if (event.target === settingsModal) {
                 closeSettings();
             }
             if (event.target === aboutModal) {
                 closeAbout();
+            }
+            if (event.target === criticsModal) {
+                closeCriticsModal();
+            }
+            if (event.target === nvModal) {
+                closeNVModal();
             }
             if (event.target === rightsModal) {
                 closeRights();
@@ -3453,6 +3525,8 @@
             // Add ARIA attributes to modals
             const settingsModal = document.getElementById('settingsModal');
             const aboutModal = document.getElementById('aboutModal');
+            const criticsModal = document.getElementById('criticsModal');
+            const nvModal = document.getElementById('nvModal');
             
             if (settingsModal) {
                 settingsModal.setAttribute('role', 'dialog');
@@ -3464,6 +3538,18 @@
                 aboutModal.setAttribute('role', 'dialog');
                 aboutModal.setAttribute('aria-modal', 'true');
                 aboutModal.setAttribute('aria-labelledby', 'about-modal-title');
+            }
+            
+            if (criticsModal) {
+                criticsModal.setAttribute('role', 'dialog');
+                criticsModal.setAttribute('aria-modal', 'true');
+                criticsModal.setAttribute('aria-labelledby', 'critics-modal-title');
+            }
+            
+            if (nvModal) {
+                nvModal.setAttribute('role', 'dialog');
+                nvModal.setAttribute('aria-modal', 'true');
+                nvModal.setAttribute('aria-labelledby', 'nv-modal-title');
             }
 
             // Settings nav switching
@@ -3484,6 +3570,12 @@
                     }
                     if (aboutModal && aboutModal.style.display === 'block') {
                         closeAbout();
+                    }
+                    if (criticsModal && criticsModal.style.display === 'block') {
+                        closeCriticsModal();
+                    }
+                    if (nvModal && nvModal.style.display === 'block') {
+                        closeNVModal();
                     }
                 }
             });
@@ -4318,9 +4410,9 @@
                         
                         // Extract proper scene name for display
                         let displaySceneName = sceneName;
-                        const sceneMatch = sceneName.match(/SCENE\s+([IVX0-9]+)/i);
+                        const sceneMatch = sceneName.match(/(SCENE|SCN)\s+([IVX0-9]+)/i);
                         if (sceneMatch) {
-                            displaySceneName = `Scene ${sceneMatch[1]}`;
+                            displaySceneName = `Scene ${sceneMatch[2]}`;
                         }
                         
                         sceneItem.innerHTML = `<a href="#" onclick="loadScene('${sceneName}')" data-scene="${sceneName}">${displaySceneName}</a>`;
@@ -5515,8 +5607,8 @@
                 formattedContent += '<div class="analysis-section">';
                 formattedContent += '<h4>New Variorum Analysis</h4>';
                 formattedContent += '<div class="critics-button-container" style="margin-top: 10px; margin-bottom: 15px;">';
-                formattedContent += '<button class="btn btn-secondary" onclick="showCritics()" style="width: 100%; margin-bottom: 10px;">📚 Who are the New Variorum Critics?</button>';
-                formattedContent += '<button class="btn btn-info" onclick="showNVInfo()" style="width: 100%;">ℹ️ What is the New Variorum Shakespeare?</button>';
+                formattedContent += '<button class="btn btn-secondary" onclick="openCriticsModal()" style="width: 100%; margin-bottom: 10px;">📚 Who are the New Variorum Critics?</button>';
+                formattedContent += '<button class="btn btn-info" onclick="openNVModal()" style="width: 100%;">ℹ️ What is the New Variorum Shakespeare?</button>';
                 formattedContent += '</div>';
                 formattedContent += '<div class="variorum-notes">';
                 
