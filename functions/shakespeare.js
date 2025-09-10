@@ -502,15 +502,13 @@ exports.handler = async (event, context) => {
       basic: [
         'Plain-Language Paraphrase',
         'Synopsis',
-        'Key Words & Glosses',
-        'Pointers for Further Reading'
+        'Key Words & Glosses'
       ],
       expert: [
         'Plain-Language Paraphrase',
         'Synopsis',
         'Language and Imagery',
-        'Literary and Thematic Analysis',
-        'Pointers for Further Reading'
+        'Literary and Thematic Analysis'
       ],
       fullfathomfive: [
         'Textual Variants',
@@ -523,7 +521,6 @@ exports.handler = async (event, context) => {
         'Literary Analysis',
         'Critical Reception',
         'Similar phrases or themes in other plays',
-        'Pointers for Further Reading',
         'New Variorum Analysis'
       ]
     }
@@ -575,7 +572,6 @@ CRITICAL: You MUST provide responses for ALL of these sections in exactly this o
 **Plain-Language Paraphrase:**
 **Synopsis:** (Do NOT mention any specific scene, act, or play name. Just describe the content and context of the selected text.)
 **Key Words & Glosses:**
-**Pointers for Further Reading:**
 
 FORMAT REQUIREMENTS:
 - Use EXACTLY the section headers shown above - do not change them
@@ -599,7 +595,6 @@ FORMAT REQUIREMENTS:
 **Synopsis:** (Do NOT mention any specific scene, act, or play name. Just describe the content and context of the selected text.)
 **Language and Imagery:**
 **Literary and Thematic Analysis:**
-**Pointers for Further Reading:**
 
 - Use essay-style paragraphs (no bullets/lists)
 - Each section should be 5–8 sentences
@@ -625,7 +620,6 @@ CRITICAL: You MUST provide responses for ALL of these sections in exactly this o
 **Literary Analysis:** (REQUIRED)  
 **Critical Reception:** (REQUIRED)  
 **Similar phrases or themes in other plays:** (REQUIRED)  
-**Pointers for Further Reading:** (REQUIRED)  
 **New Variorum Analysis:** (REQUIRED)
 
 FORMAT REQUIREMENTS:  
