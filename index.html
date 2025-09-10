@@ -2597,7 +2597,7 @@
                 </div>
                 
                 <div class="critics-separator" style="margin: 30px 0; padding: 20px 0; border-top: 2px solid #e5e7eb; border-bottom: 2px solid #e5e7eb;">
-                    <h4 style="text-align: center; color: #666; font-weight: 600;">Complete List of New Variorum Critics & Authorities</h4>
+                    <h4 style="text-align: center; color: #666; font-weight: 600;">Complete List of New Variorum Critics & Authorities for Macbeth</h4>
                 </div>
                 
                 <div class="critics-list" style="max-height: 400px; overflow-y: auto; background: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb;">
@@ -2878,26 +2878,26 @@
     <div id="nvModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <div class="modal-title" id="nv-modal-title">What is the New Variorum Shakespeare?</div>
+                <div class="modal-title" id="nv-modal-title">What's New Variorum?</div>
                 <button class="modal-close" onclick="closeNVModal()">&times;</button>
             </div>
             
             <div class="modal-body">
                 <div class="nv-info">
-                    <h4>What is the New Variorum Shakespeare?</h4>
-                    <p>The New Variorum Shakespeare is a comprehensive scholarly edition of Shakespeare's works that has been the gold standard of Shakespearean scholarship for over a century. Each volume brings together the most important critical commentary, textual analysis, and historical context in a single, comprehensive annotated edition.</p>
+                    <h4>What's New Variorum?</h4>
+                    <p>The New Variorum Shakespeare is one of the most comprehensive scholarly editions of Shakespeare's works, representing over a century of meticulous textual scholarship. First begun in 1871 by Horace Howard Furness, this monumental project aimed to collect and synthesize centuries of Shakespeare commentary, textual variants, and critical interpretations into definitive scholarly editions.</p>
                     
-                    <p>Founded by Horace Howard Furness in the late 19th century, the New Variorum series represents the most thorough compilation of Shakespearean scholarship ever assembled. Each play includes:</p>
+                    <p>Furness devoted the rest of his life to this project, personally completing 18 volumes between 1871 and his death in 1912. His first volume, Romeo and Juliet, appeared in 1871, followed by Macbeth (1873), Hamlet (two volumes, 1877), King Lear (1880), and others through The Tempest (1892) and Twelfth Night (1901). His son, Horace Howard Furness Jr., continued the work, and after 1936, the Modern Language Association took over the project, continuing to publish new volumes into the 21st century—though the complete works remain unfinished, testament to the sheer scope of the undertaking.</p>
                     
-                    <ul>
-                        <li>Complete text with detailed textual notes</li>
-                        <li>Comprehensive critical commentary from centuries of scholarship</li>
-                        <li>Historical context and performance history</li>
-                        <li>Source materials and influences</li>
-                        <li>Extensive bibliography of scholarly works</li>
-                    </ul>
+                    <p>Each New Variorum volume is essentially a massive scholarly apparatus that surrounds Shakespeare's text. For any given line or word, it presents textual variants from different early editions, editorial commentary spanning from the 18th century through modern scholarship, glosses of difficult passages, critical interpretations, performance history, and source materials Shakespeare drew upon.</p>
                     
-                    <p>The New Variorum editions are essential resources for serious Shakespearean study, providing access to the full range of critical interpretation and scholarly debate that has surrounded Shakespeare's works for over four centuries.</p>
+                    <h4><strong>Revolutionary Digital Access</strong></h4>
+                    
+                    <p>What we've accomplished here is groundbreaking: we've taken these massive, dense scholarly volumes—traditionally accessible only in research libraries and often intimidating even to scholars—and made them instantly accessible at the click of a button. Through advanced RAG (Retrieval-Augmented Generation) technology, we've digitized and indexed the entire New Variorum commentary corpus, creating something that has never existed before: instant, contextual access to centuries of Shakespeare scholarship.</p>
+                    
+                    <p>When you click on any line or word, you're not just getting a random note—our system intelligently retrieves the exact relevant commentary from the New Variorum editions. This means that obscure phrase that's puzzled you? There's probably a 19th-century scholar who spent years thinking about it. That textual crux you're wondering about? You can instantly see how editors from 1733 to today have tried to solve it.</p>
+                    
+                    <p>This is the first time anyone has been able to experience Shakespeare with this level of scholarly depth at their fingertips. We've transformed what used to require hours of library research into an immediate, interactive experience. You're not just reading Shakespeare—you're joining a 300-year conversation about every single word, with the greatest Shakespeare scholars in history as your guides, all powered by cutting-edge AI technology that brings their insights directly to you.</p>
                 </div>
             </div>
         </div>
@@ -3003,7 +3003,7 @@
                         Who are the New Variorum Critics?
                 </button>
                 <button class="btn btn-info" onclick="openNVModal()" style="width: 100%;">
-                        What is the New Variorum Shakespeare?
+                        What's New Variorum?
                 </button>
             </div>
             
@@ -3168,6 +3168,24 @@
         function selectLine(element, text, lineIndex) {
             console.log('Selecting line:', lineIndex, 'Text:', text);
             
+            // Determine the current scene from the context where the text was selected
+            // Look for scene information in the DOM or use the currently loaded scene
+            const sceneContainer = element.closest('.scene-content') || element.closest('[data-scene]');
+            if (sceneContainer && sceneContainer.getAttribute('data-scene')) {
+                currentScene = sceneContainer.getAttribute('data-scene');
+                console.log('🎭 Updated currentScene from DOM context:', currentScene);
+            } else {
+                // Fallback: try to determine scene from the current loaded content
+                const readerElement = document.getElementById('reader');
+                if (readerElement) {
+                    const sceneTitle = readerElement.querySelector('.scene-title');
+                    if (sceneTitle) {
+                        currentScene = sceneTitle.textContent.trim();
+                        console.log('🎭 Updated currentScene from scene title:', currentScene);
+                    }
+                }
+            }
+            
             // Clear all previous selections
                 document.querySelectorAll('.play-line').forEach(line => {
                     line.classList.remove('selected', 'range-selected');
@@ -3239,6 +3257,7 @@
                 firstSelectedLine = null;
             
             console.log('✅ Line selected:', selectedLines);
+            console.log('🎭 Current scene after selection:', currentScene);
             updateAnalysisPanel();
         }
         
@@ -4740,7 +4759,7 @@
             
             // Display scene content
             const playText = document.getElementById('playText');
-            const formattedContent = formatSceneContent(sceneContent);
+            const formattedContent = formatSceneContent(sceneContent, sceneName);
             
             // Extract act and scene names for better display
             let displayTitle = sceneName;
@@ -4764,7 +4783,7 @@
         }
 
         // Simple format scene content - display exactly as uploaded
-        function formatSceneContent(sceneContent) {
+        function formatSceneContent(sceneContent, sceneName) {
             if (!sceneContent || sceneContent.length === 0) {
                 return '<p><em>No content found for this scene.</em></p>';
             }
@@ -4772,7 +4791,7 @@
             let html = '';
             let currentSpeaker = '';
             
-            console.log('formatSceneContent called with', sceneContent.length, 'lines');
+            console.log('formatSceneContent called with', sceneContent.length, 'lines for scene:', sceneName);
             
             // Display each line exactly as it appears in the file, preserving whitespace
             sceneContent.forEach((line, index) => {
@@ -4807,7 +4826,8 @@
             });
             
             console.log('formatSceneContent completed, currentSpeaker:', currentSpeaker);
-            return html;
+            // Wrap the content in a container with the scene data attribute
+            return `<div class="scene-content" data-scene="${sceneName}">${html}</div>`;
         }
         
 
@@ -5861,7 +5881,7 @@
                     if (sectionName === 'New Variorum Analysis') {
                         formattedContent += '<div class="critics-button-container" style="margin-top: 10px; margin-bottom: 15px;">';
                         formattedContent += '<button class="btn btn-secondary" onclick="openCriticsModal()" style="width: 100%; margin-bottom: 10px;">Who are the New Variorum Critics?</button>';
-                        formattedContent += '<button class="btn btn-info" onclick="openNVModal()" style="width: 100%;">What is the New Variorum Shakespeare?</button>';
+                        formattedContent += '<button class="btn btn-info" onclick="openNVModal()" style="width: 100%;">What's New Variorum?</button>';
                         formattedContent += '</div>';
                         
                     }
@@ -5881,7 +5901,7 @@
                 formattedContent += '<h4>New Variorum Analysis</h4>';
                 formattedContent += '<div class="critics-button-container" style="margin-top: 10px; margin-bottom: 15px;">';
                 formattedContent += '<button class="btn btn-secondary" onclick="openCriticsModal()" style="width: 100%; margin-bottom: 10px;">📚 Who are the New Variorum Critics?</button>';
-                formattedContent += '<button class="btn btn-info" onclick="openNVModal()" style="width: 100%;">ℹ️ What is the New Variorum Shakespeare?</button>';
+                formattedContent += '<button class="btn btn-info" onclick="openNVModal()" style="width: 100%;">ℹ️ What's New Variorum?</button>';
                 formattedContent += '</div>';
                 formattedContent += '<div class="variorum-notes">';
                 
@@ -6971,7 +6991,7 @@
                     </div>
                     
                     <div class="critics-separator" style="margin: 30px 0; padding: 20px 0; border-top: 2px solid #e5e7eb; border-bottom: 2px solid #e5e7eb;">
-                        <h4 style="text-align: center; color: #666; font-weight: 600;">Complete List of New Variorum Critics & Authorities</h4>
+                        <h4 style="text-align: center; color: #666; font-weight: 600;">Complete List of New Variorum Critics & Authorities for Macbeth</h4>
                     </div>
                     
                     <div class="critics-list" style="max-height: 400px; overflow-y: auto; background: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb;">
