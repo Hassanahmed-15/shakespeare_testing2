@@ -6053,7 +6053,9 @@
                         
                     }
                     
-                    formattedContent += `<div class="section-content">${sectionContent}</div>`;
+                    // Apply the same formatting as other modes
+                    const processedContent = processContentForFormatting(sectionContent);
+                    formattedContent += `<div class="section-content">${processedContent}</div>`;
                     formattedContent += '</div>';
                 }
             }
