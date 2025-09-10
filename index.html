@@ -6693,7 +6693,10 @@
             processed = processed.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
             
             // Convert single asterisks to italics (for emphasis) - more aggressive
+            console.log('🔍 DEBUG: Before asterisk conversion:', processed.includes('*'));
             processed = processed.replace(/\*([^*]+?)\*/g, '<em>$1</em>');
+            console.log('🔍 DEBUG: After asterisk conversion:', processed.includes('*'));
+            console.log('🔍 DEBUG: Sample processed content:', processed.substring(0, 200));
             
             // Convert shorthand to proper academic language
             processed = processed.replace(/\bvs\.\b/gi, 'versus');

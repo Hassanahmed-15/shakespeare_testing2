@@ -761,7 +761,16 @@ IMPORTANT: The notes above are the COMPLETE notes from the database. You MUST in
     let response = completion.choices[0].message.content
 
     // Convert asterisks to proper HTML italics
-    response = response.replace(/\*([^*]+)\*/g, '<em>$1</em>')
+    console.log('🔍 DEBUG: Original response contains asterisks:', response.includes('*'))
+    console.log('🔍 DEBUG: Sample of original response:', response.substring(0, 200))
+    
+    // Try multiple patterns to catch all asterisk cases
+    response = response.replace(/\*([^*]+)\*/g, '<em>$1</em>')  // *text*
+    response = response.replace(/\*([^*\n]+)\*/g, '<em>$1</em>')  // *text* with newlines
+    response = response.replace(/\*([^*\s]+)\*/g, '<em>$1</em>')  // *text* with spaces
+    
+    console.log('🔍 DEBUG: After conversion contains asterisks:', response.includes('*'))
+    console.log('🔍 DEBUG: Sample of converted response:', response.substring(0, 200))
 
     // Parse the response into structured sections
     let analysis = {}
@@ -804,7 +813,12 @@ IMPORTANT: The notes above are the COMPLETE notes from the database. You MUST in
     // Convert asterisks to italics in all sections
     for (const section in analysis) {
       if (analysis[section]) {
-        analysis[section] = analysis[section].replace(/\*([^*]+)\*/g, '<em>$1</em>')
+        console.log(`🔍 DEBUG: Section "${section}" before conversion contains asterisks:`, analysis[section].includes('*'))
+        // Try multiple patterns to catch all asterisk cases
+        analysis[section] = analysis[section].replace(/\*([^*]+)\*/g, '<em>$1</em>')  // *text*
+        analysis[section] = analysis[section].replace(/\*([^*\n]+)\*/g, '<em>$1</em>')  // *text* with newlines
+        analysis[section] = analysis[section].replace(/\*([^*\s]+)\*/g, '<em>$1</em>')  // *text* with spaces
+        console.log(`🔍 DEBUG: Section "${section}" after conversion contains asterisks:`, analysis[section].includes('*'))
       }
     }
 
