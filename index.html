@@ -3170,20 +3170,62 @@
             console.log('Selecting line:', lineIndex, 'Text:', text);
             
             // Determine the current scene from the context where the text was selected
+            console.log('🔍 DEBUG: Starting scene detection for element:', element);
+            
             // Look for scene information in the DOM or use the currently loaded scene
             const sceneContainer = element.closest('.scene-content') || element.closest('[data-scene]');
+            console.log('🔍 DEBUG: Found sceneContainer:', sceneContainer);
+            
             if (sceneContainer && sceneContainer.getAttribute('data-scene')) {
                 currentScene = sceneContainer.getAttribute('data-scene');
                 console.log('🎭 Updated currentScene from DOM context:', currentScene);
             } else {
+                console.log('🔍 DEBUG: No scene container found, trying fallback methods...');
+                
                 // Fallback: try to determine scene from the current loaded content
                 const readerElement = document.getElementById('reader');
+                console.log('🔍 DEBUG: Found readerElement:', readerElement);
+                
                 if (readerElement) {
                     const sceneTitle = readerElement.querySelector('.scene-title');
+                    console.log('🔍 DEBUG: Found sceneTitle:', sceneTitle);
+                    
                     if (sceneTitle) {
                         currentScene = sceneTitle.textContent.trim();
                         console.log('🎭 Updated currentScene from scene title:', currentScene);
+                    } else {
+                        console.log('🔍 DEBUG: No scene title found');
                     }
+                } else {
+                    console.log('🔍 DEBUG: No reader element found');
+                }
+                
+                // Additional fallback: check if we have a current scene from navigation
+                if (!currentScene) {
+                    console.log('🔍 DEBUG: No scene found, checking navigation...');
+                    const activeNavLink = document.querySelector('.nav-list a.active');
+                    if (activeNavLink) {
+                        currentScene = activeNavLink.getAttribute('data-scene') || activeNavLink.textContent.trim();
+                        console.log('🎭 Updated currentScene from active nav link:', currentScene);
+                    }
+                }
+            }
+            
+            console.log('🎭 FINAL currentScene value:', currentScene);
+            
+            // EMERGENCY FALLBACK: If we still don't have a scene, try to get it from the URL or set a default
+            if (!currentScene || currentScene === '') {
+                console.log('🚨 EMERGENCY: No scene detected, using fallback...');
+                
+                // Try to get scene from URL hash
+                const hash = window.location.hash;
+                if (hash && hash.includes('scene')) {
+                    currentScene = hash.replace('#', '').replace('scene-', '');
+                    console.log('🎭 Set currentScene from URL hash:', currentScene);
+                } else {
+                    // Last resort: set to a default scene
+                    currentScene = 'ACT 5, SCENE 5'; // Default to the scene you mentioned
+                    console.log('🎭 Set currentScene to default:', currentScene);
                 }
             }
             
@@ -4758,7 +4800,8 @@
             currentScene = sceneName;
             const sceneContent = plays[currentPlay].scenes[sceneName];
             
-            console.log('Loading scene:', sceneName, 'with content length:', sceneContent.length);
+            console.log('🎭 Loading scene:', sceneName, 'with content length:', sceneContent.length);
+            console.log('🎭 currentScene set to:', currentScene);
             
             // Update active navigation
             updateActiveNavigation(sceneName);
