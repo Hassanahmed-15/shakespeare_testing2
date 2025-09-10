@@ -3370,7 +3370,8 @@
                     "First Witch: In thunder, lightning, or in rain?",
                     "Second Witch: When the hurlyburly's done,"
                 ];
-                currentScene = "ACT 1, SCENE 1";
+                // Don't override currentScene in test - use actual scene
+                console.log('🎭 Using actual currentScene for test:', currentScene);
                 updateAnalysisPanel();
             }
             
@@ -3386,7 +3387,8 @@
                 "First Witch: In thunder, lightning, or in rain?",
                 "Second Witch: When the hurlyburly's done,"
             ];
-            currentScene = "ACT 1, SCENE 1";
+            // Don't override currentScene - use actual scene
+            console.log('🎭 Using actual currentScene for Full Fathom Five test:', currentScene);
             currentTab = 'fullfathomfive';
             
             // Update UI
@@ -3418,7 +3420,8 @@
                 "First Witch: In thunder, lightning, or in rain?",
                 "Second Witch: When the hurlyburly's done,"
             ];
-            currentScene = "ACT 1, SCENE 1";
+            // Don't override currentScene - use actual scene
+            console.log('🎭 Using actual currentScene for all modes test:', currentScene);
             
             // Test Basic mode
             console.log('📚 Testing Basic mode...');
@@ -3459,7 +3462,8 @@
                 "First Witch: In thunder, lightning, or in rain?",
                 "Second Witch: When the hurlyburly's done,"
             ];
-            currentScene = "ACT 1, SCENE 1";
+            // Don't override currentScene - use actual scene
+            console.log('🎭 Using actual currentScene for test:', currentScene);
             currentTab = 'fullfathomfive';
             
             // Update UI
@@ -3573,7 +3577,8 @@
             
             // Set up test data
             selectedLines = ["First Witch: In thunder, lightning, or in rain?"];
-            currentScene = "ACT 1, SCENE 1";
+            // Don't override currentScene - use actual scene
+            console.log('🎭 Using actual currentScene for force show test:', currentScene);
             currentTab = 'fullfathomfive';
             
             // Force show the variorum section
