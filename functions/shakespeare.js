@@ -83,11 +83,13 @@ async function findRelevantNotes(text, scene = null, playName = 'macbeth') {
     
     const normalizedKey = normalizePlayKey(playName)
     const fileName = playFiles[normalizedKey] || playFiles['macbeth'];
+    // Ensure filenames with spaces/parentheses are URL-encoded
+    const encodedFileName = encodeURIComponent(fileName)
     const possibleUrls = [
-      `${baseUrl}/Public/Data/${fileName}?v=${timestamp}`,
-      `${baseUrl}/${fileName}?v=${timestamp}`,
-      `https://raw.githubusercontent.com/Hassanahmed-15/Shakespeare-Variorum/main/Public/Data/${fileName}`,
-      `https://raw.githubusercontent.com/Hassanahmed-15/Shakespeare-Variorum/main/${fileName}`
+      `${baseUrl}/Public/Data/${encodedFileName}?v=${timestamp}`,
+      `${baseUrl}/${encodedFileName}?v=${timestamp}`,
+      `https://raw.githubusercontent.com/Hassanahmed-15/Shakespeare-Variorum/main/Public/Data/${encodedFileName}`,
+      `https://raw.githubusercontent.com/Hassanahmed-15/Shakespeare-Variorum/main/${encodedFileName}`
     ];
     
     for (const url of possibleUrls) {
