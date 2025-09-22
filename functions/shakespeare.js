@@ -51,20 +51,31 @@ function getFallbackNotes(text) {
   return []
 }
 
-// Function to find relevant notes from Macbeth database
-async function findRelevantNotes(text, scene = null) {
+// Function to find relevant notes from play database
+async function findRelevantNotes(text, scene = null, playName = 'macbeth') {
   try {
-    console.log('Loading Macbeth notes from URL (serverless environment)')
+    console.log(`Loading ${playName} notes from URL (serverless environment)`)
     console.log('Input text:', text)
     
     let notesData = null;
     const baseUrl = process.env.URL || 'https://shakespeare-variorum.netlify.app';
     const timestamp = Date.now();
+    
+    // Map play names to their JSON files
+    const playFiles = {
+      'macbeth': 'macbeth_notes_cleaned_play.json',
+      'hamlet': 'hamlet_notes (1).json',
+      'romeo': 'ROMEO_notes.json',
+      'othello': 'othello_notes.json',
+      'kinglear': 'kinglear_notes.json'
+    };
+    
+    const fileName = playFiles[playName.toLowerCase()] || playFiles['macbeth'];
     const possibleUrls = [
-      `${baseUrl}/Public/Data/macbeth_notes_cleaned_play.json?v=${timestamp}`,
-      `${baseUrl}/macbeth_notes_cleaned_play.json?v=${timestamp}`,
-      'https://raw.githubusercontent.com/Hassanahmed-15/Shakespeare-Variorum/main/Public/Data/macbeth_notes_cleaned_play.json',
-      'https://raw.githubusercontent.com/Hassanahmed-15/Shakespeare-Variorum/main/macbeth_notes_cleaned_play.json'
+      `${baseUrl}/Public/Data/${fileName}?v=${timestamp}`,
+      `${baseUrl}/${fileName}?v=${timestamp}`,
+      `https://raw.githubusercontent.com/Hassanahmed-15/Shakespeare-Variorum/main/Public/Data/${fileName}`,
+      `https://raw.githubusercontent.com/Hassanahmed-15/Shakespeare-Variorum/main/${fileName}`
     ];
     
     for (const url of possibleUrls) {
@@ -86,7 +97,7 @@ async function findRelevantNotes(text, scene = null) {
           console.log(`Response size: ${fileContent.length} characters`);
           
           notesData = JSON.parse(fileContent);
-          console.log(`✅ Successfully loaded Macbeth notes from: ${url}`);
+          console.log(`✅ Successfully loaded ${playName} notes from: ${url}`);
           console.log(`📊 Database contains ${Object.keys(notesData).length} scenes`);
           
           // Check if this is the updated version by looking for a specific line
@@ -111,15 +122,15 @@ async function findRelevantNotes(text, scene = null) {
     }
     
     if (!notesData) {
-      console.error('❌ Could not load macbeth_notes_cleaned_play.json from any URL');
+      console.error(`❌ Could not load ${fileName} from any URL`);
       return getFallbackNotes(text);
     }
     
-    console.log('✅ Successfully loaded Macbeth database with', Object.keys(notesData).length, 'scenes')
+    console.log(`✅ Successfully loaded ${playName} database with`, Object.keys(notesData).length, 'scenes')
     return processNotesWithData(notesData, text)
     
   } catch (error) {
-    console.error('Error loading Macbeth notes:', error)
+    console.error(`Error loading ${playName} notes:`, error)
     console.error('Error stack:', error.stack)
     console.log('Using fallback notes for:', text)
     return getFallbackNotes(text)
@@ -531,13 +542,14 @@ exports.handler = async (event, context) => {
     const lines = text.split('\n').filter(line => line.trim().length > 0)
     const isMultipleLines = lines.length >= 2 && lines.length <= 5
 
-    // Find relevant notes from Macbeth database (only for fullfathomfive level)
+    // Find relevant notes from play database (only for fullfathomfive level)
     let relevantNotes = []
     if (analysisMode === 'fullfathomfive') {
       try {
-        console.log('Attempting to load Macbeth notes for fullfathomfive level...')
-        relevantNotes = await findRelevantNotes(text)
-        console.log('Macbeth notes loaded:', relevantNotes.length, 'notes found')
+        const currentPlayName = event.body.playName || 'Macbeth'
+        console.log(`Attempting to load ${currentPlayName} notes for fullfathomfive level...`)
+        relevantNotes = await findRelevantNotes(text, null, currentPlayName)
+        console.log(`${currentPlayName} notes loaded:`, relevantNotes.length, 'notes found')
         if (relevantNotes.length > 0) {
           console.log('Notes details:', relevantNotes.map(note => ({
             line: note.line,
@@ -547,7 +559,7 @@ exports.handler = async (event, context) => {
           })))
         }
       } catch (error) {
-        console.error('Failed to load Macbeth notes, continuing without them:', error.message)
+        console.error(`Failed to load ${currentPlayName} notes, continuing without them:`, error.message)
         console.error('Error stack:', error.stack)
         relevantNotes = [] // Continue without notes if loading fails
       }
@@ -658,9 +670,9 @@ For this section, use the historical variorum notes provided below.
 - IMPORTANT: Copy the notes exactly as provided, word for word, without any changes.
 - CRITICAL: Include the complete, unabridged text of every note, no matter how long.`
        
-      // Add Macbeth notes if available (for fullfathomfive level)
+      // Add play notes if available (for fullfathomfive level)
       if (relevantNotes.length > 0) {
-        systemPrompt += `\n\nIMPORTANT: You have access to historical variorum notes from the Macbeth database. Here are the relevant notes found:`
+        systemPrompt += `\n\nIMPORTANT: You have access to historical variorum notes from the ${currentPlayName} database. Here are the relevant notes found:`
         
         relevantNotes.forEach((note, index) => {
           systemPrompt += `\n\n[Line ${note.line}] ${note.play}`
