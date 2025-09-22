@@ -49,6 +49,17 @@ function getFallbackNotes(text) {
 }
 
 // Function to find relevant notes from play database
+function normalizePlayKey(playNameRaw) {
+  if (!playNameRaw) return 'macbeth'
+  const s = String(playNameRaw).toLowerCase()
+  if (s.includes('hamlet')) return 'hamlet'
+  if (s.includes('romeo') || s.includes('juliet')) return 'romeo'
+  if (s.includes('othello')) return 'othello'
+  if (s.includes('lear')) return 'kinglear'
+  if (s.includes('macbeth')) return 'macbeth'
+  return 'macbeth'
+}
+
 async function findRelevantNotes(text, scene = null, playName = 'macbeth') {
   try {
     console.log(`Loading ${playName} notes from JSON file`)
@@ -64,7 +75,8 @@ async function findRelevantNotes(text, scene = null, playName = 'macbeth') {
       'kinglear': 'kinglear_notes.json'
     };
     
-    const fileName = playFiles[playName.toLowerCase()] || playFiles['macbeth'];
+    const normalizedKey = normalizePlayKey(playName)
+    const fileName = playFiles[normalizedKey] || playFiles['macbeth'];
     const possiblePaths = [
       path.join(process.cwd(), `Public/Data/${fileName}`),
       path.join(process.cwd(), fileName),
