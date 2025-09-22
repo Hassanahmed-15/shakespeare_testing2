@@ -3891,14 +3891,23 @@
         // Create a normalized scene key for consistent storage
         function normalizeSceneKey(originalKey) {
             // Handle both "ACT 1, SCENE 1" and "ACT I, SCENE I" formats
-            const actMatch = originalKey.match(/^ACT\s+([IVX0-9]+),?\s*SCENE\s+([IVX0-9]+)/i);
-            if (actMatch) {
-                const actNumber = convertRomanToArabic(actMatch[1]);
-                const sceneNumber = convertRomanToArabic(actMatch[2]);
-                return `ACT ${actNumber}, SCENE ${sceneNumber}`;
-            }
-            // If no match, return as-is
-            return originalKey;
+            let normalized = originalKey;
+            
+            // Convert "ACT I" to "ACT 1", "ACT II" to "ACT 2", etc.
+            normalized = normalized.replace(/ACT\s+I(?!I|V|X)/g, 'ACT 1');
+            normalized = normalized.replace(/ACT\s+II/g, 'ACT 2');
+            normalized = normalized.replace(/ACT\s+III/g, 'ACT 3');
+            normalized = normalized.replace(/ACT\s+IV/g, 'ACT 4');
+            normalized = normalized.replace(/ACT\s+V(?!I)/g, 'ACT 5');
+            
+            // Convert "SCENE I" to "SCENE 1", "SCENE II" to "SCENE 2", etc.
+            normalized = normalized.replace(/SCENE\s+I(?!I|V|X)/g, 'SCENE 1');
+            normalized = normalized.replace(/SCENE\s+II/g, 'SCENE 2');
+            normalized = normalized.replace(/SCENE\s+III/g, 'SCENE 3');
+            normalized = normalized.replace(/SCENE\s+IV/g, 'SCENE 4');
+            normalized = normalized.replace(/SCENE\s+V(?!I)/g, 'SCENE 5');
+            
+            return normalized;
         }
         
         // Normalize scene display name
