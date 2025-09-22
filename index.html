@@ -2588,25 +2588,17 @@
             
             <div class="modal-body">
                 <div class="about">
-                    <h2>What's New Variorum?</h2>
+                    <p>The <a href="#" onclick="openNVModal(); return false;" style="color: #2563eb; text-decoration: underline;">New Variorum Shakespeare</a> editions have been the gold standard of Shakespearean scholarship for over a century, bringing together the most important critical commentary, textual analysis, and historical context in comprehensive annotated volumes. The Shakespeare Digital Variorum builds on this tradition, harnessing the power of artificial intelligence to make centuries of scholarly insight accessible to everyone, from high school students to veteran researchers.</p>
                     
-                    <p>The New Variorum Shakespeare is one of the most comprehensive scholarly editions of Shakespeare's works ever created. Begun in 1871 by Philadelphia lawyer Horace Howard Furness, this monumental project aimed to document every change that centuries of editors had made to Shakespeare's texts, along with everything editors and commentators had written about them—all in one place. The term "variorum" comes from the Latin editio cum notis variorum, meaning "an edition with the notes of various editors and commentators."</p>
+                    <p>Our platform integrates authoritative texts based on the Folger Shakespeare Library editions of each play, with commentary from major variorum editions, scholarly databases, and historical sources. We include references to film adaptations, stage productions, and cultural interpretations that show how Shakespeare's works have lived and evolved across different media and eras. Using advanced AI, we can instantly provide plain-language explanations of complex passages, trace the etymology of Early Modern English words as they appear in context, analyze prosodic patterns across scenes and plays, and illuminate the historical events and cultural forces that shaped each work.</p>
                     
-                    <p>Furness devoted the rest of his life to this herculean task, personally completing 18 volumes between 1871 and his death in 1912. His first volume, Romeo and Juliet, appeared in 1871, followed by Macbeth (1873), Hamlet (two volumes, 1877), King Lear (1880), and others through The Tempest (1892) and Twelfth Night (1901). His son, Horace Howard Furness Jr., continued the work, and after 1936, the Modern Language Association took over the project.</p>
+                    <p>The goal is radical accessibility. Whether you're encountering Hamlet's soliloquies for the first time or you're a seasoned scholar investigating textual variants, the Shakespeare Digital Variorum meets you where you are. Students can receive immediate clarification of archaic language and historical references. Researchers can discover thematic connections across the complete canon. Theater practitioners can access centuries of performance history, from Garrick to Branagh to contemporary productions worldwide.</p>
                     
-                    <p>Each Furness variorum volume is a massive scholarly apparatus surrounding Shakespeare's text. For any given line or word, it presents textual variants from different early editions, editorial commentary spanning from the 18th century through the early 20th century, glosses of difficult passages, critical interpretations showing how different scholars understood disputed passages, performance history, and source materials Shakespeare drew upon.</p>
+                    <p>We believe Shakespeare belongs to everyone, not just academics. By connecting scholarly commentary with film clips, performance videos, and multimedia resources, we show how these 400-year-old plays continue to speak to modern audiences. A teenager reading Romeo and Juliet can instantly see how Baz Luhrmann reimagined the balcony scene, while a graduate student can access the full textual apparatus from multiple critical editions.</p>
                     
-                    <h3>The Digital Revolution</h3>
+                    <p>This isn't about replacing human scholarship but about democratizing it. Every AI-generated insight is grounded in the work of generations of Shakespeare scholars, from the earliest editors to contemporary critics. We've simply made it possible for anyone to access that collective wisdom instantly, searchably, and in conversation with the texts themselves.</p>
                     
-                    <p>This website gives you unprecedented access to the original Furness variorum editions—those dense, massive volumes that were traditionally found only in research libraries and could weigh up to 30 pounds each. Through advanced RAG (Retrieval-Augmented Generation) technology, we've digitized and indexed Furness's extraordinary achievement, making centuries of accumulated Shakespeare scholarship instantly accessible at the click of a button.</p>
-                    
-                    <p>When you click on any line or word, our system intelligently retrieves the exact relevant commentary from these historic Furness volumes. That obscure phrase that's puzzled you? There's probably a Victorian scholar who spent years thinking about it. That textual crux you're wondering about? You can instantly see how editors from 1733 to 1912 tried to solve it.</p>
-                    
-                    <h3>A Note on the Modern New Variorum Project</h3>
-                    
-                    <p>While our website focuses on the original Furness editions with their unparalleled historical depth, there is exciting new work happening in variorum scholarship. Since 2019, Texas A&M University, in partnership with the Modern Language Association, has been creating entirely new digital variorum editions that update and expand Furness's work for the 21st century. These new editions, which incorporate modern scholarship and cutting-edge digital tools, are available at newvariorumshakespeare.org. However, the commentary you're accessing here comes exclusively from the original Furness volumes—giving you direct access to the foundational scholarship that has shaped how we understand Shakespeare for over a century.</p>
-                    
-                    <p>What we've accomplished is transforming Furness's life's work into an immediate, interactive experience. You're not just reading Shakespeare—you're joining a centuries-long conversation about every single word, with the greatest Shakespeare scholars in history as your guides, all powered by cutting-edge AI technology that brings their insights directly to you.</p>
+                    <p>The Shakespeare Digital Variorum represents the next evolution of the variorum tradition: comprehensive, scholarly, and designed for universal access. Shakespeare's world is vast, and now everyone can explore all of it.</p>
                     
                     <p><em>Created by Jack David Carson, Massachusetts Institute of Technology • 2025</em></p>
 
@@ -2638,6 +2630,60 @@
 
                     <h2>Contact & License</h2>
                     <p>Issues or corrections: <a href="mailto:jack@example.com">email</a>. License: CC BY-NC-SA 4.0 - Free to use for non-commercial, educational purposes with attribution.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- New Variorum Modal -->
+    <div id="nvModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title" id="nv-modal-title">What's New Variorum?</div>
+                <button class="modal-close" onclick="closeNVModal()">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="about">
+                    <p>The New Variorum Shakespeare is one of the most comprehensive scholarly editions of Shakespeare's works ever created. Begun in 1871 by Philadelphia lawyer Horace Howard Furness, this monumental project aimed to document every change that centuries of editors had made to Shakespeare's texts, along with everything editors and commentators had written about them—all in one place. The term "variorum" comes from the Latin editio cum notis variorum, meaning "an edition with the notes of various editors and commentators."</p>
+                    
+                    <p>Furness devoted the rest of his life to this herculean task, personally completing 18 volumes between 1871 and his death in 1912. His first volume, Romeo and Juliet, appeared in 1871, followed by Macbeth (1873), Hamlet (two volumes, 1877), King Lear (1880), and others through The Tempest (1892) and Twelfth Night (1901). His son, Horace Howard Furness Jr., continued the work, and after 1936, the Modern Language Association took over the project.</p>
+                    
+                    <p>Each Furness variorum volume is a massive scholarly apparatus surrounding Shakespeare's text. For any given line or word, it presents textual variants from different early editions, editorial commentary spanning from the 18th century through the early 20th century, glosses of difficult passages, critical interpretations showing how different scholars understood disputed passages, performance history, and source materials Shakespeare drew upon.</p>
+                    
+                    <h3>The Digital Revolution</h3>
+                    
+                    <p>This website gives you unprecedented access to the original Furness variorum editions—those dense, massive volumes that were traditionally found only in research libraries and could weigh up to 30 pounds each. Through advanced RAG (Retrieval-Augmented Generation) technology, we've digitized and indexed Furness's extraordinary achievement, making centuries of accumulated Shakespeare scholarship instantly accessible at the click of a button.</p>
+                    
+                    <p>When you click on any line or word, our system intelligently retrieves the exact relevant commentary from these historic Furness volumes. That obscure phrase that's puzzled you? There's probably a Victorian scholar who spent years thinking about it. That textual crux you're wondering about? You can instantly see how editors from 1733 to 1912 tried to solve it.</p>
+                    
+                    <h3>A Note on the Modern New Variorum Project</h3>
+                    
+                    <p>While our website focuses on the original Furness editions with their unparalleled historical depth, there is exciting new work happening in variorum scholarship. Since 2019, Texas A&M University, in partnership with the Modern Language Association, has been creating entirely new digital variorum editions that update and expand Furness's work for the 21st century. These new editions, which incorporate modern scholarship and cutting-edge digital tools, are available at newvariorumshakespeare.org. However, the commentary you're accessing here comes exclusively from the original Furness volumes—giving you direct access to the foundational scholarship that has shaped how we understand Shakespeare for over a century.</p>
+                    
+                    <p>What we've accomplished is transforming Furness's life's work into an immediate, interactive experience. You're not just reading Shakespeare—you're joining a centuries-long conversation about every single word, with the greatest Shakespeare scholars in history as your guides, all powered by cutting-edge AI technology that brings their insights directly to you.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Critics Modal -->
+    <div id="criticsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title" id="critics-modal-title">Who are the New Variorum Critics?</div>
+                <button class="modal-close" onclick="closeCriticsModal()">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="about">
+                    <p>The New Variorum editions draw on an extraordinary range of voices—from 18th-century pioneers who first attempted to restore Shakespeare's "corrupted" text, through Victorian scholars who brought scientific rigor to textual criticism, to early 20th-century critics who revolutionized our understanding of Shakespeare's language and stagecraft.</p>
+                    
+                    <p>When reading the New Variorum notes, you'll encounter a dizzying array of abbreviated names and cryptic references: "CAPELL," "THEOBALD," "MALONE," "SCHMIDT." These aren't just footnotes—they represent real people who dedicated their lives to understanding Shakespeare. Behind each abbreviation is a scholar with their own fascinating story: Alexander Pope, the great poet who produced one of the first "modern" Shakespeare editions (1725); Samuel Johnson, whose 1765 edition contained brilliant interpretive notes that are still quoted today; Edmond Malone, who pioneered the historical study of Shakespeare's texts in the late 18th century; or Alexander Schmidt, whose Shakespeare Lexicon (1874-75) remains indispensable for understanding Elizabethan word meanings.</p>
+                    
+                    <p>The Variorum's democratic approach means you'll find everyone from famous literary critics to obscure German philologists, from actor-managers sharing performance insights to amateur scholars who made single brilliant observations. Furness included them all, believing that truth about Shakespeare could come from anywhere.</p>
+                    
+                    <p>While we've expanded each citation in the notes themselves to include full names and publication years, the sheer number of critics cited can be overwhelming. This represents the true scope of the centuries-long conversation you're joining when you read these notes—a international community of readers all grappling with the endless complexities of Shakespeare's text.</p>
                 </div>
             </div>
         </div>
@@ -8075,6 +8121,95 @@
                 console.log('✅ Debug: Critics button container shown');
             } else {
                 console.log('❌ Debug: Critics button container not found');
+            }
+        }
+
+        // Modal functions
+        function openSettings() {
+            document.getElementById('settingsModal').style.display = 'block';
+            
+            // Hide any existing success/error messages when opening settings
+            const uploadSuccess = document.getElementById('uploadSuccess');
+            const uploadError = document.getElementById('uploadError');
+            if (uploadSuccess) uploadSuccess.style.display = 'none';
+            if (uploadError) uploadError.style.display = 'none';
+            
+            updateLibraryPlays(); // Refresh the library display
+        }
+
+        function closeSettings() {
+            const modal = document.getElementById('settingsModal');
+            if (modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        function openAbout() {
+            document.getElementById('aboutModal').style.display = 'block';
+        }
+
+        function closeAbout() {
+            document.getElementById('aboutModal').style.display = 'none';
+        }
+
+        function openHowToUse() {
+            document.getElementById('howToUseModal').style.display = 'block';
+        }
+
+        function closeHowToUse() {
+            document.getElementById('howToUseModal').style.display = 'none';
+        }
+
+        function openRights() {
+            document.getElementById('rightsModal').style.display = 'block';
+        }
+
+        function closeRights() {
+            document.getElementById('rightsModal').style.display = 'none';
+        }
+
+        function openCriticsModal() {
+            document.getElementById('criticsModal').style.display = 'block';
+        }
+
+        function closeCriticsModal() {
+            document.getElementById('criticsModal').style.display = 'none';
+        }
+
+        function openNVModal() {
+            document.getElementById('nvModal').style.display = 'block';
+        }
+
+        function closeNVModal() {
+            document.getElementById('nvModal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const settingsModal = document.getElementById('settingsModal');
+            const aboutModal = document.getElementById('aboutModal');
+            const howToUseModal = document.getElementById('howToUseModal');
+            const rightsModal = document.getElementById('rightsModal');
+            const criticsModal = document.getElementById('criticsModal');
+            const nvModal = document.getElementById('nvModal');
+            
+            if (event.target === settingsModal) {
+                closeSettings();
+            }
+            if (event.target === aboutModal) {
+                closeAbout();
+            }
+            if (event.target === howToUseModal) {
+                closeHowToUse();
+            }
+            if (event.target === rightsModal) {
+                closeRights();
+            }
+            if (event.target === criticsModal) {
+                closeCriticsModal();
+            }
+            if (event.target === nvModal) {
+                closeNVModal();
             }
         }
 
