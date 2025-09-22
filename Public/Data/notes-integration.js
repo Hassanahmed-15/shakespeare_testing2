@@ -9,20 +9,49 @@ class NotesIntegration {
         this.isLoaded = false;
     }
 
-    // Load the notes data from macbeth_notes.json
-    async loadNotes() {
+    // Load notes data for a specific play
+    // For Macbeth, we keep using the full expanded notes database at the project root.
+    // For the first 4 additional plays (Hamlet, Othello, King Lear, Romeo and Juliet),
+    // we load their corresponding notes JSON from Public/Data when available.
+    async loadNotesForPlay(playName) {
+        let notesPath = null;
+
+        const normalized = (playName || '').toLowerCase();
+        if (normalized === 'macbeth') {
+            notesPath = '/macbeth_notes_complete_expanded.json';
+        } else if (normalized === 'hamlet') {
+            notesPath = '/Public/Data/hamlet_notes.json';
+        } else if (normalized === 'othello') {
+            notesPath = '/Public/Data/othello_notes.json';
+        } else if (normalized === 'king lear') {
+            notesPath = '/Public/Data/kinglear_notes.json';
+        } else if (normalized === 'romeo and juliet') {
+            notesPath = '/Public/Data/ROMEO_notes.json';
+        }
+
+        if (!notesPath) {
+            // No notes configured for this play; clear any previous notes
+            this.notesData = null;
+            this.isLoaded = false;
+            return false;
+        }
+
         try {
-            const response = await fetch('/macbeth_notes_complete_expanded.json');
+            const response = await fetch(notesPath);
             if (!response.ok) {
-                console.warn('Could not load macbeth_notes_complete_expanded.json');
+                console.warn('Could not load notes file:', notesPath);
+                this.notesData = null;
+                this.isLoaded = false;
                 return false;
             }
             this.notesData = await response.json();
             this.isLoaded = true;
-            console.log('Notes data loaded successfully');
+            console.log('Notes data loaded successfully for', playName);
             return true;
         } catch (error) {
-            console.error('Error loading notes:', error);
+            console.error('Error loading notes for', playName, error);
+            this.notesData = null;
+            this.isLoaded = false;
             return false;
         }
     }

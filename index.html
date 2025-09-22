@@ -1,20 +1,19 @@
-<!DOCTYPE html>
+ud <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-age=0">
-    <meta http-equiv="Pragma" content="no-cache">dd .ush
-    
+    <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <meta http-equiv="Last-Modified" content="0">
     <meta http-equiv="ETag" content="0">
     <title>Shakespeare Digital Variorum</title>
     <link rel="stylesheet" href="styles/tokens.css?v=1.3">
     <style>
-        /* Critics button - shown by default */
+        /* Critics button - controlled by JavaScript */
         .critics-button-container {
-            display: block;
+            display: none;
         }
         
         * {
@@ -124,23 +123,6 @@
             color: var(--ink-1);
         }
 
-        .nav-text {
-            background: none;
-            border: none;
-            color: var(--ink-2);
-            cursor: pointer;
-            padding: 10px 16px;
-            border-radius: var(--r-sm);
-            font-size: 15px;
-            font-weight: 500;
-            font-family: var(--ui);
-        }
-
-        .nav-text:hover {
-            background: var(--panel);
-            color: var(--ink-1);
-        }
-
         .btn {
             border-radius: 12px;
             font-weight: 600;
@@ -160,40 +142,6 @@
         }
 
         .btn-primary:active {
-            transform: translateY(1px);
-            background: #1a1a1a;
-        }
-
-        .btn-secondary {
-            background: #000000;
-            color: #ffffff;
-            border: 1px solid #000000;
-            padding: 10px 14px;
-        }
-
-        .btn-secondary:hover {
-            background: #333333;
-            border-color: #333333;
-        }
-
-        .btn-secondary:active {
-            transform: translateY(1px);
-            background: #1a1a1a;
-        }
-
-        .btn-info {
-            background: #000000;
-            color: #ffffff;
-            border: 1px solid #000000;
-            padding: 10px 14px;
-        }
-
-        .btn-info:hover {
-            background: #333333;
-            border-color: #333333;
-        }
-
-        .btn-info:active {
             transform: translateY(1px);
             background: #1a1a1a;
         }
@@ -678,7 +626,7 @@
         }
 
         .play-name-section {
-            margin-top: 10px; margin-bottom: 15px;
+            margin-top: 15px;
             padding-top: 15px;
             border-top: 1px solid #e9ecef;
         }
@@ -826,7 +774,7 @@
             color: #000000;
             padding: 10px 15px;
             border-radius: 4px;
-            margin-top: 10px; margin-bottom: 15px;
+            margin-top: 15px;
             border: 1px solid #000000;
             display: none;
         }
@@ -836,7 +784,7 @@
             color: #721c24;
             padding: 10px 15px;
             border-radius: 4px;
-            margin-top: 10px; margin-bottom: 15px;
+            margin-top: 15px;
             border: 1px solid #f5c6cb;
             display: none;
         }
@@ -854,46 +802,6 @@
             margin-bottom: 25px;
             text-align: justify;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-        }
-
-        /* NV Info content styling - match About section formatting */
-        .nv-info {
-            line-height: 1.8;
-            color: #2d3748;
-            font-size: 1.05em;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-        }
-
-        .nv-info p {
-            margin-bottom: 25px;
-            text-align: justify;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-        }
-
-        .nv-info h4 {
-            font: 600 16px Inter, system-ui;
-            color: var(--ink-1);
-            margin: var(--s-4) 0 var(--s-2);
-        }
-
-        /* Critics Info content styling - match About section formatting */
-        .critics-info {
-            line-height: 1.8;
-            color: #2d3748;
-            font-size: 1.05em;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-        }
-
-        .critics-info p {
-            margin-bottom: 25px;
-            text-align: justify;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-        }
-
-        .critics-info h4 {
-            font: 600 16px Inter, system-ui;
-            color: var(--ink-1);
-            margin: var(--s-4) 0 var(--s-2);
         }
 
         .about-footer {
@@ -1289,7 +1197,7 @@
         }
         
         .bulk-rename-section {
-            margin-top: 10px; margin-bottom: 15px;
+            margin-top: 15px;
         }
         
         .bulk-rename-list {
@@ -2496,7 +2404,6 @@
     <div class="header">
         <h1>Shakespeare Digital Variorum</h1>
         <div class="header-nav">
-            <span class="nav-text" onclick="openHowToUse()">How To Use</span>
             <button class="nav-btn" onclick="openSettings()">Settings</button>
             <button class="nav-btn" onclick="openAbout()">About</button>
             <span class="instruction-text">Use your cursor to highlight text in the play for analysis.</span>
@@ -2635,361 +2542,6 @@
         </div>
     </div>
 
-    <!-- How To Use Modal -->
-    <div id="howToUseModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="modal-title">How To Use</div>
-                <button class="modal-close" onclick="closeHowToUse()">&times;</button>
-            </div>
-            
-            <div class="modal-body">
-                <div class="about">
-                    <p>To use this site, begin by clicking on any line of the play. Each line opens three levels of analysis:</p>
-                    
-                    <ul>
-                        <li><strong>Basic</strong> provides a plain-language paraphrase and a straightforward explanation of the text.</li>
-                        <li><strong>Expert</strong> offers a more detailed discussion.</li>
-                        <li><strong>Full Fathom Five</strong> expands further, including extensive commentary and the notes from the New Variorum editions published between the late 19th and early 20th centuries.</li>
-                    </ul>
-                    
-                    <p>Not every play has a New Variorum edition; only 18 volumes were completed before the project ended in the early 20th century. Nevertheless, the series is widely regarded as the gold standard of Shakespeare scholarship, compiling centuries of commentary and editorial insight from the 17th century onward. For the first time, this site makes the New Variorum materials available online, opening a vast body of critical tradition to readers outside the library stacks.</p>
-                    
-                    <p>Beyond the written annotations, the site also connects each line to its broader cultural life. Buttons alongside the text may bring up film scene drawn from YouTube's extensive catalog of Shakespeare production that dramatize the very line you have selected. Other buttons link to JSTOR articles and additional scholarly resources on the Internet, offering direct access to research that situates the passage in its academic and historical context.</p>
-                    
-                    <p>Taken together, these features transform each line into a gateway: to the play's language, its centuries of interpretation, and its continuing presence on stage and screen.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Critics Modal -->
-    <div id="criticsModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="modal-title" id="critics-modal-title">Who are the New Variorum Critics?</div>
-                <button class="modal-close" onclick="closeCriticsModal()">&times;</button>
-            </div>
-            
-            <div class="modal-body">
-                <div class="critics-info">
-                    <h4>Who are the New Variorum critics?</h4>
-                    <p>The New Variorum editions draw on an extraordinary range of voices—from 18th-century pioneers who first attempted to restore Shakespeare's "corrupted" text, through Victorian scholars who brought scientific rigor to textual criticism, to early 20th-century critics who revolutionized our understanding of Shakespeare's language and stagecraft.</p>
-                    
-                    <p>When reading the New Variorum notes, you'll encounter a dizzying array of abbreviated names and cryptic references: "CAPELL," "THEOBALD," "MALONE," "SCHMIDT." These aren't just footnotes—they represent real people who dedicated their lives to understanding Shakespeare. Behind each abbreviation is a scholar with their own fascinating story: Alexander Pope, the great poet who produced one of the first "modern" Shakespeare editions (1725); Samuel Johnson, whose 1765 edition contained brilliant interpretive notes that are still quoted today; Edmond Malone, who pioneered the historical study of Shakespeare's texts in the late 18th century; or Alexander Schmidt, whose Shakespeare Lexicon (1874-75) remains indispensable for understanding Elizabethan word meanings.</p>
-                    
-                    <p>The Variorum's democratic approach means you'll find everyone from famous literary critics to obscure German philologists, from actor-managers sharing performance insights to amateur scholars who made single brilliant observations. Furness included them all, believing that truth about Shakespeare could come from anywhere.</p>
-                    
-                    <p>While we've expanded each citation in the notes themselves to include full names and publication years, the sheer number of critics cited can be overwhelming. Below is the complete list of authorities referenced in this volume, drawn from the Variorum's own index. This list reveals the true scope of the centuries-long conversation you're joining when you read these notes—a international community of readers all grappling with the endless complexities of Shakespeare's text.</p>
-                </div>
-                
-                <div class="critics-separator" style="margin: 30px 0; padding: 20px 0; border-top: 2px solid #e5e7eb; border-bottom: 2px solid #e5e7eb;">
-                    <h4 style="text-align: center; color: #666; font-weight: 600;">Complete List of New Variorum Critics & Authorities for Macbeth</h4>
-                </div>
-                
-                <div class="critics-list" style="max-height: 400px; overflow-y: auto; background: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb;">
-                    <div style="font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6;">
-                        <p>"E. A. Abbott, Shakespearean Grammar, London, 1870"</p>
-                        <p>"Prof. Allen, MS notes on Macbeth, 1867"</p>
-                        <p>"Macbeth, Paris, 1889"</p>
-                        <p>"Variorum Edition of Macbeth, London, 1807"</p>
-                        <p>"Ethics of Macbeth (Dublin University Magazine, March), 1865"</p>
-                        <p>"Theatrical Register, York, 1788"</p>
-                        <p>"Macbeth on the Stage (English Illustrated Magazine, December), 1875"</p>
-                        <p>"W. R. Arrowsmith, Shakespeare's Editors and Commentators, London, 1865"</p>
-                        <p>"C. Badham, Text of Shakespeare (Cambridge Essays), 1856"</p>
-                        <p>"S. Bailey, The Received Text of Shakespeare, 1862"</p>
-                        <p>"J. Baret, An Alvearie, 1580"</p>
-                        <p>"C. Barhurst, Differences of Shakespeare's Versification, 1867"</p>
-                        <p>"T. S. Baynes, Shakespeare Studies and other Essays, 1872"</p>
-                        <p>"Works (ed. Dyce), 1843"</p>
-                        <p>"A. Becket, Shakespeare Himself Again, 1815"</p>
-                        <p>"S. Beisley, Shakespeare's Garden, 1864"</p>
-                        <p>"J. W. O. Benda, Shakespeare's Dramatische Werke, Leipzig, 1823"</p>
-                        <p>"W. J. Birch, Inquiry into the Philosophy and Religion of Shakespeare, London, 1848"</p>
-                        <p>"J. B. Bittinger, Transactions American Philological Association, 1876"</p>
-                        <p>"K. Blackwell, Shakespeare's Dramatische Werke, 1870"</p>
-                        <p>"H. Boas, Shakespeare and His Works, London, 1879"</p>
-                        <p>"G. Bohlen, Shakespeare's Dramatische Werke, London, 1853"</p>
-                        <p>"E. Booth, Macbeth, Prompt-book (ed. W. Winter), New York, 1887"</p>
-                        <p>"J. Boswell, Shakespeare's Dramatic Works, 1821"</p>
-                        <p>"J. Boydell, Shakespeare's Works, London, 1802"</p>
-                        <p>"A. C. Bradley, Shakespearean Tragedy, London, 1904"</p>
-                        <p>"J. Brady, Shakespeare's Plays, Dublin, 1779"</p>
-                        <p>"G. Brandes, William Shakespeare, London, 1898"</p>
-                        <p>"M. Breal, Shakespeare's Works, Paris, 1861"</p>
-                        <p>"E. von Brentano, Shakespeare's Dramatische Werke, Leipzig, 1846"</p>
-                        <p>"A. Brewer, Shakespeare's Dramatische Werke, London, 1836"</p>
-                        <p>"S. A. Brooke, Shakespeare's Life, London, 1894"</p>
-                        <p>"J. Brown, Shakespeare's Life, London, 1869"</p>
-                        <p>"R. Browning, Shakespeare's Life, London, 1840"</p>
-                        <p>"W. Bryce, Shakespeare's Life, London, 1872"</p>
-                        <p>"R. Buchanan, Shakespeare's Life, London, 1869"</p>
-                        <p>"G. Buchner, Shakespeare's Dramatische Werke, Leipzig, 1888"</p>
-                        <p>"J. C. Bucknill, Mad Folk of Shakespeare, London, 1860"</p>
-                        <p>"J. G. Bullock, Studies in the Text of Shakespeare, London, 1878"</p>
-                        <p>"H. S. Bungay, Shakespeare's Life, London, 1877"</p>
-                        <p>"A. Burdett-Coutts, Shakespeare's Life, London, 1864"</p>
-                        <p>"E. Burke, Shakespeare's Life, London, 1797"</p>
-                        <p>"H. Busch, Shakespeare's Life, Leipzig, 1878"</p>
-                        <p>"A. Buschmann, Shakespeare's Life, Leipzig, 1855"</p>
-                        <p>"S. Butler, Shakespeare's Life, London, 1868"</p>
-                        <p>"P. Calderon, Shakespeare's Life, Madrid, 1883"</p>
-                        <p>"C. Calvert, Shakespeare's Life, London, 1881"</p>
-                        <p>"E. Capell, Notes, 1779"</p>
-                        <p>"Earl of Carlisle, Shakespeare's Life, London, 1867"</p>
-                        <p>"P. Carnegy, Shakespeare's Life, London, 1887"</p>
-                        <p>"W. and R. Chambers, Shakespeare's Life, London, 1865"</p>
-                        <p>"J. B. Chatelain, Shakespeare's Life, Paris, 1851"</p>
-                        <p>"T. Chatterton, Shakespeare's Life, London, 1778"</p>
-                        <p>"W. G. Clark, Shakespeare's Life, Cambridge, 1863"</p>
-                        <p>"C. Cowden Clarke, The Shakespeare Key, London, 1879"</p>
-                        <p>"Clarendon Press Edition, Oxford, 1869"</p>
-                        <p>"E. W. Clemens, Shakespeare's Life, London, 1886"</p>
-                        <p>"J. P. Collier, Annals of the Stage, London, 1831"</p>
-                        <p>"J. P. Collier, Notes and Emendations, London, 1853"</p>
-                        <p>"J. Conrad, Shakespeare's Life, Stuttgart, 1885"</p>
-                        <p>"G. Conradi, Shakespeare's Life, Leipzig, 1866"</p>
-                        <p>"A. Cooper, Shakespeare's Life, London, 1827"</p>
-                        <p>"W. J. Courthope, Shakespeare's Life, London, 1879"</p>
-                        <p>"H. Craig, Shakespeare's Life, London, 1891"</p>
-                        <p>"G. L. Craik, English of Shakespeare, London, 1857"</p>
-                        <p>"G. Cunningham, Shakespeare's Life, London, 1855"</p>
-                        <p>"A. Cuthbert, Shakespeare's Life, London, 1866"</p>
-                        <p>"W. S. Dalgleish, Macbeth, London, 1869"</p>
-                        <p>"P. A. Daniel, Notes and Conjectural Emendations, 1870"</p>
-                        <p>"J. Darling, Shakespeare's Life, London, 1863"</p>
-                        <p>"A. Darmstetter, Macbeth, Paris, 1881"</p>
-                        <p>"W. D'Avenant, Macbeth, 1674"</p>
-                        <p>"T. Davies, Dramatic Miscellanies, London, 1784"</p>
-                        <p>"T. De Quincey, Macbeth, Edinburgh, 1859"</p>
-                        <p>"A. De Vere, Shakespeare's Life, London, 1879"</p>
-                        <p>"N. Delius, Macbeth, 1846"</p>
-                        <p>"Deutsches Theater, 1862"</p>
-                        <p>"E. Devrient, Shakespeare's Life, Weimar, 1854"</p>
-                        <p>"T. F. Dibdin, Shakespeare's Life, London, 1819"</p>
-                        <p>"T. Dilke, Shakespeare's Life, London, 1856"</p>
-                        <p>"T. S. Dixon, Shakespeare's Life, London, 1865"</p>
-                        <p>"W. Dodd, Shakespeare's Life, London, 1780"</p>
-                        <p>"J. Douglas, Shakespeare's Life, London, 1863"</p>
-                        <p>"E. Dowden, Shakespeare's Life, London, 1881"</p>
-                        <p>"N. Drake, Shakespeare and his Times, London, 1817"</p>
-                        <p>"J. Dryden, Shakespeare's Life, London, 1668"</p>
-                        <p>"M. A. Duff, Shakespeare's Life, London, 1876"</p>
-                        <p>"Earl of Dufferin, Shakespeare's Life, London, 1875"</p>
-                        <p>"C. Dupont, Shakespeare's Life, Paris, 1848"</p>
-                        <p>"A. Dyce, Remarks on Collier and Knight's Editions of Shakespeare, London, 1844"</p>
-                        <p>"A. Dyer, Shakespeare's Life, London, 1876"</p>
-                        <p>"T. Eaton, Shakespeare and the Bible, London, 1888"</p>
-                        <p>"T. Edwards, Canons of Criticism, London, 1765"</p>
-                        <p>"K. Elze, Shakespeare's Life, London, 1886"</p>
-                        <p>"R. W. Emerson, Shakespeare's Life, Boston, 1867"</p>
-                        <p>"J. Erdmann, Shakespeare's Life, Leipzig, 1872"</p>
-                        <p>"F. W. Fairholt, Shakespeare's Life, London, 1853"</p>
-                        <p>"K. Fischer, Shakespeare's Life, Stuttgart, 1866"</p>
-                        <p>"J. Fletcher, Shakespeare's Life, London, 1679"</p>
-                        <p>"F. G. Fleay, Shakespearean Manual, London, 1876"</p>
-                        <p>"J. Florio, A World of Words, London, 1598"</p>
-                        <p>"J. Forde, Works (ed. Gilford), 1848"</p>
-                        <p>"J. Forster, Some Notes on Shakespeare's Characters, 1864"</p>
-                        <p>"J. Fraser, Shakespeare's Life, London, 1868"</p>
-                        <p>"H. Franz, Shakespeare's Life, Berlin, 1867"</p>
-                        <p>"A. R. Frey, Shakespeare's Life, London, 1889"</p>
-                        <p>"O. Fritsch, Shakespeare's Life, London, 1866"</p>
-                        <p>"H. H. Furness, Shakespeare's Life, Philadelphia, 1871"</p>
-                        <p>"J. Gildon, Shakespeare's Life, London, 1710"</p>
-                        <p>"J. Glaser, Shakespeare's Life, Berlin, 1872"</p>
-                        <p>"J. W. Goethe, Shakespeare's Life, Weimar, 1827"</p>
-                        <p>"S. Baring-Gould, Shakespeare's Life, London, 1890"</p>
-                        <p>"A. Gray, Shakespeare's Life, London, 1871"</p>
-                        <p>"H. Green, Shakespeare's Life, London, 1864"</p>
-                        <p>"J. Greswell, Shakespeare's Life, London, 1868"</p>
-                        <p>"G. Grote, Shakespeare's Life, London, 1879"</p>
-                        <p>"F. P. G. Guizot, Shakespeare's Life, Paris, 1821"</p>
-                        <p>"J. O. Halliwell, The Folio Edition of Shakespeare, London, 1856"</p>
-                        <p>"J. O. Halliwell, A New Edition of Shakespeare's Works, London, 1886"</p>
-                        <p>"J. Harington, Shakespeare's Life, London, 1847"</p>
-                        <p>"J. Harris, Shakespeare's Life, London, 1878"</p>
-                        <p>"A. Hart, Shakespeare's Life, Dublin, 1881"</p>
-                        <p>"W. Harness, Shakespeare's Life, London, 1836"</p>
-                        <p>"J. Haynes, Shakespeare's Life, London, 1859"</p>
-                        <p>"W. Hazlitt, Characters of Shakespeare's Plays, London, 1817"</p>
-                        <p>"W. E. Henley, Shakespeare's Life, London, 1883"</p>
-                        <p>"J. Hennell, Shakespeare's Life, London, 1865"</p>
-                        <p>"H. Herbert, Shakespeare's Life, London, 1863"</p>
-                        <p>"G. Hilaire, Shakespeare's Life, Paris, 1849"</p>
-                        <p>"H. Hilberg, Shakespeare's Life, Leipzig, 1890"</p>
-                        <p>"J. Hilgenfeld, Shakespeare's Life, Leipzig, 1860"</p>
-                        <p>"W. Hildebrand, Shakespeare's Life, Berlin, 1864"</p>
-                        <p>"T. H. Holland, Shakespeare's Life, London, 1864"</p>
-                        <p>"J. Holliday, Shakespeare's Life, London, 1799"</p>
-                        <p>"J. Holmes, Shakespeare's Life, New York, 1870"</p>
-                        <p>"R. G. Honey, Macbeth, London, 1866"</p>
-                        <p>"H. N. Hudson, Shakespeare's Life, Boston, 1872"</p>
-                        <p>"V. Hugo, Shakespeare's Life, Paris, 1863"</p>
-                        <p>"J. Hunter, Shakespeare's Life, Edinburgh, 1817"</p>
-                        <p>"C. M. Ingleby, Shakespeare's Life, London, 1869"</p>
-                        <p>"H. B. Irving, Shakespeare's Life, London, 1883"</p>
-                        <p>"J. Jackson, Shakespeare's Life, London, 1846"</p>
-                        <p>"A. James, Shakespeare's Life, London, 1868"</p>
-                        <p>"H. Jenner, Shakespeare's Life, London, 1833"</p>
-                        <p>"J. Jereli, Shakespeare's Life, London, 1870"</p>
-                        <p>"J. Jolier, Shakespeare's Life, Paris, 1881"</p>
-                        <p>"J. Kalm, Shakespeare's Life, London, 1869"</p>
-                        <p>"H. F. Keary, Macbeth, London, 1866"</p>
-                        <p>"J. L. Kellogg, Shakespeare's Life, London, 1871"</p>
-                        <p>"J. Kindermann, Shakespeare's Life, Leipzig, 1856"</p>
-                        <p>"C. Knight, Shakespeare's Life, London, 1843"</p>
-                        <p>"A. Kruse, Shakespeare's Life, Berlin, 1894"</p>
-                        <p>"J. Kühling, Shakespeare's Life, Leipzig, 1886"</p>
-                        <p>"J. P. Köller, Shakespeare's Life, Stuttgart, 1866"</p>
-                        <p>"J. Kreyssig, Shakespeare's Life, London, 1869"</p>
-                        <p>"A. M. Kurth, Shakespeare's Life, Paris, 1851"</p>
-                        <p>"G. Lambert, Shakespeare's Life, London, 1845"</p>
-                        <p>"J. Lanchs, Shakespeare's Life, London, 1867"</p>
-                        <p>"A. Lang, Shakespeare's Life, London, 1869"</p>
-                        <p>"J. Laurent, Shakespeare's Life, London, 1846"</p>
-                        <p>"H. Lester, Shakespeare's Life, London, 1815"</p>
-                        <p>"G. H. Lewes, Shakespeare's Life, London, 1851"</p>
-                        <p>"G. Lillo, Shakespeare's Life, London, 1853"</p>
-                        <p>"J. Lindner, Shakespeare's Life, London, 1855"</p>
-                        <p>"H. Lister, Shakespeare's Life, London, 1845"</p>
-                        <p>"T. R. Lounsbury, Shakespeare's Life, New York, 1891"</p>
-                        <p>"J. R. Lowell, Shakespeare's Life, London, 1883"</p>
-                        <p>"J. Lubbock, Shakespeare's Life, London, 1879"</p>
-                        <p>"T. B. Macaulay, Shakespeare's Life, London, 1865"</p>
-                        <p>"G. MacDonald, Shakespeare's Life, London, 1866"</p>
-                        <p>"A. Mackintosh, Shakespeare's Life, London, 1888"</p>
-                        <p>"A. Macnaught, Shakespeare's Life, London, 1870"</p>
-                        <p>"H. Magnus, Shakespeare's Life, Leipzig, 1885"</p>
-                        <p>"C. Mair, Shakespeare's Life, London, 1867"</p>
-                        <p>"E. Malone, Shakespeare's Life, London, 1790"</p>
-                        <p>"T. Manning, Shakespeare's Life, London, 1866"</p>
-                        <p>"A. Menzel, Shakespeare's Life, London, 1870"</p>
-                        <p>"J. Michaud, Shakespeare's Life, Paris, 1855"</p>
-                        <p>"H. Milman, Shakespeare's Life, London, 1863"</p>
-                        <p>"J. Moser, Shakespeare's Life, London, 1866"</p>
-                        <p>"M. Muller, Shakespeare's Life, London, 1867"</p>
-                        <p>"T. Mundt, Shakespeare's Life, Munich, 1855"</p>
-                        <p>"R. Munich, Shakespeare's Life, London, 1867"</p>
-                        <p>"J. Murray, Shakespeare's Life, London, 1875"</p>
-                        <p>"H. Mutter, Shakespeare's Life, London, 1868"</p>
-                        <p>"G. Nash, Shakespeare's Life, London, 1877"</p>
-                        <p>"P. Nuttall, Shakespeare's Life, London, 1868"</p>
-                        <p>"J. Ogle, Shakespeare's Life, London, 1884"</p>
-                        <p>"R. O'Hanlon, Shakespeare's Life, Dublin, 1886"</p>
-                        <p>"C. Olin, Shakespeare's Life, London, 1867"</p>
-                        <p>"L. Oliphant, Shakespeare's Life, London, 1885"</p>
-                        <p>"J. Otto, Shakespeare's Life, London, 1866"</p>
-                        <p>"F. Palmer, Shakespeare's Life, London, 1866"</p>
-                        <p>"T. Park, Shakespeare's Life, London, 1865"</p>
-                        <p>"T. Pasco, Shakespeare's Life, London, 1870"</p>
-                        <p>"W. Paterson, Shakespeare's Life, London, 1866"</p>
-                        <p>"T. Patterson, Shakespeare's Life, Edinburgh, 1877"</p>
-                        <p>"J. Peers, Shakespeare's Life, London, 1870"</p>
-                        <p>"G. Phillimore, Shakespeare's Life, London, 1870"</p>
-                        <p>"A. Philippi, Shakespeare's Life, London, 1867"</p>
-                        <p>"J. Phillips, Shakespeare's Life, London, 1866"</p>
-                        <p>"R. Pritchard, Shakespeare's Life, London, 1869"</p>
-                        <p>"W. Rassmann, Shakespeare's Life, London, 1867"</p>
-                        <p>"I. Reed, Shakespeare's Life, London, 1803"</p>
-                        <p>"J. Ritson, Shakespeare's Life, London, 1795"</p>
-                        <p>"J. Rohlfs, Shakespeare's Life, London, 1886"</p>
-                        <p>"W. J. Rolfe, Shakespeare's Life, London, 1871"</p>
-                        <p>"G. Rümelin, Shakespeare's Life, Stuttgart, 1866"</p>
-                        <p>"W. Russell, Shakespeare's Life, London, 1899"</p>
-                        <p>"J. Sabine, Shakespeare's Life, London, 1859"</p>
-                        <p>"W. Sandys, Shakespeare's Life, London, 1859"</p>
-                        <p>"A. Schmidt, Shakespeare's Life, London, 1878"</p>
-                        <p>"H. Schwarz, Shakespeare's Life, London, 1867"</p>
-                        <p>"W. Seward, Shakespeare's Life, London, 1867"</p>
-                        <p>"E. H. Seymour, Shakespeare's Life, London, 1865"</p>
-                        <p>"S. W. Singer, Shakespeare's Life, London, 1826"</p>
-                        <p>"W. W. Skeat, Shakespeare's Life, London, 1870"</p>
-                        <p>"A. Skottowe, Shakespeare's Life, London, 1824"</p>
-                        <p>"J. D. Snedeker, Shakespeare's Life, St. Louis, 1877"</p>
-                        <p>"A. Spencer, Shakespeare's Life, London, 1856"</p>
-                        <p>"A. Stahr, Shakespeare's Life, London, 1871"</p>
-                        <p>"S. Stephens, Shakespeare's Life, London, 1845"</p>
-                        <p>"W. Stoker, Shakespeare's Life, London, 1873"</p>
-                        <p>"W. Stones, Shakespeare's Life, London, 1876"</p>
-                        <p>"H. Sturzen, Shakespeare's Life, London, 1878"</p>
-                        <p>"H. Taine, Shakespeare's Life, Paris, 1866"</p>
-                        <p>"H. Tausch, Shakespeare's Life, London, 1901"</p>
-                        <p>"C. Thirlwall, Shakespeare's Life, London, 1836"</p>
-                        <p>"W. J. Thoms, Shakespeare's Life, London, 1871"</p>
-                        <p>"J. Timms, Shakespeare's Life, London, 1877"</p>
-                        <p>"J. Tobin, Shakespeare's Life, London, 1856"</p>
-                        <p>"A. H. Tolman, Shakespeare's Life, London, 1877"</p>
-                        <p>"R. Travers, Shakespeare's Life, London, 1868"</p>
-                        <p>"E. Trebitsch, Shakespeare's Life, Halle, 1868"</p>
-                        <p>"H. Trebitschwitz, Shakespeare's Life, London, 1871"</p>
-                        <p>"E. Trelawny, Shakespeare's Life, London, 1866"</p>
-                        <p>"A. Trench, Shakespeare's Life, London, 1876"</p>
-                        <p>"A. Tyler, Shakespeare's Life, London, 1846"</p>
-                        <p>"J. Tyssen, Shakespeare's Life, London, 1846"</p>
-                        <p>"J. Upton, Shakespeare's Life, London, 1746"</p>
-                        <p>"A. F. Upjohn, Shakespeare's Life, London, 1899"</p>
-                        <p>"J. E. Urie, Shakespeare's Life, London, 1879"</p>
-                        <p>"B. A. P. Van Dam, Shakespeare's Life, Paris, 1889"</p>
-                        <p>"A. F. Veirer, Shakespeare's Life, Paris, 1849"</p>
-                        <p>"E. Villain, Shakespeare's Life, Stuttgart, 1846"</p>
-                        <p>"F. T. Vischer, Shakespeare's Life, London, 1900"</p>
-                        <p>"H. Voigt, Shakespeare's Life, Leipzig, 1874"</p>
-                        <p>"H. Von, Shakespeare's Life, London, 1890"</p>
-                        <p>"W. S. Walker, Shakespeare's Life, London, 1888"</p>
-                        <p>"W. Wall, Shakespeare's Life, London, 1810"</p>
-                        <p>"H. Ware, Shakespeare's Life, London, 1865"</p>
-                        <p>"J. Weller, Shakespeare's Life, London, 1815"</p>
-                        <p>"R. Wellesley, Shakespeare's Life, London, 1885"</p>
-                        <p>"K. Werrer, Shakespeare's Life, Berlin, 1885"</p>
-                        <p>"W. Wetz, Shakespeare's Life, 1891"</p>
-                        <p>"H. B. Wheatley, Shakespeare's Life, Oxford, 1785"</p>
-                        <p>"O. Wilde, Shakespeare's Life, London, 1836"</p>
-                        <p>"R. Williams, Shakespeare's Life, London, 1863"</p>
-                        <p>"W. Winter, Shakespeare's Life, London, 1893"</p>
-                        <p>"C. Wordsworth, Shakespeare's Life, London, 1884"</p>
-                        <p>"K. Crowley, Shakespeare's Life, Boston, 1857"</p>
-                        <p>"W. Whitaker, Shakespeare's Life, New York, 1884"</p>
-                        <p>"R. G. White, Shakespeare's Life, London, 1880"</p>
-                        <p>"J. Wither, Shakespeare's Life, London, 1849"</p>
-                        <p>"E. H. Wool, Shakespeare's Life, London, 1871"</p>
-                        <p>"K. Zimmermann, Shakespeare's Life, London, 1864"</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- NV Info Modal -->
-    <div id="nvModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="modal-title" id="nv-modal-title">What's New Variorum?</div>
-                <button class="modal-close" onclick="closeNVModal()">&times;</button>
-            </div>
-            
-            <div class="modal-body">
-                <div class="nv-info">
-                    <h4>What's New Variorum?</h4>
-                    <p>The New Variorum Shakespeare is one of the most comprehensive scholarly editions of Shakespeare's works, representing over a century of meticulous textual scholarship. First begun in 1871 by Horace Howard Furness, this monumental project aimed to collect and synthesize centuries of Shakespeare commentary, textual variants, and critical interpretations into definitive scholarly editions.</p>
-                    
-                    <p>Furness devoted the rest of his life to this project, personally completing 18 volumes between 1871 and his death in 1912. His first volume, Romeo and Juliet, appeared in 1871, followed by Macbeth (1873), Hamlet (two volumes, 1877), King Lear (1880), and others through The Tempest (1892) and Twelfth Night (1901). His son, Horace Howard Furness Jr., continued the work, and after 1936, the Modern Language Association took over the project, continuing to publish new volumes into the 21st century—though the complete works remain unfinished, testament to the sheer scope of the undertaking.</p>
-                    
-                    <p>Each New Variorum volume is essentially a massive scholarly apparatus that surrounds Shakespeare's text. For any given line or word, it presents textual variants from different early editions, editorial commentary spanning from the 18th century through modern scholarship, glosses of difficult passages, critical interpretations, performance history, and source materials Shakespeare drew upon.</p>
-                    
-                    <h4><strong>Revolutionary Digital Access</strong></h4>
-                    
-                    <p>What we've accomplished here is groundbreaking: we've taken these massive, dense scholarly volumes—traditionally accessible only in research libraries and often intimidating even to scholars—and made them instantly accessible at the click of a button. Through advanced RAG (Retrieval-Augmented Generation) technology, we've digitized and indexed the entire New Variorum commentary corpus, creating something that has never existed before: instant, contextual access to centuries of Shakespeare scholarship.</p>
-                    
-                    <p>When you click on any line or word, you're not just getting a random note—our system intelligently retrieves the exact relevant commentary from the New Variorum editions. This means that obscure phrase that's puzzled you? There's probably a 19th-century scholar who spent years thinking about it. That textual crux you're wondering about? You can instantly see how editors from 1733 to today have tried to solve it.</p>
-                    
-                    <p>This is the first time anyone has been able to experience Shakespeare with this level of scholarly depth at their fingertips. We've transformed what used to require hours of library research into an immediate, interactive experience. You're not just reading Shakespeare—you're joining a 300-year conversation about every single word, with the greatest Shakespeare scholars in history as your guides, all powered by cutting-edge AI technology that brings their insights directly to you.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Rights & Attribution Modal -->
     <div id="rightsModal" class="modal">
         <div class="modal-content">
@@ -3067,6 +2619,7 @@
             <!-- AI Analysis Content -->
             <div class="analysis-header">
                 <div class="analysis-title">Basic Analysis</div>
+                <button class="copy-btn" onclick="copyAnalysis()">Copy</button>
             </div>
             <div class="meta" style="display: none;">No play loaded</div>
             <div class="analysis-content" id="analysisContent">
@@ -3082,23 +2635,44 @@
             <div class="analysis-section" id="variorumSection" style="display: none;">
                 <div class="analysis-title">
                     <span>New Variorum Analysis</span>
-            </div>
-            
-                <!-- New Variorum Buttons - Right under the title -->
-                <div class="critics-button-container" id="criticsButtonContainer" style="margin-top: 10px; margin-bottom: 15px;">
-                <button class="btn btn-secondary" onclick="openCriticsModal()" style="width: 100%; margin-bottom: 10px;">
-                        Who are the New Variorum Critics?
-                </button>
-                <button class="btn btn-info" onclick="openNVModal()" style="width: 100%;">
-                        What's New Variorum?
-                </button>
-            </div>
-            
+                    <button class="copy-button" onclick="copyVariorum()">Copy</button>
+                </div>
                 <div class="analysis-content" id="variorumContent">
                     Traditional commentary will appear here for Full Fathom Five mode.
                 </div>
                 <div id="variorumResult"></div>
-                
+            </div>
+            
+            <!-- Who are the Critics Button - MOVED OUTSIDE VARIORUM SECTION -->
+            <div class="critics-button-container" id="criticsButtonContainer" style="margin-top: 15px;">
+                <button class="btn btn-secondary" onclick="showCritics()" style="width: 100%; margin-bottom: 10px;">
+                    📚 Who are the New Variorum Critics?
+                </button>
+                <button class="btn btn-info" onclick="showNVInfo()" style="width: 100%;">
+                    ℹ️ What is the New Variorum Shakespeare?
+                </button>
+            </div>
+            
+            <!-- Critics Information Display -->
+            <div class="critics-info" id="criticsInfo" style="display: none; margin-top: 15px;">
+                <div class="analysis-title">
+                    <span>📚 New Variorum Critics & Bibliography</span>
+                    <button class="copy-button" onclick="copyCritics()">Copy</button>
+                </div>
+                <div class="analysis-content" id="criticsContent">
+                    Loading critics information...
+                </div>
+            </div>
+            
+            <!-- New Variorum Information Display -->
+            <div class="critics-info" id="nvInfo" style="display: none; margin-top: 15px;">
+                <div class="analysis-title">
+                    <span>ℹ️ What is the New Variorum Shakespeare?</span>
+                    <button class="copy-button" onclick="copyNVInfo()">Copy</button>
+                </div>
+                <div class="analysis-content" id="nvContent">
+                    <!-- New Variorum information will be displayed here -->
+                </div>
             </div>
 
             <!-- Follow-up Section -->
@@ -3108,13 +2682,13 @@
                 <button class="ask-btn" onclick="askFollowUp()">Ask</button>
             </div>
 
-            <!-- Media Section - Moved further down -->
+            <!-- Media Section -->
             <h3>Media</h3>
             <div class="media-actions">
                 <button class="link-btn youtube" onclick="searchYouTube('scene')">Search YouTube for this scene</button>
             </div>
 
-            <!-- Research Section - Moved further down -->
+            <!-- Research Section -->
             <h3>Research</h3>
             <div class="research-actions">
                 <button class="link-btn jstor" onclick="searchJSTOR('exact')">Search JSTOR for exact quotation</button>
@@ -3157,66 +2731,6 @@
                 activeButton.setAttribute('aria-pressed', 'true');
             }
             
-            // Reset analysis panel to default state when switching tabs
-            const analysisPanel = document.getElementById('analysisPanel');
-            const analysisResult = document.getElementById('analysisResult');
-            const variorumResult = document.getElementById('variorumResult');
-            const variorumContent = document.getElementById('variorumContent');
-            const criticsInfo = document.getElementById('criticsInfo');
-            const nvInfo = document.getElementById('nvInfo');
-            
-            // Clear all analysis content
-            if (analysisResult) analysisResult.innerHTML = '';
-            if (variorumResult) variorumResult.innerHTML = '';
-            if (variorumContent) variorumContent.innerHTML = '';
-            
-            // Hide any open info panels
-            if (criticsInfo) criticsInfo.style.display = 'none';
-            if (nvInfo) nvInfo.style.display = 'none';
-            
-            // Scroll the analysis panel to the top
-            if (analysisPanel) {
-                analysisPanel.scrollTop = 0;
-            }
-            
-            // Reset analysis panel to default state by restoring original HTML
-            if (analysisPanel) {
-                analysisPanel.innerHTML = `
-                    <!-- Analysis Mode Selector -->
-                    <div class="segment">
-                        <button onclick="switchTab('basic')" aria-pressed="${currentTab === 'basic' ? 'true' : 'false'}">Basic</button>
-                        <button onclick="switchTab('expert')" aria-pressed="${currentTab === 'expert' ? 'true' : 'false'}">Expert</button>
-                        <button onclick="switchTab('fullfathomfive')" aria-pressed="${currentTab === 'fullfathomfive' ? 'true' : 'false'}">Full Fathom Five</button>
-                    </div>
-
-                    <!-- AI Analysis Content -->
-                    <div class="analysis-header">
-                        <div class="analysis-title">${tabName === 'basic' ? 'Basic' : tabName === 'expert' ? 'Expert' : 'Full Fathom Five'} Analysis</div>
-                    </div>
-                    <div class="meta" style="display: none;">No play loaded</div>
-                    <div class="analysis-content" id="analysisContent">
-                        <p>Highlight text in the play to get AI-powered analysis.</p>
-                    </div>
-                    <div class="analysis-instruction" id="analysisInstruction">
-                        Select text in the play to get AI-powered analysis.
-                    </div>
-                    <button class="analyze-button" id="analyzeButton" onclick="explainHighlighted()" style="display: none;">Analyze Text</button>
-                    <div id="analysisResult"></div>
-                    
-                    <!-- New Variorum Analysis Section (Full Fathom Five Only) -->
-                    <div class="analysis-section" id="variorumSection" style="display: none;">
-                        <div class="analysis-title">
-                            <span>New Variorum Analysis</span>
-                        </div>
-                        <div class="analysis-content" id="variorumContent">
-                            Traditional commentary will appear here for Full Fathom Five mode.
-                        </div>
-                        <div id="variorumResult"></div>
-                        
-                    </div>
-                `;
-            }
-            
             // Update analysis panel based on tab
             updateAnalysisPanel();
             
@@ -3238,12 +2752,12 @@
             
             console.log('✅ Tab switched to:', tabName);
             
-            // Force hide variorum section for Full Fathom Five (until analyze is clicked)
+            // Force show variorum section for Full Fathom Five
             if (tabName === 'fullfathomfive') {
                 const variorumSection = document.getElementById('variorumSection');
                 if (variorumSection) {
-                    variorumSection.style.display = 'none';
-                    console.log('✅ Hidden variorum section for Full Fathom Five until analyze is clicked');
+                    variorumSection.style.display = 'block';
+                    console.log('✅ Forced variorum section to show');
                 }
                 
                 // Critics button is now always visible via CSS
@@ -3255,128 +2769,25 @@
         function selectLine(element, text, lineIndex) {
             console.log('Selecting line:', lineIndex, 'Text:', text);
             
-            // Determine the current scene from the context where the text was selected
-            console.log('🔍 DEBUG: Starting scene detection for element:', element);
-            
-            // Look for scene information in the DOM or use the currently loaded scene
-            const sceneContainer = element.closest('.scene-content') || element.closest('[data-scene]');
-            console.log('🔍 DEBUG: Found sceneContainer:', sceneContainer);
-            
-            if (sceneContainer && sceneContainer.getAttribute('data-scene')) {
-                currentScene = sceneContainer.getAttribute('data-scene');
-                console.log('🎭 Updated currentScene from DOM context:', currentScene);
-            } else {
-                console.log('🔍 DEBUG: No scene container found, trying fallback methods...');
-                
-                // Fallback: try to determine scene from the current loaded content
-                const readerElement = document.getElementById('reader');
-                console.log('🔍 DEBUG: Found readerElement:', readerElement);
-                
-                if (readerElement) {
-                    const sceneTitle = readerElement.querySelector('.scene-title');
-                    console.log('🔍 DEBUG: Found sceneTitle:', sceneTitle);
-                    
-                    if (sceneTitle) {
-                        currentScene = sceneTitle.textContent.trim();
-                        console.log('🎭 Updated currentScene from scene title:', currentScene);
-                    } else {
-                        console.log('🔍 DEBUG: No scene title found');
-                    }
-                } else {
-                    console.log('🔍 DEBUG: No reader element found');
-                }
-                
-                // Additional fallback: check if we have a current scene from navigation
-                if (!currentScene) {
-                    console.log('🔍 DEBUG: No scene found, checking navigation...');
-                    const activeNavLink = document.querySelector('.nav-list a.active');
-                    if (activeNavLink) {
-                        currentScene = activeNavLink.getAttribute('data-scene') || activeNavLink.textContent.trim();
-                        console.log('🎭 Updated currentScene from active nav link:', currentScene);
-                    }
-                }
-            }
-            
-            console.log('🎭 FINAL currentScene value:', currentScene);
-            
-            // EMERGENCY FALLBACK: If we still don't have a scene, try to get it from the URL or set a default
-            if (!currentScene || currentScene === '') {
-                console.log('🚨 EMERGENCY: No scene detected, using fallback...');
-                
-                // Try to get scene from URL hash
-                const hash = window.location.hash;
-                if (hash && hash.includes('scene')) {
-                    currentScene = hash.replace('#', '').replace('scene-', '');
-                    console.log('🎭 Set currentScene from URL hash:', currentScene);
-                } else {
-                    // No scene detected - leave currentScene empty
-                    console.log('🎭 No scene detected, leaving currentScene empty');
-                }
-            }
-            
             // Clear all previous selections
                 document.querySelectorAll('.play-line').forEach(line => {
                     line.classList.remove('selected', 'range-selected');
                 });
                 
-            // Clear ALL previous analysis results and reset to default state
+            // Clear previous analysis results when selecting a new line
             const analysisResult = document.getElementById('analysisResult');
             const variorumResult = document.getElementById('variorumResult');
             const variorumContent = document.getElementById('variorumContent');
             const analysisPanel = document.getElementById('analysisPanel');
-            const criticsInfo = document.getElementById('criticsInfo');
-            const nvInfo = document.getElementById('nvInfo');
             
-            // Clear all analysis content
             if (analysisResult) analysisResult.innerHTML = '';
             if (variorumResult) variorumResult.innerHTML = '';
             if (variorumContent) variorumContent.innerHTML = '';
             
-            // Hide any open info panels
-            if (criticsInfo) criticsInfo.style.display = 'none';
-            if (nvInfo) nvInfo.style.display = 'none';
-            
-            // Scroll the analysis panel to the top
-            if (analysisPanel) {
-                analysisPanel.scrollTop = 0;
-            }
-            
-            // Reset analysis panel to default state by restoring original HTML
-            if (analysisPanel) {
-                analysisPanel.innerHTML = `
-                    <!-- Analysis Mode Selector -->
-                    <div class="segment">
-                        <button onclick="switchTab('basic')" aria-pressed="${currentTab === 'basic' ? 'true' : 'false'}">Basic</button>
-                        <button onclick="switchTab('expert')" aria-pressed="${currentTab === 'expert' ? 'true' : 'false'}">Expert</button>
-                        <button onclick="switchTab('fullfathomfive')" aria-pressed="${currentTab === 'fullfathomfive' ? 'true' : 'false'}">Full Fathom Five</button>
-                    </div>
-
-                    <!-- AI Analysis Content -->
-                    <div class="analysis-header">
-                        <div class="analysis-title">Basic Analysis</div>
-                    </div>
-                    <div class="meta" style="display: none;">No play loaded</div>
-                    <div class="analysis-content" id="analysisContent">
-                        <p>Highlight text in the play to get AI-powered analysis.</p>
-                    </div>
-                    <div class="analysis-instruction" id="analysisInstruction">
-                        Select text in the play to get AI-powered analysis.
-                    </div>
-                    <button class="analyze-button" id="analyzeButton" onclick="explainHighlighted()" style="display: none;">Analyze Text</button>
-                    <div id="analysisResult"></div>
-                    
-                    <!-- New Variorum Analysis Section (Full Fathom Five Only) -->
-                    <div class="analysis-section" id="variorumSection" style="display: none;">
-                        <div class="analysis-title">
-                            <span>New Variorum Analysis</span>
-                        </div>
-                        <div class="analysis-content" id="variorumContent">
-                            Traditional commentary will appear here for Full Fathom Five mode.
-                        </div>
-                        <div id="variorumResult"></div>
-                        
-                    </div>
-                `;
+            // Clear any existing analysis content in the panel and reset to default
+            const existingAnalysisContent = analysisPanel ? analysisPanel.querySelector('.analysis-content') : null;
+            if (existingAnalysisContent) {
+                existingAnalysisContent.innerHTML = '<p>Highlight text in the play to get AI-powered analysis.</p>';
             }
                 
             // Add selection to current line
@@ -3385,7 +2796,6 @@
                 firstSelectedLine = null;
             
             console.log('✅ Line selected:', selectedLines);
-            console.log('🎭 Current scene after selection:', currentScene);
             updateAnalysisPanel();
         }
         
@@ -3396,44 +2806,6 @@
             document.querySelectorAll('.play-line').forEach(line => {
                 line.classList.remove('selected', 'range-selected');
             });
-            
-            // Clear ALL analysis results and reset to default state
-            const analysisResult = document.getElementById('analysisResult');
-            const variorumResult = document.getElementById('variorumResult');
-            const variorumContent = document.getElementById('variorumContent');
-            const analysisPanel = document.getElementById('analysisPanel');
-            const criticsInfo = document.getElementById('criticsInfo');
-            const nvInfo = document.getElementById('nvInfo');
-            
-            // Clear all analysis content
-            if (analysisResult) analysisResult.innerHTML = '';
-            if (variorumResult) variorumResult.innerHTML = '';
-            if (variorumContent) variorumContent.innerHTML = '';
-            
-            // Hide any open info panels
-            if (criticsInfo) criticsInfo.style.display = 'none';
-            if (nvInfo) nvInfo.style.display = 'none';
-            
-            // Reset analysis panel to default state
-            if (analysisPanel) {
-                const existingAnalysisContent = analysisPanel.querySelector('.analysis-content');
-                if (existingAnalysisContent) {
-                    existingAnalysisContent.innerHTML = '<p>Highlight text in the play to get AI-powered analysis.</p>';
-                }
-                
-                // Hide the analyze button
-                const analyzeButton = analysisPanel.querySelector('.analyze-button');
-                if (analyzeButton) {
-                    analyzeButton.style.display = 'none';
-                }
-                
-                // Reset instruction text
-                const analysisInstruction = analysisPanel.querySelector('.analysis-instruction');
-                if (analysisInstruction) {
-                    analysisInstruction.textContent = 'Select text in the play to get AI-powered analysis.';
-                }
-            }
-            
             updateAnalysisPanel();
         }
         
@@ -3448,12 +2820,22 @@
             // Show/hide variorum section based on current tab
             if (variorumSection) {
                 if (currentTab === 'fullfathomfive') {
-                    // Keep variorum section hidden until analyze button is clicked
-                    variorumSection.style.display = 'none';
-                    console.log('✅ Keeping variorum section hidden for Full Fathom Five until analyze is clicked');
+                    variorumSection.style.display = 'block';
+                    console.log('✅ Showing variorum section for Full Fathom Five');
+                    
+                    // Check if there's already variorum content and show critics button
+                    const variorumContent = document.getElementById('variorumContent');
+                    if (variorumContent && variorumContent.innerHTML && 
+                        variorumContent.innerHTML.trim() !== '' && 
+                        !variorumContent.innerHTML.includes('Traditional commentary will appear here')) {
+                        console.log('✅ Found existing variorum content, showing critics button');
+                        showCriticsButton();
+                    }
                 } else {
                     variorumSection.style.display = 'none';
                     console.log('❌ Hiding variorum section for', currentTab);
+                    
+                    // Critics button controlled by CSS now - no hiding needed
                 }
             } else {
                 console.log('❌ Variorum section element not found');
@@ -3462,13 +2844,12 @@
             if (selectedLines.length > 0) {
                 const lineCount = selectedLines.length;
                 const playName = currentPlay && plays[currentPlay] ? plays[currentPlay].name : 'Unknown Play';
-                // Show just the selected line text instead of the two separate messages
-                analysisContent.textContent = selectedLines[0];
-                analysisInstruction.textContent = ''; // Hide the instruction text
+                analysisContent.textContent = `${playName} · ${currentScene} · ${lineCount} line${lineCount > 1 ? 's' : ''} selected`;
+                analysisInstruction.textContent = `Click "Analyze Text" to analyze ${lineCount} line${lineCount > 1 ? 's' : ''}.`;
                 analyzeButton.style.display = 'block';
             } else {
-                analysisContent.textContent = 'Select text in the play to get AI-powered analysis.';
-                analysisInstruction.textContent = '';
+                analysisContent.textContent = 'Unknown Play · No text highlighted';
+                analysisInstruction.textContent = 'Select text in the play to get AI-powered analysis.';
                 analyzeButton.style.display = 'none';
             }
         }
@@ -3480,16 +2861,17 @@
             console.log('Selected lines:', selectedLines);
             console.log('Macbeth data loaded:', !!window.macbethData);
             console.log('Current scene:', currentScene);
+            console.log('🚨 WARNING: testAnalysis() function called - this may override currentScene!');
             
             // Test with sample data
             if (selectedLines.length === 0) {
                 console.log('⚠️ No lines selected, testing with sample data');
+                console.log('🚨 WARNING: Overriding currentScene from', currentScene, 'to ACT 1, SCENE 1');
                 selectedLines = [
                     "First Witch: In thunder, lightning, or in rain?",
                     "Second Witch: When the hurlyburly's done,"
                 ];
-                // Don't override currentScene in test - use actual scene
-                console.log('🎭 Using actual currentScene for test:', currentScene);
+                currentScene = "ACT 1, SCENE 1";
                 updateAnalysisPanel();
             }
             
@@ -3505,8 +2887,7 @@
                 "First Witch: In thunder, lightning, or in rain?",
                 "Second Witch: When the hurlyburly's done,"
             ];
-            // Don't override currentScene - use actual scene
-            console.log('🎭 Using actual currentScene for Full Fathom Five test:', currentScene);
+            currentScene = "ACT 1, SCENE 1";
             currentTab = 'fullfathomfive';
             
             // Update UI
@@ -3538,8 +2919,7 @@
                 "First Witch: In thunder, lightning, or in rain?",
                 "Second Witch: When the hurlyburly's done,"
             ];
-            // Don't override currentScene - use actual scene
-            console.log('🎭 Using actual currentScene for all modes test:', currentScene);
+            currentScene = "ACT 1, SCENE 1";
             
             // Test Basic mode
             console.log('📚 Testing Basic mode...');
@@ -3580,8 +2960,7 @@
                 "First Witch: In thunder, lightning, or in rain?",
                 "Second Witch: When the hurlyburly's done,"
             ];
-            // Don't override currentScene - use actual scene
-            console.log('🎭 Using actual currentScene for test:', currentScene);
+            currentScene = "ACT 1, SCENE 1";
             currentTab = 'fullfathomfive';
             
             // Update UI
@@ -3613,8 +2992,6 @@
                     console.log('✅ Variorum content set manually');
                     // Show the critics button when variorum content is loaded
                     showCriticsButton();
-                    // Add Copy button to the analysis title when commentary appears
-                    addCopyButtonToVariorumTitle();
                 }
                 if (variorumResult && formattedNotes) {
                     variorumResult.innerHTML = formattedNotes;
@@ -3695,8 +3072,7 @@
             
             // Set up test data
             selectedLines = ["First Witch: In thunder, lightning, or in rain?"];
-            // Don't override currentScene - use actual scene
-            console.log('🎭 Using actual currentScene for force show test:', currentScene);
+            currentScene = "ACT 1, SCENE 1";
             currentTab = 'fullfathomfive';
             
             // Force show the variorum section
@@ -3734,7 +3110,7 @@
             const testText = "When shall we three meet again? In thunder, lightning, or in rain?";
             
             try {
-                const response = await fetchWithTimeout('/.netlify/functions/shakespeare', {
+                const response = await fetch('/.netlify/functions/shakespeare', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -3801,30 +3177,6 @@
             document.getElementById('aboutModal').style.display = 'none';
         }
 
-        function openHowToUse() {
-            document.getElementById('howToUseModal').style.display = 'block';
-        }
-
-        function closeHowToUse() {
-            document.getElementById('howToUseModal').style.display = 'none';
-        }
-
-        function openCriticsModal() {
-            document.getElementById('criticsModal').style.display = 'block';
-        }
-
-        function closeCriticsModal() {
-            document.getElementById('criticsModal').style.display = 'none';
-        }
-
-        function openNVModal() {
-            document.getElementById('nvModal').style.display = 'block';
-        }
-
-        function closeNVModal() {
-            document.getElementById('nvModal').style.display = 'none';
-        }
-
         function openRights() {
             document.getElementById('rightsModal').style.display = 'block';
         }
@@ -3837,24 +3189,12 @@
         window.onclick = function(event) {
             const settingsModal = document.getElementById('settingsModal');
             const aboutModal = document.getElementById('aboutModal');
-            const howToUseModal = document.getElementById('howToUseModal');
-            const criticsModal = document.getElementById('criticsModal');
-            const nvModal = document.getElementById('nvModal');
             const rightsModal = document.getElementById('rightsModal');
             if (event.target === settingsModal) {
                 closeSettings();
             }
             if (event.target === aboutModal) {
                 closeAbout();
-            }
-            if (event.target === howToUseModal) {
-                closeHowToUse();
-            }
-            if (event.target === criticsModal) {
-                closeCriticsModal();
-            }
-            if (event.target === nvModal) {
-                closeNVModal();
             }
             if (event.target === rightsModal) {
                 closeRights();
@@ -3953,8 +3293,6 @@
             // Add ARIA attributes to modals
             const settingsModal = document.getElementById('settingsModal');
             const aboutModal = document.getElementById('aboutModal');
-            const criticsModal = document.getElementById('criticsModal');
-            const nvModal = document.getElementById('nvModal');
             
             if (settingsModal) {
                 settingsModal.setAttribute('role', 'dialog');
@@ -3966,18 +3304,6 @@
                 aboutModal.setAttribute('role', 'dialog');
                 aboutModal.setAttribute('aria-modal', 'true');
                 aboutModal.setAttribute('aria-labelledby', 'about-modal-title');
-            }
-            
-            if (criticsModal) {
-                criticsModal.setAttribute('role', 'dialog');
-                criticsModal.setAttribute('aria-modal', 'true');
-                criticsModal.setAttribute('aria-labelledby', 'critics-modal-title');
-            }
-            
-            if (nvModal) {
-                nvModal.setAttribute('role', 'dialog');
-                nvModal.setAttribute('aria-modal', 'true');
-                nvModal.setAttribute('aria-labelledby', 'nv-modal-title');
             }
 
             // Settings nav switching
@@ -3998,15 +3324,6 @@
                     }
                     if (aboutModal && aboutModal.style.display === 'block') {
                         closeAbout();
-                    }
-                    if (howToUseModal && howToUseModal.style.display === 'block') {
-                        closeHowToUse();
-                    }
-                    if (criticsModal && criticsModal.style.display === 'block') {
-                        closeCriticsModal();
-                    }
-                    if (nvModal && nvModal.style.display === 'block') {
-                        closeNVModal();
                     }
                 }
             });
@@ -4766,9 +4083,6 @@
             console.log('plays[playName]:', plays[playName]);
             console.log('playText element innerHTML before loadPlay:', document.getElementById('playText').innerHTML.substring(0, 200));
             
-            // Clear analysis panel when switching plays
-            clearSelection();
-            
             const playTextElement = document.getElementById('playText');
             const navigationElement = document.getElementById('navigationList');
             
@@ -4841,9 +4155,9 @@
                         
                         // Extract proper scene name for display
                         let displaySceneName = sceneName;
-                        const sceneMatch = sceneName.match(/(SCENE|SCN)\s+([IVX0-9]+)/i);
+                        const sceneMatch = sceneName.match(/SCENE\s+([IVX0-9]+)/i);
                         if (sceneMatch) {
-                            displaySceneName = `Scene ${sceneMatch[2]}`;
+                            displaySceneName = `Scene ${sceneMatch[1]}`;
                         }
                         
                         sceneItem.innerHTML = `<a href="#" onclick="loadScene('${sceneName}')" data-scene="${sceneName}">${displaySceneName}</a>`;
@@ -4884,21 +4198,21 @@
                 return;
             }
 
-            // Clear analysis panel when switching scenes
-            clearSelection();
-
+            // DEBUG: Log scene loading
+            console.log('🎭 DEBUG: Loading scene:', sceneName);
+            console.log('🎭 DEBUG: Previous currentScene was:', currentScene);
             currentScene = sceneName;
+            console.log('🎭 DEBUG: New currentScene is:', currentScene);
             const sceneContent = plays[currentPlay].scenes[sceneName];
             
-            console.log('🎭 Loading scene:', sceneName, 'with content length:', sceneContent.length);
-            console.log('🎭 currentScene set to:', currentScene);
+            console.log('Loading scene:', sceneName, 'with content length:', sceneContent.length);
             
             // Update active navigation
             updateActiveNavigation(sceneName);
             
             // Display scene content
             const playText = document.getElementById('playText');
-            const formattedContent = formatSceneContent(sceneContent, sceneName);
+            const formattedContent = formatSceneContent(sceneContent);
             
             // Extract act and scene names for better display
             let displayTitle = sceneName;
@@ -4922,7 +4236,7 @@
         }
 
         // Simple format scene content - display exactly as uploaded
-        function formatSceneContent(sceneContent, sceneName) {
+        function formatSceneContent(sceneContent) {
             if (!sceneContent || sceneContent.length === 0) {
                 return '<p><em>No content found for this scene.</em></p>';
             }
@@ -4930,7 +4244,7 @@
             let html = '';
             let currentSpeaker = '';
             
-            console.log('formatSceneContent called with', sceneContent.length, 'lines for scene:', sceneName);
+            console.log('formatSceneContent called with', sceneContent.length, 'lines');
             
             // Display each line exactly as it appears in the file, preserving whitespace
             sceneContent.forEach((line, index) => {
@@ -4965,8 +4279,7 @@
             });
             
             console.log('formatSceneContent completed, currentSpeaker:', currentSpeaker);
-            // Wrap the content in a container with the scene data attribute
-            return `<div class="scene-content" data-scene="${sceneName}">${html}</div>`;
+            return html;
         }
         
 
@@ -5253,9 +4566,9 @@
             let metaText = '';
             if (selectedText && wordCount > 0) {
                 const wordText = wordCount === 1 ? 'word' : 'words';
-                metaText = currentScene && currentScene !== '' ? `<em>${playName}</em> · ${currentScene} · ${wordCount} ${wordText} highlighted` : `<em>${playName}</em> · ${wordCount} ${wordText} highlighted`;
+                metaText = `<em>${playName}</em> · ${currentScene} · ${wordCount} ${wordText} highlighted`;
             } else {
-                metaText = currentScene && currentScene !== '' ? `<em>${playName}</em> · ${currentScene} · No text highlighted` : `<em>${playName}</em> · No text highlighted`;
+                metaText = `<em>${playName}</em> · ${currentScene} · No text highlighted`;
             }
             
             console.log('Generated metaText:', metaText);
@@ -5626,8 +4939,6 @@
                         console.log('✅ Commentary displayed in variorum content');
                         // Show the critics button when variorum content is loaded
                         showCriticsButton();
-                        // Add Copy button to the analysis title when commentary appears
-                        addCopyButtonToVariorumTitle();
                     }
                 } else {
                     const noCommentaryMsg = '<div class="loading">No traditional commentary found for selected lines.</div>';
@@ -5751,27 +5062,6 @@
             return text.trim().split(/\s+/).filter(word => word.length > 0).length;
         }
 
-        // Helper function for fetch with timeout
-        async function fetchWithTimeout(url, options, timeoutMs = 30000) {
-            const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
-            
-            try {
-                const response = await fetch(url, {
-                    ...options,
-                    signal: controller.signal
-                });
-                clearTimeout(timeoutId);
-                return response;
-            } catch (error) {
-                clearTimeout(timeoutId);
-                if (error.name === 'AbortError') {
-                    throw new Error('Request timed out after 30 seconds. Please try again with a shorter text selection.');
-                }
-                throw error;
-            }
-        }
-
         async function analyzeHighlightedText(text, mode = null) {
             console.log('=== ANALYZE FUNCTION CALLED - NEW CODE IS RUNNING ===');
             console.log('Text to analyze:', text);
@@ -5779,6 +5069,11 @@
             console.log('Current scene:', currentScene);
             console.log('Analysis mode passed:', mode);
             console.log('Current analysis mode:', currentAnalysisMode);
+            
+            // DEBUG: Log the exact scene name being sent to API
+            console.log('🔍 DEBUG: Scene name being sent to API:', currentScene);
+            console.log('🔍 DEBUG: Scene name type:', typeof currentScene);
+            console.log('🔍 DEBUG: Scene name length:', currentScene ? currentScene.length : 'null/undefined');
             
             // Use the passed mode or fall back to currentTab
             const analysisMode = mode || currentTab || 'basic';
@@ -5794,7 +5089,7 @@
             const analysisPanel = document.getElementById('analysisPanel');
             const wordCount = countWords(text);
             const wordText = wordCount === 1 ? 'word' : 'words';
-            const playInfo = currentScene && currentScene !== '' ? `${playName}, ${currentScene}, ${wordCount} ${wordText} highlighted` : `${playName}, ${wordCount} ${wordText} highlighted`;
+            const playInfo = `${playName}, ${currentScene}, ${wordCount} ${wordText} highlighted`;
             
             // Get the correct title based on current mode
             let analysisTitle = 'Basic Analysis';
@@ -5824,56 +5119,57 @@
                 <!-- AI Analysis Content -->
                 <div class="analysis-header">
                     <div class="analysis-title">${analysisTitle}</div>
+                    <button class="copy-btn" onclick="copyAnalysis()">Copy</button>
                 </div>
                 <div class="analysis">
-                    <div class="meta" style="font-weight: bold;">${currentScene && currentScene !== '' ? `<em>${playName}</em> · ${currentScene} · ${wordCount} ${wordCount === 1 ? 'word' : 'words'} highlighted` : `<em>${playName}</em> · ${wordCount} ${wordCount === 1 ? 'word' : 'words'} highlighted`}</div>
+                    <div class="meta" style="font-weight: bold;"><em>${playName}</em> · ${currentScene} · ${wordCount} ${wordCount === 1 ? 'word' : 'words'} highlighted</div>
                     <div class="analysis-content">
                         <p style="font-family: var(--ui); font-style: italic;">Processing.</p>
                     </div>
                 </div>
                 
-                <!-- Critics Button - Static buttons in HTML, no dynamic creation needed -->
+                <!-- Critics Button - Hidden during processing, shown after analysis completes -->
+                ${analysisMode === 'fullfathomfive' ? `
+                <div class="critics-button-container" id="criticsButtonContainer" style="display: none; margin-top: 15px;">
+                    <button class="btn btn-secondary" onclick="showCritics()" style="width: 100%; margin-bottom: 10px;">
+                        📚 Who are the New Variorum Critics?
+                    </button>
+                    <button class="btn btn-info" onclick="showNVInfo()" style="width: 100%;">
+                        ℹ️ What is the New Variorum Shakespeare?
+                    </button>
+                </div>
+                
+                <!-- Critics Information Display - Embedded in analysis panel -->
+                <div class="critics-info" id="criticsInfo" style="display: none; margin-top: 15px;">
+                    <div class="analysis-title">
+                        <span>📚 New Variorum Critics & Bibliography</span>
+                        <button class="copy-button" onclick="copyCritics()">Copy</button>
+                    </div>
+                    <div class="analysis-content" id="criticsContent">
+                        Loading critics information...
+                    </div>
+                </div>
+                
+                <div class="critics-info" id="nvInfo" style="display: none; margin-top: 15px;">
+                    <div class="analysis-title">
+                        <span>ℹ️ What is the New Variorum Shakespeare?</span>
+                        <button class="copy-button" onclick="copyNVInfo()">Copy</button>
+                    </div>
+                    <div class="analysis-content" id="nvContent">
+                        <!-- New Variorum information will be displayed here -->
+                    </div>
+                </div>
+                ` : ''}
             `;
-            
-            // Button outputs are now included within the analysis section itself
             
             try {
                 console.log('Analyzing text:', text.substring(0, 100) + '...');
-                console.log('🎭 DEBUG: currentScene being sent to API:', currentScene);
-                console.log('🎭 DEBUG: playName being sent to API:', playName);
-                
-                // FORCE FIX: Always try to get the scene from the UI
-                const metaElement = document.querySelector('.meta');
-                if (metaElement) {
-                    const metaText = metaElement.textContent;
-                    const sceneMatch = metaText.match(/(ACT \d+, SCENE \d+)/);
-                    if (sceneMatch) {
-                        currentScene = sceneMatch[1];
-                        console.log('🎭 FORCE FIX: Set currentScene from meta element:', currentScene);
-                    }
-                }
-                
-                // If still no scene, try to get it from the active nav link
-                if (!currentScene || currentScene === '') {
-                    const activeNavLink = document.querySelector('.nav-list a.active');
-                    if (activeNavLink) {
-                        currentScene = activeNavLink.getAttribute('data-scene') || activeNavLink.textContent.trim();
-                        console.log('🎭 FORCE FIX: Set currentScene from active nav:', currentScene);
-                    }
-                }
-                
-                // No scene detected - leave currentScene empty
-                if (!currentScene || currentScene === '') {
-                    console.log('🎭 FORCE FIX: No scene detected, leaving currentScene empty');
-                }
                 console.log('Making API request...');
-                console.log('🎭 FINAL: currentScene being sent to API:', currentScene);
-                console.log('🎭 DEBUG: Will sceneName be included in request?', currentScene && currentScene !== '');
                 
                 // Full Fathom Five now uses regular API call like other levels
                 
                 // Try the redirect path first for other levels
-                let response = await fetchWithTimeout('/api/shakespeare?v=' + Date.now(), {
+                let response = await fetch('/api/shakespeare?v=' + Date.now(), {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -5883,6 +5179,7 @@
                         level: analysisMode,
                         model: 'gpt-4o-mini',
                         playName: playName,
+                        sceneName: currentScene,
                         version: '2024-12-19-expert-fix'
                     })
                 });
@@ -5890,35 +5187,7 @@
                 // If that fails, try the direct function path
                 if (!response.ok) {
                     console.log('Redirect failed, trying direct function path...');
-                    console.log('🎭 DEBUG: currentScene being sent to direct function:', currentScene);
-                    
-                    // FORCE FIX: Always try to get the scene from the UI
-                    const metaElement = document.querySelector('.meta');
-                    if (metaElement) {
-                        const metaText = metaElement.textContent;
-                        const sceneMatch = metaText.match(/(ACT \d+, SCENE \d+)/);
-                        if (sceneMatch) {
-                            currentScene = sceneMatch[1];
-                            console.log('🎭 FORCE FIX: Set currentScene from meta element:', currentScene);
-                        }
-                    }
-                    
-                    // If still no scene, try to get it from the active nav link
-                    if (!currentScene || currentScene === '') {
-                        const activeNavLink = document.querySelector('.nav-list a.active');
-                        if (activeNavLink) {
-                            currentScene = activeNavLink.getAttribute('data-scene') || activeNavLink.textContent.trim();
-                            console.log('🎭 FORCE FIX: Set currentScene from active nav:', currentScene);
-                        }
-                    }
-                    
-                    // No scene detected - leave currentScene empty
-                    if (!currentScene || currentScene === '') {
-                        console.log('🎭 FORCE FIX: No scene detected, leaving currentScene empty');
-                    }
-                    console.log('🎭 FINAL: currentScene being sent to direct function:', currentScene);
-                    console.log('🎭 DEBUG: Will sceneName be included in direct function request?', currentScene && currentScene !== '');
-                    response = await fetchWithTimeout('/.netlify/functions/shakespeare?v=' + Date.now(), {
+                    response = await fetch('/.netlify/functions/shakespeare?v=' + Date.now(), {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
@@ -5928,6 +5197,7 @@
                             level: analysisMode,
                             model: 'gpt-4o-mini',
                             playName: playName,
+                            sceneName: currentScene,
                             version: '2024-12-19-expert-fix'
                         })
                     });
@@ -5942,8 +5212,6 @@
                     
                     if (response.status === 500 && errorData.error && errorData.error.includes('API key')) {
                         alert('OpenAI API key not configured. Please check your Netlify environment variables.');
-                    } else if (response.status === 504) {
-                        alert('Request timed out. The server is taking too long to respond. Please try again with a shorter text selection or try again later.');
                     } else {
                         throw new Error(`HTTP ${response.status}: ${errorData.error || 'Unknown error'}`);
                     }
@@ -5981,8 +5249,6 @@
                     alert('Network error. Please check your internet connection and try again.');
                 } else if (error.message.includes('API key')) {
                     alert('OpenAI API key not configured. Please check your Netlify environment variables.');
-                } else if (error.message.includes('504') || error.message.includes('Gateway Timeout')) {
-                    alert('Request timed out. The server is taking too long to respond. Please try again with a shorter text selection or try again later.');
                 } else {
                     alert(`Error analyzing text: ${error.message}. Please try again.`);
                 }
@@ -6060,7 +5326,8 @@
                     },
                     body: JSON.stringify({
                         text: text,
-                        playName: playName
+                        playName: playName,
+                        sceneName: sceneName
                     })
                 });
                 
@@ -6094,19 +5361,7 @@
                 if (sectionContent && sectionContent.trim()) {
                     formattedContent += '<div class="analysis-section">';
                     formattedContent += `<h4>${sectionName}</h4>`;
-                    
-                    // Add buttons specifically for New Variorum Analysis section
-                    if (sectionName === 'New Variorum Analysis') {
-                        formattedContent += '<div class="critics-button-container" style="margin-top: 10px; margin-bottom: 15px;">';
-                        formattedContent += '<button class="btn btn-secondary" onclick="openCriticsModal()" style="width: 100%; margin-bottom: 10px;">Who are the New Variorum Critics?</button>';
-                        formattedContent += '<button class="btn btn-info" onclick="openNVModal()" style="width: 100%;">What\'s New Variorum?</button>';
-                        formattedContent += '</div>';
-                        
-                    }
-                    
-                    // Apply the same formatting as other modes
-                    const processedContent = processContentForFormatting(sectionContent);
-                    formattedContent += `<div class="section-content">${processedContent}</div>`;
+                    formattedContent += `<div class="section-content">${sectionContent}</div>`;
                     formattedContent += '</div>';
                 }
             }
@@ -6119,10 +5374,6 @@
                 // Fallback: Add Macbeth notes section LAST (New Variorum Analysis at the bottom)
                 formattedContent += '<div class="analysis-section">';
                 formattedContent += '<h4>New Variorum Analysis</h4>';
-                formattedContent += '<div class="critics-button-container" style="margin-top: 10px; margin-bottom: 15px;">';
-                formattedContent += '<button class="btn btn-secondary" onclick="openCriticsModal()" style="width: 100%; margin-bottom: 10px;">📚 Who are the New Variorum Critics?</button>';
-                formattedContent += '<button class="btn btn-info" onclick="openNVModal()" style="width: 100%;">ℹ️ What\'s New Variorum?</button>';
-                formattedContent += '</div>';
                 formattedContent += '<div class="variorum-notes">';
                 
                 relevantNotes.forEach((note, index) => {
@@ -6149,7 +5400,7 @@
             const analysisPanel = document.getElementById('analysisPanel');
             const wordCount = countWords(text);
             const playName = currentPlay && plays[currentPlay] ? plays[currentPlay].name : 'Unknown Play';
-            const playInfo = currentScene && currentScene !== '' ? `<em>${playName}</em> · ${currentScene}` : `<em>${playName}</em>`;
+            const playInfo = `<em>${playName}</em> · ${currentScene}`;
             
             // Get the correct title based on current tab
             let analysisTitle = 'Basic Analysis';
@@ -6184,6 +5435,7 @@
 
                 <!-- AI Analysis Content -->
                 <div class="analysis">
+                    <button class="copy-chip" onclick="copyAnalysis()">Copy</button>
                     <div class="meta">${playInfo} — ${wordCount} ${wordCount === 1 ? 'word' : 'words'} selected</div>
                     <div class="analysis-content">
                         ${formattedContent}
@@ -6212,31 +5464,47 @@
                     </div>
                 </div>
                 
-                <!-- Critics Button - Static buttons in HTML, no dynamic creation needed -->
+                <!-- Critics Button - Added directly to analysis panel for Full Fathom Five -->
+                ${currentTab === 'fullfathomfive' ? `
+                <div class="critics-button-container" id="criticsButtonContainer" style="display: block; margin-top: 15px;">
+                    <button class="btn btn-secondary" onclick="showCritics()" style="width: 100%; margin-bottom: 10px;">
+                        📚 Who are the New Variorum Critics?
+                    </button>
+                    <button class="btn btn-info" onclick="showNVInfo()" style="width: 100%;">
+                        ℹ️ What is the New Variorum Shakespeare?
+                    </button>
+                </div>
+                
+                <!-- Critics Information Display - Embedded in analysis panel -->
+                <div class="critics-info" id="criticsInfo" style="display: none; margin-top: 15px;">
+                    <div class="analysis-title">
+                        <span>📚 New Variorum Critics & Bibliography</span>
+                        <button class="copy-button" onclick="copyCritics()">Copy</button>
+                    </div>
+                    <div class="analysis-content" id="criticsContent">
+                        Loading critics information...
+                    </div>
+                </div>
+                
+                <div class="critics-info" id="nvInfo" style="display: none; margin-top: 15px;">
+                    <div class="analysis-title">
+                        <span>ℹ️ What is the New Variorum Shakespeare?</span>
+                        <button class="copy-button" onclick="copyNVInfo()">Copy</button>
+                    </div>
+                    <div class="analysis-content" id="nvContent">
+                        <!-- New Variorum information will be displayed here -->
+                    </div>
+                </div>
+                ` : ''}
             `;
-            
-            // Button outputs are now included within the analysis section itself
             
             // Show critics button if we're in Full Fathom Five mode
             if (currentTab === 'fullfathomfive') {
                 console.log('✅ Structured analysis complete, showing critics button for Full Fathom Five');
                 showCriticsButton();
-                
             }
-            
-            // Add Copy button dynamically after analysis content is set
-            setTimeout(() => {
-                const analysisDiv = analysisPanel.querySelector('.analysis');
-                if (analysisDiv && !analysisDiv.querySelector('.copy-chip')) {
-                    const copyButton = document.createElement('button');
-                    copyButton.className = 'copy-chip';
-                    copyButton.textContent = 'Copy';
-                    copyButton.onclick = copyAnalysis;
-                    analysisDiv.insertBefore(copyButton, analysisDiv.firstChild);
-                    console.log('✅ Copy button added to structured analysis after content is set');
-                }
-            }, 100);
         }
+
 
 
         function updateAnalysisWithProgress(content, selectedText, callResults) {
@@ -6276,7 +5544,7 @@
             const analysisPanel = document.getElementById('analysisPanel');
             const wordCount = countWords(text);
             const playName = currentPlay && plays[currentPlay] ? plays[currentPlay].name : 'Unknown Play';
-            const playInfo = currentScene && currentScene !== '' ? `<em>${playName}</em> · ${currentScene}` : `<em>${playName}</em>`;
+            const playInfo = `<em>${playName}</em> · ${currentScene}`;
             
             // Format the content with proper sections (bypass for Full Fathom Five)
             let formattedContent;
@@ -6318,6 +5586,7 @@
 
                 <!-- AI Analysis Content -->
                 <div class="analysis">
+                    <button class="copy-chip" onclick="copyAnalysis()">Copy</button>
                     <div class="meta">${playInfo} — ${wordCount} ${wordCount === 1 ? 'word' : 'words'} selected</div>
                     <div class="analysis-content">
                         ${formattedContent}
@@ -6346,30 +5615,45 @@
                     </div>
                 </div>
                 
-                <!-- Critics Button - Static buttons in HTML, no dynamic creation needed -->
+                <!-- Critics Button - Added directly to analysis panel for Full Fathom Five -->
+                ${currentTab === 'fullfathomfive' ? `
+                <div class="critics-button-container" id="criticsButtonContainer" style="display: block; margin-top: 15px;">
+                    <button class="btn btn-secondary" onclick="showCritics()" style="width: 100%; margin-bottom: 10px;">
+                        📚 Who are the New Variorum Critics?
+                    </button>
+                    <button class="btn btn-info" onclick="showNVInfo()" style="width: 100%;">
+                        ℹ️ What is the New Variorum Shakespeare?
+                    </button>
+                </div>
+                
+                <!-- Critics Information Display - Embedded in analysis panel -->
+                <div class="critics-info" id="criticsInfo" style="display: none; margin-top: 15px;">
+                    <div class="analysis-title">
+                        <span>📚 New Variorum Critics & Bibliography</span>
+                        <button class="copy-button" onclick="copyCritics()">Copy</button>
+                    </div>
+                    <div class="analysis-content" id="criticsContent">
+                        Loading critics information...
+                    </div>
+                </div>
+                
+                <div class="critics-info" id="nvInfo" style="display: none; margin-top: 15px;">
+                    <div class="analysis-title">
+                        <span>ℹ️ What is the New Variorum Shakespeare?</span>
+                        <button class="copy-button" onclick="copyNVInfo()">Copy</button>
+                    </div>
+                    <div class="analysis-content" id="nvContent">
+                        <!-- New Variorum information will be displayed here -->
+                    </div>
+                </div>
+                ` : ''}
             `;
-            
-            // Button outputs are now included within the analysis section itself
             
             // Show critics button if we're in Full Fathom Five mode
             if (currentTab === 'fullfathomfive') {
                 console.log('✅ Analysis complete, showing critics button for Full Fathom Five');
                 showCriticsButton();
-                
             }
-            
-            // Add Copy button dynamically after analysis content is set
-            setTimeout(() => {
-                const analysisDiv = analysisPanel.querySelector('.analysis');
-                if (analysisDiv && !analysisDiv.querySelector('.copy-chip')) {
-                    const copyButton = document.createElement('button');
-                    copyButton.className = 'copy-chip';
-                    copyButton.textContent = 'Copy';
-                    copyButton.onclick = copyAnalysis;
-                    analysisDiv.insertBefore(copyButton, analysisDiv.firstChild);
-                    console.log('✅ Copy button added to analysis after content is set');
-                }
-            }, 100);
         }
 
 
@@ -6739,47 +6023,14 @@
             
             console.log('=== PROCESSING CONTENT FOR FORMATTING ===');
             console.log('Original content:', content);
-            console.log('🔍 DEBUG: Content contains asterisks:', content.includes('*'));
-            console.log('🔍 DEBUG: All asterisk positions:', [...content.matchAll(/\*/g)].map(m => m.index));
             
             let processed = content;
             
             // Convert asterisks to bold tags
             processed = processed.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
             
-            // NUCLEAR APPROACH - Try EVERY possible asterisk pattern
-            console.log('🔍 DEBUG: Before asterisk conversion:', processed.includes('*'));
-            
-            // Pattern 1: Standard *text*
-            processed = processed.replace(/\*([^*]+?)\*/g, '<span style="font-style: italic;">$1</span>');
-            
-            // Pattern 2: Handle asterisks with spaces
-            processed = processed.replace(/\*\s*([^*]+?)\s*\*/g, '<span style="font-style: italic;">$1</span>');
-            
-            // Pattern 3: Handle asterisks with newlines
-            processed = processed.replace(/\*([^*\n]+?)\*/g, '<span style="font-style: italic;">$1</span>');
-            
-            // Pattern 4: Handle asterisks with any whitespace
-            processed = processed.replace(/\*([^*\s]+?)\*/g, '<span style="font-style: italic;">$1</span>');
-            
-            // Pattern 5: Most aggressive - any character between asterisks
-            processed = processed.replace(/\*([^*]*?)\*/g, '<span style="font-style: italic;">$1</span>');
-            
-            // Specific conversion for common play titles - FORCE ITALICS
-            processed = processed.replace(/\*Macbeth\*/g, '<span style="font-style: italic;">Macbeth</span>');
-            processed = processed.replace(/\*Hamlet\*/g, '<span style="font-style: italic;">Hamlet</span>');
-            processed = processed.replace(/\*Romeo and Juliet\*/g, '<span style="font-style: italic;">Romeo and Juliet</span>');
-            processed = processed.replace(/\*King Lear\*/g, '<span style="font-style: italic;">King Lear</span>');
-            processed = processed.replace(/\*Othello\*/g, '<span style="font-style: italic;">Othello</span>');
-            processed = processed.replace(/\*A Midsummer Night's Dream\*/g, '<span style="font-style: italic;">A Midsummer Night\'s Dream</span>');
-            processed = processed.replace(/\*The Tempest\*/g, '<span style="font-style: italic;">The Tempest</span>');
-            processed = processed.replace(/\*Twelfth Night\*/g, '<span style="font-style: italic;">Twelfth Night</span>');
-            processed = processed.replace(/\*Much Ado About Nothing\*/g, '<span style="font-style: italic;">Much Ado About Nothing</span>');
-            processed = processed.replace(/\*As You Like It\*/g, '<span style="font-style: italic;">As You Like It</span>');
-            
-            console.log('🔍 DEBUG: After asterisk conversion:', processed.includes('*'));
-            console.log('🔍 DEBUG: Sample processed content:', processed.substring(0, 200));
-            console.log('🔍 DEBUG: Final asterisk positions:', [...processed.matchAll(/\*/g)].map(m => m.index));
+            // Convert single asterisks to italics (for emphasis) - more aggressive
+            processed = processed.replace(/\*([^*]+?)\*/g, '<em>$1</em>');
             
             // Convert shorthand to proper academic language
             processed = processed.replace(/\bvs\.\b/gi, 'versus');
@@ -6978,16 +6229,16 @@
                 // Prepare the context for the follow-up question
                 let context = '';
                 const playName = currentPlay && plays[currentPlay] ? plays[currentPlay].name : 'Shakespeare';
-                const sceneName = currentScene && currentScene !== '' ? currentScene : null;
+                const sceneName = currentScene || 'scene';
                 
                 if (hasAnalysis && selectedText) {
-                    context = `Current play: ${playName}\n\nOriginal text: "${selectedText}"\n\nCurrent analysis: ${currentAnalysis.innerText}\n\nFollow-up question: ${question}`;
+                    context = `Current play: ${playName} (${sceneName})\n\nOriginal text: "${selectedText}"\n\nCurrent analysis: ${currentAnalysis.innerText}\n\nFollow-up question: ${question}`;
                 } else {
-                    context = `Current play: ${playName}\n\nQuestion: ${question}`;
+                    context = `Current play: ${playName} (${sceneName})\n\nQuestion: ${question}`;
                 }
                 
                 // Call the AI function with follow-up level and base level for style consistency
-                const response = await fetchWithTimeout('/.netlify/functions/shakespeare', {
+                const response = await fetch('/.netlify/functions/shakespeare', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -6996,7 +6247,8 @@
                         text: context,
                         level: 'followup', // Special follow-up level
                         baseLevel: currentTab || 'basic', // Base level for style consistency
-                        playName: currentPlay && plays[currentPlay] ? plays[currentPlay].name : 'Shakespeare'
+                        playName: currentPlay && plays[currentPlay] ? plays[currentPlay].name : 'Shakespeare',
+                        sceneName: currentScene || 'scene'
                     })
                 });
                 
@@ -7056,8 +6308,8 @@
         // Media and Research Functions
         function searchYouTube(type) {
             const playName = currentPlay && plays[currentPlay] ? plays[currentPlay].name : 'Shakespeare';
-            const sceneName = currentScene && currentScene !== '' ? currentScene : null;
-            const searchQuery = sceneName ? `${playName} ${sceneName} performance` : `${playName} performance`;
+            const sceneName = currentScene || 'scene';
+            const searchQuery = `${playName} ${sceneName} performance`;
             
             const url = `https://www.youtube.com/results?search_query=${encodeURIComponent(searchQuery)}`;
             window.open(url, '_blank');
@@ -7083,7 +6335,7 @@
 
         function searchGoogleScholar() {
             const playName = currentPlay && plays[currentPlay] ? plays[currentPlay].name : 'Shakespeare';
-            const sceneName = currentScene && currentScene !== '' ? currentScene : null;
+            const sceneName = currentScene || 'scene';
             
             // Extract Act information from the scene name
             let actInfo = '';
@@ -7098,10 +6350,8 @@
             let searchQuery = '';
             if (actInfo) {
                 searchQuery = `${playName} ${actInfo} Shakespeare`;
-            } else if (sceneName) {
-                searchQuery = `${playName} ${sceneName} Shakespeare`;
             } else {
-                searchQuery = `${playName} Shakespeare`;
+                searchQuery = `${playName} ${sceneName} Shakespeare`;
             }
             
             const url = `https://scholar.google.com/scholar?q=${encodeURIComponent(searchQuery)}`;
@@ -7217,335 +6467,136 @@
         }
 
         // Critics functionality
-        function showCritics() {
+        async function showCritics() {
             console.log('🔍 showCritics called');
             
-            // Hide the New Variorum info section first
-            const nvInfo = document.getElementById('nvInfo');
-            if (nvInfo) nvInfo.style.display = 'none';
+            // Get the New Variorum Analysis content - try multiple sources
+            let variorumText = '';
             
-            // Show the critics info section
+            // First try variorumContent
+            const variorumContent = document.getElementById('variorumContent');
+            if (variorumContent && variorumContent.textContent) {
+                variorumText = variorumContent.textContent || variorumContent.innerText;
+                console.log('📖 Got content from variorumContent:', variorumText.length, 'characters');
+            }
+            
+            // If no content, try the main analysis content (for Full Fathom Five)
+            if (!variorumText || variorumText.trim().length === 0) {
+                const analysisContent = document.querySelector('.analysis-content');
+                if (analysisContent && analysisContent.textContent) {
+                    variorumText = analysisContent.textContent || analysisContent.innerText;
+                    console.log('📖 Got content from analysis-content:', variorumText.length, 'characters');
+                }
+            }
+            
+            // If still no content, try variorumResult
+            if (!variorumText || variorumText.trim().length === 0) {
+                const variorumResult = document.getElementById('variorumResult');
+                if (variorumResult && variorumResult.textContent) {
+                    variorumText = variorumResult.textContent || variorumResult.innerText;
+                    console.log('📖 Got content from variorumResult:', variorumText.length, 'characters');
+                }
+            }
+            
+            if (!variorumText || variorumText.trim().length === 0) {
+                alert('No analysis content found. Please analyze some text first in Full Fathom Five mode.');
+                console.error('No analysis content found in any source');
+                return;
+            }
+            
+            console.log('📖 Variorum content length:', variorumText.length);
+            
+            // Show the critics info section and hide the button
             const criticsInfo = document.getElementById('criticsInfo');
+            const criticsButtonContainer = document.getElementById('criticsButtonContainer');
             const criticsContent = document.getElementById('criticsContent');
             
             if (criticsInfo) criticsInfo.style.display = 'block';
+            // Keep the button visible - don't hide it
+            if (criticsContent) criticsContent.innerHTML = '<p style="font-family: var(--ui); font-style: italic;">Processing critics information...</p>';
             
-            // Display the hardcoded critics information
-            if (criticsContent) {
-                criticsContent.innerHTML = `
-                    <div class="critics-intro">
-                        <h4>Who are the New Variorum critics?</h4>
-                        <p>The New Variorum editions draw on an extraordinary range of voices—from 18th-century pioneers who first attempted to restore Shakespeare's "corrupted" text, through Victorian scholars who brought scientific rigor to textual criticism, to early 20th-century critics who revolutionized our understanding of Shakespeare's language and stagecraft.</p>
-                        
-                        <p>When reading the New Variorum notes, you'll encounter a dizzying array of abbreviated names and cryptic references: "CAPELL," "THEOBALD," "MALONE," "SCHMIDT." These aren't just footnotes—they represent real people who dedicated their lives to understanding Shakespeare. Behind each abbreviation is a scholar with their own fascinating story: Alexander Pope, the great poet who produced one of the first "modern" Shakespeare editions (1725); Samuel Johnson, whose 1765 edition contained brilliant interpretive notes that are still quoted today; Edmond Malone, who pioneered the historical study of Shakespeare's texts in the late 18th century; or Alexander Schmidt, whose Shakespeare Lexicon (1874-75) remains indispensable for understanding Elizabethan word meanings.</p>
-                        
-                        <p>The Variorum's democratic approach means you'll find everyone from famous literary critics to obscure German philologists, from actor-managers sharing performance insights to amateur scholars who made single brilliant observations. Furness included them all, believing that truth about Shakespeare could come from anywhere.</p>
-                        
-                        <p>While we've expanded each citation in the notes themselves to include full names and publication years, the sheer number of critics cited can be overwhelming. Below is the complete list of authorities referenced in this volume, drawn from the Variorum's own index. This list reveals the true scope of the centuries-long conversation you're joining when you read these notes—a international community of readers all grappling with the endless complexities of Shakespeare's text.</p>
-                    </div>
+            try {
+                console.log('🚀 Making API call to extract critics information...');
+                console.log('📝 Sending text:', variorumText.substring(0, 200) + '...');
+                
+                // Try the direct function path first
+                let response = await fetch('/.netlify/functions/shakespeare', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        text: variorumText,
+                        level: 'critics',
+                        model: 'gpt-4o-mini',
+                        playName: currentPlay && plays[currentPlay] ? plays[currentPlay].name : 'Macbeth',
+                        sceneName: currentScene || 'Unknown Scene',
+                        version: '2024-12-19-critics-analysis'
+                    })
+                });
+                
+                console.log('📡 API response status:', response.status);
+                
+                // If direct function fails, try the redirect path
+                if (!response.ok && response.status === 504) {
+                    console.log('🔄 Direct function timed out, trying redirect path...');
+                    response = await fetch('/api/shakespeare', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            text: variorumText,
+                            level: 'critics',
+                            model: 'gpt-4o-mini',
+                            playName: currentPlay && plays[currentPlay] ? plays[currentPlay].name : 'Macbeth',
+                            sceneName: currentScene || 'Unknown Scene',
+                            version: '2024-12-19-critics-analysis'
+                        })
+                    });
+                }
+                
+                if (!response.ok) {
+                    let errorText = 'Unknown error';
+                    try {
+                        errorText = await response.text();
+                    } catch (e) {
+                        console.error('Could not read error response:', e);
+                    }
+                    console.error('❌ API error:', errorText);
                     
-                    <div class="critics-separator" style="margin: 30px 0; padding: 20px 0; border-top: 2px solid #e5e7eb; border-bottom: 2px solid #e5e7eb;">
-                        <h4 style="text-align: center; color: #666; font-weight: 600;">Complete List of New Variorum Critics & Authorities for Macbeth</h4>
-                    </div>
-                    
-                    <div class="critics-list" style="max-height: 400px; overflow-y: auto; background: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb;">
-                        <div style="font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6;">
-                            <p>"E. A. Abbott, Shakespearean Grammar, London, 1870"</p>
-                            <p>"Prof. Allen, MS notes on Macbeth, 1867"</p>
-                            <p>"Macbeth, Paris, 1889"</p>
-                            <p>"Variorum Edition of Macbeth, London, 1807"</p>
-                            <p>"Ethics of Macbeth (Dublin University Magazine, March), 1865"</p>
-                            <p>"Theatrical Register, York, 1788"</p>
-                            <p>"Macbeth on the Stage (English Illustrated Magazine, December), 1875"</p>
-                            <p>"W. R. Arrowsmith, Shakespeare's Editors and Commentators, London, 1865"</p>
-                            <p>"C. Badham, Text of Shakespeare (Cambridge Essays), 1856"</p>
-                            <p>"S. Bailey, The Received Text of Shakespeare, 1862"</p>
-                            <p>"J. Baret, An Alvearie, 1580"</p>
-                            <p>"C. Barhurst, Differences of Shakespeare's Versification, 1867"</p>
-                            <p>"T. S. Baynes, Shakespeare Studies and other Essays, 1872"</p>
-                            <p>"Works (ed. Dyce), 1843"</p>
-                            <p>"A. Becket, Shakespeare Himself Again, 1815"</p>
-                            <p>"S. Beisley, Shakespeare's Garden, 1864"</p>
-                            <p>"J. W. O. Benda, Shakespeare's Dramatische Werke, Leipzig, 1823"</p>
-                            <p>"W. J. Birch, Inquiry into the Philosophy and Religion of Shakespeare, London, 1848"</p>
-                            <p>"J. B. Bittinger, Transactions American Philological Association, 1876"</p>
-                            <p>"K. Blackwell, Shakespeare's Dramatische Werke, 1870"</p>
-                            <p>"H. Boas, Shakespeare and His Works, London, 1879"</p>
-                            <p>"G. Bohlen, Shakespeare's Dramatische Werke, London, 1853"</p>
-                            <p>"E. Booth, Macbeth, Prompt-book (ed. W. Winter), New York, 1887"</p>
-                            <p>"J. Boswell, Shakespeare's Dramatic Works, 1821"</p>
-                            <p>"J. Boydell, Shakespeare's Works, London, 1802"</p>
-                            <p>"A. C. Bradley, Shakespearean Tragedy, London, 1904"</p>
-                            <p>"J. Brady, Shakespeare's Plays, Dublin, 1779"</p>
-                            <p>"G. Brandes, William Shakespeare, London, 1898"</p>
-                            <p>"M. Breal, Shakespeare's Works, Paris, 1861"</p>
-                            <p>"E. von Brentano, Shakespeare's Dramatische Werke, Leipzig, 1846"</p>
-                            <p>"A. Brewer, Shakespeare's Dramatische Werke, London, 1836"</p>
-                            <p>"S. A. Brooke, Shakespeare's Life, London, 1894"</p>
-                            <p>"J. Brown, Shakespeare's Life, London, 1869"</p>
-                            <p>"R. Browning, Shakespeare's Life, London, 1840"</p>
-                            <p>"W. Bryce, Shakespeare's Life, London, 1872"</p>
-                            <p>"R. Buchanan, Shakespeare's Life, London, 1869"</p>
-                            <p>"G. Buchner, Shakespeare's Dramatische Werke, Leipzig, 1888"</p>
-                            <p>"J. C. Bucknill, Mad Folk of Shakespeare, London, 1860"</p>
-                            <p>"J. G. Bullock, Studies in the Text of Shakespeare, London, 1878"</p>
-                            <p>"H. S. Bungay, Shakespeare's Life, London, 1877"</p>
-                            <p>"A. Burdett-Coutts, Shakespeare's Life, London, 1864"</p>
-                            <p>"E. Burke, Shakespeare's Life, London, 1797"</p>
-                            <p>"H. Busch, Shakespeare's Life, Leipzig, 1878"</p>
-                            <p>"A. Buschmann, Shakespeare's Life, Leipzig, 1855"</p>
-                            <p>"S. Butler, Shakespeare's Life, London, 1868"</p>
-                            <p>"P. Calderon, Shakespeare's Life, Madrid, 1883"</p>
-                            <p>"C. Calvert, Shakespeare's Life, London, 1881"</p>
-                            <p>"E. Capell, Notes, 1779"</p>
-                            <p>"Earl of Carlisle, Shakespeare's Life, London, 1867"</p>
-                            <p>"P. Carnegy, Shakespeare's Life, London, 1887"</p>
-                            <p>"W. and R. Chambers, Shakespeare's Life, London, 1865"</p>
-                            <p>"J. B. Chatelain, Shakespeare's Life, Paris, 1851"</p>
-                            <p>"T. Chatterton, Shakespeare's Life, London, 1778"</p>
-                            <p>"W. G. Clark, Shakespeare's Life, Cambridge, 1863"</p>
-                            <p>"C. Cowden Clarke, The Shakespeare Key, London, 1879"</p>
-                            <p>"Clarendon Press Edition, Oxford, 1869"</p>
-                            <p>"E. W. Clemens, Shakespeare's Life, London, 1886"</p>
-                            <p>"J. P. Collier, Annals of the Stage, London, 1831"</p>
-                            <p>"J. P. Collier, Notes and Emendations, London, 1853"</p>
-                            <p>"J. Conrad, Shakespeare's Life, Stuttgart, 1885"</p>
-                            <p>"G. Conradi, Shakespeare's Life, Leipzig, 1866"</p>
-                            <p>"A. Cooper, Shakespeare's Life, London, 1827"</p>
-                            <p>"W. J. Courthope, Shakespeare's Life, London, 1879"</p>
-                            <p>"H. Craig, Shakespeare's Life, London, 1891"</p>
-                            <p>"G. L. Craik, English of Shakespeare, London, 1857"</p>
-                            <p>"G. Cunningham, Shakespeare's Life, London, 1855"</p>
-                            <p>"A. Cuthbert, Shakespeare's Life, London, 1866"</p>
-                            <p>"W. S. Dalgleish, Macbeth, London, 1869"</p>
-                            <p>"P. A. Daniel, Notes and Conjectural Emendations, 1870"</p>
-                            <p>"J. Darling, Shakespeare's Life, London, 1863"</p>
-                            <p>"A. Darmstetter, Macbeth, Paris, 1881"</p>
-                            <p>"W. D'Avenant, Macbeth, 1674"</p>
-                            <p>"T. Davies, Dramatic Miscellanies, London, 1784"</p>
-                            <p>"T. De Quincey, Macbeth, Edinburgh, 1859"</p>
-                            <p>"A. De Vere, Shakespeare's Life, London, 1879"</p>
-                            <p>"N. Delius, Macbeth, 1846"</p>
-                            <p>"Deutsches Theater, 1862"</p>
-                            <p>"E. Devrient, Shakespeare's Life, Weimar, 1854"</p>
-                            <p>"T. F. Dibdin, Shakespeare's Life, London, 1819"</p>
-                            <p>"T. Dilke, Shakespeare's Life, London, 1856"</p>
-                            <p>"T. S. Dixon, Shakespeare's Life, London, 1865"</p>
-                            <p>"W. Dodd, Shakespeare's Life, London, 1780"</p>
-                            <p>"J. Douglas, Shakespeare's Life, London, 1863"</p>
-                            <p>"E. Dowden, Shakespeare's Life, London, 1881"</p>
-                            <p>"N. Drake, Shakespeare and his Times, London, 1817"</p>
-                            <p>"J. Dryden, Shakespeare's Life, London, 1668"</p>
-                            <p>"M. A. Duff, Shakespeare's Life, London, 1876"</p>
-                            <p>"Earl of Dufferin, Shakespeare's Life, London, 1875"</p>
-                            <p>"C. Dupont, Shakespeare's Life, Paris, 1848"</p>
-                            <p>"A. Dyce, Remarks on Collier and Knight's Editions of Shakespeare, London, 1844"</p>
-                            <p>"A. Dyer, Shakespeare's Life, London, 1876"</p>
-                            <p>"T. Eaton, Shakespeare and the Bible, London, 1888"</p>
-                            <p>"T. Edwards, Canons of Criticism, London, 1765"</p>
-                            <p>"K. Elze, Shakespeare's Life, London, 1886"</p>
-                            <p>"R. W. Emerson, Shakespeare's Life, Boston, 1867"</p>
-                            <p>"J. Erdmann, Shakespeare's Life, Leipzig, 1872"</p>
-                            <p>"F. W. Fairholt, Shakespeare's Life, London, 1853"</p>
-                            <p>"K. Fischer, Shakespeare's Life, Stuttgart, 1866"</p>
-                            <p>"J. Fletcher, Shakespeare's Life, London, 1679"</p>
-                            <p>"F. G. Fleay, Shakespearean Manual, London, 1876"</p>
-                            <p>"J. Florio, A World of Words, London, 1598"</p>
-                            <p>"J. Forde, Works (ed. Gilford), 1848"</p>
-                            <p>"J. Forster, Some Notes on Shakespeare's Characters, 1864"</p>
-                            <p>"J. Fraser, Shakespeare's Life, London, 1868"</p>
-                            <p>"H. Franz, Shakespeare's Life, Berlin, 1867"</p>
-                            <p>"A. R. Frey, Shakespeare's Life, London, 1889"</p>
-                            <p>"O. Fritsch, Shakespeare's Life, London, 1866"</p>
-                            <p>"H. H. Furness, Shakespeare's Life, Philadelphia, 1871"</p>
-                            <p>"J. Gildon, Shakespeare's Life, London, 1710"</p>
-                            <p>"J. Glaser, Shakespeare's Life, Berlin, 1872"</p>
-                            <p>"J. W. Goethe, Shakespeare's Life, Weimar, 1827"</p>
-                            <p>"S. Baring-Gould, Shakespeare's Life, London, 1890"</p>
-                            <p>"A. Gray, Shakespeare's Life, London, 1871"</p>
-                            <p>"H. Green, Shakespeare's Life, London, 1864"</p>
-                            <p>"J. Greswell, Shakespeare's Life, London, 1868"</p>
-                            <p>"G. Grote, Shakespeare's Life, London, 1879"</p>
-                            <p>"F. P. G. Guizot, Shakespeare's Life, Paris, 1821"</p>
-                            <p>"J. O. Halliwell, The Folio Edition of Shakespeare, London, 1856"</p>
-                            <p>"J. O. Halliwell, A New Edition of Shakespeare's Works, London, 1886"</p>
-                            <p>"J. Harington, Shakespeare's Life, London, 1847"</p>
-                            <p>"J. Harris, Shakespeare's Life, London, 1878"</p>
-                            <p>"A. Hart, Shakespeare's Life, Dublin, 1881"</p>
-                            <p>"W. Harness, Shakespeare's Life, London, 1836"</p>
-                            <p>"J. Haynes, Shakespeare's Life, London, 1859"</p>
-                            <p>"W. Hazlitt, Characters of Shakespeare's Plays, London, 1817"</p>
-                            <p>"W. E. Henley, Shakespeare's Life, London, 1883"</p>
-                            <p>"J. Hennell, Shakespeare's Life, London, 1865"</p>
-                            <p>"H. Herbert, Shakespeare's Life, London, 1863"</p>
-                            <p>"G. Hilaire, Shakespeare's Life, Paris, 1849"</p>
-                            <p>"H. Hilberg, Shakespeare's Life, Leipzig, 1890"</p>
-                            <p>"J. Hilgenfeld, Shakespeare's Life, Leipzig, 1860"</p>
-                            <p>"W. Hildebrand, Shakespeare's Life, Berlin, 1864"</p>
-                            <p>"T. H. Holland, Shakespeare's Life, London, 1864"</p>
-                            <p>"J. Holliday, Shakespeare's Life, London, 1799"</p>
-                            <p>"J. Holmes, Shakespeare's Life, New York, 1870"</p>
-                            <p>"R. G. Honey, Macbeth, London, 1866"</p>
-                            <p>"H. N. Hudson, Shakespeare's Life, Boston, 1872"</p>
-                            <p>"V. Hugo, Shakespeare's Life, Paris, 1863"</p>
-                            <p>"J. Hunter, Shakespeare's Life, Edinburgh, 1817"</p>
-                            <p>"C. M. Ingleby, Shakespeare's Life, London, 1869"</p>
-                            <p>"H. B. Irving, Shakespeare's Life, London, 1883"</p>
-                            <p>"J. Jackson, Shakespeare's Life, London, 1846"</p>
-                            <p>"A. James, Shakespeare's Life, London, 1868"</p>
-                            <p>"H. Jenner, Shakespeare's Life, London, 1833"</p>
-                            <p>"J. Jereli, Shakespeare's Life, London, 1870"</p>
-                            <p>"J. Jolier, Shakespeare's Life, Paris, 1881"</p>
-                            <p>"J. Kalm, Shakespeare's Life, London, 1869"</p>
-                            <p>"H. F. Keary, Macbeth, London, 1866"</p>
-                            <p>"J. L. Kellogg, Shakespeare's Life, London, 1871"</p>
-                            <p>"J. Kindermann, Shakespeare's Life, Leipzig, 1856"</p>
-                            <p>"C. Knight, Shakespeare's Life, London, 1843"</p>
-                            <p>"A. Kruse, Shakespeare's Life, Berlin, 1894"</p>
-                            <p>"J. Kühling, Shakespeare's Life, Leipzig, 1886"</p>
-                            <p>"J. P. Köller, Shakespeare's Life, Stuttgart, 1866"</p>
-                            <p>"J. Kreyssig, Shakespeare's Life, London, 1869"</p>
-                            <p>"A. M. Kurth, Shakespeare's Life, Paris, 1851"</p>
-                            <p>"G. Lambert, Shakespeare's Life, London, 1845"</p>
-                            <p>"J. Lanchs, Shakespeare's Life, London, 1867"</p>
-                            <p>"A. Lang, Shakespeare's Life, London, 1869"</p>
-                            <p>"J. Laurent, Shakespeare's Life, London, 1846"</p>
-                            <p>"H. Lester, Shakespeare's Life, London, 1815"</p>
-                            <p>"G. H. Lewes, Shakespeare's Life, London, 1851"</p>
-                            <p>"G. Lillo, Shakespeare's Life, London, 1853"</p>
-                            <p>"J. Lindner, Shakespeare's Life, London, 1855"</p>
-                            <p>"H. Lister, Shakespeare's Life, London, 1845"</p>
-                            <p>"T. R. Lounsbury, Shakespeare's Life, New York, 1891"</p>
-                            <p>"J. R. Lowell, Shakespeare's Life, London, 1883"</p>
-                            <p>"J. Lubbock, Shakespeare's Life, London, 1879"</p>
-                            <p>"T. B. Macaulay, Shakespeare's Life, London, 1865"</p>
-                            <p>"G. MacDonald, Shakespeare's Life, London, 1866"</p>
-                            <p>"A. Mackintosh, Shakespeare's Life, London, 1888"</p>
-                            <p>"A. Macnaught, Shakespeare's Life, London, 1870"</p>
-                            <p>"H. Magnus, Shakespeare's Life, Leipzig, 1885"</p>
-                            <p>"C. Mair, Shakespeare's Life, London, 1867"</p>
-                            <p>"E. Malone, Shakespeare's Life, London, 1790"</p>
-                            <p>"T. Manning, Shakespeare's Life, London, 1866"</p>
-                            <p>"A. Menzel, Shakespeare's Life, London, 1870"</p>
-                            <p>"J. Michaud, Shakespeare's Life, Paris, 1855"</p>
-                            <p>"H. Milman, Shakespeare's Life, London, 1863"</p>
-                            <p>"J. Moser, Shakespeare's Life, London, 1866"</p>
-                            <p>"M. Muller, Shakespeare's Life, London, 1867"</p>
-                            <p>"T. Mundt, Shakespeare's Life, Munich, 1855"</p>
-                            <p>"R. Munich, Shakespeare's Life, London, 1867"</p>
-                            <p>"J. Murray, Shakespeare's Life, London, 1875"</p>
-                            <p>"H. Mutter, Shakespeare's Life, London, 1868"</p>
-                            <p>"G. Nash, Shakespeare's Life, London, 1877"</p>
-                            <p>"P. Nuttall, Shakespeare's Life, London, 1868"</p>
-                            <p>"J. Ogle, Shakespeare's Life, London, 1884"</p>
-                            <p>"R. O'Hanlon, Shakespeare's Life, Dublin, 1886"</p>
-                            <p>"C. Olin, Shakespeare's Life, London, 1867"</p>
-                            <p>"L. Oliphant, Shakespeare's Life, London, 1885"</p>
-                            <p>"J. Otto, Shakespeare's Life, London, 1866"</p>
-                            <p>"F. Palmer, Shakespeare's Life, London, 1866"</p>
-                            <p>"T. Park, Shakespeare's Life, London, 1865"</p>
-                            <p>"T. Pasco, Shakespeare's Life, London, 1870"</p>
-                            <p>"W. Paterson, Shakespeare's Life, London, 1866"</p>
-                            <p>"T. Patterson, Shakespeare's Life, Edinburgh, 1877"</p>
-                            <p>"J. Peers, Shakespeare's Life, London, 1870"</p>
-                            <p>"G. Phillimore, Shakespeare's Life, London, 1870"</p>
-                            <p>"A. Philippi, Shakespeare's Life, London, 1867"</p>
-                            <p>"J. Phillips, Shakespeare's Life, London, 1866"</p>
-                            <p>"R. Pritchard, Shakespeare's Life, London, 1869"</p>
-                            <p>"W. Rassmann, Shakespeare's Life, London, 1867"</p>
-                            <p>"I. Reed, Shakespeare's Life, London, 1803"</p>
-                            <p>"J. Ritson, Shakespeare's Life, London, 1795"</p>
-                            <p>"J. Rohlfs, Shakespeare's Life, London, 1886"</p>
-                            <p>"W. J. Rolfe, Shakespeare's Life, London, 1871"</p>
-                            <p>"G. Rümelin, Shakespeare's Life, Stuttgart, 1866"</p>
-                            <p>"W. Russell, Shakespeare's Life, London, 1899"</p>
-                            <p>"J. Sabine, Shakespeare's Life, London, 1859"</p>
-                            <p>"W. Sandys, Shakespeare's Life, London, 1859"</p>
-                            <p>"A. Schmidt, Shakespeare's Life, London, 1878"</p>
-                            <p>"H. Schwarz, Shakespeare's Life, London, 1867"</p>
-                            <p>"W. Seward, Shakespeare's Life, London, 1867"</p>
-                            <p>"E. H. Seymour, Shakespeare's Life, London, 1865"</p>
-                            <p>"S. W. Singer, Shakespeare's Life, London, 1826"</p>
-                            <p>"W. W. Skeat, Shakespeare's Life, London, 1870"</p>
-                            <p>"A. Skottowe, Shakespeare's Life, London, 1824"</p>
-                            <p>"J. D. Snedeker, Shakespeare's Life, St. Louis, 1877"</p>
-                            <p>"A. Spencer, Shakespeare's Life, London, 1856"</p>
-                            <p>"A. Stahr, Shakespeare's Life, London, 1871"</p>
-                            <p>"S. Stephens, Shakespeare's Life, London, 1845"</p>
-                            <p>"W. Stoker, Shakespeare's Life, London, 1873"</p>
-                            <p>"W. Stones, Shakespeare's Life, London, 1876"</p>
-                            <p>"H. Sturzen, Shakespeare's Life, London, 1878"</p>
-                            <p>"H. Taine, Shakespeare's Life, Paris, 1866"</p>
-                            <p>"H. Tausch, Shakespeare's Life, London, 1901"</p>
-                            <p>"C. Thirlwall, Shakespeare's Life, London, 1836"</p>
-                            <p>"W. J. Thoms, Shakespeare's Life, London, 1871"</p>
-                            <p>"J. Timms, Shakespeare's Life, London, 1877"</p>
-                            <p>"J. Tobin, Shakespeare's Life, London, 1856"</p>
-                            <p>"A. H. Tolman, Shakespeare's Life, London, 1877"</p>
-                            <p>"R. Travers, Shakespeare's Life, London, 1868"</p>
-                            <p>"E. Trebitsch, Shakespeare's Life, Halle, 1868"</p>
-                            <p>"H. Trebitschwitz, Shakespeare's Life, London, 1871"</p>
-                            <p>"E. Trelawny, Shakespeare's Life, London, 1866"</p>
-                            <p>"A. Trench, Shakespeare's Life, London, 1876"</p>
-                            <p>"A. Tyler, Shakespeare's Life, London, 1846"</p>
-                            <p>"J. Tyssen, Shakespeare's Life, London, 1846"</p>
-                            <p>"J. Upton, Shakespeare's Life, London, 1746"</p>
-                            <p>"A. F. Upjohn, Shakespeare's Life, London, 1899"</p>
-                            <p>"J. E. Urie, Shakespeare's Life, London, 1879"</p>
-                            <p>"B. A. P. Van Dam, Shakespeare's Life, Paris, 1889"</p>
-                            <p>"A. F. Veirer, Shakespeare's Life, Paris, 1849"</p>
-                            <p>"E. Villain, Shakespeare's Life, Stuttgart, 1846"</p>
-                            <p>"F. T. Vischer, Shakespeare's Life, London, 1900"</p>
-                            <p>"H. Voigt, Shakespeare's Life, Leipzig, 1874"</p>
-                            <p>"H. Von, Shakespeare's Life, London, 1890"</p>
-                            <p>"W. S. Walker, Shakespeare's Life, London, 1888"</p>
-                            <p>"W. Wall, Shakespeare's Life, London, 1810"</p>
-                            <p>"H. Ware, Shakespeare's Life, London, 1865"</p>
-                            <p>"J. Weller, Shakespeare's Life, London, 1815"</p>
-                            <p>"R. Wellesley, Shakespeare's Life, London, 1885"</p>
-                            <p>"K. Werrer, Shakespeare's Life, Berlin, 1885"</p>
-                            <p>"W. Wetz, Shakespeare's Life, 1891"</p>
-                            <p>"H. B. Wheatley, Shakespeare's Life, Oxford, 1785"</p>
-                            <p>"O. Wilde, Shakespeare's Life, London, 1836"</p>
-                            <p>"R. Williams, Shakespeare's Life, London, 1863"</p>
-                            <p>"W. Winter, Shakespeare's Life, London, 1893"</p>
-                            <p>"C. Wordsworth, Shakespeare's Life, London, 1884"</p>
-                            <p>"K. Crowley, Shakespeare's Life, Boston, 1857"</p>
-                            <p>"W. Whitaker, Shakespeare's Life, New York, 1884"</p>
-                            <p>"R. G. White, Shakespeare's Life, London, 1880"</p>
-                            <p>"J. Wither, Shakespeare's Life, London, 1849"</p>
-                            <p>"E. H. Wool, Shakespeare's Life, London, 1871"</p>
-                            <p>"K. Zimmermann, Shakespeare's Life, London, 1864"</p>
+                    if (response.status === 504) {
+                        throw new Error('The request timed out. The analysis might be too complex. Please try with shorter text.');
+                    } else {
+                        throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+                    }
+                }
+                
+                const data = await response.json();
+                console.log('📊 API response data:', data);
+                
+                if (data.choices && data.choices[0] && data.choices[0].message) {
+                    const criticsAnalysis = data.choices[0].message.content;
+                    console.log('📚 Critics analysis received:', criticsAnalysis.substring(0, 300) + '...');
+                    displayCriticsInfo(criticsAnalysis);
+                } else {
+                    console.error('❌ Invalid response format:', data);
+                    throw new Error('Invalid response format from API');
+                }
+                
+            } catch (error) {
+                console.error('Error getting critics information:', error);
+                if (criticsContent) {
+                    criticsContent.innerHTML = `
+                        <div class="error">
+                            <p>Error loading critics information: ${error.message}</p>
+                            <button class="btn btn-primary" onclick="showCritics()">Try Again</button>
                         </div>
-                    </div>
-                `;
+                    `;
+                }
+                // Show the button again if there was an error
+                if (criticsButtonContainer) criticsButtonContainer.style.display = 'block';
             }
-        }
-
-        // Copy function for critics information
-        function copyCritics() {
-            const criticsContent = document.getElementById('criticsContent');
-            if (!criticsContent) return;
-            
-            const textContent = criticsContent.textContent || criticsContent.innerText;
-            navigator.clipboard.writeText(textContent).then(() => {
-                console.log('Critics information copied to clipboard');
-            }).catch(err => {
-                console.error('Failed to copy critics information:', err);
-            });
-        }
-
-        // Copy function for New Variorum information
-        function copyNVInfo() {
-            const nvContent = document.getElementById('nvContent');
-            if (!nvContent) return;
-            
-            const textContent = nvContent.textContent || nvContent.innerText;
-            navigator.clipboard.writeText(textContent).then(() => {
-                console.log('New Variorum information copied to clipboard');
-            }).catch(err => {
-                console.error('Failed to copy New Variorum information:', err);
-            });
         }
         
         function displayCriticsInfo(content) {
@@ -7582,10 +6633,6 @@
         function showNVInfo() {
             console.log('🔍 showNVInfo called');
             
-            // Hide the critics info section first
-            const criticsInfo = document.getElementById('criticsInfo');
-            if (criticsInfo) criticsInfo.style.display = 'none';
-            
             // Show the NV info section
             const nvInfo = document.getElementById('nvInfo');
             const nvContent = document.getElementById('nvContent');
@@ -7594,19 +6641,45 @@
             if (nvContent) {
                 nvContent.innerHTML = `
                     <div class="nv-analysis">
-                        <p><em>The New Variorum Shakespeare</em> is one of the most comprehensive scholarly editions of Shakespeare's works, representing over a century of meticulous textual scholarship. First begun in 1871 by Horace Howard Furness, this monumental project aimed to collect and synthesize centuries of Shakespeare commentary, textual variants, and critical interpretations into definitive scholarly editions.</p>
+                        <h3>📚 The New Variorum Shakespeare Project</h3>
                         
-                        <p>Furness devoted the rest of his life to this project, personally completing 18 volumes between 1871 and his death in 1912. His first volume, <em>Romeo and Juliet</em>, appeared in 1871, followed by <em>Macbeth</em> (1873), <em>Hamlet</em> (two volumes, 1877), <em>King Lear</em> (1880), and others through <em>The Tempest</em> (1892) and <em>Twelfth Night</em> (1901). His son, Horace Howard Furness Jr., continued the work, and after 1936, the Modern Language Association took over the project, continuing to publish new volumes into the 21st century—though the complete works remain unfinished, testament to the sheer scope of the undertaking.</p>
+                        <p><strong>The New Variorum Shakespeare</strong> was a monumental scholarly project that began in the late 19th century and continued into the early 20th century. It represents one of the most comprehensive attempts to document the entire editorial and critical history of Shakespeare's works.</p>
                         
-                        <p>Each New Variorum volume is essentially a massive scholarly apparatus that surrounds Shakespeare's text. For any given line or word, it presents textual variants from different early editions, editorial commentary spanning from the 18th century through modern scholarship, glosses of difficult passages, critical interpretations, performance history, and source materials Shakespeare drew upon.</p>
+                        <h4>🎯 Project Goals</h4>
+                        <ul>
+                            <li><strong>Comprehensive Documentation:</strong> To collect and preserve every significant variant reading, emendation, and critical comment on Shakespeare's texts</li>
+                            <li><strong>Historical Preservation:</strong> To document the evolution of Shakespeare scholarship from the First Folio (1623) through the 19th century</li>
+                            <li><strong>Editorial Authority:</strong> To establish definitive texts based on the most reliable early editions</li>
+                            <li><strong>Critical Heritage:</strong> To preserve the insights and interpretations of generations of Shakespeare scholars</li>
+                        </ul>
                         
-                        <h4>Revolutionary Digital Access</h4>
+                        <h4>📖 What Makes It "New"</h4>
+                        <p>The "New" Variorum was distinguished from earlier variorum editions by its unprecedented scope and systematic approach. It included:</p>
+                        <ul>
+                            <li><strong>Complete Textual Apparatus:</strong> Every significant variant reading from quartos, folios, and major editions</li>
+                            <li><strong>Comprehensive Commentary:</strong> Critical notes from hundreds of scholars, editors, and commentators</li>
+                            <li><strong>Historical Context:</strong> Information about performance history, sources, and cultural background</li>
+                            <li><strong>Bibliographical Details:</strong> Complete publication information for every cited work</li>
+                        </ul>
                         
-                        <p>What we've accomplished here is groundbreaking: we've taken these massive, dense scholarly volumes—traditionally accessible only in research libraries and often intimidating even to scholars—and made them instantly accessible at the click of a button. Through advanced RAG (Retrieval-Augmented Generation) technology, we've digitized and indexed the entire New Variorum commentary corpus, creating something that has never existed before: instant, contextual access to centuries of Shakespeare scholarship.</p>
+                        <h4>👥 Key Figures</h4>
+                        <p>The project was spearheaded by the <strong>Modern Language Association of America</strong> and involved many of the most distinguished Shakespeare scholars of the era, including:</p>
+                        <ul>
+                            <li><strong>Horace Howard Furness</strong> - The original editor who established the format and standards</li>
+                            <li><strong>H. H. Furness, Jr.</strong> - Continued his father's work</li>
+                            <li><strong>Various Academic Editors</strong> - Each play was assigned to a specialist scholar</li>
+                        </ul>
                         
-                        <p>When you click on any line or word, you're not just getting a random note. Our system intelligently retrieves the exact relevant commentary from the New Variorum editions. This means that obscure phrase that's puzzled you? There's probably a 19th-century scholar who spent years thinking about it. That textual crux you're wondering about? You can instantly see how editors from 1733 to today have tried to solve it.</p>
+                        <h4>📚 Legacy and Impact</h4>
+                        <p>The New Variorum Shakespeare remains one of the most important resources for Shakespeare scholarship. It provides:</p>
+                        <ul>
+                            <li><strong>Historical Perspective:</strong> A window into how Shakespeare was understood and interpreted in different eras</li>
+                            <li><strong>Textual Authority:</strong> The foundation for many modern editions of Shakespeare's works</li>
+                            <li><strong>Research Resource:</strong> An invaluable tool for scholars studying the reception and interpretation of Shakespeare</li>
+                            <li><strong>Cultural Documentation:</strong> Evidence of how Shakespeare's works have been adapted and understood across centuries</li>
+                        </ul>
                         
-                        <p>This is the first time anyone has been able to experience Shakespeare with this level of scholarly depth at their fingertips. We've transformed what used to require hours of library research into an immediate, interactive experience. You're not just reading Shakespeare; you're joining a 300-year conversation about every single word, with the greatest Shakespeare scholars in history as your guides.</p>
+                        <p><em>The New Variorum represents the culmination of 19th-century Shakespeare scholarship and continues to influence how we understand and study Shakespeare today.</em></p>
                     </div>
                 `;
             }
@@ -7641,22 +6714,6 @@
             // Hide any previous critics info when new content is loaded
             if (criticsInfo) {
                 criticsInfo.style.display = 'none';
-            }
-        }
-
-        // Helper function to add Copy button to variorum title when commentary appears
-        function addCopyButtonToVariorumTitle() {
-            const variorumSection = document.getElementById('variorumSection');
-            if (variorumSection) {
-                const analysisTitle = variorumSection.querySelector('.analysis-title');
-                if (analysisTitle && !analysisTitle.querySelector('.copy-button')) {
-                    const copyButton = document.createElement('button');
-                    copyButton.className = 'copy-button';
-                    copyButton.textContent = 'Copy';
-                    copyButton.onclick = copyVariorum;
-                    analysisTitle.appendChild(copyButton);
-                    console.log('✅ Copy button added to variorum title');
-                }
             }
         }
         

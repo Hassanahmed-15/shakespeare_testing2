@@ -19,7 +19,7 @@ class ShakespeareApp {
         
         // Initialize notes integration
         this.notesIntegration = new NotesIntegration();
-        await this.notesIntegration.loadNotes();
+        await this.notesIntegration.loadNotesForPlay('Macbeth');
         
         // Load Macbeth data for navigation
         await this.loadMacbethData();
@@ -167,9 +167,20 @@ class ShakespeareApp {
         const selector = document.getElementById('playSelector');
         const selectedValue = selector.value;
         
-        if (selectedValue === 'macbeth') {
-            this.currentPlay = 'Macbeth';
-            this.loadMacbeth();
+        const playMap = {
+            macbeth: { name: 'Macbeth', file: '/macbeth_notes_complete_expanded.json', type: 'macbeth' },
+            hamlet: { name: 'Hamlet', file: '/Public/Data/Hamlet.json' },
+            othello: { name: 'Othello', file: '/Public/Data/Othello.json' },
+            kinglear: { name: 'King Lear', file: '/Public/Data/King_Lear.json' },
+            romeo: { name: 'Romeo and Juliet', file: '/Public/Data/Romeo_and_Juliet.json' }
+        };
+
+        const entry = playMap[selectedValue];
+        if (entry) {
+            this.currentPlay = entry.name;
+            // Load notes only for the first 4 additional plays; others will skip variorum.
+            this.notesIntegration.loadNotesForPlay(this.currentPlay);
+            this.loadPlay(entry);
         } else {
             this.showEmptyState();
         }
@@ -189,41 +200,37 @@ class ShakespeareApp {
         `;
     }
 
-    loadMacbeth() {
-        // Update navigation
-        this.updateNavigation();
-        
+    loadPlay(entry) {
+        // Update navigation using the selected play's JSON structure
+        this.updateNavigation(entry);
         // Load first scene
         this.loadScene('ACT 1, SCENE 1');
     }
 
-    updateNavigation() {
+    updateNavigation(entry) {
         const navList = document.getElementById('navigationList');
         
-        // Macbeth acts and scenes
-        const macbethStructure = {
-            'ACT 1': ['SCENE 1', 'SCENE 2', 'SCENE 3', 'SCENE 4', 'SCENE 5', 'SCENE 6', 'SCENE 7'],
-            'ACT 2': ['SCENE 1', 'SCENE 2', 'SCENE 3', 'SCENE 4'],
-            'ACT 3': ['SCENE 1', 'SCENE 2', 'SCENE 3', 'SCENE 4', 'SCENE 5', 'SCENE 6'],
-            'ACT 4': ['SCENE 1', 'SCENE 2', 'SCENE 3'],
-            'ACT 5': ['SCENE 1', 'SCENE 2', 'SCENE 3', 'SCENE 4', 'SCENE 5', 'SCENE 6', 'SCENE 7', 'SCENE 8']
+        // Build navigation from whichever play is currently loaded in notes or macbethData
+        const structure = {
+            'ACT 1': ['SCENE 1','SCENE 2','SCENE 3','SCENE 4','SCENE 5','SCENE 6','SCENE 7'],
+            'ACT 2': ['SCENE 1','SCENE 2','SCENE 3','SCENE 4'],
+            'ACT 3': ['SCENE 1','SCENE 2','SCENE 3','SCENE 4','SCENE 5','SCENE 6'],
+            'ACT 4': ['SCENE 1','SCENE 2','SCENE 3'],
+            'ACT 5': ['SCENE 1','SCENE 2','SCENE 3','SCENE 4','SCENE 5','SCENE 6','SCENE 7','SCENE 8']
         };
-        
+
         let navHTML = '';
-        
-        Object.keys(macbethStructure).forEach(act => {
+        Object.keys(structure).forEach(act => {
             navHTML += `<li class="nav-item">
                 <a href="#" class="nav-link" onclick="app.loadAct('${act}')">${act}</a>
             </li>`;
-            
-            macbethStructure[act].forEach(scene => {
+            structure[act].forEach(scene => {
                 const sceneKey = `${act}, ${scene}`;
                 navHTML += `<li class="nav-item nav-subitem">
                     <a href="#" class="nav-link" onclick="app.loadScene('${sceneKey}')">${scene}</a>
                 </li>`;
             });
         });
-        
         navList.innerHTML = navHTML;
     }
 
@@ -233,23 +240,27 @@ class ShakespeareApp {
         // Update active navigation
         this.updateActiveNavigation(sceneName);
         
-        // Load scene content from macbeth_notes.json
+        // Load scene content from current play JSON if available; fallback to macbeth
         this.loadSceneContent(sceneName);
     }
 
     loadSceneContent(sceneName) {
-        if (!this.macbethData || !this.macbethData[sceneName]) {
+        const dataSource = this.notesIntegration.isLoaded && this.notesIntegration.notesData
+            ? this.notesIntegration.notesData
+            : this.macbethData;
+
+        if (!dataSource || !dataSource[sceneName]) {
             this.showSceneNotFound(sceneName);
             return;
         }
 
-        const sceneData = this.macbethData[sceneName];
+        const sceneData = dataSource[sceneName];
         const readerContent = document.getElementById('readerContent');
         
         let sceneHTML = `
             <div class="scene-header fade-in">
                 <h1 class="scene-title">${sceneName}</h1>
-                <p class="scene-meta">Macbeth • ${sceneName}</p>
+                <p class="scene-meta">${this.currentPlay || 'Macbeth'} • ${sceneName}</p>
             </div>
             <div class="play-content">
         `;

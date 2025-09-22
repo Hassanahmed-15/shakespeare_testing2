@@ -1,0 +1,5962 @@
+{
+  "ACT 1 SCENE 1": {
+    "1": {
+      "play": "FLAVIUS: Hence! home, you idle creatures get you home:"
+    },
+    "2": {
+      "play": "FLAVIUS: Is this a holiday? what! know you not,"
+    },
+    "3": {
+      "play": "FLAVIUS: Being mechanical, you ought not walk"
+    },
+    "4": {
+      "play": "FLAVIUS: Upon a labouring day without the sign"
+    },
+    "5": {
+      "play": "FLAVIUS: Of your profession? Speak, what trade art thou?"
+    },
+    "6": {
+      "play": "First Commoner: Why, sir, a carpenter."
+    },
+    "7": {
+      "play": "MARULLUS: Where is thy leather apron and thy rule?"
+    },
+    "8": {
+      "play": "MARULLUS: What dost thou with thy best apparel on?"
+    },
+    "9": {
+      "play": "MARULLUS: You, sir, what trade are you?"
+    },
+    "10": {
+      "play": "Second Commoner: Truly, sir, in respect of a fine workman, I am but,"
+    },
+    "11": {
+      "play": "Second Commoner: as you would say, a cobbler."
+    },
+    "12": {
+      "play": "MARULLUS: But what trade art thou? answer me directly."
+    },
+    "13": {
+      "play": "Second Commoner: A trade, sir, that, I hope, I may use with a safe"
+    },
+    "14": {
+      "play": "Second Commoner: conscience; which is, indeed, sir, a mender of bad soles."
+    },
+    "15": {
+      "play": "MARULLUS: What trade, thou knave? thou naughty knave, what trade?"
+    },
+    "16": {
+      "play": "Second Commoner: Nay, I beseech you, sir, be not out with me: yet,"
+    },
+    "17": {
+      "play": "Second Commoner: if you be out, sir, I can mend you."
+    },
+    "18": {
+      "play": "MARULLUS: What meanest thou by that? mend me, thou saucy fellow!"
+    },
+    "19": {
+      "play": "Second Commoner: Why, sir, cobble you."
+    },
+    "20": {
+      "play": "FLAVIUS: Thou art a cobbler, art thou?"
+    },
+    "21": {
+      "play": "Second Commoner: Truly, sir, all that I live by is with the awl: I"
+    },
+    "22": {
+      "play": "Second Commoner: meddle with no tradesman's matters, nor women's"
+    },
+    "23": {
+      "play": "Second Commoner: matters, but with awl. I am, indeed, sir, a surgeon"
+    },
+    "24": {
+      "play": "Second Commoner: to old shoes; when they are in great danger, I"
+    },
+    "25": {
+      "play": "Second Commoner: recover them. As proper men as ever trod upon"
+    },
+    "26": {
+      "play": "Second Commoner: neat's leather have gone upon my handiwork."
+    },
+    "27": {
+      "play": "FLAVIUS: But wherefore art not in thy shop today?"
+    },
+    "28": {
+      "play": "FLAVIUS: Why dost thou lead these men about the streets?"
+    },
+    "29": {
+      "play": "Second Commoner: Truly, sir, to wear out their shoes, to get myself"
+    },
+    "30": {
+      "play": "Second Commoner: into more work. But, indeed, sir, we make holiday,"
+    },
+    "31": {
+      "play": "Second Commoner: to see Caesar and to rejoice in his triumph."
+    },
+    "32": {
+      "play": "MARULLUS: Wherefore rejoice? What conquest brings he home?"
+    },
+    "33": {
+      "play": "MARULLUS: What tributaries follow him to Rome,"
+    },
+    "34": {
+      "play": "MARULLUS: To grace in captive bonds his chariot-wheels?"
+    },
+    "35": {
+      "play": "MARULLUS: You blocks, you stones, you worse than senseless things!"
+    },
+    "36": {
+      "play": "MARULLUS: O you hard hearts, you cruel men of Rome,"
+    },
+    "37": {
+      "play": "MARULLUS: Knew you not Pompey? Many a time and oft"
+    },
+    "38": {
+      "play": "MARULLUS: Have you climb'd up to walls and battlements,"
+    },
+    "39": {
+      "play": "MARULLUS: To towers and windows, yea, to chimney-tops,"
+    },
+    "40": {
+      "play": "MARULLUS: Your infants in your arms, and there have sat"
+    },
+    "41": {
+      "play": "MARULLUS: The livelong day, with patient expectation,"
+    },
+    "42": {
+      "play": "To see great Pompey pass the streets of Rome: "
+    },
+    "43": {
+      "play": "To see great Pompey pass the streets of Rome: And when you saw his chariot but appear,"
+    },
+    "44": {
+      "play": "To see great Pompey pass the streets of Rome: Have you not made an universal shout,"
+    },
+    "45": {
+      "play": "To see great Pompey pass the streets of Rome: That Tiber trembled underneath her banks,"
+    },
+    "46": {
+      "play": "To see great Pompey pass the streets of Rome: To hear the replication of your sounds"
+    },
+    "47": {
+      "play": "To see great Pompey pass the streets of Rome: Made in her concave shores?"
+    },
+    "48": {
+      "play": "To see great Pompey pass the streets of Rome: And do you now put on your best attire?"
+    },
+    "49": {
+      "play": "To see great Pompey pass the streets of Rome: And do you now cull out a holiday?"
+    },
+    "50": {
+      "play": "To see great Pompey pass the streets of Rome: And do you now strew flowers in his way"
+    },
+    "51": {
+      "play": "To see great Pompey pass the streets of Rome: That comes in triumph over Pompey's blood? Be gone!"
+    },
+    "52": {
+      "play": "To see great Pompey pass the streets of Rome: Run to your houses, fall upon your knees,"
+    },
+    "53": {
+      "play": "To see great Pompey pass the streets of Rome: Pray to the gods to intermit the plague"
+    },
+    "54": {
+      "play": "To see great Pompey pass the streets of Rome: That needs must light on this ingratitude."
+    },
+    "55": {
+      "play": "FLAVIUS: Go, go, good countrymen, and, for this fault,"
+    },
+    "56": {
+      "play": "FLAVIUS: Assemble all the poor men of your sort;"
+    },
+    "57": {
+      "play": "FLAVIUS: Draw them to Tiber banks, and weep your tears"
+    },
+    "58": {
+      "play": "FLAVIUS: Into the channel, till the lowest stream"
+    },
+    "59": {
+      "play": "FLAVIUS: Do kiss the most exalted shores of all."
+    },
+    "60": {
+      "play": "FLAVIUS: See whether their basest metal be not moved;"
+    },
+    "61": {
+      "play": "FLAVIUS: They vanish tongue-tied in their guiltiness."
+    },
+    "62": {
+      "play": "FLAVIUS: Go you down that way towards the Capitol;"
+    },
+    "63": {
+      "play": "This way will I: disrobe the images,"
+    },
+    "64": {
+      "play": "This way will I: If you do find them deck'd with ceremonies."
+    },
+    "65": {
+      "play": "MARULLUS: May we do so?"
+    },
+    "66": {
+      "play": "MARULLUS: You know it is the feast of Lupercal."
+    },
+    "67": {
+      "play": "FLAVIUS: It is no matter; let no images"
+    },
+    "68": {
+      "play": "FLAVIUS: Be hung with Caesar's trophies. I'll about,"
+    },
+    "69": {
+      "play": "And drive away the vulgar from the streets: "
+    },
+    "70": {
+      "play": "And drive away the vulgar from the streets: So do you too, where you perceive them thick."
+    },
+    "71": {
+      "play": "And drive away the vulgar from the streets: These growing feathers pluck'd from Caesar's wing"
+    },
+    "72": {
+      "play": "And drive away the vulgar from the streets: Will make him fly an ordinary pitch,"
+    },
+    "73": {
+      "play": "And drive away the vulgar from the streets: Who else would soar above the view of men"
+    },
+    "74": {
+      "play": "And drive away the vulgar from the streets: And keep us all in servile fearfulness."
+    }
+  },
+  "ACT 1 SCENE 2": {
+    "1": {
+      "play": "CAESAR: Calpurnia!"
+    },
+    "2": {
+      "play": "CASCA: Peace, ho! Caesar speaks."
+    },
+    "3": {
+      "play": "CAESAR: Calpurnia!"
+    },
+    "4": {
+      "play": "CALPURNIA: Here, my lord."
+    },
+    "5": {
+      "play": "CAESAR: Stand you directly in Antonius' way,"
+    },
+    "6": {
+      "play": "CAESAR: When he doth run his course. Antonius!"
+    },
+    "7": {
+      "play": "ANTONY: Caesar, my lord?"
+    },
+    "8": {
+      "play": "CAESAR: Forget not, in your speed, Antonius,"
+    },
+    "9": {
+      "play": "CAESAR: To touch Calpurnia; for our elders say,"
+    },
+    "10": {
+      "play": "CAESAR: The barren, touched in this holy chase,"
+    },
+    "11": {
+      "play": "CAESAR: Shake off their sterile curse."
+    },
+    "12": {
+      "play": "ANTONY: I shall remember:"
+    },
+    "13": {
+      "play": "ANTONY: When Caesar says 'do this,' it is perform'd."
+    },
+    "14": {
+      "play": "CAESAR: Set on; and leave no ceremony out."
+    },
+    "15": {
+      "play": "Soothsayer: Caesar!"
+    },
+    "16": {
+      "play": "CAESAR: Ha! who calls?"
+    },
+    "17": {
+      "play": "CASCA: Bid every noise be still: peace yet again!"
+    },
+    "18": {
+      "play": "CAESAR: Who is it in the press that calls on me?"
+    },
+    "19": {
+      "play": "CAESAR: I hear a tongue, shriller than all the music,"
+    },
+    "20": {
+      "play": "CAESAR: Cry 'Caesar!' Speak; Caesar is turn'd to hear."
+    },
+    "21": {
+      "play": "Soothsayer: Beware the ides of March."
+    },
+    "22": {
+      "play": "CAESAR: What man is that?"
+    },
+    "23": {
+      "play": "BRUTUS: A soothsayer bids you beware the ides of March."
+    },
+    "24": {
+      "play": "CAESAR: Set him before me; let me see his face."
+    },
+    "25": {
+      "play": "CASSIUS: Fellow, come from the throng; look upon Caesar."
+    },
+    "26": {
+      "play": "CAESAR: What say'st thou to me now? speak once again."
+    },
+    "27": {
+      "play": "Soothsayer: Beware the ides of March."
+    },
+    "28": {
+      "play": "CAESAR: He is a dreamer; let us leave him: pass."
+    },
+    "29": {
+      "play": "CASSIUS: Will you go see the order of the course?"
+    },
+    "30": {
+      "play": "BRUTUS: Not I."
+    },
+    "31": {
+      "play": "CASSIUS: I pray you, do."
+    },
+    "32": {
+      "play": "BRUTUS: I am not gamesome: I do lack some part"
+    },
+    "33": {
+      "play": "BRUTUS: Of that quick spirit that is in Antony."
+    },
+    "34": {
+      "play": "BRUTUS: Let me not hinder, Cassius, your desires;"
+    },
+    "35": {
+      "play": "BRUTUS: I'll leave you."
+    },
+    "36": {
+      "play": "CASSIUS: Brutus, I do observe you now of late:"
+    },
+    "37": {
+      "play": "CASSIUS: I have not from your eyes that gentleness"
+    },
+    "38": {
+      "play": "And show of love as I was wont to have: "
+    },
+    "39": {
+      "play": "And show of love as I was wont to have: You bear too stubborn and too strange a hand"
+    },
+    "40": {
+      "play": "And show of love as I was wont to have: Over your friend that loves you."
+    },
+    "41": {
+      "play": "BRUTUS: Cassius,"
+    },
+    "42": {
+      "play": "Be not deceived: if I have veil'd my look,"
+    },
+    "43": {
+      "play": "Be not deceived: I turn the trouble of my countenance"
+    },
+    "44": {
+      "play": "Be not deceived: Merely upon myself. Vexed I am"
+    },
+    "45": {
+      "play": "Be not deceived: Of late with passions of some difference,"
+    },
+    "46": {
+      "play": "Be not deceived: Conceptions only proper to myself,"
+    },
+    "47": {
+      "play": "Be not deceived: Which give some soil perhaps to my behaviors;"
+    },
+    "48": {
+      "play": "Be not deceived: But let not therefore my good friends be grieved--"
+    },
+    "49": {
+      "play": "Be not deceived: Among which number, Cassius, be you one--"
+    },
+    "50": {
+      "play": "Be not deceived: Nor construe any further my neglect,"
+    },
+    "51": {
+      "play": "Be not deceived: Than that poor Brutus, with himself at war,"
+    },
+    "52": {
+      "play": "Be not deceived: Forgets the shows of love to other men."
+    },
+    "53": {
+      "play": "CASSIUS: Then, Brutus, I have much mistook your passion;"
+    },
+    "54": {
+      "play": "CASSIUS: By means whereof this breast of mine hath buried"
+    },
+    "55": {
+      "play": "CASSIUS: Thoughts of great value, worthy cogitations."
+    },
+    "56": {
+      "play": "CASSIUS: Tell me, good Brutus, can you see your face?"
+    },
+    "57": {
+      "play": "BRUTUS: No, Cassius; for the eye sees not itself,"
+    },
+    "58": {
+      "play": "BRUTUS: But by reflection, by some other things."
+    },
+    "59": {
+      "play": "CASSIUS: 'Tis just:"
+    },
+    "60": {
+      "play": "CASSIUS: And it is very much lamented, Brutus,"
+    },
+    "61": {
+      "play": "CASSIUS: That you have no such mirrors as will turn"
+    },
+    "62": {
+      "play": "CASSIUS: Your hidden worthiness into your eye,"
+    },
+    "63": {
+      "play": "CASSIUS: That you might see your shadow. I have heard,"
+    },
+    "64": {
+      "play": "CASSIUS: Where many of the best respect in Rome,"
+    },
+    "65": {
+      "play": "CASSIUS: Except immortal Caesar, speaking of Brutus"
+    },
+    "66": {
+      "play": "CASSIUS: And groaning underneath this age's yoke,"
+    },
+    "67": {
+      "play": "CASSIUS: Have wish'd that noble Brutus had his eyes."
+    },
+    "68": {
+      "play": "BRUTUS: Into what dangers would you lead me, Cassius,"
+    },
+    "69": {
+      "play": "BRUTUS: That you would have me seek into myself"
+    },
+    "70": {
+      "play": "BRUTUS: For that which is not in me?"
+    },
+    "71": {
+      "play": "CASSIUS: Therefore, good Brutus, be prepared to hear:"
+    },
+    "72": {
+      "play": "CASSIUS: And since you know you cannot see yourself"
+    },
+    "73": {
+      "play": "CASSIUS: So well as by reflection, I, your glass,"
+    },
+    "74": {
+      "play": "CASSIUS: Will modestly discover to yourself"
+    },
+    "75": {
+      "play": "CASSIUS: That of yourself which you yet know not of."
+    },
+    "76": {
+      "play": "And be not jealous on me, gentle Brutus: "
+    },
+    "77": {
+      "play": "And be not jealous on me, gentle Brutus: Were I a common laugher, or did use"
+    },
+    "78": {
+      "play": "And be not jealous on me, gentle Brutus: To stale with ordinary oaths my love"
+    },
+    "79": {
+      "play": "And be not jealous on me, gentle Brutus: To every new protester; if you know"
+    },
+    "80": {
+      "play": "And be not jealous on me, gentle Brutus: That I do fawn on men and hug them hard"
+    },
+    "81": {
+      "play": "And be not jealous on me, gentle Brutus: And after scandal them, or if you know"
+    },
+    "82": {
+      "play": "And be not jealous on me, gentle Brutus: That I profess myself in banqueting"
+    },
+    "83": {
+      "play": "And be not jealous on me, gentle Brutus: To all the rout, then hold me dangerous."
+    },
+    "84": {
+      "play": "BRUTUS: What means this shouting? I do fear, the people"
+    },
+    "85": {
+      "play": "BRUTUS: Choose Caesar for their king."
+    },
+    "86": {
+      "play": "CASSIUS: Ay, do you fear it?"
+    },
+    "87": {
+      "play": "CASSIUS: Then must I think you would not have it so."
+    },
+    "88": {
+      "play": "BRUTUS: I would not, Cassius; yet I love him well."
+    },
+    "89": {
+      "play": "BRUTUS: But wherefore do you hold me here so long?"
+    },
+    "90": {
+      "play": "BRUTUS: What is it that you would impart to me?"
+    },
+    "91": {
+      "play": "BRUTUS: If it be aught toward the general good,"
+    },
+    "92": {
+      "play": "BRUTUS: Set honour in one eye and death i' the other,"
+    },
+    "93": {
+      "play": "BRUTUS: And I will look on both indifferently,"
+    },
+    "94": {
+      "play": "BRUTUS: For let the gods so speed me as I love"
+    },
+    "95": {
+      "play": "BRUTUS: The name of honour more than I fear death."
+    },
+    "96": {
+      "play": "CASSIUS: I know that virtue to be in you, Brutus,"
+    },
+    "97": {
+      "play": "CASSIUS: As well as I do know your outward favour."
+    },
+    "98": {
+      "play": "CASSIUS: Well, honour is the subject of my story."
+    },
+    "99": {
+      "play": "CASSIUS: I cannot tell what you and other men"
+    },
+    "100": {
+      "play": "CASSIUS: Think of this life; but, for my single self,"
+    },
+    "101": {
+      "play": "CASSIUS: I had as lief not be as live to be"
+    },
+    "102": {
+      "play": "CASSIUS: In awe of such a thing as I myself."
+    },
+    "103": {
+      "play": "I was born free as Caesar; so were you: "
+    },
+    "104": {
+      "play": "I was born free as Caesar; so were you: We both have fed as well, and we can both"
+    },
+    "105": {
+      "play": "Endure the winter's cold as well as he: "
+    },
+    "106": {
+      "play": "Endure the winter's cold as well as he: For once, upon a raw and gusty day,"
+    },
+    "107": {
+      "play": "Endure the winter's cold as well as he: The troubled Tiber chafing with her shores,"
+    },
+    "108": {
+      "play": "Endure the winter's cold as well as he: Caesar said to me 'Darest thou, Cassius, now"
+    },
+    "109": {
+      "play": "Endure the winter's cold as well as he: Leap in with me into this angry flood,"
+    },
+    "110": {
+      "play": "Endure the winter's cold as well as he: And swim to yonder point?' Upon the word,"
+    },
+    "111": {
+      "play": "Endure the winter's cold as well as he: Accoutred as I was, I plunged in"
+    },
+    "112": {
+      "play": "Endure the winter's cold as well as he: And bade him follow; so indeed he did."
+    },
+    "113": {
+      "play": "Endure the winter's cold as well as he: The torrent roar'd, and we did buffet it"
+    },
+    "114": {
+      "play": "Endure the winter's cold as well as he: With lusty sinews, throwing it aside"
+    },
+    "115": {
+      "play": "Endure the winter's cold as well as he: And stemming it with hearts of controversy;"
+    },
+    "116": {
+      "play": "Endure the winter's cold as well as he: But ere we could arrive the point proposed,"
+    },
+    "117": {
+      "play": "Endure the winter's cold as well as he: Caesar cried 'Help me, Cassius, or I sink!'"
+    },
+    "118": {
+      "play": "Endure the winter's cold as well as he: I, as Aeneas, our great ancestor,"
+    },
+    "119": {
+      "play": "Endure the winter's cold as well as he: Did from the flames of Troy upon his shoulder"
+    },
+    "120": {
+      "play": "Endure the winter's cold as well as he: The old Anchises bear, so from the waves of Tiber"
+    },
+    "121": {
+      "play": "Endure the winter's cold as well as he: Did I the tired Caesar. And this man"
+    },
+    "122": {
+      "play": "Endure the winter's cold as well as he: Is now become a god, and Cassius is"
+    },
+    "123": {
+      "play": "Endure the winter's cold as well as he: A wretched creature and must bend his body,"
+    },
+    "124": {
+      "play": "Endure the winter's cold as well as he: If Caesar carelessly but nod on him."
+    },
+    "125": {
+      "play": "Endure the winter's cold as well as he: He had a fever when he was in Spain,"
+    },
+    "126": {
+      "play": "Endure the winter's cold as well as he: And when the fit was on him, I did mark"
+    },
+    "127": {
+      "play": "How he did shake: 'tis true, this god did shake;"
+    },
+    "128": {
+      "play": "How he did shake: His coward lips did from their colour fly,"
+    },
+    "129": {
+      "play": "How he did shake: And that same eye whose bend doth awe the world"
+    },
+    "130": {
+      "play": "Did lose his lustre: I did hear him groan:"
+    },
+    "131": {
+      "play": "Did lose his lustre: Ay, and that tongue of his that bade the Romans"
+    },
+    "132": {
+      "play": "Did lose his lustre: Mark him and write his speeches in their books,"
+    },
+    "133": {
+      "play": "Did lose his lustre: Alas, it cried 'Give me some drink, Titinius,'"
+    },
+    "134": {
+      "play": "Did lose his lustre: As a sick girl. Ye gods, it doth amaze me"
+    },
+    "135": {
+      "play": "Did lose his lustre: A man of such a feeble temper should"
+    },
+    "136": {
+      "play": "Did lose his lustre: So get the start of the majestic world"
+    },
+    "137": {
+      "play": "Did lose his lustre: And bear the palm alone."
+    },
+    "138": {
+      "play": "BRUTUS: Another general shout!"
+    },
+    "139": {
+      "play": "BRUTUS: I do believe that these applauses are"
+    },
+    "140": {
+      "play": "BRUTUS: For some new honours that are heap'd on Caesar."
+    },
+    "141": {
+      "play": "CASSIUS: Why, man, he doth bestride the narrow world"
+    },
+    "142": {
+      "play": "CASSIUS: Like a Colossus, and we petty men"
+    },
+    "143": {
+      "play": "CASSIUS: Walk under his huge legs and peep about"
+    },
+    "144": {
+      "play": "CASSIUS: To find ourselves dishonourable graves."
+    },
+    "145": {
+      "play": "Men at some time are masters of their fates: "
+    },
+    "146": {
+      "play": "Men at some time are masters of their fates: The fault, dear Brutus, is not in our stars,"
+    },
+    "147": {
+      "play": "Men at some time are masters of their fates: But in ourselves, that we are underlings."
+    },
+    "148": {
+      "play": "Brutus and Caesar: what should be in that 'Caesar'?"
+    },
+    "149": {
+      "play": "Brutus and Caesar: Why should that name be sounded more than yours?"
+    },
+    "150": {
+      "play": "Brutus and Caesar: Write them together, yours is as fair a name;"
+    },
+    "151": {
+      "play": "Brutus and Caesar: Sound them, it doth become the mouth as well;"
+    },
+    "152": {
+      "play": "Brutus and Caesar: Weigh them, it is as heavy; conjure with 'em,"
+    },
+    "153": {
+      "play": "Brutus and Caesar: Brutus will start a spirit as soon as Caesar."
+    },
+    "154": {
+      "play": "Brutus and Caesar: Now, in the names of all the gods at once,"
+    },
+    "155": {
+      "play": "Brutus and Caesar: Upon what meat doth this our Caesar feed,"
+    },
+    "156": {
+      "play": "Brutus and Caesar: That he is grown so great? Age, thou art shamed!"
+    },
+    "157": {
+      "play": "Brutus and Caesar: Rome, thou hast lost the breed of noble bloods!"
+    },
+    "158": {
+      "play": "Brutus and Caesar: When went there by an age, since the great flood,"
+    },
+    "159": {
+      "play": "Brutus and Caesar: But it was famed with more than with one man?"
+    },
+    "160": {
+      "play": "Brutus and Caesar: When could they say till now, that talk'd of Rome,"
+    },
+    "161": {
+      "play": "Brutus and Caesar: That her wide walls encompass'd but one man?"
+    },
+    "162": {
+      "play": "Brutus and Caesar: Now is it Rome indeed and room enough,"
+    },
+    "163": {
+      "play": "Brutus and Caesar: When there is in it but one only man."
+    },
+    "164": {
+      "play": "Brutus and Caesar: O, you and I have heard our fathers say,"
+    },
+    "165": {
+      "play": "Brutus and Caesar: There was a Brutus once that would have brook'd"
+    },
+    "166": {
+      "play": "Brutus and Caesar: The eternal devil to keep his state in Rome"
+    },
+    "167": {
+      "play": "Brutus and Caesar: As easily as a king."
+    },
+    "168": {
+      "play": "BRUTUS: That you do love me, I am nothing jealous;"
+    },
+    "169": {
+      "play": "What you would work me to, I have some aim: "
+    },
+    "170": {
+      "play": "What you would work me to, I have some aim: How I have thought of this and of these times,"
+    },
+    "171": {
+      "play": "What you would work me to, I have some aim: I shall recount hereafter; for this present,"
+    },
+    "172": {
+      "play": "What you would work me to, I have some aim: I would not, so with love I might entreat you,"
+    },
+    "173": {
+      "play": "What you would work me to, I have some aim: Be any further moved. What you have said"
+    },
+    "174": {
+      "play": "What you would work me to, I have some aim: I will consider; what you have to say"
+    },
+    "175": {
+      "play": "What you would work me to, I have some aim: I will with patience hear, and find a time"
+    },
+    "176": {
+      "play": "What you would work me to, I have some aim: Both meet to hear and answer such high things."
+    },
+    "177": {
+      "play": "Till then, my noble friend, chew upon this: "
+    },
+    "178": {
+      "play": "Till then, my noble friend, chew upon this: Brutus had rather be a villager"
+    },
+    "179": {
+      "play": "Till then, my noble friend, chew upon this: Than to repute himself a son of Rome"
+    },
+    "180": {
+      "play": "Till then, my noble friend, chew upon this: Under these hard conditions as this time"
+    },
+    "181": {
+      "play": "Till then, my noble friend, chew upon this: Is like to lay upon us."
+    },
+    "182": {
+      "play": "CASSIUS: I am glad that my weak words"
+    },
+    "183": {
+      "play": "CASSIUS: Have struck but thus much show of fire from Brutus."
+    },
+    "184": {
+      "play": "BRUTUS: The games are done and Caesar is returning."
+    },
+    "185": {
+      "play": "CASSIUS: As they pass by, pluck Casca by the sleeve;"
+    },
+    "186": {
+      "play": "CASSIUS: And he will, after his sour fashion, tell you"
+    },
+    "187": {
+      "play": "CASSIUS: What hath proceeded worthy note to-day."
+    },
+    "188": {
+      "play": "BRUTUS: I will do so. But, look you, Cassius,"
+    },
+    "189": {
+      "play": "BRUTUS: The angry spot doth glow on Caesar's brow,"
+    },
+    "190": {
+      "play": "And all the rest look like a chidden train: "
+    },
+    "191": {
+      "play": "And all the rest look like a chidden train: Calpurnia's cheek is pale; and Cicero"
+    },
+    "192": {
+      "play": "And all the rest look like a chidden train: Looks with such ferret and such fiery eyes"
+    },
+    "193": {
+      "play": "And all the rest look like a chidden train: As we have seen him in the Capitol,"
+    },
+    "194": {
+      "play": "And all the rest look like a chidden train: Being cross'd in conference by some senators."
+    },
+    "195": {
+      "play": "CASSIUS: Casca will tell us what the matter is."
+    },
+    "196": {
+      "play": "CAESAR: Antonius!"
+    },
+    "197": {
+      "play": "ANTONY: Caesar?"
+    },
+    "198": {
+      "play": "CAESAR: Let me have men about me that are fat;"
+    },
+    "199": {
+      "play": "Sleek-headed men and such as sleep o' nights: "
+    },
+    "200": {
+      "play": "Sleek-headed men and such as sleep o' nights: Yond Cassius has a lean and hungry look;"
+    },
+    "201": {
+      "play": "He thinks too much: such men are dangerous."
+    },
+    "202": {
+      "play": "ANTONY: Fear him not, Caesar; he's not dangerous;"
+    },
+    "203": {
+      "play": "ANTONY: He is a noble Roman and well given."
+    },
+    "204": {
+      "play": "CAESAR: Would he were fatter! But I fear him not:"
+    },
+    "205": {
+      "play": "CAESAR: Yet if my name were liable to fear,"
+    },
+    "206": {
+      "play": "CAESAR: I do not know the man I should avoid"
+    },
+    "207": {
+      "play": "CAESAR: So soon as that spare Cassius. He reads much;"
+    },
+    "208": {
+      "play": "CAESAR: He is a great observer and he looks"
+    },
+    "209": {
+      "play": "Quite through the deeds of men: he loves no plays,"
+    },
+    "210": {
+      "play": "Quite through the deeds of men: As thou dost, Antony; he hears no music;"
+    },
+    "211": {
+      "play": "Quite through the deeds of men: Seldom he smiles, and smiles in such a sort"
+    },
+    "212": {
+      "play": "Quite through the deeds of men: As if he mock'd himself and scorn'd his spirit"
+    },
+    "213": {
+      "play": "Quite through the deeds of men: That could be moved to smile at any thing."
+    },
+    "214": {
+      "play": "Quite through the deeds of men: Such men as he be never at heart's ease"
+    },
+    "215": {
+      "play": "Quite through the deeds of men: Whiles they behold a greater than themselves,"
+    },
+    "216": {
+      "play": "Quite through the deeds of men: And therefore are they very dangerous."
+    },
+    "217": {
+      "play": "Quite through the deeds of men: I rather tell thee what is to be fear'd"
+    },
+    "218": {
+      "play": "Quite through the deeds of men: Than what I fear; for always I am Caesar."
+    },
+    "219": {
+      "play": "Quite through the deeds of men: Come on my right hand, for this ear is deaf,"
+    },
+    "220": {
+      "play": "Quite through the deeds of men: And tell me truly what thou think'st of him."
+    },
+    "221": {
+      "play": "CASCA: You pull'd me by the cloak; would you speak with me?"
+    },
+    "222": {
+      "play": "BRUTUS: Ay, Casca; tell us what hath chanced to-day,"
+    },
+    "223": {
+      "play": "BRUTUS: That Caesar looks so sad."
+    },
+    "224": {
+      "play": "CASCA: Why, you were with him, were you not?"
+    },
+    "225": {
+      "play": "BRUTUS: I should not then ask Casca what had chanced."
+    },
+    "226": {
+      "play": "CASCA: Why, there was a crown offered him: and being"
+    },
+    "227": {
+      "play": "CASCA: offered him, he put it by with the back of his hand,"
+    },
+    "228": {
+      "play": "CASCA: thus; and then the people fell a-shouting."
+    },
+    "229": {
+      "play": "BRUTUS: What was the second noise for?"
+    },
+    "230": {
+      "play": "CASCA: Why, for that too."
+    },
+    "231": {
+      "play": "CASSIUS: They shouted thrice: what was the last cry for?"
+    },
+    "232": {
+      "play": "CASCA: Why, for that too."
+    },
+    "233": {
+      "play": "BRUTUS: Was the crown offered him thrice?"
+    },
+    "234": {
+      "play": "CASCA: Ay, marry, was't, and he put it by thrice, every"
+    },
+    "235": {
+      "play": "CASCA: time gentler than other, and at every putting-by"
+    },
+    "236": {
+      "play": "CASCA: mine honest neighbours shouted."
+    },
+    "237": {
+      "play": "CASSIUS: Who offered him the crown?"
+    },
+    "238": {
+      "play": "CASCA: Why, Antony."
+    },
+    "239": {
+      "play": "BRUTUS: Tell us the manner of it, gentle Casca."
+    },
+    "240": {
+      "play": "CASCA: I can as well be hanged as tell the manner of it:"
+    },
+    "241": {
+      "play": "CASCA: it was mere foolery; I did not mark it. I saw Mark"
+    },
+    "242": {
+      "play": "CASCA: Antony offer him a crown;--yet 'twas not a crown"
+    },
+    "243": {
+      "play": "CASCA: neither, 'twas one of these coronets;--and, as I told"
+    },
+    "244": {
+      "play": "you, he put it by once: but, for all that, to my"
+    },
+    "245": {
+      "play": "you, he put it by once: thinking, he would fain have had it. Then he"
+    },
+    "246": {
+      "play": "offered it to him again; then he put it by again: "
+    },
+    "247": {
+      "play": "offered it to him again; then he put it by again: but, to my thinking, he was very loath to lay his"
+    },
+    "248": {
+      "play": "offered it to him again; then he put it by again: fingers off it. And then he offered it the third"
+    },
+    "249": {
+      "play": "time; he put it the third time by: and still as he"
+    },
+    "250": {
+      "play": "time; he put it the third time by: refused it, the rabblement hooted and clapped their"
+    },
+    "251": {
+      "play": "time; he put it the third time by: chapped hands and threw up their sweaty night-caps"
+    },
+    "252": {
+      "play": "time; he put it the third time by: and uttered such a deal of stinking breath because"
+    },
+    "253": {
+      "play": "time; he put it the third time by: Caesar refused the crown that it had almost choked"
+    },
+    "254": {
+      "play": "Caesar; for he swounded and fell down at it: and"
+    },
+    "255": {
+      "play": "Caesar; for he swounded and fell down at it: for mine own part, I durst not laugh, for fear of"
+    },
+    "256": {
+      "play": "Caesar; for he swounded and fell down at it: opening my lips and receiving the bad air."
+    },
+    "257": {
+      "play": "CASSIUS: But, soft, I pray you: what, did Caesar swound?"
+    },
+    "258": {
+      "play": "CASCA: He fell down in the market-place, and foamed at"
+    },
+    "259": {
+      "play": "CASCA: mouth, and was speechless."
+    },
+    "260": {
+      "play": "BRUTUS: 'Tis very like: he hath the failing sickness."
+    },
+    "261": {
+      "play": "CASSIUS: No, Caesar hath it not; but you and I,"
+    },
+    "262": {
+      "play": "CASSIUS: And honest Casca, we have the falling sickness."
+    },
+    "263": {
+      "play": "CASCA: I know not what you mean by that; but, I am sure,"
+    },
+    "264": {
+      "play": "CASCA: Caesar fell down. If the tag-rag people did not"
+    },
+    "265": {
+      "play": "CASCA: clap him and hiss him, according as he pleased and"
+    },
+    "266": {
+      "play": "CASCA: displeased them, as they use to do the players in"
+    },
+    "267": {
+      "play": "CASCA: the theatre, I am no true man."
+    },
+    "268": {
+      "play": "BRUTUS: What said he when he came unto himself?"
+    },
+    "269": {
+      "play": "CASCA: Marry, before he fell down, when he perceived the"
+    },
+    "270": {
+      "play": "CASCA: common herd was glad he refused the crown, he"
+    },
+    "271": {
+      "play": "CASCA: plucked me ope his doublet and offered them his"
+    },
+    "272": {
+      "play": "CASCA: throat to cut. An I had been a man of any"
+    },
+    "273": {
+      "play": "CASCA: occupation, if I would not have taken him at a word,"
+    },
+    "274": {
+      "play": "CASCA: I would I might go to hell among the rogues. And so"
+    },
+    "275": {
+      "play": "CASCA: he fell. When he came to himself again, he said,"
+    },
+    "276": {
+      "play": "CASCA: If he had done or said any thing amiss, he desired"
+    },
+    "277": {
+      "play": "CASCA: their worships to think it was his infirmity. Three"
+    },
+    "278": {
+      "play": "CASCA: or four wenches, where I stood, cried 'Alas, good"
+    },
+    "279": {
+      "play": "soul!' and forgave him with all their hearts: but"
+    },
+    "280": {
+      "play": "soul!' and forgave him with all their hearts: there's no heed to be taken of them; if Caesar had"
+    },
+    "281": {
+      "play": "soul!' and forgave him with all their hearts: stabbed their mothers, they would have done no less."
+    },
+    "282": {
+      "play": "BRUTUS: And after that, he came, thus sad, away?"
+    },
+    "283": {
+      "play": "CASCA: Ay."
+    },
+    "284": {
+      "play": "CASSIUS: Did Cicero say any thing?"
+    },
+    "285": {
+      "play": "CASCA: Ay, he spoke Greek."
+    },
+    "286": {
+      "play": "CASSIUS: To what effect?"
+    },
+    "287": {
+      "play": "CASCA: Nay, an I tell you that, Ill ne'er look you i' the"
+    },
+    "288": {
+      "play": "face again: but those that understood him smiled at"
+    },
+    "289": {
+      "play": "face again: one another and shook their heads; but, for mine own"
+    },
+    "290": {
+      "play": "face again: part, it was Greek to me. I could tell you more"
+    },
+    "291": {
+      "play": "news too: Marullus and Flavius, for pulling scarfs"
+    },
+    "292": {
+      "play": "news too: off Caesar's images, are put to silence. Fare you"
+    },
+    "293": {
+      "play": "news too: well. There was more foolery yet, if I could"
+    },
+    "294": {
+      "play": "news too: remember it."
+    },
+    "295": {
+      "play": "CASSIUS: Will you sup with me to-night, Casca?"
+    },
+    "296": {
+      "play": "CASCA: No, I am promised forth."
+    },
+    "297": {
+      "play": "CASSIUS: Will you dine with me to-morrow?"
+    },
+    "298": {
+      "play": "CASCA: Ay, if I be alive and your mind hold and your dinner"
+    },
+    "299": {
+      "play": "CASCA: worth the eating."
+    },
+    "300": {
+      "play": "CASSIUS: Good: I will expect you."
+    },
+    "301": {
+      "play": "CASCA: Do so. Farewell, both."
+    },
+    "302": {
+      "play": "BRUTUS: What a blunt fellow is this grown to be!"
+    },
+    "303": {
+      "play": "BRUTUS: He was quick mettle when he went to school."
+    },
+    "304": {
+      "play": "CASSIUS: So is he now in execution"
+    },
+    "305": {
+      "play": "CASSIUS: Of any bold or noble enterprise,"
+    },
+    "306": {
+      "play": "CASSIUS: However he puts on this tardy form."
+    },
+    "307": {
+      "play": "CASSIUS: This rudeness is a sauce to his good wit,"
+    },
+    "308": {
+      "play": "CASSIUS: Which gives men stomach to digest his words"
+    },
+    "309": {
+      "play": "CASSIUS: With better appetite."
+    },
+    "310": {
+      "play": "BRUTUS: And so it is. For this time I will leave you:"
+    },
+    "311": {
+      "play": "BRUTUS: To-morrow, if you please to speak with me,"
+    },
+    "312": {
+      "play": "BRUTUS: I will come home to you; or, if you will,"
+    },
+    "313": {
+      "play": "BRUTUS: Come home to me, and I will wait for you."
+    },
+    "314": {
+      "play": "CASSIUS: I will do so: till then, think of the world."
+    },
+    "315": {
+      "play": "CASSIUS: Well, Brutus, thou art noble; yet, I see,"
+    },
+    "316": {
+      "play": "CASSIUS: Thy honourable metal may be wrought"
+    },
+    "317": {
+      "play": "From that it is disposed: therefore it is meet"
+    },
+    "318": {
+      "play": "From that it is disposed: That noble minds keep ever with their likes;"
+    },
+    "319": {
+      "play": "From that it is disposed: For who so firm that cannot be seduced?"
+    },
+    "320": {
+      "play": "Caesar doth bear me hard; but he loves Brutus: "
+    },
+    "321": {
+      "play": "Caesar doth bear me hard; but he loves Brutus: If I were Brutus now and he were Cassius,"
+    },
+    "322": {
+      "play": "Caesar doth bear me hard; but he loves Brutus: He should not humour me. I will this night,"
+    },
+    "323": {
+      "play": "Caesar doth bear me hard; but he loves Brutus: In several hands, in at his windows throw,"
+    },
+    "324": {
+      "play": "Caesar doth bear me hard; but he loves Brutus: As if they came from several citizens,"
+    },
+    "325": {
+      "play": "Caesar doth bear me hard; but he loves Brutus: Writings all tending to the great opinion"
+    },
+    "326": {
+      "play": "Caesar doth bear me hard; but he loves Brutus: That Rome holds of his name; wherein obscurely"
+    },
+    "327": {
+      "play": "Caesar's ambition shall be glanced at: "
+    },
+    "328": {
+      "play": "Caesar's ambition shall be glanced at: And after this let Caesar seat him sure;"
+    },
+    "329": {
+      "play": "Caesar's ambition shall be glanced at: For we will shake him, or worse days endure."
+    }
+  },
+  "ACT 1 SCENE 3": {
+    "1": {
+      "play": "CICERO: Good even, Casca: brought you Caesar home?"
+    },
+    "2": {
+      "play": "CICERO: Why are you breathless? and why stare you so?"
+    },
+    "3": {
+      "play": "CASCA: Are not you moved, when all the sway of earth"
+    },
+    "4": {
+      "play": "CASCA: Shakes like a thing unfirm? O Cicero,"
+    },
+    "5": {
+      "play": "CASCA: I have seen tempests, when the scolding winds"
+    },
+    "6": {
+      "play": "CASCA: Have rived the knotty oaks, and I have seen"
+    },
+    "7": {
+      "play": "CASCA: The ambitious ocean swell and rage and foam,"
+    },
+    "8": {
+      "play": "To be exalted with the threatening clouds: "
+    },
+    "9": {
+      "play": "To be exalted with the threatening clouds: But never till to-night, never till now,"
+    },
+    "10": {
+      "play": "To be exalted with the threatening clouds: Did I go through a tempest dropping fire."
+    },
+    "11": {
+      "play": "To be exalted with the threatening clouds: Either there is a civil strife in heaven,"
+    },
+    "12": {
+      "play": "To be exalted with the threatening clouds: Or else the world, too saucy with the gods,"
+    },
+    "13": {
+      "play": "To be exalted with the threatening clouds: Incenses them to send destruction."
+    },
+    "14": {
+      "play": "CICERO: Why, saw you any thing more wonderful?"
+    },
+    "15": {
+      "play": "CASCA: A common slave--you know him well by sight--"
+    },
+    "16": {
+      "play": "CASCA: Held up his left hand, which did flame and burn"
+    },
+    "17": {
+      "play": "CASCA: Like twenty torches join'd, and yet his hand,"
+    },
+    "18": {
+      "play": "CASCA: Not sensible of fire, remain'd unscorch'd."
+    },
+    "19": {
+      "play": "CASCA: Besides--I ha' not since put up my sword--"
+    },
+    "20": {
+      "play": "CASCA: Against the Capitol I met a lion,"
+    },
+    "21": {
+      "play": "CASCA: Who glared upon me, and went surly by,"
+    },
+    "22": {
+      "play": "Without annoying me: and there were drawn"
+    },
+    "23": {
+      "play": "Without annoying me: Upon a heap a hundred ghastly women,"
+    },
+    "24": {
+      "play": "Without annoying me: Transformed with their fear; who swore they saw"
+    },
+    "25": {
+      "play": "Without annoying me: Men all in fire walk up and down the streets."
+    },
+    "26": {
+      "play": "Without annoying me: And yesterday the bird of night did sit"
+    },
+    "27": {
+      "play": "Without annoying me: Even at noon-day upon the market-place,"
+    },
+    "28": {
+      "play": "Without annoying me: Hooting and shrieking. When these prodigies"
+    },
+    "29": {
+      "play": "Without annoying me: Do so conjointly meet, let not men say"
+    },
+    "30": {
+      "play": "Without annoying me: 'These are their reasons; they are natural;'"
+    },
+    "31": {
+      "play": "Without annoying me: For, I believe, they are portentous things"
+    },
+    "32": {
+      "play": "Without annoying me: Unto the climate that they point upon."
+    },
+    "33": {
+      "play": "CICERO: Indeed, it is a strange-disposed time:"
+    },
+    "34": {
+      "play": "CICERO: But men may construe things after their fashion,"
+    },
+    "35": {
+      "play": "CICERO: Clean from the purpose of the things themselves."
+    },
+    "36": {
+      "play": "CICERO: Come Caesar to the Capitol to-morrow?"
+    },
+    "37": {
+      "play": "CASCA: He doth; for he did bid Antonius"
+    },
+    "38": {
+      "play": "CASCA: Send word to you he would be there to-morrow."
+    },
+    "39": {
+      "play": "CICERO: Good night then, Casca: this disturbed sky"
+    },
+    "40": {
+      "play": "CICERO: Is not to walk in."
+    },
+    "41": {
+      "play": "CASCA: Farewell, Cicero."
+    },
+    "42": {
+      "play": "CASSIUS: Who's there?"
+    },
+    "43": {
+      "play": "CASCA: A Roman."
+    },
+    "44": {
+      "play": "CASSIUS: Casca, by your voice."
+    },
+    "45": {
+      "play": "CASCA: Your ear is good. Cassius, what night is this!"
+    },
+    "46": {
+      "play": "CASSIUS: A very pleasing night to honest men."
+    },
+    "47": {
+      "play": "CASCA: Who ever knew the heavens menace so?"
+    },
+    "48": {
+      "play": "CASSIUS: Those that have known the earth so full of faults."
+    },
+    "49": {
+      "play": "CASSIUS: For my part, I have walk'd about the streets,"
+    },
+    "50": {
+      "play": "CASSIUS: Submitting me unto the perilous night,"
+    },
+    "51": {
+      "play": "CASSIUS: And, thus unbraced, Casca, as you see,"
+    },
+    "52": {
+      "play": "CASSIUS: Have bared my bosom to the thunder-stone;"
+    },
+    "53": {
+      "play": "CASSIUS: And when the cross blue lightning seem'd to open"
+    },
+    "54": {
+      "play": "CASSIUS: The breast of heaven, I did present myself"
+    },
+    "55": {
+      "play": "CASSIUS: Even in the aim and very flash of it."
+    },
+    "56": {
+      "play": "CASCA: But wherefore did you so much tempt the heavens?"
+    },
+    "57": {
+      "play": "CASCA: It is the part of men to fear and tremble,"
+    },
+    "58": {
+      "play": "CASCA: When the most mighty gods by tokens send"
+    },
+    "59": {
+      "play": "CASCA: Such dreadful heralds to astonish us."
+    },
+    "60": {
+      "play": "CASSIUS: You are dull, Casca, and those sparks of life"
+    },
+    "61": {
+      "play": "CASSIUS: That should be in a Roman you do want,"
+    },
+    "62": {
+      "play": "CASSIUS: Or else you use not. You look pale and gaze"
+    },
+    "63": {
+      "play": "CASSIUS: And put on fear and cast yourself in wonder,"
+    },
+    "64": {
+      "play": "To see the strange impatience of the heavens: "
+    },
+    "65": {
+      "play": "To see the strange impatience of the heavens: But if you would consider the true cause"
+    },
+    "66": {
+      "play": "To see the strange impatience of the heavens: Why all these fires, why all these gliding ghosts,"
+    },
+    "67": {
+      "play": "To see the strange impatience of the heavens: Why birds and beasts from quality and kind,"
+    },
+    "68": {
+      "play": "To see the strange impatience of the heavens: Why old men fool and children calculate,"
+    },
+    "69": {
+      "play": "To see the strange impatience of the heavens: Why all these things change from their ordinance"
+    },
+    "70": {
+      "play": "To see the strange impatience of the heavens: Their natures and preformed faculties"
+    },
+    "71": {
+      "play": "To see the strange impatience of the heavens: To monstrous quality,--why, you shall find"
+    },
+    "72": {
+      "play": "To see the strange impatience of the heavens: That heaven hath infused them with these spirits,"
+    },
+    "73": {
+      "play": "To see the strange impatience of the heavens: To make them instruments of fear and warning"
+    },
+    "74": {
+      "play": "To see the strange impatience of the heavens: Unto some monstrous state."
+    },
+    "75": {
+      "play": "To see the strange impatience of the heavens: Now could I, Casca, name to thee a man"
+    },
+    "76": {
+      "play": "To see the strange impatience of the heavens: Most like this dreadful night,"
+    },
+    "77": {
+      "play": "To see the strange impatience of the heavens: That thunders, lightens, opens graves, and roars"
+    },
+    "78": {
+      "play": "To see the strange impatience of the heavens: As doth the lion in the Capitol,"
+    },
+    "79": {
+      "play": "To see the strange impatience of the heavens: A man no mightier than thyself or me"
+    },
+    "80": {
+      "play": "To see the strange impatience of the heavens: In personal action, yet prodigious grown"
+    },
+    "81": {
+      "play": "To see the strange impatience of the heavens: And fearful, as these strange eruptions are."
+    },
+    "82": {
+      "play": "CASCA: 'Tis Caesar that you mean; is it not, Cassius?"
+    },
+    "83": {
+      "play": "CASSIUS: Let it be who it is: for Romans now"
+    },
+    "84": {
+      "play": "CASSIUS: Have thews and limbs like to their ancestors;"
+    },
+    "85": {
+      "play": "CASSIUS: But, woe the while! our fathers' minds are dead,"
+    },
+    "86": {
+      "play": "CASSIUS: And we are govern'd with our mothers' spirits;"
+    },
+    "87": {
+      "play": "CASSIUS: Our yoke and sufferance show us womanish."
+    },
+    "88": {
+      "play": "CASCA: Indeed, they say the senators tomorrow"
+    },
+    "89": {
+      "play": "CASCA: Mean to establish Caesar as a king;"
+    },
+    "90": {
+      "play": "CASCA: And he shall wear his crown by sea and land,"
+    },
+    "91": {
+      "play": "CASCA: In every place, save here in Italy."
+    },
+    "92": {
+      "play": "CASSIUS: I know where I will wear this dagger then;"
+    },
+    "93": {
+      "play": "Cassius from bondage will deliver Cassius: "
+    },
+    "94": {
+      "play": "Cassius from bondage will deliver Cassius: Therein, ye gods, you make the weak most strong;"
+    },
+    "95": {
+      "play": "Therein, ye gods, you tyrants do defeat: "
+    },
+    "96": {
+      "play": "Therein, ye gods, you tyrants do defeat: Nor stony tower, nor walls of beaten brass,"
+    },
+    "97": {
+      "play": "Therein, ye gods, you tyrants do defeat: Nor airless dungeon, nor strong links of iron,"
+    },
+    "98": {
+      "play": "Therein, ye gods, you tyrants do defeat: Can be retentive to the strength of spirit;"
+    },
+    "99": {
+      "play": "Therein, ye gods, you tyrants do defeat: But life, being weary of these worldly bars,"
+    },
+    "100": {
+      "play": "Therein, ye gods, you tyrants do defeat: Never lacks power to dismiss itself."
+    },
+    "101": {
+      "play": "Therein, ye gods, you tyrants do defeat: If I know this, know all the world besides,"
+    },
+    "102": {
+      "play": "Therein, ye gods, you tyrants do defeat: That part of tyranny that I do bear"
+    },
+    "103": {
+      "play": "Therein, ye gods, you tyrants do defeat: I can shake off at pleasure."
+    },
+    "104": {
+      "play": "CASCA: So can I:"
+    },
+    "105": {
+      "play": "CASCA: So every bondman in his own hand bears"
+    },
+    "106": {
+      "play": "CASCA: The power to cancel his captivity."
+    },
+    "107": {
+      "play": "CASSIUS: And why should Caesar be a tyrant then?"
+    },
+    "108": {
+      "play": "CASSIUS: Poor man! I know he would not be a wolf,"
+    },
+    "109": {
+      "play": "But that he sees the Romans are but sheep: "
+    },
+    "110": {
+      "play": "But that he sees the Romans are but sheep: He were no lion, were not Romans hinds."
+    },
+    "111": {
+      "play": "But that he sees the Romans are but sheep: Those that with haste will make a mighty fire"
+    },
+    "112": {
+      "play": "Begin it with weak straws: what trash is Rome,"
+    },
+    "113": {
+      "play": "Begin it with weak straws: What rubbish and what offal, when it serves"
+    },
+    "114": {
+      "play": "Begin it with weak straws: For the base matter to illuminate"
+    },
+    "115": {
+      "play": "Begin it with weak straws: So vile a thing as Caesar! But, O grief,"
+    },
+    "116": {
+      "play": "Begin it with weak straws: Where hast thou led me? I perhaps speak this"
+    },
+    "117": {
+      "play": "Begin it with weak straws: Before a willing bondman; then I know"
+    },
+    "118": {
+      "play": "Begin it with weak straws: My answer must be made. But I am arm'd,"
+    },
+    "119": {
+      "play": "Begin it with weak straws: And dangers are to me indifferent."
+    },
+    "120": {
+      "play": "CASCA: You speak to Casca, and to such a man"
+    },
+    "121": {
+      "play": "That is no fleering tell-tale. Hold, my hand: "
+    },
+    "122": {
+      "play": "That is no fleering tell-tale. Hold, my hand: Be factious for redress of all these griefs,"
+    },
+    "123": {
+      "play": "That is no fleering tell-tale. Hold, my hand: And I will set this foot of mine as far"
+    },
+    "124": {
+      "play": "That is no fleering tell-tale. Hold, my hand: As who goes farthest."
+    },
+    "125": {
+      "play": "CASSIUS: There's a bargain made."
+    },
+    "126": {
+      "play": "CASSIUS: Now know you, Casca, I have moved already"
+    },
+    "127": {
+      "play": "CASSIUS: Some certain of the noblest-minded Romans"
+    },
+    "128": {
+      "play": "CASSIUS: To undergo with me an enterprise"
+    },
+    "129": {
+      "play": "CASSIUS: Of honourable-dangerous consequence;"
+    },
+    "130": {
+      "play": "CASSIUS: And I do know, by this, they stay for me"
+    },
+    "131": {
+      "play": "In Pompey's porch: for now, this fearful night,"
+    },
+    "132": {
+      "play": "In Pompey's porch: There is no stir or walking in the streets;"
+    },
+    "133": {
+      "play": "In Pompey's porch: And the complexion of the element"
+    },
+    "134": {
+      "play": "In Pompey's porch: In favour's like the work we have in hand,"
+    },
+    "135": {
+      "play": "In Pompey's porch: Most bloody, fiery, and most terrible."
+    },
+    "136": {
+      "play": "CASCA: Stand close awhile, for here comes one in haste."
+    },
+    "137": {
+      "play": "CASSIUS: 'Tis Cinna; I do know him by his gait;"
+    },
+    "138": {
+      "play": "CASSIUS: He is a friend."
+    },
+    "139": {
+      "play": "CASSIUS: Cinna, where haste you so?"
+    },
+    "140": {
+      "play": "CINNA: To find out you. Who's that? Metellus Cimber?"
+    },
+    "141": {
+      "play": "CASSIUS: No, it is Casca; one incorporate"
+    },
+    "142": {
+      "play": "CASSIUS: To our attempts. Am I not stay'd for, Cinna?"
+    },
+    "143": {
+      "play": "CINNA: I am glad on 't. What a fearful night is this!"
+    },
+    "144": {
+      "play": "CINNA: There's two or three of us have seen strange sights."
+    },
+    "145": {
+      "play": "CASSIUS: Am I not stay'd for? tell me."
+    },
+    "146": {
+      "play": "CINNA: Yes, you are."
+    },
+    "147": {
+      "play": "CINNA: O Cassius, if you could"
+    },
+    "148": {
+      "play": "CINNA: But win the noble Brutus to our party--"
+    },
+    "149": {
+      "play": "CASSIUS: Be you content: good Cinna, take this paper,"
+    },
+    "150": {
+      "play": "CASSIUS: And look you lay it in the praetor's chair,"
+    },
+    "151": {
+      "play": "CASSIUS: Where Brutus may but find it; and throw this"
+    },
+    "152": {
+      "play": "CASSIUS: In at his window; set this up with wax"
+    },
+    "153": {
+      "play": "Upon old Brutus' statue: all this done,"
+    },
+    "154": {
+      "play": "Upon old Brutus' statue: Repair to Pompey's porch, where you shall find us."
+    },
+    "155": {
+      "play": "Upon old Brutus' statue: Is Decius Brutus and Trebonius there?"
+    },
+    "156": {
+      "play": "CINNA: All but Metellus Cimber; and he's gone"
+    },
+    "157": {
+      "play": "CINNA: To seek you at your house. Well, I will hie,"
+    },
+    "158": {
+      "play": "CINNA: And so bestow these papers as you bade me."
+    },
+    "159": {
+      "play": "CASSIUS: That done, repair to Pompey's theatre."
+    },
+    "160": {
+      "play": "CASSIUS: Come, Casca, you and I will yet ere day"
+    },
+    "161": {
+      "play": "See Brutus at his house: three parts of him"
+    },
+    "162": {
+      "play": "See Brutus at his house: Is ours already, and the man entire"
+    },
+    "163": {
+      "play": "See Brutus at his house: Upon the next encounter yields him ours."
+    },
+    "164": {
+      "play": "CASCA: O, he sits high in all the people's hearts:"
+    },
+    "165": {
+      "play": "CASCA: And that which would appear offence in us,"
+    },
+    "166": {
+      "play": "CASCA: His countenance, like richest alchemy,"
+    },
+    "167": {
+      "play": "CASCA: Will change to virtue and to worthiness."
+    }
+  },
+  "ACT 2 SCENE 1": {
+    "1": {
+      "play": "BRUTUS: What, Lucius, ho!"
+    },
+    "2": {
+      "play": "BRUTUS: I cannot, by the progress of the stars,"
+    },
+    "3": {
+      "play": "BRUTUS: Give guess how near to day. Lucius, I say!"
+    },
+    "4": {
+      "play": "BRUTUS: I would it were my fault to sleep so soundly."
+    },
+    "5": {
+      "play": "BRUTUS: When, Lucius, when? awake, I say! what, Lucius!"
+    },
+    "6": {
+      "play": "LUCIUS: Call'd you, my lord?"
+    },
+    "7": {
+      "play": "BRUTUS: Get me a taper in my study, Lucius:"
+    },
+    "8": {
+      "play": "BRUTUS: When it is lighted, come and call me here."
+    },
+    "9": {
+      "play": "LUCIUS: I will, my lord."
+    },
+    "10": {
+      "play": "BRUTUS: It must be by his death: and for my part,"
+    },
+    "11": {
+      "play": "BRUTUS: I know no personal cause to spurn at him,"
+    },
+    "12": {
+      "play": "But for the general. He would be crown'd: "
+    },
+    "13": {
+      "play": "But for the general. He would be crown'd: How that might change his nature, there's the question."
+    },
+    "14": {
+      "play": "But for the general. He would be crown'd: It is the bright day that brings forth the adder;"
+    },
+    "15": {
+      "play": "But for the general. He would be crown'd: And that craves wary walking. Crown him?--that;--"
+    },
+    "16": {
+      "play": "But for the general. He would be crown'd: And then, I grant, we put a sting in him,"
+    },
+    "17": {
+      "play": "But for the general. He would be crown'd: That at his will he may do danger with."
+    },
+    "18": {
+      "play": "But for the general. He would be crown'd: The abuse of greatness is, when it disjoins"
+    },
+    "19": {
+      "play": "Remorse from power: and, to speak truth of Caesar,"
+    },
+    "20": {
+      "play": "Remorse from power: I have not known when his affections sway'd"
+    },
+    "21": {
+      "play": "Remorse from power: More than his reason. But 'tis a common proof,"
+    },
+    "22": {
+      "play": "Remorse from power: That lowliness is young ambition's ladder,"
+    },
+    "23": {
+      "play": "Remorse from power: Whereto the climber-upward turns his face;"
+    },
+    "24": {
+      "play": "Remorse from power: But when he once attains the upmost round."
+    },
+    "25": {
+      "play": "Remorse from power: He then unto the ladder turns his back,"
+    },
+    "26": {
+      "play": "Remorse from power: Looks in the clouds, scorning the base degrees"
+    },
+    "27": {
+      "play": "Remorse from power: By which he did ascend. So Caesar may."
+    },
+    "28": {
+      "play": "Remorse from power: Then, lest he may, prevent. And, since the quarrel"
+    },
+    "29": {
+      "play": "Remorse from power: Will bear no colour for the thing he is,"
+    },
+    "30": {
+      "play": "Remorse from power: Fashion it thus; that what he is, augmented,"
+    },
+    "31": {
+      "play": "Would run to these and these extremities: "
+    },
+    "32": {
+      "play": "Would run to these and these extremities: And therefore think him as a serpent's egg"
+    },
+    "33": {
+      "play": "Would run to these and these extremities: Which, hatch'd, would, as his kind, grow mischievous,"
+    },
+    "34": {
+      "play": "Would run to these and these extremities: And kill him in the shell."
+    },
+    "35": {
+      "play": "LUCIUS: The taper burneth in your closet, sir."
+    },
+    "36": {
+      "play": "LUCIUS: Searching the window for a flint, I found"
+    },
+    "37": {
+      "play": "LUCIUS: This paper, thus seal'd up; and, I am sure,"
+    },
+    "38": {
+      "play": "LUCIUS: It did not lie there when I went to bed."
+    },
+    "39": {
+      "play": "BRUTUS: Get you to bed again; it is not day."
+    },
+    "40": {
+      "play": "BRUTUS: Is not to-morrow, boy, the ides of March?"
+    },
+    "41": {
+      "play": "LUCIUS: I know not, sir."
+    },
+    "42": {
+      "play": "BRUTUS: Look in the calendar, and bring me word."
+    },
+    "43": {
+      "play": "LUCIUS: I will, sir."
+    },
+    "44": {
+      "play": "BRUTUS: The exhalations whizzing in the air"
+    },
+    "45": {
+      "play": "BRUTUS: Give so much light that I may read by them."
+    },
+    "46": {
+      "play": "'Brutus, thou sleep'st: awake, and see thyself."
+    },
+    "47": {
+      "play": "'Brutus, thou sleep'st: Shall Rome, & c. Speak, strike, redress!"
+    },
+    "48": {
+      "play": "Brutus, thou sleep'st: awake!'"
+    },
+    "49": {
+      "play": "Brutus, thou sleep'st: Such instigations have been often dropp'd"
+    },
+    "50": {
+      "play": "Brutus, thou sleep'st: Where I have took them up."
+    },
+    "51": {
+      "play": "'Shall Rome, & c.' Thus must I piece it out: "
+    },
+    "52": {
+      "play": "'Shall Rome, & c.' Thus must I piece it out: Shall Rome stand under one man's awe? What, Rome?"
+    },
+    "53": {
+      "play": "'Shall Rome, & c.' Thus must I piece it out: My ancestors did from the streets of Rome"
+    },
+    "54": {
+      "play": "'Shall Rome, & c.' Thus must I piece it out: The Tarquin drive, when he was call'd a king."
+    },
+    "55": {
+      "play": "'Shall Rome, & c.' Thus must I piece it out: 'Speak, strike, redress!' Am I entreated"
+    },
+    "56": {
+      "play": "To speak and strike? O Rome, I make thee promise: "
+    },
+    "57": {
+      "play": "To speak and strike? O Rome, I make thee promise: If the redress will follow, thou receivest"
+    },
+    "58": {
+      "play": "To speak and strike? O Rome, I make thee promise: Thy full petition at the hand of Brutus!"
+    },
+    "59": {
+      "play": "LUCIUS: Sir, March is wasted fourteen days."
+    },
+    "60": {
+      "play": "BRUTUS: 'Tis good. Go to the gate; somebody knocks."
+    },
+    "61": {
+      "play": "BRUTUS: Since Cassius first did whet me against Caesar,"
+    },
+    "62": {
+      "play": "BRUTUS: I have not slept."
+    },
+    "63": {
+      "play": "BRUTUS: Between the acting of a dreadful thing"
+    },
+    "64": {
+      "play": "BRUTUS: And the first motion, all the interim is"
+    },
+    "65": {
+      "play": "Like a phantasma, or a hideous dream: "
+    },
+    "66": {
+      "play": "Like a phantasma, or a hideous dream: The Genius and the mortal instruments"
+    },
+    "67": {
+      "play": "Like a phantasma, or a hideous dream: Are then in council; and the state of man,"
+    },
+    "68": {
+      "play": "Like a phantasma, or a hideous dream: Like to a little kingdom, suffers then"
+    },
+    "69": {
+      "play": "Like a phantasma, or a hideous dream: The nature of an insurrection."
+    },
+    "70": {
+      "play": "LUCIUS: Sir, 'tis your brother Cassius at the door,"
+    },
+    "71": {
+      "play": "LUCIUS: Who doth desire to see you."
+    },
+    "72": {
+      "play": "BRUTUS: Is he alone?"
+    },
+    "73": {
+      "play": "LUCIUS: No, sir, there are moe with him."
+    },
+    "74": {
+      "play": "BRUTUS: Do you know them?"
+    },
+    "75": {
+      "play": "LUCIUS: No, sir; their hats are pluck'd about their ears,"
+    },
+    "76": {
+      "play": "LUCIUS: And half their faces buried in their cloaks,"
+    },
+    "77": {
+      "play": "LUCIUS: That by no means I may discover them"
+    },
+    "78": {
+      "play": "LUCIUS: By any mark of favour."
+    },
+    "79": {
+      "play": "BRUTUS: Let 'em enter."
+    },
+    "80": {
+      "play": "BRUTUS: They are the faction. O conspiracy,"
+    },
+    "81": {
+      "play": "BRUTUS: Shamest thou to show thy dangerous brow by night,"
+    },
+    "82": {
+      "play": "BRUTUS: When evils are most free? O, then by day"
+    },
+    "83": {
+      "play": "BRUTUS: Where wilt thou find a cavern dark enough"
+    },
+    "84": {
+      "play": "BRUTUS: To mask thy monstrous visage? Seek none, conspiracy;"
+    },
+    "85": {
+      "play": "Hide it in smiles and affability: "
+    },
+    "86": {
+      "play": "Hide it in smiles and affability: For if thou path, thy native semblance on,"
+    },
+    "87": {
+      "play": "Hide it in smiles and affability: Not Erebus itself were dim enough"
+    },
+    "88": {
+      "play": "Hide it in smiles and affability: To hide thee from prevention."
+    },
+    "89": {
+      "play": "CASSIUS: I think we are too bold upon your rest:"
+    },
+    "90": {
+      "play": "CASSIUS: Good morrow, Brutus; do we trouble you?"
+    },
+    "91": {
+      "play": "BRUTUS: I have been up this hour, awake all night."
+    },
+    "92": {
+      "play": "BRUTUS: Know I these men that come along with you?"
+    },
+    "93": {
+      "play": "CASSIUS: Yes, every man of them, and no man here"
+    },
+    "94": {
+      "play": "CASSIUS: But honours you; and every one doth wish"
+    },
+    "95": {
+      "play": "CASSIUS: You had but that opinion of yourself"
+    },
+    "96": {
+      "play": "CASSIUS: Which every noble Roman bears of you."
+    },
+    "97": {
+      "play": "CASSIUS: This is Trebonius."
+    },
+    "98": {
+      "play": "BRUTUS: He is welcome hither."
+    },
+    "99": {
+      "play": "CASSIUS: This, Decius Brutus."
+    },
+    "100": {
+      "play": "BRUTUS: He is welcome too."
+    },
+    "101": {
+      "play": "CASSIUS: This, Casca; this, Cinna; and this, Metellus Cimber."
+    },
+    "102": {
+      "play": "BRUTUS: They are all welcome."
+    },
+    "103": {
+      "play": "BRUTUS: What watchful cares do interpose themselves"
+    },
+    "104": {
+      "play": "BRUTUS: Betwixt your eyes and night?"
+    },
+    "105": {
+      "play": "CASSIUS: Shall I entreat a word?"
+    },
+    "106": {
+      "play": "DECIUS BRUTUS: Here lies the east: doth not the day break here?"
+    },
+    "107": {
+      "play": "CASCA: No."
+    },
+    "108": {
+      "play": "CINNA: O, pardon, sir, it doth; and yon gray lines"
+    },
+    "109": {
+      "play": "CINNA: That fret the clouds are messengers of day."
+    },
+    "110": {
+      "play": "CASCA: You shall confess that you are both deceived."
+    },
+    "111": {
+      "play": "CASCA: Here, as I point my sword, the sun arises,"
+    },
+    "112": {
+      "play": "CASCA: Which is a great way growing on the south,"
+    },
+    "113": {
+      "play": "CASCA: Weighing the youthful season of the year."
+    },
+    "114": {
+      "play": "CASCA: Some two months hence up higher toward the north"
+    },
+    "115": {
+      "play": "CASCA: He first presents his fire; and the high east"
+    },
+    "116": {
+      "play": "CASCA: Stands, as the Capitol, directly here."
+    },
+    "117": {
+      "play": "BRUTUS: Give me your hands all over, one by one."
+    },
+    "118": {
+      "play": "CASSIUS: And let us swear our resolution."
+    },
+    "119": {
+      "play": "BRUTUS: No, not an oath: if not the face of men,"
+    },
+    "120": {
+      "play": "BRUTUS: The sufferance of our souls, the time's abuse,--"
+    },
+    "121": {
+      "play": "BRUTUS: If these be motives weak, break off betimes,"
+    },
+    "122": {
+      "play": "BRUTUS: And every man hence to his idle bed;"
+    },
+    "123": {
+      "play": "BRUTUS: So let high-sighted tyranny range on,"
+    },
+    "124": {
+      "play": "BRUTUS: Till each man drop by lottery. But if these,"
+    },
+    "125": {
+      "play": "BRUTUS: As I am sure they do, bear fire enough"
+    },
+    "126": {
+      "play": "BRUTUS: To kindle cowards and to steel with valour"
+    },
+    "127": {
+      "play": "BRUTUS: The melting spirits of women, then, countrymen,"
+    },
+    "128": {
+      "play": "BRUTUS: What need we any spur but our own cause,"
+    },
+    "129": {
+      "play": "BRUTUS: To prick us to redress? what other bond"
+    },
+    "130": {
+      "play": "BRUTUS: Than secret Romans, that have spoke the word,"
+    },
+    "131": {
+      "play": "BRUTUS: And will not palter? and what other oath"
+    },
+    "132": {
+      "play": "BRUTUS: Than honesty to honesty engaged,"
+    },
+    "133": {
+      "play": "BRUTUS: That this shall be, or we will fall for it?"
+    },
+    "134": {
+      "play": "BRUTUS: Swear priests and cowards and men cautelous,"
+    },
+    "135": {
+      "play": "BRUTUS: Old feeble carrions and such suffering souls"
+    },
+    "136": {
+      "play": "BRUTUS: That welcome wrongs; unto bad causes swear"
+    },
+    "137": {
+      "play": "BRUTUS: Such creatures as men doubt; but do not stain"
+    },
+    "138": {
+      "play": "BRUTUS: The even virtue of our enterprise,"
+    },
+    "139": {
+      "play": "BRUTUS: Nor the insuppressive mettle of our spirits,"
+    },
+    "140": {
+      "play": "BRUTUS: To think that or our cause or our performance"
+    },
+    "141": {
+      "play": "BRUTUS: Did need an oath; when every drop of blood"
+    },
+    "142": {
+      "play": "BRUTUS: That every Roman bears, and nobly bears,"
+    },
+    "143": {
+      "play": "BRUTUS: Is guilty of a several bastardy,"
+    },
+    "144": {
+      "play": "BRUTUS: If he do break the smallest particle"
+    },
+    "145": {
+      "play": "BRUTUS: Of any promise that hath pass'd from him."
+    },
+    "146": {
+      "play": "CASSIUS: But what of Cicero? shall we sound him?"
+    },
+    "147": {
+      "play": "CASSIUS: I think he will stand very strong with us."
+    },
+    "148": {
+      "play": "CASCA: Let us not leave him out."
+    },
+    "149": {
+      "play": "CINNA: No, by no means."
+    },
+    "150": {
+      "play": "METELLUS CIMBER: O, let us have him, for his silver hairs"
+    },
+    "151": {
+      "play": "METELLUS CIMBER: Will purchase us a good opinion"
+    },
+    "152": {
+      "play": "And buy men's voices to commend our deeds: "
+    },
+    "153": {
+      "play": "And buy men's voices to commend our deeds: It shall be said, his judgment ruled our hands;"
+    },
+    "154": {
+      "play": "And buy men's voices to commend our deeds: Our youths and wildness shall no whit appear,"
+    },
+    "155": {
+      "play": "And buy men's voices to commend our deeds: But all be buried in his gravity."
+    },
+    "156": {
+      "play": "BRUTUS: O, name him not: let us not break with him;"
+    },
+    "157": {
+      "play": "BRUTUS: For he will never follow any thing"
+    },
+    "158": {
+      "play": "BRUTUS: That other men begin."
+    },
+    "159": {
+      "play": "CASSIUS: Then leave him out."
+    },
+    "160": {
+      "play": "CASCA: Indeed he is not fit."
+    },
+    "161": {
+      "play": "DECIUS BRUTUS: Shall no man else be touch'd but only Caesar?"
+    },
+    "162": {
+      "play": "CASSIUS: Decius, well urged: I think it is not meet,"
+    },
+    "163": {
+      "play": "CASSIUS: Mark Antony, so well beloved of Caesar,"
+    },
+    "164": {
+      "play": "Should outlive Caesar: we shall find of him"
+    },
+    "165": {
+      "play": "Should outlive Caesar: A shrewd contriver; and, you know, his means,"
+    },
+    "166": {
+      "play": "Should outlive Caesar: If he improve them, may well stretch so far"
+    },
+    "167": {
+      "play": "As to annoy us all: which to prevent,"
+    },
+    "168": {
+      "play": "As to annoy us all: Let Antony and Caesar fall together."
+    },
+    "169": {
+      "play": "BRUTUS: Our course will seem too bloody, Caius Cassius,"
+    },
+    "170": {
+      "play": "BRUTUS: To cut the head off and then hack the limbs,"
+    },
+    "171": {
+      "play": "BRUTUS: Like wrath in death and envy afterwards;"
+    },
+    "172": {
+      "play": "For Antony is but a limb of Caesar: "
+    },
+    "173": {
+      "play": "For Antony is but a limb of Caesar: Let us be sacrificers, but not butchers, Caius."
+    },
+    "174": {
+      "play": "For Antony is but a limb of Caesar: We all stand up against the spirit of Caesar;"
+    },
+    "175": {
+      "play": "And in the spirit of men there is no blood: "
+    },
+    "176": {
+      "play": "And in the spirit of men there is no blood: O, that we then could come by Caesar's spirit,"
+    },
+    "177": {
+      "play": "And in the spirit of men there is no blood: And not dismember Caesar! But, alas,"
+    },
+    "178": {
+      "play": "And in the spirit of men there is no blood: Caesar must bleed for it! And, gentle friends,"
+    },
+    "179": {
+      "play": "And in the spirit of men there is no blood: Let's kill him boldly, but not wrathfully;"
+    },
+    "180": {
+      "play": "And in the spirit of men there is no blood: Let's carve him as a dish fit for the gods,"
+    },
+    "181": {
+      "play": "Not hew him as a carcass fit for hounds: "
+    },
+    "182": {
+      "play": "Not hew him as a carcass fit for hounds: And let our hearts, as subtle masters do,"
+    },
+    "183": {
+      "play": "Not hew him as a carcass fit for hounds: Stir up their servants to an act of rage,"
+    },
+    "184": {
+      "play": "Not hew him as a carcass fit for hounds: And after seem to chide 'em. This shall make"
+    },
+    "185": {
+      "play": "Our purpose necessary and not envious: "
+    },
+    "186": {
+      "play": "Our purpose necessary and not envious: Which so appearing to the common eyes,"
+    },
+    "187": {
+      "play": "Our purpose necessary and not envious: We shall be call'd purgers, not murderers."
+    },
+    "188": {
+      "play": "Our purpose necessary and not envious: And for Mark Antony, think not of him;"
+    },
+    "189": {
+      "play": "Our purpose necessary and not envious: For he can do no more than Caesar's arm"
+    },
+    "190": {
+      "play": "Our purpose necessary and not envious: When Caesar's head is off."
+    },
+    "191": {
+      "play": "CASSIUS: Yet I fear him;"
+    },
+    "192": {
+      "play": "CASSIUS: For in the ingrafted love he bears to Caesar--"
+    },
+    "193": {
+      "play": "BRUTUS: Alas, good Cassius, do not think of him:"
+    },
+    "194": {
+      "play": "BRUTUS: If he love Caesar, all that he can do"
+    },
+    "195": {
+      "play": "Is to himself, take thought and die for Caesar: "
+    },
+    "196": {
+      "play": "Is to himself, take thought and die for Caesar: And that were much he should; for he is given"
+    },
+    "197": {
+      "play": "Is to himself, take thought and die for Caesar: To sports, to wildness and much company."
+    },
+    "198": {
+      "play": "TREBONIUS: There is no fear in him; let him not die;"
+    },
+    "199": {
+      "play": "TREBONIUS: For he will live, and laugh at this hereafter."
+    },
+    "200": {
+      "play": "BRUTUS: Peace! count the clock."
+    },
+    "201": {
+      "play": "CASSIUS: The clock hath stricken three."
+    },
+    "202": {
+      "play": "TREBONIUS: 'Tis time to part."
+    },
+    "203": {
+      "play": "CASSIUS: But it is doubtful yet,"
+    },
+    "204": {
+      "play": "CASSIUS: Whether Caesar will come forth to-day, or no;"
+    },
+    "205": {
+      "play": "CASSIUS: For he is superstitious grown of late,"
+    },
+    "206": {
+      "play": "CASSIUS: Quite from the main opinion he held once"
+    },
+    "207": {
+      "play": "Of fantasy, of dreams and ceremonies: "
+    },
+    "208": {
+      "play": "Of fantasy, of dreams and ceremonies: It may be, these apparent prodigies,"
+    },
+    "209": {
+      "play": "Of fantasy, of dreams and ceremonies: The unaccustom'd terror of this night,"
+    },
+    "210": {
+      "play": "Of fantasy, of dreams and ceremonies: And the persuasion of his augurers,"
+    },
+    "211": {
+      "play": "Of fantasy, of dreams and ceremonies: May hold him from the Capitol to-day."
+    },
+    "212": {
+      "play": "DECIUS BRUTUS: Never fear that: if he be so resolved,"
+    },
+    "213": {
+      "play": "DECIUS BRUTUS: I can o'ersway him; for he loves to hear"
+    },
+    "214": {
+      "play": "DECIUS BRUTUS: That unicorns may be betray'd with trees,"
+    },
+    "215": {
+      "play": "DECIUS BRUTUS: And bears with glasses, elephants with holes,"
+    },
+    "216": {
+      "play": "DECIUS BRUTUS: Lions with toils and men with flatterers;"
+    },
+    "217": {
+      "play": "DECIUS BRUTUS: But when I tell him he hates flatterers,"
+    },
+    "218": {
+      "play": "DECIUS BRUTUS: He says he does, being then most flattered."
+    },
+    "219": {
+      "play": "DECIUS BRUTUS: Let me work;"
+    },
+    "220": {
+      "play": "DECIUS BRUTUS: For I can give his humour the true bent,"
+    },
+    "221": {
+      "play": "DECIUS BRUTUS: And I will bring him to the Capitol."
+    },
+    "222": {
+      "play": "CASSIUS: Nay, we will all of us be there to fetch him."
+    },
+    "223": {
+      "play": "BRUTUS: By the eighth hour: is that the uttermost?"
+    },
+    "224": {
+      "play": "CINNA: Be that the uttermost, and fail not then."
+    },
+    "225": {
+      "play": "METELLUS CIMBER: Caius Ligarius doth bear Caesar hard,"
+    },
+    "226": {
+      "play": "Who rated him for speaking well of Pompey: "
+    },
+    "227": {
+      "play": "Who rated him for speaking well of Pompey: I wonder none of you have thought of him."
+    },
+    "228": {
+      "play": "BRUTUS: Now, good Metellus, go along by him:"
+    },
+    "229": {
+      "play": "BRUTUS: He loves me well, and I have given him reasons;"
+    },
+    "230": {
+      "play": "BRUTUS: Send him but hither, and I'll fashion him."
+    },
+    "231": {
+      "play": "CASSIUS: The morning comes upon 's: we'll leave you, Brutus."
+    },
+    "232": {
+      "play": "CASSIUS: And, friends, disperse yourselves; but all remember"
+    },
+    "233": {
+      "play": "CASSIUS: What you have said, and show yourselves true Romans."
+    },
+    "234": {
+      "play": "BRUTUS: Good gentlemen, look fresh and merrily;"
+    },
+    "235": {
+      "play": "BRUTUS: Let not our looks put on our purposes,"
+    },
+    "236": {
+      "play": "BRUTUS: But bear it as our Roman actors do,"
+    },
+    "237": {
+      "play": "With untired spirits and formal constancy: "
+    },
+    "238": {
+      "play": "With untired spirits and formal constancy: And so good morrow to you every one."
+    },
+    "239": {
+      "play": "With untired spirits and formal constancy: Boy! Lucius! Fast asleep? It is no matter;"
+    },
+    "240": {
+      "play": "Enjoy the honey-heavy dew of slumber: "
+    },
+    "241": {
+      "play": "Enjoy the honey-heavy dew of slumber: Thou hast no figures nor no fantasies,"
+    },
+    "242": {
+      "play": "Enjoy the honey-heavy dew of slumber: Which busy care draws in the brains of men;"
+    },
+    "243": {
+      "play": "Enjoy the honey-heavy dew of slumber: Therefore thou sleep'st so sound."
+    },
+    "244": {
+      "play": "PORTIA: Brutus, my lord!"
+    },
+    "245": {
+      "play": "BRUTUS: Portia, what mean you? wherefore rise you now?"
+    },
+    "246": {
+      "play": "BRUTUS: It is not for your health thus to commit"
+    },
+    "247": {
+      "play": "BRUTUS: Your weak condition to the raw cold morning."
+    },
+    "248": {
+      "play": "PORTIA: Nor for yours neither. You've ungently, Brutus,"
+    },
+    "249": {
+      "play": "Stole from my bed: and yesternight, at supper,"
+    },
+    "250": {
+      "play": "Stole from my bed: You suddenly arose, and walk'd about,"
+    },
+    "251": {
+      "play": "Stole from my bed: Musing and sighing, with your arms across,"
+    },
+    "252": {
+      "play": "Stole from my bed: And when I ask'd you what the matter was,"
+    },
+    "253": {
+      "play": "Stole from my bed: You stared upon me with ungentle looks;"
+    },
+    "254": {
+      "play": "Stole from my bed: I urged you further; then you scratch'd your head,"
+    },
+    "255": {
+      "play": "Stole from my bed: And too impatiently stamp'd with your foot;"
+    },
+    "256": {
+      "play": "Stole from my bed: Yet I insisted, yet you answer'd not,"
+    },
+    "257": {
+      "play": "Stole from my bed: But, with an angry wafture of your hand,"
+    },
+    "258": {
+      "play": "Gave sign for me to leave you: so I did;"
+    },
+    "259": {
+      "play": "Gave sign for me to leave you: Fearing to strengthen that impatience"
+    },
+    "260": {
+      "play": "Gave sign for me to leave you: Which seem'd too much enkindled, and withal"
+    },
+    "261": {
+      "play": "Gave sign for me to leave you: Hoping it was but an effect of humour,"
+    },
+    "262": {
+      "play": "Gave sign for me to leave you: Which sometime hath his hour with every man."
+    },
+    "263": {
+      "play": "Gave sign for me to leave you: It will not let you eat, nor talk, nor sleep,"
+    },
+    "264": {
+      "play": "Gave sign for me to leave you: And could it work so much upon your shape"
+    },
+    "265": {
+      "play": "Gave sign for me to leave you: As it hath much prevail'd on your condition,"
+    },
+    "266": {
+      "play": "Gave sign for me to leave you: I should not know you, Brutus. Dear my lord,"
+    },
+    "267": {
+      "play": "Gave sign for me to leave you: Make me acquainted with your cause of grief."
+    },
+    "268": {
+      "play": "BRUTUS: I am not well in health, and that is all."
+    },
+    "269": {
+      "play": "PORTIA: Brutus is wise, and, were he not in health,"
+    },
+    "270": {
+      "play": "PORTIA: He would embrace the means to come by it."
+    },
+    "271": {
+      "play": "BRUTUS: Why, so I do. Good Portia, go to bed."
+    },
+    "272": {
+      "play": "PORTIA: Is Brutus sick? and is it physical"
+    },
+    "273": {
+      "play": "PORTIA: To walk unbraced and suck up the humours"
+    },
+    "274": {
+      "play": "PORTIA: Of the dank morning? What, is Brutus sick,"
+    },
+    "275": {
+      "play": "PORTIA: And will he steal out of his wholesome bed,"
+    },
+    "276": {
+      "play": "PORTIA: To dare the vile contagion of the night"
+    },
+    "277": {
+      "play": "PORTIA: And tempt the rheumy and unpurged air"
+    },
+    "278": {
+      "play": "PORTIA: To add unto his sickness? No, my Brutus;"
+    },
+    "279": {
+      "play": "PORTIA: You have some sick offence within your mind,"
+    },
+    "280": {
+      "play": "PORTIA: Which, by the right and virtue of my place,"
+    },
+    "281": {
+      "play": "I ought to know of: and, upon my knees,"
+    },
+    "282": {
+      "play": "I ought to know of: I charm you, by my once-commended beauty,"
+    },
+    "283": {
+      "play": "I ought to know of: By all your vows of love and that great vow"
+    },
+    "284": {
+      "play": "I ought to know of: Which did incorporate and make us one,"
+    },
+    "285": {
+      "play": "I ought to know of: That you unfold to me, yourself, your half,"
+    },
+    "286": {
+      "play": "I ought to know of: Why you are heavy, and what men to-night"
+    },
+    "287": {
+      "play": "Have had to resort to you: for here have been"
+    },
+    "288": {
+      "play": "Have had to resort to you: Some six or seven, who did hide their faces"
+    },
+    "289": {
+      "play": "Have had to resort to you: Even from darkness."
+    },
+    "290": {
+      "play": "BRUTUS: Kneel not, gentle Portia."
+    },
+    "291": {
+      "play": "PORTIA: I should not need, if you were gentle Brutus."
+    },
+    "292": {
+      "play": "PORTIA: Within the bond of marriage, tell me, Brutus,"
+    },
+    "293": {
+      "play": "PORTIA: Is it excepted I should know no secrets"
+    },
+    "294": {
+      "play": "PORTIA: That appertain to you? Am I yourself"
+    },
+    "295": {
+      "play": "PORTIA: But, as it were, in sort or limitation,"
+    },
+    "296": {
+      "play": "PORTIA: To keep with you at meals, comfort your bed,"
+    },
+    "297": {
+      "play": "PORTIA: And talk to you sometimes? Dwell I but in the suburbs"
+    },
+    "298": {
+      "play": "PORTIA: Of your good pleasure? If it be no more,"
+    },
+    "299": {
+      "play": "PORTIA: Portia is Brutus' harlot, not his wife."
+    },
+    "300": {
+      "play": "BRUTUS: You are my true and honourable wife,"
+    },
+    "301": {
+      "play": "BRUTUS: As dear to me as are the ruddy drops"
+    },
+    "302": {
+      "play": "BRUTUS: That visit my sad heart"
+    },
+    "303": {
+      "play": "PORTIA: If this were true, then should I know this secret."
+    },
+    "304": {
+      "play": "PORTIA: I grant I am a woman; but withal"
+    },
+    "305": {
+      "play": "A woman that Lord Brutus took to wife: "
+    },
+    "306": {
+      "play": "A woman that Lord Brutus took to wife: I grant I am a woman; but withal"
+    },
+    "307": {
+      "play": "A woman that Lord Brutus took to wife: A woman well-reputed, Cato's daughter."
+    },
+    "308": {
+      "play": "A woman that Lord Brutus took to wife: Think you I am no stronger than my sex,"
+    },
+    "309": {
+      "play": "A woman that Lord Brutus took to wife: Being so father'd and so husbanded?"
+    },
+    "310": {
+      "play": "Tell me your counsels, I will not disclose 'em: "
+    },
+    "311": {
+      "play": "Tell me your counsels, I will not disclose 'em: I have made strong proof of my constancy,"
+    },
+    "312": {
+      "play": "Tell me your counsels, I will not disclose 'em: Giving myself a voluntary wound"
+    },
+    "313": {
+      "play": "Here, in the thigh: can I bear that with patience."
+    },
+    "314": {
+      "play": "Here, in the thigh: And not my husband's secrets?"
+    },
+    "315": {
+      "play": "BRUTUS: O ye gods,"
+    },
+    "316": {
+      "play": "BRUTUS: Render me worthy of this noble wife!"
+    },
+    "317": {
+      "play": "Hark, hark! one knocks: Portia, go in awhile;"
+    },
+    "318": {
+      "play": "Hark, hark! one knocks: And by and by thy bosom shall partake"
+    },
+    "319": {
+      "play": "Hark, hark! one knocks: The secrets of my heart."
+    },
+    "320": {
+      "play": "Hark, hark! one knocks: All my engagements I will construe to thee,"
+    },
+    "321": {
+      "play": "All the charactery of my sad brows: "
+    },
+    "322": {
+      "play": "All the charactery of my sad brows: Leave me with haste."
+    },
+    "323": {
+      "play": "All the charactery of my sad brows: Lucius, who's that knocks?"
+    },
+    "324": {
+      "play": "LUCIUS: He is a sick man that would speak with you."
+    },
+    "325": {
+      "play": "BRUTUS: Caius Ligarius, that Metellus spake of."
+    },
+    "326": {
+      "play": "BRUTUS: Boy, stand aside. Caius Ligarius! how?"
+    },
+    "327": {
+      "play": "LIGARIUS: Vouchsafe good morrow from a feeble tongue."
+    },
+    "328": {
+      "play": "BRUTUS: O, what a time have you chose out, brave Caius,"
+    },
+    "329": {
+      "play": "BRUTUS: To wear a kerchief! Would you were not sick!"
+    },
+    "330": {
+      "play": "LIGARIUS: I am not sick, if Brutus have in hand"
+    },
+    "331": {
+      "play": "LIGARIUS: Any exploit worthy the name of honour."
+    },
+    "332": {
+      "play": "BRUTUS: Such an exploit have I in hand, Ligarius,"
+    },
+    "333": {
+      "play": "BRUTUS: Had you a healthful ear to hear of it."
+    },
+    "334": {
+      "play": "LIGARIUS: By all the gods that Romans bow before,"
+    },
+    "335": {
+      "play": "LIGARIUS: I here discard my sickness! Soul of Rome!"
+    },
+    "336": {
+      "play": "LIGARIUS: Brave son, derived from honourable loins!"
+    },
+    "337": {
+      "play": "LIGARIUS: Thou, like an exorcist, hast conjured up"
+    },
+    "338": {
+      "play": "LIGARIUS: My mortified spirit. Now bid me run,"
+    },
+    "339": {
+      "play": "LIGARIUS: And I will strive with things impossible;"
+    },
+    "340": {
+      "play": "LIGARIUS: Yea, get the better of them. What's to do?"
+    },
+    "341": {
+      "play": "BRUTUS: A piece of work that will make sick men whole."
+    },
+    "342": {
+      "play": "LIGARIUS: But are not some whole that we must make sick?"
+    },
+    "343": {
+      "play": "BRUTUS: That must we also. What it is, my Caius,"
+    },
+    "344": {
+      "play": "BRUTUS: I shall unfold to thee, as we are going"
+    },
+    "345": {
+      "play": "BRUTUS: To whom it must be done."
+    },
+    "346": {
+      "play": "LIGARIUS: Set on your foot,"
+    },
+    "347": {
+      "play": "LIGARIUS: And with a heart new-fired I follow you,"
+    },
+    "348": {
+      "play": "To do I know not what: but it sufficeth"
+    },
+    "349": {
+      "play": "To do I know not what: That Brutus leads me on."
+    },
+    "350": {
+      "play": "BRUTUS: Follow me, then."
+    }
+  },
+  "ACT 2 SCENE 2": {
+    "1": {
+      "play": "CAESAR: Nor heaven nor earth have been at peace to-night:"
+    },
+    "2": {
+      "play": "CAESAR: Thrice hath Calpurnia in her sleep cried out,"
+    },
+    "3": {
+      "play": "CAESAR: 'Help, ho! they murder Caesar!' Who's within?"
+    },
+    "4": {
+      "play": "Servant: My lord?"
+    },
+    "5": {
+      "play": "CAESAR: Go bid the priests do present sacrifice"
+    },
+    "6": {
+      "play": "CAESAR: And bring me their opinions of success."
+    },
+    "7": {
+      "play": "Servant: I will, my lord."
+    },
+    "8": {
+      "play": "CALPURNIA: What mean you, Caesar? think you to walk forth?"
+    },
+    "9": {
+      "play": "CALPURNIA: You shall not stir out of your house to-day."
+    },
+    "10": {
+      "play": "CAESAR: Caesar shall forth: the things that threaten'd me"
+    },
+    "11": {
+      "play": "CAESAR: Ne'er look'd but on my back; when they shall see"
+    },
+    "12": {
+      "play": "CAESAR: The face of Caesar, they are vanished."
+    },
+    "13": {
+      "play": "CALPURNIA: Caesar, I never stood on ceremonies,"
+    },
+    "14": {
+      "play": "CALPURNIA: Yet now they fright me. There is one within,"
+    },
+    "15": {
+      "play": "CALPURNIA: Besides the things that we have heard and seen,"
+    },
+    "16": {
+      "play": "CALPURNIA: Recounts most horrid sights seen by the watch."
+    },
+    "17": {
+      "play": "CALPURNIA: A lioness hath whelped in the streets;"
+    },
+    "18": {
+      "play": "CALPURNIA: And graves have yawn'd, and yielded up their dead;"
+    },
+    "19": {
+      "play": "CALPURNIA: Fierce fiery warriors fought upon the clouds,"
+    },
+    "20": {
+      "play": "CALPURNIA: In ranks and squadrons and right form of war,"
+    },
+    "21": {
+      "play": "CALPURNIA: Which drizzled blood upon the Capitol;"
+    },
+    "22": {
+      "play": "CALPURNIA: The noise of battle hurtled in the air,"
+    },
+    "23": {
+      "play": "CALPURNIA: Horses did neigh, and dying men did groan,"
+    },
+    "24": {
+      "play": "CALPURNIA: And ghosts did shriek and squeal about the streets."
+    },
+    "25": {
+      "play": "CALPURNIA: O Caesar! these things are beyond all use,"
+    },
+    "26": {
+      "play": "CALPURNIA: And I do fear them."
+    },
+    "27": {
+      "play": "CAESAR: What can be avoided"
+    },
+    "28": {
+      "play": "CAESAR: Whose end is purposed by the mighty gods?"
+    },
+    "29": {
+      "play": "CAESAR: Yet Caesar shall go forth; for these predictions"
+    },
+    "30": {
+      "play": "CAESAR: Are to the world in general as to Caesar."
+    },
+    "31": {
+      "play": "CALPURNIA: When beggars die, there are no comets seen;"
+    },
+    "32": {
+      "play": "CALPURNIA: The heavens themselves blaze forth the death of princes."
+    },
+    "33": {
+      "play": "CAESAR: Cowards die many times before their deaths;"
+    },
+    "34": {
+      "play": "CAESAR: The valiant never taste of death but once."
+    },
+    "35": {
+      "play": "CAESAR: Of all the wonders that I yet have heard."
+    },
+    "36": {
+      "play": "CAESAR: It seems to me most strange that men should fear;"
+    },
+    "37": {
+      "play": "CAESAR: Seeing that death, a necessary end,"
+    },
+    "38": {
+      "play": "CAESAR: Will come when it will come."
+    },
+    "39": {
+      "play": "CAESAR: What say the augurers?"
+    },
+    "40": {
+      "play": "Servant: They would not have you to stir forth to-day."
+    },
+    "41": {
+      "play": "Servant: Plucking the entrails of an offering forth,"
+    },
+    "42": {
+      "play": "Servant: They could not find a heart within the beast."
+    },
+    "43": {
+      "play": "CAESAR: The gods do this in shame of cowardice:"
+    },
+    "44": {
+      "play": "CAESAR: Caesar should be a beast without a heart,"
+    },
+    "45": {
+      "play": "CAESAR: If he should stay at home to-day for fear."
+    },
+    "46": {
+      "play": "No, Caesar shall not: danger knows full well"
+    },
+    "47": {
+      "play": "That Caesar is more dangerous than he: "
+    },
+    "48": {
+      "play": "That Caesar is more dangerous than he: We are two lions litter'd in one day,"
+    },
+    "49": {
+      "play": "And I the elder and more terrible: "
+    },
+    "50": {
+      "play": "And I the elder and more terrible: And Caesar shall go forth."
+    },
+    "51": {
+      "play": "CALPURNIA: Alas, my lord,"
+    },
+    "52": {
+      "play": "CALPURNIA: Your wisdom is consumed in confidence."
+    },
+    "53": {
+      "play": "Do not go forth to-day: call it my fear"
+    },
+    "54": {
+      "play": "Do not go forth to-day: That keeps you in the house, and not your own."
+    },
+    "55": {
+      "play": "We'll send Mark Antony to the senate-house: "
+    },
+    "56": {
+      "play": "And he shall say you are not well to-day: "
+    },
+    "57": {
+      "play": "And he shall say you are not well to-day: Let me, upon my knee, prevail in this."
+    },
+    "58": {
+      "play": "CAESAR: Mark Antony shall say I am not well,"
+    },
+    "59": {
+      "play": "CAESAR: And, for thy humour, I will stay at home."
+    },
+    "60": {
+      "play": "CAESAR: Here's Decius Brutus, he shall tell them so."
+    },
+    "61": {
+      "play": "DECIUS BRUTUS: Caesar, all hail! good morrow, worthy Caesar:"
+    },
+    "62": {
+      "play": "DECIUS BRUTUS: I come to fetch you to the senate-house."
+    },
+    "63": {
+      "play": "CAESAR: And you are come in very happy time,"
+    },
+    "64": {
+      "play": "CAESAR: To bear my greeting to the senators"
+    },
+    "65": {
+      "play": "And tell them that I will not come to-day: "
+    },
+    "66": {
+      "play": "Cannot, is false, and that I dare not, falser: "
+    },
+    "67": {
+      "play": "I will not come to-day: tell them so, Decius."
+    },
+    "68": {
+      "play": "CALPURNIA: Say he is sick."
+    },
+    "69": {
+      "play": "CAESAR: Shall Caesar send a lie?"
+    },
+    "70": {
+      "play": "CAESAR: Have I in conquest stretch'd mine arm so far,"
+    },
+    "71": {
+      "play": "CAESAR: To be afraid to tell graybeards the truth?"
+    },
+    "72": {
+      "play": "CAESAR: Decius, go tell them Caesar will not come."
+    },
+    "73": {
+      "play": "DECIUS BRUTUS: Most mighty Caesar, let me know some cause,"
+    },
+    "74": {
+      "play": "DECIUS BRUTUS: Lest I be laugh'd at when I tell them so."
+    },
+    "75": {
+      "play": "CAESAR: The cause is in my will: I will not come;"
+    },
+    "76": {
+      "play": "CAESAR: That is enough to satisfy the senate."
+    },
+    "77": {
+      "play": "CAESAR: But for your private satisfaction,"
+    },
+    "78": {
+      "play": "Because I love you, I will let you know: "
+    },
+    "79": {
+      "play": "Calpurnia here, my wife, stays me at home: "
+    },
+    "80": {
+      "play": "Calpurnia here, my wife, stays me at home: She dreamt to-night she saw my statua,"
+    },
+    "81": {
+      "play": "Calpurnia here, my wife, stays me at home: Which, like a fountain with an hundred spouts,"
+    },
+    "82": {
+      "play": "Did run pure blood: and many lusty Romans"
+    },
+    "83": {
+      "play": "Came smiling, and did bathe their hands in it: "
+    },
+    "84": {
+      "play": "Came smiling, and did bathe their hands in it: And these does she apply for warnings, and portents,"
+    },
+    "85": {
+      "play": "Came smiling, and did bathe their hands in it: And evils imminent; and on her knee"
+    },
+    "86": {
+      "play": "Came smiling, and did bathe their hands in it: Hath begg'd that I will stay at home to-day."
+    },
+    "87": {
+      "play": "DECIUS BRUTUS: This dream is all amiss interpreted;"
+    },
+    "88": {
+      "play": "It was a vision fair and fortunate: "
+    },
+    "89": {
+      "play": "It was a vision fair and fortunate: Your statue spouting blood in many pipes,"
+    },
+    "90": {
+      "play": "It was a vision fair and fortunate: In which so many smiling Romans bathed,"
+    },
+    "91": {
+      "play": "It was a vision fair and fortunate: Signifies that from you great Rome shall suck"
+    },
+    "92": {
+      "play": "It was a vision fair and fortunate: Reviving blood, and that great men shall press"
+    },
+    "93": {
+      "play": "It was a vision fair and fortunate: For tinctures, stains, relics and cognizance."
+    },
+    "94": {
+      "play": "It was a vision fair and fortunate: This by Calpurnia's dream is signified."
+    },
+    "95": {
+      "play": "CAESAR: And this way have you well expounded it."
+    },
+    "96": {
+      "play": "DECIUS BRUTUS: I have, when you have heard what I can say:"
+    },
+    "97": {
+      "play": "And know it now: the senate have concluded"
+    },
+    "98": {
+      "play": "And know it now: To give this day a crown to mighty Caesar."
+    },
+    "99": {
+      "play": "And know it now: If you shall send them word you will not come,"
+    },
+    "100": {
+      "play": "And know it now: Their minds may change. Besides, it were a mock"
+    },
+    "101": {
+      "play": "And know it now: Apt to be render'd, for some one to say"
+    },
+    "102": {
+      "play": "And know it now: 'Break up the senate till another time,"
+    },
+    "103": {
+      "play": "And know it now: When Caesar's wife shall meet with better dreams.'"
+    },
+    "104": {
+      "play": "And know it now: If Caesar hide himself, shall they not whisper"
+    },
+    "105": {
+      "play": "And know it now: 'Lo, Caesar is afraid'?"
+    },
+    "106": {
+      "play": "And know it now: Pardon me, Caesar; for my dear dear love"
+    },
+    "107": {
+      "play": "And know it now: To our proceeding bids me tell you this;"
+    },
+    "108": {
+      "play": "And know it now: And reason to my love is liable."
+    },
+    "109": {
+      "play": "CAESAR: How foolish do your fears seem now, Calpurnia!"
+    },
+    "110": {
+      "play": "CAESAR: I am ashamed I did yield to them."
+    },
+    "111": {
+      "play": "CAESAR: Give me my robe, for I will go."
+    },
+    "112": {
+      "play": "CAESAR: And look where Publius is come to fetch me."
+    },
+    "113": {
+      "play": "PUBLIUS: Good morrow, Caesar."
+    },
+    "114": {
+      "play": "CAESAR: Welcome, Publius."
+    },
+    "115": {
+      "play": "CAESAR: What, Brutus, are you stirr'd so early too?"
+    },
+    "116": {
+      "play": "CAESAR: Good morrow, Casca. Caius Ligarius,"
+    },
+    "117": {
+      "play": "CAESAR: Caesar was ne'er so much your enemy"
+    },
+    "118": {
+      "play": "CAESAR: As that same ague which hath made you lean."
+    },
+    "119": {
+      "play": "CAESAR: What is 't o'clock?"
+    },
+    "120": {
+      "play": "BRUTUS: Caesar, 'tis strucken eight."
+    },
+    "121": {
+      "play": "CAESAR: I thank you for your pains and courtesy."
+    },
+    "122": {
+      "play": "CAESAR: See! Antony, that revels long o' nights,"
+    },
+    "123": {
+      "play": "CAESAR: Is notwithstanding up. Good morrow, Antony."
+    },
+    "124": {
+      "play": "ANTONY: So to most noble Caesar."
+    },
+    "125": {
+      "play": "CAESAR: Bid them prepare within:"
+    },
+    "126": {
+      "play": "CAESAR: I am to blame to be thus waited for."
+    },
+    "127": {
+      "play": "Now, Cinna: now, Metellus: what, Trebonius!"
+    },
+    "128": {
+      "play": "Now, Cinna: I have an hour's talk in store for you;"
+    },
+    "129": {
+      "play": "Remember that you call on me to-day: "
+    },
+    "130": {
+      "play": "Remember that you call on me to-day: Be near me, that I may remember you."
+    },
+    "131": {
+      "play": "TREBONIUS: Caesar, I will:"
+    },
+    "132": {
+      "play": "TREBONIUS: and so near will I be,"
+    },
+    "133": {
+      "play": "TREBONIUS: That your best friends shall wish I had been further."
+    },
+    "134": {
+      "play": "CAESAR: Good friends, go in, and taste some wine with me;"
+    },
+    "135": {
+      "play": "CAESAR: And we, like friends, will straightway go together."
+    },
+    "136": {
+      "play": "BRUTUS: [Aside] That every like is not the same, O Caesar,"
+    },
+    "137": {
+      "play": "BRUTUS: The heart of Brutus yearns to think upon!"
+    }
+  },
+  "ACT 2 SCENE 3": {
+    "1": {
+      "play": "ARTEMIDORUS: 'Caesar, beware of Brutus; take heed of Cassius;"
+    },
+    "2": {
+      "play": "ARTEMIDORUS: come not near Casca; have an eye to Cinna, trust not"
+    },
+    "3": {
+      "play": "Trebonius: mark well Metellus Cimber: Decius Brutus"
+    },
+    "4": {
+      "play": "loves thee not: thou hast wronged Caius Ligarius."
+    },
+    "5": {
+      "play": "loves thee not: There is but one mind in all these men, and it is"
+    },
+    "6": {
+      "play": "loves thee not: bent against Caesar. If thou beest not immortal,"
+    },
+    "7": {
+      "play": "look about you: security gives way to conspiracy."
+    },
+    "8": {
+      "play": "look about you: The mighty gods defend thee! Thy lover,"
+    },
+    "9": {
+      "play": "look about you: 'ARTEMIDORUS.'"
+    },
+    "10": {
+      "play": "look about you: Here will I stand till Caesar pass along,"
+    },
+    "11": {
+      "play": "look about you: And as a suitor will I give him this."
+    },
+    "12": {
+      "play": "look about you: My heart laments that virtue cannot live"
+    },
+    "13": {
+      "play": "look about you: Out of the teeth of emulation."
+    },
+    "14": {
+      "play": "look about you: If thou read this, O Caesar, thou mayst live;"
+    },
+    "15": {
+      "play": "look about you: If not, the Fates with traitors do contrive."
+    }
+  },
+  "ACT 2 SCENE 4": {
+    "1": {
+      "play": "PORTIA: I prithee, boy, run to the senate-house;"
+    },
+    "2": {
+      "play": "Stay not to answer me, but get thee gone: "
+    },
+    "3": {
+      "play": "Stay not to answer me, but get thee gone: Why dost thou stay?"
+    },
+    "4": {
+      "play": "LUCIUS: To know my errand, madam."
+    },
+    "5": {
+      "play": "PORTIA: I would have had thee there, and here again,"
+    },
+    "6": {
+      "play": "PORTIA: Ere I can tell thee what thou shouldst do there."
+    },
+    "7": {
+      "play": "PORTIA: O constancy, be strong upon my side,"
+    },
+    "8": {
+      "play": "PORTIA: Set a huge mountain 'tween my heart and tongue!"
+    },
+    "9": {
+      "play": "PORTIA: I have a man's mind, but a woman's might."
+    },
+    "10": {
+      "play": "PORTIA: How hard it is for women to keep counsel!"
+    },
+    "11": {
+      "play": "PORTIA: Art thou here yet?"
+    },
+    "12": {
+      "play": "LUCIUS: Madam, what should I do?"
+    },
+    "13": {
+      "play": "LUCIUS: Run to the Capitol, and nothing else?"
+    },
+    "14": {
+      "play": "LUCIUS: And so return to you, and nothing else?"
+    },
+    "15": {
+      "play": "PORTIA: Yes, bring me word, boy, if thy lord look well,"
+    },
+    "16": {
+      "play": "For he went sickly forth: and take good note"
+    },
+    "17": {
+      "play": "For he went sickly forth: What Caesar doth, what suitors press to him."
+    },
+    "18": {
+      "play": "For he went sickly forth: Hark, boy! what noise is that?"
+    },
+    "19": {
+      "play": "LUCIUS: I hear none, madam."
+    },
+    "20": {
+      "play": "PORTIA: Prithee, listen well;"
+    },
+    "21": {
+      "play": "PORTIA: I heard a bustling rumour, like a fray,"
+    },
+    "22": {
+      "play": "PORTIA: And the wind brings it from the Capitol."
+    },
+    "23": {
+      "play": "LUCIUS: Sooth, madam, I hear nothing."
+    },
+    "24": {
+      "play": "PORTIA: Come hither, fellow: which way hast thou been?"
+    },
+    "25": {
+      "play": "Soothsayer: At mine own house, good lady."
+    },
+    "26": {
+      "play": "PORTIA: What is't o'clock?"
+    },
+    "27": {
+      "play": "Soothsayer: About the ninth hour, lady."
+    },
+    "28": {
+      "play": "PORTIA: Is Caesar yet gone to the Capitol?"
+    },
+    "29": {
+      "play": "Soothsayer: Madam, not yet: I go to take my stand,"
+    },
+    "30": {
+      "play": "Soothsayer: To see him pass on to the Capitol."
+    },
+    "31": {
+      "play": "PORTIA: Thou hast some suit to Caesar, hast thou not?"
+    },
+    "32": {
+      "play": "Soothsayer: That I have, lady: if it will please Caesar"
+    },
+    "33": {
+      "play": "Soothsayer: To be so good to Caesar as to hear me,"
+    },
+    "34": {
+      "play": "Soothsayer: I shall beseech him to befriend himself."
+    },
+    "35": {
+      "play": "PORTIA: Why, know'st thou any harm's intended towards him?"
+    },
+    "36": {
+      "play": "Soothsayer: None that I know will be, much that I fear may chance."
+    },
+    "37": {
+      "play": "Good morrow to you. Here the street is narrow: "
+    },
+    "38": {
+      "play": "Good morrow to you. Here the street is narrow: The throng that follows Caesar at the heels,"
+    },
+    "39": {
+      "play": "Good morrow to you. Here the street is narrow: Of senators, of praetors, common suitors,"
+    },
+    "40": {
+      "play": "Will crowd a feeble man almost to death: "
+    },
+    "41": {
+      "play": "Will crowd a feeble man almost to death: I'll get me to a place more void, and there"
+    },
+    "42": {
+      "play": "Will crowd a feeble man almost to death: Speak to great Caesar as he comes along."
+    }
+  },
+  "ACT 3 SCENE 3": {
+    "1": {
+      "play": "CINNA THE POET: I dreamt to-night that I did feast with Caesar,"
+    },
+    "2": {
+      "play": "And things unlucky charge my fantasy: "
+    },
+    "3": {
+      "play": "And things unlucky charge my fantasy: I have no will to wander forth of doors,"
+    },
+    "4": {
+      "play": "And things unlucky charge my fantasy: Yet something leads me forth."
+    },
+    "5": {
+      "play": "First Citizen: What is your name?"
+    },
+    "6": {
+      "play": "Second Citizen: Whither are you going?"
+    },
+    "7": {
+      "play": "Third Citizen: Where do you dwell?"
+    },
+    "8": {
+      "play": "Fourth Citizen: Are you a married man or a bachelor?"
+    },
+    "9": {
+      "play": "Second Citizen: Answer every man directly."
+    },
+    "10": {
+      "play": "First Citizen: Ay, and briefly."
+    },
+    "11": {
+      "play": "Fourth Citizen: Ay, and wisely."
+    },
+    "12": {
+      "play": "Third Citizen: Ay, and truly, you were best."
+    },
+    "13": {
+      "play": "CINNA THE POET: What is my name? Whither am I going? Where do I"
+    },
+    "14": {
+      "play": "CINNA THE POET: dwell? Am I a married man or a bachelor? Then, to"
+    },
+    "15": {
+      "play": "CINNA THE POET: answer every man directly and briefly, wisely and"
+    },
+    "16": {
+      "play": "truly: wisely I say, I am a bachelor."
+    },
+    "17": {
+      "play": "Second Citizen: That's as much as to say, they are fools that marry:"
+    },
+    "18": {
+      "play": "Second Citizen: you'll bear me a bang for that, I fear. Proceed; directly."
+    },
+    "19": {
+      "play": "CINNA THE POET: Directly, I am going to Caesar's funeral."
+    },
+    "20": {
+      "play": "First Citizen: As a friend or an enemy?"
+    },
+    "21": {
+      "play": "CINNA THE POET: As a friend."
+    },
+    "22": {
+      "play": "Second Citizen: That matter is answered directly."
+    },
+    "23": {
+      "play": "Fourth Citizen: For your dwelling,--briefly."
+    },
+    "24": {
+      "play": "CINNA THE POET: Briefly, I dwell by the Capitol."
+    },
+    "25": {
+      "play": "Third Citizen: Your name, sir, truly."
+    },
+    "26": {
+      "play": "CINNA THE POET: Truly, my name is Cinna."
+    },
+    "27": {
+      "play": "First Citizen: Tear him to pieces; he's a conspirator."
+    },
+    "28": {
+      "play": "CINNA THE POET: I am Cinna the poet, I am Cinna the poet."
+    },
+    "29": {
+      "play": "Fourth Citizen: Tear him for his bad verses, tear him for his bad verses."
+    },
+    "30": {
+      "play": "CINNA THE POET: I am not Cinna the conspirator."
+    },
+    "31": {
+      "play": "Fourth Citizen: It is no matter, his name's Cinna; pluck but his"
+    },
+    "32": {
+      "play": "Fourth Citizen: name out of his heart, and turn him going."
+    }
+  },
+  "ACT 4 SCENE 1": {
+    "1": {
+      "play": "ANTONY: These many, then, shall die; their names are prick'd."
+    },
+    "2": {
+      "play": "OCTAVIUS: Your brother too must die; consent you, Lepidus?"
+    },
+    "3": {
+      "play": "LEPIDUS: I do consent--"
+    },
+    "4": {
+      "play": "OCTAVIUS: Prick him down, Antony."
+    },
+    "5": {
+      "play": "LEPIDUS: Upon condition Publius shall not live,"
+    },
+    "6": {
+      "play": "LEPIDUS: Who is your sister's son, Mark Antony."
+    },
+    "7": {
+      "play": "ANTONY: He shall not live; look, with a spot I damn him."
+    },
+    "8": {
+      "play": "ANTONY: But, Lepidus, go you to Caesar's house;"
+    },
+    "9": {
+      "play": "ANTONY: Fetch the will hither, and we shall determine"
+    },
+    "10": {
+      "play": "ANTONY: How to cut off some charge in legacies."
+    },
+    "11": {
+      "play": "LEPIDUS: What, shall I find you here?"
+    },
+    "12": {
+      "play": "OCTAVIUS: Or here, or at the Capitol."
+    },
+    "13": {
+      "play": "ANTONY: This is a slight unmeritable man,"
+    },
+    "14": {
+      "play": "Meet to be sent on errands: is it fit,"
+    },
+    "15": {
+      "play": "Meet to be sent on errands: The three-fold world divided, he should stand"
+    },
+    "16": {
+      "play": "Meet to be sent on errands: One of the three to share it?"
+    },
+    "17": {
+      "play": "OCTAVIUS: So you thought him;"
+    },
+    "18": {
+      "play": "OCTAVIUS: And took his voice who should be prick'd to die,"
+    },
+    "19": {
+      "play": "OCTAVIUS: In our black sentence and proscription."
+    },
+    "20": {
+      "play": "ANTONY: Octavius, I have seen more days than you:"
+    },
+    "21": {
+      "play": "ANTONY: And though we lay these honours on this man,"
+    },
+    "22": {
+      "play": "ANTONY: To ease ourselves of divers slanderous loads,"
+    },
+    "23": {
+      "play": "ANTONY: He shall but bear them as the ass bears gold,"
+    },
+    "24": {
+      "play": "ANTONY: To groan and sweat under the business,"
+    },
+    "25": {
+      "play": "ANTONY: Either led or driven, as we point the way;"
+    },
+    "26": {
+      "play": "ANTONY: And having brought our treasure where we will,"
+    },
+    "27": {
+      "play": "ANTONY: Then take we down his load, and turn him off,"
+    },
+    "28": {
+      "play": "ANTONY: Like to the empty ass, to shake his ears,"
+    },
+    "29": {
+      "play": "ANTONY: And graze in commons."
+    },
+    "30": {
+      "play": "OCTAVIUS: You may do your will;"
+    },
+    "31": {
+      "play": "OCTAVIUS: But he's a tried and valiant soldier."
+    },
+    "32": {
+      "play": "ANTONY: So is my horse, Octavius; and for that"
+    },
+    "33": {
+      "play": "I do appoint him store of provender: "
+    },
+    "34": {
+      "play": "I do appoint him store of provender: It is a creature that I teach to fight,"
+    },
+    "35": {
+      "play": "I do appoint him store of provender: To wind, to stop, to run directly on,"
+    },
+    "36": {
+      "play": "I do appoint him store of provender: His corporal motion govern'd by my spirit."
+    },
+    "37": {
+      "play": "I do appoint him store of provender: And, in some taste, is Lepidus but so;"
+    },
+    "38": {
+      "play": "I do appoint him store of provender: He must be taught and train'd and bid go forth;"
+    },
+    "39": {
+      "play": "I do appoint him store of provender: A barren-spirited fellow; one that feeds"
+    },
+    "40": {
+      "play": "I do appoint him store of provender: On abjects, orts and imitations,"
+    },
+    "41": {
+      "play": "I do appoint him store of provender: Which, out of use and staled by other men,"
+    },
+    "42": {
+      "play": "Begin his fashion: do not talk of him,"
+    },
+    "43": {
+      "play": "Begin his fashion: But as a property. And now, Octavius,"
+    },
+    "44": {
+      "play": "Listen great things: --Brutus and Cassius"
+    },
+    "45": {
+      "play": "Are levying powers: we must straight make head:"
+    },
+    "46": {
+      "play": "Are levying powers: Therefore let our alliance be combined,"
+    },
+    "47": {
+      "play": "Are levying powers: Our best friends made, our means stretch'd"
+    },
+    "48": {
+      "play": "Are levying powers: And let us presently go sit in council,"
+    },
+    "49": {
+      "play": "Are levying powers: How covert matters may be best disclosed,"
+    },
+    "50": {
+      "play": "Are levying powers: And open perils surest answered."
+    },
+    "51": {
+      "play": "OCTAVIUS: Let us do so: for we are at the stake,"
+    },
+    "52": {
+      "play": "OCTAVIUS: And bay'd about with many enemies;"
+    },
+    "53": {
+      "play": "OCTAVIUS: And some that smile have in their hearts, I fear,"
+    },
+    "54": {
+      "play": "OCTAVIUS: Millions of mischiefs."
+    }
+  },
+  "ACT 4 SCENE 2": {
+    "1": {
+      "play": "BRUTUS: Stand, ho!"
+    },
+    "2": {
+      "play": "LUCILIUS: Give the word, ho! and stand."
+    },
+    "3": {
+      "play": "BRUTUS: What now, Lucilius! is Cassius near?"
+    },
+    "4": {
+      "play": "LUCILIUS: He is at hand; and Pindarus is come"
+    },
+    "5": {
+      "play": "LUCILIUS: To do you salutation from his master."
+    },
+    "6": {
+      "play": "BRUTUS: He greets me well. Your master, Pindarus,"
+    },
+    "7": {
+      "play": "BRUTUS: In his own change, or by ill officers,"
+    },
+    "8": {
+      "play": "BRUTUS: Hath given me some worthy cause to wish"
+    },
+    "9": {
+      "play": "Things done, undone: but, if he be at hand,"
+    },
+    "10": {
+      "play": "Things done, undone: I shall be satisfied."
+    },
+    "11": {
+      "play": "PINDARUS: I do not doubt"
+    },
+    "12": {
+      "play": "PINDARUS: But that my noble master will appear"
+    },
+    "13": {
+      "play": "PINDARUS: Such as he is, full of regard and honour."
+    },
+    "14": {
+      "play": "BRUTUS: He is not doubted. A word, Lucilius;"
+    },
+    "15": {
+      "play": "BRUTUS: How he received you, let me be resolved."
+    },
+    "16": {
+      "play": "LUCILIUS: With courtesy and with respect enough;"
+    },
+    "17": {
+      "play": "LUCILIUS: But not with such familiar instances,"
+    },
+    "18": {
+      "play": "LUCILIUS: Nor with such free and friendly conference,"
+    },
+    "19": {
+      "play": "LUCILIUS: As he hath used of old."
+    },
+    "20": {
+      "play": "BRUTUS: Thou hast described"
+    },
+    "21": {
+      "play": "A hot friend cooling: ever note, Lucilius,"
+    },
+    "22": {
+      "play": "A hot friend cooling: When love begins to sicken and decay,"
+    },
+    "23": {
+      "play": "A hot friend cooling: It useth an enforced ceremony."
+    },
+    "24": {
+      "play": "A hot friend cooling: There are no tricks in plain and simple faith;"
+    },
+    "25": {
+      "play": "A hot friend cooling: But hollow men, like horses hot at hand,"
+    },
+    "26": {
+      "play": "A hot friend cooling: Make gallant show and promise of their mettle;"
+    },
+    "27": {
+      "play": "A hot friend cooling: But when they should endure the bloody spur,"
+    },
+    "28": {
+      "play": "A hot friend cooling: They fall their crests, and, like deceitful jades,"
+    },
+    "29": {
+      "play": "A hot friend cooling: Sink in the trial. Comes his army on?"
+    },
+    "30": {
+      "play": "LUCILIUS: They mean this night in Sardis to be quarter'd;"
+    },
+    "31": {
+      "play": "LUCILIUS: The greater part, the horse in general,"
+    },
+    "32": {
+      "play": "LUCILIUS: Are come with Cassius."
+    },
+    "33": {
+      "play": "BRUTUS: Hark! he is arrived."
+    },
+    "34": {
+      "play": "BRUTUS: March gently on to meet him."
+    },
+    "35": {
+      "play": "CASSIUS: Stand, ho!"
+    },
+    "36": {
+      "play": "BRUTUS: Stand, ho! Speak the word along."
+    },
+    "37": {
+      "play": "First Soldier: Stand!"
+    },
+    "38": {
+      "play": "Second Soldier: Stand!"
+    },
+    "39": {
+      "play": "Third Soldier: Stand!"
+    },
+    "40": {
+      "play": "CASSIUS: Most noble brother, you have done me wrong."
+    },
+    "41": {
+      "play": "BRUTUS: Judge me, you gods! wrong I mine enemies?"
+    },
+    "42": {
+      "play": "BRUTUS: And, if not so, how should I wrong a brother?"
+    },
+    "43": {
+      "play": "CASSIUS: Brutus, this sober form of yours hides wrongs;"
+    },
+    "44": {
+      "play": "CASSIUS: And when you do them--"
+    },
+    "45": {
+      "play": "BRUTUS: Cassius, be content."
+    },
+    "46": {
+      "play": "Speak your griefs softly: I do know you well."
+    },
+    "47": {
+      "play": "Speak your griefs softly: Before the eyes of both our armies here,"
+    },
+    "48": {
+      "play": "Speak your griefs softly: Which should perceive nothing but love from us,"
+    },
+    "49": {
+      "play": "Let us not wrangle: bid them move away;"
+    },
+    "50": {
+      "play": "Let us not wrangle: Then in my tent, Cassius, enlarge your griefs,"
+    },
+    "51": {
+      "play": "Let us not wrangle: And I will give you audience."
+    },
+    "52": {
+      "play": "CASSIUS: Pindarus,"
+    },
+    "53": {
+      "play": "CASSIUS: Bid our commanders lead their charges off"
+    },
+    "54": {
+      "play": "CASSIUS: A little from this ground."
+    },
+    "55": {
+      "play": "BRUTUS: Lucilius, do you the like; and let no man"
+    },
+    "56": {
+      "play": "BRUTUS: Come to our tent till we have done our conference."
+    },
+    "57": {
+      "play": "BRUTUS: Let Lucius and Titinius guard our door."
+    }
+  },
+  "ACT 4 SCENE 3": {
+    "1": {
+      "play": "CASSIUS: That you have wrong'd me doth appear in this:"
+    },
+    "2": {
+      "play": "CASSIUS: You have condemn'd and noted Lucius Pella"
+    },
+    "3": {
+      "play": "CASSIUS: For taking bribes here of the Sardians;"
+    },
+    "4": {
+      "play": "CASSIUS: Wherein my letters, praying on his side,"
+    },
+    "5": {
+      "play": "CASSIUS: Because I knew the man, were slighted off."
+    },
+    "6": {
+      "play": "BRUTUS: You wronged yourself to write in such a case."
+    },
+    "7": {
+      "play": "CASSIUS: In such a time as this it is not meet"
+    },
+    "8": {
+      "play": "CASSIUS: That every nice offence should bear his comment."
+    },
+    "9": {
+      "play": "BRUTUS: Let me tell you, Cassius, you yourself"
+    },
+    "10": {
+      "play": "BRUTUS: Are much condemn'd to have an itching palm;"
+    },
+    "11": {
+      "play": "BRUTUS: To sell and mart your offices for gold"
+    },
+    "12": {
+      "play": "BRUTUS: To undeservers."
+    },
+    "13": {
+      "play": "CASSIUS: I an itching palm!"
+    },
+    "14": {
+      "play": "CASSIUS: You know that you are Brutus that speak this,"
+    },
+    "15": {
+      "play": "CASSIUS: Or, by the gods, this speech were else your last."
+    },
+    "16": {
+      "play": "BRUTUS: The name of Cassius honours this corruption,"
+    },
+    "17": {
+      "play": "BRUTUS: And chastisement doth therefore hide his head."
+    },
+    "18": {
+      "play": "CASSIUS: Chastisement!"
+    },
+    "19": {
+      "play": "BRUTUS: Remember March, the ides of March remember:"
+    },
+    "20": {
+      "play": "BRUTUS: Did not great Julius bleed for justice' sake?"
+    },
+    "21": {
+      "play": "BRUTUS: What villain touch'd his body, that did stab,"
+    },
+    "22": {
+      "play": "BRUTUS: And not for justice? What, shall one of us"
+    },
+    "23": {
+      "play": "BRUTUS: That struck the foremost man of all this world"
+    },
+    "24": {
+      "play": "BRUTUS: But for supporting robbers, shall we now"
+    },
+    "25": {
+      "play": "BRUTUS: Contaminate our fingers with base bribes,"
+    },
+    "26": {
+      "play": "BRUTUS: And sell the mighty space of our large honours"
+    },
+    "27": {
+      "play": "BRUTUS: For so much trash as may be grasped thus?"
+    },
+    "28": {
+      "play": "BRUTUS: I had rather be a dog, and bay the moon,"
+    },
+    "29": {
+      "play": "BRUTUS: Than such a Roman."
+    },
+    "30": {
+      "play": "CASSIUS: Brutus, bay not me;"
+    },
+    "31": {
+      "play": "I'll not endure it: you forget yourself,"
+    },
+    "32": {
+      "play": "I'll not endure it: To hedge me in; I am a soldier, I,"
+    },
+    "33": {
+      "play": "I'll not endure it: Older in practise, abler than yourself"
+    },
+    "34": {
+      "play": "I'll not endure it: To make conditions."
+    },
+    "35": {
+      "play": "BRUTUS: Go to; you are not, Cassius."
+    },
+    "36": {
+      "play": "CASSIUS: I am."
+    },
+    "37": {
+      "play": "BRUTUS: I say you are not."
+    },
+    "38": {
+      "play": "CASSIUS: Urge me no more, I shall forget myself;"
+    },
+    "39": {
+      "play": "CASSIUS: Have mind upon your health, tempt me no further."
+    },
+    "40": {
+      "play": "BRUTUS: Away, slight man!"
+    },
+    "41": {
+      "play": "CASSIUS: Is't possible?"
+    },
+    "42": {
+      "play": "BRUTUS: Hear me, for I will speak."
+    },
+    "43": {
+      "play": "BRUTUS: Must I give way and room to your rash choler?"
+    },
+    "44": {
+      "play": "BRUTUS: Shall I be frighted when a madman stares?"
+    },
+    "45": {
+      "play": "CASSIUS: O ye gods, ye gods! must I endure all this?"
+    },
+    "46": {
+      "play": "BRUTUS: All this! ay, more: fret till your proud heart break;"
+    },
+    "47": {
+      "play": "BRUTUS: Go show your slaves how choleric you are,"
+    },
+    "48": {
+      "play": "BRUTUS: And make your bondmen tremble. Must I budge?"
+    },
+    "49": {
+      "play": "BRUTUS: Must I observe you? must I stand and crouch"
+    },
+    "50": {
+      "play": "BRUTUS: Under your testy humour? By the gods"
+    },
+    "51": {
+      "play": "BRUTUS: You shall digest the venom of your spleen,"
+    },
+    "52": {
+      "play": "BRUTUS: Though it do split you; for, from this day forth,"
+    },
+    "53": {
+      "play": "BRUTUS: I'll use you for my mirth, yea, for my laughter,"
+    },
+    "54": {
+      "play": "BRUTUS: When you are waspish."
+    },
+    "55": {
+      "play": "CASSIUS: Is it come to this?"
+    },
+    "56": {
+      "play": "BRUTUS: You say you are a better soldier:"
+    },
+    "57": {
+      "play": "BRUTUS: Let it appear so; make your vaunting true,"
+    },
+    "58": {
+      "play": "And it shall please me well: for mine own part,"
+    },
+    "59": {
+      "play": "And it shall please me well: I shall be glad to learn of noble men."
+    },
+    "60": {
+      "play": "CASSIUS: You wrong me every way; you wrong me, Brutus;"
+    },
+    "61": {
+      "play": "I said, an elder soldier, not a better: "
+    },
+    "62": {
+      "play": "I said, an elder soldier, not a better: Did I say 'better'?"
+    },
+    "63": {
+      "play": "BRUTUS: If you did, I care not."
+    },
+    "64": {
+      "play": "CASSIUS: When Caesar lived, he durst not thus have moved me."
+    },
+    "65": {
+      "play": "BRUTUS: Peace, peace! you durst not so have tempted him."
+    },
+    "66": {
+      "play": "CASSIUS: I durst not!"
+    },
+    "67": {
+      "play": "BRUTUS: No."
+    },
+    "68": {
+      "play": "CASSIUS: What, durst not tempt him!"
+    },
+    "69": {
+      "play": "BRUTUS: For your life you durst not!"
+    },
+    "70": {
+      "play": "CASSIUS: Do not presume too much upon my love;"
+    },
+    "71": {
+      "play": "CASSIUS: I may do that I shall be sorry for."
+    },
+    "72": {
+      "play": "BRUTUS: You have done that you should be sorry for."
+    },
+    "73": {
+      "play": "BRUTUS: There is no terror, Cassius, in your threats,"
+    },
+    "74": {
+      "play": "BRUTUS: For I am arm'd so strong in honesty"
+    },
+    "75": {
+      "play": "BRUTUS: That they pass by me as the idle wind,"
+    },
+    "76": {
+      "play": "BRUTUS: Which I respect not. I did send to you"
+    },
+    "77": {
+      "play": "For certain sums of gold, which you denied me: "
+    },
+    "78": {
+      "play": "For I can raise no money by vile means: "
+    },
+    "79": {
+      "play": "For I can raise no money by vile means: By heaven, I had rather coin my heart,"
+    },
+    "80": {
+      "play": "For I can raise no money by vile means: And drop my blood for drachmas, than to wring"
+    },
+    "81": {
+      "play": "For I can raise no money by vile means: From the hard hands of peasants their vile trash"
+    },
+    "82": {
+      "play": "By any indirection: I did send"
+    },
+    "83": {
+      "play": "By any indirection: To you for gold to pay my legions,"
+    },
+    "84": {
+      "play": "Which you denied me: was that done like Cassius?"
+    },
+    "85": {
+      "play": "Which you denied me: Should I have answer'd Caius Cassius so?"
+    },
+    "86": {
+      "play": "Which you denied me: When Marcus Brutus grows so covetous,"
+    },
+    "87": {
+      "play": "Which you denied me: To lock such rascal counters from his friends,"
+    },
+    "88": {
+      "play": "Which you denied me: Be ready, gods, with all your thunderbolts;"
+    },
+    "89": {
+      "play": "Which you denied me: Dash him to pieces!"
+    },
+    "90": {
+      "play": "CASSIUS: I denied you not."
+    },
+    "91": {
+      "play": "BRUTUS: You did."
+    },
+    "92": {
+      "play": "CASSIUS: I did not: he was but a fool that brought"
+    },
+    "93": {
+      "play": "My answer back. Brutus hath rived my heart: "
+    },
+    "94": {
+      "play": "My answer back. Brutus hath rived my heart: A friend should bear his friend's infirmities,"
+    },
+    "95": {
+      "play": "My answer back. Brutus hath rived my heart: But Brutus makes mine greater than they are."
+    },
+    "96": {
+      "play": "BRUTUS: I do not, till you practise them on me."
+    },
+    "97": {
+      "play": "CASSIUS: You love me not."
+    },
+    "98": {
+      "play": "BRUTUS: I do not like your faults."
+    },
+    "99": {
+      "play": "CASSIUS: A friendly eye could never see such faults."
+    },
+    "100": {
+      "play": "BRUTUS: A flatterer's would not, though they do appear"
+    },
+    "101": {
+      "play": "BRUTUS: As huge as high Olympus."
+    },
+    "102": {
+      "play": "CASSIUS: Come, Antony, and young Octavius, come,"
+    },
+    "103": {
+      "play": "CASSIUS: Revenge yourselves alone on Cassius,"
+    },
+    "104": {
+      "play": "CASSIUS: For Cassius is aweary of the world;"
+    },
+    "105": {
+      "play": "CASSIUS: Hated by one he loves; braved by his brother;"
+    },
+    "106": {
+      "play": "CASSIUS: Cheque'd like a bondman; all his faults observed,"
+    },
+    "107": {
+      "play": "CASSIUS: Set in a note-book, learn'd, and conn'd by rote,"
+    },
+    "108": {
+      "play": "CASSIUS: To cast into my teeth. O, I could weep"
+    },
+    "109": {
+      "play": "CASSIUS: My spirit from mine eyes! There is my dagger,"
+    },
+    "110": {
+      "play": "CASSIUS: And here my naked breast; within, a heart"
+    },
+    "111": {
+      "play": "Dearer than Plutus' mine, richer than gold: "
+    },
+    "112": {
+      "play": "Dearer than Plutus' mine, richer than gold: If that thou be'st a Roman, take it forth;"
+    },
+    "113": {
+      "play": "I, that denied thee gold, will give my heart: "
+    },
+    "114": {
+      "play": "I, that denied thee gold, will give my heart: Strike, as thou didst at Caesar; for, I know,"
+    },
+    "115": {
+      "play": "I, that denied thee gold, will give my heart: When thou didst hate him worst, thou lovedst him better"
+    },
+    "116": {
+      "play": "I, that denied thee gold, will give my heart: Than ever thou lovedst Cassius."
+    },
+    "117": {
+      "play": "BRUTUS: Sheathe your dagger:"
+    },
+    "118": {
+      "play": "BRUTUS: Be angry when you will, it shall have scope;"
+    },
+    "119": {
+      "play": "BRUTUS: Do what you will, dishonour shall be humour."
+    },
+    "120": {
+      "play": "BRUTUS: O Cassius, you are yoked with a lamb"
+    },
+    "121": {
+      "play": "BRUTUS: That carries anger as the flint bears fire;"
+    },
+    "122": {
+      "play": "BRUTUS: Who, much enforced, shows a hasty spark,"
+    },
+    "123": {
+      "play": "BRUTUS: And straight is cold again."
+    },
+    "124": {
+      "play": "CASSIUS: Hath Cassius lived"
+    },
+    "125": {
+      "play": "CASSIUS: To be but mirth and laughter to his Brutus,"
+    },
+    "126": {
+      "play": "CASSIUS: When grief, and blood ill-temper'd, vexeth him?"
+    },
+    "127": {
+      "play": "BRUTUS: When I spoke that, I was ill-temper'd too."
+    },
+    "128": {
+      "play": "CASSIUS: Do you confess so much? Give me your hand."
+    },
+    "129": {
+      "play": "BRUTUS: And my heart too."
+    },
+    "130": {
+      "play": "CASSIUS: O Brutus!"
+    },
+    "131": {
+      "play": "BRUTUS: What's the matter?"
+    },
+    "132": {
+      "play": "CASSIUS: Have not you love enough to bear with me,"
+    },
+    "133": {
+      "play": "CASSIUS: When that rash humour which my mother gave me"
+    },
+    "134": {
+      "play": "CASSIUS: Makes me forgetful?"
+    },
+    "135": {
+      "play": "BRUTUS: Yes, Cassius; and, from henceforth,"
+    },
+    "136": {
+      "play": "BRUTUS: When you are over-earnest with your Brutus,"
+    },
+    "137": {
+      "play": "BRUTUS: He'll think your mother chides, and leave you so."
+    },
+    "138": {
+      "play": "Poet: [Within] Let me go in to see the generals;"
+    },
+    "139": {
+      "play": "Poet: There is some grudge between 'em, 'tis not meet"
+    },
+    "140": {
+      "play": "Poet: They be alone."
+    },
+    "141": {
+      "play": "LUCILIUS: [Within] You shall not come to them."
+    },
+    "142": {
+      "play": "Poet: [Within] Nothing but death shall stay me."
+    },
+    "143": {
+      "play": "CASSIUS: How now! what's the matter?"
+    },
+    "144": {
+      "play": "Poet: For shame, you generals! what do you mean?"
+    },
+    "145": {
+      "play": "Poet: Love, and be friends, as two such men should be;"
+    },
+    "146": {
+      "play": "Poet: For I have seen more years, I'm sure, than ye."
+    },
+    "147": {
+      "play": "CASSIUS: Ha, ha! how vilely doth this cynic rhyme!"
+    },
+    "148": {
+      "play": "BRUTUS: Get you hence, sirrah; saucy fellow, hence!"
+    },
+    "149": {
+      "play": "CASSIUS: Bear with him, Brutus; 'tis his fashion."
+    },
+    "150": {
+      "play": "BRUTUS: I'll know his humour, when he knows his time:"
+    },
+    "151": {
+      "play": "BRUTUS: What should the wars do with these jigging fools?"
+    },
+    "152": {
+      "play": "BRUTUS: Companion, hence!"
+    },
+    "153": {
+      "play": "CASSIUS: Away, away, be gone."
+    },
+    "154": {
+      "play": "BRUTUS: Lucilius and Titinius, bid the commanders"
+    },
+    "155": {
+      "play": "BRUTUS: Prepare to lodge their companies to-night."
+    },
+    "156": {
+      "play": "CASSIUS: And come yourselves, and bring Messala with you"
+    },
+    "157": {
+      "play": "CASSIUS: Immediately to us."
+    },
+    "158": {
+      "play": "BRUTUS: Lucius, a bowl of wine!"
+    },
+    "159": {
+      "play": "CASSIUS: I did not think you could have been so angry."
+    },
+    "160": {
+      "play": "BRUTUS: O Cassius, I am sick of many griefs."
+    },
+    "161": {
+      "play": "CASSIUS: Of your philosophy you make no use,"
+    },
+    "162": {
+      "play": "CASSIUS: If you give place to accidental evils."
+    },
+    "163": {
+      "play": "BRUTUS: No man bears sorrow better. Portia is dead."
+    },
+    "164": {
+      "play": "CASSIUS: Ha! Portia!"
+    },
+    "165": {
+      "play": "BRUTUS: She is dead."
+    },
+    "166": {
+      "play": "CASSIUS: How 'scaped I killing when I cross'd you so?"
+    },
+    "167": {
+      "play": "CASSIUS: O insupportable and touching loss!"
+    },
+    "168": {
+      "play": "CASSIUS: Upon what sickness?"
+    },
+    "169": {
+      "play": "BRUTUS: Impatient of my absence,"
+    },
+    "170": {
+      "play": "BRUTUS: And grief that young Octavius with Mark Antony"
+    },
+    "171": {
+      "play": "Have made themselves so strong: --for with her death"
+    },
+    "172": {
+      "play": "Have made themselves so strong: That tidings came;--with this she fell distract,"
+    },
+    "173": {
+      "play": "Have made themselves so strong: And, her attendants absent, swallow'd fire."
+    },
+    "174": {
+      "play": "CASSIUS: And died so?"
+    },
+    "175": {
+      "play": "BRUTUS: Even so."
+    },
+    "176": {
+      "play": "CASSIUS: O ye immortal gods!"
+    },
+    "177": {
+      "play": "BRUTUS: Speak no more of her. Give me a bowl of wine."
+    },
+    "178": {
+      "play": "BRUTUS: In this I bury all unkindness, Cassius."
+    },
+    "179": {
+      "play": "CASSIUS: My heart is thirsty for that noble pledge."
+    },
+    "180": {
+      "play": "CASSIUS: Fill, Lucius, till the wine o'erswell the cup;"
+    },
+    "181": {
+      "play": "CASSIUS: I cannot drink too much of Brutus' love."
+    },
+    "182": {
+      "play": "BRUTUS: Come in, Titinius!"
+    },
+    "183": {
+      "play": "BRUTUS: Welcome, good Messala."
+    },
+    "184": {
+      "play": "BRUTUS: Now sit we close about this taper here,"
+    },
+    "185": {
+      "play": "BRUTUS: And call in question our necessities."
+    },
+    "186": {
+      "play": "CASSIUS: Portia, art thou gone?"
+    },
+    "187": {
+      "play": "BRUTUS: No more, I pray you."
+    },
+    "188": {
+      "play": "BRUTUS: Messala, I have here received letters,"
+    },
+    "189": {
+      "play": "BRUTUS: That young Octavius and Mark Antony"
+    },
+    "190": {
+      "play": "BRUTUS: Come down upon us with a mighty power,"
+    },
+    "191": {
+      "play": "BRUTUS: Bending their expedition toward Philippi."
+    },
+    "192": {
+      "play": "MESSALA: Myself have letters of the selfsame tenor."
+    },
+    "193": {
+      "play": "BRUTUS: With what addition?"
+    },
+    "194": {
+      "play": "MESSALA: That by proscription and bills of outlawry,"
+    },
+    "195": {
+      "play": "MESSALA: Octavius, Antony, and Lepidus,"
+    },
+    "196": {
+      "play": "MESSALA: Have put to death an hundred senators."
+    },
+    "197": {
+      "play": "BRUTUS: Therein our letters do not well agree;"
+    },
+    "198": {
+      "play": "BRUTUS: Mine speak of seventy senators that died"
+    },
+    "199": {
+      "play": "BRUTUS: By their proscriptions, Cicero being one."
+    },
+    "200": {
+      "play": "CASSIUS: Cicero one!"
+    },
+    "201": {
+      "play": "MESSALA: Cicero is dead,"
+    },
+    "202": {
+      "play": "MESSALA: And by that order of proscription."
+    },
+    "203": {
+      "play": "MESSALA: Had you your letters from your wife, my lord?"
+    },
+    "204": {
+      "play": "BRUTUS: No, Messala."
+    },
+    "205": {
+      "play": "MESSALA: Nor nothing in your letters writ of her?"
+    },
+    "206": {
+      "play": "BRUTUS: Nothing, Messala."
+    },
+    "207": {
+      "play": "MESSALA: That, methinks, is strange."
+    },
+    "208": {
+      "play": "BRUTUS: Why ask you? hear you aught of her in yours?"
+    },
+    "209": {
+      "play": "MESSALA: No, my lord."
+    },
+    "210": {
+      "play": "BRUTUS: Now, as you are a Roman, tell me true."
+    },
+    "211": {
+      "play": "MESSALA: Then like a Roman bear the truth I tell:"
+    },
+    "212": {
+      "play": "MESSALA: For certain she is dead, and by strange manner."
+    },
+    "213": {
+      "play": "BRUTUS: Why, farewell, Portia. We must die, Messala:"
+    },
+    "214": {
+      "play": "BRUTUS: With meditating that she must die once,"
+    },
+    "215": {
+      "play": "BRUTUS: I have the patience to endure it now."
+    },
+    "216": {
+      "play": "MESSALA: Even so great men great losses should endure."
+    },
+    "217": {
+      "play": "CASSIUS: I have as much of this in art as you,"
+    },
+    "218": {
+      "play": "CASSIUS: But yet my nature could not bear it so."
+    },
+    "219": {
+      "play": "BRUTUS: Well, to our work alive. What do you think"
+    },
+    "220": {
+      "play": "BRUTUS: Of marching to Philippi presently?"
+    },
+    "221": {
+      "play": "CASSIUS: I do not think it good."
+    },
+    "222": {
+      "play": "BRUTUS: Your reason?"
+    },
+    "223": {
+      "play": "CASSIUS: This it is:"
+    },
+    "224": {
+      "play": "'Tis better that the enemy seek us: "
+    },
+    "225": {
+      "play": "'Tis better that the enemy seek us: So shall he waste his means, weary his soldiers,"
+    },
+    "226": {
+      "play": "'Tis better that the enemy seek us: Doing himself offence; whilst we, lying still,"
+    },
+    "227": {
+      "play": "'Tis better that the enemy seek us: Are full of rest, defense, and nimbleness."
+    },
+    "228": {
+      "play": "BRUTUS: Good reasons must, of force, give place to better."
+    },
+    "229": {
+      "play": "BRUTUS: The people 'twixt Philippi and this ground"
+    },
+    "230": {
+      "play": "BRUTUS: Do stand but in a forced affection;"
+    },
+    "231": {
+      "play": "For they have grudged us contribution: "
+    },
+    "232": {
+      "play": "For they have grudged us contribution: The enemy, marching along by them,"
+    },
+    "233": {
+      "play": "For they have grudged us contribution: By them shall make a fuller number up,"
+    },
+    "234": {
+      "play": "For they have grudged us contribution: Come on refresh'd, new-added, and encouraged;"
+    },
+    "235": {
+      "play": "For they have grudged us contribution: From which advantage shall we cut him off,"
+    },
+    "236": {
+      "play": "For they have grudged us contribution: If at Philippi we do face him there,"
+    },
+    "237": {
+      "play": "For they have grudged us contribution: These people at our back."
+    },
+    "238": {
+      "play": "CASSIUS: Hear me, good brother."
+    },
+    "239": {
+      "play": "BRUTUS: Under your pardon. You must note beside,"
+    },
+    "240": {
+      "play": "BRUTUS: That we have tried the utmost of our friends,"
+    },
+    "241": {
+      "play": "Our legions are brim-full, our cause is ripe: "
+    },
+    "242": {
+      "play": "Our legions are brim-full, our cause is ripe: The enemy increaseth every day;"
+    },
+    "243": {
+      "play": "Our legions are brim-full, our cause is ripe: We, at the height, are ready to decline."
+    },
+    "244": {
+      "play": "Our legions are brim-full, our cause is ripe: There is a tide in the affairs of men,"
+    },
+    "245": {
+      "play": "Our legions are brim-full, our cause is ripe: Which, taken at the flood, leads on to fortune;"
+    },
+    "246": {
+      "play": "Our legions are brim-full, our cause is ripe: Omitted, all the voyage of their life"
+    },
+    "247": {
+      "play": "Our legions are brim-full, our cause is ripe: Is bound in shallows and in miseries."
+    },
+    "248": {
+      "play": "Our legions are brim-full, our cause is ripe: On such a full sea are we now afloat;"
+    },
+    "249": {
+      "play": "Our legions are brim-full, our cause is ripe: And we must take the current when it serves,"
+    },
+    "250": {
+      "play": "Our legions are brim-full, our cause is ripe: Or lose our ventures."
+    },
+    "251": {
+      "play": "CASSIUS: Then, with your will, go on;"
+    },
+    "252": {
+      "play": "CASSIUS: We'll along ourselves, and meet them at Philippi."
+    },
+    "253": {
+      "play": "BRUTUS: The deep of night is crept upon our talk,"
+    },
+    "254": {
+      "play": "BRUTUS: And nature must obey necessity;"
+    },
+    "255": {
+      "play": "BRUTUS: Which we will niggard with a little rest."
+    },
+    "256": {
+      "play": "BRUTUS: There is no more to say?"
+    },
+    "257": {
+      "play": "CASSIUS: No more. Good night:"
+    },
+    "258": {
+      "play": "CASSIUS: Early to-morrow will we rise, and hence."
+    },
+    "259": {
+      "play": "BRUTUS: Lucius!"
+    },
+    "260": {
+      "play": "BRUTUS: My gown."
+    },
+    "261": {
+      "play": "Farewell, good Messala: "
+    },
+    "262": {
+      "play": "Farewell, good Messala: Good night, Titinius. Noble, noble Cassius,"
+    },
+    "263": {
+      "play": "Farewell, good Messala: Good night, and good repose."
+    },
+    "264": {
+      "play": "CASSIUS: O my dear brother!"
+    },
+    "265": {
+      "play": "This was an ill beginning of the night: "
+    },
+    "266": {
+      "play": "This was an ill beginning of the night: Never come such division 'tween our souls!"
+    },
+    "267": {
+      "play": "This was an ill beginning of the night: Let it not, Brutus."
+    },
+    "268": {
+      "play": "BRUTUS: Every thing is well."
+    },
+    "269": {
+      "play": "CASSIUS: Good night, my lord."
+    },
+    "270": {
+      "play": "BRUTUS: Good night, good brother."
+    },
+    "271": {
+      "play": "MESSALA: Good night, Lord Brutus."
+    },
+    "272": {
+      "play": "BRUTUS: Farewell, every one."
+    },
+    "273": {
+      "play": "BRUTUS: Give me the gown. Where is thy instrument?"
+    },
+    "274": {
+      "play": "LUCIUS: Here in the tent."
+    },
+    "275": {
+      "play": "BRUTUS: What, thou speak'st drowsily?"
+    },
+    "276": {
+      "play": "BRUTUS: Poor knave, I blame thee not; thou art o'er-watch'd."
+    },
+    "277": {
+      "play": "Call Claudius and some other of my men: "
+    },
+    "278": {
+      "play": "Call Claudius and some other of my men: I'll have them sleep on cushions in my tent."
+    },
+    "279": {
+      "play": "LUCIUS: Varro and Claudius!"
+    },
+    "280": {
+      "play": "VARRO: Calls my lord?"
+    },
+    "281": {
+      "play": "BRUTUS: I pray you, sirs, lie in my tent and sleep;"
+    },
+    "282": {
+      "play": "BRUTUS: It may be I shall raise you by and by"
+    },
+    "283": {
+      "play": "BRUTUS: On business to my brother Cassius."
+    },
+    "284": {
+      "play": "VARRO: So please you, we will stand and watch your pleasure."
+    },
+    "285": {
+      "play": "BRUTUS: I will not have it so: lie down, good sirs;"
+    },
+    "286": {
+      "play": "BRUTUS: It may be I shall otherwise bethink me."
+    },
+    "287": {
+      "play": "BRUTUS: Look, Lucius, here's the book I sought for so;"
+    },
+    "288": {
+      "play": "BRUTUS: I put it in the pocket of my gown."
+    },
+    "289": {
+      "play": "LUCIUS: I was sure your lordship did not give it me."
+    },
+    "290": {
+      "play": "BRUTUS: Bear with me, good boy, I am much forgetful."
+    },
+    "291": {
+      "play": "BRUTUS: Canst thou hold up thy heavy eyes awhile,"
+    },
+    "292": {
+      "play": "BRUTUS: And touch thy instrument a strain or two?"
+    },
+    "293": {
+      "play": "LUCIUS: Ay, my lord, an't please you."
+    },
+    "294": {
+      "play": "BRUTUS: It does, my boy:"
+    },
+    "295": {
+      "play": "BRUTUS: I trouble thee too much, but thou art willing."
+    },
+    "296": {
+      "play": "LUCIUS: It is my duty, sir."
+    },
+    "297": {
+      "play": "BRUTUS: I should not urge thy duty past thy might;"
+    },
+    "298": {
+      "play": "BRUTUS: I know young bloods look for a time of rest."
+    },
+    "299": {
+      "play": "LUCIUS: I have slept, my lord, already."
+    },
+    "300": {
+      "play": "BRUTUS: It was well done; and thou shalt sleep again;"
+    },
+    "301": {
+      "play": "I will not hold thee long: if I do live,"
+    },
+    "302": {
+      "play": "I will not hold thee long: I will be good to thee."
+    },
+    "303": {
+      "play": "I will not hold thee long: This is a sleepy tune. O murderous slumber,"
+    },
+    "304": {
+      "play": "I will not hold thee long: Lay'st thou thy leaden mace upon my boy,"
+    },
+    "305": {
+      "play": "I will not hold thee long: That plays thee music? Gentle knave, good night;"
+    },
+    "306": {
+      "play": "I will not do thee so much wrong to wake thee: "
+    },
+    "307": {
+      "play": "I will not do thee so much wrong to wake thee: If thou dost nod, thou break'st thy instrument;"
+    },
+    "308": {
+      "play": "I will not do thee so much wrong to wake thee: I'll take it from thee; and, good boy, good night."
+    },
+    "309": {
+      "play": "I will not do thee so much wrong to wake thee: Let me see, let me see; is not the leaf turn'd down"
+    },
+    "310": {
+      "play": "I will not do thee so much wrong to wake thee: Where I left reading? Here it is, I think."
+    },
+    "311": {
+      "play": "I will not do thee so much wrong to wake thee: How ill this taper burns! Ha! who comes here?"
+    },
+    "312": {
+      "play": "I will not do thee so much wrong to wake thee: I think it is the weakness of mine eyes"
+    },
+    "313": {
+      "play": "I will not do thee so much wrong to wake thee: That shapes this monstrous apparition."
+    },
+    "314": {
+      "play": "I will not do thee so much wrong to wake thee: It comes upon me. Art thou any thing?"
+    },
+    "315": {
+      "play": "I will not do thee so much wrong to wake thee: Art thou some god, some angel, or some devil,"
+    },
+    "316": {
+      "play": "I will not do thee so much wrong to wake thee: That makest my blood cold and my hair to stare?"
+    },
+    "317": {
+      "play": "I will not do thee so much wrong to wake thee: Speak to me what thou art."
+    },
+    "318": {
+      "play": "GHOST: Thy evil spirit, Brutus."
+    },
+    "319": {
+      "play": "BRUTUS: Why comest thou?"
+    },
+    "320": {
+      "play": "GHOST: To tell thee thou shalt see me at Philippi."
+    },
+    "321": {
+      "play": "BRUTUS: Well; then I shall see thee again?"
+    },
+    "322": {
+      "play": "GHOST: Ay, at Philippi."
+    },
+    "323": {
+      "play": "BRUTUS: Why, I will see thee at Philippi, then."
+    },
+    "324": {
+      "play": "Now I have taken heart thou vanishest: "
+    },
+    "325": {
+      "play": "Now I have taken heart thou vanishest: Ill spirit, I would hold more talk with thee."
+    },
+    "326": {
+      "play": "Now I have taken heart thou vanishest: Boy, Lucius! Varro! Claudius! Sirs, awake! Claudius!"
+    },
+    "327": {
+      "play": "LUCIUS: The strings, my lord, are false."
+    },
+    "328": {
+      "play": "BRUTUS: He thinks he still is at his instrument."
+    },
+    "329": {
+      "play": "BRUTUS: Lucius, awake!"
+    },
+    "330": {
+      "play": "LUCIUS: My lord?"
+    },
+    "331": {
+      "play": "BRUTUS: Didst thou dream, Lucius, that thou so criedst out?"
+    },
+    "332": {
+      "play": "LUCIUS: My lord, I do not know that I did cry."
+    },
+    "333": {
+      "play": "BRUTUS: Yes, that thou didst: didst thou see any thing?"
+    },
+    "334": {
+      "play": "LUCIUS: Nothing, my lord."
+    },
+    "335": {
+      "play": "BRUTUS: Sleep again, Lucius. Sirrah Claudius!"
+    },
+    "336": {
+      "play": "BRUTUS: Fellow thou, awake!"
+    },
+    "337": {
+      "play": "VARRO: My lord?"
+    },
+    "338": {
+      "play": "CLAUDIUS: My lord?"
+    },
+    "339": {
+      "play": "BRUTUS: Why did you so cry out, sirs, in your sleep?"
+    },
+    "340": {
+      "play": "CLAUDIUS: Did we, my lord?"
+    },
+    "341": {
+      "play": "BRUTUS: Ay: saw you any thing?"
+    },
+    "342": {
+      "play": "VARRO: No, my lord, I saw nothing."
+    },
+    "343": {
+      "play": "CLAUDIUS: Nor I, my lord."
+    },
+    "344": {
+      "play": "BRUTUS: Go and commend me to my brother Cassius;"
+    },
+    "345": {
+      "play": "BRUTUS: Bid him set on his powers betimes before,"
+    },
+    "346": {
+      "play": "BRUTUS: And we will follow."
+    }
+  },
+  "ACT 5 SCENE 1": {
+    "1": {
+      "play": "OCTAVIUS: Now, Antony, our hopes are answered:"
+    },
+    "2": {
+      "play": "OCTAVIUS: You said the enemy would not come down,"
+    },
+    "3": {
+      "play": "OCTAVIUS: But keep the hills and upper regions;"
+    },
+    "4": {
+      "play": "It proves not so: their battles are at hand;"
+    },
+    "5": {
+      "play": "It proves not so: They mean to warn us at Philippi here,"
+    },
+    "6": {
+      "play": "It proves not so: Answering before we do demand of them."
+    },
+    "7": {
+      "play": "ANTONY: Tut, I am in their bosoms, and I know"
+    },
+    "8": {
+      "play": "Wherefore they do it: they could be content"
+    },
+    "9": {
+      "play": "Wherefore they do it: To visit other places; and come down"
+    },
+    "10": {
+      "play": "Wherefore they do it: With fearful bravery, thinking by this face"
+    },
+    "11": {
+      "play": "Wherefore they do it: To fasten in our thoughts that they have courage;"
+    },
+    "12": {
+      "play": "Wherefore they do it: But 'tis not so."
+    },
+    "13": {
+      "play": "Messenger: Prepare you, generals:"
+    },
+    "14": {
+      "play": "Messenger: The enemy comes on in gallant show;"
+    },
+    "15": {
+      "play": "Messenger: Their bloody sign of battle is hung out,"
+    },
+    "16": {
+      "play": "Messenger: And something to be done immediately."
+    },
+    "17": {
+      "play": "ANTONY: Octavius, lead your battle softly on,"
+    },
+    "18": {
+      "play": "ANTONY: Upon the left hand of the even field."
+    },
+    "19": {
+      "play": "OCTAVIUS: Upon the right hand I; keep thou the left."
+    },
+    "20": {
+      "play": "ANTONY: Why do you cross me in this exigent?"
+    },
+    "21": {
+      "play": "OCTAVIUS: I do not cross you; but I will do so."
+    },
+    "22": {
+      "play": "BRUTUS: They stand, and would have parley."
+    },
+    "23": {
+      "play": "CASSIUS: Stand fast, Titinius: we must out and talk."
+    },
+    "24": {
+      "play": "OCTAVIUS: Mark Antony, shall we give sign of battle?"
+    },
+    "25": {
+      "play": "ANTONY: No, Caesar, we will answer on their charge."
+    },
+    "26": {
+      "play": "ANTONY: Make forth; the generals would have some words."
+    },
+    "27": {
+      "play": "OCTAVIUS: Stir not until the signal."
+    },
+    "28": {
+      "play": "BRUTUS: Words before blows: is it so, countrymen?"
+    },
+    "29": {
+      "play": "OCTAVIUS: Not that we love words better, as you do."
+    },
+    "30": {
+      "play": "BRUTUS: Good words are better than bad strokes, Octavius."
+    },
+    "31": {
+      "play": "ANTONY: In your bad strokes, Brutus, you give good words:"
+    },
+    "32": {
+      "play": "ANTONY: Witness the hole you made in Caesar's heart,"
+    },
+    "33": {
+      "play": "ANTONY: Crying 'Long live! hail, Caesar!'"
+    },
+    "34": {
+      "play": "CASSIUS: Antony,"
+    },
+    "35": {
+      "play": "CASSIUS: The posture of your blows are yet unknown;"
+    },
+    "36": {
+      "play": "CASSIUS: But for your words, they rob the Hybla bees,"
+    },
+    "37": {
+      "play": "CASSIUS: And leave them honeyless."
+    },
+    "38": {
+      "play": "ANTONY: Not stingless too."
+    },
+    "39": {
+      "play": "BRUTUS: O, yes, and soundless too;"
+    },
+    "40": {
+      "play": "BRUTUS: For you have stol'n their buzzing, Antony,"
+    },
+    "41": {
+      "play": "BRUTUS: And very wisely threat before you sting."
+    },
+    "42": {
+      "play": "ANTONY: Villains, you did not so, when your vile daggers"
+    },
+    "43": {
+      "play": "Hack'd one another in the sides of Caesar: "
+    },
+    "44": {
+      "play": "Hack'd one another in the sides of Caesar: You show'd your teeth like apes, and fawn'd like hounds,"
+    },
+    "45": {
+      "play": "Hack'd one another in the sides of Caesar: And bow'd like bondmen, kissing Caesar's feet;"
+    },
+    "46": {
+      "play": "Hack'd one another in the sides of Caesar: Whilst damned Casca, like a cur, behind"
+    },
+    "47": {
+      "play": "Hack'd one another in the sides of Caesar: Struck Caesar on the neck. O you flatterers!"
+    },
+    "48": {
+      "play": "CASSIUS: Flatterers! Now, Brutus, thank yourself:"
+    },
+    "49": {
+      "play": "CASSIUS: This tongue had not offended so to-day,"
+    },
+    "50": {
+      "play": "CASSIUS: If Cassius might have ruled."
+    },
+    "51": {
+      "play": "OCTAVIUS: Come, come, the cause: if arguing make us sweat,"
+    },
+    "52": {
+      "play": "OCTAVIUS: The proof of it will turn to redder drops. Look;"
+    },
+    "53": {
+      "play": "OCTAVIUS: I draw a sword against conspirators;"
+    },
+    "54": {
+      "play": "OCTAVIUS: When think you that the sword goes up again?"
+    },
+    "55": {
+      "play": "OCTAVIUS: Never, till Caesar's three and thirty wounds"
+    },
+    "56": {
+      "play": "OCTAVIUS: Be well avenged; or till another Caesar"
+    },
+    "57": {
+      "play": "OCTAVIUS: Have added slaughter to the sword of traitors."
+    },
+    "58": {
+      "play": "BRUTUS: Caesar, thou canst not die by traitors' hands,"
+    },
+    "59": {
+      "play": "BRUTUS: Unless thou bring'st them with thee."
+    },
+    "60": {
+      "play": "OCTAVIUS: So I hope;"
+    },
+    "61": {
+      "play": "OCTAVIUS: I was not born to die on Brutus' sword."
+    },
+    "62": {
+      "play": "BRUTUS: O, if thou wert the noblest of thy strain,"
+    },
+    "63": {
+      "play": "BRUTUS: Young man, thou couldst not die more honourable."
+    },
+    "64": {
+      "play": "CASSIUS: A peevish schoolboy, worthless of such honour,"
+    },
+    "65": {
+      "play": "CASSIUS: Join'd with a masker and a reveller!"
+    },
+    "66": {
+      "play": "ANTONY: Old Cassius still!"
+    },
+    "67": {
+      "play": "OCTAVIUS: Come, Antony, away!"
+    },
+    "68": {
+      "play": "Defiance, traitors, hurl we in your teeth: "
+    },
+    "69": {
+      "play": "Defiance, traitors, hurl we in your teeth: If you dare fight to-day, come to the field;"
+    },
+    "70": {
+      "play": "Defiance, traitors, hurl we in your teeth: If not, when you have stomachs."
+    },
+    "71": {
+      "play": "CASSIUS: Why, now, blow wind, swell billow and swim bark!"
+    },
+    "72": {
+      "play": "CASSIUS: The storm is up, and all is on the hazard."
+    },
+    "73": {
+      "play": "BRUTUS: Ho, Lucilius! hark, a word with you."
+    },
+    "74": {
+      "play": "LUCILIUS: [Standing forth] My lord?"
+    },
+    "75": {
+      "play": "CASSIUS: Messala!"
+    },
+    "76": {
+      "play": "MESSALA: [Standing forth] What says my general?"
+    },
+    "77": {
+      "play": "CASSIUS: Messala,"
+    },
+    "78": {
+      "play": "CASSIUS: This is my birth-day; as this very day"
+    },
+    "79": {
+      "play": "Was Cassius born. Give me thy hand, Messala: "
+    },
+    "80": {
+      "play": "Was Cassius born. Give me thy hand, Messala: Be thou my witness that against my will,"
+    },
+    "81": {
+      "play": "Was Cassius born. Give me thy hand, Messala: As Pompey was, am I compell'd to set"
+    },
+    "82": {
+      "play": "Was Cassius born. Give me thy hand, Messala: Upon one battle all our liberties."
+    },
+    "83": {
+      "play": "Was Cassius born. Give me thy hand, Messala: You know that I held Epicurus strong"
+    },
+    "84": {
+      "play": "And his opinion: now I change my mind,"
+    },
+    "85": {
+      "play": "And his opinion: And partly credit things that do presage."
+    },
+    "86": {
+      "play": "And his opinion: Coming from Sardis, on our former ensign"
+    },
+    "87": {
+      "play": "And his opinion: Two mighty eagles fell, and there they perch'd,"
+    },
+    "88": {
+      "play": "And his opinion: Gorging and feeding from our soldiers' hands;"
+    },
+    "89": {
+      "play": "Who to Philippi here consorted us: "
+    },
+    "90": {
+      "play": "Who to Philippi here consorted us: This morning are they fled away and gone;"
+    },
+    "91": {
+      "play": "Who to Philippi here consorted us: And in their steads do ravens, crows and kites,"
+    },
+    "92": {
+      "play": "Who to Philippi here consorted us: Fly o'er our heads and downward look on us,"
+    },
+    "93": {
+      "play": "As we were sickly prey: their shadows seem"
+    },
+    "94": {
+      "play": "As we were sickly prey: A canopy most fatal, under which"
+    },
+    "95": {
+      "play": "As we were sickly prey: Our army lies, ready to give up the ghost."
+    },
+    "96": {
+      "play": "MESSALA: Believe not so."
+    },
+    "97": {
+      "play": "CASSIUS: I but believe it partly;"
+    },
+    "98": {
+      "play": "CASSIUS: For I am fresh of spirit and resolved"
+    },
+    "99": {
+      "play": "CASSIUS: To meet all perils very constantly."
+    },
+    "100": {
+      "play": "BRUTUS: Even so, Lucilius."
+    },
+    "101": {
+      "play": "CASSIUS: Now, most noble Brutus,"
+    },
+    "102": {
+      "play": "CASSIUS: The gods to-day stand friendly, that we may,"
+    },
+    "103": {
+      "play": "CASSIUS: Lovers in peace, lead on our days to age!"
+    },
+    "104": {
+      "play": "CASSIUS: But since the affairs of men rest still incertain,"
+    },
+    "105": {
+      "play": "CASSIUS: Let's reason with the worst that may befall."
+    },
+    "106": {
+      "play": "CASSIUS: If we do lose this battle, then is this"
+    },
+    "107": {
+      "play": "The very last time we shall speak together: "
+    },
+    "108": {
+      "play": "The very last time we shall speak together: What are you then determined to do?"
+    },
+    "109": {
+      "play": "BRUTUS: Even by the rule of that philosophy"
+    },
+    "110": {
+      "play": "BRUTUS: By which I did blame Cato for the death"
+    },
+    "111": {
+      "play": "BRUTUS: Which he did give himself, I know not how,"
+    },
+    "112": {
+      "play": "BRUTUS: But I do find it cowardly and vile,"
+    },
+    "113": {
+      "play": "BRUTUS: For fear of what might fall, so to prevent"
+    },
+    "114": {
+      "play": "The time of life: arming myself with patience"
+    },
+    "115": {
+      "play": "The time of life: To stay the providence of some high powers"
+    },
+    "116": {
+      "play": "The time of life: That govern us below."
+    },
+    "117": {
+      "play": "CASSIUS: Then, if we lose this battle,"
+    },
+    "118": {
+      "play": "CASSIUS: You are contented to be led in triumph"
+    },
+    "119": {
+      "play": "CASSIUS: Thorough the streets of Rome?"
+    },
+    "120": {
+      "play": "BRUTUS: No, Cassius, no: think not, thou noble Roman,"
+    },
+    "121": {
+      "play": "BRUTUS: That ever Brutus will go bound to Rome;"
+    },
+    "122": {
+      "play": "BRUTUS: He bears too great a mind. But this same day"
+    },
+    "123": {
+      "play": "BRUTUS: Must end that work the ides of March begun;"
+    },
+    "124": {
+      "play": "BRUTUS: And whether we shall meet again I know not."
+    },
+    "125": {
+      "play": "Therefore our everlasting farewell take: "
+    },
+    "126": {
+      "play": "Therefore our everlasting farewell take: For ever, and for ever, farewell, Cassius!"
+    },
+    "127": {
+      "play": "Therefore our everlasting farewell take: If we do meet again, why, we shall smile;"
+    },
+    "128": {
+      "play": "Therefore our everlasting farewell take: If not, why then, this parting was well made."
+    },
+    "129": {
+      "play": "CASSIUS: For ever, and for ever, farewell, Brutus!"
+    },
+    "130": {
+      "play": "CASSIUS: If we do meet again, we'll smile indeed;"
+    },
+    "131": {
+      "play": "CASSIUS: If not, 'tis true this parting was well made."
+    },
+    "132": {
+      "play": "BRUTUS: Why, then, lead on. O, that a man might know"
+    },
+    "133": {
+      "play": "BRUTUS: The end of this day's business ere it come!"
+    },
+    "134": {
+      "play": "BRUTUS: But it sufficeth that the day will end,"
+    },
+    "135": {
+      "play": "BRUTUS: And then the end is known. Come, ho! away!"
+    }
+  },
+  "ACT 5 SCENE 2": {
+    "1": {
+      "play": "BRUTUS: Ride, ride, Messala, ride, and give these bills"
+    },
+    "2": {
+      "play": "BRUTUS: Unto the legions on the other side."
+    },
+    "3": {
+      "play": "BRUTUS: Let them set on at once; for I perceive"
+    },
+    "4": {
+      "play": "BRUTUS: But cold demeanor in Octavius' wing,"
+    },
+    "5": {
+      "play": "BRUTUS: And sudden push gives them the overthrow."
+    },
+    "6": {
+      "play": "Ride, ride, Messala: let them all come down."
+    }
+  },
+  "ACT 5 SCENE 3": {
+    "1": {
+      "play": "CASSIUS: O, look, Titinius, look, the villains fly!"
+    },
+    "2": {
+      "play": "Myself have to mine own turn'd enemy: "
+    },
+    "3": {
+      "play": "Myself have to mine own turn'd enemy: This ensign here of mine was turning back;"
+    },
+    "4": {
+      "play": "Myself have to mine own turn'd enemy: I slew the coward, and did take it from him."
+    },
+    "5": {
+      "play": "TITINIUS: O Cassius, Brutus gave the word too early;"
+    },
+    "6": {
+      "play": "TITINIUS: Who, having some advantage on Octavius,"
+    },
+    "7": {
+      "play": "Took it too eagerly: his soldiers fell to spoil,"
+    },
+    "8": {
+      "play": "Took it too eagerly: Whilst we by Antony are all enclosed."
+    },
+    "9": {
+      "play": "PINDARUS: Fly further off, my lord, fly further off;"
+    },
+    "10": {
+      "play": "PINDARUS: Mark Antony is in your tents, my lord"
+    },
+    "11": {
+      "play": "PINDARUS: Fly, therefore, noble Cassius, fly far off."
+    },
+    "12": {
+      "play": "CASSIUS: This hill is far enough. Look, look, Titinius;"
+    },
+    "13": {
+      "play": "CASSIUS: Are those my tents where I perceive the fire?"
+    },
+    "14": {
+      "play": "TITINIUS: They are, my lord."
+    },
+    "15": {
+      "play": "CASSIUS: Titinius, if thou lovest me,"
+    },
+    "16": {
+      "play": "CASSIUS: Mount thou my horse, and hide thy spurs in him,"
+    },
+    "17": {
+      "play": "CASSIUS: Till he have brought thee up to yonder troops,"
+    },
+    "18": {
+      "play": "CASSIUS: And here again; that I may rest assured"
+    },
+    "19": {
+      "play": "CASSIUS: Whether yond troops are friend or enemy."
+    },
+    "20": {
+      "play": "TITINIUS: I will be here again, even with a thought."
+    },
+    "21": {
+      "play": "CASSIUS: Go, Pindarus, get higher on that hill;"
+    },
+    "22": {
+      "play": "CASSIUS: My sight was ever thick; regard Titinius,"
+    },
+    "23": {
+      "play": "CASSIUS: And tell me what thou notest about the field."
+    },
+    "24": {
+      "play": "This day I breathed first: time is come round,"
+    },
+    "25": {
+      "play": "This day I breathed first: And where I did begin, there shall I end;"
+    },
+    "26": {
+      "play": "This day I breathed first: My life is run his compass. Sirrah, what news?"
+    },
+    "27": {
+      "play": "PINDARUS: [Above] O my lord!"
+    },
+    "28": {
+      "play": "CASSIUS: What news?"
+    },
+    "29": {
+      "play": "PINDARUS: [Above] Titinius is enclosed round about"
+    },
+    "30": {
+      "play": "PINDARUS: With horsemen, that make to him on the spur;"
+    },
+    "31": {
+      "play": "PINDARUS: Yet he spurs on. Now they are almost on him."
+    },
+    "32": {
+      "play": "PINDARUS: Now, Titinius! Now some light. O, he lights too."
+    },
+    "33": {
+      "play": "PINDARUS: He's ta'en."
+    },
+    "34": {
+      "play": "PINDARUS: And, hark! they shout for joy."
+    },
+    "35": {
+      "play": "CASSIUS: Come down, behold no more."
+    },
+    "36": {
+      "play": "CASSIUS: O, coward that I am, to live so long,"
+    },
+    "37": {
+      "play": "CASSIUS: To see my best friend ta'en before my face!"
+    },
+    "38": {
+      "play": "Come hither, sirrah: "
+    },
+    "39": {
+      "play": "Come hither, sirrah: In Parthia did I take thee prisoner;"
+    },
+    "40": {
+      "play": "Come hither, sirrah: And then I swore thee, saving of thy life,"
+    },
+    "41": {
+      "play": "Come hither, sirrah: That whatsoever I did bid thee do,"
+    },
+    "42": {
+      "play": "Come hither, sirrah: Thou shouldst attempt it. Come now, keep thine oath;"
+    },
+    "43": {
+      "play": "Now be a freeman: and with this good sword,"
+    },
+    "44": {
+      "play": "Now be a freeman: That ran through Caesar's bowels, search this bosom."
+    },
+    "45": {
+      "play": "Stand not to answer: here, take thou the hilts;"
+    },
+    "46": {
+      "play": "Stand not to answer: And, when my face is cover'd, as 'tis now,"
+    },
+    "47": {
+      "play": "Stand not to answer: Guide thou the sword."
+    },
+    "48": {
+      "play": "Stand not to answer: Caesar, thou art revenged,"
+    },
+    "49": {
+      "play": "Stand not to answer: Even with the sword that kill'd thee."
+    },
+    "50": {
+      "play": "PINDARUS: So, I am free; yet would not so have been,"
+    },
+    "51": {
+      "play": "PINDARUS: Durst I have done my will. O Cassius,"
+    },
+    "52": {
+      "play": "PINDARUS: Far from this country Pindarus shall run,"
+    },
+    "53": {
+      "play": "PINDARUS: Where never Roman shall take note of him."
+    },
+    "54": {
+      "play": "MESSALA: It is but change, Titinius; for Octavius"
+    },
+    "55": {
+      "play": "MESSALA: Is overthrown by noble Brutus' power,"
+    },
+    "56": {
+      "play": "MESSALA: As Cassius' legions are by Antony."
+    },
+    "57": {
+      "play": "TITINIUS: These tidings will well comfort Cassius."
+    },
+    "58": {
+      "play": "MESSALA: Where did you leave him?"
+    },
+    "59": {
+      "play": "TITINIUS: All disconsolate,"
+    },
+    "60": {
+      "play": "TITINIUS: With Pindarus his bondman, on this hill."
+    },
+    "61": {
+      "play": "MESSALA: Is not that he t hat lies upon the ground?"
+    },
+    "62": {
+      "play": "TITINIUS: He lies not like the living. O my heart!"
+    },
+    "63": {
+      "play": "MESSALA: Is not that he?"
+    },
+    "64": {
+      "play": "TITINIUS: No, this was he, Messala,"
+    },
+    "65": {
+      "play": "TITINIUS: But Cassius is no more. O setting sun,"
+    },
+    "66": {
+      "play": "TITINIUS: As in thy red rays thou dost sink to-night,"
+    },
+    "67": {
+      "play": "TITINIUS: So in his red blood Cassius' day is set;"
+    },
+    "68": {
+      "play": "TITINIUS: The sun of Rome is set! Our day is gone;"
+    },
+    "69": {
+      "play": "TITINIUS: Clouds, dews, and dangers come; our deeds are done!"
+    },
+    "70": {
+      "play": "TITINIUS: Mistrust of my success hath done this deed."
+    },
+    "71": {
+      "play": "MESSALA: Mistrust of good success hath done this deed."
+    },
+    "72": {
+      "play": "MESSALA: O hateful error, melancholy's child,"
+    },
+    "73": {
+      "play": "MESSALA: Why dost thou show to the apt thoughts of men"
+    },
+    "74": {
+      "play": "MESSALA: The things that are not? O error, soon conceived,"
+    },
+    "75": {
+      "play": "MESSALA: Thou never comest unto a happy birth,"
+    },
+    "76": {
+      "play": "MESSALA: But kill'st the mother that engender'd thee!"
+    },
+    "77": {
+      "play": "TITINIUS: What, Pindarus! where art thou, Pindarus?"
+    },
+    "78": {
+      "play": "MESSALA: Seek him, Titinius, whilst I go to meet"
+    },
+    "79": {
+      "play": "MESSALA: The noble Brutus, thrusting this report"
+    },
+    "80": {
+      "play": "MESSALA: Into his ears; I may say, thrusting it;"
+    },
+    "81": {
+      "play": "MESSALA: For piercing steel and darts envenomed"
+    },
+    "82": {
+      "play": "MESSALA: Shall be as welcome to the ears of Brutus"
+    },
+    "83": {
+      "play": "MESSALA: As tidings of this sight."
+    },
+    "84": {
+      "play": "TITINIUS: Hie you, Messala,"
+    },
+    "85": {
+      "play": "TITINIUS: And I will seek for Pindarus the while."
+    },
+    "86": {
+      "play": "TITINIUS: Why didst thou send me forth, brave Cassius?"
+    },
+    "87": {
+      "play": "TITINIUS: Did I not meet thy friends? and did not they"
+    },
+    "88": {
+      "play": "TITINIUS: Put on my brows this wreath of victory,"
+    },
+    "89": {
+      "play": "TITINIUS: And bid me give it thee? Didst thou not hear their shouts?"
+    },
+    "90": {
+      "play": "TITINIUS: Alas, thou hast misconstrued every thing!"
+    },
+    "91": {
+      "play": "TITINIUS: But, hold thee, take this garland on thy brow;"
+    },
+    "92": {
+      "play": "TITINIUS: Thy Brutus bid me give it thee, and I"
+    },
+    "93": {
+      "play": "TITINIUS: Will do his bidding. Brutus, come apace,"
+    },
+    "94": {
+      "play": "TITINIUS: And see how I regarded Caius Cassius."
+    },
+    "95": {
+      "play": "By your leave, gods: --this is a Roman's part"
+    },
+    "96": {
+      "play": "By your leave, gods: Come, Cassius' sword, and find Titinius' heart."
+    },
+    "97": {
+      "play": "BRUTUS: Where, where, Messala, doth his body lie?"
+    },
+    "98": {
+      "play": "MESSALA: Lo, yonder, and Titinius mourning it."
+    },
+    "99": {
+      "play": "BRUTUS: Titinius' face is upward."
+    },
+    "100": {
+      "play": "CATO: He is slain."
+    },
+    "101": {
+      "play": "BRUTUS: O Julius Caesar, thou art mighty yet!"
+    },
+    "102": {
+      "play": "BRUTUS: Thy spirit walks abroad and turns our swords"
+    },
+    "103": {
+      "play": "BRUTUS: In our own proper entrails."
+    },
+    "104": {
+      "play": "CATO: Brave Titinius!"
+    },
+    "105": {
+      "play": "CATO: Look, whether he have not crown'd dead Cassius!"
+    },
+    "106": {
+      "play": "BRUTUS: Are yet two Romans living such as these?"
+    },
+    "107": {
+      "play": "BRUTUS: The last of all the Romans, fare thee well!"
+    },
+    "108": {
+      "play": "BRUTUS: It is impossible that ever Rome"
+    },
+    "109": {
+      "play": "BRUTUS: Should breed thy fellow. Friends, I owe more tears"
+    },
+    "110": {
+      "play": "BRUTUS: To this dead man than you shall see me pay."
+    },
+    "111": {
+      "play": "BRUTUS: I shall find time, Cassius, I shall find time."
+    },
+    "112": {
+      "play": "Come, therefore, and to Thasos send his body: "
+    },
+    "113": {
+      "play": "Come, therefore, and to Thasos send his body: His funerals shall not be in our camp,"
+    },
+    "114": {
+      "play": "Come, therefore, and to Thasos send his body: Lest it discomfort us. Lucilius, come;"
+    },
+    "115": {
+      "play": "Come, therefore, and to Thasos send his body: And come, young Cato; let us to the field."
+    },
+    "116": {
+      "play": "Labeo and Flavius, set our battles on: "
+    },
+    "117": {
+      "play": "Labeo and Flavius, set our battles on: 'Tis three o'clock; and, Romans, yet ere night"
+    },
+    "118": {
+      "play": "Labeo and Flavius, set our battles on: We shall try fortune in a second fight."
+    }
+  },
+  "ACT 5 SCENE 4": {
+    "1": {
+      "play": "BRUTUS: Yet, countrymen, O, yet hold up your heads!"
+    },
+    "2": {
+      "play": "CATO: What bastard doth not? Who will go with me?"
+    },
+    "3": {
+      "play": "I will proclaim my name about the field: "
+    },
+    "4": {
+      "play": "I will proclaim my name about the field: I am the son of Marcus Cato, ho!"
+    },
+    "5": {
+      "play": "I will proclaim my name about the field: A foe to tyrants, and my country's friend;"
+    },
+    "6": {
+      "play": "I will proclaim my name about the field: I am the son of Marcus Cato, ho!"
+    },
+    "7": {
+      "play": "BRUTUS: And I am Brutus, Marcus Brutus, I;"
+    },
+    "8": {
+      "play": "BRUTUS: Brutus, my country's friend; know me for Brutus!"
+    },
+    "9": {
+      "play": "LUCILIUS: O young and noble Cato, art thou down?"
+    },
+    "10": {
+      "play": "LUCILIUS: Why, now thou diest as bravely as Titinius;"
+    },
+    "11": {
+      "play": "LUCILIUS: And mayst be honour'd, being Cato's son."
+    },
+    "12": {
+      "play": "First Soldier: Yield, or thou diest."
+    },
+    "13": {
+      "play": "LUCILIUS: Only I yield to die:"
+    },
+    "14": {
+      "play": "LUCILIUS: There is so much that thou wilt kill me straight;"
+    },
+    "15": {
+      "play": "LUCILIUS: Kill Brutus, and be honour'd in his death."
+    },
+    "16": {
+      "play": "First Soldier: We must not. A noble prisoner!"
+    },
+    "17": {
+      "play": "Second Soldier: Room, ho! Tell Antony, Brutus is ta'en."
+    },
+    "18": {
+      "play": "First Soldier: I'll tell the news. Here comes the general."
+    },
+    "19": {
+      "play": "First Soldier: Brutus is ta'en, Brutus is ta'en, my lord."
+    },
+    "20": {
+      "play": "ANTONY: Where is he?"
+    },
+    "21": {
+      "play": "LUCILIUS: Safe, Antony; Brutus is safe enough:"
+    },
+    "22": {
+      "play": "LUCILIUS: I dare assure thee that no enemy"
+    },
+    "23": {
+      "play": "Shall ever take alive the noble Brutus: "
+    },
+    "24": {
+      "play": "Shall ever take alive the noble Brutus: The gods defend him from so great a shame!"
+    },
+    "25": {
+      "play": "Shall ever take alive the noble Brutus: When you do find him, or alive or dead,"
+    },
+    "26": {
+      "play": "Shall ever take alive the noble Brutus: He will be found like Brutus, like himself."
+    },
+    "27": {
+      "play": "ANTONY: This is not Brutus, friend; but, I assure you,"
+    },
+    "28": {
+      "play": "A prize no less in worth: keep this man safe;"
+    },
+    "29": {
+      "play": "Give him all kindness: I had rather have"
+    },
+    "30": {
+      "play": "Give him all kindness: Such men my friends than enemies. Go on,"
+    },
+    "31": {
+      "play": "Give him all kindness: And see whether Brutus be alive or dead;"
+    },
+    "32": {
+      "play": "Give him all kindness: And bring us word unto Octavius' tent"
+    },
+    "33": {
+      "play": "Give him all kindness: How every thing is chanced."
+    }
+  },
+  "ACT 5 SCENE 5": {
+    "1": {
+      "play": "BRUTUS: Come, poor remains of friends, rest on this rock."
+    },
+    "2": {
+      "play": "CLITUS: Statilius show'd the torch-light, but, my lord,"
+    },
+    "3": {
+      "play": "He came not back: he is or ta'en or slain."
+    },
+    "4": {
+      "play": "BRUTUS: Sit thee down, Clitus: slaying is the word;"
+    },
+    "5": {
+      "play": "BRUTUS: It is a deed in fashion. Hark thee, Clitus."
+    },
+    "6": {
+      "play": "CLITUS: What, I, my lord? No, not for all the world."
+    },
+    "7": {
+      "play": "BRUTUS: Peace then! no words."
+    },
+    "8": {
+      "play": "CLITUS: I'll rather kill myself."
+    },
+    "9": {
+      "play": "BRUTUS: Hark thee, Dardanius."
+    },
+    "10": {
+      "play": "DARDANIUS: Shall I do such a deed?"
+    },
+    "11": {
+      "play": "CLITUS: O Dardanius!"
+    },
+    "12": {
+      "play": "DARDANIUS: O Clitus!"
+    },
+    "13": {
+      "play": "CLITUS: What ill request did Brutus make to thee?"
+    },
+    "14": {
+      "play": "DARDANIUS: To kill him, Clitus. Look, he meditates."
+    },
+    "15": {
+      "play": "CLITUS: Now is that noble vessel full of grief,"
+    },
+    "16": {
+      "play": "CLITUS: That it runs over even at his eyes."
+    },
+    "17": {
+      "play": "BRUTUS: Come hither, good Volumnius; list a word."
+    },
+    "18": {
+      "play": "VOLUMNIUS: What says my lord?"
+    },
+    "19": {
+      "play": "BRUTUS: Why, this, Volumnius:"
+    },
+    "20": {
+      "play": "BRUTUS: The ghost of Caesar hath appear'd to me"
+    },
+    "21": {
+      "play": "BRUTUS: Two several times by night; at Sardis once,"
+    },
+    "22": {
+      "play": "And, this last night, here in Philippi fields: "
+    },
+    "23": {
+      "play": "And, this last night, here in Philippi fields: I know my hour is come."
+    },
+    "24": {
+      "play": "VOLUMNIUS: Not so, my lord."
+    },
+    "25": {
+      "play": "BRUTUS: Nay, I am sure it is, Volumnius."
+    },
+    "26": {
+      "play": "BRUTUS: Thou seest the world, Volumnius, how it goes;"
+    },
+    "27": {
+      "play": "Our enemies have beat us to the pit: "
+    },
+    "28": {
+      "play": "Our enemies have beat us to the pit: It is more worthy to leap in ourselves,"
+    },
+    "29": {
+      "play": "Our enemies have beat us to the pit: Than tarry till they push us. Good Volumnius,"
+    },
+    "30": {
+      "play": "Thou know'st that we two went to school together: "
+    },
+    "31": {
+      "play": "Thou know'st that we two went to school together: Even for that our love of old, I prithee,"
+    },
+    "32": {
+      "play": "Thou know'st that we two went to school together: Hold thou my sword-hilts, whilst I run on it."
+    },
+    "33": {
+      "play": "VOLUMNIUS: That's not an office for a friend, my lord."
+    },
+    "34": {
+      "play": "CLITUS: Fly, fly, my lord; there is no tarrying here."
+    },
+    "35": {
+      "play": "BRUTUS: Farewell to you; and you; and you, Volumnius."
+    },
+    "36": {
+      "play": "BRUTUS: Strato, thou hast been all this while asleep;"
+    },
+    "37": {
+      "play": "BRUTUS: Farewell to thee too, Strato. Countrymen,"
+    },
+    "38": {
+      "play": "BRUTUS: My heart doth joy that yet in all my life"
+    },
+    "39": {
+      "play": "BRUTUS: I found no man but he was true to me."
+    },
+    "40": {
+      "play": "BRUTUS: I shall have glory by this losing day"
+    },
+    "41": {
+      "play": "BRUTUS: More than Octavius and Mark Antony"
+    },
+    "42": {
+      "play": "BRUTUS: By this vile conquest shall attain unto."
+    },
+    "43": {
+      "play": "BRUTUS: So fare you well at once; for Brutus' tongue"
+    },
+    "44": {
+      "play": "Hath almost ended his life's history: "
+    },
+    "45": {
+      "play": "Hath almost ended his life's history: Night hangs upon mine eyes; my bones would rest,"
+    },
+    "46": {
+      "play": "Hath almost ended his life's history: That have but labour'd to attain this hour."
+    },
+    "47": {
+      "play": "CLITUS: Fly, my lord, fly."
+    },
+    "48": {
+      "play": "BRUTUS: Hence! I will follow."
+    },
+    "49": {
+      "play": "I prithee, Strato, stay thou by thy lord: "
+    },
+    "50": {
+      "play": "I prithee, Strato, stay thou by thy lord: Thou art a fellow of a good respect;"
+    },
+    "51": {
+      "play": "Thy life hath had some smatch of honour in it: "
+    },
+    "52": {
+      "play": "Thy life hath had some smatch of honour in it: Hold then my sword, and turn away thy face,"
+    },
+    "53": {
+      "play": "Thy life hath had some smatch of honour in it: While I do run upon it. Wilt thou, Strato?"
+    },
+    "54": {
+      "play": "STRATO: Give me your hand first. Fare you well, my lord."
+    },
+    "55": {
+      "play": "BRUTUS: Farewell, good Strato."
+    },
+    "56": {
+      "play": "Caesar, now be still: "
+    },
+    "57": {
+      "play": "Caesar, now be still: I kill'd not thee with half so good a will."
+    },
+    "58": {
+      "play": "OCTAVIUS: What man is that?"
+    },
+    "59": {
+      "play": "MESSALA: My master's man. Strato, where is thy master?"
+    },
+    "60": {
+      "play": "STRATO: Free from the bondage you are in, Messala:"
+    },
+    "61": {
+      "play": "STRATO: The conquerors can but make a fire of him;"
+    },
+    "62": {
+      "play": "STRATO: For Brutus only overcame himself,"
+    },
+    "63": {
+      "play": "STRATO: And no man else hath honour by his death."
+    },
+    "64": {
+      "play": "LUCILIUS: So Brutus should be found. I thank thee, Brutus,"
+    },
+    "65": {
+      "play": "LUCILIUS: That thou hast proved Lucilius' saying true."
+    },
+    "66": {
+      "play": "OCTAVIUS: All that served Brutus, I will entertain them."
+    },
+    "67": {
+      "play": "OCTAVIUS: Fellow, wilt thou bestow thy time with me?"
+    },
+    "68": {
+      "play": "STRATO: Ay, if Messala will prefer me to you."
+    },
+    "69": {
+      "play": "OCTAVIUS: Do so, good Messala."
+    },
+    "70": {
+      "play": "MESSALA: How died my master, Strato?"
+    },
+    "71": {
+      "play": "STRATO: I held the sword, and he did run on it."
+    },
+    "72": {
+      "play": "MESSALA: Octavius, then take him to follow thee,"
+    },
+    "73": {
+      "play": "MESSALA: That did the latest service to my master."
+    },
+    "74": {
+      "play": "ANTONY: This was the noblest Roman of them all:"
+    },
+    "75": {
+      "play": "ANTONY: All the conspirators save only he"
+    },
+    "76": {
+      "play": "ANTONY: Did that they did in envy of great Caesar;"
+    },
+    "77": {
+      "play": "ANTONY: He only, in a general honest thought"
+    },
+    "78": {
+      "play": "ANTONY: And common good to all, made one of them."
+    },
+    "79": {
+      "play": "ANTONY: His life was gentle, and the elements"
+    },
+    "80": {
+      "play": "ANTONY: So mix'd in him that Nature might stand up"
+    },
+    "81": {
+      "play": "ANTONY: And say to all the world 'This was a man!'"
+    }
+  }
+}
