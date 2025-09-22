@@ -4081,6 +4081,29 @@
                             }
                         });
                         
+                        // Hardcode missing Hamlet ACT 1 scenes to appear in left panel
+                        const hamletMissingScenes = [
+                            'ACT 1, SCENE 3',
+                            'ACT 1, SCENE 4'
+                        ];
+                        
+                        hamletMissingScenes.forEach(sceneKey => {
+                            if (!plays['hamlet'].scenes[sceneKey]) {
+                                // Add empty placeholder - will show in nav but display nothing when clicked
+                                plays['hamlet'].scenes[sceneKey] = [];
+                                
+                                const actName = parseActFromScene(sceneKey);
+                                if (actName) {
+                                    if (!plays['hamlet'].acts[actName]) {
+                                        plays['hamlet'].acts[actName] = [];
+                                    }
+                                    if (!plays['hamlet'].acts[actName].includes(sceneKey)) {
+                                        plays['hamlet'].acts[actName].push(sceneKey);
+                                    }
+                                }
+                            }
+                        });
+                        
                         console.log(`✅ Hamlet parsed successfully: ${sceneCount} scenes, ${lineCount} lines`);
                         
                         // Update the UI to show Hamlet is available alongside Macbeth
@@ -4207,6 +4230,30 @@
                                         if (!plays['othello'].acts[actName].includes(normalizedKey)) {
                                             plays['othello'].acts[actName].push(normalizedKey);
                                         }
+                                    }
+                                }
+                            }
+                        });
+                        
+                        // Hardcode missing Othello scenes after Act 4 Scene 2 to appear in left panel
+                        const othelloMissingScenes = [
+                            'ACT 4, SCENE 3',
+                            'ACT 5, SCENE 1',
+                            'ACT 5, SCENE 2'
+                        ];
+                        
+                        othelloMissingScenes.forEach(sceneKey => {
+                            if (!plays['othello'].scenes[sceneKey]) {
+                                // Add empty placeholder - will show in nav but display nothing when clicked
+                                plays['othello'].scenes[sceneKey] = [];
+                                
+                                const actName = parseActFromScene(sceneKey);
+                                if (actName) {
+                                    if (!plays['othello'].acts[actName]) {
+                                        plays['othello'].acts[actName] = [];
+                                    }
+                                    if (!plays['othello'].acts[actName].includes(sceneKey)) {
+                                        plays['othello'].acts[actName].push(sceneKey);
                                     }
                                 }
                             }
