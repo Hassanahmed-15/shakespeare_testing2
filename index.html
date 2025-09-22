@@ -4032,8 +4032,8 @@
                         let sceneCount = 0;
                         let lineCount = 0;
                         
-                        Object.keys(hamletData).forEach(sceneKey => {
-                            const sceneData = hamletData[sceneKey];
+                        Object.keys(hamletData).forEach(originalSceneKey => {
+                            const sceneData = hamletData[originalSceneKey];
                             if (sceneData && typeof sceneData === 'object') {
                                 const sceneContent = [];
                                 Object.keys(sceneData).forEach(lineNum => {
@@ -4051,15 +4051,21 @@
                                 
                                 if (sceneContent.length > 0) {
                                     const optimizedContent = optimizeSpeakerNames(sceneContent);
-                                    plays['hamlet'].scenes[sceneKey] = optimizedContent;
+                                    // Use normalized key for storage
+                                    const normalizedKey = normalizeSceneKey(originalSceneKey);
+                                    plays['hamlet'].scenes[normalizedKey] = optimizedContent;
                                     sceneCount++;
+                                    console.log(`Hamlet: ${originalSceneKey} -> ${normalizedKey}`);
                                     
-                                    const actName = parseActFromScene(sceneKey);
+                                    const actName = parseActFromScene(normalizedKey);
                                     if (actName) {
                                         if (!plays['hamlet'].acts[actName]) {
                                             plays['hamlet'].acts[actName] = [];
                                         }
-                                        plays['hamlet'].acts[actName].push(sceneKey);
+                                        // Avoid duplicates
+                                        if (!plays['hamlet'].acts[actName].includes(normalizedKey)) {
+                                            plays['hamlet'].acts[actName].push(normalizedKey);
+                                        }
                                     }
                                 }
                             }
@@ -4177,6 +4183,7 @@
                                     const normalizedKey = normalizeSceneKey(originalSceneKey);
                                     plays['othello'].scenes[normalizedKey] = optimizedContent;
                                     sceneCount++;
+                                    console.log(`Othello: ${originalSceneKey} -> ${normalizedKey}`);
                                     const actName = parseActFromScene(normalizedKey);
                                     if (actName) {
                                         if (!plays['othello'].acts[actName]) {
