@@ -77,12 +77,12 @@ async function findRelevantNotes(text, scene = null, playName = 'macbeth') {
     
     const normalizedKey = normalizePlayKey(playName)
     const fileName = playFiles[normalizedKey] || playFiles['macbeth'];
-    const possiblePaths = [
+      const possiblePaths = [
       path.join(process.cwd(), `Public/Data/${fileName}`),
       path.join(process.cwd(), fileName),
       path.join(__dirname, `../Public/Data/${fileName}`),
       path.join(__dirname, `../${fileName}`)
-    ];
+  ];
     
     for (const filePath of possiblePaths) {
       try {

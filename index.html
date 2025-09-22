@@ -2699,6 +2699,8 @@
             
             <div class="modal-body">
                 <div class="about">
+                    <p>Not every play has a <a href="#" onclick="openNVModal(); return false;" style="color: #2563eb; text-decoration: underline;">New Variorum edition</a>; only 18 volumes were completed before the project ended in the early 20th century. Nevertheless, the series is widely regarded as the gold standard of Shakespeare scholarship, compiling centuries of commentary and editorial insight from the 17th century onward.</p>
+                    
                     <p>To use this site, begin by clicking on any line of the play. Each line opens three levels of analysis:</p>
                     
                     <ul>
@@ -2707,7 +2709,7 @@
                         <li><strong>Full Fathom Five</strong> expands further, including extensive commentary and the notes from the New Variorum editions published between the late 19th and early 20th centuries.</li>
                     </ul>
                     
-                    <p>Not every play has a <a href="#" onclick="openNVModal(); return false;" style="color: #2563eb; text-decoration: underline;">New Variorum edition</a>; only 18 volumes were completed before the project ended in the early 20th century. Nevertheless, the series is widely regarded as the gold standard of Shakespeare scholarship, compiling centuries of commentary and editorial insight from the 17th century onward. For the first time, this site makes the New Variorum materials available online, opening a vast body of critical tradition to readers outside the library stacks.</p>
+                    <p>For the first time, this site makes the New Variorum materials available online, opening a vast body of critical tradition to readers outside the library stacks.</p>
                     
                     <p>Beyond the written annotations, the site also connects each line to its broader cultural life. Buttons alongside the text may bring up film scene drawn from YouTube's extensive catalog of Shakespeare production that dramatize the very line you have selected. Other buttons link to JSTOR articles and additional scholarly resources on the Internet, offering direct access to research that situates the passage in its academic and historical context.</p>
                     
@@ -5255,10 +5257,6 @@
             
             console.log('Updating navigation for play:', play.name, play);
             
-            // Always add Dramatis Personae as the first entry
-            const dramatisItem = document.createElement('li');
-            dramatisItem.innerHTML = '<a href="#" onclick="showDramatisPersonae()">Dramatis Personae</a>';
-            navList.appendChild(dramatisItem);
             
             // Add Acts and Scenes - Sort acts numerically
             const sortedActNames = Object.keys(play.acts).sort((a, b) => {
@@ -5303,59 +5301,6 @@
             }
         }
 
-        // Show Dramatis Personae
-        function showDramatisPersonae() {
-            if (!currentPlay || !plays[currentPlay]) return;
-            
-            const play = plays[currentPlay];
-            const playText = document.getElementById('playText');
-            
-            // Clear analysis panel when switching to Dramatis Personae
-            clearSelection();
-            
-            // Update active navigation
-            updateActiveNavigation('dramatis');
-            
-            // Check if there's a DRAMATIS PERSONAE section in the play data
-            let dramatisContent = '';
-            
-            // Try to find DRAMATIS PERSONAE in the scenes data
-            const dramatisKey = Object.keys(play.scenes).find(key => 
-                key.toUpperCase().includes('DRAMATIS') || 
-                key.toUpperCase().includes('PERSONS') ||
-                key.toUpperCase().includes('CHARACTERS')
-            );
-            
-            if (dramatisKey && play.scenes[dramatisKey]) {
-                // If we found dramatis personae data, display it
-                dramatisContent = play.scenes[dramatisKey].map(line => 
-                    `<p class="play-line">${line}</p>`
-                ).join('');
-            } else if (play.characters && play.characters.length > 0) {
-                // Fall back to characters array if available
-                dramatisContent = play.characters.map(char => 
-                    `<p class="play-line"><strong>${char}</strong></p>`
-                ).join('');
-            } else {
-                // Default message if no character data found
-                dramatisContent = `
-                    <p class="play-line"><em>Dramatis Personae information not available for this play.</em></p>
-                    <p class="play-line">This section would typically contain the list of characters and their descriptions.</p>
-                `;
-            }
-            
-            playText.innerHTML = `
-                <div class="scene-title">Dramatis Personae</div>
-                <div class="scene-separator"></div>
-                <div class="scene-content">
-                    ${dramatisContent}
-                </div>
-            `;
-            
-            // Update meta line
-            updateMetaLine('Dramatis Personae', play.name);
-        }
-
         // Update active navigation
         function updateActiveNavigation(itemName) {
             const navLinks = document.querySelectorAll('.navigation-list a');
@@ -5375,13 +5320,6 @@
                     
                     // Highlight the specific scene using data attribute
                     if (link.getAttribute('data-scene') === itemName) {
-                        link.classList.add('active');
-                    }
-                });
-            } else if (itemName === 'dramatis') {
-                // Highlight Dramatis Personae
-                navLinks.forEach(link => {
-                    if (link.textContent === 'Dramatis Personae') {
                         link.classList.add('active');
                     }
                 });

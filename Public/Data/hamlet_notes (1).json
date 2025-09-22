@@ -2310,12 +2310,6 @@
     }
   },
   "ACT 1, SCENE 3": {
-    "misc": {
-      "play": "",
-      "notes": [
-        "Scene 3] Coleridge: This scene must be regarded as one of Shakespeare's lyric movements in the play, and the skill with which it is interwoven with the dramatic parts is peculiarly an excellence of our poet. You experience the sensation of a pause without the sense of a stop."
-      ]
-    },
     "2": {
       "play": "",
       "notes": [
@@ -2453,16 +2447,16 @@
         "Clarendon: In the absence of any tempter, youth rebels against itself, i.e. the passions of youth revolt from the power of self-restraint; there is a traitor in the camp."
       ]
     },
-    "48": {
-      "play": "",
-      "notes": [
-        "Coleridge: You will observe in Ophelia's short and general answer to the long speech of Laertes the natural carelessness of innocence, which cannot think such a code of cautions and prudences necessary to its own preservation."
-      ]
-    },
     "47": {
       "play": "",
       "notes": [
         "Clarendon: Graceless. So 1 Hen. IV: II, iv, 490."
+      ]
+    },
+    "48": {
+      "play": "",
+      "notes": [
+        "Coleridge: You will observe in Ophelia's short and general answer to the long speech of Laertes the natural carelessness of innocence, which cannot think such a code of cautions and prudences necessary to its own preservation."
       ]
     },
     "49": {
@@ -2586,10 +2580,22 @@
         "In conditional sentences, according to Matzner, iii, 458, so is used instead of if chiefly where the condition is of a restrictive nature, and expresses a reservation, like (but not always) the Lat. modo, dum, dummodo."
       ]
     },
+    "98": {
+      "play": "",
+      "notes": [
+        "Warburton: Untried, untempted."
+      ]
+    },
     "100": {
       "play": "",
       "notes": [
         "Caldecott: Spent his time in private visits to you. Delius: The time which he had at his own disposal."
+      ]
+    },
+    "106": {
+      "play": "",
+      "notes": [
+        "Moberly: In the Dutch war of 1674, Pepys tells us that many English seamen fought on the enemy's side, and were heard during an action to cry, 'Dollars now; no tickets,' the latter being the only pay they had received in their own service. This seems to explain the opposition intended here between 'tenders' and 'true pay.'"
       ]
     },
     "107": {
@@ -2597,18 +2603,6 @@
       "notes": [
         "Nares: Inexperienced, unskilful, still found in green-horn, thus also 'greenly,' in IV, v, 79.",
         "Malone: Regard with affection. Caldecott: This was anciently used as much in the sense of regard or respect, as it was in that of offer. 'And because eche litil thing tendreth his like.' — Preface to Drant's Horace, 1566."
-      ]
-    },
-    "98": {
-      "play": "",
-      "notes": [
-        "Warburton: Untried, untempted."
-      ]
-    },
-    "106": {
-      "play": "",
-      "notes": [
-        "Moberly: In the Dutch war of 1674, Pepys tells us that many English seamen fought on the enemy's side, and were heard during an action to cry, 'Dollars now; no tickets,' the latter being the only pay they had received in their own service. This seems to explain the opposition intended here between 'tenders' and 'true pay.'"
       ]
     },
     "109": {
@@ -2623,16 +2617,16 @@
         "Nares: Proverbial for a simpleton; probably from the ease with which woodcocks suffer themselves to be caught in springes or snares. The phrase here means 'arts to entrap simplicity.' Clarendon: Compare Gosson, Apologie for the Schoole of Abuse, p. 72 (ed. Arber): 'When Comedie comes vpon the Stage, Cupide sets vpp a Springe for Woodcockes, which are entangled ere thty descrie the line, and caught before they mistruste the snare.' Harting (p. 229): The woodcock for some unaccountable reason was supposed to have no brains, and the name of this bird became a synonym for a fool."
       ]
     },
-    "136": {
-      "play": "",
-      "notes": [
-        "Malone: Bonds were meant, meaning the bonds of love or plighted assurances of faith and troth; but bawds is the correction, since Polonius in context has called Hamlet's vows 'brokers.' As amorous vows have just been called 'brokers,' and 'implorers of unholy suits,' the plain and natural sense suggests 'bawds.' All such of them as are crafty in their trade put on the appearance of sanctity, and are 'not of that dye that their investments shew.' Collier's (MS) also substitutes 'bawds.' Singer: bonds is nonsense. White: The context does not leave a question as to the propriety of Theobald's emendation, — 'bawds' having probably been spelled bauds."
-      ]
-    },
     "126": {
       "play": "",
       "notes": [
         "Clarendon: Brokers, in old English, means a bawd or a procuress. [See Cotgrave: Maquignonner, To play the Broker, also to play the bawd.]"
+      ]
+    },
+    "136": {
+      "play": "",
+      "notes": [
+        "Malone: Bonds were meant, meaning the bonds of love or plighted assurances of faith and troth; but bawds is the correction, since Polonius in context has called Hamlet's vows 'brokers.' As amorous vows have just been called 'brokers,' and 'implorers of unholy suits,' the plain and natural sense suggests 'bawds.' All such of them as are crafty in their trade put on the appearance of sanctity, and are 'not of that dye that their investments shew.' Collier's (MS) also substitutes 'bawds.' Singer: bonds is nonsense. White: The context does not leave a question as to the propriety of Theobald's emendation, — 'bawds' having probably been spelled bauds."
       ]
     },
     "140": {
@@ -2640,6 +2634,12 @@
       "notes": [
         "Johnson: I would not have you so disgrace your most idle moments, &c. Moberly: The meaning is, 'Do not misuse any moment of leisure,' as, conversely, you have 'misused our sex,' means 'you have slandered it.' — As You Like it, IV, ii, 205.",
         "Dyce (Remarks, p. 209): It is absolutely necessary to print 'moment's.' Would Shakespeare have employed such a ridiculous inversion when 'leisure moment' suited the metre as well? Abbott, §§ 22, 430, however, adopts 'moment-leisure,' and gives it as one of many instances of noun-compounds where the first noun may be treated as a genitive used adjectively. See II, ii, 464; III, i, 156. Clarendon: In the reading of the Ff. 'moment' must be taken as an adjective. This is very common when the first substantive is the name of a place, as in 'Lethe wharf,' I, v, 33."
+      ]
+    },
+    "misc": {
+      "play": "",
+      "notes": [
+        "Scene 3] Coleridge: This scene must be regarded as one of Shakespeare's lyric movements in the play, and the skill with which it is interwoven with the dramatic parts is peculiarly an excellence of our poet. You experience the sensation of a pause without the sense of a stop."
       ]
     }
   },
@@ -2871,6 +2871,18 @@
         "Warburton: Intimating that we are only kept (as formerly fools in a great family) to make sport for nature, who lies hid only to mock and laugh at us for our vain searches into her mysteries. Mason (p. 378): A paraphrase of the common expression, natural fools. Clarendon: Playthings of nature, completely under her influence. See Meas. for Meas. III, i, 11."
       ]
     },
+    "65": {
+      "play": "",
+      "notes": [
+        "Dyce: 'Set...at a pin's fee'—i.e. not care for at all."
+      ]
+    },
+    "66": {
+      "play": "",
+      "notes": [
+        "Warburton: Hamlet risks damnation by going; bold, but foolhardy."
+      ]
+    },
     "67": {
       "play": "",
       "notes": [
@@ -2882,18 +2894,6 @@
       "play": "",
       "notes": [
         "Abbott: For instances of 'should' denoting a statement not made by the speaker, like sollen in German."
-      ]
-    },
-    "65": {
-      "play": "",
-      "notes": [
-        "Dyce: 'Set...at a pin's fee'—i.e. not care for at all."
-      ]
-    },
-    "66": {
-      "play": "",
-      "notes": [
-        "Warburton: Hamlet risks damnation by going; bold, but foolhardy."
       ]
     },
     "74": {
@@ -4777,7 +4777,7 @@
       "notes": []
     },
     "60": {
-      "play": "KING CLAUDIUS : He tells me, my dear Gertrude, he hath found",
+      "play": "He tells me, my dear Gertrude, he hath found",
       "notes": [
         "White: Gertrude] This smacks less of the honeymoon than the text of the Ff."
       ]
@@ -4805,7 +4805,7 @@
       "notes": []
     },
     "66": {
-      "play": "KING CLAUDIUS : Welcome, my good friends!",
+      "play": "Welcome, my good friends!",
       "notes": [
         "Walker (ii, 254, Omissions in Consequence of Absorption): [Welcome] He is addressing the ambassadors for the first time after their return from Norway. I think the occasion absolutely demands, \"Welcome home!\" &c. And [thus it is] in line 85."
       ]
@@ -5419,7 +5419,7 @@
       "notes": []
     },
     "196": {
-      "play": "LORD POLONIUS : O, give me leave:",
+      "play": "O, give me leave:",
       "notes": []
     },
     "197": {
@@ -6682,7 +6682,7 @@
       "notes": []
     },
     "447": {
-      "play": "HAMLET : You are welcome, masters; welcome, all. I am glad",
+      "play": "You are welcome, masters; welcome, all. I am glad",
       "notes": []
     },
     "448": {
@@ -6747,7 +6747,7 @@
       "notes": []
     },
     "460": {
-      "play": "HAMLET : I heard thee speak me a speech once, but it was",
+      "play": "I heard thee speak me a speech once, but it was",
       "notes": []
     },
     "461": {
@@ -7052,7 +7052,7 @@
       ]
     },
     "524": {
-      "play": "LORD POLONIUS : This is too long.",
+      "play": "This is too long.",
       "notes": []
     },
     "525": {
@@ -7074,7 +7074,7 @@
       ]
     },
     "529": {
-      "play": "HAMLET : 'The mobled queen?'",
+      "play": "'The mobled queen?'",
       "notes": []
     },
     "530": {
@@ -7154,7 +7154,7 @@
       ]
     },
     "546": {
-      "play": "LORD POLONIUS : Look, whether he has not turned his colour and has",
+      "play": "Look, whether he has not turned his colour and has",
       "notes": []
     },
     "547": {
@@ -7230,7 +7230,7 @@
       ]
     },
     "563": {
-      "play": "HAMLET : Dost thou hear me, old friend; can you play the",
+      "play": "Dost thou hear me, old friend; can you play the",
       "notes": []
     },
     "564": {
@@ -7242,7 +7242,7 @@
       "notes": []
     },
     "566": {
-      "play": "HAMLET : We'll ha't to-morrow night. You could, for a need,",
+      "play": "We'll ha't to-morrow night. You could, for a need,",
       "notes": []
     },
     "567": {
@@ -7258,7 +7258,7 @@
       "notes": []
     },
     "570": {
-      "play": "HAMLET : Very well. Follow that lord; and look you mock him",
+      "play": "Very well. Follow that lord; and look you mock him",
       "notes": []
     },
     "571": {
@@ -7270,7 +7270,7 @@
       "notes": []
     },
     "573": {
-      "play": "HAMLET : My good friends, I'll leave you till night: you are",
+      "play": "My good friends, I'll leave you till night: you are",
       "notes": []
     },
     "574": {
@@ -7290,7 +7290,7 @@
       "notes": []
     },
     "578": {
-      "play": "HAMLET : Now I am alone.",
+      "play": "Now I am alone.",
       "notes": [
         "Clarke: alone] The eagerness shown by Hamlet to be left in peace by himself appears to be a main evidence of his merely acting a part and assuming madness; he longs to get rid of the presence of persons before whom he has resolved to wear a show of insanity. Alone, he is collected, coherent, full of introspection. That he is neither dispassionate nor cool appears to be the result of his unhappy source of thought, not the result of derangement; he is morally afflicted, not mentally affected."
       ]
@@ -7592,16 +7592,16 @@
       "play": "Exit",
       "notes": []
     },
-    "8875": {
-      "play": "",
-      "notes": [
-        "\"dere y-nough a jane\" (i. e. a coin of Genoa); and 12723, \"deere y-nough a leeke.\" Also, \"too late a week,\" As You Like It, II, iii, 74."
-      ]
-    },
     "1596": {
       "play": "",
       "notes": [
         "'The description of that poor yohn-a-droynes his man, whom he had hired,' &c. yohn- a-Droynes is likewise a foolish character in Whetstone's Promos and Cassandra, 1578. Collier: It is rather a nickname for a sleepy, apathetic fellow. The only mention yet met with of John-a-dreams is in Armin's Nest of Ninnies, 1608 (see Sh. Soc. vol. x, p. 49): 'His name is John, indeede, saies the cinnick; but neither John a nods, nor John a dreames, yet either as you take it.' John-a-droynes was, in all probability, a different person."
+      ]
+    },
+    "8875": {
+      "play": "",
+      "notes": [
+        "\"dere y-nough a jane\" (i. e. a coin of Genoa); and 12723, \"deere y-nough a leeke.\" Also, \"too late a week,\" As You Like It, II, iii, 74."
       ]
     }
   },
@@ -8729,7 +8729,7 @@
       "notes": []
     },
     "18": {
-      "play": "HAMLET : Be not too tame neither, but let your own discretion",
+      "play": "Be not too tame neither, but let your own discretion",
       "notes": []
     },
     "19": {
@@ -8843,7 +8843,7 @@
       "notes": []
     },
     "40": {
-      "play": "HAMLET : O, reform it altogether. And let those that play",
+      "play": "O, reform it altogether. And let those that play",
       "notes": []
     },
     "41": {
@@ -8891,7 +8891,7 @@
       "notes": []
     },
     "50": {
-      "play": "HAMLET : How now, my lord! I will the king hear this piece of work?",
+      "play": "How now, my lord! I will the king hear this piece of work?",
       "notes": []
     },
     "51": {
@@ -8907,7 +8907,7 @@
       "notes": []
     },
     "54": {
-      "play": "HAMLET : Will you two help to hasten them?",
+      "play": "Will you two help to hasten them?",
       "notes": []
     },
     "55": {
@@ -9589,7 +9589,7 @@
       "notes": []
     },
     "193": {
-      "play": "HAMLET : [Aside] Wormwood, wormwood.",
+      "play": "[Aside] Wormwood, wormwood.",
       "notes": []
     },
     "194": {
@@ -9809,7 +9809,7 @@
       "notes": []
     },
     "235": {
-      "play": "HAMLET : If she should break it now!",
+      "play": "If she should break it now!",
       "notes": []
     },
     "236": {
@@ -9845,7 +9845,7 @@
       ]
     },
     "243": {
-      "play": "HAMLET : Madam, how like you this play?",
+      "play": "Madam, how like you this play?",
       "notes": []
     },
     "244": {
@@ -9925,7 +9925,7 @@
       "notes": []
     },
     "258": {
-      "play": "HAMLET : This is one Lucianus, nephew to the king.",
+      "play": "This is one Lucianus, nephew to the king.",
       "notes": []
     },
     "259": {
@@ -10426,7 +10426,7 @@
       "notes": []
     },
     "359": {
-      "play": "HAMLET : O, the recorders! let me see one. To withdraw with",
+      "play": "O, the recorders! let me see one. To withdraw with",
       "notes": [
         "Dyce: recorders] The change from the plural of the Qq to the singular of the Ff I have not the slightest doubt we must attribute to the 'company,' who were obliged to be economical both of persons and properties. A single recorder, indeed, suffices for the mere business of this scene; but the alteration is quite at variance with what precedes in line 280.",
         "Chappell: recorders] Old English musical instruments were commonly made of three or four different sizes, so that a player might take any of the four parts that were required to fill up the harmony. So Violins, Lutes, Recorders, Flutes, Shawms, &c, have been described by some writers in a manner which (to those unacquainted with this peculiarity) has appeared irreconcilable with other accounts. Sh. (in Hamlet) speaks of the Recorder as a little pipe, and says, in Mid. N. D., ‘he hath played on his prologue like a child on a recorder;’ but in an engraving of the instrument* it reaches from the lip to the knee of the performer; and among those left by Henry VIII were Recorders of box, oak, and ivory, great and small, two base Recorders of walnut, and one great base Recorder. Recorders and (English) Flutes are to outward appearance the same, although Lord Bacon in his Naturat History, cent. iii, sec. 221, says the Recorder hath a less bore, and a greater above and below. The number of holes for the fingers is the same, and the scale, the compass, and the manner of playing, the same. Salter describes the recorder, from which the instrument derives its name, as situate in the upper part of it, i.e. between the hole below the mouth and the highest hole for the finger. He says, 'Of the kinds of music, vocal has always had the preference in esteem, and in consequence the Recorder, as approaching nearest to the sweet delightfulness of the voice, ought to have first place in opinion, as we see by the universal use of it confirmed.' Ward, the military instrument-maker, informs me that he has seen 'old English flutes' with a hole bored through the side, in the upper part of the instrument, covered with a thin piece of skin, like gold-beater's skin. I suppose this would give somewhat the effect of the quill or reed in the Hautboy, and that these were Recorders. Recorders were used for teaching birds to pipe.",
@@ -10571,7 +10571,7 @@
       "notes": []
     },
     "384": {
-      "play": "HAMLET : God bless you, sir!",
+      "play": "God bless you, sir!",
       "notes": []
     },
     "385": {
@@ -10635,7 +10635,7 @@
       "notes": []
     },
     "398": {
-      "play": "HAMLET : Leave me, friends.",
+      "play": "Leave me, friends.",
       "notes": []
     },
     "399": {
@@ -10643,7 +10643,7 @@
       "notes": []
     },
     "400": {
-      "play": "HAMLET : Tis now the very witching time of night,",
+      "play": "Tis now the very witching time of night,",
       "notes": []
     },
     "401": {
@@ -10933,7 +10933,7 @@
       "notes": []
     },
     "44": {
-      "play": "KING CLAUDIUS : O, my offence is rank it smells to heaven;",
+      "play": "O, my offence is rank it smells to heaven;",
       "notes": []
     },
     "45": {
@@ -11890,7 +11890,7 @@
       ]
     },
     "124": {
-      "play": "HAMLET : Save me, and hover o'er me with your wings,",
+      "play": "Save me, and hover o'er me with your wings,",
       "notes": [
         "Marshall: me ... me] Marshall (p. 51): The use of the singular number may be accidental, or it may intimate that Ham. felt this visitation to be addressed to him alone. On the former occasion he used the plural."
       ]
@@ -11944,7 +11944,7 @@
       ]
     },
     "135": {
-      "play": "HAMLET : How is it with you, lady?",
+      "play": "How is it with you, lady?",
       "notes": []
     },
     "136": {
@@ -12539,7 +12539,7 @@
       "notes": []
     },
     "7": {
-      "play": "QUEEN GERTRUDE : Ah, my good lord, what have I seen to-night!",
+      "play": "Ah, my good lord, what have I seen to-night!",
       "notes": [
         "Clarke: Mad] Clarke: The Queen both follows her son's injunction of keeping up the belief in his madness, and, with maternal ingenuity, makes it the excuse for his rash deed. This affords a clue to Hamlet's original motive in putting ' an antic disposition on ' and feigning insanity; he foresaw that it might be useful to obviate suspicion of his having a steadily- pursued object in view, and to account for whatever hostile attempt he should make."
       ]
@@ -12679,7 +12679,7 @@
       "notes": []
     },
     "37": {
-      "play": "KING CLAUDIUS : Friends both, go join you with some further aid:",
+      "play": "Friends both, go join you with some further aid:",
       "notes": []
     },
     "38": {
@@ -12709,7 +12709,7 @@
       ]
     },
     "43": {
-      "play": "KING CLAUDIUS : Come, Gertrude, we'll call up our wisest friends;",
+      "play": "Come, Gertrude, we'll call up our wisest friends;",
       "notes": []
     },
     "44": {
@@ -12947,7 +12947,7 @@
       "notes": []
     },
     "14": {
-      "play": "KING CLAUDIUS : How now! what hath befall'n?",
+      "play": "How now! what hath befall'n?",
       "notes": []
     },
     "15": {
@@ -13187,7 +13187,7 @@
       "notes": []
     },
     "70": {
-      "play": "KING CLAUDIUS : And, England, if my love thou hold'st at aught--",
+      "play": "And, England, if my love thou hold'st at aught--",
       "notes": []
     },
     "71": {
@@ -13293,7 +13293,7 @@
       "notes": []
     },
     "10": {
-      "play": "PRINCE FORTINBRAS : Go softly on.",
+      "play": "Go softly on.",
       "notes": [
         "Staunton: softly] Staunton: That is, slowly. Clarendon: Compare Bacon, Essay, vi, p. 19: 'Like the going softly by one that cannot well see.' Collier: These words are probably addressed to his troops."
       ]
@@ -13317,7 +13317,7 @@
       "notes": []
     },
     "15": {
-      "play": "HAMLET : How purposed, sir, I pray you?",
+      "play": "How purposed, sir, I pray you?",
       "notes": [
         "Clarendon: main] Clarendon: The chief power. See II, ii, 56."
       ]
@@ -13327,7 +13327,7 @@
       "notes": []
     },
     "17": {
-      "play": "HAMLET : Who commands them, sir?",
+      "play": "Who commands them, sir?",
       "notes": []
     },
     "18": {
@@ -13335,7 +13335,7 @@
       "notes": []
     },
     "19": {
-      "play": "HAMLET : Goes it against the main of Poland, sir,",
+      "play": "Goes it against the main of Poland, sir,",
       "notes": []
     },
     "20": {
@@ -13369,7 +13369,7 @@
       "notes": []
     },
     "27": {
-      "play": "HAMLET : Why, then the Polack never will defend it.",
+      "play": "Why, then the Polack never will defend it.",
       "notes": []
     },
     "28": {
@@ -13379,7 +13379,7 @@
       ]
     },
     "29": {
-      "play": "HAMLET : Two thousand souls and twenty thousand ducats",
+      "play": "Two thousand souls and twenty thousand ducats",
       "notes": []
     },
     "30": {
@@ -13422,7 +13422,7 @@
       "notes": []
     },
     "39": {
-      "play": "HAMLET : How all occasions do inform against me,",
+      "play": "How all occasions do inform against me,",
       "notes": []
     },
     "40": {
@@ -13618,7 +13618,7 @@
       "notes": []
     },
     "5": {
-      "play": "QUEEN GERTRUDE : What would she have?",
+      "play": "What would she have?",
       "notes": []
     },
     "6": {
@@ -13693,7 +13693,7 @@
       "notes": []
     },
     "20": {
-      "play": "QUEEN GERTRUDE : To my sick soul, as sin's true nature is,",
+      "play": "To my sick soul, as sin's true nature is,",
       "notes": []
     },
     "21": {
@@ -14001,7 +14001,7 @@
       "notes": []
     },
     "87": {
-      "play": "KING CLAUDIUS : O, this is the poison of deep grief; it springs",
+      "play": "O, this is the poison of deep grief; it springs",
       "notes": []
     },
     "88": {
@@ -14124,7 +14124,7 @@
       "notes": []
     },
     "112": {
-      "play": "KING CLAUDIUS : What is the matter?",
+      "play": "What is the matter?",
       "notes": []
     },
     "113": {
@@ -14215,7 +14215,7 @@
       "notes": []
     },
     "131": {
-      "play": "LAERTES : I pray you, give me leave.",
+      "play": "I pray you, give me leave.",
       "notes": []
     },
     "132": {
@@ -14227,7 +14227,7 @@
       "notes": []
     },
     "134": {
-      "play": "LAERTES : I thank you: keep the door. O thou vile king,",
+      "play": "I thank you: keep the door. O thou vile king,",
       "notes": []
     },
     "135": {
@@ -14441,7 +14441,7 @@
       "notes": []
     },
     "183": {
-      "play": "LAERTES : O heat, dry up my brains! tears seven times salt,",
+      "play": "O heat, dry up my brains! tears seven times salt,",
       "notes": []
     },
     "184": {
@@ -14745,7 +14745,7 @@
       "notes": []
     },
     "4": {
-      "play": "HORATIO : Let them come in.",
+      "play": "Let them come in.",
       "notes": []
     },
     "5": {
@@ -14753,7 +14753,7 @@
       "notes": []
     },
     "6": {
-      "play": "HORATIO : I do not know from what part of the world",
+      "play": "I do not know from what part of the world",
       "notes": []
     },
     "7": {
@@ -14769,7 +14769,7 @@
       "notes": []
     },
     "10": {
-      "play": "HORATIO : Let him bless thee too.",
+      "play": "Let him bless thee too.",
       "notes": []
     },
     "11": {
@@ -14791,7 +14791,7 @@
       ]
     },
     "15": {
-      "play": "HORATIO : [Reads] 'Horatio, when thou shalt have overlooked",
+      "play": "[Reads] 'Horatio, when thou shalt have overlooked",
       "notes": []
     },
     "16": {
@@ -14883,7 +14883,7 @@
       ]
     },
     "34": {
-      "play": "HORATIO : Come, I will make you way for these your letters;",
+      "play": "Come, I will make you way for these your letters;",
       "notes": []
     },
     "35": {
@@ -15096,7 +15096,7 @@
       "notes": []
     },
     "40": {
-      "play": "KING CLAUDIUS : How now! what news?",
+      "play": "How now! what news?",
       "notes": []
     },
     "41": {
@@ -15110,7 +15110,7 @@
       "notes": []
     },
     "43": {
-      "play": "KING CLAUDIUS : From Hamlet! who brought them?",
+      "play": "From Hamlet! who brought them?",
       "notes": []
     },
     "44": {
@@ -15128,7 +15128,7 @@
       "notes": []
     },
     "47": {
-      "play": "KING CLAUDIUS : Laertes, you shall hear them. Leave us.",
+      "play": "Laertes, you shall hear them. Leave us.",
       "notes": []
     },
     "48": {
@@ -15136,7 +15136,7 @@
       "notes": []
     },
     "49": {
-      "play": "KING CLAUDIUS : Reads",
+      "play": "Reads",
       "notes": []
     },
     "50": {
@@ -15164,7 +15164,7 @@
       ]
     },
     "55": {
-      "play": "KING CLAUDIUS : What should this mean? Are all the rest come back?",
+      "play": "What should this mean? Are all the rest come back?",
       "notes": []
     },
     "56": {
@@ -15756,7 +15756,7 @@
       "notes": []
     },
     "182": {
-      "play": "KING CLAUDIUS : How now, sweet queen!",
+      "play": "How now, sweet queen!",
       "notes": []
     },
     "183": {
@@ -16309,7 +16309,7 @@
       "notes": []
     },
     "81": {
-      "play": "HAMLET : That skull had a tongue in it, and could sing once:",
+      "play": "That skull had a tongue in it, and could sing once:",
       "notes": []
     },
     "82": {
@@ -16429,7 +16429,7 @@
       "notes": []
     },
     "104": {
-      "play": "HAMLET : There's another: why may not that be the skull of a",
+      "play": "There's another: why may not that be the skull of a",
       "notes": []
     },
     "105": {
@@ -16559,7 +16559,7 @@
       "notes": []
     },
     "129": {
-      "play": "HAMLET : I think it be thine, indeed; for thou liest in't.",
+      "play": "I think it be thine, indeed; for thou liest in't.",
       "notes": [
         "Note that throughout this dialogue Ham. addresses the Clown in the second person singular, while the Clown replies in the second person plural. Ed."
       ]
@@ -16573,7 +16573,7 @@
       "notes": []
     },
     "132": {
-      "play": "HAMLET : 'Thou dost lie in't, to be in't and say it is thine:",
+      "play": "'Thou dost lie in't, to be in't and say it is thine:",
       "notes": []
     },
     "133": {
@@ -16589,7 +16589,7 @@
       "notes": []
     },
     "136": {
-      "play": "HAMLET : What man dost thou dig it for?",
+      "play": "What man dost thou dig it for?",
       "notes": []
     },
     "137": {
@@ -16597,7 +16597,7 @@
       "notes": []
     },
     "138": {
-      "play": "HAMLET : What woman, then?",
+      "play": "What woman, then?",
       "notes": []
     },
     "139": {
@@ -16605,7 +16605,7 @@
       "notes": []
     },
     "140": {
-      "play": "HAMLET : Who is to be buried in't?",
+      "play": "Who is to be buried in't?",
       "notes": []
     },
     "141": {
@@ -16613,7 +16613,7 @@
       "notes": []
     },
     "142": {
-      "play": "HAMLET : How absolute the knave is! we must speak by the",
+      "play": "How absolute the knave is! we must speak by the",
       "notes": [
         "Dyce (Gloss.): absolute] Positive, certain."
       ]
@@ -16665,7 +16665,7 @@
       "notes": []
     },
     "151": {
-      "play": "HAMLET : How long is that since?",
+      "play": "How long is that since?",
       "notes": []
     },
     "152": {
@@ -16686,7 +16686,7 @@
       "notes": []
     },
     "155": {
-      "play": "HAMLET : Ay, marry, why was he sent into England?",
+      "play": "Ay, marry, why was he sent into England?",
       "notes": []
     },
     "156": {
@@ -16700,7 +16700,7 @@
       ]
     },
     "158": {
-      "play": "HAMLET : Why?",
+      "play": "Why?",
       "notes": []
     },
     "159": {
@@ -16714,7 +16714,7 @@
       ]
     },
     "161": {
-      "play": "HAMLET : How came he mad?",
+      "play": "How came he mad?",
       "notes": []
     },
     "162": {
@@ -16722,7 +16722,7 @@
       "notes": []
     },
     "163": {
-      "play": "HAMLET : How strangely?",
+      "play": "How strangely?",
       "notes": [
         "Halliwell: I have ventured to alter the text here to a dozen by the aid of Q:, in order to avoid a chronological difficulty, and for a similar reason to alter 'thirty' to twenty in line"
       ]
@@ -16732,7 +16732,7 @@
       "notes": []
     },
     "165": {
-      "play": "HAMLET : Upon what ground?",
+      "play": "Upon what ground?",
       "notes": []
     },
     "166": {
@@ -16744,7 +16744,7 @@
       "notes": []
     },
     "168": {
-      "play": "HAMLET : How long will a man lie i' the earth ere he rot?",
+      "play": "How long will a man lie i' the earth ere he rot?",
       "notes": []
     },
     "169": {
@@ -16768,7 +16768,7 @@
       "notes": []
     },
     "173": {
-      "play": "HAMLET : Why he more than another?",
+      "play": "Why he more than another?",
       "notes": []
     },
     "174": {
@@ -16797,7 +16797,7 @@
       ]
     },
     "179": {
-      "play": "HAMLET : Whose was it?",
+      "play": "Whose was it?",
       "notes": [
         "Capell: A. ..was?] Two lines, Ff, Rowe."
       ]
@@ -16810,7 +16810,7 @@
       ]
     },
     "181": {
-      "play": "HAMLET : Nay, I know not.",
+      "play": "Nay, I know not.",
       "notes": []
     },
     "182": {
@@ -16832,7 +16832,7 @@
       ]
     },
     "185": {
-      "play": "HAMLET : This?",
+      "play": "This?",
       "notes": []
     },
     "186": {
@@ -16842,7 +16842,7 @@
       ]
     },
     "187": {
-      "play": "HAMLET : Let me see.",
+      "play": "Let me see.",
       "notes": [
         "Knight: Let me see] This supersedes any stage-direction.",
         "Capell: Let me see] Om. Qq, Pope+f Cap. Jen. Steev. Var. Sing. i. Capell: [Takes the skull.] After This? line 171, Cap. Steev. Var. Sing, i, Cald. Coll. Del. El. White. After see. line 173, Sing, ii, Dyce, Sta. Ktly, Glo.+, Mob. Huds. Om. QqFf, Rowe +, Knt.",
@@ -16857,7 +16857,7 @@
       ]
     },
     "189": {
-      "play": "HAMLET : Alas, poor Yorick! I knew him, Horatio: a fellow",
+      "play": "Alas, poor Yorick! I knew him, Horatio: a fellow",
       "notes": []
     },
     "190": {
@@ -17031,7 +17031,7 @@
       "notes": []
     },
     "224": {
-      "play": "HAMLET : The queen, the courtiers: who is this they follow?",
+      "play": "The queen, the courtiers: who is this they follow?",
       "notes": []
     },
     "225": {
@@ -17149,7 +17149,7 @@
       ]
     },
     "247": {
-      "play": "LAERTES : Lay her i' the earth:",
+      "play": "Lay her i' the earth:",
       "notes": [
         "Clarendon: peace-parted] A rare compound for \"peacefully departed.\" Like \"death- practised\" in Lear IV, vi, 284."
       ]
@@ -17185,7 +17185,7 @@
       "notes": []
     },
     "255": {
-      "play": "QUEEN GERTRUDE : I hoped thou shouldst have been my Hamlet's wife;",
+      "play": "I hoped thou shouldst have been my Hamlet's wife;",
       "notes": [
         "Abbott, § 360: Constructions like \"I hoped thou shouldst have been ... to have decked\" are grammatical in Elizabethan English after verbs of hoping or intending, expressing a non-completed, contrary-to-fact hope."
       ]
@@ -17227,7 +17227,7 @@
       "notes": []
     },
     "264": {
-      "play": "LAERTES : Now pile your dust upon the quick and dead,",
+      "play": "Now pile your dust upon the quick and dead,",
       "notes": []
     },
     "265": {
@@ -17465,7 +17465,7 @@
       "notes": []
     },
     "317": {
-      "play": "KING CLAUDIUS : To LAERTES",
+      "play": "To LAERTES",
       "notes": []
     },
     "318": {
@@ -18378,7 +18378,7 @@
       "notes": []
     },
     "184": {
-      "play": "HAMLET : He does well to commend it himself; there are no",
+      "play": "He does well to commend it himself; there are no",
       "notes": []
     },
     "185": {
@@ -18471,7 +18471,7 @@
       "notes": []
     },
     "198": {
-      "play": "HAMLET : I am constant to my purpose; they follow the king's",
+      "play": "I am constant to my purpose; they follow the king's",
       "notes": []
     },
     "199": {
@@ -18491,7 +18491,7 @@
       "notes": []
     },
     "202": {
-      "play": "HAMLET : In happy time.",
+      "play": "In happy time.",
       "notes": []
     },
     "203": {
@@ -18503,7 +18503,7 @@
       "notes": []
     },
     "205": {
-      "play": "HAMLET : She well instructs me.",
+      "play": "She well instructs me.",
       "notes": []
     },
     "206": {
@@ -18899,7 +18899,7 @@
       "notes": []
     },
     "298": {
-      "play": "KING CLAUDIUS : Give him the cup.",
+      "play": "Give him the cup.",
       "notes": []
     },
     "299": {
@@ -18911,7 +18911,7 @@
       "notes": []
     },
     "301": {
-      "play": "HAMLET : Another hit; what say you?",
+      "play": "Another hit; what say you?",
       "notes": []
     },
     "302": {
@@ -19239,7 +19239,7 @@
       "notes": []
     },
     "383": {
-      "play": "HAMLET : What warlike noise is this?",
+      "play": "What warlike noise is this?",
       "notes": []
     },
     "384": {
