@@ -3905,8 +3905,13 @@
                                 const sceneContent = [];
                                 Object.keys(sceneData).forEach(lineNum => {
                                     const lineData = sceneData[lineNum];
-                                    if (lineData && lineData.play) {
-                                        sceneContent.push(lineData.play);
+                                    if (!lineData) return;
+                                    // Prefer 'play', but fall back to common alternatives if present
+                                    const text = 
+                                        (typeof lineData === 'string') ? lineData :
+                                        lineData.play ?? lineData.text ?? lineData.line ?? null;
+                                    if (text) {
+                                        sceneContent.push(text);
                                         lineCount++;
                                     }
                                 });
@@ -3985,8 +3990,13 @@
                                 const sceneContent = [];
                                 Object.keys(sceneData).forEach(lineNum => {
                                     const lineData = sceneData[lineNum];
-                                    if (lineData && lineData.play) {
-                                        sceneContent.push(lineData.play);
+                                    if (!lineData) return;
+                                    // Prefer 'play', but fall back to common alternatives if present
+                                    const text = 
+                                        (typeof lineData === 'string') ? lineData :
+                                        lineData.play ?? lineData.text ?? lineData.line ?? null;
+                                    if (text) {
+                                        sceneContent.push(text);
                                         lineCount++;
                                     }
                                 });
@@ -4022,6 +4032,186 @@
                 console.error('❌ Error loading Hamlet data:', error);
             }
             
+            // Load Romeo and Juliet
+            try {
+                console.log('🔄 Attempting to load Romeo and Juliet data...');
+                const response = await fetch('Public/Data/ROMEO_notes.json?v=' + Date.now());
+                console.log('📡 Romeo response status:', response.status, response.statusText);
+                
+                if (response.ok) {
+                    const romeoData = await response.json();
+                    window.romeoData = romeoData;
+                    
+                    plays['romeo'] = {
+                        name: 'Romeo and Juliet',
+                        originalFileName: 'romeo',
+                        characters: [],
+                        acts: {},
+                        scenes: {}
+                    };
+                    
+                    if (romeoData) {
+                        let sceneCount = 0;
+                        let lineCount = 0;
+                        Object.keys(romeoData).forEach(sceneKey => {
+                            const sceneData = romeoData[sceneKey];
+                            if (sceneData && typeof sceneData === 'object') {
+                                const sceneContent = [];
+                                Object.keys(sceneData).forEach(lineNum => {
+                                    const lineData = sceneData[lineNum];
+                                    if (!lineData) return;
+                                    const text = (typeof lineData === 'string') ? lineData : (lineData.play ?? lineData.text ?? lineData.line ?? null);
+                                    if (text) {
+                                        sceneContent.push(text);
+                                        lineCount++;
+                                    }
+                                });
+                                if (sceneContent.length > 0) {
+                                    const optimizedContent = optimizeSpeakerNames(sceneContent);
+                                    plays['romeo'].scenes[sceneKey] = optimizedContent;
+                                    sceneCount++;
+                                    const actMatch = sceneKey.match(/^ACT\s+([IVX0-9]+)/i);
+                                    if (actMatch) {
+                                        const actName = `ACT ${actMatch[1]}`;
+                                        if (!plays['romeo'].acts[actName]) {
+                                            plays['romeo'].acts[actName] = [];
+                                        }
+                                        plays['romeo'].acts[actName].push(sceneKey);
+                                    }
+                                }
+                            }
+                        });
+                        console.log(`✅ Romeo and Juliet parsed successfully: ${sceneCount} scenes, ${lineCount} lines`);
+                        updatePlaySelector();
+                        updateLibraryPlays();
+                    }
+                } else {
+                    console.warn('❌ Could not load Romeo and Juliet data - Status:', response.status);
+                }
+            } catch (error) {
+                console.error('❌ Error loading Romeo and Juliet data:', error);
+            }
+
+            // Load Othello
+            try {
+                console.log('🔄 Attempting to load Othello data...');
+                const response = await fetch('Public/Data/othello_notes.json?v=' + Date.now());
+                console.log('📡 Othello response status:', response.status, response.statusText);
+                
+                if (response.ok) {
+                    const othelloData = await response.json();
+                    window.othelloData = othelloData;
+                    
+                    plays['othello'] = {
+                        name: 'Othello',
+                        originalFileName: 'othello',
+                        characters: [],
+                        acts: {},
+                        scenes: {}
+                    };
+                    
+                    if (othelloData) {
+                        let sceneCount = 0;
+                        let lineCount = 0;
+                        Object.keys(othelloData).forEach(sceneKey => {
+                            const sceneData = othelloData[sceneKey];
+                            if (sceneData && typeof sceneData === 'object') {
+                                const sceneContent = [];
+                                Object.keys(sceneData).forEach(lineNum => {
+                                    const lineData = sceneData[lineNum];
+                                    if (!lineData) return;
+                                    const text = (typeof lineData === 'string') ? lineData : (lineData.play ?? lineData.text ?? lineData.line ?? null);
+                                    if (text) {
+                                        sceneContent.push(text);
+                                        lineCount++;
+                                    }
+                                });
+                                if (sceneContent.length > 0) {
+                                    const optimizedContent = optimizeSpeakerNames(sceneContent);
+                                    plays['othello'].scenes[sceneKey] = optimizedContent;
+                                    sceneCount++;
+                                    const actMatch = sceneKey.match(/^ACT\s+([IVX0-9]+)/i);
+                                    if (actMatch) {
+                                        const actName = `ACT ${actMatch[1]}`;
+                                        if (!plays['othello'].acts[actName]) {
+                                            plays['othello'].acts[actName] = [];
+                                        }
+                                        plays['othello'].acts[actName].push(sceneKey);
+                                    }
+                                }
+                            }
+                        });
+                        console.log(`✅ Othello parsed successfully: ${sceneCount} scenes, ${lineCount} lines`);
+                        updatePlaySelector();
+                        updateLibraryPlays();
+                    }
+                } else {
+                    console.warn('❌ Could not load Othello data - Status:', response.status);
+                }
+            } catch (error) {
+                console.error('❌ Error loading Othello data:', error);
+            }
+
+            // Load King Lear
+            try {
+                console.log('🔄 Attempting to load King Lear data...');
+                const response = await fetch('Public/Data/kinglear_notes.json?v=' + Date.now());
+                console.log('📡 King Lear response status:', response.status, response.statusText);
+                
+                if (response.ok) {
+                    const learData = await response.json();
+                    window.kinglearData = learData;
+                    
+                    plays['kinglear'] = {
+                        name: 'King Lear',
+                        originalFileName: 'kinglear',
+                        characters: [],
+                        acts: {},
+                        scenes: {}
+                    };
+                    
+                    if (learData) {
+                        let sceneCount = 0;
+                        let lineCount = 0;
+                        Object.keys(learData).forEach(sceneKey => {
+                            const sceneData = learData[sceneKey];
+                            if (sceneData && typeof sceneData === 'object') {
+                                const sceneContent = [];
+                                Object.keys(sceneData).forEach(lineNum => {
+                                    const lineData = sceneData[lineNum];
+                                    if (!lineData) return;
+                                    const text = (typeof lineData === 'string') ? lineData : (lineData.play ?? lineData.text ?? lineData.line ?? null);
+                                    if (text) {
+                                        sceneContent.push(text);
+                                        lineCount++;
+                                    }
+                                });
+                                if (sceneContent.length > 0) {
+                                    const optimizedContent = optimizeSpeakerNames(sceneContent);
+                                    plays['kinglear'].scenes[sceneKey] = optimizedContent;
+                                    sceneCount++;
+                                    const actMatch = sceneKey.match(/^ACT\s+([IVX0-9]+)/i);
+                                    if (actMatch) {
+                                        const actName = `ACT ${actMatch[1]}`;
+                                        if (!plays['kinglear'].acts[actName]) {
+                                            plays['kinglear'].acts[actName] = [];
+                                        }
+                                        plays['kinglear'].acts[actName].push(sceneKey);
+                                    }
+                                }
+                            }
+                        });
+                        console.log(`✅ King Lear parsed successfully: ${sceneCount} scenes, ${lineCount} lines`);
+                        updatePlaySelector();
+                        updateLibraryPlays();
+                    }
+                } else {
+                    console.warn('❌ Could not load King Lear data - Status:', response.status);
+                }
+            } catch (error) {
+                console.error('❌ Error loading King Lear data:', error);
+            }
+
             // Add ARIA attributes to modals
             const settingsModal = document.getElementById('settingsModal');
             const aboutModal = document.getElementById('aboutModal');
