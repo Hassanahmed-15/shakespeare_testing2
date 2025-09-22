@@ -231,6 +231,11 @@
             background-color: rgba(0,0,0,0.5);
         }
 
+        /* Make New Variorum modal appear on top of other modals */
+        #nvModal {
+            z-index: 2100;
+        }
+
         .modal-content {
             background: var(--surface);
             border: 1px solid var(--line);
@@ -2588,7 +2593,7 @@
             
             <div class="modal-body">
                 <div class="about">
-                    <p>The New Variorum Shakespeare editions have been the gold standard of Shakespearean scholarship for over a century, bringing together the most important critical commentary, textual analysis, and historical context in comprehensive annotated volumes. The Shakespeare Digital Variorum builds on this tradition, harnessing the power of artificial intelligence to make centuries of scholarly insight accessible to everyone, from high school students to veteran researchers.</p>
+                    <p>The <a href="#" onclick="openNVModal(); return false;" style="color: #2563eb; text-decoration: underline;">New Variorum Shakespeare</a> editions have been the gold standard of Shakespearean scholarship for over a century, bringing together the most important critical commentary, textual analysis, and historical context in comprehensive annotated volumes. The Shakespeare Digital Variorum builds on this tradition, harnessing the power of artificial intelligence to make centuries of scholarly insight accessible to everyone, from high school students to veteran researchers.</p>
                     
                     <p>Our platform integrates authoritative texts based on the Folger Shakespeare Library editions of each play, with commentary from major variorum editions, scholarly databases, and historical sources. We include references to film adaptations, stage productions, and cultural interpretations that show how Shakespeare's works have lived and evolved across different media and eras. Using advanced AI, we can instantly provide plain-language explanations of complex passages, trace the etymology of Early Modern English words as they appear in context, analyze prosodic patterns across scenes and plays, and illuminate the historical events and cultural forces that shaped each work.</p>
                     
@@ -2635,6 +2640,60 @@
         </div>
     </div>
 
+    <!-- New Variorum Modal -->
+    <div id="nvModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title" id="nv-modal-title">What's New Variorum?</div>
+                <button class="modal-close" onclick="closeNVModal()">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="about">
+                    <p>The New Variorum Shakespeare is one of the most comprehensive scholarly editions of Shakespeare's works ever created. Begun in 1871 by Philadelphia lawyer Horace Howard Furness, this monumental project aimed to document every change that centuries of editors had made to Shakespeare's texts, along with everything editors and commentators had written about them—all in one place. The term "variorum" comes from the Latin editio cum notis variorum, meaning "an edition with the notes of various editors and commentators."</p>
+                    
+                    <p>Furness devoted the rest of his life to this herculean task, personally completing 18 volumes between 1871 and his death in 1912. His first volume, Romeo and Juliet, appeared in 1871, followed by Macbeth (1873), Hamlet (two volumes, 1877), King Lear (1880), and others through The Tempest (1892) and Twelfth Night (1901). His son, Horace Howard Furness Jr., continued the work, and after 1936, the Modern Language Association took over the project.</p>
+                    
+                    <p>Each Furness variorum volume is a massive scholarly apparatus surrounding Shakespeare's text. For any given line or word, it presents textual variants from different early editions, editorial commentary spanning from the 18th century through the early 20th century, glosses of difficult passages, critical interpretations showing how different scholars understood disputed passages, performance history, and source materials Shakespeare drew upon.</p>
+                    
+                    <h3>The Digital Revolution</h3>
+                    
+                    <p>This website gives you unprecedented access to the original Furness variorum editions—those dense, massive volumes that were traditionally found only in research libraries and could weigh up to 30 pounds each. Through advanced RAG (Retrieval-Augmented Generation) technology, we've digitized and indexed Furness's extraordinary achievement, making centuries of accumulated Shakespeare scholarship instantly accessible at the click of a button.</p>
+                    
+                    <p>When you click on any line or word, our system intelligently retrieves the exact relevant commentary from these historic Furness volumes. That obscure phrase that's puzzled you? There's probably a Victorian scholar who spent years thinking about it. That textual crux you're wondering about? You can instantly see how editors from 1733 to 1912 tried to solve it.</p>
+                    
+                    <h3>A Note on the Modern New Variorum Project</h3>
+                    
+                    <p>While our website focuses on the original Furness editions with their unparalleled historical depth, there is exciting new work happening in variorum scholarship. Since 2019, Texas A&M University, in partnership with the Modern Language Association, has been creating entirely new digital variorum editions that update and expand Furness's work for the 21st century. These new editions, which incorporate modern scholarship and cutting-edge digital tools, are available at newvariorumshakespeare.org. However, the commentary you're accessing here comes exclusively from the original Furness volumes—giving you direct access to the foundational scholarship that has shaped how we understand Shakespeare for over a century.</p>
+                    
+                    <p>What we've accomplished is transforming Furness's life's work into an immediate, interactive experience. You're not just reading Shakespeare—you're joining a centuries-long conversation about every single word, with the greatest Shakespeare scholars in history as your guides, all powered by cutting-edge AI technology that brings their insights directly to you.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Critics Modal -->
+    <div id="criticsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title" id="critics-modal-title">Who are the New Variorum Critics?</div>
+                <button class="modal-close" onclick="closeCriticsModal()">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="about">
+                    <p>The New Variorum editions draw on an extraordinary range of voices—from 18th-century pioneers who first attempted to restore Shakespeare's "corrupted" text, through Victorian scholars who brought scientific rigor to textual criticism, to early 20th-century critics who revolutionized our understanding of Shakespeare's language and stagecraft.</p>
+                    
+                    <p>When reading the New Variorum notes, you'll encounter a dizzying array of abbreviated names and cryptic references: "CAPELL," "THEOBALD," "MALONE," "SCHMIDT." These aren't just footnotes—they represent real people who dedicated their lives to understanding Shakespeare. Behind each abbreviation is a scholar with their own fascinating story: Alexander Pope, the great poet who produced one of the first "modern" Shakespeare editions (1725); Samuel Johnson, whose 1765 edition contained brilliant interpretive notes that are still quoted today; Edmond Malone, who pioneered the historical study of Shakespeare's texts in the late 18th century; or Alexander Schmidt, whose Shakespeare Lexicon (1874-75) remains indispensable for understanding Elizabethan word meanings.</p>
+                    
+                    <p>The Variorum's democratic approach means you'll find everyone from famous literary critics to obscure German philologists, from actor-managers sharing performance insights to amateur scholars who made single brilliant observations. Furness included them all, believing that truth about Shakespeare could come from anywhere.</p>
+                    
+                    <p>While we've expanded each citation in the notes themselves to include full names and publication years, the sheer number of critics cited can be overwhelming. This represents the true scope of the centuries-long conversation you're joining when you read these notes—a international community of readers all grappling with the endless complexities of Shakespeare's text.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- How To Use Modal -->
     <div id="howToUseModal" class="modal">
         <div class="modal-content">
@@ -2645,6 +2704,8 @@
             
             <div class="modal-body">
                 <div class="about">
+                    <p><strong>Learn about the <a href="#" onclick="openNVModal(); return false;" style="color: #2563eb; text-decoration: underline;">New Variorum editions</a> that power this site.</strong></p>
+                    
                     <p>To use this site, begin by clicking on any line of the play. Each line opens three levels of analysis:</p>
                     
                     <ul>
@@ -3031,10 +3092,10 @@
         <aside class="sidebar" aria-label="Play navigation">
             <div class="section-title">Library</div>
             <div class="play-selector-container">
-                <select class="play-selector" id="playSelector">
+                <select class="play-selector" id="playSelector" onchange="loadSelectedPlay()">
                     <option value="" disabled selected>Choose a Play</option>
                 </select>
-                <button onclick="loadSelectedPlay()" class="go-btn">Go</button>
+                <button onclick="loadSelectedPlay()" class="go-btn" style="display: none;">Go</button>
             </div>
 
             <ul class="navigation-list" id="navigationList" aria-label="Play navigation">
@@ -3861,167 +3922,475 @@
             }
         }
 
+        // Convert Roman numerals to Arabic numbers
+        function convertRomanToArabic(roman) {
+            if (!roman) return roman;
+            const romanStr = String(roman).toUpperCase().trim();
+            
+            // If it's already a number, return it
+            if (/^\d+$/.test(romanStr)) return romanStr;
+            
+            const romanMap = {
+                'I': '1', 'II': '2', 'III': '3', 'IV': '4', 'V': '5',
+                'VI': '6', 'VII': '7', 'VIII': '8', 'IX': '9', 'X': '10'
+            };
+            
+            return romanMap[romanStr] || romanStr;
+        }
+        
+        // Enhanced act parsing that handles all formats and normalizes them
+        function parseActFromScene(sceneKey) {
+            // Match various ACT formats: "ACT I", "ACT 1", "ACT IV", "ACT 4", etc.
+            const actMatch = sceneKey.match(/^ACT\s+([IVX0-9]+)/i);
+            if (actMatch) {
+                const actNumber = convertRomanToArabic(actMatch[1]);
+                return `ACT ${actNumber}`;
+            }
+            return null;
+        }
+        
+        // Create a normalized scene key for consistent storage
+        function normalizeSceneKey(originalKey) {
+            // Handle both "ACT 1, SCENE 1" and "ACT I, SCENE I" formats
+            let normalized = originalKey;
+            
+            // Convert "ACT I" to "ACT 1", "ACT II" to "ACT 2", etc.
+            normalized = normalized.replace(/ACT\s+I(?!I|V|X)/g, 'ACT 1');
+            normalized = normalized.replace(/ACT\s+II/g, 'ACT 2');
+            normalized = normalized.replace(/ACT\s+III/g, 'ACT 3');
+            normalized = normalized.replace(/ACT\s+IV/g, 'ACT 4');
+            normalized = normalized.replace(/ACT\s+V(?!I)/g, 'ACT 5');
+            
+            // Convert "SCENE I" to "SCENE 1", "SCENE II" to "SCENE 2", etc.
+            normalized = normalized.replace(/SCENE\s+I(?!I|V|X)/g, 'SCENE 1');
+            normalized = normalized.replace(/SCENE\s+II/g, 'SCENE 2');
+            normalized = normalized.replace(/SCENE\s+III/g, 'SCENE 3');
+            normalized = normalized.replace(/SCENE\s+IV/g, 'SCENE 4');
+            normalized = normalized.replace(/SCENE\s+V(?!I)/g, 'SCENE 5');
+            
+            return normalized;
+        }
+        
+        // Normalize scene display name
+        function normalizeSceneName(sceneKey) {
+            // Extract scene part and convert Roman to Arabic
+            const sceneMatch = sceneKey.match(/(SCENE|SCN)\s+([IVX0-9]+)/i);
+            if (sceneMatch) {
+                const sceneNumber = convertRomanToArabic(sceneMatch[2]);
+                return `Scene ${sceneNumber}`;
+            }
+            return sceneKey;
+        }
+
         // Settings navigation functionality
         document.addEventListener('DOMContentLoaded', async function() {
-            // Load Macbeth data from the JSON file
-            try {
-                console.log('🔄 Attempting to load Macbeth data...');
-                const response = await fetch('Public/Data/macbeth_notes_cleaned_play.json?v=' + Date.now());
-                console.log('📡 Response status:', response.status, response.statusText);
-                
-                if (response.ok) {
-                    const macbethData = await response.json();
-                    console.log('✅ Macbeth data loaded successfully, size:', JSON.stringify(macbethData).length, 'characters');
-                    console.log('📚 Available scenes:', Object.keys(macbethData));
+            console.log('🚀 Loading all plays in parallel for faster performance...');
+            
+            // Define all play loading functions
+            const loadMacbeth = async () => {
+                try {
+                    console.log('🔄 Loading Macbeth...');
+                    const response = await fetch('Public/Data/macbeth_notes_cleaned_play.json?v=' + Date.now());
                     
-                    // Store macbethData globally for Full Fathom Five commentary
-                    window.macbethData = macbethData;
-                    
-                    // Also populate the notes connector with the same data
-                    if (window.macbethNotesConnector) {
-                        window.macbethNotesConnector.notesData = macbethData;
-                        window.macbethNotesConnector.isLoaded = true;
-                        console.log('🔗 Notes connector synchronized with loaded data');
-                    }
-                    
-                    // Add Macbeth to the plays object
-                    plays['macbeth'] = {
-                        name: 'Macbeth',
-                        originalFileName: 'macbeth',
-                        characters: [],
-                        acts: {},
-                        scenes: {}
-                    };
-                    
-                    // Parse the Macbeth data to extract acts and scenes
-                    if (macbethData) {
-                        let sceneCount = 0;
-                        let lineCount = 0;
+                    if (response.ok) {
+                        const macbethData = await response.json();
                         
-                        Object.keys(macbethData).forEach(sceneKey => {
-                            const sceneData = macbethData[sceneKey];
-                            if (sceneData && typeof sceneData === 'object') {
-                                // Extract scene content from the notes data
-                                const sceneContent = [];
-                                Object.keys(sceneData).forEach(lineNum => {
-                                    const lineData = sceneData[lineNum];
-                                    if (lineData && lineData.play) {
-                                        sceneContent.push(lineData.play);
-                                        lineCount++;
-                                    }
-                                });
-                                
-                                if (sceneContent.length > 0) {
-                                    // Apply speaker name optimization to the scene content
-                                    const optimizedContent = optimizeSpeakerNames(sceneContent);
-                                    plays['macbeth'].scenes[sceneKey] = optimizedContent;
-                                    sceneCount++;
-                                    
-                                    // Group scenes by acts
-                                    const actMatch = sceneKey.match(/^ACT\s+([IVX0-9]+)/i);
-                                    if (actMatch) {
-                                        const actName = `ACT ${actMatch[1]}`;
-                                        if (!plays['macbeth'].acts[actName]) {
-                                            plays['macbeth'].acts[actName] = [];
+                        // Store globally for Full Fathom Five commentary
+                        window.macbethData = macbethData;
+                        
+                        // Also populate the notes connector with the same data
+                        if (window.macbethNotesConnector) {
+                            window.macbethNotesConnector.notesData = macbethData;
+                            window.macbethNotesConnector.isLoaded = true;
+                        }
+                        
+                        // Add Macbeth to the plays object
+                        plays['macbeth'] = {
+                            name: 'Macbeth',
+                            originalFileName: 'macbeth',
+                            characters: [],
+                            acts: {},
+                            scenes: {}
+                        };
+                        
+                        // Parse the Macbeth data to extract acts and scenes
+                        if (macbethData) {
+                            let sceneCount = 0;
+                            let lineCount = 0;
+                            
+                            Object.keys(macbethData).forEach(sceneKey => {
+                                const sceneData = macbethData[sceneKey];
+                                if (sceneData && typeof sceneData === 'object') {
+                                    // Extract scene content from the notes data
+                                    const sceneContent = [];
+                                    Object.keys(sceneData).forEach(lineNum => {
+                                        const lineData = sceneData[lineNum];
+                                        if (!lineData) return;
+                                        // Prefer 'play', but fall back to common alternatives if present
+                                        const text = 
+                                            (typeof lineData === 'string') ? lineData :
+                                            lineData.play ?? lineData.text ?? lineData.line ?? null;
+                                        if (text) {
+                                            sceneContent.push(text);
+                                            lineCount++;
                                         }
-                                        plays['macbeth'].acts[actName].push(sceneKey);
+                                    });
+                                    
+                                    if (sceneContent.length > 0) {
+                                        // Apply speaker name optimization to the scene content
+                                        const optimizedContent = optimizeSpeakerNames(sceneContent);
+                                        plays['macbeth'].scenes[sceneKey] = optimizedContent;
+                                        sceneCount++;
+                                        
+                                        // Group scenes by acts
+                                        const actName = parseActFromScene(sceneKey);
+                                        if (actName) {
+                                            if (!plays['macbeth'].acts[actName]) {
+                                                plays['macbeth'].acts[actName] = [];
+                                            }
+                                            plays['macbeth'].acts[actName].push(sceneKey);
+                                        }
                                     }
                                 }
-                            }
-                        });
-                        
-                        console.log(`✅ Macbeth parsed successfully: ${sceneCount} scenes, ${lineCount} lines`);
-                        console.log('🎭 Macbeth plays object:', plays['macbeth']);
-                        
-                        // Update the UI to show Macbeth is available
-                        console.log('🎭 About to update UI - plays object:', plays);
-                        console.log('🎭 Macbeth in plays:', plays['macbeth']);
-                        updatePlaySelector();
-                        updateLibraryPlays();
-                        console.log('🎭 UI update completed');
+                            });
+                            
+                            console.log(`✅ Macbeth parsed: ${sceneCount} scenes, ${lineCount} lines`);
+                        }
+                        return 'macbeth';
+                    } else {
+                        console.warn('❌ Could not load Macbeth data - Status:', response.status);
+                        return null;
                     }
-                } else {
-                    console.warn('❌ Could not load Macbeth data - Status:', response.status);
-                    console.warn('❌ Response text:', await response.text());
-                    console.warn('❌ Tried to fetch from: ./Public/Data/macbeth_notes_cleaned_play.json');
+                } catch (error) {
+                    console.error('❌ Error loading Macbeth:', error);
+                    return null;
                 }
-            } catch (error) {
-                console.error('❌ Error loading Macbeth data:', error);
-                console.error('❌ Error stack:', error.stack);
-            }
+            };
             
-            // Load Hamlet data from the JSON file (same flow as Macbeth)
-            try {
-                console.log('🔄 Attempting to load Hamlet data...');
-                const hamletUrl = encodeURI('Public/Data/hamlet_notes (1).json');
-                const response = await fetch(hamletUrl + '?v=' + Date.now());
-                console.log('📡 Hamlet response status:', response.status, response.statusText);
-                
-                if (response.ok) {
-                    const hamletData = await response.json();
-                    console.log('✅ Hamlet data loaded successfully, size:', JSON.stringify(hamletData).length, 'characters');
-                    console.log('📚 Hamlet available scenes:', Object.keys(hamletData));
+            const loadHamlet = async () => {
+                try {
+                    console.log('🔄 Loading Hamlet...');
+                    const hamletUrl = encodeURI('Public/Data/hamlet_notes (1).json');
+                    const response = await fetch(hamletUrl + '?v=' + Date.now());
                     
-                    // Store globally if needed
-                    window.hamletData = hamletData;
-                    
-                    // Add Hamlet to the plays object
-                    plays['hamlet'] = {
-                        name: 'Hamlet',
-                        originalFileName: 'hamlet',
-                        characters: [],
-                        acts: {},
-                        scenes: {}
-                    };
-                    
-                    // Parse the Hamlet data to extract acts and scenes (identical to Macbeth)
-                    if (hamletData) {
-                        let sceneCount = 0;
-                        let lineCount = 0;
+                    if (response.ok) {
+                        const hamletData = await response.json();
+                        window.hamletData = hamletData;
                         
-                        Object.keys(hamletData).forEach(sceneKey => {
-                            const sceneData = hamletData[sceneKey];
-                            if (sceneData && typeof sceneData === 'object') {
-                                const sceneContent = [];
-                                Object.keys(sceneData).forEach(lineNum => {
-                                    const lineData = sceneData[lineNum];
-                                    if (lineData && lineData.play) {
-                                        sceneContent.push(lineData.play);
-                                        lineCount++;
-                                    }
-                                });
-                                
-                                if (sceneContent.length > 0) {
-                                    const optimizedContent = optimizeSpeakerNames(sceneContent);
-                                    plays['hamlet'].scenes[sceneKey] = optimizedContent;
-                                    sceneCount++;
+                        plays['hamlet'] = {
+                            name: 'Hamlet',
+                            originalFileName: 'hamlet',
+                            characters: [],
+                            acts: {},
+                            scenes: {}
+                        };
+                        
+                        if (hamletData) {
+                            let sceneCount = 0;
+                            let lineCount = 0;
+                            
+                            Object.keys(hamletData).forEach(originalSceneKey => {
+                                const sceneData = hamletData[originalSceneKey];
+                                if (sceneData && typeof sceneData === 'object') {
+                                    const sceneContent = [];
+                                    Object.keys(sceneData).forEach(lineNum => {
+                                        const lineData = sceneData[lineNum];
+                                        if (!lineData) return;
+                                        const text = 
+                                            (typeof lineData === 'string') ? lineData :
+                                            lineData.play ?? lineData.text ?? lineData.line ?? null;
+                                        if (text) {
+                                            sceneContent.push(text);
+                                            lineCount++;
+                                        }
+                                    });
                                     
-                                    const actMatch = sceneKey.match(/^ACT\s+([IVX0-9]+)/i);
-                                    if (actMatch) {
-                                        const actName = `ACT ${actMatch[1]}`;
+                                    if (sceneContent.length > 0) {
+                                        const optimizedContent = optimizeSpeakerNames(sceneContent);
+                                        const normalizedKey = normalizeSceneKey(originalSceneKey);
+                                        plays['hamlet'].scenes[normalizedKey] = optimizedContent;
+                                        sceneCount++;
+                                        
+                                        const actName = parseActFromScene(normalizedKey);
+                                        if (actName) {
+                                            if (!plays['hamlet'].acts[actName]) {
+                                                plays['hamlet'].acts[actName] = [];
+                                            }
+                                            if (!plays['hamlet'].acts[actName].includes(normalizedKey)) {
+                                                plays['hamlet'].acts[actName].push(normalizedKey);
+                                            }
+                                        }
+                                    }
+                                }
+                            });
+                            
+                            // Hardcode missing Hamlet ACT 1 scenes
+                            const hamletMissingScenes = ['ACT 1, SCENE 3', 'ACT 1, SCENE 4'];
+                            hamletMissingScenes.forEach(sceneKey => {
+                                if (!plays['hamlet'].scenes[sceneKey]) {
+                                    plays['hamlet'].scenes[sceneKey] = [];
+                                    const actName = parseActFromScene(sceneKey);
+                                    if (actName) {
                                         if (!plays['hamlet'].acts[actName]) {
                                             plays['hamlet'].acts[actName] = [];
                                         }
-                                        plays['hamlet'].acts[actName].push(sceneKey);
+                                        if (!plays['hamlet'].acts[actName].includes(sceneKey)) {
+                                            plays['hamlet'].acts[actName].push(sceneKey);
+                                        }
                                     }
                                 }
-                            }
-                        });
-                        
-                        console.log(`✅ Hamlet parsed successfully: ${sceneCount} scenes, ${lineCount} lines`);
-                        console.log('🎭 Hamlet plays object:', plays['hamlet']);
-                        
-                        // Update the UI to show Hamlet is available alongside Macbeth
-                        updatePlaySelector();
-                        updateLibraryPlays();
+                            });
+                            
+                            console.log(`✅ Hamlet parsed: ${sceneCount} scenes, ${lineCount} lines`);
+                        }
+                        return 'hamlet';
+                    } else {
+                        console.warn('❌ Could not load Hamlet data - Status:', response.status);
+                        return null;
                     }
-                } else {
-                    console.warn('❌ Could not load Hamlet data - Status:', response.status);
+                } catch (error) {
+                    console.error('❌ Error loading Hamlet:', error);
+                    return null;
                 }
-            } catch (error) {
-                console.error('❌ Error loading Hamlet data:', error);
-            }
+            };
             
+            const loadRomeo = async () => {
+                try {
+                    console.log('🔄 Loading Romeo and Juliet...');
+                    const response = await fetch('Public/Data/ROMEO_notes.json?v=' + Date.now());
+                    
+                    if (response.ok) {
+                        const romeoData = await response.json();
+                        window.romeoData = romeoData;
+                        
+                        plays['romeo'] = {
+                            name: 'Romeo and Juliet',
+                            originalFileName: 'romeo',
+                            characters: [],
+                            acts: {},
+                            scenes: {}
+                        };
+                        
+                        if (romeoData) {
+                            let sceneCount = 0;
+                            let lineCount = 0;
+                            Object.keys(romeoData).forEach(originalSceneKey => {
+                                const sceneData = romeoData[originalSceneKey];
+                                if (sceneData && typeof sceneData === 'object') {
+                                    const sceneContent = [];
+                                    Object.keys(sceneData).forEach(lineNum => {
+                                        const lineData = sceneData[lineNum];
+                                        if (!lineData) return;
+                                        const text = (typeof lineData === 'string') ? lineData : (lineData.play ?? lineData.text ?? lineData.line ?? null);
+                                        if (text) {
+                                            sceneContent.push(text);
+                                            lineCount++;
+                                        }
+                                    });
+                                    if (sceneContent.length > 0) {
+                                        const optimizedContent = optimizeSpeakerNames(sceneContent);
+                                        const normalizedKey = normalizeSceneKey(originalSceneKey);
+                                        plays['romeo'].scenes[normalizedKey] = optimizedContent;
+                                        sceneCount++;
+                                        const actName = parseActFromScene(normalizedKey);
+                                        if (actName) {
+                                            if (!plays['romeo'].acts[actName]) {
+                                                plays['romeo'].acts[actName] = [];
+                                            }
+                                            if (!plays['romeo'].acts[actName].includes(normalizedKey)) {
+                                                plays['romeo'].acts[actName].push(normalizedKey);
+                                            }
+                                        }
+                                    }
+                                }
+                            });
+                            console.log(`✅ Romeo and Juliet parsed: ${sceneCount} scenes, ${lineCount} lines`);
+                        }
+                        return 'romeo';
+                    } else {
+                        console.warn('❌ Could not load Romeo and Juliet data - Status:', response.status);
+                        return null;
+                    }
+                } catch (error) {
+                    console.error('❌ Error loading Romeo and Juliet:', error);
+                    return null;
+                }
+            };
+
+            const loadOthello = async () => {
+                try {
+                    console.log('🔄 Loading Othello...');
+                    const response = await fetch('Public/Data/othello_notes.json?v=' + Date.now());
+                    
+                    if (response.ok) {
+                        const othelloData = await response.json();
+                        window.othelloData = othelloData;
+                        
+                        plays['othello'] = {
+                            name: 'Othello',
+                            originalFileName: 'othello',
+                            characters: [],
+                            acts: {},
+                            scenes: {}
+                        };
+                        
+                        if (othelloData) {
+                            let sceneCount = 0;
+                            let lineCount = 0;
+                            Object.keys(othelloData).forEach(originalSceneKey => {
+                                const sceneData = othelloData[originalSceneKey];
+                                if (sceneData && typeof sceneData === 'object') {
+                                    const sceneContent = [];
+                                    Object.keys(sceneData).forEach(lineNum => {
+                                        const lineData = sceneData[lineNum];
+                                        if (!lineData) return;
+                                        const text = (typeof lineData === 'string') ? lineData : (lineData.play ?? lineData.text ?? lineData.line ?? null);
+                                        if (text) {
+                                            sceneContent.push(text);
+                                            lineCount++;
+                                        }
+                                    });
+                                    if (sceneContent.length > 0) {
+                                        const optimizedContent = optimizeSpeakerNames(sceneContent);
+                                        const normalizedKey = normalizeSceneKey(originalSceneKey);
+                                        plays['othello'].scenes[normalizedKey] = optimizedContent;
+                                        sceneCount++;
+                                        const actName = parseActFromScene(normalizedKey);
+                                        if (actName) {
+                                            if (!plays['othello'].acts[actName]) {
+                                                plays['othello'].acts[actName] = [];
+                                            }
+                                            if (!plays['othello'].acts[actName].includes(normalizedKey)) {
+                                                plays['othello'].acts[actName].push(normalizedKey);
+                                            }
+                                        }
+                                    }
+                                }
+                            });
+                            
+                            // Hardcode missing Othello scenes
+                            const othelloMissingScenes = ['ACT 4, SCENE 3', 'ACT 5, SCENE 1', 'ACT 5, SCENE 2'];
+                            othelloMissingScenes.forEach(sceneKey => {
+                                if (!plays['othello'].scenes[sceneKey]) {
+                                    plays['othello'].scenes[sceneKey] = [];
+                                    const actName = parseActFromScene(sceneKey);
+                                    if (actName) {
+                                        if (!plays['othello'].acts[actName]) {
+                                            plays['othello'].acts[actName] = [];
+                                        }
+                                        if (!plays['othello'].acts[actName].includes(sceneKey)) {
+                                            plays['othello'].acts[actName].push(sceneKey);
+                                        }
+                                    }
+                                }
+                            });
+                            
+                            console.log(`✅ Othello parsed: ${sceneCount} scenes, ${lineCount} lines`);
+                        }
+                        return 'othello';
+                    } else {
+                        console.warn('❌ Could not load Othello data - Status:', response.status);
+                        return null;
+                    }
+                } catch (error) {
+                    console.error('❌ Error loading Othello:', error);
+                    return null;
+                }
+            };
+
+            const loadKingLear = async () => {
+                try {
+                    console.log('🔄 Loading King Lear...');
+                    const response = await fetch('Public/Data/kinglear_notes.json?v=' + Date.now());
+                    
+                    if (response.ok) {
+                        const learData = await response.json();
+                        window.kinglearData = learData;
+                        
+                        plays['kinglear'] = {
+                            name: 'King Lear',
+                            originalFileName: 'kinglear',
+                            characters: [],
+                            acts: {},
+                            scenes: {}
+                        };
+                        
+                        if (learData) {
+                            let sceneCount = 0;
+                            let lineCount = 0;
+                            Object.keys(learData).forEach(originalSceneKey => {
+                                const sceneData = learData[originalSceneKey];
+                                if (sceneData && typeof sceneData === 'object') {
+                                    const sceneContent = [];
+                                    Object.keys(sceneData).forEach(lineNum => {
+                                        const lineData = sceneData[lineNum];
+                                        if (!lineData) return;
+                                        const text = (typeof lineData === 'string') ? lineData : (lineData.play ?? lineData.text ?? lineData.line ?? null);
+                                        if (text) {
+                                            sceneContent.push(text);
+                                            lineCount++;
+                                        }
+                                    });
+                                    if (sceneContent.length > 0) {
+                                        const optimizedContent = optimizeSpeakerNames(sceneContent);
+                                        const normalizedKey = normalizeSceneKey(originalSceneKey);
+                                        plays['kinglear'].scenes[normalizedKey] = optimizedContent;
+                                        sceneCount++;
+                                        const actName = parseActFromScene(normalizedKey);
+                                        if (actName) {
+                                            if (!plays['kinglear'].acts[actName]) {
+                                                plays['kinglear'].acts[actName] = [];
+                                            }
+                                            if (!plays['kinglear'].acts[actName].includes(normalizedKey)) {
+                                                plays['kinglear'].acts[actName].push(normalizedKey);
+                                            }
+                                        }
+                                    }
+                                }
+                            });
+                            console.log(`✅ King Lear parsed: ${sceneCount} scenes, ${lineCount} lines`);
+                        }
+                        return 'kinglear';
+                    } else {
+                        console.warn('❌ Could not load King Lear data - Status:', response.status);
+                        return null;
+                    }
+                } catch (error) {
+                    console.error('❌ Error loading King Lear:', error);
+                    return null;
+                }
+            };
+
+            // Load all plays in parallel for much faster performance!
+            try {
+                console.log('⚡ Starting parallel load of all plays...');
+                const startTime = Date.now();
+                
+                const loadResults = await Promise.all([
+                    loadMacbeth(),
+                    loadHamlet(),
+                    loadRomeo(),
+                    loadOthello(),
+                    loadKingLear()
+                ]);
+                
+                const endTime = Date.now();
+                const loadTime = (endTime - startTime) / 1000;
+                
+                const successfulLoads = loadResults.filter(result => result !== null);
+                console.log(`🎉 Parallel loading completed in ${loadTime}s!`);
+                console.log(`✅ Successfully loaded ${successfulLoads.length}/5 plays: ${successfulLoads.join(', ')}`);
+                
+                // Update UI only once after all plays are loaded
+                console.log('🔄 Updating UI with all loaded plays...');
+                updatePlaySelector();
+                updateLibraryPlays();
+                console.log('🎭 Library ready - Choose from Library will now be instant!');
+                
+            } catch (error) {
+                console.error('❌ Error in parallel loading:', error);
+            }
+
             // Add ARIA attributes to modals
             const settingsModal = document.getElementById('settingsModal');
             const aboutModal = document.getElementById('aboutModal');
@@ -4893,30 +5262,33 @@
             
             console.log('Updating navigation for play:', play.name, play);
             
-            // Add Dramatis Personae
-            if (play.characters.length > 0) {
-                const dramatisItem = document.createElement('li');
-                dramatisItem.innerHTML = '<a href="#" onclick="showDramatisPersonae()">Dramatis Personae</a>';
-                navList.appendChild(dramatisItem);
-            }
             
-            // Add Acts and Scenes
-            Object.keys(play.acts).forEach(actName => {
+            // Add Acts and Scenes - Sort acts numerically
+            const sortedActNames = Object.keys(play.acts).sort((a, b) => {
+                const actNumA = parseInt(a.replace('ACT ', ''));
+                const actNumB = parseInt(b.replace('ACT ', ''));
+                return actNumA - actNumB;
+            });
+            
+            sortedActNames.forEach(actName => {
                 const actItem = document.createElement('li');
                 actItem.innerHTML = `<a href="#" onclick="loadFirstSceneOfAct('${actName}')">${actName}</a>`;
                 navList.appendChild(actItem);
                 
                 if (play.acts[actName] && play.acts[actName].length > 0) {
-                    play.acts[actName].forEach(sceneName => {
+                    // Sort scenes within each act
+                    const sortedScenes = play.acts[actName].sort((a, b) => {
+                        const sceneNumA = parseInt(a.match(/SCENE\s+([IVX0-9]+)/i)?.[1]?.replace(/[IVX]/g, (m) => ({'I':1,'V':5,'X':10}[m] || m)) || '0');
+                        const sceneNumB = parseInt(b.match(/SCENE\s+([IVX0-9]+)/i)?.[1]?.replace(/[IVX]/g, (m) => ({'I':1,'V':5,'X':10}[m] || m)) || '0');
+                        return sceneNumA - sceneNumB;
+                    });
+                    
+                    sortedScenes.forEach(sceneName => {
                         const sceneItem = document.createElement('li');
                         sceneItem.className = 'sub-item';
                         
-                        // Extract proper scene name for display
-                        let displaySceneName = sceneName;
-                        const sceneMatch = sceneName.match(/(SCENE|SCN)\s+([IVX0-9]+)/i);
-                        if (sceneMatch) {
-                            displaySceneName = `Scene ${sceneMatch[2]}`;
-                        }
+                        // Extract proper scene name for display using normalization
+                        const displaySceneName = normalizeSceneName(sceneName);
                         
                         sceneItem.innerHTML = `<a href="#" onclick="loadScene('${sceneName}')" data-scene="${sceneName}">${displaySceneName}</a>`;
                         navList.appendChild(sceneItem);
@@ -4931,6 +5303,38 @@
                     const firstScene = play.acts[firstAct][0];
                     updateActiveNavigation(firstScene);
                 }
+            }
+        }
+
+        // Update active navigation
+        function updateActiveNavigation(itemName) {
+            const navLinks = document.querySelectorAll('.navigation-list a');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // If it's a scene, highlight both the scene and its parent act
+            if (itemName && itemName.includes(',')) {
+                const actName = itemName.split(',')[0];
+                
+                navLinks.forEach(link => {
+                    // Highlight the parent act
+                    if (link.textContent === actName) {
+                        link.classList.add('active');
+                    }
+                    
+                    // Highlight the specific scene using data attribute
+                    if (link.getAttribute('data-scene') === itemName) {
+                        link.classList.add('active');
+                    }
+                });
+            } else if (itemName) {
+                // Highlight just the act
+                navLinks.forEach(link => {
+                    if (link.textContent === itemName) {
+                        link.classList.add('active');
+                    }
+                });
             }
         }
 
@@ -5955,6 +6359,7 @@
                         level: analysisMode,
                         model: 'gpt-4o-mini',
                         playName: playName,
+                        sceneName: currentScene,
                         version: '2024-12-19-expert-fix'
                     })
                 });
@@ -6000,6 +6405,7 @@
                             level: analysisMode,
                             model: 'gpt-4o-mini',
                             playName: playName,
+                            sceneName: currentScene,
                             version: '2024-12-19-expert-fix'
                         })
                     });
@@ -7748,6 +8154,101 @@
                 console.log('✅ Debug: Critics button container shown');
             } else {
                 console.log('❌ Debug: Critics button container not found');
+            }
+        }
+
+        // Modal functions
+        function openSettings() {
+            document.getElementById('settingsModal').style.display = 'block';
+            
+            // Hide any existing success/error messages when opening settings
+            const uploadSuccess = document.getElementById('uploadSuccess');
+            const uploadError = document.getElementById('uploadError');
+            if (uploadSuccess) uploadSuccess.style.display = 'none';
+            if (uploadError) uploadError.style.display = 'none';
+            
+            updateLibraryPlays(); // Refresh the library display
+        }
+
+        function closeSettings() {
+            const modal = document.getElementById('settingsModal');
+            if (modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        function openAbout() {
+            document.getElementById('aboutModal').style.display = 'block';
+        }
+
+        function closeAbout() {
+            document.getElementById('aboutModal').style.display = 'none';
+        }
+
+        function openHowToUse() {
+            document.getElementById('howToUseModal').style.display = 'block';
+        }
+
+        function closeHowToUse() {
+            document.getElementById('howToUseModal').style.display = 'none';
+        }
+
+        function openRights() {
+            document.getElementById('rightsModal').style.display = 'block';
+        }
+
+        function closeRights() {
+            document.getElementById('rightsModal').style.display = 'none';
+        }
+
+        function openCriticsModal() {
+            document.getElementById('criticsModal').style.display = 'block';
+        }
+
+        function closeCriticsModal() {
+            document.getElementById('criticsModal').style.display = 'none';
+        }
+
+        function openNVModal() {
+            const modal = document.getElementById('nvModal');
+            modal.style.display = 'block';
+            // Scroll to top of modal content
+            const modalBody = modal.querySelector('.modal-body');
+            if (modalBody) {
+                modalBody.scrollTop = 0;
+            }
+        }
+
+        function closeNVModal() {
+            document.getElementById('nvModal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const settingsModal = document.getElementById('settingsModal');
+            const aboutModal = document.getElementById('aboutModal');
+            const howToUseModal = document.getElementById('howToUseModal');
+            const rightsModal = document.getElementById('rightsModal');
+            const criticsModal = document.getElementById('criticsModal');
+            const nvModal = document.getElementById('nvModal');
+            
+            if (event.target === settingsModal) {
+                closeSettings();
+            }
+            if (event.target === aboutModal) {
+                closeAbout();
+            }
+            if (event.target === howToUseModal) {
+                closeHowToUse();
+            }
+            if (event.target === rightsModal) {
+                closeRights();
+            }
+            if (event.target === criticsModal) {
+                closeCriticsModal();
+            }
+            if (event.target === nvModal) {
+                closeNVModal();
             }
         }
 

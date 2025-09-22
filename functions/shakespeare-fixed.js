@@ -48,19 +48,40 @@ function getFallbackNotes(text) {
   return []
 }
 
-// Function to find relevant notes from Macbeth database
-async function findRelevantNotes(text, scene = null) {
+// Function to find relevant notes from play database
+function normalizePlayKey(playNameRaw) {
+  if (!playNameRaw) return 'macbeth'
+  const s = String(playNameRaw).toLowerCase()
+  if (s.includes('hamlet')) return 'hamlet'
+  if (s.includes('romeo') || s.includes('juliet')) return 'romeo'
+  if (s.includes('othello')) return 'othello'
+  if (s.includes('lear')) return 'kinglear'
+  if (s.includes('macbeth')) return 'macbeth'
+  return 'macbeth'
+}
+
+async function findRelevantNotes(text, scene = null, playName = 'macbeth') {
   try {
-    console.log('Loading Macbeth notes from JSON file')
+    console.log(`Loading ${playName} notes from JSON file`)
     
     let notesData = null;
+    
+    // Map play names to their JSON files
+    const playFiles = {
+      'macbeth': 'macbeth_notes_cleaned_play.json',
+      'hamlet': 'hamlet_notes (1).json',
+      'romeo': 'ROMEO_notes.json',
+      'othello': 'othello_notes.json',
+      'kinglear': 'kinglear_notes.json'
+    };
+    
+    const normalizedKey = normalizePlayKey(playName)
+    const fileName = playFiles[normalizedKey] || playFiles['macbeth'];
       const possiblePaths = [
-    path.join(process.cwd(), 'Public/Data/macbeth_notes_cleaned_play.json'),
-    path.join(process.cwd(), 'macbeth_notes_cleaned_play.json'),
-    path.join(process.cwd(), 'macbeth_notes_cleaned_play_updated.json'),
-    path.join(__dirname, '../Public/Data/macbeth_notes_cleaned_play.json'),
-    path.join(__dirname, '../macbeth_notes_cleaned_play.json'),
-    path.join(__dirname, '../macbeth_notes_cleaned_play_updated.json')
+      path.join(process.cwd(), `Public/Data/${fileName}`),
+      path.join(process.cwd(), fileName),
+      path.join(__dirname, `../Public/Data/${fileName}`),
+      path.join(__dirname, `../${fileName}`)
   ];
     
     for (const filePath of possiblePaths) {
@@ -68,7 +89,7 @@ async function findRelevantNotes(text, scene = null) {
         console.log(`Trying to load from: ${filePath}`);
         const fileContent = await fs.readFile(filePath, 'utf8');
         notesData = JSON.parse(fileContent);
-        console.log(`✅ Successfully loaded Macbeth notes from: ${filePath}`);
+        console.log(`✅ Successfully loaded ${playName} notes from: ${filePath}`);
         console.log(`📊 Database contains ${Object.keys(notesData).length} scenes`);
         break;
       } catch (error) {
@@ -77,15 +98,15 @@ async function findRelevantNotes(text, scene = null) {
     }
     
     if (!notesData) {
-      console.error('❌ Could not load macbeth_notes_cleaned_play.json from any location');
+      console.error(`❌ Could not load ${fileName} from any location`);
       return getFallbackNotes(text);
     }
     
-    console.log('✅ Successfully loaded Macbeth database with', Object.keys(notesData).length, 'scenes')
+    console.log(`✅ Successfully loaded ${playName} database with`, Object.keys(notesData).length, 'scenes')
     return processNotesWithData(notesData, text)
     
   } catch (error) {
-    console.error('Error loading Macbeth notes:', error)
+    console.error(`Error loading ${playName} notes:`, error)
     console.log('Using fallback notes for:', text)
     return getFallbackNotes(text)
   }
@@ -301,7 +322,7 @@ exports.handler = async (event, context) => {
   }
 
   try {
-    const { text, level = 'basic', model = 'gpt-4o-mini', mode } = JSON.parse(event.body)
+    const { text, level = 'basic', model = 'gpt-4o-mini', mode, playName, sceneName } = JSON.parse(event.body)
 
     if (!text) {
       return {
@@ -351,27 +372,30 @@ exports.handler = async (event, context) => {
     const lines = text.split('\n').filter(line => line.trim().length > 0)
     const isMultipleLines = lines.length >= 2 && lines.length <= 5
 
-    // Find relevant notes from Macbeth database (only for Full Fathom Five)
+    // Find relevant notes from play database (only for Full Fathom Five)
     let relevantNotes = []
     if (analysisMode === 'fullfathomfive') {
       try {
-        relevantNotes = await findRelevantNotes(text)
-        console.log('Macbeth notes loaded:', relevantNotes.length, 'notes found')
+        const currentPlayName = playName || 'Macbeth'
+        relevantNotes = await findRelevantNotes(text, null, currentPlayName)
+        console.log(`${currentPlayName} notes loaded:`, relevantNotes.length, 'notes found')
         console.log('Notes details:', relevantNotes)
       } catch (error) {
-        console.error('Failed to load Macbeth notes, continuing without them:', error.message)
+        console.error(`Failed to load ${currentPlayName} notes, continuing without them:`, error.message)
         relevantNotes = [] // Continue without notes if loading fails
       }
     }
     
     // Build the system prompt based on analysis mode
     let systemPrompt = ''
-    const currentPlayName = event.body.playName || 'Macbeth'
-    const currentSceneName = event.body.sceneName || 'Unknown Scene'
+    const currentPlayName = playName || 'Macbeth'
+    const currentSceneName = sceneName || 'Unknown Scene'
     
     // Debug: Log the scene information
-    console.log('🎭 DEBUG: Received sceneName from frontend:', event.body.sceneName)
+    console.log('🎭 DEBUG: Received sceneName from frontend:', sceneName)
     console.log('🎭 DEBUG: Using currentSceneName:', currentSceneName)
+    console.log('🎭 DEBUG: Received playName from frontend:', playName)
+    console.log('🎭 DEBUG: Using currentPlayName:', currentPlayName)
 
     if (analysisMode === 'basic') {
       systemPrompt = `You are a university professor speaking to very smart undergraduates about Shakespeare.
@@ -473,9 +497,9 @@ For this section, use the historical variorum notes provided below.
 - IMPORTANT: Copy the notes exactly as provided, word for word, without any changes.
 - CRITICAL: Include the complete, unabridged text of every note, no matter how long.`
        
-      // Add Macbeth notes if available
+      // Add play notes if available
       if (relevantNotes.length > 0) {
-        systemPrompt += `\n\nIMPORTANT: You have access to historical variorum notes from the Macbeth database. Here are the relevant notes found:`
+        systemPrompt += `\n\nIMPORTANT: You have access to historical variorum notes from the ${currentPlayName} database. Here are the relevant notes found:`
         
         relevantNotes.forEach((note, index) => {
           systemPrompt += `\n\n[Line ${note.line}] ${note.play}`
