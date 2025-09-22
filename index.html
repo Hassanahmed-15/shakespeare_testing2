@@ -3950,6 +3950,78 @@
                 console.error('❌ Error stack:', error.stack);
             }
             
+            // Load Hamlet data from the JSON file (same flow as Macbeth)
+            try {
+                console.log('🔄 Attempting to load Hamlet data...');
+                const hamletUrl = encodeURI('Public/Data/hamlet_notes (1).json');
+                const response = await fetch(hamletUrl + '?v=' + Date.now());
+                console.log('📡 Hamlet response status:', response.status, response.statusText);
+                
+                if (response.ok) {
+                    const hamletData = await response.json();
+                    console.log('✅ Hamlet data loaded successfully, size:', JSON.stringify(hamletData).length, 'characters');
+                    console.log('📚 Hamlet available scenes:', Object.keys(hamletData));
+                    
+                    // Store globally if needed
+                    window.hamletData = hamletData;
+                    
+                    // Add Hamlet to the plays object
+                    plays['hamlet'] = {
+                        name: 'Hamlet',
+                        originalFileName: 'hamlet',
+                        characters: [],
+                        acts: {},
+                        scenes: {}
+                    };
+                    
+                    // Parse the Hamlet data to extract acts and scenes (identical to Macbeth)
+                    if (hamletData) {
+                        let sceneCount = 0;
+                        let lineCount = 0;
+                        
+                        Object.keys(hamletData).forEach(sceneKey => {
+                            const sceneData = hamletData[sceneKey];
+                            if (sceneData && typeof sceneData === 'object') {
+                                const sceneContent = [];
+                                Object.keys(sceneData).forEach(lineNum => {
+                                    const lineData = sceneData[lineNum];
+                                    if (lineData && lineData.play) {
+                                        sceneContent.push(lineData.play);
+                                        lineCount++;
+                                    }
+                                });
+                                
+                                if (sceneContent.length > 0) {
+                                    const optimizedContent = optimizeSpeakerNames(sceneContent);
+                                    plays['hamlet'].scenes[sceneKey] = optimizedContent;
+                                    sceneCount++;
+                                    
+                                    const actMatch = sceneKey.match(/^ACT\s+([IVX0-9]+)/i);
+                                    if (actMatch) {
+                                        const actName = `ACT ${actMatch[1]}`;
+                                        if (!plays['hamlet'].acts[actName]) {
+                                            plays['hamlet'].acts[actName] = [];
+                                        }
+                                        plays['hamlet'].acts[actName].push(sceneKey);
+                                    }
+                                }
+                            }
+                        });
+                        
+                        console.log(`✅ Hamlet parsed successfully: ${sceneCount} scenes, ${lineCount} lines`);
+                        console.log('🎭 Hamlet plays object:', plays['hamlet']);
+                        
+                        // Update the UI to show Hamlet is available alongside Macbeth
+                        updatePlaySelector();
+                        updateLibraryPlays();
+                    }
+                } else {
+                    console.warn('❌ Could not load Hamlet data - Status:', response.status);
+                }
+            } catch (error) {
+                console.error('❌ Error loading Hamlet data:', error);
+            }
+            
             // Add ARIA attributes to modals
             const settingsModal = document.getElementById('settingsModal');
             const aboutModal = document.getElementById('aboutModal');
