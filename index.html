@@ -3031,10 +3031,10 @@
         <aside class="sidebar" aria-label="Play navigation">
             <div class="section-title">Library</div>
             <div class="play-selector-container">
-                <select class="play-selector" id="playSelector">
+                <select class="play-selector" id="playSelector" onchange="loadSelectedPlay()">
                     <option value="" disabled selected>Choose a Play</option>
                 </select>
-                <button onclick="loadSelectedPlay()" class="go-btn">Go</button>
+                <button onclick="loadSelectedPlay()" class="go-btn" style="display: none;">Go</button>
             </div>
 
             <ul class="navigation-list" id="navigationList" aria-label="Play navigation">
@@ -3861,6 +3861,33 @@
             }
         }
 
+        // Convert Roman numerals to Arabic numbers
+        function convertRomanToArabic(roman) {
+            if (!roman) return roman;
+            const romanStr = String(roman).toUpperCase();
+            
+            // If it's already a number, return it
+            if (/^\d+$/.test(romanStr)) return romanStr;
+            
+            const romanMap = {
+                'I': 1, 'II': 2, 'III': 3, 'IV': 4, 'V': 5,
+                'VI': 6, 'VII': 7, 'VIII': 8, 'IX': 9, 'X': 10
+            };
+            
+            return romanMap[romanStr] ? String(romanMap[romanStr]) : romanStr;
+        }
+        
+        // Normalize scene display name
+        function normalizeSceneName(sceneKey) {
+            // Extract scene part and convert Roman to Arabic
+            const sceneMatch = sceneKey.match(/(SCENE|SCN)\s+([IVX0-9]+)/i);
+            if (sceneMatch) {
+                const sceneNumber = convertRomanToArabic(sceneMatch[2]);
+                return `Scene ${sceneNumber}`;
+            }
+            return sceneKey;
+        }
+
         // Settings navigation functionality
         document.addEventListener('DOMContentLoaded', async function() {
             // Load Macbeth data from the JSON file
@@ -3925,7 +3952,8 @@
                                     // Group scenes by acts
                                     const actMatch = sceneKey.match(/^ACT\s+([IVX0-9]+)/i);
                                     if (actMatch) {
-                                        const actName = `ACT ${actMatch[1]}`;
+                                        const actNumber = convertRomanToArabic(actMatch[1]);
+                                        const actName = `ACT ${actNumber}`;
                                         if (!plays['macbeth'].acts[actName]) {
                                             plays['macbeth'].acts[actName] = [];
                                         }
@@ -4008,7 +4036,8 @@
                                     
                                     const actMatch = sceneKey.match(/^ACT\s+([IVX0-9]+)/i);
                                     if (actMatch) {
-                                        const actName = `ACT ${actMatch[1]}`;
+                                        const actNumber = convertRomanToArabic(actMatch[1]);
+                                        const actName = `ACT ${actNumber}`;
                                         if (!plays['hamlet'].acts[actName]) {
                                             plays['hamlet'].acts[actName] = [];
                                         }
@@ -4072,7 +4101,8 @@
                                     sceneCount++;
                                     const actMatch = sceneKey.match(/^ACT\s+([IVX0-9]+)/i);
                                     if (actMatch) {
-                                        const actName = `ACT ${actMatch[1]}`;
+                                        const actNumber = convertRomanToArabic(actMatch[1]);
+                                        const actName = `ACT ${actNumber}`;
                                         if (!plays['romeo'].acts[actName]) {
                                             plays['romeo'].acts[actName] = [];
                                         }
@@ -4132,7 +4162,8 @@
                                     sceneCount++;
                                     const actMatch = sceneKey.match(/^ACT\s+([IVX0-9]+)/i);
                                     if (actMatch) {
-                                        const actName = `ACT ${actMatch[1]}`;
+                                        const actNumber = convertRomanToArabic(actMatch[1]);
+                                        const actName = `ACT ${actNumber}`;
                                         if (!plays['othello'].acts[actName]) {
                                             plays['othello'].acts[actName] = [];
                                         }
@@ -4192,7 +4223,8 @@
                                     sceneCount++;
                                     const actMatch = sceneKey.match(/^ACT\s+([IVX0-9]+)/i);
                                     if (actMatch) {
-                                        const actName = `ACT ${actMatch[1]}`;
+                                        const actNumber = convertRomanToArabic(actMatch[1]);
+                                        const actName = `ACT ${actNumber}`;
                                         if (!plays['kinglear'].acts[actName]) {
                                             plays['kinglear'].acts[actName] = [];
                                         }
@@ -5101,12 +5133,8 @@
                         const sceneItem = document.createElement('li');
                         sceneItem.className = 'sub-item';
                         
-                        // Extract proper scene name for display
-                        let displaySceneName = sceneName;
-                        const sceneMatch = sceneName.match(/(SCENE|SCN)\s+([IVX0-9]+)/i);
-                        if (sceneMatch) {
-                            displaySceneName = `Scene ${sceneMatch[2]}`;
-                        }
+                        // Extract proper scene name for display using normalization
+                        const displaySceneName = normalizeSceneName(sceneName);
                         
                         sceneItem.innerHTML = `<a href="#" onclick="loadScene('${sceneName}')" data-scene="${sceneName}">${displaySceneName}</a>`;
                         navList.appendChild(sceneItem);
