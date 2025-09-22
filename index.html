@@ -4174,6 +4174,44 @@
                                 }
                             }
                         });
+                        // Ensure all Roman numeral scenes are properly handled by creating normalized versions
+                        const romanScenes = [
+                            { original: 'ACT I, SCENE I', normalized: 'ACT 1, SCENE 1' },
+                            { original: 'ACT III, SCENE 1', normalized: 'ACT 3, SCENE 1' },
+                            { original: 'ACT III, SCENE 2', normalized: 'ACT 3, SCENE 2' }
+                        ];
+                        
+                        romanScenes.forEach(({ original, normalized }) => {
+                            if (othelloData[original] && !plays['othello'].scenes[normalized]) {
+                                // Copy the original scene data to the normalized key
+                                const sceneData = othelloData[original];
+                                const sceneContent = [];
+                                Object.keys(sceneData).forEach(lineNum => {
+                                    const lineData = sceneData[lineNum];
+                                    if (!lineData) return;
+                                    const text = (typeof lineData === 'string') ? lineData : (lineData.play ?? lineData.text ?? lineData.line ?? null);
+                                    if (text) {
+                                        sceneContent.push(text);
+                                    }
+                                });
+                                
+                                if (sceneContent.length > 0) {
+                                    const optimizedContent = optimizeSpeakerNames(sceneContent);
+                                    plays['othello'].scenes[normalized] = optimizedContent;
+                                    
+                                    const actName = parseActFromScene(normalized);
+                                    if (actName) {
+                                        if (!plays['othello'].acts[actName]) {
+                                            plays['othello'].acts[actName] = [];
+                                        }
+                                        if (!plays['othello'].acts[actName].includes(normalized)) {
+                                            plays['othello'].acts[actName].push(normalized);
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                        
                         console.log(`✅ Othello parsed successfully: ${sceneCount} scenes, ${lineCount} lines`);
                         updatePlaySelector();
                         updateLibraryPlays();
@@ -5143,14 +5181,27 @@
                 navList.appendChild(dramatisItem);
             }
             
-            // Add Acts and Scenes
-            Object.keys(play.acts).forEach(actName => {
+            // Add Acts and Scenes - Sort acts numerically
+            const sortedActNames = Object.keys(play.acts).sort((a, b) => {
+                const actNumA = parseInt(a.replace('ACT ', ''));
+                const actNumB = parseInt(b.replace('ACT ', ''));
+                return actNumA - actNumB;
+            });
+            
+            sortedActNames.forEach(actName => {
                 const actItem = document.createElement('li');
                 actItem.innerHTML = `<a href="#" onclick="loadFirstSceneOfAct('${actName}')">${actName}</a>`;
                 navList.appendChild(actItem);
                 
                 if (play.acts[actName] && play.acts[actName].length > 0) {
-                    play.acts[actName].forEach(sceneName => {
+                    // Sort scenes within each act
+                    const sortedScenes = play.acts[actName].sort((a, b) => {
+                        const sceneNumA = parseInt(a.match(/SCENE\s+([IVX0-9]+)/i)?.[1]?.replace(/[IVX]/g, (m) => ({'I':1,'V':5,'X':10}[m] || m)) || '0');
+                        const sceneNumB = parseInt(b.match(/SCENE\s+([IVX0-9]+)/i)?.[1]?.replace(/[IVX]/g, (m) => ({'I':1,'V':5,'X':10}[m] || m)) || '0');
+                        return sceneNumA - sceneNumB;
+                    });
+                    
+                    sortedScenes.forEach(sceneName => {
                         const sceneItem = document.createElement('li');
                         sceneItem.className = 'sub-item';
                         
