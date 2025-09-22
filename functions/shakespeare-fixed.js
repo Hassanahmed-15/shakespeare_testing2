@@ -322,7 +322,7 @@ exports.handler = async (event, context) => {
   }
 
   try {
-    const { text, level = 'basic', model = 'gpt-4o-mini', mode } = JSON.parse(event.body)
+    const { text, level = 'basic', model = 'gpt-4o-mini', mode, playName, sceneName } = JSON.parse(event.body)
 
     if (!text) {
       return {
@@ -376,7 +376,7 @@ exports.handler = async (event, context) => {
     let relevantNotes = []
     if (analysisMode === 'fullfathomfive') {
       try {
-        const currentPlayName = event.body.playName || 'Macbeth'
+        const currentPlayName = playName || 'Macbeth'
         relevantNotes = await findRelevantNotes(text, null, currentPlayName)
         console.log(`${currentPlayName} notes loaded:`, relevantNotes.length, 'notes found')
         console.log('Notes details:', relevantNotes)
@@ -388,12 +388,14 @@ exports.handler = async (event, context) => {
     
     // Build the system prompt based on analysis mode
     let systemPrompt = ''
-    const currentPlayName = event.body.playName || 'Macbeth'
-    const currentSceneName = event.body.sceneName || 'Unknown Scene'
+    const currentPlayName = playName || 'Macbeth'
+    const currentSceneName = sceneName || 'Unknown Scene'
     
     // Debug: Log the scene information
-    console.log('🎭 DEBUG: Received sceneName from frontend:', event.body.sceneName)
+    console.log('🎭 DEBUG: Received sceneName from frontend:', sceneName)
     console.log('🎭 DEBUG: Using currentSceneName:', currentSceneName)
+    console.log('🎭 DEBUG: Received playName from frontend:', playName)
+    console.log('🎭 DEBUG: Using currentPlayName:', currentPlayName)
 
     if (analysisMode === 'basic') {
       systemPrompt = `You are a university professor speaking to very smart undergraduates about Shakespeare.
