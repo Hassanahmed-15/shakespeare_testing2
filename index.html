@@ -3890,12 +3890,14 @@
         
         // Create a normalized scene key for consistent storage
         function normalizeSceneKey(originalKey) {
+            // Handle both "ACT 1, SCENE 1" and "ACT I, SCENE I" formats
             const actMatch = originalKey.match(/^ACT\s+([IVX0-9]+),?\s*SCENE\s+([IVX0-9]+)/i);
             if (actMatch) {
                 const actNumber = convertRomanToArabic(actMatch[1]);
                 const sceneNumber = convertRomanToArabic(actMatch[2]);
                 return `ACT ${actNumber}, SCENE ${sceneNumber}`;
             }
+            // If no match, return as-is
             return originalKey;
         }
         
@@ -4055,7 +4057,6 @@
                                     const normalizedKey = normalizeSceneKey(originalSceneKey);
                                     plays['hamlet'].scenes[normalizedKey] = optimizedContent;
                                     sceneCount++;
-                                    console.log(`Hamlet: ${originalSceneKey} -> ${normalizedKey}`);
                                     
                                     const actName = parseActFromScene(normalizedKey);
                                     if (actName) {
@@ -4105,8 +4106,8 @@
                     if (romeoData) {
                         let sceneCount = 0;
                         let lineCount = 0;
-                        Object.keys(romeoData).forEach(sceneKey => {
-                            const sceneData = romeoData[sceneKey];
+                        Object.keys(romeoData).forEach(originalSceneKey => {
+                            const sceneData = romeoData[originalSceneKey];
                             if (sceneData && typeof sceneData === 'object') {
                                 const sceneContent = [];
                                 Object.keys(sceneData).forEach(lineNum => {
@@ -4120,14 +4121,19 @@
                                 });
                                 if (sceneContent.length > 0) {
                                     const optimizedContent = optimizeSpeakerNames(sceneContent);
-                                    plays['romeo'].scenes[sceneKey] = optimizedContent;
+                                    // Use normalized key for storage
+                                    const normalizedKey = normalizeSceneKey(originalSceneKey);
+                                    plays['romeo'].scenes[normalizedKey] = optimizedContent;
                                     sceneCount++;
-                                    const actName = parseActFromScene(sceneKey);
+                                    const actName = parseActFromScene(normalizedKey);
                                     if (actName) {
                                         if (!plays['romeo'].acts[actName]) {
                                             plays['romeo'].acts[actName] = [];
                                         }
-                                        plays['romeo'].acts[actName].push(sceneKey);
+                                        // Avoid duplicates
+                                        if (!plays['romeo'].acts[actName].includes(normalizedKey)) {
+                                            plays['romeo'].acts[actName].push(normalizedKey);
+                                        }
                                     }
                                 }
                             }
@@ -4183,7 +4189,6 @@
                                     const normalizedKey = normalizeSceneKey(originalSceneKey);
                                     plays['othello'].scenes[normalizedKey] = optimizedContent;
                                     sceneCount++;
-                                    console.log(`Othello: ${originalSceneKey} -> ${normalizedKey}`);
                                     const actName = parseActFromScene(normalizedKey);
                                     if (actName) {
                                         if (!plays['othello'].acts[actName]) {
@@ -4230,8 +4235,8 @@
                     if (learData) {
                         let sceneCount = 0;
                         let lineCount = 0;
-                        Object.keys(learData).forEach(sceneKey => {
-                            const sceneData = learData[sceneKey];
+                        Object.keys(learData).forEach(originalSceneKey => {
+                            const sceneData = learData[originalSceneKey];
                             if (sceneData && typeof sceneData === 'object') {
                                 const sceneContent = [];
                                 Object.keys(sceneData).forEach(lineNum => {
@@ -4245,14 +4250,19 @@
                                 });
                                 if (sceneContent.length > 0) {
                                     const optimizedContent = optimizeSpeakerNames(sceneContent);
-                                    plays['kinglear'].scenes[sceneKey] = optimizedContent;
+                                    // Use normalized key for storage
+                                    const normalizedKey = normalizeSceneKey(originalSceneKey);
+                                    plays['kinglear'].scenes[normalizedKey] = optimizedContent;
                                     sceneCount++;
-                                    const actName = parseActFromScene(sceneKey);
+                                    const actName = parseActFromScene(normalizedKey);
                                     if (actName) {
                                         if (!plays['kinglear'].acts[actName]) {
                                             plays['kinglear'].acts[actName] = [];
                                         }
-                                        plays['kinglear'].acts[actName].push(sceneKey);
+                                        // Avoid duplicates
+                                        if (!plays['kinglear'].acts[actName].includes(normalizedKey)) {
+                                            plays['kinglear'].acts[actName].push(normalizedKey);
+                                        }
                                     }
                                 }
                             }
