@@ -3877,6 +3877,16 @@
             return romanMap[romanStr] ? String(romanMap[romanStr]) : romanStr;
         }
         
+        // Debug function to log all scenes being processed
+        function logSceneProcessing(playName, sceneKey, actMatch) {
+            if (actMatch) {
+                const actNumber = convertRomanToArabic(actMatch[1]);
+                console.log(`🎭 ${playName}: Processing "${sceneKey}" -> ACT ${actNumber}`);
+            } else {
+                console.log(`🎭 ${playName}: No act match for "${sceneKey}"`);
+            }
+        }
+        
         // Normalize scene display name
         function normalizeSceneName(sceneKey) {
             // Extract scene part and convert Roman to Arabic
@@ -4035,6 +4045,7 @@
                                     sceneCount++;
                                     
                                     const actMatch = sceneKey.match(/^ACT\s+([IVX0-9]+)/i);
+                                    logSceneProcessing('Hamlet', sceneKey, actMatch);
                                     if (actMatch) {
                                         const actNumber = convertRomanToArabic(actMatch[1]);
                                         const actName = `ACT ${actNumber}`;
@@ -4048,7 +4059,10 @@
                         });
                         
                         console.log(`✅ Hamlet parsed successfully: ${sceneCount} scenes, ${lineCount} lines`);
-                        console.log('🎭 Hamlet plays object:', plays['hamlet']);
+                        console.log('🎭 Hamlet acts structure:', plays['hamlet'].acts);
+                        Object.keys(plays['hamlet'].acts).forEach(actName => {
+                            console.log(`🎭 ${actName}: ${plays['hamlet'].acts[actName].length} scenes -`, plays['hamlet'].acts[actName]);
+                        });
                         
                         // Update the UI to show Hamlet is available alongside Macbeth
                         updatePlaySelector();
@@ -4161,6 +4175,7 @@
                                     plays['othello'].scenes[sceneKey] = optimizedContent;
                                     sceneCount++;
                                     const actMatch = sceneKey.match(/^ACT\s+([IVX0-9]+)/i);
+                                    logSceneProcessing('Othello', sceneKey, actMatch);
                                     if (actMatch) {
                                         const actNumber = convertRomanToArabic(actMatch[1]);
                                         const actName = `ACT ${actNumber}`;
@@ -4173,6 +4188,10 @@
                             }
                         });
                         console.log(`✅ Othello parsed successfully: ${sceneCount} scenes, ${lineCount} lines`);
+                        console.log('🎭 Othello acts structure:', plays['othello'].acts);
+                        Object.keys(plays['othello'].acts).forEach(actName => {
+                            console.log(`🎭 ${actName}: ${plays['othello'].acts[actName].length} scenes -`, plays['othello'].acts[actName]);
+                        });
                         updatePlaySelector();
                         updateLibraryPlays();
                     }
@@ -4222,6 +4241,7 @@
                                     plays['kinglear'].scenes[sceneKey] = optimizedContent;
                                     sceneCount++;
                                     const actMatch = sceneKey.match(/^ACT\s+([IVX0-9]+)/i);
+                                    logSceneProcessing('King Lear', sceneKey, actMatch);
                                     if (actMatch) {
                                         const actNumber = convertRomanToArabic(actMatch[1]);
                                         const actName = `ACT ${actNumber}`;
@@ -4234,6 +4254,10 @@
                             }
                         });
                         console.log(`✅ King Lear parsed successfully: ${sceneCount} scenes, ${lineCount} lines`);
+                        console.log('🎭 King Lear acts structure:', plays['kinglear'].acts);
+                        Object.keys(plays['kinglear'].acts).forEach(actName => {
+                            console.log(`🎭 ${actName}: ${plays['kinglear'].acts[actName].length} scenes -`, plays['kinglear'].acts[actName]);
+                        });
                         updatePlaySelector();
                         updateLibraryPlays();
                     }
