@@ -3923,436 +3923,411 @@
 
         // Settings navigation functionality
         document.addEventListener('DOMContentLoaded', async function() {
-            // Load Macbeth data from the JSON file
-            try {
-                console.log('🔄 Attempting to load Macbeth data...');
-                const response = await fetch('Public/Data/macbeth_notes_cleaned_play.json?v=' + Date.now());
-                console.log('📡 Response status:', response.status, response.statusText);
-                
-                if (response.ok) {
-                    const macbethData = await response.json();
-                    console.log('✅ Macbeth data loaded successfully, size:', JSON.stringify(macbethData).length, 'characters');
-                    console.log('📚 Available scenes:', Object.keys(macbethData));
+            console.log('🚀 Loading all plays in parallel for faster performance...');
+            
+            // Define all play loading functions
+            const loadMacbeth = async () => {
+                try {
+                    console.log('🔄 Loading Macbeth...');
+                    const response = await fetch('Public/Data/macbeth_notes_cleaned_play.json?v=' + Date.now());
                     
-                    // Store macbethData globally for Full Fathom Five commentary
-                    window.macbethData = macbethData;
-                    
-                    // Also populate the notes connector with the same data
-                    if (window.macbethNotesConnector) {
-                        window.macbethNotesConnector.notesData = macbethData;
-                        window.macbethNotesConnector.isLoaded = true;
-                        console.log('🔗 Notes connector synchronized with loaded data');
-                    }
-                    
-                    // Add Macbeth to the plays object
-                    plays['macbeth'] = {
-                        name: 'Macbeth',
-                        originalFileName: 'macbeth',
-                        characters: [],
-                        acts: {},
-                        scenes: {}
-                    };
-                    
-                    // Parse the Macbeth data to extract acts and scenes
-                    if (macbethData) {
-                        let sceneCount = 0;
-                        let lineCount = 0;
+                    if (response.ok) {
+                        const macbethData = await response.json();
                         
-                        Object.keys(macbethData).forEach(sceneKey => {
-                            const sceneData = macbethData[sceneKey];
-                            if (sceneData && typeof sceneData === 'object') {
-                                // Extract scene content from the notes data
-                                const sceneContent = [];
-                                Object.keys(sceneData).forEach(lineNum => {
-                                    const lineData = sceneData[lineNum];
-                                    if (!lineData) return;
-                                    // Prefer 'play', but fall back to common alternatives if present
-                                    const text = 
-                                        (typeof lineData === 'string') ? lineData :
-                                        lineData.play ?? lineData.text ?? lineData.line ?? null;
-                                    if (text) {
-                                        sceneContent.push(text);
-                                        lineCount++;
-                                    }
-                                });
-                                
-                                if (sceneContent.length > 0) {
-                                    // Apply speaker name optimization to the scene content
-                                    const optimizedContent = optimizeSpeakerNames(sceneContent);
-                                    plays['macbeth'].scenes[sceneKey] = optimizedContent;
-                                    sceneCount++;
-                                    
-                                    // Group scenes by acts
-                                    const actName = parseActFromScene(sceneKey);
-                                    if (actName) {
-                                        if (!plays['macbeth'].acts[actName]) {
-                                            plays['macbeth'].acts[actName] = [];
+                        // Store globally for Full Fathom Five commentary
+                        window.macbethData = macbethData;
+                        
+                        // Also populate the notes connector with the same data
+                        if (window.macbethNotesConnector) {
+                            window.macbethNotesConnector.notesData = macbethData;
+                            window.macbethNotesConnector.isLoaded = true;
+                        }
+                        
+                        // Add Macbeth to the plays object
+                        plays['macbeth'] = {
+                            name: 'Macbeth',
+                            originalFileName: 'macbeth',
+                            characters: [],
+                            acts: {},
+                            scenes: {}
+                        };
+                        
+                        // Parse the Macbeth data to extract acts and scenes
+                        if (macbethData) {
+                            let sceneCount = 0;
+                            let lineCount = 0;
+                            
+                            Object.keys(macbethData).forEach(sceneKey => {
+                                const sceneData = macbethData[sceneKey];
+                                if (sceneData && typeof sceneData === 'object') {
+                                    // Extract scene content from the notes data
+                                    const sceneContent = [];
+                                    Object.keys(sceneData).forEach(lineNum => {
+                                        const lineData = sceneData[lineNum];
+                                        if (!lineData) return;
+                                        // Prefer 'play', but fall back to common alternatives if present
+                                        const text = 
+                                            (typeof lineData === 'string') ? lineData :
+                                            lineData.play ?? lineData.text ?? lineData.line ?? null;
+                                        if (text) {
+                                            sceneContent.push(text);
+                                            lineCount++;
                                         }
-                                        plays['macbeth'].acts[actName].push(sceneKey);
+                                    });
+                                    
+                                    if (sceneContent.length > 0) {
+                                        // Apply speaker name optimization to the scene content
+                                        const optimizedContent = optimizeSpeakerNames(sceneContent);
+                                        plays['macbeth'].scenes[sceneKey] = optimizedContent;
+                                        sceneCount++;
+                                        
+                                        // Group scenes by acts
+                                        const actName = parseActFromScene(sceneKey);
+                                        if (actName) {
+                                            if (!plays['macbeth'].acts[actName]) {
+                                                plays['macbeth'].acts[actName] = [];
+                                            }
+                                            plays['macbeth'].acts[actName].push(sceneKey);
+                                        }
                                     }
                                 }
-                            }
-                        });
-                        
-                        console.log(`✅ Macbeth parsed successfully: ${sceneCount} scenes, ${lineCount} lines`);
-                        console.log('🎭 Macbeth plays object:', plays['macbeth']);
-                        
-                        // Update the UI to show Macbeth is available
-                        console.log('🎭 About to update UI - plays object:', plays);
-                        console.log('🎭 Macbeth in plays:', plays['macbeth']);
-                        updatePlaySelector();
-                        updateLibraryPlays();
-                        console.log('🎭 UI update completed');
+                            });
+                            
+                            console.log(`✅ Macbeth parsed: ${sceneCount} scenes, ${lineCount} lines`);
+                        }
+                        return 'macbeth';
+                    } else {
+                        console.warn('❌ Could not load Macbeth data - Status:', response.status);
+                        return null;
                     }
-                } else {
-                    console.warn('❌ Could not load Macbeth data - Status:', response.status);
-                    console.warn('❌ Response text:', await response.text());
-                    console.warn('❌ Tried to fetch from: ./Public/Data/macbeth_notes_cleaned_play.json');
+                } catch (error) {
+                    console.error('❌ Error loading Macbeth:', error);
+                    return null;
                 }
-            } catch (error) {
-                console.error('❌ Error loading Macbeth data:', error);
-                console.error('❌ Error stack:', error.stack);
-            }
+            };
             
-            // Load Hamlet data from the JSON file (same flow as Macbeth)
-            try {
-                console.log('🔄 Attempting to load Hamlet data...');
-                const hamletUrl = encodeURI('Public/Data/hamlet_notes (1).json');
-                const response = await fetch(hamletUrl + '?v=' + Date.now());
-                console.log('📡 Hamlet response status:', response.status, response.statusText);
-                
-                if (response.ok) {
-                    const hamletData = await response.json();
-                    console.log('✅ Hamlet data loaded successfully, size:', JSON.stringify(hamletData).length, 'characters');
-                    console.log('📚 Hamlet available scenes:', Object.keys(hamletData));
+            const loadHamlet = async () => {
+                try {
+                    console.log('🔄 Loading Hamlet...');
+                    const hamletUrl = encodeURI('Public/Data/hamlet_notes (1).json');
+                    const response = await fetch(hamletUrl + '?v=' + Date.now());
                     
-                    // Store globally if needed
-                    window.hamletData = hamletData;
-                    
-                    // Add Hamlet to the plays object
-                    plays['hamlet'] = {
-                        name: 'Hamlet',
-                        originalFileName: 'hamlet',
-                        characters: [],
-                        acts: {},
-                        scenes: {}
-                    };
-                    
-                    // Parse the Hamlet data to extract acts and scenes (identical to Macbeth)
-                    if (hamletData) {
-                        let sceneCount = 0;
-                        let lineCount = 0;
+                    if (response.ok) {
+                        const hamletData = await response.json();
+                        window.hamletData = hamletData;
                         
-                        Object.keys(hamletData).forEach(originalSceneKey => {
-                            const sceneData = hamletData[originalSceneKey];
-                            if (sceneData && typeof sceneData === 'object') {
-                                const sceneContent = [];
-                                Object.keys(sceneData).forEach(lineNum => {
-                                    const lineData = sceneData[lineNum];
-                                    if (!lineData) return;
-                                    // Prefer 'play', but fall back to common alternatives if present
-                                    const text = 
-                                        (typeof lineData === 'string') ? lineData :
-                                        lineData.play ?? lineData.text ?? lineData.line ?? null;
-                                    if (text) {
-                                        sceneContent.push(text);
-                                        lineCount++;
-                                    }
-                                });
-                                
-                                if (sceneContent.length > 0) {
-                                    const optimizedContent = optimizeSpeakerNames(sceneContent);
-                                    // Use normalized key for storage
-                                    const normalizedKey = normalizeSceneKey(originalSceneKey);
-                                    plays['hamlet'].scenes[normalizedKey] = optimizedContent;
-                                    sceneCount++;
+                        plays['hamlet'] = {
+                            name: 'Hamlet',
+                            originalFileName: 'hamlet',
+                            characters: [],
+                            acts: {},
+                            scenes: {}
+                        };
+                        
+                        if (hamletData) {
+                            let sceneCount = 0;
+                            let lineCount = 0;
+                            
+                            Object.keys(hamletData).forEach(originalSceneKey => {
+                                const sceneData = hamletData[originalSceneKey];
+                                if (sceneData && typeof sceneData === 'object') {
+                                    const sceneContent = [];
+                                    Object.keys(sceneData).forEach(lineNum => {
+                                        const lineData = sceneData[lineNum];
+                                        if (!lineData) return;
+                                        const text = 
+                                            (typeof lineData === 'string') ? lineData :
+                                            lineData.play ?? lineData.text ?? lineData.line ?? null;
+                                        if (text) {
+                                            sceneContent.push(text);
+                                            lineCount++;
+                                        }
+                                    });
                                     
-                                    const actName = parseActFromScene(normalizedKey);
+                                    if (sceneContent.length > 0) {
+                                        const optimizedContent = optimizeSpeakerNames(sceneContent);
+                                        const normalizedKey = normalizeSceneKey(originalSceneKey);
+                                        plays['hamlet'].scenes[normalizedKey] = optimizedContent;
+                                        sceneCount++;
+                                        
+                                        const actName = parseActFromScene(normalizedKey);
+                                        if (actName) {
+                                            if (!plays['hamlet'].acts[actName]) {
+                                                plays['hamlet'].acts[actName] = [];
+                                            }
+                                            if (!plays['hamlet'].acts[actName].includes(normalizedKey)) {
+                                                plays['hamlet'].acts[actName].push(normalizedKey);
+                                            }
+                                        }
+                                    }
+                                }
+                            });
+                            
+                            // Hardcode missing Hamlet ACT 1 scenes
+                            const hamletMissingScenes = ['ACT 1, SCENE 3', 'ACT 1, SCENE 4'];
+                            hamletMissingScenes.forEach(sceneKey => {
+                                if (!plays['hamlet'].scenes[sceneKey]) {
+                                    plays['hamlet'].scenes[sceneKey] = [];
+                                    const actName = parseActFromScene(sceneKey);
                                     if (actName) {
                                         if (!plays['hamlet'].acts[actName]) {
                                             plays['hamlet'].acts[actName] = [];
                                         }
-                                        // Avoid duplicates
-                                        if (!plays['hamlet'].acts[actName].includes(normalizedKey)) {
-                                            plays['hamlet'].acts[actName].push(normalizedKey);
+                                        if (!plays['hamlet'].acts[actName].includes(sceneKey)) {
+                                            plays['hamlet'].acts[actName].push(sceneKey);
                                         }
                                     }
                                 }
-                            }
-                        });
-                        
-                        // Hardcode missing Hamlet ACT 1 scenes to appear in left panel
-                        const hamletMissingScenes = [
-                            'ACT 1, SCENE 3',
-                            'ACT 1, SCENE 4'
-                        ];
-                        
-                        hamletMissingScenes.forEach(sceneKey => {
-                            if (!plays['hamlet'].scenes[sceneKey]) {
-                                // Add empty placeholder - will show in nav but display nothing when clicked
-                                plays['hamlet'].scenes[sceneKey] = [];
-                                
-                                const actName = parseActFromScene(sceneKey);
-                                if (actName) {
-                                    if (!plays['hamlet'].acts[actName]) {
-                                        plays['hamlet'].acts[actName] = [];
-                                    }
-                                    if (!plays['hamlet'].acts[actName].includes(sceneKey)) {
-                                        plays['hamlet'].acts[actName].push(sceneKey);
-                                    }
-                                }
-                            }
-                        });
-                        
-                        console.log(`✅ Hamlet parsed successfully: ${sceneCount} scenes, ${lineCount} lines`);
-                        
-                        // Update the UI to show Hamlet is available alongside Macbeth
-                        updatePlaySelector();
-                        updateLibraryPlays();
+                            });
+                            
+                            console.log(`✅ Hamlet parsed: ${sceneCount} scenes, ${lineCount} lines`);
+                        }
+                        return 'hamlet';
+                    } else {
+                        console.warn('❌ Could not load Hamlet data - Status:', response.status);
+                        return null;
                     }
-                } else {
-                    console.warn('❌ Could not load Hamlet data - Status:', response.status);
+                } catch (error) {
+                    console.error('❌ Error loading Hamlet:', error);
+                    return null;
                 }
-            } catch (error) {
-                console.error('❌ Error loading Hamlet data:', error);
-            }
+            };
             
-            // Load Romeo and Juliet
-            try {
-                console.log('🔄 Attempting to load Romeo and Juliet data...');
-                const response = await fetch('Public/Data/ROMEO_notes.json?v=' + Date.now());
-                console.log('📡 Romeo response status:', response.status, response.statusText);
-                
-                if (response.ok) {
-                    const romeoData = await response.json();
-                    window.romeoData = romeoData;
+            const loadRomeo = async () => {
+                try {
+                    console.log('🔄 Loading Romeo and Juliet...');
+                    const response = await fetch('Public/Data/ROMEO_notes.json?v=' + Date.now());
                     
-                    plays['romeo'] = {
-                        name: 'Romeo and Juliet',
-                        originalFileName: 'romeo',
-                        characters: [],
-                        acts: {},
-                        scenes: {}
-                    };
-                    
-                    if (romeoData) {
-                        let sceneCount = 0;
-                        let lineCount = 0;
-                        Object.keys(romeoData).forEach(originalSceneKey => {
-                            const sceneData = romeoData[originalSceneKey];
-                            if (sceneData && typeof sceneData === 'object') {
-                                const sceneContent = [];
-                                Object.keys(sceneData).forEach(lineNum => {
-                                    const lineData = sceneData[lineNum];
-                                    if (!lineData) return;
-                                    const text = (typeof lineData === 'string') ? lineData : (lineData.play ?? lineData.text ?? lineData.line ?? null);
-                                    if (text) {
-                                        sceneContent.push(text);
-                                        lineCount++;
-                                    }
-                                });
-                                if (sceneContent.length > 0) {
-                                    const optimizedContent = optimizeSpeakerNames(sceneContent);
-                                    // Use normalized key for storage
-                                    const normalizedKey = normalizeSceneKey(originalSceneKey);
-                                    plays['romeo'].scenes[normalizedKey] = optimizedContent;
-                                    sceneCount++;
-                                    const actName = parseActFromScene(normalizedKey);
-                                    if (actName) {
-                                        if (!plays['romeo'].acts[actName]) {
-                                            plays['romeo'].acts[actName] = [];
+                    if (response.ok) {
+                        const romeoData = await response.json();
+                        window.romeoData = romeoData;
+                        
+                        plays['romeo'] = {
+                            name: 'Romeo and Juliet',
+                            originalFileName: 'romeo',
+                            characters: [],
+                            acts: {},
+                            scenes: {}
+                        };
+                        
+                        if (romeoData) {
+                            let sceneCount = 0;
+                            let lineCount = 0;
+                            Object.keys(romeoData).forEach(originalSceneKey => {
+                                const sceneData = romeoData[originalSceneKey];
+                                if (sceneData && typeof sceneData === 'object') {
+                                    const sceneContent = [];
+                                    Object.keys(sceneData).forEach(lineNum => {
+                                        const lineData = sceneData[lineNum];
+                                        if (!lineData) return;
+                                        const text = (typeof lineData === 'string') ? lineData : (lineData.play ?? lineData.text ?? lineData.line ?? null);
+                                        if (text) {
+                                            sceneContent.push(text);
+                                            lineCount++;
                                         }
-                                        // Avoid duplicates
-                                        if (!plays['romeo'].acts[actName].includes(normalizedKey)) {
-                                            plays['romeo'].acts[actName].push(normalizedKey);
+                                    });
+                                    if (sceneContent.length > 0) {
+                                        const optimizedContent = optimizeSpeakerNames(sceneContent);
+                                        const normalizedKey = normalizeSceneKey(originalSceneKey);
+                                        plays['romeo'].scenes[normalizedKey] = optimizedContent;
+                                        sceneCount++;
+                                        const actName = parseActFromScene(normalizedKey);
+                                        if (actName) {
+                                            if (!plays['romeo'].acts[actName]) {
+                                                plays['romeo'].acts[actName] = [];
+                                            }
+                                            if (!plays['romeo'].acts[actName].includes(normalizedKey)) {
+                                                plays['romeo'].acts[actName].push(normalizedKey);
+                                            }
                                         }
                                     }
                                 }
-                            }
-                        });
-                        console.log(`✅ Romeo and Juliet parsed successfully: ${sceneCount} scenes, ${lineCount} lines`);
-                        updatePlaySelector();
-                        updateLibraryPlays();
+                            });
+                            console.log(`✅ Romeo and Juliet parsed: ${sceneCount} scenes, ${lineCount} lines`);
+                        }
+                        return 'romeo';
+                    } else {
+                        console.warn('❌ Could not load Romeo and Juliet data - Status:', response.status);
+                        return null;
                     }
-                } else {
-                    console.warn('❌ Could not load Romeo and Juliet data - Status:', response.status);
+                } catch (error) {
+                    console.error('❌ Error loading Romeo and Juliet:', error);
+                    return null;
                 }
-            } catch (error) {
-                console.error('❌ Error loading Romeo and Juliet data:', error);
-            }
+            };
 
-            // Load Othello
-            try {
-                console.log('🔄 Attempting to load Othello data...');
-                const response = await fetch('Public/Data/othello_notes.json?v=' + Date.now());
-                console.log('📡 Othello response status:', response.status, response.statusText);
-                
-                if (response.ok) {
-                    const othelloData = await response.json();
-                    window.othelloData = othelloData;
+            const loadOthello = async () => {
+                try {
+                    console.log('🔄 Loading Othello...');
+                    const response = await fetch('Public/Data/othello_notes.json?v=' + Date.now());
                     
-                    plays['othello'] = {
-                        name: 'Othello',
-                        originalFileName: 'othello',
-                        characters: [],
-                        acts: {},
-                        scenes: {}
-                    };
-                    
-                    if (othelloData) {
-                        let sceneCount = 0;
-                        let lineCount = 0;
-                        Object.keys(othelloData).forEach(originalSceneKey => {
-                            const sceneData = othelloData[originalSceneKey];
-                            if (sceneData && typeof sceneData === 'object') {
-                                const sceneContent = [];
-                                Object.keys(sceneData).forEach(lineNum => {
-                                    const lineData = sceneData[lineNum];
-                                    if (!lineData) return;
-                                    const text = (typeof lineData === 'string') ? lineData : (lineData.play ?? lineData.text ?? lineData.line ?? null);
-                                    if (text) {
-                                        sceneContent.push(text);
-                                        lineCount++;
+                    if (response.ok) {
+                        const othelloData = await response.json();
+                        window.othelloData = othelloData;
+                        
+                        plays['othello'] = {
+                            name: 'Othello',
+                            originalFileName: 'othello',
+                            characters: [],
+                            acts: {},
+                            scenes: {}
+                        };
+                        
+                        if (othelloData) {
+                            let sceneCount = 0;
+                            let lineCount = 0;
+                            Object.keys(othelloData).forEach(originalSceneKey => {
+                                const sceneData = othelloData[originalSceneKey];
+                                if (sceneData && typeof sceneData === 'object') {
+                                    const sceneContent = [];
+                                    Object.keys(sceneData).forEach(lineNum => {
+                                        const lineData = sceneData[lineNum];
+                                        if (!lineData) return;
+                                        const text = (typeof lineData === 'string') ? lineData : (lineData.play ?? lineData.text ?? lineData.line ?? null);
+                                        if (text) {
+                                            sceneContent.push(text);
+                                            lineCount++;
+                                        }
+                                    });
+                                    if (sceneContent.length > 0) {
+                                        const optimizedContent = optimizeSpeakerNames(sceneContent);
+                                        const normalizedKey = normalizeSceneKey(originalSceneKey);
+                                        plays['othello'].scenes[normalizedKey] = optimizedContent;
+                                        sceneCount++;
+                                        const actName = parseActFromScene(normalizedKey);
+                                        if (actName) {
+                                            if (!plays['othello'].acts[actName]) {
+                                                plays['othello'].acts[actName] = [];
+                                            }
+                                            if (!plays['othello'].acts[actName].includes(normalizedKey)) {
+                                                plays['othello'].acts[actName].push(normalizedKey);
+                                            }
+                                        }
                                     }
-                                });
-                                if (sceneContent.length > 0) {
-                                    const optimizedContent = optimizeSpeakerNames(sceneContent);
-                                    // Use normalized key for storage
-                                    const normalizedKey = normalizeSceneKey(originalSceneKey);
-                                    plays['othello'].scenes[normalizedKey] = optimizedContent;
-                                    sceneCount++;
-                                    const actName = parseActFromScene(normalizedKey);
+                                }
+                            });
+                            
+                            // Hardcode missing Othello scenes
+                            const othelloMissingScenes = ['ACT 4, SCENE 3', 'ACT 5, SCENE 1', 'ACT 5, SCENE 2'];
+                            othelloMissingScenes.forEach(sceneKey => {
+                                if (!plays['othello'].scenes[sceneKey]) {
+                                    plays['othello'].scenes[sceneKey] = [];
+                                    const actName = parseActFromScene(sceneKey);
                                     if (actName) {
                                         if (!plays['othello'].acts[actName]) {
                                             plays['othello'].acts[actName] = [];
                                         }
-                                        // Avoid duplicates
-                                        if (!plays['othello'].acts[actName].includes(normalizedKey)) {
-                                            plays['othello'].acts[actName].push(normalizedKey);
+                                        if (!plays['othello'].acts[actName].includes(sceneKey)) {
+                                            plays['othello'].acts[actName].push(sceneKey);
                                         }
                                     }
                                 }
-                            }
-                        });
-                        
-                        // Hardcode missing Othello scenes after Act 4 Scene 2 to appear in left panel
-                        const othelloMissingScenes = [
-                            'ACT 4, SCENE 3',
-                            'ACT 5, SCENE 1',
-                            'ACT 5, SCENE 2'
-                        ];
-                        
-                        othelloMissingScenes.forEach(sceneKey => {
-                            if (!plays['othello'].scenes[sceneKey]) {
-                                // Add empty placeholder - will show in nav but display nothing when clicked
-                                plays['othello'].scenes[sceneKey] = [];
-                                
-                                const actName = parseActFromScene(sceneKey);
-                                if (actName) {
-                                    if (!plays['othello'].acts[actName]) {
-                                        plays['othello'].acts[actName] = [];
-                                    }
-                                    if (!plays['othello'].acts[actName].includes(sceneKey)) {
-                                        plays['othello'].acts[actName].push(sceneKey);
-                                    }
-                                }
-                            }
-                        });
-                        
-                        console.log(`✅ Othello parsed successfully: ${sceneCount} scenes, ${lineCount} lines`);
-                        updatePlaySelector();
-                        updateLibraryPlays();
+                            });
+                            
+                            console.log(`✅ Othello parsed: ${sceneCount} scenes, ${lineCount} lines`);
+                        }
+                        return 'othello';
+                    } else {
+                        console.warn('❌ Could not load Othello data - Status:', response.status);
+                        return null;
                     }
-                } else {
-                    console.warn('❌ Could not load Othello data - Status:', response.status);
+                } catch (error) {
+                    console.error('❌ Error loading Othello:', error);
+                    return null;
                 }
-            } catch (error) {
-                console.error('❌ Error loading Othello data:', error);
-            }
+            };
 
-            // Load King Lear
-            try {
-                console.log('🔄 Attempting to load King Lear data...');
-                const response = await fetch('Public/Data/kinglear_notes.json?v=' + Date.now());
-                console.log('📡 King Lear response status:', response.status, response.statusText);
-                
-                if (response.ok) {
-                    const learData = await response.json();
-                    window.kinglearData = learData;
+            const loadKingLear = async () => {
+                try {
+                    console.log('🔄 Loading King Lear...');
+                    const response = await fetch('Public/Data/kinglear_notes.json?v=' + Date.now());
                     
-                    plays['kinglear'] = {
-                        name: 'King Lear',
-                        originalFileName: 'kinglear',
-                        characters: [],
-                        acts: {},
-                        scenes: {}
-                    };
-                    
-                    if (learData) {
-                        let sceneCount = 0;
-                        let lineCount = 0;
-                        Object.keys(learData).forEach(originalSceneKey => {
-                            const sceneData = learData[originalSceneKey];
-                            if (sceneData && typeof sceneData === 'object') {
-                                const sceneContent = [];
-                                Object.keys(sceneData).forEach(lineNum => {
-                                    const lineData = sceneData[lineNum];
-                                    if (!lineData) return;
-                                    const text = (typeof lineData === 'string') ? lineData : (lineData.play ?? lineData.text ?? lineData.line ?? null);
-                                    if (text) {
-                                        sceneContent.push(text);
-                                        lineCount++;
-                                    }
-                                });
-                                if (sceneContent.length > 0) {
-                                    const optimizedContent = optimizeSpeakerNames(sceneContent);
-                                    // Use normalized key for storage
-                                    const normalizedKey = normalizeSceneKey(originalSceneKey);
-                                    plays['kinglear'].scenes[normalizedKey] = optimizedContent;
-                                    sceneCount++;
-                                    const actName = parseActFromScene(normalizedKey);
-                                    if (actName) {
-                                        if (!plays['kinglear'].acts[actName]) {
-                                            plays['kinglear'].acts[actName] = [];
+                    if (response.ok) {
+                        const learData = await response.json();
+                        window.kinglearData = learData;
+                        
+                        plays['kinglear'] = {
+                            name: 'King Lear',
+                            originalFileName: 'kinglear',
+                            characters: [],
+                            acts: {},
+                            scenes: {}
+                        };
+                        
+                        if (learData) {
+                            let sceneCount = 0;
+                            let lineCount = 0;
+                            Object.keys(learData).forEach(originalSceneKey => {
+                                const sceneData = learData[originalSceneKey];
+                                if (sceneData && typeof sceneData === 'object') {
+                                    const sceneContent = [];
+                                    Object.keys(sceneData).forEach(lineNum => {
+                                        const lineData = sceneData[lineNum];
+                                        if (!lineData) return;
+                                        const text = (typeof lineData === 'string') ? lineData : (lineData.play ?? lineData.text ?? lineData.line ?? null);
+                                        if (text) {
+                                            sceneContent.push(text);
+                                            lineCount++;
                                         }
-                                        // Avoid duplicates
-                                        if (!plays['kinglear'].acts[actName].includes(normalizedKey)) {
-                                            plays['kinglear'].acts[actName].push(normalizedKey);
+                                    });
+                                    if (sceneContent.length > 0) {
+                                        const optimizedContent = optimizeSpeakerNames(sceneContent);
+                                        const normalizedKey = normalizeSceneKey(originalSceneKey);
+                                        plays['kinglear'].scenes[normalizedKey] = optimizedContent;
+                                        sceneCount++;
+                                        const actName = parseActFromScene(normalizedKey);
+                                        if (actName) {
+                                            if (!plays['kinglear'].acts[actName]) {
+                                                plays['kinglear'].acts[actName] = [];
+                                            }
+                                            if (!plays['kinglear'].acts[actName].includes(normalizedKey)) {
+                                                plays['kinglear'].acts[actName].push(normalizedKey);
+                                            }
                                         }
                                     }
                                 }
-                            }
-                        });
-                        // Add missing scenes for King Lear
-                        const missingScenes = [
-                            'ACT 4, SCENE 1',
-                            'ACT 5, SCENE 2'
-                        ];
-                        
-                        missingScenes.forEach(sceneKey => {
-                            if (!learData[sceneKey]) {
-                                // Add placeholder scene content
-                                plays['kinglear'].scenes[sceneKey] = ['[Scene content not available in source material]'];
-                                
-                                const actName = parseActFromScene(sceneKey);
-                                if (actName) {
-                                    if (!plays['kinglear'].acts[actName]) {
-                                        plays['kinglear'].acts[actName] = [];
-                                    }
-                                    plays['kinglear'].acts[actName].push(sceneKey);
-                                }
-                            }
-                        });
-                        
-                        console.log(`✅ King Lear parsed successfully: ${sceneCount} scenes, ${lineCount} lines`);
-                        updatePlaySelector();
-                        updateLibraryPlays();
+                            });
+                            console.log(`✅ King Lear parsed: ${sceneCount} scenes, ${lineCount} lines`);
+                        }
+                        return 'kinglear';
+                    } else {
+                        console.warn('❌ Could not load King Lear data - Status:', response.status);
+                        return null;
                     }
-                } else {
-                    console.warn('❌ Could not load King Lear data - Status:', response.status);
+                } catch (error) {
+                    console.error('❌ Error loading King Lear:', error);
+                    return null;
                 }
+            };
+
+            // Load all plays in parallel for much faster performance!
+            try {
+                console.log('⚡ Starting parallel load of all plays...');
+                const startTime = Date.now();
+                
+                const loadResults = await Promise.all([
+                    loadMacbeth(),
+                    loadHamlet(),
+                    loadRomeo(),
+                    loadOthello(),
+                    loadKingLear()
+                ]);
+                
+                const endTime = Date.now();
+                const loadTime = (endTime - startTime) / 1000;
+                
+                const successfulLoads = loadResults.filter(result => result !== null);
+                console.log(`🎉 Parallel loading completed in ${loadTime}s!`);
+                console.log(`✅ Successfully loaded ${successfulLoads.length}/5 plays: ${successfulLoads.join(', ')}`);
+                
+                // Update UI only once after all plays are loaded
+                console.log('🔄 Updating UI with all loaded plays...');
+                updatePlaySelector();
+                updateLibraryPlays();
+                console.log('🎭 Library ready - Choose from Library will now be instant!');
+                
             } catch (error) {
-                console.error('❌ Error loading King Lear data:', error);
+                console.error('❌ Error in parallel loading:', error);
             }
 
             // Add ARIA attributes to modals
