@@ -3877,7 +3877,7 @@
             return romanMap[romanStr] || romanStr;
         }
         
-        // Enhanced act parsing that handles all formats
+        // Enhanced act parsing that handles all formats and normalizes them
         function parseActFromScene(sceneKey) {
             // Match various ACT formats: "ACT I", "ACT 1", "ACT IV", "ACT 4", etc.
             const actMatch = sceneKey.match(/^ACT\s+([IVX0-9]+)/i);
@@ -3886,6 +3886,17 @@
                 return `ACT ${actNumber}`;
             }
             return null;
+        }
+        
+        // Create a normalized scene key for consistent storage
+        function normalizeSceneKey(originalKey) {
+            const actMatch = originalKey.match(/^ACT\s+([IVX0-9]+),?\s*SCENE\s+([IVX0-9]+)/i);
+            if (actMatch) {
+                const actNumber = convertRomanToArabic(actMatch[1]);
+                const sceneNumber = convertRomanToArabic(actMatch[2]);
+                return `ACT ${actNumber}, SCENE ${sceneNumber}`;
+            }
+            return originalKey;
         }
         
         // Normalize scene display name
@@ -4147,8 +4158,8 @@
                     if (othelloData) {
                         let sceneCount = 0;
                         let lineCount = 0;
-                        Object.keys(othelloData).forEach(sceneKey => {
-                            const sceneData = othelloData[sceneKey];
+                        Object.keys(othelloData).forEach(originalSceneKey => {
+                            const sceneData = othelloData[originalSceneKey];
                             if (sceneData && typeof sceneData === 'object') {
                                 const sceneContent = [];
                                 Object.keys(sceneData).forEach(lineNum => {
@@ -4162,50 +4173,18 @@
                                 });
                                 if (sceneContent.length > 0) {
                                     const optimizedContent = optimizeSpeakerNames(sceneContent);
-                                    plays['othello'].scenes[sceneKey] = optimizedContent;
+                                    // Use normalized key for storage
+                                    const normalizedKey = normalizeSceneKey(originalSceneKey);
+                                    plays['othello'].scenes[normalizedKey] = optimizedContent;
                                     sceneCount++;
-                                    const actName = parseActFromScene(sceneKey);
+                                    const actName = parseActFromScene(normalizedKey);
                                     if (actName) {
                                         if (!plays['othello'].acts[actName]) {
                                             plays['othello'].acts[actName] = [];
                                         }
-                                        plays['othello'].acts[actName].push(sceneKey);
-                                    }
-                                }
-                            }
-                        });
-                        // Ensure all Roman numeral scenes are properly handled by creating normalized versions
-                        const romanScenes = [
-                            { original: 'ACT I, SCENE I', normalized: 'ACT 1, SCENE 1' },
-                            { original: 'ACT III, SCENE 1', normalized: 'ACT 3, SCENE 1' },
-                            { original: 'ACT III, SCENE 2', normalized: 'ACT 3, SCENE 2' }
-                        ];
-                        
-                        romanScenes.forEach(({ original, normalized }) => {
-                            if (othelloData[original] && !plays['othello'].scenes[normalized]) {
-                                // Copy the original scene data to the normalized key
-                                const sceneData = othelloData[original];
-                                const sceneContent = [];
-                                Object.keys(sceneData).forEach(lineNum => {
-                                    const lineData = sceneData[lineNum];
-                                    if (!lineData) return;
-                                    const text = (typeof lineData === 'string') ? lineData : (lineData.play ?? lineData.text ?? lineData.line ?? null);
-                                    if (text) {
-                                        sceneContent.push(text);
-                                    }
-                                });
-                                
-                                if (sceneContent.length > 0) {
-                                    const optimizedContent = optimizeSpeakerNames(sceneContent);
-                                    plays['othello'].scenes[normalized] = optimizedContent;
-                                    
-                                    const actName = parseActFromScene(normalized);
-                                    if (actName) {
-                                        if (!plays['othello'].acts[actName]) {
-                                            plays['othello'].acts[actName] = [];
-                                        }
-                                        if (!plays['othello'].acts[actName].includes(normalized)) {
-                                            plays['othello'].acts[actName].push(normalized);
+                                        // Avoid duplicates
+                                        if (!plays['othello'].acts[actName].includes(normalizedKey)) {
+                                            plays['othello'].acts[actName].push(normalizedKey);
                                         }
                                     }
                                 }
