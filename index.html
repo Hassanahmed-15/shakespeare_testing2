@@ -8205,7 +8205,13 @@
         }
 
         function openNVModal() {
-            document.getElementById('nvModal').style.display = 'block';
+            const modal = document.getElementById('nvModal');
+            modal.style.display = 'block';
+            // Scroll to top of modal content
+            const modalBody = modal.querySelector('.modal-body');
+            if (modalBody) {
+                modalBody.scrollTop = 0;
+            }
         }
 
         function closeNVModal() {
