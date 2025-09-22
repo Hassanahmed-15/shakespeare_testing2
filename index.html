@@ -3864,27 +3864,28 @@
         // Convert Roman numerals to Arabic numbers
         function convertRomanToArabic(roman) {
             if (!roman) return roman;
-            const romanStr = String(roman).toUpperCase();
+            const romanStr = String(roman).toUpperCase().trim();
             
             // If it's already a number, return it
             if (/^\d+$/.test(romanStr)) return romanStr;
             
             const romanMap = {
-                'I': 1, 'II': 2, 'III': 3, 'IV': 4, 'V': 5,
-                'VI': 6, 'VII': 7, 'VIII': 8, 'IX': 9, 'X': 10
+                'I': '1', 'II': '2', 'III': '3', 'IV': '4', 'V': '5',
+                'VI': '6', 'VII': '7', 'VIII': '8', 'IX': '9', 'X': '10'
             };
             
-            return romanMap[romanStr] ? String(romanMap[romanStr]) : romanStr;
+            return romanMap[romanStr] || romanStr;
         }
         
-        // Debug function to log all scenes being processed
-        function logSceneProcessing(playName, sceneKey, actMatch) {
+        // Enhanced act parsing that handles all formats
+        function parseActFromScene(sceneKey) {
+            // Match various ACT formats: "ACT I", "ACT 1", "ACT IV", "ACT 4", etc.
+            const actMatch = sceneKey.match(/^ACT\s+([IVX0-9]+)/i);
             if (actMatch) {
                 const actNumber = convertRomanToArabic(actMatch[1]);
-                console.log(`🎭 ${playName}: Processing "${sceneKey}" -> ACT ${actNumber}`);
-            } else {
-                console.log(`🎭 ${playName}: No act match for "${sceneKey}"`);
+                return `ACT ${actNumber}`;
             }
+            return null;
         }
         
         // Normalize scene display name
@@ -3960,10 +3961,8 @@
                                     sceneCount++;
                                     
                                     // Group scenes by acts
-                                    const actMatch = sceneKey.match(/^ACT\s+([IVX0-9]+)/i);
-                                    if (actMatch) {
-                                        const actNumber = convertRomanToArabic(actMatch[1]);
-                                        const actName = `ACT ${actNumber}`;
+                                    const actName = parseActFromScene(sceneKey);
+                                    if (actName) {
                                         if (!plays['macbeth'].acts[actName]) {
                                             plays['macbeth'].acts[actName] = [];
                                         }
@@ -4044,11 +4043,8 @@
                                     plays['hamlet'].scenes[sceneKey] = optimizedContent;
                                     sceneCount++;
                                     
-                                    const actMatch = sceneKey.match(/^ACT\s+([IVX0-9]+)/i);
-                                    logSceneProcessing('Hamlet', sceneKey, actMatch);
-                                    if (actMatch) {
-                                        const actNumber = convertRomanToArabic(actMatch[1]);
-                                        const actName = `ACT ${actNumber}`;
+                                    const actName = parseActFromScene(sceneKey);
+                                    if (actName) {
                                         if (!plays['hamlet'].acts[actName]) {
                                             plays['hamlet'].acts[actName] = [];
                                         }
@@ -4059,10 +4055,6 @@
                         });
                         
                         console.log(`✅ Hamlet parsed successfully: ${sceneCount} scenes, ${lineCount} lines`);
-                        console.log('🎭 Hamlet acts structure:', plays['hamlet'].acts);
-                        Object.keys(plays['hamlet'].acts).forEach(actName => {
-                            console.log(`🎭 ${actName}: ${plays['hamlet'].acts[actName].length} scenes -`, plays['hamlet'].acts[actName]);
-                        });
                         
                         // Update the UI to show Hamlet is available alongside Macbeth
                         updatePlaySelector();
@@ -4113,10 +4105,8 @@
                                     const optimizedContent = optimizeSpeakerNames(sceneContent);
                                     plays['romeo'].scenes[sceneKey] = optimizedContent;
                                     sceneCount++;
-                                    const actMatch = sceneKey.match(/^ACT\s+([IVX0-9]+)/i);
-                                    if (actMatch) {
-                                        const actNumber = convertRomanToArabic(actMatch[1]);
-                                        const actName = `ACT ${actNumber}`;
+                                    const actName = parseActFromScene(sceneKey);
+                                    if (actName) {
                                         if (!plays['romeo'].acts[actName]) {
                                             plays['romeo'].acts[actName] = [];
                                         }
@@ -4174,11 +4164,8 @@
                                     const optimizedContent = optimizeSpeakerNames(sceneContent);
                                     plays['othello'].scenes[sceneKey] = optimizedContent;
                                     sceneCount++;
-                                    const actMatch = sceneKey.match(/^ACT\s+([IVX0-9]+)/i);
-                                    logSceneProcessing('Othello', sceneKey, actMatch);
-                                    if (actMatch) {
-                                        const actNumber = convertRomanToArabic(actMatch[1]);
-                                        const actName = `ACT ${actNumber}`;
+                                    const actName = parseActFromScene(sceneKey);
+                                    if (actName) {
                                         if (!plays['othello'].acts[actName]) {
                                             plays['othello'].acts[actName] = [];
                                         }
@@ -4188,10 +4175,6 @@
                             }
                         });
                         console.log(`✅ Othello parsed successfully: ${sceneCount} scenes, ${lineCount} lines`);
-                        console.log('🎭 Othello acts structure:', plays['othello'].acts);
-                        Object.keys(plays['othello'].acts).forEach(actName => {
-                            console.log(`🎭 ${actName}: ${plays['othello'].acts[actName].length} scenes -`, plays['othello'].acts[actName]);
-                        });
                         updatePlaySelector();
                         updateLibraryPlays();
                     }
@@ -4240,11 +4223,8 @@
                                     const optimizedContent = optimizeSpeakerNames(sceneContent);
                                     plays['kinglear'].scenes[sceneKey] = optimizedContent;
                                     sceneCount++;
-                                    const actMatch = sceneKey.match(/^ACT\s+([IVX0-9]+)/i);
-                                    logSceneProcessing('King Lear', sceneKey, actMatch);
-                                    if (actMatch) {
-                                        const actNumber = convertRomanToArabic(actMatch[1]);
-                                        const actName = `ACT ${actNumber}`;
+                                    const actName = parseActFromScene(sceneKey);
+                                    if (actName) {
                                         if (!plays['kinglear'].acts[actName]) {
                                             plays['kinglear'].acts[actName] = [];
                                         }
@@ -4253,11 +4233,28 @@
                                 }
                             }
                         });
-                        console.log(`✅ King Lear parsed successfully: ${sceneCount} scenes, ${lineCount} lines`);
-                        console.log('🎭 King Lear acts structure:', plays['kinglear'].acts);
-                        Object.keys(plays['kinglear'].acts).forEach(actName => {
-                            console.log(`🎭 ${actName}: ${plays['kinglear'].acts[actName].length} scenes -`, plays['kinglear'].acts[actName]);
+                        // Add missing scenes for King Lear
+                        const missingScenes = [
+                            'ACT 4, SCENE 1',
+                            'ACT 5, SCENE 2'
+                        ];
+                        
+                        missingScenes.forEach(sceneKey => {
+                            if (!learData[sceneKey]) {
+                                // Add placeholder scene content
+                                plays['kinglear'].scenes[sceneKey] = ['[Scene content not available in source material]'];
+                                
+                                const actName = parseActFromScene(sceneKey);
+                                if (actName) {
+                                    if (!plays['kinglear'].acts[actName]) {
+                                        plays['kinglear'].acts[actName] = [];
+                                    }
+                                    plays['kinglear'].acts[actName].push(sceneKey);
+                                }
+                            }
                         });
+                        
+                        console.log(`✅ King Lear parsed successfully: ${sceneCount} scenes, ${lineCount} lines`);
                         updatePlaySelector();
                         updateLibraryPlays();
                     }
