@@ -378,7 +378,11 @@ exports.handler = async (event, context) => {
     
     if (analysisMode === 'fullfathomfive' && playsWithoutNewVariorum.includes(playName)) {
       structure = structure.filter(section => section !== 'New Variorum Analysis')
-      console.log(`🎭 ${playName} detected - excluding New Variorum Analysis section`)
+      console.log(`🚫 ${playName} - EXCLUDING New Variorum Analysis section`)
+      console.log('🔧 Final analysis structure:', structure)
+    } else if (analysisMode === 'fullfathomfive') {
+      console.log(`✅ ${playName} - INCLUDING New Variorum Analysis section`)
+      console.log('🔧 Final analysis structure:', structure)
     }
 
     // Check if text contains multiple lines
@@ -554,7 +558,8 @@ For this section, use the historical variorum notes provided below.
     } else if (analysisMode === 'fullfathomfive') {
       userPrompt += `\n\nPlease provide a Full Fathom Five analysis following the exact format specified in the system prompt.`
       
-      if (relevantNotes.length > 0) {
+      // Only add notes for plays that have New Variorum Analysis
+      if (relevantNotes.length > 0 && includeNewVariorum) {
         console.log('Adding notes to prompt. Total notes found:', relevantNotes.length)
         relevantNotes.forEach((note, index) => {
           console.log(`Note ${index + 1}: Line ${note.line}, ${note.notes.length} note entries`)
@@ -571,7 +576,7 @@ For this section, use the historical variorum notes provided below.
             userPrompt += `\n${noteText}`
           })
         })
-        userPrompt += `\n\nCRITICAL INSTRUCTIONS: Use these EXACT notes in your "New Variorum Analysis" section. Copy them word for word without any changes, summaries, or modifications. Show ALL notes from the database, not just parts of them. DO NOT TRUNCATE OR CUT ANY NOTES. Include the complete, full text of every note. Even if the notes are very long, you MUST include the ENTIRE text. Do not stop mid-sentence or cut off any part. Format each note as: [Line X] [EXACT commentary text from notes]. Do not add any additional commentary or speculation.
+        userPrompt += `\n\nCRITICAL INSTRUCTIONS: Use these EXACT notes in your "New Variorum Analysis" section. Copy them word for word without any changes, summaries, or modifications. Show ALL notes from the database, not just parts of them. DO NOT TRUNCATE OR CUT ANY NOTES. Include the complete, full text of every note. Even if the notes are very long, you MUST include the ENTIRE text. Do not stop mid-sentence or cut off. Format each note as: [Line X] [EXACT commentary text from notes]. Do not add any additional commentary or speculation.
 
 ABSOLUTE REQUIREMENT: Every single character of the provided notes must appear in your response. NO EXCEPTIONS. You must copy the notes exactly as provided, word for word, character for character. FAILURE TO INCLUDE COMPLETE NOTES WILL RESULT IN INCOMPLETE ANALYSIS.
 
@@ -689,8 +694,8 @@ IMPORTANT: The notes above are the COMPLETE notes from the database. You MUST in
           }
         }
         
-        // If still not found, try to find it by looking for the notes content
-        if (!analysis['New Variorum Analysis']) {
+        // If still not found, try to find it by looking for the notes content (only for plays with New Variorum)
+        if (!analysis['New Variorum Analysis'] && !playsWithoutNewVariorum.includes(playName)) {
           const notesMatch = response.match(/(\[Line \d+\].*?)(?=\*\*|$)/s)
           if (notesMatch) {
             console.log('Found notes content manually, length:', notesMatch[1].length)

@@ -6283,17 +6283,29 @@
         function loadSelectedPlay() {
             const selector = document.getElementById('playSelector');
             const selectedPlay = selector.value;
+            
+            console.log('🎭 loadSelectedPlay called, selected:', selectedPlay);
+            console.log('🎭 Available plays:', Object.keys(plays));
+            console.log('🎭 Play exists:', selectedPlay && plays[selectedPlay] ? 'YES' : 'NO');
+            
             if (selectedPlay) {
-                loadPlay(selectedPlay);
+                if (plays[selectedPlay]) {
+                    console.log('✅ Loading play:', selectedPlay);
+                    loadPlay(selectedPlay);
+                } else {
+                    console.error('❌ Play not found in plays object:', selectedPlay);
+                    console.log('Available plays:', Object.keys(plays));
+                    alert(`Error: Play "${selectedPlay}" not found. Please try refreshing the page.`);
+                }
+            } else {
+                console.log('⚠️ No play selected');
             }
         }
 
         // Load a play
         function loadPlay(playName) {
-            console.log('loadPlay called with:', playName);
-            console.log('plays object keys:', Object.keys(plays));
-            console.log('plays[playName]:', plays[playName]);
-            console.log('playText element innerHTML before loadPlay:', document.getElementById('playText').innerHTML.substring(0, 200));
+            console.log('🎭 loadPlay called with:', playName);
+            console.log('🎭 Available plays:', Object.keys(plays).length, 'plays');
             
             // Clear analysis panel when switching plays
             clearSelection();
@@ -6301,24 +6313,49 @@
             const playTextElement = document.getElementById('playText');
             const navigationElement = document.getElementById('navigationList');
             
-            console.log('playText element found:', playTextElement);
-            console.log('navigation element found:', navigationElement);
+            if (!playTextElement) {
+                console.error('❌ playText element not found!');
+                return;
+            }
+            
+            if (!navigationElement) {
+                console.error('❌ navigationList element not found!');
+                return;
+            }
             
             if (!playName || !plays[playName]) {
-                console.log('Play not found or invalid:', playName);
-                // Don't overwrite the default content if no play is loaded
-                if (navigationElement) {
-                    navigationElement.innerHTML = '';
-                } else {
-                    console.error('navigationList element not found!');
-                }
+                console.error('❌ Play not found or invalid:', playName);
+                console.log('Available plays:', Object.keys(plays));
+                navigationElement.innerHTML = '<li>No play loaded</li>';
+                playTextElement.innerHTML = '<p>Error: Play not found. Please select a valid play from the dropdown.</p>';
                 return;
             }
 
             const play = plays[playName];
             currentPlay = playName;
             
-            console.log('Loading play:', playName, 'with acts:', Object.keys(play.acts));
+            console.log('✅ Loading play:', playName);
+            console.log('🎭 Play data:', {
+                name: play.name,
+                acts: Object.keys(play.acts).length,
+                scenes: Object.keys(play.scenes).length,
+                hasData: Object.keys(play.scenes).length > 0
+            });
+            
+            // Validate play data
+            if (!play.acts || Object.keys(play.acts).length === 0) {
+                console.warn('⚠️ Play has no acts, checking scenes directly...');
+                if (!play.scenes || Object.keys(play.scenes).length === 0) {
+                    console.error('❌ Play has no data!');
+                    playTextElement.innerHTML = `
+                        <div class="scene-title">Error Loading ${play.name}</div>
+                        <div class="scene-separator"></div>
+                        <p>This play appears to have no content. Please try refreshing the page or selecting a different play.</p>
+                    `;
+                    navigationElement.innerHTML = '<li>No content available</li>';
+                    return;
+                }
+            }
             
             // Update navigation
             updateNavigation(play);
@@ -6327,16 +6364,16 @@
             const firstAct = Object.keys(play.acts)[0];
             if (firstAct && play.acts[firstAct] && play.acts[firstAct].length > 0) {
                 const firstScene = play.acts[firstAct][0];
-                console.log('Loading first scene:', firstScene);
+                console.log('✅ Loading first scene:', firstScene);
                 loadScene(firstScene);
             } else {
-                console.log('No scenes found, showing welcome message');
+                console.log('⚠️ No acts/scenes found, showing welcome message');
                 // If no scenes found, show welcome message
-                document.getElementById('playText').innerHTML = `
-                    <div class="scene-title">${playName}</div>
+                playTextElement.innerHTML = `
+                    <div class="scene-title">${play.name}</div>
                     <div class="scene-separator"></div>
                     <p>Play loaded successfully. Use the navigation to explore acts and scenes.</p>
-                    <p><em>Debug: Found ${Object.keys(play.acts).length} acts</em></p>
+                    <p><em>Debug: Found ${Object.keys(play.acts).length} acts, ${Object.keys(play.scenes).length} scenes</em></p>
                 `;
                 // Update meta line even when no scenes are found
                 updateMetaLine();
