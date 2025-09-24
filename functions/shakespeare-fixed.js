@@ -366,7 +366,13 @@ exports.handler = async (event, context) => {
       ]
     }
 
-    const structure = analysisStructure[analysisMode] || analysisStructure.basic
+    let structure = analysisStructure[analysisMode] || analysisStructure.basic
+    
+    // Exclude 'New Variorum Analysis' for 'As You Like It' play
+    if (analysisMode === 'fullfathomfive' && playName === 'asyoulikeit') {
+      structure = structure.filter(section => section !== 'New Variorum Analysis')
+      console.log('🎭 As You Like It detected - excluding New Variorum Analysis section')
+    }
 
     // Check if text contains multiple lines
     const lines = text.split('\n').filter(line => line.trim().length > 0)
@@ -443,6 +449,10 @@ FORMAT REQUIREMENTS:
     } else if (analysisMode === 'fullfathomfive') {
       console.log('Full Fathom Five level detected - using comprehensive prompt with Textual Variants and Language and Rhetoric sections');
       console.log('DEBUG: Function version updated at', new Date().toISOString());
+      
+      // Check if this is As You Like It - exclude New Variorum Analysis section
+      const includeNewVariorum = playName !== 'asyoulikeit'
+      
       systemPrompt = `You are an expert Shakespearean scholar providing the most comprehensive analysis possible.
 
 IMPORTANT CONTEXT: You are analyzing text from a Shakespearean play. Focus on the content and meaning of the selected text without mentioning specific scenes, acts, or play names.
@@ -459,7 +469,7 @@ CRITICAL: You MUST provide responses for ALL of these sections in exactly this o
 **Literary Analysis:** (REQUIRED)  
 **Critical Reception:** (REQUIRED)  
 **Similar phrases or themes in other plays:** (REQUIRED)  
-**Pointers for Further Reading:** (REQUIRED)
+**Pointers for Further Reading:** (REQUIRED)${includeNewVariorum ? '\n**New Variorum Analysis:** (REQUIRED)' : ''}
 
 FORMAT REQUIREMENTS:  
 - Start each section with the exact heading format shown above (colons are already included).  
@@ -476,7 +486,11 @@ CRITICAL CITATION REQUIREMENTS:
 - Use full publication details.  
 - Do not modify scholar names.
 
-LENGTH: 800–1200 words total
+LENGTH: 800–1200 words total`
+
+      // Add New Variorum Analysis instructions only if it's not As You Like It
+      if (includeNewVariorum) {
+        systemPrompt += `
 
 **New Variorum Analysis:**
 For this section, use the historical variorum notes provided below.  
@@ -496,9 +510,10 @@ For this section, use the historical variorum notes provided below.
 - Do not include notes for lines that are not explicitly selected.
 - IMPORTANT: Copy the notes exactly as provided, word for word, without any changes.
 - CRITICAL: Include the complete, unabridged text of every note, no matter how long.`
+      }
        
-      // Add play notes if available
-      if (relevantNotes.length > 0) {
+      // Add play notes if available (only if New Variorum Analysis is included)
+      if (relevantNotes.length > 0 && includeNewVariorum) {
         systemPrompt += `\n\nIMPORTANT: You have access to historical variorum notes from the ${currentPlayName} database. Here are the relevant notes found:`
         
         relevantNotes.forEach((note, index) => {

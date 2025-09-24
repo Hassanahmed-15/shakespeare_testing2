@@ -4361,6 +4361,69 @@
                 }
             };
 
+            const loadAsYouLikeIt = async () => {
+                try {
+                    console.log('🔄 Loading As You Like It...');
+                    const response = await fetch('Public/Data/As_You_Like_It.json?v=' + Date.now());
+                    
+                    if (response.ok) {
+                        const asyoulikeitData = await response.json();
+                        window.asyoulikeitData = asyoulikeitData;
+                        
+                        plays['asyoulikeit'] = {
+                            name: 'As You Like It',
+                            originalFileName: 'asyoulikeit',
+                            characters: [],
+                            acts: {},
+                            scenes: {}
+                        };
+                        
+                        if (asyoulikeitData) {
+                            let sceneCount = 0;
+                            let lineCount = 0;
+                            Object.keys(asyoulikeitData).forEach(originalSceneKey => {
+                                const sceneData = asyoulikeitData[originalSceneKey];
+                                if (sceneData && typeof sceneData === 'object') {
+                                    const sceneContent = [];
+                                    Object.keys(sceneData).forEach(lineNum => {
+                                        const lineData = sceneData[lineNum];
+                                        if (!lineData) return;
+                                        const text = (typeof lineData === 'string') ? lineData : (lineData.play ?? lineData.text ?? lineData.line ?? null);
+                                        if (text) {
+                                            sceneContent.push(text);
+                                            lineCount++;
+                                        }
+                                    });
+                                    if (sceneContent.length > 0) {
+                                        const optimizedContent = optimizeSpeakerNames(sceneContent);
+                                        const normalizedKey = normalizeSceneKey(originalSceneKey);
+                                        plays['asyoulikeit'].scenes[normalizedKey] = optimizedContent;
+                                        sceneCount++;
+                                        const actName = parseActFromScene(normalizedKey);
+                                        if (actName) {
+                                            if (!plays['asyoulikeit'].acts[actName]) {
+                                                plays['asyoulikeit'].acts[actName] = [];
+                                            }
+                                            if (!plays['asyoulikeit'].acts[actName].includes(normalizedKey)) {
+                                                plays['asyoulikeit'].acts[actName].push(normalizedKey);
+                                            }
+                                        }
+                                    }
+                                }
+                            });
+                            console.log(`✅ As You Like It parsed: ${sceneCount} scenes, ${lineCount} lines`);
+                        }
+                        return 'asyoulikeit';
+                    } else {
+                        console.warn('❌ Could not load As You Like It data - Status:', response.status);
+                        return null;
+                    }
+                } catch (error) {
+                    console.error('❌ Error loading As You Like It:', error);
+                    return null;
+                }
+            };
+
             // Load all plays in parallel for much faster performance!
             try {
                 console.log('⚡ Starting parallel load of all plays...');
@@ -4371,7 +4434,8 @@
                     loadHamlet(),
                     loadRomeo(),
                     loadOthello(),
-                    loadKingLear()
+                    loadKingLear(),
+                    loadAsYouLikeIt()
                 ]);
                 
                 const endTime = Date.now();
@@ -4379,7 +4443,7 @@
                 
                 const successfulLoads = loadResults.filter(result => result !== null);
                 console.log(`🎉 Parallel loading completed in ${loadTime}s!`);
-                console.log(`✅ Successfully loaded ${successfulLoads.length}/5 plays: ${successfulLoads.join(', ')}`);
+                console.log(`✅ Successfully loaded ${successfulLoads.length}/6 plays: ${successfulLoads.join(', ')}`);
                 
                 // Update UI only once after all plays are loaded
                 console.log('🔄 Updating UI with all loaded plays...');
