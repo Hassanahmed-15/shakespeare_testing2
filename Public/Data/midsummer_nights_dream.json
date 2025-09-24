@@ -1,0 +1,6326 @@
+{
+  "ACT 1 SCENE 1": {
+    "1": {
+      "play": "THESEUS: Now, fair Hippolyta, our nuptial hour"
+    },
+    "2": {
+      "play": "THESEUS: Draws on apace; four happy days bring in"
+    },
+    "3": {
+      "play": "Another moon: but, O, methinks, how slow"
+    },
+    "4": {
+      "play": "Another moon: This old moon wanes! she lingers my desires,"
+    },
+    "5": {
+      "play": "Another moon: Like to a step-dame or a dowager"
+    },
+    "6": {
+      "play": "Another moon: Long withering out a young man revenue."
+    },
+    "7": {
+      "play": "HIPPOLYTA: Four days will quickly steep themselves in night;"
+    },
+    "8": {
+      "play": "HIPPOLYTA: Four nights will quickly dream away the time;"
+    },
+    "9": {
+      "play": "HIPPOLYTA: And then the moon, like to a silver bow"
+    },
+    "10": {
+      "play": "HIPPOLYTA: New-bent in heaven, shall behold the night"
+    },
+    "11": {
+      "play": "HIPPOLYTA: Of our solemnities."
+    },
+    "12": {
+      "play": "THESEUS: Go, Philostrate,"
+    },
+    "13": {
+      "play": "THESEUS: Stir up the Athenian youth to merriments;"
+    },
+    "14": {
+      "play": "THESEUS: Awake the pert and nimble spirit of mirth;"
+    },
+    "15": {
+      "play": "THESEUS: Turn melancholy forth to funerals;"
+    },
+    "16": {
+      "play": "THESEUS: The pale companion is not for our pomp."
+    },
+    "17": {
+      "play": "THESEUS: Hippolyta, I woo'd thee with my sword,"
+    },
+    "18": {
+      "play": "THESEUS: And won thy love, doing thee injuries;"
+    },
+    "19": {
+      "play": "THESEUS: But I will wed thee in another key,"
+    },
+    "20": {
+      "play": "THESEUS: With pomp, with triumph and with revelling."
+    },
+    "21": {
+      "play": "EGEUS: Happy be Theseus, our renowned duke!"
+    },
+    "22": {
+      "play": "THESEUS: Thanks, good Egeus: what's the news with thee?"
+    },
+    "23": {
+      "play": "EGEUS: Full of vexation come I, with complaint"
+    },
+    "24": {
+      "play": "EGEUS: Against my child, my daughter Hermia."
+    },
+    "25": {
+      "play": "EGEUS: Stand forth, Demetrius. My noble lord,"
+    },
+    "26": {
+      "play": "EGEUS: This man hath my consent to marry her."
+    },
+    "27": {
+      "play": "Stand forth, Lysander: and my gracious duke,"
+    },
+    "28": {
+      "play": "Stand forth, Lysander: This man hath bewitch'd the bosom of my child;"
+    },
+    "29": {
+      "play": "Stand forth, Lysander: Thou, thou, Lysander, thou hast given her rhymes,"
+    },
+    "30": {
+      "play": "And interchanged love-tokens with my child: "
+    },
+    "31": {
+      "play": "And interchanged love-tokens with my child: Thou hast by moonlight at her window sung,"
+    },
+    "32": {
+      "play": "And interchanged love-tokens with my child: With feigning voice verses of feigning love,"
+    },
+    "33": {
+      "play": "And interchanged love-tokens with my child: And stolen the impression of her fantasy"
+    },
+    "34": {
+      "play": "And interchanged love-tokens with my child: With bracelets of thy hair, rings, gawds, conceits,"
+    },
+    "35": {
+      "play": "And interchanged love-tokens with my child: Knacks, trifles, nosegays, sweetmeats, messengers"
+    },
+    "36": {
+      "play": "Of strong prevailment in unharden'd youth: "
+    },
+    "37": {
+      "play": "Of strong prevailment in unharden'd youth: With cunning hast thou filch'd my daughter's heart,"
+    },
+    "38": {
+      "play": "Of strong prevailment in unharden'd youth: Turn'd her obedience, which is due to me,"
+    },
+    "39": {
+      "play": "To stubborn harshness: and, my gracious duke,"
+    },
+    "40": {
+      "play": "To stubborn harshness: Be it so she; will not here before your grace"
+    },
+    "41": {
+      "play": "To stubborn harshness: Consent to marry with Demetrius,"
+    },
+    "42": {
+      "play": "To stubborn harshness: I beg the ancient privilege of Athens,"
+    },
+    "43": {
+      "play": "As she is mine, I may dispose of her: "
+    },
+    "44": {
+      "play": "As she is mine, I may dispose of her: Which shall be either to this gentleman"
+    },
+    "45": {
+      "play": "As she is mine, I may dispose of her: Or to her death, according to our law"
+    },
+    "46": {
+      "play": "As she is mine, I may dispose of her: Immediately provided in that case."
+    },
+    "47": {
+      "play": "THESEUS: What say you, Hermia? be advised fair maid:"
+    },
+    "48": {
+      "play": "THESEUS: To you your father should be as a god;"
+    },
+    "49": {
+      "play": "THESEUS: One that composed your beauties, yea, and one"
+    },
+    "50": {
+      "play": "THESEUS: To whom you are but as a form in wax"
+    },
+    "51": {
+      "play": "THESEUS: By him imprinted and within his power"
+    },
+    "52": {
+      "play": "THESEUS: To leave the figure or disfigure it."
+    },
+    "53": {
+      "play": "THESEUS: Demetrius is a worthy gentleman."
+    },
+    "54": {
+      "play": "HERMIA: So is Lysander."
+    },
+    "55": {
+      "play": "THESEUS: In himself he is;"
+    },
+    "56": {
+      "play": "THESEUS: But in this kind, wanting your father's voice,"
+    },
+    "57": {
+      "play": "THESEUS: The other must be held the worthier."
+    },
+    "58": {
+      "play": "HERMIA: I would my father look'd but with my eyes."
+    },
+    "59": {
+      "play": "THESEUS: Rather your eyes must with his judgment look."
+    },
+    "60": {
+      "play": "HERMIA: I do entreat your grace to pardon me."
+    },
+    "61": {
+      "play": "HERMIA: I know not by what power I am made bold,"
+    },
+    "62": {
+      "play": "HERMIA: Nor how it may concern my modesty,"
+    },
+    "63": {
+      "play": "HERMIA: In such a presence here to plead my thoughts;"
+    },
+    "64": {
+      "play": "HERMIA: But I beseech your grace that I may know"
+    },
+    "65": {
+      "play": "HERMIA: The worst that may befall me in this case,"
+    },
+    "66": {
+      "play": "HERMIA: If I refuse to wed Demetrius."
+    },
+    "67": {
+      "play": "THESEUS: Either to die the death or to abjure"
+    },
+    "68": {
+      "play": "THESEUS: For ever the society of men."
+    },
+    "69": {
+      "play": "THESEUS: Therefore, fair Hermia, question your desires;"
+    },
+    "70": {
+      "play": "THESEUS: Know of your youth, examine well your blood,"
+    },
+    "71": {
+      "play": "THESEUS: Whether, if you yield not to your father's choice,"
+    },
+    "72": {
+      "play": "THESEUS: You can endure the livery of a nun,"
+    },
+    "73": {
+      "play": "THESEUS: For aye to be in shady cloister mew'd,"
+    },
+    "74": {
+      "play": "THESEUS: To live a barren sister all your life,"
+    },
+    "75": {
+      "play": "THESEUS: Chanting faint hymns to the cold fruitless moon."
+    },
+    "76": {
+      "play": "THESEUS: Thrice-blessed they that master so their blood,"
+    },
+    "77": {
+      "play": "THESEUS: To undergo such maiden pilgrimage;"
+    },
+    "78": {
+      "play": "THESEUS: But earthlier happy is the rose distill'd,"
+    },
+    "79": {
+      "play": "THESEUS: Than that which withering on the virgin thorn"
+    },
+    "80": {
+      "play": "THESEUS: Grows, lives and dies in single blessedness."
+    },
+    "81": {
+      "play": "HERMIA: So will I grow, so live, so die, my lord,"
+    },
+    "82": {
+      "play": "HERMIA: Ere I will my virgin patent up"
+    },
+    "83": {
+      "play": "HERMIA: Unto his lordship, whose unwished yoke"
+    },
+    "84": {
+      "play": "HERMIA: My soul consents not to give sovereignty."
+    },
+    "85": {
+      "play": "THESEUS: Take time to pause; and, by the next new moon--"
+    },
+    "86": {
+      "play": "THESEUS: The sealing-day betwixt my love and me,"
+    },
+    "87": {
+      "play": "THESEUS: For everlasting bond of fellowship--"
+    },
+    "88": {
+      "play": "THESEUS: Upon that day either prepare to die"
+    },
+    "89": {
+      "play": "THESEUS: For disobedience to your father's will,"
+    },
+    "90": {
+      "play": "THESEUS: Or else to wed Demetrius, as he would;"
+    },
+    "91": {
+      "play": "THESEUS: Or on Diana's altar to protest"
+    },
+    "92": {
+      "play": "THESEUS: For aye austerity and single life."
+    },
+    "93": {
+      "play": "DEMETRIUS: Relent, sweet Hermia: and, Lysander, yield"
+    },
+    "94": {
+      "play": "DEMETRIUS: Thy crazed title to my certain right."
+    },
+    "95": {
+      "play": "LYSANDER: You have her father's love, Demetrius;"
+    },
+    "96": {
+      "play": "Let me have Hermia's: do you marry him."
+    },
+    "97": {
+      "play": "EGEUS: Scornful Lysander! true, he hath my love,"
+    },
+    "98": {
+      "play": "EGEUS: And what is mine my love shall render him."
+    },
+    "99": {
+      "play": "EGEUS: And she is mine, and all my right of her"
+    },
+    "100": {
+      "play": "EGEUS: I do estate unto Demetrius."
+    },
+    "101": {
+      "play": "LYSANDER: I am, my lord, as well derived as he,"
+    },
+    "102": {
+      "play": "LYSANDER: As well possess'd; my love is more than his;"
+    },
+    "103": {
+      "play": "LYSANDER: My fortunes every way as fairly rank'd,"
+    },
+    "104": {
+      "play": "LYSANDER: If not with vantage, as Demetrius';"
+    },
+    "105": {
+      "play": "LYSANDER: And, which is more than all these boasts can be,"
+    },
+    "106": {
+      "play": "I am beloved of beauteous Hermia: "
+    },
+    "107": {
+      "play": "I am beloved of beauteous Hermia: Why should not I then prosecute my right?"
+    },
+    "108": {
+      "play": "I am beloved of beauteous Hermia: Demetrius, I'll avouch it to his head,"
+    },
+    "109": {
+      "play": "I am beloved of beauteous Hermia: Made love to Nedar's daughter, Helena,"
+    },
+    "110": {
+      "play": "I am beloved of beauteous Hermia: And won her soul; and she, sweet lady, dotes,"
+    },
+    "111": {
+      "play": "I am beloved of beauteous Hermia: Devoutly dotes, dotes in idolatry,"
+    },
+    "112": {
+      "play": "I am beloved of beauteous Hermia: Upon this spotted and inconstant man."
+    },
+    "113": {
+      "play": "THESEUS: I must confess that I have heard so much,"
+    },
+    "114": {
+      "play": "THESEUS: And with Demetrius thought to have spoke thereof;"
+    },
+    "115": {
+      "play": "THESEUS: But, being over-full of self-affairs,"
+    },
+    "116": {
+      "play": "THESEUS: My mind did lose it. But, Demetrius, come;"
+    },
+    "117": {
+      "play": "THESEUS: And come, Egeus; you shall go with me,"
+    },
+    "118": {
+      "play": "THESEUS: I have some private schooling for you both."
+    },
+    "119": {
+      "play": "THESEUS: For you, fair Hermia, look you arm yourself"
+    },
+    "120": {
+      "play": "THESEUS: To fit your fancies to your father's will;"
+    },
+    "121": {
+      "play": "THESEUS: Or else the law of Athens yields you up--"
+    },
+    "122": {
+      "play": "THESEUS: Which by no means we may extenuate--"
+    },
+    "123": {
+      "play": "THESEUS: To death, or to a vow of single life."
+    },
+    "124": {
+      "play": "Come, my Hippolyta: what cheer, my love?"
+    },
+    "125": {
+      "play": "Demetrius and Egeus, go along: "
+    },
+    "126": {
+      "play": "Demetrius and Egeus, go along: I must employ you in some business"
+    },
+    "127": {
+      "play": "Demetrius and Egeus, go along: Against our nuptial and confer with you"
+    },
+    "128": {
+      "play": "Demetrius and Egeus, go along: Of something nearly that concerns yourselves."
+    },
+    "129": {
+      "play": "EGEUS: With duty and desire we follow you."
+    },
+    "130": {
+      "play": "LYSANDER: How now, my love! why is your cheek so pale?"
+    },
+    "131": {
+      "play": "LYSANDER: How chance the roses there do fade so fast?"
+    },
+    "132": {
+      "play": "HERMIA: Belike for want of rain, which I could well"
+    },
+    "133": {
+      "play": "HERMIA: Beteem them from the tempest of my eyes."
+    },
+    "134": {
+      "play": "LYSANDER: Ay me! for aught that I could ever read,"
+    },
+    "135": {
+      "play": "LYSANDER: Could ever hear by tale or history,"
+    },
+    "136": {
+      "play": "LYSANDER: The course of true love never did run smooth;"
+    },
+    "137": {
+      "play": "LYSANDER: But, either it was different in blood,--"
+    },
+    "138": {
+      "play": "HERMIA: O cross! too high to be enthrall'd to low."
+    },
+    "139": {
+      "play": "LYSANDER: Or else misgraffed in respect of years,--"
+    },
+    "140": {
+      "play": "HERMIA: O spite! too old to be engaged to young."
+    },
+    "141": {
+      "play": "LYSANDER: Or else it stood upon the choice of friends,--"
+    },
+    "142": {
+      "play": "HERMIA: O hell! to choose love by another's eyes."
+    },
+    "143": {
+      "play": "LYSANDER: Or, if there were a sympathy in choice,"
+    },
+    "144": {
+      "play": "LYSANDER: War, death, or sickness did lay siege to it,"
+    },
+    "145": {
+      "play": "LYSANDER: Making it momentany as a sound,"
+    },
+    "146": {
+      "play": "LYSANDER: Swift as a shadow, short as any dream;"
+    },
+    "147": {
+      "play": "LYSANDER: Brief as the lightning in the collied night,"
+    },
+    "148": {
+      "play": "LYSANDER: That, in a spleen, unfolds both heaven and earth,"
+    },
+    "149": {
+      "play": "LYSANDER: And ere a man hath power to say 'Behold!'"
+    },
+    "150": {
+      "play": "The jaws of darkness do devour it up: "
+    },
+    "151": {
+      "play": "The jaws of darkness do devour it up: So quick bright things come to confusion."
+    },
+    "152": {
+      "play": "HERMIA: If then true lovers have been ever cross'd,"
+    },
+    "153": {
+      "play": "It stands as an edict in destiny: "
+    },
+    "154": {
+      "play": "It stands as an edict in destiny: Then let us teach our trial patience,"
+    },
+    "155": {
+      "play": "It stands as an edict in destiny: Because it is a customary cross,"
+    },
+    "156": {
+      "play": "It stands as an edict in destiny: As due to love as thoughts and dreams and sighs,"
+    },
+    "157": {
+      "play": "It stands as an edict in destiny: Wishes and tears, poor fancy's followers."
+    },
+    "158": {
+      "play": "LYSANDER: A good persuasion: therefore, hear me, Hermia."
+    },
+    "159": {
+      "play": "LYSANDER: I have a widow aunt, a dowager"
+    },
+    "160": {
+      "play": "Of great revenue, and she hath no child: "
+    },
+    "161": {
+      "play": "Of great revenue, and she hath no child: From Athens is her house remote seven leagues;"
+    },
+    "162": {
+      "play": "Of great revenue, and she hath no child: And she respects me as her only son."
+    },
+    "163": {
+      "play": "Of great revenue, and she hath no child: There, gentle Hermia, may I marry thee;"
+    },
+    "164": {
+      "play": "Of great revenue, and she hath no child: And to that place the sharp Athenian law"
+    },
+    "165": {
+      "play": "Of great revenue, and she hath no child: Cannot pursue us. If thou lovest me then,"
+    },
+    "166": {
+      "play": "Of great revenue, and she hath no child: Steal forth thy father's house to-morrow night;"
+    },
+    "167": {
+      "play": "Of great revenue, and she hath no child: And in the wood, a league without the town,"
+    },
+    "168": {
+      "play": "Of great revenue, and she hath no child: Where I did meet thee once with Helena,"
+    },
+    "169": {
+      "play": "Of great revenue, and she hath no child: To do observance to a morn of May,"
+    },
+    "170": {
+      "play": "Of great revenue, and she hath no child: There will I stay for thee."
+    },
+    "171": {
+      "play": "HERMIA: My good Lysander!"
+    },
+    "172": {
+      "play": "HERMIA: I swear to thee, by Cupid's strongest bow,"
+    },
+    "173": {
+      "play": "HERMIA: By his best arrow with the golden head,"
+    },
+    "174": {
+      "play": "HERMIA: By the simplicity of Venus' doves,"
+    },
+    "175": {
+      "play": "HERMIA: By that which knitteth souls and prospers loves,"
+    },
+    "176": {
+      "play": "HERMIA: And by that fire which burn'd the Carthage queen,"
+    },
+    "177": {
+      "play": "HERMIA: When the false Troyan under sail was seen,"
+    },
+    "178": {
+      "play": "HERMIA: By all the vows that ever men have broke,"
+    },
+    "179": {
+      "play": "HERMIA: In number more than ever women spoke,"
+    },
+    "180": {
+      "play": "HERMIA: In that same place thou hast appointed me,"
+    },
+    "181": {
+      "play": "HERMIA: To-morrow truly will I meet with thee."
+    },
+    "182": {
+      "play": "LYSANDER: Keep promise, love. Look, here comes Helena."
+    },
+    "183": {
+      "play": "HERMIA: God speed fair Helena! whither away?"
+    },
+    "184": {
+      "play": "HELENA: Call you me fair? that fair again unsay."
+    },
+    "185": {
+      "play": "Demetrius loves your fair: O happy fair!"
+    },
+    "186": {
+      "play": "Demetrius loves your fair: Your eyes are lode-stars; and your tongue's sweet air"
+    },
+    "187": {
+      "play": "Demetrius loves your fair: More tuneable than lark to shepherd's ear,"
+    },
+    "188": {
+      "play": "Demetrius loves your fair: When wheat is green, when hawthorn buds appear."
+    },
+    "189": {
+      "play": "Sickness is catching: O, were favour so,"
+    },
+    "190": {
+      "play": "Sickness is catching: Yours would I catch, fair Hermia, ere I go;"
+    },
+    "191": {
+      "play": "Sickness is catching: My ear should catch your voice, my eye your eye,"
+    },
+    "192": {
+      "play": "Sickness is catching: My tongue should catch your tongue's sweet melody."
+    },
+    "193": {
+      "play": "Sickness is catching: Were the world mine, Demetrius being bated,"
+    },
+    "194": {
+      "play": "Sickness is catching: The rest I'd give to be to you translated."
+    },
+    "195": {
+      "play": "Sickness is catching: O, teach me how you look, and with what art"
+    },
+    "196": {
+      "play": "Sickness is catching: You sway the motion of Demetrius' heart."
+    },
+    "197": {
+      "play": "HERMIA: I frown upon him, yet he loves me still."
+    },
+    "198": {
+      "play": "HELENA: O that your frowns would teach my smiles such skill!"
+    },
+    "199": {
+      "play": "HERMIA: I give him curses, yet he gives me love."
+    },
+    "200": {
+      "play": "HELENA: O that my prayers could such affection move!"
+    },
+    "201": {
+      "play": "HERMIA: The more I hate, the more he follows me."
+    },
+    "202": {
+      "play": "HELENA: The more I love, the more he hateth me."
+    },
+    "203": {
+      "play": "HERMIA: His folly, Helena, is no fault of mine."
+    },
+    "204": {
+      "play": "HELENA: None, but your beauty: would that fault were mine!"
+    },
+    "205": {
+      "play": "HERMIA: Take comfort: he no more shall see my face;"
+    },
+    "206": {
+      "play": "HERMIA: Lysander and myself will fly this place."
+    },
+    "207": {
+      "play": "HERMIA: Before the time I did Lysander see,"
+    },
+    "208": {
+      "play": "Seem'd Athens as a paradise to me: "
+    },
+    "209": {
+      "play": "Seem'd Athens as a paradise to me: O, then, what graces in my love do dwell,"
+    },
+    "210": {
+      "play": "Seem'd Athens as a paradise to me: That he hath turn'd a heaven unto a hell!"
+    },
+    "211": {
+      "play": "LYSANDER: Helen, to you our minds we will unfold:"
+    },
+    "212": {
+      "play": "LYSANDER: To-morrow night, when Phoebe doth behold"
+    },
+    "213": {
+      "play": "LYSANDER: Her silver visage in the watery glass,"
+    },
+    "214": {
+      "play": "LYSANDER: Decking with liquid pearl the bladed grass,"
+    },
+    "215": {
+      "play": "LYSANDER: A time that lovers' flights doth still conceal,"
+    },
+    "216": {
+      "play": "LYSANDER: Through Athens' gates have we devised to steal."
+    },
+    "217": {
+      "play": "HERMIA: And in the wood, where often you and I"
+    },
+    "218": {
+      "play": "HERMIA: Upon faint primrose-beds were wont to lie,"
+    },
+    "219": {
+      "play": "HERMIA: Emptying our bosoms of their counsel sweet,"
+    },
+    "220": {
+      "play": "HERMIA: There my Lysander and myself shall meet;"
+    },
+    "221": {
+      "play": "HERMIA: And thence from Athens turn away our eyes,"
+    },
+    "222": {
+      "play": "HERMIA: To seek new friends and stranger companies."
+    },
+    "223": {
+      "play": "Farewell, sweet playfellow: pray thou for us;"
+    },
+    "224": {
+      "play": "Farewell, sweet playfellow: And good luck grant thee thy Demetrius!"
+    },
+    "225": {
+      "play": "Keep word, Lysander: we must starve our sight"
+    },
+    "226": {
+      "play": "Keep word, Lysander: From lovers' food till morrow deep midnight."
+    },
+    "227": {
+      "play": "LYSANDER: I will, my Hermia."
+    },
+    "228": {
+      "play": "Helena, adieu: "
+    },
+    "229": {
+      "play": "Helena, adieu: As you on him, Demetrius dote on you!"
+    },
+    "230": {
+      "play": "HELENA: How happy some o'er other some can be!"
+    },
+    "231": {
+      "play": "HELENA: Through Athens I am thought as fair as she."
+    },
+    "232": {
+      "play": "HELENA: But what of that? Demetrius thinks not so;"
+    },
+    "233": {
+      "play": "He will not know what all but he do know: "
+    },
+    "234": {
+      "play": "He will not know what all but he do know: And as he errs, doting on Hermia's eyes,"
+    },
+    "235": {
+      "play": "So I, admiring of his qualities: "
+    },
+    "236": {
+      "play": "So I, admiring of his qualities: Things base and vile, folding no quantity,"
+    },
+    "237": {
+      "play": "Love can transpose to form and dignity: "
+    },
+    "238": {
+      "play": "Love can transpose to form and dignity: Love looks not with the eyes, but with the mind;"
+    },
+    "239": {
+      "play": "And therefore is wing'd Cupid painted blind: "
+    },
+    "240": {
+      "play": "And therefore is wing'd Cupid painted blind: Nor hath Love's mind of any judgement taste;"
+    },
+    "241": {
+      "play": "Wings and no eyes figure unheedy haste: "
+    },
+    "242": {
+      "play": "Wings and no eyes figure unheedy haste: And therefore is Love said to be a child,"
+    },
+    "243": {
+      "play": "Wings and no eyes figure unheedy haste: Because in choice he is so oft beguiled."
+    },
+    "244": {
+      "play": "Wings and no eyes figure unheedy haste: As waggish boys in game themselves forswear,"
+    },
+    "245": {
+      "play": "So the boy Love is perjured every where: "
+    },
+    "246": {
+      "play": "So the boy Love is perjured every where: For ere Demetrius look'd on Hermia's eyne,"
+    },
+    "247": {
+      "play": "So the boy Love is perjured every where: He hail'd down oaths that he was only mine;"
+    },
+    "248": {
+      "play": "So the boy Love is perjured every where: And when this hail some heat from Hermia felt,"
+    },
+    "249": {
+      "play": "So the boy Love is perjured every where: So he dissolved, and showers of oaths did melt."
+    },
+    "250": {
+      "play": "I will go tell him of fair Hermia's flight: "
+    },
+    "251": {
+      "play": "I will go tell him of fair Hermia's flight: Then to the wood will he to-morrow night"
+    },
+    "252": {
+      "play": "I will go tell him of fair Hermia's flight: Pursue her; and for this intelligence"
+    },
+    "253": {
+      "play": "If I have thanks, it is a dear expense: "
+    },
+    "254": {
+      "play": "If I have thanks, it is a dear expense: But herein mean I to enrich my pain,"
+    },
+    "255": {
+      "play": "If I have thanks, it is a dear expense: To have his sight thither and back again."
+    }
+  },
+  "ACT 1 SCENE 2": {
+    "1": {
+      "play": "QUINCE: Is all our company here?"
+    },
+    "2": {
+      "play": "BOTTOM: You were best to call them generally, man by man,"
+    },
+    "3": {
+      "play": "BOTTOM: according to the scrip."
+    },
+    "4": {
+      "play": "QUINCE: Here is the scroll of every man's name, which is"
+    },
+    "5": {
+      "play": "QUINCE: thought fit, through all Athens, to play in our"
+    },
+    "6": {
+      "play": "QUINCE: interlude before the duke and the duchess, on his"
+    },
+    "7": {
+      "play": "QUINCE: wedding-day at night."
+    },
+    "8": {
+      "play": "BOTTOM: First, good Peter Quince, say what the play treats"
+    },
+    "9": {
+      "play": "BOTTOM: on, then read the names of the actors, and so grow"
+    },
+    "10": {
+      "play": "BOTTOM: to a point."
+    },
+    "11": {
+      "play": "QUINCE: Marry, our play is, The most lamentable comedy, and"
+    },
+    "12": {
+      "play": "QUINCE: most cruel death of Pyramus and Thisby."
+    },
+    "13": {
+      "play": "BOTTOM: A very good piece of work, I assure you, and a"
+    },
+    "14": {
+      "play": "BOTTOM: merry. Now, good Peter Quince, call forth your"
+    },
+    "15": {
+      "play": "BOTTOM: actors by the scroll. Masters, spread yourselves."
+    },
+    "16": {
+      "play": "QUINCE: Answer as I call you. Nick Bottom, the weaver."
+    },
+    "17": {
+      "play": "BOTTOM: Ready. Name what part I am for, and proceed."
+    },
+    "18": {
+      "play": "QUINCE: You, Nick Bottom, are set down for Pyramus."
+    },
+    "19": {
+      "play": "BOTTOM: What is Pyramus? a lover, or a tyrant?"
+    },
+    "20": {
+      "play": "QUINCE: A lover, that kills himself most gallant for love."
+    },
+    "21": {
+      "play": "BOTTOM: That will ask some tears in the true performing of"
+    },
+    "22": {
+      "play": "it: if I do it, let the audience look to their"
+    },
+    "23": {
+      "play": "it: eyes; I will move storms, I will condole in some"
+    },
+    "24": {
+      "play": "measure. To the rest: yet my chief humour is for a"
+    },
+    "25": {
+      "play": "tyrant: I could play Ercles rarely, or a part to"
+    },
+    "26": {
+      "play": "tyrant: tear a cat in, to make all split."
+    },
+    "27": {
+      "play": "tyrant: The raging rocks"
+    },
+    "28": {
+      "play": "tyrant: And shivering shocks"
+    },
+    "29": {
+      "play": "tyrant: Shall break the locks"
+    },
+    "30": {
+      "play": "tyrant: Of prison gates;"
+    },
+    "31": {
+      "play": "tyrant: And Phibbus' car"
+    },
+    "32": {
+      "play": "tyrant: Shall shine from far"
+    },
+    "33": {
+      "play": "tyrant: And make and mar"
+    },
+    "34": {
+      "play": "tyrant: The foolish Fates."
+    },
+    "35": {
+      "play": "tyrant: This was lofty! Now name the rest of the players."
+    },
+    "36": {
+      "play": "tyrant: This is Ercles' vein, a tyrant's vein; a lover is"
+    },
+    "37": {
+      "play": "tyrant: more condoling."
+    },
+    "38": {
+      "play": "QUINCE: Francis Flute, the bellows-mender."
+    },
+    "39": {
+      "play": "FLUTE: Here, Peter Quince."
+    },
+    "40": {
+      "play": "QUINCE: Flute, you must take Thisby on you."
+    },
+    "41": {
+      "play": "FLUTE: What is Thisby? a wandering knight?"
+    },
+    "42": {
+      "play": "QUINCE: It is the lady that Pyramus must love."
+    },
+    "43": {
+      "play": "FLUTE: Nay, faith, let me not play a woman; I have a beard coming."
+    },
+    "44": {
+      "play": "QUINCE: That's all one: you shall play it in a mask, and"
+    },
+    "45": {
+      "play": "QUINCE: you may speak as small as you will."
+    },
+    "46": {
+      "play": "BOTTOM: An I may hide my face, let me play Thisby too, I'll"
+    },
+    "47": {
+      "play": "BOTTOM: speak in a monstrous little voice. 'Thisne,"
+    },
+    "48": {
+      "play": "BOTTOM: Thisne;' 'Ah, Pyramus, lover dear! thy Thisby dear,"
+    },
+    "49": {
+      "play": "BOTTOM: and lady dear!'"
+    },
+    "50": {
+      "play": "QUINCE: No, no; you must play Pyramus: and, Flute, you Thisby."
+    },
+    "51": {
+      "play": "BOTTOM: Well, proceed."
+    },
+    "52": {
+      "play": "QUINCE: Robin Starveling, the tailor."
+    },
+    "53": {
+      "play": "STARVELING: Here, Peter Quince."
+    },
+    "54": {
+      "play": "QUINCE: Robin Starveling, you must play Thisby's mother."
+    },
+    "55": {
+      "play": "QUINCE: Tom Snout, the tinker."
+    },
+    "56": {
+      "play": "SNOUT: Here, Peter Quince."
+    },
+    "57": {
+      "play": "QUINCE: You, Pyramus' father: myself, Thisby's father:"
+    },
+    "58": {
+      "play": "Snug, the joiner; you, the lion's part: and, I"
+    },
+    "59": {
+      "play": "Snug, the joiner; you, the lion's part: hope, here is a play fitted."
+    },
+    "60": {
+      "play": "SNUG: Have you the lion's part written? pray you, if it"
+    },
+    "61": {
+      "play": "SNUG: be, give it me, for I am slow of study."
+    },
+    "62": {
+      "play": "QUINCE: You may do it extempore, for it is nothing but roaring."
+    },
+    "63": {
+      "play": "BOTTOM: Let me play the lion too: I will roar, that I will"
+    },
+    "64": {
+      "play": "BOTTOM: do any man's heart good to hear me; I will roar,"
+    },
+    "65": {
+      "play": "BOTTOM: that I will make the duke say 'Let him roar again,"
+    },
+    "66": {
+      "play": "BOTTOM: let him roar again.'"
+    },
+    "67": {
+      "play": "QUINCE: An you should do it too terribly, you would fright"
+    },
+    "68": {
+      "play": "QUINCE: the duchess and the ladies, that they would shriek;"
+    },
+    "69": {
+      "play": "QUINCE: and that were enough to hang us all."
+    },
+    "70": {
+      "play": "ALL: That would hang us, every mother's son."
+    },
+    "71": {
+      "play": "BOTTOM: I grant you, friends, if that you should fright the"
+    },
+    "72": {
+      "play": "BOTTOM: ladies out of their wits, they would have no more"
+    },
+    "73": {
+      "play": "discretion but to hang us: but I will aggravate my"
+    },
+    "74": {
+      "play": "discretion but to hang us: voice so that I will roar you as gently as any"
+    },
+    "75": {
+      "play": "discretion but to hang us: sucking dove; I will roar you an 'twere any"
+    },
+    "76": {
+      "play": "discretion but to hang us: nightingale."
+    },
+    "77": {
+      "play": "QUINCE: You can play no part but Pyramus; for Pyramus is a"
+    },
+    "78": {
+      "play": "QUINCE: sweet-faced man; a proper man, as one shall see in a"
+    },
+    "79": {
+      "play": "summer's day; a most lovely gentleman-like man: "
+    },
+    "80": {
+      "play": "summer's day; a most lovely gentleman-like man: therefore you must needs play Pyramus."
+    },
+    "81": {
+      "play": "BOTTOM: Well, I will undertake it. What beard were I best"
+    },
+    "82": {
+      "play": "BOTTOM: to play it in?"
+    },
+    "83": {
+      "play": "QUINCE: Why, what you will."
+    },
+    "84": {
+      "play": "BOTTOM: I will discharge it in either your straw-colour"
+    },
+    "85": {
+      "play": "BOTTOM: beard, your orange-tawny beard, your purple-in-grain"
+    },
+    "86": {
+      "play": "BOTTOM: beard, or your French-crown-colour beard, your"
+    },
+    "87": {
+      "play": "BOTTOM: perfect yellow."
+    },
+    "88": {
+      "play": "QUINCE: Some of your French crowns have no hair at all, and"
+    },
+    "89": {
+      "play": "QUINCE: then you will play bare-faced. But, masters, here"
+    },
+    "90": {
+      "play": "are your parts: and I am to entreat you, request"
+    },
+    "91": {
+      "play": "are your parts: you and desire you, to con them by to-morrow night;"
+    },
+    "92": {
+      "play": "are your parts: and meet me in the palace wood, a mile without the"
+    },
+    "93": {
+      "play": "are your parts: town, by moonlight; there will we rehearse, for if"
+    },
+    "94": {
+      "play": "are your parts: we meet in the city, we shall be dogged with"
+    },
+    "95": {
+      "play": "are your parts: company, and our devices known. In the meantime I"
+    },
+    "96": {
+      "play": "are your parts: will draw a bill of properties, such as our play"
+    },
+    "97": {
+      "play": "are your parts: wants. I pray you, fail me not."
+    },
+    "98": {
+      "play": "BOTTOM: We will meet; and there we may rehearse most"
+    },
+    "99": {
+      "play": "obscenely and courageously. Take pains; be perfect: adieu."
+    },
+    "100": {
+      "play": "QUINCE: At the duke's oak we meet."
+    }
+  },
+  "ACT 2 SCENE 1": {
+    "1": {
+      "play": "PUCK: How now, spirit! whither wander you?"
+    },
+    "2": {
+      "play": "Fairy: Over hill, over dale,"
+    },
+    "3": {
+      "play": "Fairy: Thorough bush, thorough brier,"
+    },
+    "4": {
+      "play": "Fairy: Over park, over pale,"
+    },
+    "5": {
+      "play": "Fairy: Thorough flood, thorough fire,"
+    },
+    "6": {
+      "play": "Fairy: I do wander everywhere,"
+    },
+    "7": {
+      "play": "Fairy: Swifter than the moon's sphere;"
+    },
+    "8": {
+      "play": "Fairy: And I serve the fairy queen,"
+    },
+    "9": {
+      "play": "Fairy: To dew her orbs upon the green."
+    },
+    "10": {
+      "play": "The cowslips tall her pensioners be: "
+    },
+    "11": {
+      "play": "The cowslips tall her pensioners be: In their gold coats spots you see;"
+    },
+    "12": {
+      "play": "The cowslips tall her pensioners be: Those be rubies, fairy favours,"
+    },
+    "13": {
+      "play": "In those freckles live their savours: "
+    },
+    "14": {
+      "play": "In those freckles live their savours: I must go seek some dewdrops here"
+    },
+    "15": {
+      "play": "In those freckles live their savours: And hang a pearl in every cowslip's ear."
+    },
+    "16": {
+      "play": "Farewell, thou lob of spirits; I'll be gone: "
+    },
+    "17": {
+      "play": "Farewell, thou lob of spirits; I'll be gone: Our queen and all our elves come here anon."
+    },
+    "18": {
+      "play": "PUCK: The king doth keep his revels here to-night:"
+    },
+    "19": {
+      "play": "PUCK: Take heed the queen come not within his sight;"
+    },
+    "20": {
+      "play": "PUCK: For Oberon is passing fell and wrath,"
+    },
+    "21": {
+      "play": "PUCK: Because that she as her attendant hath"
+    },
+    "22": {
+      "play": "PUCK: A lovely boy, stolen from an Indian king;"
+    },
+    "23": {
+      "play": "PUCK: She never had so sweet a changeling;"
+    },
+    "24": {
+      "play": "PUCK: And jealous Oberon would have the child"
+    },
+    "25": {
+      "play": "PUCK: Knight of his train, to trace the forests wild;"
+    },
+    "26": {
+      "play": "PUCK: But she perforce withholds the loved boy,"
+    },
+    "27": {
+      "play": "Crowns him with flowers and makes him all her joy: "
+    },
+    "28": {
+      "play": "Crowns him with flowers and makes him all her joy: And now they never meet in grove or green,"
+    },
+    "29": {
+      "play": "Crowns him with flowers and makes him all her joy: By fountain clear, or spangled starlight sheen,"
+    },
+    "30": {
+      "play": "Crowns him with flowers and makes him all her joy: But, they do square, that all their elves for fear"
+    },
+    "31": {
+      "play": "Crowns him with flowers and makes him all her joy: Creep into acorn-cups and hide them there."
+    },
+    "32": {
+      "play": "Fairy: Either I mistake your shape and making quite,"
+    },
+    "33": {
+      "play": "Fairy: Or else you are that shrewd and knavish sprite"
+    },
+    "34": {
+      "play": "Call'd Robin Goodfellow: are not you he"
+    },
+    "35": {
+      "play": "Call'd Robin Goodfellow: That frights the maidens of the villagery;"
+    },
+    "36": {
+      "play": "Call'd Robin Goodfellow: Skim milk, and sometimes labour in the quern"
+    },
+    "37": {
+      "play": "Call'd Robin Goodfellow: And bootless make the breathless housewife churn;"
+    },
+    "38": {
+      "play": "Call'd Robin Goodfellow: And sometime make the drink to bear no barm;"
+    },
+    "39": {
+      "play": "Call'd Robin Goodfellow: Mislead night-wanderers, laughing at their harm?"
+    },
+    "40": {
+      "play": "Call'd Robin Goodfellow: Those that Hobgoblin call you and sweet Puck,"
+    },
+    "41": {
+      "play": "You do their work, and they shall have good luck: "
+    },
+    "42": {
+      "play": "You do their work, and they shall have good luck: Are not you he?"
+    },
+    "43": {
+      "play": "PUCK: Thou speak'st aright;"
+    },
+    "44": {
+      "play": "PUCK: I am that merry wanderer of the night."
+    },
+    "45": {
+      "play": "PUCK: I jest to Oberon and make him smile"
+    },
+    "46": {
+      "play": "PUCK: When I a fat and bean-fed horse beguile,"
+    },
+    "47": {
+      "play": "Neighing in likeness of a filly foal: "
+    },
+    "48": {
+      "play": "Neighing in likeness of a filly foal: And sometime lurk I in a gossip's bowl,"
+    },
+    "49": {
+      "play": "Neighing in likeness of a filly foal: In very likeness of a roasted crab,"
+    },
+    "50": {
+      "play": "Neighing in likeness of a filly foal: And when she drinks, against her lips I bob"
+    },
+    "51": {
+      "play": "Neighing in likeness of a filly foal: And on her wither'd dewlap pour the ale."
+    },
+    "52": {
+      "play": "Neighing in likeness of a filly foal: The wisest aunt, telling the saddest tale,"
+    },
+    "53": {
+      "play": "Neighing in likeness of a filly foal: Sometime for three-foot stool mistaketh me;"
+    },
+    "54": {
+      "play": "Neighing in likeness of a filly foal: Then slip I from her bum, down topples she,"
+    },
+    "55": {
+      "play": "Neighing in likeness of a filly foal: And 'tailor' cries, and falls into a cough;"
+    },
+    "56": {
+      "play": "Neighing in likeness of a filly foal: And then the whole quire hold their hips and laugh,"
+    },
+    "57": {
+      "play": "Neighing in likeness of a filly foal: And waxen in their mirth and neeze and swear"
+    },
+    "58": {
+      "play": "Neighing in likeness of a filly foal: A merrier hour was never wasted there."
+    },
+    "59": {
+      "play": "Neighing in likeness of a filly foal: But, room, fairy! here comes Oberon."
+    },
+    "60": {
+      "play": "Fairy: And here my mistress. Would that he were gone!"
+    },
+    "61": {
+      "play": "OBERON: Ill met by moonlight, proud Titania."
+    },
+    "62": {
+      "play": "TITANIA: What, jealous Oberon! Fairies, skip hence:"
+    },
+    "63": {
+      "play": "TITANIA: I have forsworn his bed and company."
+    },
+    "64": {
+      "play": "OBERON: Tarry, rash wanton: am not I thy lord?"
+    },
+    "65": {
+      "play": "TITANIA: Then I must be thy lady: but I know"
+    },
+    "66": {
+      "play": "TITANIA: When thou hast stolen away from fairy land,"
+    },
+    "67": {
+      "play": "TITANIA: And in the shape of Corin sat all day,"
+    },
+    "68": {
+      "play": "TITANIA: Playing on pipes of corn and versing love"
+    },
+    "69": {
+      "play": "TITANIA: To amorous Phillida. Why art thou here,"
+    },
+    "70": {
+      "play": "TITANIA: Come from the farthest Steppe of India?"
+    },
+    "71": {
+      "play": "TITANIA: But that, forsooth, the bouncing Amazon,"
+    },
+    "72": {
+      "play": "TITANIA: Your buskin'd mistress and your warrior love,"
+    },
+    "73": {
+      "play": "TITANIA: To Theseus must be wedded, and you come"
+    },
+    "74": {
+      "play": "TITANIA: To give their bed joy and prosperity."
+    },
+    "75": {
+      "play": "OBERON: How canst thou thus for shame, Titania,"
+    },
+    "76": {
+      "play": "OBERON: Glance at my credit with Hippolyta,"
+    },
+    "77": {
+      "play": "OBERON: Knowing I know thy love to Theseus?"
+    },
+    "78": {
+      "play": "OBERON: Didst thou not lead him through the glimmering night"
+    },
+    "79": {
+      "play": "OBERON: From Perigenia, whom he ravished?"
+    },
+    "80": {
+      "play": "OBERON: And make him with fair AEgle break his faith,"
+    },
+    "81": {
+      "play": "OBERON: With Ariadne and Antiopa?"
+    },
+    "82": {
+      "play": "TITANIA: These are the forgeries of jealousy:"
+    },
+    "83": {
+      "play": "TITANIA: And never, since the middle summer's spring,"
+    },
+    "84": {
+      "play": "TITANIA: Met we on hill, in dale, forest or mead,"
+    },
+    "85": {
+      "play": "TITANIA: By paved fountain or by rushy brook,"
+    },
+    "86": {
+      "play": "TITANIA: Or in the beached margent of the sea,"
+    },
+    "87": {
+      "play": "TITANIA: To dance our ringlets to the whistling wind,"
+    },
+    "88": {
+      "play": "TITANIA: But with thy brawls thou hast disturb'd our sport."
+    },
+    "89": {
+      "play": "TITANIA: Therefore the winds, piping to us in vain,"
+    },
+    "90": {
+      "play": "TITANIA: As in revenge, have suck'd up from the sea"
+    },
+    "91": {
+      "play": "TITANIA: Contagious fogs; which falling in the land"
+    },
+    "92": {
+      "play": "TITANIA: Have every pelting river made so proud"
+    },
+    "93": {
+      "play": "That they have overborne their continents: "
+    },
+    "94": {
+      "play": "That they have overborne their continents: The ox hath therefore stretch'd his yoke in vain,"
+    },
+    "95": {
+      "play": "That they have overborne their continents: The ploughman lost his sweat, and the green corn"
+    },
+    "96": {
+      "play": "That they have overborne their continents: Hath rotted ere his youth attain'd a beard;"
+    },
+    "97": {
+      "play": "That they have overborne their continents: The fold stands empty in the drowned field,"
+    },
+    "98": {
+      "play": "That they have overborne their continents: And crows are fatted with the murrion flock;"
+    },
+    "99": {
+      "play": "That they have overborne their continents: The nine men's morris is fill'd up with mud,"
+    },
+    "100": {
+      "play": "That they have overborne their continents: And the quaint mazes in the wanton green"
+    },
+    "101": {
+      "play": "For lack of tread are undistinguishable: "
+    },
+    "102": {
+      "play": "For lack of tread are undistinguishable: The human mortals want their winter here;"
+    },
+    "103": {
+      "play": "No night is now with hymn or carol blest: "
+    },
+    "104": {
+      "play": "No night is now with hymn or carol blest: Therefore the moon, the governess of floods,"
+    },
+    "105": {
+      "play": "No night is now with hymn or carol blest: Pale in her anger, washes all the air,"
+    },
+    "106": {
+      "play": "That rheumatic diseases do abound: "
+    },
+    "107": {
+      "play": "That rheumatic diseases do abound: And thorough this distemperature we see"
+    },
+    "108": {
+      "play": "The seasons alter: hoary-headed frosts"
+    },
+    "109": {
+      "play": "The seasons alter: Far in the fresh lap of the crimson rose,"
+    },
+    "110": {
+      "play": "The seasons alter: And on old Hiems' thin and icy crown"
+    },
+    "111": {
+      "play": "The seasons alter: An odorous chaplet of sweet summer buds"
+    },
+    "112": {
+      "play": "Is, as in mockery, set: the spring, the summer,"
+    },
+    "113": {
+      "play": "Is, as in mockery, set: The childing autumn, angry winter, change"
+    },
+    "114": {
+      "play": "Is, as in mockery, set: Their wonted liveries, and the mazed world,"
+    },
+    "115": {
+      "play": "By their increase, now knows not which is which: "
+    },
+    "116": {
+      "play": "By their increase, now knows not which is which: And this same progeny of evils comes"
+    },
+    "117": {
+      "play": "By their increase, now knows not which is which: From our debate, from our dissension;"
+    },
+    "118": {
+      "play": "By their increase, now knows not which is which: We are their parents and original."
+    },
+    "119": {
+      "play": "OBERON: Do you amend it then; it lies in you:"
+    },
+    "120": {
+      "play": "OBERON: Why should Titania cross her Oberon?"
+    },
+    "121": {
+      "play": "OBERON: I do but beg a little changeling boy,"
+    },
+    "122": {
+      "play": "OBERON: To be my henchman."
+    },
+    "123": {
+      "play": "TITANIA: Set your heart at rest:"
+    },
+    "124": {
+      "play": "TITANIA: The fairy land buys not the child of me."
+    },
+    "125": {
+      "play": "His mother was a votaress of my order: "
+    },
+    "126": {
+      "play": "His mother was a votaress of my order: And, in the spiced Indian air, by night,"
+    },
+    "127": {
+      "play": "His mother was a votaress of my order: Full often hath she gossip'd by my side,"
+    },
+    "128": {
+      "play": "His mother was a votaress of my order: And sat with me on Neptune's yellow sands,"
+    },
+    "129": {
+      "play": "His mother was a votaress of my order: Marking the embarked traders on the flood,"
+    },
+    "130": {
+      "play": "His mother was a votaress of my order: When we have laugh'd to see the sails conceive"
+    },
+    "131": {
+      "play": "His mother was a votaress of my order: And grow big-bellied with the wanton wind;"
+    },
+    "132": {
+      "play": "His mother was a votaress of my order: Which she, with pretty and with swimming gait"
+    },
+    "133": {
+      "play": "His mother was a votaress of my order: Following,--her womb then rich with my young squire,--"
+    },
+    "134": {
+      "play": "His mother was a votaress of my order: Would imitate, and sail upon the land,"
+    },
+    "135": {
+      "play": "His mother was a votaress of my order: To fetch me trifles, and return again,"
+    },
+    "136": {
+      "play": "His mother was a votaress of my order: As from a voyage, rich with merchandise."
+    },
+    "137": {
+      "play": "His mother was a votaress of my order: But she, being mortal, of that boy did die;"
+    },
+    "138": {
+      "play": "His mother was a votaress of my order: And for her sake do I rear up her boy,"
+    },
+    "139": {
+      "play": "His mother was a votaress of my order: And for her sake I will not part with him."
+    },
+    "140": {
+      "play": "OBERON: How long within this wood intend you stay?"
+    },
+    "141": {
+      "play": "TITANIA: Perchance till after Theseus' wedding-day."
+    },
+    "142": {
+      "play": "TITANIA: If you will patiently dance in our round"
+    },
+    "143": {
+      "play": "TITANIA: And see our moonlight revels, go with us;"
+    },
+    "144": {
+      "play": "TITANIA: If not, shun me, and I will spare your haunts."
+    },
+    "145": {
+      "play": "OBERON: Give me that boy, and I will go with thee."
+    },
+    "146": {
+      "play": "TITANIA: Not for thy fairy kingdom. Fairies, away!"
+    },
+    "147": {
+      "play": "TITANIA: We shall chide downright, if I longer stay."
+    },
+    "148": {
+      "play": "OBERON: Well, go thy way: thou shalt not from this grove"
+    },
+    "149": {
+      "play": "OBERON: Till I torment thee for this injury."
+    },
+    "150": {
+      "play": "OBERON: My gentle Puck, come hither. Thou rememberest"
+    },
+    "151": {
+      "play": "OBERON: Since once I sat upon a promontory,"
+    },
+    "152": {
+      "play": "OBERON: And heard a mermaid on a dolphin's back"
+    },
+    "153": {
+      "play": "OBERON: Uttering such dulcet and harmonious breath"
+    },
+    "154": {
+      "play": "OBERON: That the rude sea grew civil at her song"
+    },
+    "155": {
+      "play": "OBERON: And certain stars shot madly from their spheres,"
+    },
+    "156": {
+      "play": "OBERON: To hear the sea-maid's music."
+    },
+    "157": {
+      "play": "PUCK: I remember."
+    },
+    "158": {
+      "play": "OBERON: That very time I saw, but thou couldst not,"
+    },
+    "159": {
+      "play": "OBERON: Flying between the cold moon and the earth,"
+    },
+    "160": {
+      "play": "Cupid all arm'd: a certain aim he took"
+    },
+    "161": {
+      "play": "Cupid all arm'd: At a fair vestal throned by the west,"
+    },
+    "162": {
+      "play": "Cupid all arm'd: And loosed his love-shaft smartly from his bow,"
+    },
+    "163": {
+      "play": "Cupid all arm'd: As it should pierce a hundred thousand hearts;"
+    },
+    "164": {
+      "play": "Cupid all arm'd: But I might see young Cupid's fiery shaft"
+    },
+    "165": {
+      "play": "Cupid all arm'd: Quench'd in the chaste beams of the watery moon,"
+    },
+    "166": {
+      "play": "Cupid all arm'd: And the imperial votaress passed on,"
+    },
+    "167": {
+      "play": "Cupid all arm'd: In maiden meditation, fancy-free."
+    },
+    "168": {
+      "play": "Yet mark'd I where the bolt of Cupid fell: "
+    },
+    "169": {
+      "play": "Yet mark'd I where the bolt of Cupid fell: It fell upon a little western flower,"
+    },
+    "170": {
+      "play": "Yet mark'd I where the bolt of Cupid fell: Before milk-white, now purple with love's wound,"
+    },
+    "171": {
+      "play": "Yet mark'd I where the bolt of Cupid fell: And maidens call it love-in-idleness."
+    },
+    "172": {
+      "play": "Fetch me that flower; the herb I shew'd thee once: "
+    },
+    "173": {
+      "play": "Fetch me that flower; the herb I shew'd thee once: The juice of it on sleeping eye-lids laid"
+    },
+    "174": {
+      "play": "Fetch me that flower; the herb I shew'd thee once: Will make or man or woman madly dote"
+    },
+    "175": {
+      "play": "Fetch me that flower; the herb I shew'd thee once: Upon the next live creature that it sees."
+    },
+    "176": {
+      "play": "Fetch me that flower; the herb I shew'd thee once: Fetch me this herb; and be thou here again"
+    },
+    "177": {
+      "play": "Fetch me that flower; the herb I shew'd thee once: Ere the leviathan can swim a league."
+    },
+    "178": {
+      "play": "PUCK: I'll put a girdle round about the earth"
+    },
+    "179": {
+      "play": "PUCK: In forty minutes."
+    },
+    "180": {
+      "play": "OBERON: Having once this juice,"
+    },
+    "181": {
+      "play": "OBERON: I'll watch Titania when she is asleep,"
+    },
+    "182": {
+      "play": "OBERON: And drop the liquor of it in her eyes."
+    },
+    "183": {
+      "play": "OBERON: The next thing then she waking looks upon,"
+    },
+    "184": {
+      "play": "OBERON: Be it on lion, bear, or wolf, or bull,"
+    },
+    "185": {
+      "play": "OBERON: On meddling monkey, or on busy ape,"
+    },
+    "186": {
+      "play": "She shall pursue it with the soul of love: "
+    },
+    "187": {
+      "play": "She shall pursue it with the soul of love: And ere I take this charm from off her sight,"
+    },
+    "188": {
+      "play": "She shall pursue it with the soul of love: As I can take it with another herb,"
+    },
+    "189": {
+      "play": "She shall pursue it with the soul of love: I'll make her render up her page to me."
+    },
+    "190": {
+      "play": "She shall pursue it with the soul of love: But who comes here? I am invisible;"
+    },
+    "191": {
+      "play": "She shall pursue it with the soul of love: And I will overhear their conference."
+    },
+    "192": {
+      "play": "DEMETRIUS: I love thee not, therefore pursue me not."
+    },
+    "193": {
+      "play": "DEMETRIUS: Where is Lysander and fair Hermia?"
+    },
+    "194": {
+      "play": "DEMETRIUS: The one I'll slay, the other slayeth me."
+    },
+    "195": {
+      "play": "DEMETRIUS: Thou told'st me they were stolen unto this wood;"
+    },
+    "196": {
+      "play": "DEMETRIUS: And here am I, and wode within this wood,"
+    },
+    "197": {
+      "play": "DEMETRIUS: Because I cannot meet my Hermia."
+    },
+    "198": {
+      "play": "DEMETRIUS: Hence, get thee gone, and follow me no more."
+    },
+    "199": {
+      "play": "HELENA: You draw me, you hard-hearted adamant;"
+    },
+    "200": {
+      "play": "HELENA: But yet you draw not iron, for my heart"
+    },
+    "201": {
+      "play": "Is true as steel: leave you your power to draw,"
+    },
+    "202": {
+      "play": "Is true as steel: And I shall have no power to follow you."
+    },
+    "203": {
+      "play": "DEMETRIUS: Do I entice you? do I speak you fair?"
+    },
+    "204": {
+      "play": "DEMETRIUS: Or, rather, do I not in plainest truth"
+    },
+    "205": {
+      "play": "DEMETRIUS: Tell you, I do not, nor I cannot love you?"
+    },
+    "206": {
+      "play": "HELENA: And even for that do I love you the more."
+    },
+    "207": {
+      "play": "HELENA: I am your spaniel; and, Demetrius,"
+    },
+    "208": {
+      "play": "The more you beat me, I will fawn on you: "
+    },
+    "209": {
+      "play": "The more you beat me, I will fawn on you: Use me but as your spaniel, spurn me, strike me,"
+    },
+    "210": {
+      "play": "The more you beat me, I will fawn on you: Neglect me, lose me; only give me leave,"
+    },
+    "211": {
+      "play": "The more you beat me, I will fawn on you: Unworthy as I am, to follow you."
+    },
+    "212": {
+      "play": "The more you beat me, I will fawn on you: What worser place can I beg in your love,--"
+    },
+    "213": {
+      "play": "The more you beat me, I will fawn on you: And yet a place of high respect with me,--"
+    },
+    "214": {
+      "play": "The more you beat me, I will fawn on you: Than to be used as you use your dog?"
+    },
+    "215": {
+      "play": "DEMETRIUS: Tempt not too much the hatred of my spirit;"
+    },
+    "216": {
+      "play": "DEMETRIUS: For I am sick when I do look on thee."
+    },
+    "217": {
+      "play": "HELENA: And I am sick when I look not on you."
+    },
+    "218": {
+      "play": "DEMETRIUS: You do impeach your modesty too much,"
+    },
+    "219": {
+      "play": "DEMETRIUS: To leave the city and commit yourself"
+    },
+    "220": {
+      "play": "DEMETRIUS: Into the hands of one that loves you not;"
+    },
+    "221": {
+      "play": "DEMETRIUS: To trust the opportunity of night"
+    },
+    "222": {
+      "play": "DEMETRIUS: And the ill counsel of a desert place"
+    },
+    "223": {
+      "play": "DEMETRIUS: With the rich worth of your virginity."
+    },
+    "224": {
+      "play": "HELENA: Your virtue is my privilege: for that"
+    },
+    "225": {
+      "play": "HELENA: It is not night when I do see your face,"
+    },
+    "226": {
+      "play": "HELENA: Therefore I think I am not in the night;"
+    },
+    "227": {
+      "play": "HELENA: Nor doth this wood lack worlds of company,"
+    },
+    "228": {
+      "play": "For you in my respect are all the world: "
+    },
+    "229": {
+      "play": "For you in my respect are all the world: Then how can it be said I am alone,"
+    },
+    "230": {
+      "play": "For you in my respect are all the world: When all the world is here to look on me?"
+    },
+    "231": {
+      "play": "DEMETRIUS: I'll run from thee and hide me in the brakes,"
+    },
+    "232": {
+      "play": "DEMETRIUS: And leave thee to the mercy of wild beasts."
+    },
+    "233": {
+      "play": "HELENA: The wildest hath not such a heart as you."
+    },
+    "234": {
+      "play": "Run when you will, the story shall be changed: "
+    },
+    "235": {
+      "play": "Run when you will, the story shall be changed: Apollo flies, and Daphne holds the chase;"
+    },
+    "236": {
+      "play": "Run when you will, the story shall be changed: The dove pursues the griffin; the mild hind"
+    },
+    "237": {
+      "play": "Run when you will, the story shall be changed: Makes speed to catch the tiger; bootless speed,"
+    },
+    "238": {
+      "play": "Run when you will, the story shall be changed: When cowardice pursues and valour flies."
+    },
+    "239": {
+      "play": "DEMETRIUS: I will not stay thy questions; let me go:"
+    },
+    "240": {
+      "play": "DEMETRIUS: Or, if thou follow me, do not believe"
+    },
+    "241": {
+      "play": "DEMETRIUS: But I shall do thee mischief in the wood."
+    },
+    "242": {
+      "play": "HELENA: Ay, in the temple, in the town, the field,"
+    },
+    "243": {
+      "play": "HELENA: You do me mischief. Fie, Demetrius!"
+    },
+    "244": {
+      "play": "Your wrongs do set a scandal on my sex: "
+    },
+    "245": {
+      "play": "Your wrongs do set a scandal on my sex: We cannot fight for love, as men may do;"
+    },
+    "246": {
+      "play": "Your wrongs do set a scandal on my sex: We should be wood and were not made to woo."
+    },
+    "247": {
+      "play": "Your wrongs do set a scandal on my sex: I'll follow thee and make a heaven of hell,"
+    },
+    "248": {
+      "play": "Your wrongs do set a scandal on my sex: To die upon the hand I love so well."
+    },
+    "249": {
+      "play": "OBERON: Fare thee well, nymph: ere he do leave this grove,"
+    },
+    "250": {
+      "play": "OBERON: Thou shalt fly him and he shall seek thy love."
+    },
+    "251": {
+      "play": "OBERON: Hast thou the flower there? Welcome, wanderer."
+    },
+    "252": {
+      "play": "PUCK: Ay, there it is."
+    },
+    "253": {
+      "play": "OBERON: I pray thee, give it me."
+    },
+    "254": {
+      "play": "OBERON: I know a bank where the wild thyme blows,"
+    },
+    "255": {
+      "play": "OBERON: Where oxlips and the nodding violet grows,"
+    },
+    "256": {
+      "play": "OBERON: Quite over-canopied with luscious woodbine,"
+    },
+    "257": {
+      "play": "With sweet musk-roses and with eglantine: "
+    },
+    "258": {
+      "play": "With sweet musk-roses and with eglantine: There sleeps Titania sometime of the night,"
+    },
+    "259": {
+      "play": "With sweet musk-roses and with eglantine: Lull'd in these flowers with dances and delight;"
+    },
+    "260": {
+      "play": "With sweet musk-roses and with eglantine: And there the snake throws her enamell'd skin,"
+    },
+    "261": {
+      "play": "Weed wide enough to wrap a fairy in: "
+    },
+    "262": {
+      "play": "Weed wide enough to wrap a fairy in: And with the juice of this I'll streak her eyes,"
+    },
+    "263": {
+      "play": "Weed wide enough to wrap a fairy in: And make her full of hateful fantasies."
+    },
+    "264": {
+      "play": "Take thou some of it, and seek through this grove: "
+    },
+    "265": {
+      "play": "Take thou some of it, and seek through this grove: A sweet Athenian lady is in love"
+    },
+    "266": {
+      "play": "With a disdainful youth: anoint his eyes;"
+    },
+    "267": {
+      "play": "With a disdainful youth: But do it when the next thing he espies"
+    },
+    "268": {
+      "play": "May be the lady: thou shalt know the man"
+    },
+    "269": {
+      "play": "May be the lady: By the Athenian garments he hath on."
+    },
+    "270": {
+      "play": "May be the lady: Effect it with some care, that he may prove"
+    },
+    "271": {
+      "play": "More fond on her than she upon her love: "
+    },
+    "272": {
+      "play": "More fond on her than she upon her love: And look thou meet me ere the first cock crow."
+    },
+    "273": {
+      "play": "PUCK: Fear not, my lord, your servant shall do so."
+    }
+  },
+  "ACT 2 SCENE 2": {
+    "1": {
+      "play": "TITANIA: Come, now a roundel and a fairy song;"
+    },
+    "2": {
+      "play": "TITANIA: Then, for the third part of a minute, hence;"
+    },
+    "3": {
+      "play": "TITANIA: Some to kill cankers in the musk-rose buds,"
+    },
+    "4": {
+      "play": "TITANIA: Some war with rere-mice for their leathern wings,"
+    },
+    "5": {
+      "play": "TITANIA: To make my small elves coats, and some keep back"
+    },
+    "6": {
+      "play": "TITANIA: The clamorous owl that nightly hoots and wonders"
+    },
+    "7": {
+      "play": "TITANIA: At our quaint spirits. Sing me now asleep;"
+    },
+    "8": {
+      "play": "TITANIA: Then to your offices and let me rest."
+    },
+    "9": {
+      "play": "TITANIA: You spotted snakes with double tongue,"
+    },
+    "10": {
+      "play": "TITANIA: Thorny hedgehogs, be not seen;"
+    },
+    "11": {
+      "play": "TITANIA: Newts and blind-worms, do no wrong,"
+    },
+    "12": {
+      "play": "TITANIA: Come not near our fairy queen."
+    },
+    "13": {
+      "play": "TITANIA: Philomel, with melody"
+    },
+    "14": {
+      "play": "TITANIA: Sing in our sweet lullaby;"
+    },
+    "15": {
+      "play": "Lulla, lulla, lullaby, lulla, lulla, lullaby: "
+    },
+    "16": {
+      "play": "Lulla, lulla, lullaby, lulla, lulla, lullaby: Never harm,"
+    },
+    "17": {
+      "play": "Lulla, lulla, lullaby, lulla, lulla, lullaby: Nor spell nor charm,"
+    },
+    "18": {
+      "play": "Lulla, lulla, lullaby, lulla, lulla, lullaby: Come our lovely lady nigh;"
+    },
+    "19": {
+      "play": "Lulla, lulla, lullaby, lulla, lulla, lullaby: So, good night, with lullaby."
+    },
+    "20": {
+      "play": "Lulla, lulla, lullaby, lulla, lulla, lullaby: Weaving spiders, come not here;"
+    },
+    "21": {
+      "play": "Lulla, lulla, lullaby, lulla, lulla, lullaby: Hence, you long-legg'd spinners, hence!"
+    },
+    "22": {
+      "play": "Lulla, lulla, lullaby, lulla, lulla, lullaby: Beetles black, approach not near;"
+    },
+    "23": {
+      "play": "Lulla, lulla, lullaby, lulla, lulla, lullaby: Worm nor snail, do no offence."
+    },
+    "24": {
+      "play": "Lulla, lulla, lullaby, lulla, lulla, lullaby: Philomel, with melody, & c."
+    },
+    "25": {
+      "play": "Fairy: Hence, away! now all is well:"
+    },
+    "26": {
+      "play": "Fairy: One aloof stand sentinel."
+    },
+    "27": {
+      "play": "OBERON: What thou seest when thou dost wake,"
+    },
+    "28": {
+      "play": "OBERON: Do it for thy true-love take,"
+    },
+    "29": {
+      "play": "Love and languish for his sake: "
+    },
+    "30": {
+      "play": "Love and languish for his sake: Be it ounce, or cat, or bear,"
+    },
+    "31": {
+      "play": "Love and languish for his sake: Pard, or boar with bristled hair,"
+    },
+    "32": {
+      "play": "Love and languish for his sake: In thy eye that shall appear"
+    },
+    "33": {
+      "play": "When thou wakest, it is thy dear: "
+    },
+    "34": {
+      "play": "When thou wakest, it is thy dear: Wake when some vile thing is near."
+    },
+    "35": {
+      "play": "LYSANDER: Fair love, you faint with wandering in the wood;"
+    },
+    "36": {
+      "play": "And to speak troth, I have forgot our way: "
+    },
+    "37": {
+      "play": "And to speak troth, I have forgot our way: We'll rest us, Hermia, if you think it good,"
+    },
+    "38": {
+      "play": "And to speak troth, I have forgot our way: And tarry for the comfort of the day."
+    },
+    "39": {
+      "play": "HERMIA: Be it so, Lysander: find you out a bed;"
+    },
+    "40": {
+      "play": "HERMIA: For I upon this bank will rest my head."
+    },
+    "41": {
+      "play": "LYSANDER: One turf shall serve as pillow for us both;"
+    },
+    "42": {
+      "play": "LYSANDER: One heart, one bed, two bosoms and one troth."
+    },
+    "43": {
+      "play": "HERMIA: Nay, good Lysander; for my sake, my dear,"
+    },
+    "44": {
+      "play": "HERMIA: Lie further off yet, do not lie so near."
+    },
+    "45": {
+      "play": "LYSANDER: O, take the sense, sweet, of my innocence!"
+    },
+    "46": {
+      "play": "LYSANDER: Love takes the meaning in love's conference."
+    },
+    "47": {
+      "play": "LYSANDER: I mean, that my heart unto yours is knit"
+    },
+    "48": {
+      "play": "LYSANDER: So that but one heart we can make of it;"
+    },
+    "49": {
+      "play": "LYSANDER: Two bosoms interchained with an oath;"
+    },
+    "50": {
+      "play": "LYSANDER: So then two bosoms and a single troth."
+    },
+    "51": {
+      "play": "LYSANDER: Then by your side no bed-room me deny;"
+    },
+    "52": {
+      "play": "LYSANDER: For lying so, Hermia, I do not lie."
+    },
+    "53": {
+      "play": "HERMIA: Lysander riddles very prettily:"
+    },
+    "54": {
+      "play": "HERMIA: Now much beshrew my manners and my pride,"
+    },
+    "55": {
+      "play": "HERMIA: If Hermia meant to say Lysander lied."
+    },
+    "56": {
+      "play": "HERMIA: But, gentle friend, for love and courtesy"
+    },
+    "57": {
+      "play": "HERMIA: Lie further off; in human modesty,"
+    },
+    "58": {
+      "play": "HERMIA: Such separation as may well be said"
+    },
+    "59": {
+      "play": "HERMIA: Becomes a virtuous bachelor and a maid,"
+    },
+    "60": {
+      "play": "So far be distant; and, good night, sweet friend: "
+    },
+    "61": {
+      "play": "So far be distant; and, good night, sweet friend: Thy love ne'er alter till thy sweet life end!"
+    },
+    "62": {
+      "play": "LYSANDER: Amen, amen, to that fair prayer, say I;"
+    },
+    "63": {
+      "play": "LYSANDER: And then end life when I end loyalty!"
+    },
+    "64": {
+      "play": "Here is my bed: sleep give thee all his rest!"
+    },
+    "65": {
+      "play": "HERMIA: With half that wish the wisher's eyes be press'd!"
+    },
+    "66": {
+      "play": "PUCK: Through the forest have I gone."
+    },
+    "67": {
+      "play": "PUCK: But Athenian found I none,"
+    },
+    "68": {
+      "play": "PUCK: On whose eyes I might approve"
+    },
+    "69": {
+      "play": "PUCK: This flower's force in stirring love."
+    },
+    "70": {
+      "play": "PUCK: Night and silence.--Who is here?"
+    },
+    "71": {
+      "play": "Weeds of Athens he doth wear: "
+    },
+    "72": {
+      "play": "Weeds of Athens he doth wear: This is he, my master said,"
+    },
+    "73": {
+      "play": "Weeds of Athens he doth wear: Despised the Athenian maid;"
+    },
+    "74": {
+      "play": "Weeds of Athens he doth wear: And here the maiden, sleeping sound,"
+    },
+    "75": {
+      "play": "Weeds of Athens he doth wear: On the dank and dirty ground."
+    },
+    "76": {
+      "play": "Weeds of Athens he doth wear: Pretty soul! she durst not lie"
+    },
+    "77": {
+      "play": "Weeds of Athens he doth wear: Near this lack-love, this kill-courtesy."
+    },
+    "78": {
+      "play": "Weeds of Athens he doth wear: Churl, upon thy eyes I throw"
+    },
+    "79": {
+      "play": "Weeds of Athens he doth wear: All the power this charm doth owe."
+    },
+    "80": {
+      "play": "Weeds of Athens he doth wear: When thou wakest, let love forbid"
+    },
+    "81": {
+      "play": "Sleep his seat on thy eyelid: "
+    },
+    "82": {
+      "play": "Sleep his seat on thy eyelid: So awake when I am gone;"
+    },
+    "83": {
+      "play": "Sleep his seat on thy eyelid: For I must now to Oberon."
+    },
+    "84": {
+      "play": "HELENA: Stay, though thou kill me, sweet Demetrius."
+    },
+    "85": {
+      "play": "DEMETRIUS: I charge thee, hence, and do not haunt me thus."
+    },
+    "86": {
+      "play": "HELENA: O, wilt thou darkling leave me? do not so."
+    },
+    "87": {
+      "play": "DEMETRIUS: Stay, on thy peril: I alone will go."
+    },
+    "88": {
+      "play": "HELENA: O, I am out of breath in this fond chase!"
+    },
+    "89": {
+      "play": "HELENA: The more my prayer, the lesser is my grace."
+    },
+    "90": {
+      "play": "HELENA: Happy is Hermia, wheresoe'er she lies;"
+    },
+    "91": {
+      "play": "HELENA: For she hath blessed and attractive eyes."
+    },
+    "92": {
+      "play": "How came her eyes so bright? Not with salt tears: "
+    },
+    "93": {
+      "play": "How came her eyes so bright? Not with salt tears: If so, my eyes are oftener wash'd than hers."
+    },
+    "94": {
+      "play": "How came her eyes so bright? Not with salt tears: No, no, I am as ugly as a bear;"
+    },
+    "95": {
+      "play": "For beasts that meet me run away for fear: "
+    },
+    "96": {
+      "play": "For beasts that meet me run away for fear: Therefore no marvel though Demetrius"
+    },
+    "97": {
+      "play": "For beasts that meet me run away for fear: Do, as a monster fly my presence thus."
+    },
+    "98": {
+      "play": "For beasts that meet me run away for fear: What wicked and dissembling glass of mine"
+    },
+    "99": {
+      "play": "For beasts that meet me run away for fear: Made me compare with Hermia's sphery eyne?"
+    },
+    "100": {
+      "play": "For beasts that meet me run away for fear: But who is here? Lysander! on the ground!"
+    },
+    "101": {
+      "play": "For beasts that meet me run away for fear: Dead? or asleep? I see no blood, no wound."
+    },
+    "102": {
+      "play": "For beasts that meet me run away for fear: Lysander if you live, good sir, awake."
+    },
+    "103": {
+      "play": "LYSANDER: [Awaking] And run through fire I will for thy sweet sake."
+    },
+    "104": {
+      "play": "LYSANDER: Transparent Helena! Nature shows art,"
+    },
+    "105": {
+      "play": "LYSANDER: That through thy bosom makes me see thy heart."
+    },
+    "106": {
+      "play": "LYSANDER: Where is Demetrius? O, how fit a word"
+    },
+    "107": {
+      "play": "LYSANDER: Is that vile name to perish on my sword!"
+    },
+    "108": {
+      "play": "HELENA: Do not say so, Lysander; say not so"
+    },
+    "109": {
+      "play": "HELENA: What though he love your Hermia? Lord, what though?"
+    },
+    "110": {
+      "play": "Yet Hermia still loves you: then be content."
+    },
+    "111": {
+      "play": "LYSANDER: Content with Hermia! No; I do repent"
+    },
+    "112": {
+      "play": "LYSANDER: The tedious minutes I with her have spent."
+    },
+    "113": {
+      "play": "Not Hermia but Helena I love: "
+    },
+    "114": {
+      "play": "Not Hermia but Helena I love: Who will not change a raven for a dove?"
+    },
+    "115": {
+      "play": "Not Hermia but Helena I love: The will of man is by his reason sway'd;"
+    },
+    "116": {
+      "play": "Not Hermia but Helena I love: And reason says you are the worthier maid."
+    },
+    "117": {
+      "play": "Not Hermia but Helena I love: Things growing are not ripe until their season"
+    },
+    "118": {
+      "play": "Not Hermia but Helena I love: So I, being young, till now ripe not to reason;"
+    },
+    "119": {
+      "play": "Not Hermia but Helena I love: And touching now the point of human skill,"
+    },
+    "120": {
+      "play": "Not Hermia but Helena I love: Reason becomes the marshal to my will"
+    },
+    "121": {
+      "play": "Not Hermia but Helena I love: And leads me to your eyes, where I o'erlook"
+    },
+    "122": {
+      "play": "Not Hermia but Helena I love: Love's stories written in love's richest book."
+    },
+    "123": {
+      "play": "HELENA: Wherefore was I to this keen mockery born?"
+    },
+    "124": {
+      "play": "HELENA: When at your hands did I deserve this scorn?"
+    },
+    "125": {
+      "play": "HELENA: Is't not enough, is't not enough, young man,"
+    },
+    "126": {
+      "play": "HELENA: That I did never, no, nor never can,"
+    },
+    "127": {
+      "play": "HELENA: Deserve a sweet look from Demetrius' eye,"
+    },
+    "128": {
+      "play": "HELENA: But you must flout my insufficiency?"
+    },
+    "129": {
+      "play": "HELENA: Good troth, you do me wrong, good sooth, you do,"
+    },
+    "130": {
+      "play": "HELENA: In such disdainful manner me to woo."
+    },
+    "131": {
+      "play": "But fare you well: perforce I must confess"
+    },
+    "132": {
+      "play": "But fare you well: I thought you lord of more true gentleness."
+    },
+    "133": {
+      "play": "But fare you well: O, that a lady, of one man refused."
+    },
+    "134": {
+      "play": "But fare you well: Should of another therefore be abused!"
+    },
+    "135": {
+      "play": "LYSANDER: She sees not Hermia. Hermia, sleep thou there:"
+    },
+    "136": {
+      "play": "LYSANDER: And never mayst thou come Lysander near!"
+    },
+    "137": {
+      "play": "LYSANDER: For as a surfeit of the sweetest things"
+    },
+    "138": {
+      "play": "LYSANDER: The deepest loathing to the stomach brings,"
+    },
+    "139": {
+      "play": "LYSANDER: Or as tie heresies that men do leave"
+    },
+    "140": {
+      "play": "LYSANDER: Are hated most of those they did deceive,"
+    },
+    "141": {
+      "play": "LYSANDER: So thou, my surfeit and my heresy,"
+    },
+    "142": {
+      "play": "LYSANDER: Of all be hated, but the most of me!"
+    },
+    "143": {
+      "play": "LYSANDER: And, all my powers, address your love and might"
+    },
+    "144": {
+      "play": "LYSANDER: To honour Helen and to be her knight!"
+    }
+  },
+  "ACT 3 SCENE 1": {
+    "1": {
+      "play": "BOTTOM: Are we all met?"
+    },
+    "2": {
+      "play": "QUINCE: Pat, pat; and here's a marvellous convenient place"
+    },
+    "3": {
+      "play": "QUINCE: for our rehearsal. This green plot shall be our"
+    },
+    "4": {
+      "play": "QUINCE: stage, this hawthorn-brake our tiring-house; and we"
+    },
+    "5": {
+      "play": "QUINCE: will do it in action as we will do it before the duke."
+    },
+    "6": {
+      "play": "BOTTOM: Peter Quince,--"
+    },
+    "7": {
+      "play": "QUINCE: What sayest thou, bully Bottom?"
+    },
+    "8": {
+      "play": "BOTTOM: There are things in this comedy of Pyramus and"
+    },
+    "9": {
+      "play": "BOTTOM: Thisby that will never please. First, Pyramus must"
+    },
+    "10": {
+      "play": "BOTTOM: draw a sword to kill himself; which the ladies"
+    },
+    "11": {
+      "play": "BOTTOM: cannot abide. How answer you that?"
+    },
+    "12": {
+      "play": "SNOUT: By'r lakin, a parlous fear."
+    },
+    "13": {
+      "play": "STARVELING: I believe we must leave the killing out, when all is done."
+    },
+    "14": {
+      "play": "BOTTOM: Not a whit: I have a device to make all well."
+    },
+    "15": {
+      "play": "BOTTOM: Write me a prologue; and let the prologue seem to"
+    },
+    "16": {
+      "play": "BOTTOM: say, we will do no harm with our swords, and that"
+    },
+    "17": {
+      "play": "BOTTOM: Pyramus is not killed indeed; and, for the more"
+    },
+    "18": {
+      "play": "BOTTOM: better assurance, tell them that I, Pyramus, am not"
+    },
+    "19": {
+      "play": "Pyramus, but Bottom the weaver: this will put them"
+    },
+    "20": {
+      "play": "Pyramus, but Bottom the weaver: out of fear."
+    },
+    "21": {
+      "play": "QUINCE: Well, we will have such a prologue; and it shall be"
+    },
+    "22": {
+      "play": "QUINCE: written in eight and six."
+    },
+    "23": {
+      "play": "BOTTOM: No, make it two more; let it be written in eight and eight."
+    },
+    "24": {
+      "play": "SNOUT: Will not the ladies be afeard of the lion?"
+    },
+    "25": {
+      "play": "STARVELING: I fear it, I promise you."
+    },
+    "26": {
+      "play": "BOTTOM: Masters, you ought to consider with yourselves: to"
+    },
+    "27": {
+      "play": "BOTTOM: bring in--God shield us!--a lion among ladies, is a"
+    },
+    "28": {
+      "play": "BOTTOM: most dreadful thing; for there is not a more fearful"
+    },
+    "29": {
+      "play": "BOTTOM: wild-fowl than your lion living; and we ought to"
+    },
+    "30": {
+      "play": "BOTTOM: look to 't."
+    },
+    "31": {
+      "play": "SNOUT: Therefore another prologue must tell he is not a lion."
+    },
+    "32": {
+      "play": "BOTTOM: Nay, you must name his name, and half his face must"
+    },
+    "33": {
+      "play": "be seen through the lion's neck: and he himself"
+    },
+    "34": {
+      "play": "be seen through the lion's neck: must speak through, saying thus, or to the same"
+    },
+    "35": {
+      "play": "be seen through the lion's neck: defect,--'Ladies,'--or 'Fair-ladies--I would wish"
+    },
+    "36": {
+      "play": "be seen through the lion's neck: You,'--or 'I would request you,'--or 'I would"
+    },
+    "37": {
+      "play": "entreat you,--not to fear, not to tremble: my life"
+    },
+    "38": {
+      "play": "entreat you,--not to fear, not to tremble: for yours. If you think I come hither as a lion, it"
+    },
+    "39": {
+      "play": "were pity of my life: no I am no such thing; I am a"
+    },
+    "40": {
+      "play": "were pity of my life: man as other men are;' and there indeed let him name"
+    },
+    "41": {
+      "play": "were pity of my life: his name, and tell them plainly he is Snug the joiner."
+    },
+    "42": {
+      "play": "QUINCE: Well it shall be so. But there is two hard things;"
+    },
+    "43": {
+      "play": "QUINCE: that is, to bring the moonlight into a chamber; for,"
+    },
+    "44": {
+      "play": "QUINCE: you know, Pyramus and Thisby meet by moonlight."
+    },
+    "45": {
+      "play": "SNOUT: Doth the moon shine that night we play our play?"
+    },
+    "46": {
+      "play": "BOTTOM: A calendar, a calendar! look in the almanac; find"
+    },
+    "47": {
+      "play": "BOTTOM: out moonshine, find out moonshine."
+    },
+    "48": {
+      "play": "QUINCE: Yes, it doth shine that night."
+    },
+    "49": {
+      "play": "BOTTOM: Why, then may you leave a casement of the great"
+    },
+    "50": {
+      "play": "BOTTOM: chamber window, where we play, open, and the moon"
+    },
+    "51": {
+      "play": "BOTTOM: may shine in at the casement."
+    },
+    "52": {
+      "play": "QUINCE: Ay; or else one must come in with a bush of thorns"
+    },
+    "53": {
+      "play": "QUINCE: and a lanthorn, and say he comes to disfigure, or to"
+    },
+    "54": {
+      "play": "QUINCE: present, the person of Moonshine. Then, there is"
+    },
+    "55": {
+      "play": "another thing: we must have a wall in the great"
+    },
+    "56": {
+      "play": "another thing: chamber; for Pyramus and Thisby says the story, did"
+    },
+    "57": {
+      "play": "another thing: talk through the chink of a wall."
+    },
+    "58": {
+      "play": "SNOUT: You can never bring in a wall. What say you, Bottom?"
+    },
+    "59": {
+      "play": "BOTTOM: Some man or other must present Wall: and let him"
+    },
+    "60": {
+      "play": "BOTTOM: have some plaster, or some loam, or some rough-cast"
+    },
+    "61": {
+      "play": "BOTTOM: about him, to signify wall; and let him hold his"
+    },
+    "62": {
+      "play": "BOTTOM: fingers thus, and through that cranny shall Pyramus"
+    },
+    "63": {
+      "play": "BOTTOM: and Thisby whisper."
+    },
+    "64": {
+      "play": "QUINCE: If that may be, then all is well. Come, sit down,"
+    },
+    "65": {
+      "play": "QUINCE: every mother's son, and rehearse your parts."
+    },
+    "66": {
+      "play": "Pyramus, you begin: when you have spoken your"
+    },
+    "67": {
+      "play": "speech, enter into that brake: and so every one"
+    },
+    "68": {
+      "play": "speech, enter into that brake: according to his cue."
+    },
+    "69": {
+      "play": "PUCK: What hempen home-spuns have we swaggering here,"
+    },
+    "70": {
+      "play": "PUCK: So near the cradle of the fairy queen?"
+    },
+    "71": {
+      "play": "PUCK: What, a play toward! I'll be an auditor;"
+    },
+    "72": {
+      "play": "PUCK: An actor too, perhaps, if I see cause."
+    },
+    "73": {
+      "play": "QUINCE: Speak, Pyramus. Thisby, stand forth."
+    },
+    "74": {
+      "play": "BOTTOM: Thisby, the flowers of odious savours sweet,--"
+    },
+    "75": {
+      "play": "QUINCE: Odours, odours."
+    },
+    "76": {
+      "play": "BOTTOM: --odours savours sweet:"
+    },
+    "77": {
+      "play": "BOTTOM: So hath thy breath, my dearest Thisby dear."
+    },
+    "78": {
+      "play": "BOTTOM: But hark, a voice! stay thou but here awhile,"
+    },
+    "79": {
+      "play": "BOTTOM: And by and by I will to thee appear."
+    },
+    "80": {
+      "play": "PUCK: A stranger Pyramus than e'er played here."
+    },
+    "81": {
+      "play": "FLUTE: Must I speak now?"
+    },
+    "82": {
+      "play": "QUINCE: Ay, marry, must you; for you must understand he goes"
+    },
+    "83": {
+      "play": "QUINCE: but to see a noise that he heard, and is to come again."
+    },
+    "84": {
+      "play": "FLUTE: Most radiant Pyramus, most lily-white of hue,"
+    },
+    "85": {
+      "play": "FLUTE: Of colour like the red rose on triumphant brier,"
+    },
+    "86": {
+      "play": "FLUTE: Most brisky juvenal and eke most lovely Jew,"
+    },
+    "87": {
+      "play": "FLUTE: As true as truest horse that yet would never tire,"
+    },
+    "88": {
+      "play": "FLUTE: I'll meet thee, Pyramus, at Ninny's tomb."
+    },
+    "89": {
+      "play": "QUINCE: 'Ninus' tomb,' man: why, you must not speak that"
+    },
+    "90": {
+      "play": "yet; that you answer to Pyramus: you speak all your"
+    },
+    "91": {
+      "play": "part at once, cues and all Pyramus enter: your cue"
+    },
+    "92": {
+      "play": "part at once, cues and all Pyramus enter: is past; it is, 'never tire.'"
+    },
+    "93": {
+      "play": "FLUTE: O,--As true as truest horse, that yet would"
+    },
+    "94": {
+      "play": "FLUTE: never tire."
+    },
+    "95": {
+      "play": "BOTTOM: If I were fair, Thisby, I were only thine."
+    },
+    "96": {
+      "play": "QUINCE: O monstrous! O strange! we are haunted. Pray,"
+    },
+    "97": {
+      "play": "QUINCE: masters! fly, masters! Help!"
+    },
+    "98": {
+      "play": "PUCK: I'll follow you, I'll lead you about a round,"
+    },
+    "99": {
+      "play": "Through bog, through bush, through brake, through brier: "
+    },
+    "100": {
+      "play": "Through bog, through bush, through brake, through brier: Sometime a horse I'll be, sometime a hound,"
+    },
+    "101": {
+      "play": "Through bog, through bush, through brake, through brier: A hog, a headless bear, sometime a fire;"
+    },
+    "102": {
+      "play": "Through bog, through bush, through brake, through brier: And neigh, and bark, and grunt, and roar, and burn,"
+    },
+    "103": {
+      "play": "Through bog, through bush, through brake, through brier: Like horse, hound, hog, bear, fire, at every turn."
+    },
+    "104": {
+      "play": "BOTTOM: Why do they run away? this is a knavery of them to"
+    },
+    "105": {
+      "play": "BOTTOM: make me afeard."
+    },
+    "106": {
+      "play": "SNOUT: O Bottom, thou art changed! what do I see on thee?"
+    },
+    "107": {
+      "play": "BOTTOM: What do you see? you see an asshead of your own, do"
+    },
+    "108": {
+      "play": "BOTTOM: you?"
+    },
+    "109": {
+      "play": "QUINCE: Bless thee, Bottom! bless thee! thou art"
+    },
+    "110": {
+      "play": "QUINCE: translated."
+    },
+    "111": {
+      "play": "BOTTOM: I see their knavery: this is to make an ass of me;"
+    },
+    "112": {
+      "play": "BOTTOM: to fright me, if they could. But I will not stir"
+    },
+    "113": {
+      "play": "from this place, do what they can: I will walk up"
+    },
+    "114": {
+      "play": "from this place, do what they can: and down here, and I will sing, that they shall hear"
+    },
+    "115": {
+      "play": "from this place, do what they can: I am not afraid."
+    },
+    "116": {
+      "play": "from this place, do what they can: The ousel cock so black of hue,"
+    },
+    "117": {
+      "play": "from this place, do what they can: With orange-tawny bill,"
+    },
+    "118": {
+      "play": "from this place, do what they can: The throstle with his note so true,"
+    },
+    "119": {
+      "play": "from this place, do what they can: The wren with little quill,--"
+    },
+    "120": {
+      "play": "TITANIA: [Awaking] What angel wakes me from my flowery bed?"
+    },
+    "121": {
+      "play": "BOTTOM: [Sings]"
+    },
+    "122": {
+      "play": "BOTTOM: The finch, the sparrow and the lark,"
+    },
+    "123": {
+      "play": "BOTTOM: The plain-song cuckoo gray,"
+    },
+    "124": {
+      "play": "BOTTOM: Whose note full many a man doth mark,"
+    },
+    "125": {
+      "play": "BOTTOM: And dares not answer nay;--"
+    },
+    "126": {
+      "play": "BOTTOM: for, indeed, who would set his wit to so foolish"
+    },
+    "127": {
+      "play": "BOTTOM: a bird? who would give a bird the lie, though he cry"
+    },
+    "128": {
+      "play": "BOTTOM: 'cuckoo' never so?"
+    },
+    "129": {
+      "play": "TITANIA: I pray thee, gentle mortal, sing again:"
+    },
+    "130": {
+      "play": "TITANIA: Mine ear is much enamour'd of thy note;"
+    },
+    "131": {
+      "play": "TITANIA: So is mine eye enthralled to thy shape;"
+    },
+    "132": {
+      "play": "TITANIA: And thy fair virtue's force perforce doth move me"
+    },
+    "133": {
+      "play": "TITANIA: On the first view to say, to swear, I love thee."
+    },
+    "134": {
+      "play": "BOTTOM: Methinks, mistress, you should have little reason"
+    },
+    "135": {
+      "play": "for that: and yet, to say the truth, reason and"
+    },
+    "136": {
+      "play": "for that: love keep little company together now-a-days; the"
+    },
+    "137": {
+      "play": "for that: more the pity that some honest neighbours will not"
+    },
+    "138": {
+      "play": "for that: make them friends. Nay, I can gleek upon occasion."
+    },
+    "139": {
+      "play": "TITANIA: Thou art as wise as thou art beautiful."
+    },
+    "140": {
+      "play": "BOTTOM: Not so, neither: but if I had wit enough to get out"
+    },
+    "141": {
+      "play": "BOTTOM: of this wood, I have enough to serve mine own turn."
+    },
+    "142": {
+      "play": "TITANIA: Out of this wood do not desire to go:"
+    },
+    "143": {
+      "play": "TITANIA: Thou shalt remain here, whether thou wilt or no."
+    },
+    "144": {
+      "play": "TITANIA: I am a spirit of no common rate;"
+    },
+    "145": {
+      "play": "TITANIA: The summer still doth tend upon my state;"
+    },
+    "146": {
+      "play": "And I do love thee: therefore, go with me;"
+    },
+    "147": {
+      "play": "And I do love thee: I'll give thee fairies to attend on thee,"
+    },
+    "148": {
+      "play": "And I do love thee: And they shall fetch thee jewels from the deep,"
+    },
+    "149": {
+      "play": "And I do love thee: And sing while thou on pressed flowers dost sleep;"
+    },
+    "150": {
+      "play": "And I do love thee: And I will purge thy mortal grossness so"
+    },
+    "151": {
+      "play": "And I do love thee: That thou shalt like an airy spirit go."
+    },
+    "152": {
+      "play": "And I do love thee: Peaseblossom! Cobweb! Moth! and Mustardseed!"
+    },
+    "153": {
+      "play": "PEASEBLOSSOM: Ready."
+    },
+    "154": {
+      "play": "COBWEB: And I."
+    },
+    "155": {
+      "play": "MOTH: And I."
+    },
+    "156": {
+      "play": "MUSTARDSEED: And I."
+    },
+    "157": {
+      "play": "ALL: Where shall we go?"
+    },
+    "158": {
+      "play": "TITANIA: Be kind and courteous to this gentleman;"
+    },
+    "159": {
+      "play": "TITANIA: Hop in his walks and gambol in his eyes;"
+    },
+    "160": {
+      "play": "TITANIA: Feed him with apricocks and dewberries,"
+    },
+    "161": {
+      "play": "TITANIA: With purple grapes, green figs, and mulberries;"
+    },
+    "162": {
+      "play": "TITANIA: The honey-bags steal from the humble-bees,"
+    },
+    "163": {
+      "play": "TITANIA: And for night-tapers crop their waxen thighs"
+    },
+    "164": {
+      "play": "TITANIA: And light them at the fiery glow-worm's eyes,"
+    },
+    "165": {
+      "play": "TITANIA: To have my love to bed and to arise;"
+    },
+    "166": {
+      "play": "TITANIA: And pluck the wings from Painted butterflies"
+    },
+    "167": {
+      "play": "To fan the moonbeams from his sleeping eyes: "
+    },
+    "168": {
+      "play": "To fan the moonbeams from his sleeping eyes: Nod to him, elves, and do him courtesies."
+    },
+    "169": {
+      "play": "PEASEBLOSSOM: Hail, mortal!"
+    },
+    "170": {
+      "play": "COBWEB: Hail!"
+    },
+    "171": {
+      "play": "MOTH: Hail!"
+    },
+    "172": {
+      "play": "MUSTARDSEED: Hail!"
+    },
+    "173": {
+      "play": "BOTTOM: I cry your worship's mercy, heartily: I beseech your"
+    },
+    "174": {
+      "play": "BOTTOM: worship's name."
+    },
+    "175": {
+      "play": "COBWEB: Cobweb."
+    },
+    "176": {
+      "play": "BOTTOM: I shall desire you of more acquaintance, good Master"
+    },
+    "177": {
+      "play": "Cobweb: if I cut my finger, I shall make bold with"
+    },
+    "178": {
+      "play": "Cobweb: you. Your name, honest gentleman?"
+    },
+    "179": {
+      "play": "PEASEBLOSSOM: Peaseblossom."
+    },
+    "180": {
+      "play": "BOTTOM: I pray you, commend me to Mistress Squash, your"
+    },
+    "181": {
+      "play": "BOTTOM: mother, and to Master Peascod, your father. Good"
+    },
+    "182": {
+      "play": "BOTTOM: Master Peaseblossom, I shall desire you of more"
+    },
+    "183": {
+      "play": "BOTTOM: acquaintance too. Your name, I beseech you, sir?"
+    },
+    "184": {
+      "play": "MUSTARDSEED: Mustardseed."
+    },
+    "185": {
+      "play": "BOTTOM: Good Master Mustardseed, I know your patience well:"
+    },
+    "186": {
+      "play": "BOTTOM: that same cowardly, giant-like ox-beef hath"
+    },
+    "187": {
+      "play": "devoured many a gentleman of your house: I promise"
+    },
+    "188": {
+      "play": "devoured many a gentleman of your house: you your kindred had made my eyes water ere now. I"
+    },
+    "189": {
+      "play": "devoured many a gentleman of your house: desire your more acquaintance, good Master"
+    },
+    "190": {
+      "play": "devoured many a gentleman of your house: Mustardseed."
+    },
+    "191": {
+      "play": "TITANIA: Come, wait upon him; lead him to my bower."
+    },
+    "192": {
+      "play": "TITANIA: The moon methinks looks with a watery eye;"
+    },
+    "193": {
+      "play": "TITANIA: And when she weeps, weeps every little flower,"
+    },
+    "194": {
+      "play": "TITANIA: Lamenting some enforced chastity."
+    },
+    "195": {
+      "play": "TITANIA: Tie up my love's tongue bring him silently."
+    }
+  },
+  "ACT 3 SCENE 2": {
+    "1": {
+      "play": "OBERON: I wonder if Titania be awaked;"
+    },
+    "2": {
+      "play": "OBERON: Then, what it was that next came in her eye,"
+    },
+    "3": {
+      "play": "OBERON: Which she must dote on in extremity."
+    },
+    "4": {
+      "play": "OBERON: Here comes my messenger."
+    },
+    "5": {
+      "play": "OBERON: How now, mad spirit!"
+    },
+    "6": {
+      "play": "OBERON: What night-rule now about this haunted grove?"
+    },
+    "7": {
+      "play": "PUCK: My mistress with a monster is in love."
+    },
+    "8": {
+      "play": "PUCK: Near to her close and consecrated bower,"
+    },
+    "9": {
+      "play": "PUCK: While she was in her dull and sleeping hour,"
+    },
+    "10": {
+      "play": "PUCK: A crew of patches, rude mechanicals,"
+    },
+    "11": {
+      "play": "PUCK: That work for bread upon Athenian stalls,"
+    },
+    "12": {
+      "play": "PUCK: Were met together to rehearse a play"
+    },
+    "13": {
+      "play": "PUCK: Intended for great Theseus' nuptial-day."
+    },
+    "14": {
+      "play": "PUCK: The shallowest thick-skin of that barren sort,"
+    },
+    "15": {
+      "play": "PUCK: Who Pyramus presented, in their sport"
+    },
+    "16": {
+      "play": "PUCK: Forsook his scene and enter'd in a brake"
+    },
+    "17": {
+      "play": "PUCK: When I did him at this advantage take,"
+    },
+    "18": {
+      "play": "An ass's nole I fixed on his head: "
+    },
+    "19": {
+      "play": "An ass's nole I fixed on his head: Anon his Thisbe must be answered,"
+    },
+    "20": {
+      "play": "An ass's nole I fixed on his head: And forth my mimic comes. When they him spy,"
+    },
+    "21": {
+      "play": "An ass's nole I fixed on his head: As wild geese that the creeping fowler eye,"
+    },
+    "22": {
+      "play": "An ass's nole I fixed on his head: Or russet-pated choughs, many in sort,"
+    },
+    "23": {
+      "play": "An ass's nole I fixed on his head: Rising and cawing at the gun's report,"
+    },
+    "24": {
+      "play": "An ass's nole I fixed on his head: Sever themselves and madly sweep the sky,"
+    },
+    "25": {
+      "play": "An ass's nole I fixed on his head: So, at his sight, away his fellows fly;"
+    },
+    "26": {
+      "play": "An ass's nole I fixed on his head: And, at our stamp, here o'er and o'er one falls;"
+    },
+    "27": {
+      "play": "An ass's nole I fixed on his head: He murder cries and help from Athens calls."
+    },
+    "28": {
+      "play": "An ass's nole I fixed on his head: Their sense thus weak, lost with their fears"
+    },
+    "29": {
+      "play": "An ass's nole I fixed on his head: thus strong,"
+    },
+    "30": {
+      "play": "An ass's nole I fixed on his head: Made senseless things begin to do them wrong;"
+    },
+    "31": {
+      "play": "An ass's nole I fixed on his head: For briers and thorns at their apparel snatch;"
+    },
+    "32": {
+      "play": "An ass's nole I fixed on his head: Some sleeves, some hats, from yielders all"
+    },
+    "33": {
+      "play": "An ass's nole I fixed on his head: things catch."
+    },
+    "34": {
+      "play": "An ass's nole I fixed on his head: I led them on in this distracted fear,"
+    },
+    "35": {
+      "play": "And left sweet Pyramus translated there: "
+    },
+    "36": {
+      "play": "And left sweet Pyramus translated there: When in that moment, so it came to pass,"
+    },
+    "37": {
+      "play": "And left sweet Pyramus translated there: Titania waked and straightway loved an ass."
+    },
+    "38": {
+      "play": "OBERON: This falls out better than I could devise."
+    },
+    "39": {
+      "play": "OBERON: But hast thou yet latch'd the Athenian's eyes"
+    },
+    "40": {
+      "play": "OBERON: With the love-juice, as I did bid thee do?"
+    },
+    "41": {
+      "play": "PUCK: I took him sleeping,--that is finish'd too,--"
+    },
+    "42": {
+      "play": "And the Athenian woman by his side: "
+    },
+    "43": {
+      "play": "And the Athenian woman by his side: That, when he waked, of force she must be eyed."
+    },
+    "44": {
+      "play": "OBERON: Stand close: this is the same Athenian."
+    },
+    "45": {
+      "play": "PUCK: This is the woman, but not this the man."
+    },
+    "46": {
+      "play": "DEMETRIUS: O, why rebuke you him that loves you so?"
+    },
+    "47": {
+      "play": "DEMETRIUS: Lay breath so bitter on your bitter foe."
+    },
+    "48": {
+      "play": "HERMIA: Now I but chide; but I should use thee worse,"
+    },
+    "49": {
+      "play": "HERMIA: For thou, I fear, hast given me cause to curse,"
+    },
+    "50": {
+      "play": "HERMIA: If thou hast slain Lysander in his sleep,"
+    },
+    "51": {
+      "play": "HERMIA: Being o'er shoes in blood, plunge in the deep,"
+    },
+    "52": {
+      "play": "HERMIA: And kill me too."
+    },
+    "53": {
+      "play": "HERMIA: The sun was not so true unto the day"
+    },
+    "54": {
+      "play": "As he to me: would he have stolen away"
+    },
+    "55": {
+      "play": "As he to me: From sleeping Hermia? I'll believe as soon"
+    },
+    "56": {
+      "play": "As he to me: This whole earth may be bored and that the moon"
+    },
+    "57": {
+      "play": "As he to me: May through the centre creep and so displease"
+    },
+    "58": {
+      "play": "As he to me: Her brother's noontide with Antipodes."
+    },
+    "59": {
+      "play": "As he to me: It cannot be but thou hast murder'd him;"
+    },
+    "60": {
+      "play": "As he to me: So should a murderer look, so dead, so grim."
+    },
+    "61": {
+      "play": "DEMETRIUS: So should the murder'd look, and so should I,"
+    },
+    "62": {
+      "play": "Pierced through the heart with your stern cruelty: "
+    },
+    "63": {
+      "play": "Pierced through the heart with your stern cruelty: Yet you, the murderer, look as bright, as clear,"
+    },
+    "64": {
+      "play": "Pierced through the heart with your stern cruelty: As yonder Venus in her glimmering sphere."
+    },
+    "65": {
+      "play": "HERMIA: What's this to my Lysander? where is he?"
+    },
+    "66": {
+      "play": "HERMIA: Ah, good Demetrius, wilt thou give him me?"
+    },
+    "67": {
+      "play": "DEMETRIUS: I had rather give his carcass to my hounds."
+    },
+    "68": {
+      "play": "HERMIA: Out, dog! out, cur! thou drivest me past the bounds"
+    },
+    "69": {
+      "play": "HERMIA: Of maiden's patience. Hast thou slain him, then?"
+    },
+    "70": {
+      "play": "HERMIA: Henceforth be never number'd among men!"
+    },
+    "71": {
+      "play": "HERMIA: O, once tell true, tell true, even for my sake!"
+    },
+    "72": {
+      "play": "HERMIA: Durst thou have look'd upon him being awake,"
+    },
+    "73": {
+      "play": "HERMIA: And hast thou kill'd him sleeping? O brave touch!"
+    },
+    "74": {
+      "play": "HERMIA: Could not a worm, an adder, do so much?"
+    },
+    "75": {
+      "play": "HERMIA: An adder did it; for with doubler tongue"
+    },
+    "76": {
+      "play": "HERMIA: Than thine, thou serpent, never adder stung."
+    },
+    "77": {
+      "play": "DEMETRIUS: You spend your passion on a misprised mood:"
+    },
+    "78": {
+      "play": "DEMETRIUS: I am not guilty of Lysander's blood;"
+    },
+    "79": {
+      "play": "DEMETRIUS: Nor is he dead, for aught that I can tell."
+    },
+    "80": {
+      "play": "HERMIA: I pray thee, tell me then that he is well."
+    },
+    "81": {
+      "play": "DEMETRIUS: An if I could, what should I get therefore?"
+    },
+    "82": {
+      "play": "HERMIA: A privilege never to see me more."
+    },
+    "83": {
+      "play": "And from thy hated presence part I so: "
+    },
+    "84": {
+      "play": "And from thy hated presence part I so: See me no more, whether he be dead or no."
+    },
+    "85": {
+      "play": "DEMETRIUS: There is no following her in this fierce vein:"
+    },
+    "86": {
+      "play": "DEMETRIUS: Here therefore for a while I will remain."
+    },
+    "87": {
+      "play": "DEMETRIUS: So sorrow's heaviness doth heavier grow"
+    },
+    "88": {
+      "play": "For debt that bankrupt sleep doth sorrow owe: "
+    },
+    "89": {
+      "play": "For debt that bankrupt sleep doth sorrow owe: Which now in some slight measure it will pay,"
+    },
+    "90": {
+      "play": "For debt that bankrupt sleep doth sorrow owe: If for his tender here I make some stay."
+    },
+    "91": {
+      "play": "OBERON: What hast thou done? thou hast mistaken quite"
+    },
+    "92": {
+      "play": "And laid the love-juice on some true-love's sight: "
+    },
+    "93": {
+      "play": "And laid the love-juice on some true-love's sight: Of thy misprision must perforce ensue"
+    },
+    "94": {
+      "play": "And laid the love-juice on some true-love's sight: Some true love turn'd and not a false turn'd true."
+    },
+    "95": {
+      "play": "PUCK: Then fate o'er-rules, that, one man holding troth,"
+    },
+    "96": {
+      "play": "PUCK: A million fail, confounding oath on oath."
+    },
+    "97": {
+      "play": "OBERON: About the wood go swifter than the wind,"
+    },
+    "98": {
+      "play": "And Helena of Athens look thou find: "
+    },
+    "99": {
+      "play": "And Helena of Athens look thou find: All fancy-sick she is and pale of cheer,"
+    },
+    "100": {
+      "play": "With sighs of love, that costs the fresh blood dear: "
+    },
+    "101": {
+      "play": "By some illusion see thou bring her here: "
+    },
+    "102": {
+      "play": "By some illusion see thou bring her here: I'll charm his eyes against she do appear."
+    },
+    "103": {
+      "play": "PUCK: I go, I go; look how I go,"
+    },
+    "104": {
+      "play": "PUCK: Swifter than arrow from the Tartar's bow."
+    },
+    "105": {
+      "play": "OBERON: Flower of this purple dye,"
+    },
+    "106": {
+      "play": "OBERON: Hit with Cupid's archery,"
+    },
+    "107": {
+      "play": "OBERON: Sink in apple of his eye."
+    },
+    "108": {
+      "play": "OBERON: When his love he doth espy,"
+    },
+    "109": {
+      "play": "OBERON: Let her shine as gloriously"
+    },
+    "110": {
+      "play": "OBERON: As the Venus of the sky."
+    },
+    "111": {
+      "play": "OBERON: When thou wakest, if she be by,"
+    },
+    "112": {
+      "play": "OBERON: Beg of her for remedy."
+    },
+    "113": {
+      "play": "PUCK: Captain of our fairy band,"
+    },
+    "114": {
+      "play": "PUCK: Helena is here at hand;"
+    },
+    "115": {
+      "play": "PUCK: And the youth, mistook by me,"
+    },
+    "116": {
+      "play": "PUCK: Pleading for a lover's fee."
+    },
+    "117": {
+      "play": "PUCK: Shall we their fond pageant see?"
+    },
+    "118": {
+      "play": "PUCK: Lord, what fools these mortals be!"
+    },
+    "119": {
+      "play": "OBERON: Stand aside: the noise they make"
+    },
+    "120": {
+      "play": "OBERON: Will cause Demetrius to awake."
+    },
+    "121": {
+      "play": "PUCK: Then will two at once woo one;"
+    },
+    "122": {
+      "play": "PUCK: That must needs be sport alone;"
+    },
+    "123": {
+      "play": "PUCK: And those things do best please me"
+    },
+    "124": {
+      "play": "PUCK: That befal preposterously."
+    },
+    "125": {
+      "play": "LYSANDER: Why should you think that I should woo in scorn?"
+    },
+    "126": {
+      "play": "Scorn and derision never come in tears: "
+    },
+    "127": {
+      "play": "Scorn and derision never come in tears: Look, when I vow, I weep; and vows so born,"
+    },
+    "128": {
+      "play": "Scorn and derision never come in tears: In their nativity all truth appears."
+    },
+    "129": {
+      "play": "Scorn and derision never come in tears: How can these things in me seem scorn to you,"
+    },
+    "130": {
+      "play": "Scorn and derision never come in tears: Bearing the badge of faith, to prove them true?"
+    },
+    "131": {
+      "play": "HELENA: You do advance your cunning more and more."
+    },
+    "132": {
+      "play": "HELENA: When truth kills truth, O devilish-holy fray!"
+    },
+    "133": {
+      "play": "These vows are Hermia's: will you give her o'er?"
+    },
+    "134": {
+      "play": "Weigh oath with oath, and you will nothing weigh: "
+    },
+    "135": {
+      "play": "Weigh oath with oath, and you will nothing weigh: Your vows to her and me, put in two scales,"
+    },
+    "136": {
+      "play": "Weigh oath with oath, and you will nothing weigh: Will even weigh, and both as light as tales."
+    },
+    "137": {
+      "play": "LYSANDER: I had no judgment when to her I swore."
+    },
+    "138": {
+      "play": "HELENA: Nor none, in my mind, now you give her o'er."
+    },
+    "139": {
+      "play": "LYSANDER: Demetrius loves her, and he loves not you."
+    },
+    "140": {
+      "play": "DEMETRIUS: [Awaking] O Helena, goddess, nymph, perfect, divine!"
+    },
+    "141": {
+      "play": "DEMETRIUS: To what, my love, shall I compare thine eyne?"
+    },
+    "142": {
+      "play": "DEMETRIUS: Crystal is muddy. O, how ripe in show"
+    },
+    "143": {
+      "play": "DEMETRIUS: Thy lips, those kissing cherries, tempting grow!"
+    },
+    "144": {
+      "play": "DEMETRIUS: That pure congealed white, high Taurus snow,"
+    },
+    "145": {
+      "play": "DEMETRIUS: Fann'd with the eastern wind, turns to a crow"
+    },
+    "146": {
+      "play": "When thou hold'st up thy hand: O, let me kiss"
+    },
+    "147": {
+      "play": "When thou hold'st up thy hand: This princess of pure white, this seal of bliss!"
+    },
+    "148": {
+      "play": "HELENA: O spite! O hell! I see you all are bent"
+    },
+    "149": {
+      "play": "To set against me for your merriment: "
+    },
+    "150": {
+      "play": "To set against me for your merriment: If you we re civil and knew courtesy,"
+    },
+    "151": {
+      "play": "To set against me for your merriment: You would not do me thus much injury."
+    },
+    "152": {
+      "play": "To set against me for your merriment: Can you not hate me, as I know you do,"
+    },
+    "153": {
+      "play": "To set against me for your merriment: But you must join in souls to mock me too?"
+    },
+    "154": {
+      "play": "To set against me for your merriment: If you were men, as men you are in show,"
+    },
+    "155": {
+      "play": "To set against me for your merriment: You would not use a gentle lady so;"
+    },
+    "156": {
+      "play": "To set against me for your merriment: To vow, and swear, and superpraise my parts,"
+    },
+    "157": {
+      "play": "To set against me for your merriment: When I am sure you hate me with your hearts."
+    },
+    "158": {
+      "play": "To set against me for your merriment: You both are rivals, and love Hermia;"
+    },
+    "159": {
+      "play": "And now both rivals, to mock Helena: "
+    },
+    "160": {
+      "play": "And now both rivals, to mock Helena: A trim exploit, a manly enterprise,"
+    },
+    "161": {
+      "play": "And now both rivals, to mock Helena: To conjure tears up in a poor maid's eyes"
+    },
+    "162": {
+      "play": "And now both rivals, to mock Helena: With your derision! none of noble sort"
+    },
+    "163": {
+      "play": "And now both rivals, to mock Helena: Would so offend a virgin, and extort"
+    },
+    "164": {
+      "play": "And now both rivals, to mock Helena: A poor soul's patience, all to make you sport."
+    },
+    "165": {
+      "play": "LYSANDER: You are unkind, Demetrius; be not so;"
+    },
+    "166": {
+      "play": "For you love Hermia; this you know I know: "
+    },
+    "167": {
+      "play": "For you love Hermia; this you know I know: And here, with all good will, with all my heart,"
+    },
+    "168": {
+      "play": "For you love Hermia; this you know I know: In Hermia's love I yield you up my part;"
+    },
+    "169": {
+      "play": "For you love Hermia; this you know I know: And yours of Helena to me bequeath,"
+    },
+    "170": {
+      "play": "For you love Hermia; this you know I know: Whom I do love and will do till my death."
+    },
+    "171": {
+      "play": "HELENA: Never did mockers waste more idle breath."
+    },
+    "172": {
+      "play": "DEMETRIUS: Lysander, keep thy Hermia; I will none:"
+    },
+    "173": {
+      "play": "DEMETRIUS: If e'er I loved her, all that love is gone."
+    },
+    "174": {
+      "play": "DEMETRIUS: My heart to her but as guest-wise sojourn'd,"
+    },
+    "175": {
+      "play": "DEMETRIUS: And now to Helen is it home return'd,"
+    },
+    "176": {
+      "play": "DEMETRIUS: There to remain."
+    },
+    "177": {
+      "play": "LYSANDER: Helen, it is not so."
+    },
+    "178": {
+      "play": "DEMETRIUS: Disparage not the faith thou dost not know,"
+    },
+    "179": {
+      "play": "DEMETRIUS: Lest, to thy peril, thou aby it dear."
+    },
+    "180": {
+      "play": "DEMETRIUS: Look, where thy love comes; yonder is thy dear."
+    },
+    "181": {
+      "play": "HERMIA: Dark night, that from the eye his function takes,"
+    },
+    "182": {
+      "play": "HERMIA: The ear more quick of apprehension makes;"
+    },
+    "183": {
+      "play": "HERMIA: Wherein it doth impair the seeing sense,"
+    },
+    "184": {
+      "play": "HERMIA: It pays the hearing double recompense."
+    },
+    "185": {
+      "play": "HERMIA: Thou art not by mine eye, Lysander, found;"
+    },
+    "186": {
+      "play": "HERMIA: Mine ear, I thank it, brought me to thy sound"
+    },
+    "187": {
+      "play": "HERMIA: But why unkindly didst thou leave me so?"
+    },
+    "188": {
+      "play": "LYSANDER: Why should he stay, whom love doth press to go?"
+    },
+    "189": {
+      "play": "HERMIA: What love could press Lysander from my side?"
+    },
+    "190": {
+      "play": "LYSANDER: Lysander's love, that would not let him bide,"
+    },
+    "191": {
+      "play": "LYSANDER: Fair Helena, who more engilds the night"
+    },
+    "192": {
+      "play": "LYSANDER: Than all you fiery oes and eyes of light."
+    },
+    "193": {
+      "play": "LYSANDER: Why seek'st thou me? could not this make thee know,"
+    },
+    "194": {
+      "play": "LYSANDER: The hate I bear thee made me leave thee so?"
+    },
+    "195": {
+      "play": "HERMIA: You speak not as you think: it cannot be."
+    },
+    "196": {
+      "play": "HELENA: Lo, she is one of this confederacy!"
+    },
+    "197": {
+      "play": "HELENA: Now I perceive they have conjoin'd all three"
+    },
+    "198": {
+      "play": "HELENA: To fashion this false sport, in spite of me."
+    },
+    "199": {
+      "play": "HELENA: Injurious Hermia! most ungrateful maid!"
+    },
+    "200": {
+      "play": "HELENA: Have you conspired, have you with these contrived"
+    },
+    "201": {
+      "play": "HELENA: To bait me with this foul derision?"
+    },
+    "202": {
+      "play": "HELENA: Is all the counsel that we two have shared,"
+    },
+    "203": {
+      "play": "HELENA: The sisters' vows, the hours that we have spent,"
+    },
+    "204": {
+      "play": "HELENA: When we have chid the hasty-footed time"
+    },
+    "205": {
+      "play": "HELENA: For parting us,--O, is it all forgot?"
+    },
+    "206": {
+      "play": "HELENA: All school-days' friendship, childhood innocence?"
+    },
+    "207": {
+      "play": "HELENA: We, Hermia, like two artificial gods,"
+    },
+    "208": {
+      "play": "HELENA: Have with our needles created both one flower,"
+    },
+    "209": {
+      "play": "HELENA: Both on one sampler, sitting on one cushion,"
+    },
+    "210": {
+      "play": "HELENA: Both warbling of one song, both in one key,"
+    },
+    "211": {
+      "play": "HELENA: As if our hands, our sides, voices and minds,"
+    },
+    "212": {
+      "play": "HELENA: Had been incorporate. So we grow together,"
+    },
+    "213": {
+      "play": "HELENA: Like to a double cherry, seeming parted,"
+    },
+    "214": {
+      "play": "HELENA: But yet an union in partition;"
+    },
+    "215": {
+      "play": "HELENA: Two lovely berries moulded on one stem;"
+    },
+    "216": {
+      "play": "HELENA: So, with two seeming bodies, but one heart;"
+    },
+    "217": {
+      "play": "HELENA: Two of the first, like coats in heraldry,"
+    },
+    "218": {
+      "play": "HELENA: Due but to one and crowned with one crest."
+    },
+    "219": {
+      "play": "HELENA: And will you rent our ancient love asunder,"
+    },
+    "220": {
+      "play": "HELENA: To join with men in scorning your poor friend?"
+    },
+    "221": {
+      "play": "It is not friendly, 'tis not maidenly: "
+    },
+    "222": {
+      "play": "It is not friendly, 'tis not maidenly: Our sex, as well as I, may chide you for it,"
+    },
+    "223": {
+      "play": "It is not friendly, 'tis not maidenly: Though I alone do feel the injury."
+    },
+    "224": {
+      "play": "HERMIA: I am amazed at your passionate words."
+    },
+    "225": {
+      "play": "I scorn you not: it seems that you scorn me."
+    },
+    "226": {
+      "play": "HELENA: Have you not set Lysander, as in scorn,"
+    },
+    "227": {
+      "play": "HELENA: To follow me and praise my eyes and face?"
+    },
+    "228": {
+      "play": "HELENA: And made your other love, Demetrius,"
+    },
+    "229": {
+      "play": "HELENA: Who even but now did spurn me with his foot,"
+    },
+    "230": {
+      "play": "HELENA: To call me goddess, nymph, divine and rare,"
+    },
+    "231": {
+      "play": "HELENA: Precious, celestial? Wherefore speaks he this"
+    },
+    "232": {
+      "play": "HELENA: To her he hates? and wherefore doth Lysander"
+    },
+    "233": {
+      "play": "HELENA: Deny your love, so rich within his soul,"
+    },
+    "234": {
+      "play": "HELENA: And tender me, forsooth, affection,"
+    },
+    "235": {
+      "play": "HELENA: But by your setting on, by your consent?"
+    },
+    "236": {
+      "play": "HELENA: What thought I be not so in grace as you,"
+    },
+    "237": {
+      "play": "HELENA: So hung upon with love, so fortunate,"
+    },
+    "238": {
+      "play": "HELENA: But miserable most, to love unloved?"
+    },
+    "239": {
+      "play": "HELENA: This you should pity rather than despise."
+    },
+    "240": {
+      "play": "HERNIA: I understand not what you mean by this."
+    },
+    "241": {
+      "play": "HELENA: Ay, do, persever, counterfeit sad looks,"
+    },
+    "242": {
+      "play": "HELENA: Make mouths upon me when I turn my back;"
+    },
+    "243": {
+      "play": "Wink each at other; hold the sweet jest up: "
+    },
+    "244": {
+      "play": "Wink each at other; hold the sweet jest up: This sport, well carried, shall be chronicled."
+    },
+    "245": {
+      "play": "Wink each at other; hold the sweet jest up: If you have any pity, grace, or manners,"
+    },
+    "246": {
+      "play": "Wink each at other; hold the sweet jest up: You would not make me such an argument."
+    },
+    "247": {
+      "play": "But fare ye well: 'tis partly my own fault;"
+    },
+    "248": {
+      "play": "But fare ye well: Which death or absence soon shall remedy."
+    },
+    "249": {
+      "play": "LYSANDER: Stay, gentle Helena; hear my excuse:"
+    },
+    "250": {
+      "play": "LYSANDER: My love, my life my soul, fair Helena!"
+    },
+    "251": {
+      "play": "HELENA: O excellent!"
+    },
+    "252": {
+      "play": "HERMIA: Sweet, do not scorn her so."
+    },
+    "253": {
+      "play": "DEMETRIUS: If she cannot entreat, I can compel."
+    },
+    "254": {
+      "play": "LYSANDER: Thou canst compel no more than she entreat:"
+    },
+    "255": {
+      "play": "LYSANDER: Thy threats have no more strength than her weak prayers."
+    },
+    "256": {
+      "play": "Helen, I love thee; by my life, I do: "
+    },
+    "257": {
+      "play": "Helen, I love thee; by my life, I do: I swear by that which I will lose for thee,"
+    },
+    "258": {
+      "play": "Helen, I love thee; by my life, I do: To prove him false that says I love thee not."
+    },
+    "259": {
+      "play": "DEMETRIUS: I say I love thee more than he can do."
+    },
+    "260": {
+      "play": "LYSANDER: If thou say so, withdraw, and prove it too."
+    },
+    "261": {
+      "play": "DEMETRIUS: Quick, come!"
+    },
+    "262": {
+      "play": "HERMIA: Lysander, whereto tends all this?"
+    },
+    "263": {
+      "play": "LYSANDER: Away, you Ethiope!"
+    },
+    "264": {
+      "play": "DEMETRIUS: No, no; he'll [ ]"
+    },
+    "265": {
+      "play": "DEMETRIUS: Seem to break loose; take on as you would follow,"
+    },
+    "266": {
+      "play": "But yet come not: you are a tame man, go!"
+    },
+    "267": {
+      "play": "LYSANDER: Hang off, thou cat, thou burr! vile thing, let loose,"
+    },
+    "268": {
+      "play": "LYSANDER: Or I will shake thee from me like a serpent!"
+    },
+    "269": {
+      "play": "HERMIA: Why are you grown so rude? what change is this?"
+    },
+    "270": {
+      "play": "HERMIA: Sweet love,--"
+    },
+    "271": {
+      "play": "LYSANDER: Thy love! out, tawny Tartar, out!"
+    },
+    "272": {
+      "play": "LYSANDER: Out, loathed medicine! hated potion, hence!"
+    },
+    "273": {
+      "play": "HERMIA: Do you not jest?"
+    },
+    "274": {
+      "play": "HELENA: Yes, sooth; and so do you."
+    },
+    "275": {
+      "play": "LYSANDER: Demetrius, I will keep my word with thee."
+    },
+    "276": {
+      "play": "DEMETRIUS: I would I had your bond, for I perceive"
+    },
+    "277": {
+      "play": "A weak bond holds you: I'll not trust your word."
+    },
+    "278": {
+      "play": "LYSANDER: What, should I hurt her, strike her, kill her dead?"
+    },
+    "279": {
+      "play": "LYSANDER: Although I hate her, I'll not harm her so."
+    },
+    "280": {
+      "play": "HERMIA: What, can you do me greater harm than hate?"
+    },
+    "281": {
+      "play": "HERMIA: Hate me! wherefore? O me! what news, my love!"
+    },
+    "282": {
+      "play": "HERMIA: Am not I Hermia? are not you Lysander?"
+    },
+    "283": {
+      "play": "HERMIA: I am as fair now as I was erewhile."
+    },
+    "284": {
+      "play": "HERMIA: Since night you loved me; yet since night you left"
+    },
+    "285": {
+      "play": "me: "
+    },
+    "286": {
+      "play": "me: Why, then you left me--O, the gods forbid!--"
+    },
+    "287": {
+      "play": "me: In earnest, shall I say?"
+    },
+    "288": {
+      "play": "LYSANDER: Ay, by my life;"
+    },
+    "289": {
+      "play": "LYSANDER: And never did desire to see thee more."
+    },
+    "290": {
+      "play": "LYSANDER: Therefore be out of hope, of question, of doubt;"
+    },
+    "291": {
+      "play": "LYSANDER: Be certain, nothing truer; 'tis no jest"
+    },
+    "292": {
+      "play": "LYSANDER: That I do hate thee and love Helena."
+    },
+    "293": {
+      "play": "HERMIA: O me! you juggler! you canker-blossom!"
+    },
+    "294": {
+      "play": "HERMIA: You thief of love! what, have you come by night"
+    },
+    "295": {
+      "play": "HERMIA: And stolen my love's heart from him?"
+    },
+    "296": {
+      "play": "HELENA: Fine, i'faith!"
+    },
+    "297": {
+      "play": "HELENA: Have you no modesty, no maiden shame,"
+    },
+    "298": {
+      "play": "HELENA: No touch of bashfulness? What, will you tear"
+    },
+    "299": {
+      "play": "HELENA: Impatient answers from my gentle tongue?"
+    },
+    "300": {
+      "play": "HELENA: Fie, fie! you counterfeit, you puppet, you!"
+    },
+    "301": {
+      "play": "HERMIA: Puppet? why so? ay, that way goes the game."
+    },
+    "302": {
+      "play": "HERMIA: Now I perceive that she hath made compare"
+    },
+    "303": {
+      "play": "HERMIA: Between our statures; she hath urged her height;"
+    },
+    "304": {
+      "play": "HERMIA: And with her personage, her tall personage,"
+    },
+    "305": {
+      "play": "HERMIA: Her height, forsooth, she hath prevail'd with him."
+    },
+    "306": {
+      "play": "HERMIA: And are you grown so high in his esteem;"
+    },
+    "307": {
+      "play": "HERMIA: Because I am so dwarfish and so low?"
+    },
+    "308": {
+      "play": "HERMIA: How low am I, thou painted maypole? speak;"
+    },
+    "309": {
+      "play": "HERMIA: How low am I? I am not yet so low"
+    },
+    "310": {
+      "play": "HERMIA: But that my nails can reach unto thine eyes."
+    },
+    "311": {
+      "play": "HELENA: I pray you, though you mock me, gentlemen,"
+    },
+    "312": {
+      "play": "Let her not hurt me: I was never curst;"
+    },
+    "313": {
+      "play": "Let her not hurt me: I have no gift at all in shrewishness;"
+    },
+    "314": {
+      "play": "I am a right maid for my cowardice: "
+    },
+    "315": {
+      "play": "I am a right maid for my cowardice: Let her not strike me. You perhaps may think,"
+    },
+    "316": {
+      "play": "I am a right maid for my cowardice: Because she is something lower than myself,"
+    },
+    "317": {
+      "play": "I am a right maid for my cowardice: That I can match her."
+    },
+    "318": {
+      "play": "HERMIA: Lower! hark, again."
+    },
+    "319": {
+      "play": "HELENA: Good Hermia, do not be so bitter with me."
+    },
+    "320": {
+      "play": "HELENA: I evermore did love you, Hermia,"
+    },
+    "321": {
+      "play": "HELENA: Did ever keep your counsels, never wrong'd you;"
+    },
+    "322": {
+      "play": "HELENA: Save that, in love unto Demetrius,"
+    },
+    "323": {
+      "play": "HELENA: I told him of your stealth unto this wood."
+    },
+    "324": {
+      "play": "HELENA: He follow'd you; for love I follow'd him;"
+    },
+    "325": {
+      "play": "HELENA: But he hath chid me hence and threaten'd me"
+    },
+    "326": {
+      "play": "To strike me, spurn me, nay, to kill me too: "
+    },
+    "327": {
+      "play": "To strike me, spurn me, nay, to kill me too: And now, so you will let me quiet go,"
+    },
+    "328": {
+      "play": "To strike me, spurn me, nay, to kill me too: To Athens will I bear my folly back"
+    },
+    "329": {
+      "play": "And follow you no further: let me go:"
+    },
+    "330": {
+      "play": "And follow you no further: You see how simple and how fond I am."
+    },
+    "331": {
+      "play": "HERMIA: Why, get you gone: who is't that hinders you?"
+    },
+    "332": {
+      "play": "HELENA: A foolish heart, that I leave here behind."
+    },
+    "333": {
+      "play": "HERMIA: What, with Lysander?"
+    },
+    "334": {
+      "play": "HELENA: With Demetrius."
+    },
+    "335": {
+      "play": "LYSANDER: Be not afraid; she shall not harm thee, Helena."
+    },
+    "336": {
+      "play": "DEMETRIUS: No, sir, she shall not, though you take her part."
+    },
+    "337": {
+      "play": "HELENA: O, when she's angry, she is keen and shrewd!"
+    },
+    "338": {
+      "play": "HELENA: She was a vixen when she went to school;"
+    },
+    "339": {
+      "play": "HELENA: And though she be but little, she is fierce."
+    },
+    "340": {
+      "play": "HERMIA: 'Little' again! nothing but 'low' and 'little'!"
+    },
+    "341": {
+      "play": "HERMIA: Why will you suffer her to flout me thus?"
+    },
+    "342": {
+      "play": "HERMIA: Let me come to her."
+    },
+    "343": {
+      "play": "LYSANDER: Get you gone, you dwarf;"
+    },
+    "344": {
+      "play": "LYSANDER: You minimus, of hindering knot-grass made;"
+    },
+    "345": {
+      "play": "LYSANDER: You bead, you acorn."
+    },
+    "346": {
+      "play": "DEMETRIUS: You are too officious"
+    },
+    "347": {
+      "play": "DEMETRIUS: In her behalf that scorns your services."
+    },
+    "348": {
+      "play": "Let her alone: speak not of Helena;"
+    },
+    "349": {
+      "play": "Let her alone: Take not her part; for, if thou dost intend"
+    },
+    "350": {
+      "play": "Let her alone: Never so little show of love to her,"
+    },
+    "351": {
+      "play": "Let her alone: Thou shalt aby it."
+    },
+    "352": {
+      "play": "LYSANDER: Now she holds me not;"
+    },
+    "353": {
+      "play": "LYSANDER: Now follow, if thou darest, to try whose right,"
+    },
+    "354": {
+      "play": "LYSANDER: Of thine or mine, is most in Helena."
+    },
+    "355": {
+      "play": "DEMETRIUS: Follow! nay, I'll go with thee, cheek by jole."
+    },
+    "356": {
+      "play": "HERMIA: You, mistress, all this coil is 'long of you:"
+    },
+    "357": {
+      "play": "HERMIA: Nay, go not back."
+    },
+    "358": {
+      "play": "HELENA: I will not trust you, I,"
+    },
+    "359": {
+      "play": "HELENA: Nor longer stay in your curst company."
+    },
+    "360": {
+      "play": "HELENA: Your hands than mine are quicker for a fray,"
+    },
+    "361": {
+      "play": "HELENA: My legs are longer though, to run away."
+    },
+    "362": {
+      "play": "HERMIA: I am amazed, and know not what to say."
+    },
+    "363": {
+      "play": "OBERON: This is thy negligence: still thou mistakest,"
+    },
+    "364": {
+      "play": "OBERON: Or else committ'st thy knaveries wilfully."
+    },
+    "365": {
+      "play": "PUCK: Believe me, king of shadows, I mistook."
+    },
+    "366": {
+      "play": "PUCK: Did not you tell me I should know the man"
+    },
+    "367": {
+      "play": "PUCK: By the Athenian garment be had on?"
+    },
+    "368": {
+      "play": "PUCK: And so far blameless proves my enterprise,"
+    },
+    "369": {
+      "play": "PUCK: That I have 'nointed an Athenian's eyes;"
+    },
+    "370": {
+      "play": "PUCK: And so far am I glad it so did sort"
+    },
+    "371": {
+      "play": "PUCK: As this their jangling I esteem a sport."
+    },
+    "372": {
+      "play": "OBERON: Thou see'st these lovers seek a place to fight:"
+    },
+    "373": {
+      "play": "OBERON: Hie therefore, Robin, overcast the night;"
+    },
+    "374": {
+      "play": "OBERON: The starry welkin cover thou anon"
+    },
+    "375": {
+      "play": "OBERON: With drooping fog as black as Acheron,"
+    },
+    "376": {
+      "play": "OBERON: And lead these testy rivals so astray"
+    },
+    "377": {
+      "play": "OBERON: As one come not within another's way."
+    },
+    "378": {
+      "play": "OBERON: Like to Lysander sometime frame thy tongue,"
+    },
+    "379": {
+      "play": "OBERON: Then stir Demetrius up with bitter wrong;"
+    },
+    "380": {
+      "play": "OBERON: And sometime rail thou like Demetrius;"
+    },
+    "381": {
+      "play": "OBERON: And from each other look thou lead them thus,"
+    },
+    "382": {
+      "play": "OBERON: Till o'er their brows death-counterfeiting sleep"
+    },
+    "383": {
+      "play": "With leaden legs and batty wings doth creep: "
+    },
+    "384": {
+      "play": "With leaden legs and batty wings doth creep: Then crush this herb into Lysander's eye;"
+    },
+    "385": {
+      "play": "With leaden legs and batty wings doth creep: Whose liquor hath this virtuous property,"
+    },
+    "386": {
+      "play": "With leaden legs and batty wings doth creep: To take from thence all error with his might,"
+    },
+    "387": {
+      "play": "With leaden legs and batty wings doth creep: And make his eyeballs roll with wonted sight."
+    },
+    "388": {
+      "play": "With leaden legs and batty wings doth creep: When they next wake, all this derision"
+    },
+    "389": {
+      "play": "With leaden legs and batty wings doth creep: Shall seem a dream and fruitless vision,"
+    },
+    "390": {
+      "play": "With leaden legs and batty wings doth creep: And back to Athens shall the lovers wend,"
+    },
+    "391": {
+      "play": "With leaden legs and batty wings doth creep: With league whose date till death shall never end."
+    },
+    "392": {
+      "play": "With leaden legs and batty wings doth creep: Whiles I in this affair do thee employ,"
+    },
+    "393": {
+      "play": "With leaden legs and batty wings doth creep: I'll to my queen and beg her Indian boy;"
+    },
+    "394": {
+      "play": "With leaden legs and batty wings doth creep: And then I will her charmed eye release"
+    },
+    "395": {
+      "play": "With leaden legs and batty wings doth creep: From monster's view, and all things shall be peace."
+    },
+    "396": {
+      "play": "PUCK: My fairy lord, this must be done with haste,"
+    },
+    "397": {
+      "play": "PUCK: For night's swift dragons cut the clouds full fast,"
+    },
+    "398": {
+      "play": "PUCK: And yonder shines Aurora's harbinger;"
+    },
+    "399": {
+      "play": "PUCK: At whose approach, ghosts, wandering here and there,"
+    },
+    "400": {
+      "play": "Troop home to churchyards: damned spirits all,"
+    },
+    "401": {
+      "play": "Troop home to churchyards: That in crossways and floods have burial,"
+    },
+    "402": {
+      "play": "Troop home to churchyards: Already to their wormy beds are gone;"
+    },
+    "403": {
+      "play": "Troop home to churchyards: For fear lest day should look their shames upon,"
+    },
+    "404": {
+      "play": "Troop home to churchyards: They willfully themselves exile from light"
+    },
+    "405": {
+      "play": "Troop home to churchyards: And must for aye consort with black-brow'd night."
+    },
+    "406": {
+      "play": "OBERON: But we are spirits of another sort:"
+    },
+    "407": {
+      "play": "OBERON: I with the morning's love have oft made sport,"
+    },
+    "408": {
+      "play": "OBERON: And, like a forester, the groves may tread,"
+    },
+    "409": {
+      "play": "OBERON: Even till the eastern gate, all fiery-red,"
+    },
+    "410": {
+      "play": "OBERON: Opening on Neptune with fair blessed beams,"
+    },
+    "411": {
+      "play": "OBERON: Turns into yellow gold his salt green streams."
+    },
+    "412": {
+      "play": "But, notwithstanding, haste; make no delay: "
+    },
+    "413": {
+      "play": "But, notwithstanding, haste; make no delay: We may effect this business yet ere day."
+    },
+    "414": {
+      "play": "PUCK: Up and down, up and down,"
+    },
+    "415": {
+      "play": "I will lead them up and down: "
+    },
+    "416": {
+      "play": "I am fear'd in field and town: "
+    },
+    "417": {
+      "play": "I am fear'd in field and town: Goblin, lead them up and down."
+    },
+    "418": {
+      "play": "I am fear'd in field and town: Here comes one."
+    },
+    "419": {
+      "play": "LYSANDER: Where art thou, proud Demetrius? speak thou now."
+    },
+    "420": {
+      "play": "PUCK: Here, villain; drawn and ready. Where art thou?"
+    },
+    "421": {
+      "play": "LYSANDER: I will be with thee straight."
+    },
+    "422": {
+      "play": "PUCK: Follow me, then,"
+    },
+    "423": {
+      "play": "PUCK: To plainer ground."
+    },
+    "424": {
+      "play": "DEMETRIUS: Lysander! speak again:"
+    },
+    "425": {
+      "play": "DEMETRIUS: Thou runaway, thou coward, art thou fled?"
+    },
+    "426": {
+      "play": "DEMETRIUS: Speak! In some bush? Where dost thou hide thy head?"
+    },
+    "427": {
+      "play": "PUCK: Thou coward, art thou bragging to the stars,"
+    },
+    "428": {
+      "play": "PUCK: Telling the bushes that thou look'st for wars,"
+    },
+    "429": {
+      "play": "PUCK: And wilt not come? Come, recreant; come, thou child;"
+    },
+    "430": {
+      "play": "I'll whip thee with a rod: he is defiled"
+    },
+    "431": {
+      "play": "I'll whip thee with a rod: That draws a sword on thee."
+    },
+    "432": {
+      "play": "DEMETRIUS: Yea, art thou there?"
+    },
+    "433": {
+      "play": "PUCK: Follow my voice: we'll try no manhood here."
+    },
+    "434": {
+      "play": "LYSANDER: He goes before me and still dares me on:"
+    },
+    "435": {
+      "play": "LYSANDER: When I come where he calls, then he is gone."
+    },
+    "436": {
+      "play": "The villain is much lighter-heel'd than I: "
+    },
+    "437": {
+      "play": "The villain is much lighter-heel'd than I: I follow'd fast, but faster he did fly;"
+    },
+    "438": {
+      "play": "The villain is much lighter-heel'd than I: That fallen am I in dark uneven way,"
+    },
+    "439": {
+      "play": "The villain is much lighter-heel'd than I: And here will rest me."
+    },
+    "440": {
+      "play": "The villain is much lighter-heel'd than I: Come, thou gentle day!"
+    },
+    "441": {
+      "play": "The villain is much lighter-heel'd than I: For if but once thou show me thy grey light,"
+    },
+    "442": {
+      "play": "The villain is much lighter-heel'd than I: I'll find Demetrius and revenge this spite."
+    },
+    "443": {
+      "play": "PUCK: Ho, ho, ho! Coward, why comest thou not?"
+    },
+    "444": {
+      "play": "DEMETRIUS: Abide me, if thou darest; for well I wot"
+    },
+    "445": {
+      "play": "DEMETRIUS: Thou runn'st before me, shifting every place,"
+    },
+    "446": {
+      "play": "DEMETRIUS: And darest not stand, nor look me in the face."
+    },
+    "447": {
+      "play": "DEMETRIUS: Where art thou now?"
+    },
+    "448": {
+      "play": "PUCK: Come hither: I am here."
+    },
+    "449": {
+      "play": "DEMETRIUS: Nay, then, thou mock'st me. Thou shalt buy this dear,"
+    },
+    "450": {
+      "play": "If ever I thy face by daylight see: "
+    },
+    "451": {
+      "play": "If ever I thy face by daylight see: Now, go thy way. Faintness constraineth me"
+    },
+    "452": {
+      "play": "If ever I thy face by daylight see: To measure out my length on this cold bed."
+    },
+    "453": {
+      "play": "If ever I thy face by daylight see: By day's approach look to be visited."
+    },
+    "454": {
+      "play": "HELENA: O weary night, O long and tedious night,"
+    },
+    "455": {
+      "play": "HELENA: Abate thy hour! Shine comforts from the east,"
+    },
+    "456": {
+      "play": "HELENA: That I may back to Athens by daylight,"
+    },
+    "457": {
+      "play": "From these that my poor company detest: "
+    },
+    "458": {
+      "play": "From these that my poor company detest: And sleep, that sometimes shuts up sorrow's eye,"
+    },
+    "459": {
+      "play": "From these that my poor company detest: Steal me awhile from mine own company."
+    },
+    "460": {
+      "play": "PUCK: Yet but three? Come one more;"
+    },
+    "461": {
+      "play": "PUCK: Two of both kinds make up four."
+    },
+    "462": {
+      "play": "Here she comes, curst and sad: "
+    },
+    "463": {
+      "play": "Here she comes, curst and sad: Cupid is a knavish lad,"
+    },
+    "464": {
+      "play": "Here she comes, curst and sad: Thus to make poor females mad."
+    },
+    "465": {
+      "play": "HERMIA: Never so weary, never so in woe,"
+    },
+    "466": {
+      "play": "HERMIA: Bedabbled with the dew and torn with briers,"
+    },
+    "467": {
+      "play": "HERMIA: I can no further crawl, no further go;"
+    },
+    "468": {
+      "play": "HERMIA: My legs can keep no pace with my desires."
+    },
+    "469": {
+      "play": "HERMIA: Here will I rest me till the break of day."
+    },
+    "470": {
+      "play": "HERMIA: Heavens shield Lysander, if they mean a fray!"
+    }
+  },
+  "ACT 4 SCENE 1": {
+    "1": {
+      "play": "TITANIA: Come, sit thee down upon this flowery bed,"
+    },
+    "2": {
+      "play": "TITANIA: While I thy amiable cheeks do coy,"
+    },
+    "3": {
+      "play": "TITANIA: And stick musk-roses in thy sleek smooth head,"
+    },
+    "4": {
+      "play": "TITANIA: And kiss thy fair large ears, my gentle joy."
+    },
+    "5": {
+      "play": "BOTTOM: Where's Peaseblossom?"
+    },
+    "6": {
+      "play": "PEASEBLOSSOM: Ready."
+    },
+    "7": {
+      "play": "BOTTOM: Scratch my head Peaseblossom. Where's Mounsieur Cobweb?"
+    },
+    "8": {
+      "play": "COBWEB: Ready."
+    },
+    "9": {
+      "play": "BOTTOM: Mounsieur Cobweb, good mounsieur, get you your"
+    },
+    "10": {
+      "play": "BOTTOM: weapons in your hand, and kill me a red-hipped"
+    },
+    "11": {
+      "play": "BOTTOM: humble-bee on the top of a thistle; and, good"
+    },
+    "12": {
+      "play": "BOTTOM: mounsieur, bring me the honey-bag. Do not fret"
+    },
+    "13": {
+      "play": "BOTTOM: yourself too much in the action, mounsieur; and,"
+    },
+    "14": {
+      "play": "BOTTOM: good mounsieur, have a care the honey-bag break not;"
+    },
+    "15": {
+      "play": "BOTTOM: I would be loath to have you overflown with a"
+    },
+    "16": {
+      "play": "BOTTOM: honey-bag, signior. Where's Mounsieur Mustardseed?"
+    },
+    "17": {
+      "play": "MUSTARDSEED: Ready."
+    },
+    "18": {
+      "play": "BOTTOM: Give me your neaf, Mounsieur Mustardseed. Pray you,"
+    },
+    "19": {
+      "play": "BOTTOM: leave your courtesy, good mounsieur."
+    },
+    "20": {
+      "play": "MUSTARDSEED: What's your Will?"
+    },
+    "21": {
+      "play": "BOTTOM: Nothing, good mounsieur, but to help Cavalery Cobweb"
+    },
+    "22": {
+      "play": "BOTTOM: to scratch. I must to the barber's, monsieur; for"
+    },
+    "23": {
+      "play": "BOTTOM: methinks I am marvellous hairy about the face; and I"
+    },
+    "24": {
+      "play": "BOTTOM: am such a tender ass, if my hair do but tickle me,"
+    },
+    "25": {
+      "play": "BOTTOM: I must scratch."
+    },
+    "26": {
+      "play": "TITANIA: What, wilt thou hear some music,"
+    },
+    "27": {
+      "play": "TITANIA: my sweet love?"
+    },
+    "28": {
+      "play": "BOTTOM: I have a reasonable good ear in music. Let's have"
+    },
+    "29": {
+      "play": "BOTTOM: the tongs and the bones."
+    },
+    "30": {
+      "play": "TITANIA: Or say, sweet love, what thou desirest to eat."
+    },
+    "31": {
+      "play": "BOTTOM: Truly, a peck of provender: I could munch your good"
+    },
+    "32": {
+      "play": "BOTTOM: dry oats. Methinks I have a great desire to a bottle"
+    },
+    "33": {
+      "play": "of hay: good hay, sweet hay, hath no fellow."
+    },
+    "34": {
+      "play": "TITANIA: I have a venturous fairy that shall seek"
+    },
+    "35": {
+      "play": "TITANIA: The squirrel's hoard, and fetch thee new nuts."
+    },
+    "36": {
+      "play": "BOTTOM: I had rather have a handful or two of dried peas."
+    },
+    "37": {
+      "play": "But, I pray you, let none of your people stir me: I"
+    },
+    "38": {
+      "play": "But, I pray you, let none of your people stir me: have an exposition of sleep come upon me."
+    },
+    "39": {
+      "play": "TITANIA: Sleep thou, and I will wind thee in my arms."
+    },
+    "40": {
+      "play": "TITANIA: Fairies, begone, and be all ways away."
+    },
+    "41": {
+      "play": "TITANIA: So doth the woodbine the sweet honeysuckle"
+    },
+    "42": {
+      "play": "TITANIA: Gently entwist; the female ivy so"
+    },
+    "43": {
+      "play": "TITANIA: Enrings the barky fingers of the elm."
+    },
+    "44": {
+      "play": "TITANIA: O, how I love thee! how I dote on thee!"
+    },
+    "45": {
+      "play": "OBERON: [Advancing] Welcome, good Robin."
+    },
+    "46": {
+      "play": "OBERON: See'st thou this sweet sight?"
+    },
+    "47": {
+      "play": "Her dotage now I do begin to pity: "
+    },
+    "48": {
+      "play": "Her dotage now I do begin to pity: For, meeting her of late behind the wood,"
+    },
+    "49": {
+      "play": "Her dotage now I do begin to pity: Seeking sweet favours from this hateful fool,"
+    },
+    "50": {
+      "play": "Her dotage now I do begin to pity: I did upbraid her and fall out with her;"
+    },
+    "51": {
+      "play": "Her dotage now I do begin to pity: For she his hairy temples then had rounded"
+    },
+    "52": {
+      "play": "Her dotage now I do begin to pity: With a coronet of fresh and fragrant flowers;"
+    },
+    "53": {
+      "play": "Her dotage now I do begin to pity: And that same dew, which sometime on the buds"
+    },
+    "54": {
+      "play": "Her dotage now I do begin to pity: Was wont to swell like round and orient pearls,"
+    },
+    "55": {
+      "play": "Her dotage now I do begin to pity: Stood now within the pretty flowerets' eyes"
+    },
+    "56": {
+      "play": "Her dotage now I do begin to pity: Like tears that did their own disgrace bewail."
+    },
+    "57": {
+      "play": "Her dotage now I do begin to pity: When I had at my pleasure taunted her"
+    },
+    "58": {
+      "play": "Her dotage now I do begin to pity: And she in mild terms begg'd my patience,"
+    },
+    "59": {
+      "play": "Her dotage now I do begin to pity: I then did ask of her her changeling child;"
+    },
+    "60": {
+      "play": "Her dotage now I do begin to pity: Which straight she gave me, and her fairy sent"
+    },
+    "61": {
+      "play": "Her dotage now I do begin to pity: To bear him to my bower in fairy land."
+    },
+    "62": {
+      "play": "Her dotage now I do begin to pity: And now I have the boy, I will undo"
+    },
+    "63": {
+      "play": "This hateful imperfection of her eyes: "
+    },
+    "64": {
+      "play": "This hateful imperfection of her eyes: And, gentle Puck, take this transformed scalp"
+    },
+    "65": {
+      "play": "This hateful imperfection of her eyes: From off the head of this Athenian swain;"
+    },
+    "66": {
+      "play": "This hateful imperfection of her eyes: That, he awaking when the other do,"
+    },
+    "67": {
+      "play": "This hateful imperfection of her eyes: May all to Athens back again repair"
+    },
+    "68": {
+      "play": "This hateful imperfection of her eyes: And think no more of this night's accidents"
+    },
+    "69": {
+      "play": "This hateful imperfection of her eyes: But as the fierce vexation of a dream."
+    },
+    "70": {
+      "play": "This hateful imperfection of her eyes: But first I will release the fairy queen."
+    },
+    "71": {
+      "play": "This hateful imperfection of her eyes: Be as thou wast wont to be;"
+    },
+    "72": {
+      "play": "See as thou wast wont to see: "
+    },
+    "73": {
+      "play": "See as thou wast wont to see: Dian's bud o'er Cupid's flower"
+    },
+    "74": {
+      "play": "See as thou wast wont to see: Hath such force and blessed power."
+    },
+    "75": {
+      "play": "See as thou wast wont to see: Now, my Titania; wake you, my sweet queen."
+    },
+    "76": {
+      "play": "TITANIA: My Oberon! what visions have I seen!"
+    },
+    "77": {
+      "play": "TITANIA: Methought I was enamour'd of an ass."
+    },
+    "78": {
+      "play": "OBERON: There lies your love."
+    },
+    "79": {
+      "play": "TITANIA: How came these things to pass?"
+    },
+    "80": {
+      "play": "TITANIA: O, how mine eyes do loathe his visage now!"
+    },
+    "81": {
+      "play": "OBERON: Silence awhile. Robin, take off this head."
+    },
+    "82": {
+      "play": "OBERON: Titania, music call; and strike more dead"
+    },
+    "83": {
+      "play": "OBERON: Than common sleep of all these five the sense."
+    },
+    "84": {
+      "play": "TITANIA: Music, ho! music, such as charmeth sleep!"
+    },
+    "85": {
+      "play": "PUCK: Now, when thou wakest, with thine"
+    },
+    "86": {
+      "play": "PUCK: own fool's eyes peep."
+    },
+    "87": {
+      "play": "OBERON: Sound, music! Come, my queen, take hands with me,"
+    },
+    "88": {
+      "play": "OBERON: And rock the ground whereon these sleepers be."
+    },
+    "89": {
+      "play": "OBERON: Now thou and I are new in amity,"
+    },
+    "90": {
+      "play": "OBERON: And will to-morrow midnight solemnly"
+    },
+    "91": {
+      "play": "OBERON: Dance in Duke Theseus' house triumphantly,"
+    },
+    "92": {
+      "play": "And bless it to all fair prosperity: "
+    },
+    "93": {
+      "play": "And bless it to all fair prosperity: There shall the pairs of faithful lovers be"
+    },
+    "94": {
+      "play": "And bless it to all fair prosperity: Wedded, with Theseus, all in jollity."
+    },
+    "95": {
+      "play": "PUCK: Fairy king, attend, and mark:"
+    },
+    "96": {
+      "play": "PUCK: I do hear the morning lark."
+    },
+    "97": {
+      "play": "OBERON: Then, my queen, in silence sad,"
+    },
+    "98": {
+      "play": "Trip we after the night's shade: "
+    },
+    "99": {
+      "play": "Trip we after the night's shade: We the globe can compass soon,"
+    },
+    "100": {
+      "play": "Trip we after the night's shade: Swifter than the wandering moon."
+    },
+    "101": {
+      "play": "TITANIA: Come, my lord, and in our flight"
+    },
+    "102": {
+      "play": "TITANIA: Tell me how it came this night"
+    },
+    "103": {
+      "play": "TITANIA: That I sleeping here was found"
+    },
+    "104": {
+      "play": "TITANIA: With these mortals on the ground."
+    },
+    "105": {
+      "play": "THESEUS: Go, one of you, find out the forester;"
+    },
+    "106": {
+      "play": "THESEUS: For now our observation is perform'd;"
+    },
+    "107": {
+      "play": "THESEUS: And since we have the vaward of the day,"
+    },
+    "108": {
+      "play": "THESEUS: My love shall hear the music of my hounds."
+    },
+    "109": {
+      "play": "Uncouple in the western valley; let them go: "
+    },
+    "110": {
+      "play": "Uncouple in the western valley; let them go: Dispatch, I say, and find the forester."
+    },
+    "111": {
+      "play": "Uncouple in the western valley; let them go: We will, fair queen, up to the mountain's top,"
+    },
+    "112": {
+      "play": "Uncouple in the western valley; let them go: And mark the musical confusion"
+    },
+    "113": {
+      "play": "Uncouple in the western valley; let them go: Of hounds and echo in conjunction."
+    },
+    "114": {
+      "play": "HIPPOLYTA: I was with Hercules and Cadmus once,"
+    },
+    "115": {
+      "play": "HIPPOLYTA: When in a wood of Crete they bay'd the bear"
+    },
+    "116": {
+      "play": "With hounds of Sparta: never did I hear"
+    },
+    "117": {
+      "play": "Such gallant chiding: for, besides the groves,"
+    },
+    "118": {
+      "play": "Such gallant chiding: The skies, the fountains, every region near"
+    },
+    "119": {
+      "play": "Seem'd all one mutual cry: I never heard"
+    },
+    "120": {
+      "play": "Seem'd all one mutual cry: So musical a discord, such sweet thunder."
+    },
+    "121": {
+      "play": "THESEUS: My hounds are bred out of the Spartan kind,"
+    },
+    "122": {
+      "play": "THESEUS: So flew'd, so sanded, and their heads are hung"
+    },
+    "123": {
+      "play": "THESEUS: With ears that sweep away the morning dew;"
+    },
+    "124": {
+      "play": "THESEUS: Crook-knee'd, and dew-lapp'd like Thessalian bulls;"
+    },
+    "125": {
+      "play": "THESEUS: Slow in pursuit, but match'd in mouth like bells,"
+    },
+    "126": {
+      "play": "THESEUS: Each under each. A cry more tuneable"
+    },
+    "127": {
+      "play": "THESEUS: Was never holla'd to, nor cheer'd with horn,"
+    },
+    "128": {
+      "play": "In Crete, in Sparta, nor in Thessaly: "
+    },
+    "129": {
+      "play": "In Crete, in Sparta, nor in Thessaly: Judge when you hear. But, soft! what nymphs are these?"
+    },
+    "130": {
+      "play": "EGEUS: My lord, this is my daughter here asleep;"
+    },
+    "131": {
+      "play": "EGEUS: And this, Lysander; this Demetrius is;"
+    },
+    "132": {
+      "play": "This Helena, old Nedar's Helena: "
+    },
+    "133": {
+      "play": "This Helena, old Nedar's Helena: I wonder of their being here together."
+    },
+    "134": {
+      "play": "THESEUS: No doubt they rose up early to observe"
+    },
+    "135": {
+      "play": "THESEUS: The rite of May, and hearing our intent,"
+    },
+    "136": {
+      "play": "THESEUS: Came here in grace our solemnity."
+    },
+    "137": {
+      "play": "THESEUS: But speak, Egeus; is not this the day"
+    },
+    "138": {
+      "play": "THESEUS: That Hermia should give answer of her choice?"
+    },
+    "139": {
+      "play": "EGEUS: It is, my lord."
+    },
+    "140": {
+      "play": "THESEUS: Go, bid the huntsmen wake them with their horns."
+    },
+    "141": {
+      "play": "Good morrow, friends. Saint Valentine is past: "
+    },
+    "142": {
+      "play": "Good morrow, friends. Saint Valentine is past: Begin these wood-birds but to couple now?"
+    },
+    "143": {
+      "play": "LYSANDER: Pardon, my lord."
+    },
+    "144": {
+      "play": "THESEUS: I pray you all, stand up."
+    },
+    "145": {
+      "play": "I know you two are rival enemies: "
+    },
+    "146": {
+      "play": "I know you two are rival enemies: How comes this gentle concord in the world,"
+    },
+    "147": {
+      "play": "I know you two are rival enemies: That hatred is so far from jealousy,"
+    },
+    "148": {
+      "play": "I know you two are rival enemies: To sleep by hate, and fear no enmity?"
+    },
+    "149": {
+      "play": "LYSANDER: My lord, I shall reply amazedly,"
+    },
+    "150": {
+      "play": "Half sleep, half waking: but as yet, I swear,"
+    },
+    "151": {
+      "play": "Half sleep, half waking: I cannot truly say how I came here;"
+    },
+    "152": {
+      "play": "Half sleep, half waking: But, as I think,--for truly would I speak,"
+    },
+    "153": {
+      "play": "Half sleep, half waking: And now do I bethink me, so it is,--"
+    },
+    "154": {
+      "play": "I came with Hermia hither: our intent"
+    },
+    "155": {
+      "play": "I came with Hermia hither: Was to be gone from Athens, where we might,"
+    },
+    "156": {
+      "play": "I came with Hermia hither: Without the peril of the Athenian law."
+    },
+    "157": {
+      "play": "EGEUS: Enough, enough, my lord; you have enough:"
+    },
+    "158": {
+      "play": "EGEUS: I beg the law, the law, upon his head."
+    },
+    "159": {
+      "play": "EGEUS: They would have stolen away; they would, Demetrius,"
+    },
+    "160": {
+      "play": "EGEUS: Thereby to have defeated you and me,"
+    },
+    "161": {
+      "play": "EGEUS: You of your wife and me of my consent,"
+    },
+    "162": {
+      "play": "EGEUS: Of my consent that she should be your wife."
+    },
+    "163": {
+      "play": "DEMETRIUS: My lord, fair Helen told me of their stealth,"
+    },
+    "164": {
+      "play": "DEMETRIUS: Of this their purpose hither to this wood;"
+    },
+    "165": {
+      "play": "DEMETRIUS: And I in fury hither follow'd them,"
+    },
+    "166": {
+      "play": "DEMETRIUS: Fair Helena in fancy following me."
+    },
+    "167": {
+      "play": "DEMETRIUS: But, my good lord, I wot not by what power,--"
+    },
+    "168": {
+      "play": "DEMETRIUS: But by some power it is,--my love to Hermia,"
+    },
+    "169": {
+      "play": "DEMETRIUS: Melted as the snow, seems to me now"
+    },
+    "170": {
+      "play": "DEMETRIUS: As the remembrance of an idle gaud"
+    },
+    "171": {
+      "play": "DEMETRIUS: Which in my childhood I did dote upon;"
+    },
+    "172": {
+      "play": "DEMETRIUS: And all the faith, the virtue of my heart,"
+    },
+    "173": {
+      "play": "DEMETRIUS: The object and the pleasure of mine eye,"
+    },
+    "174": {
+      "play": "DEMETRIUS: Is only Helena. To her, my lord,"
+    },
+    "175": {
+      "play": "Was I betroth'd ere I saw Hermia: "
+    },
+    "176": {
+      "play": "Was I betroth'd ere I saw Hermia: But, like in sickness, did I loathe this food;"
+    },
+    "177": {
+      "play": "Was I betroth'd ere I saw Hermia: But, as in health, come to my natural taste,"
+    },
+    "178": {
+      "play": "Was I betroth'd ere I saw Hermia: Now I do wish it, love it, long for it,"
+    },
+    "179": {
+      "play": "Was I betroth'd ere I saw Hermia: And will for evermore be true to it."
+    },
+    "180": {
+      "play": "THESEUS: Fair lovers, you are fortunately met:"
+    },
+    "181": {
+      "play": "THESEUS: Of this discourse we more will hear anon."
+    },
+    "182": {
+      "play": "THESEUS: Egeus, I will overbear your will;"
+    },
+    "183": {
+      "play": "THESEUS: For in the temple by and by with us"
+    },
+    "184": {
+      "play": "These couples shall eternally be knit: "
+    },
+    "185": {
+      "play": "These couples shall eternally be knit: And, for the morning now is something worn,"
+    },
+    "186": {
+      "play": "These couples shall eternally be knit: Our purposed hunting shall be set aside."
+    },
+    "187": {
+      "play": "These couples shall eternally be knit: Away with us to Athens; three and three,"
+    },
+    "188": {
+      "play": "These couples shall eternally be knit: We'll hold a feast in great solemnity."
+    },
+    "189": {
+      "play": "These couples shall eternally be knit: Come, Hippolyta."
+    },
+    "190": {
+      "play": "DEMETRIUS: These things seem small and undistinguishable,"
+    },
+    "191": {
+      "play": "HERMIA: Methinks I see these things with parted eye,"
+    },
+    "192": {
+      "play": "HERMIA: When every thing seems double."
+    },
+    "193": {
+      "play": "HELENA: So methinks:"
+    },
+    "194": {
+      "play": "HELENA: And I have found Demetrius like a jewel,"
+    },
+    "195": {
+      "play": "HELENA: Mine own, and not mine own."
+    },
+    "196": {
+      "play": "DEMETRIUS: Are you sure"
+    },
+    "197": {
+      "play": "DEMETRIUS: That we are awake? It seems to me"
+    },
+    "198": {
+      "play": "DEMETRIUS: That yet we sleep, we dream. Do not you think"
+    },
+    "199": {
+      "play": "DEMETRIUS: The duke was here, and bid us follow him?"
+    },
+    "200": {
+      "play": "HERMIA: Yea; and my father."
+    },
+    "201": {
+      "play": "HELENA: And Hippolyta."
+    },
+    "202": {
+      "play": "LYSANDER: And he did bid us follow to the temple."
+    },
+    "203": {
+      "play": "DEMETRIUS: Why, then, we are awake: let's follow him"
+    },
+    "204": {
+      "play": "DEMETRIUS: And by the way let us recount our dreams."
+    },
+    "205": {
+      "play": "BOTTOM: [Awaking] When my cue comes, call me, and I will"
+    },
+    "206": {
+      "play": "answer: my next is, 'Most fair Pyramus.' Heigh-ho!"
+    },
+    "207": {
+      "play": "answer: Peter Quince! Flute, the bellows-mender! Snout,"
+    },
+    "208": {
+      "play": "answer: the tinker! Starveling! God's my life, stolen"
+    },
+    "209": {
+      "play": "answer: hence, and left me asleep! I have had a most rare"
+    },
+    "210": {
+      "play": "answer: vision. I have had a dream, past the wit of man to"
+    },
+    "211": {
+      "play": "say what dream it was: man is but an ass, if he go"
+    },
+    "212": {
+      "play": "say what dream it was: about to expound this dream. Methought I was--there"
+    },
+    "213": {
+      "play": "say what dream it was: is no man can tell what. Methought I was,--and"
+    },
+    "214": {
+      "play": "say what dream it was: methought I had,--but man is but a patched fool, if"
+    },
+    "215": {
+      "play": "say what dream it was: he will offer to say what methought I had. The eye"
+    },
+    "216": {
+      "play": "say what dream it was: of man hath not heard, the ear of man hath not"
+    },
+    "217": {
+      "play": "say what dream it was: seen, man's hand is not able to taste, his tongue"
+    },
+    "218": {
+      "play": "say what dream it was: to conceive, nor his heart to report, what my dream"
+    },
+    "219": {
+      "play": "say what dream it was: was. I will get Peter Quince to write a ballad of"
+    },
+    "220": {
+      "play": "this dream: it shall be called Bottom's Dream,"
+    },
+    "221": {
+      "play": "this dream: because it hath no bottom; and I will sing it in the"
+    },
+    "222": {
+      "play": "latter end of a play, before the duke: "
+    },
+    "223": {
+      "play": "latter end of a play, before the duke: peradventure, to make it the more gracious, I shall"
+    },
+    "224": {
+      "play": "latter end of a play, before the duke: sing it at her death."
+    }
+  },
+  "ACT 4 SCENE 2": {
+    "1": {
+      "play": "QUINCE: Have you sent to Bottom's house ? is he come home yet?"
+    },
+    "2": {
+      "play": "STARVELING: He cannot be heard of. Out of doubt he is"
+    },
+    "3": {
+      "play": "STARVELING: transported."
+    },
+    "4": {
+      "play": "FLUTE: If he come not, then the play is marred: it goes"
+    },
+    "5": {
+      "play": "FLUTE: not forward, doth it?"
+    },
+    "6": {
+      "play": "QUINCE: It is not possible: you have not a man in all"
+    },
+    "7": {
+      "play": "QUINCE: Athens able to discharge Pyramus but he."
+    },
+    "8": {
+      "play": "FLUTE: No, he hath simply the best wit of any handicraft"
+    },
+    "9": {
+      "play": "FLUTE: man in Athens."
+    },
+    "10": {
+      "play": "QUINCE: Yea and the best person too; and he is a very"
+    },
+    "11": {
+      "play": "QUINCE: paramour for a sweet voice."
+    },
+    "12": {
+      "play": "FLUTE: You must say 'paragon:' a paramour is, God bless us,"
+    },
+    "13": {
+      "play": "FLUTE: a thing of naught."
+    },
+    "14": {
+      "play": "SNUG: Masters, the duke is coming from the temple, and"
+    },
+    "15": {
+      "play": "there is two or three lords and ladies more married: "
+    },
+    "16": {
+      "play": "there is two or three lords and ladies more married: if our sport had gone forward, we had all been made"
+    },
+    "17": {
+      "play": "there is two or three lords and ladies more married: men."
+    },
+    "18": {
+      "play": "FLUTE: O sweet bully Bottom! Thus hath he lost sixpence a"
+    },
+    "19": {
+      "play": "FLUTE: day during his life; he could not have 'scaped"
+    },
+    "20": {
+      "play": "sixpence a day: an the duke had not given him"
+    },
+    "21": {
+      "play": "sixpence a day: sixpence a day for playing Pyramus, I'll be hanged;"
+    },
+    "22": {
+      "play": "he would have deserved it: sixpence a day in"
+    },
+    "23": {
+      "play": "he would have deserved it: Pyramus, or nothing."
+    },
+    "24": {
+      "play": "BOTTOM: Where are these lads? where are these hearts?"
+    },
+    "25": {
+      "play": "QUINCE: Bottom! O most courageous day! O most happy hour!"
+    },
+    "26": {
+      "play": "BOTTOM: Masters, I am to discourse wonders: but ask me not"
+    },
+    "27": {
+      "play": "BOTTOM: what; for if I tell you, I am no true Athenian. I"
+    },
+    "28": {
+      "play": "BOTTOM: will tell you every thing, right as it fell out."
+    },
+    "29": {
+      "play": "QUINCE: Let us hear, sweet Bottom."
+    }
+  },
+  "ACT 5 SCENE 1": {
+    "1": {
+      "play": "HIPPOLYTA: 'Tis strange my Theseus, that these"
+    },
+    "2": {
+      "play": "HIPPOLYTA: lovers speak of."
+    },
+    "3": {
+      "play": "THESEUS: More strange than true: I never may believe"
+    },
+    "4": {
+      "play": "THESEUS: These antique fables, nor these fairy toys."
+    },
+    "5": {
+      "play": "THESEUS: Lovers and madmen have such seething brains,"
+    },
+    "6": {
+      "play": "THESEUS: Such shaping fantasies, that apprehend"
+    },
+    "7": {
+      "play": "THESEUS: More than cool reason ever comprehends."
+    },
+    "8": {
+      "play": "THESEUS: The lunatic, the lover and the poet"
+    },
+    "9": {
+      "play": "Are of imagination all compact: "
+    },
+    "10": {
+      "play": "Are of imagination all compact: One sees more devils than vast hell can hold,"
+    },
+    "11": {
+      "play": "That is, the madman: the lover, all as frantic,"
+    },
+    "12": {
+      "play": "Sees Helen's beauty in a brow of Egypt: "
+    },
+    "13": {
+      "play": "Sees Helen's beauty in a brow of Egypt: The poet's eye, in fine frenzy rolling,"
+    },
+    "14": {
+      "play": "Sees Helen's beauty in a brow of Egypt: Doth glance from heaven to earth, from earth to heaven;"
+    },
+    "15": {
+      "play": "Sees Helen's beauty in a brow of Egypt: And as imagination bodies forth"
+    },
+    "16": {
+      "play": "Sees Helen's beauty in a brow of Egypt: The forms of things unknown, the poet's pen"
+    },
+    "17": {
+      "play": "Sees Helen's beauty in a brow of Egypt: Turns them to shapes and gives to airy nothing"
+    },
+    "18": {
+      "play": "Sees Helen's beauty in a brow of Egypt: A local habitation and a name."
+    },
+    "19": {
+      "play": "Sees Helen's beauty in a brow of Egypt: Such tricks hath strong imagination,"
+    },
+    "20": {
+      "play": "Sees Helen's beauty in a brow of Egypt: That if it would but apprehend some joy,"
+    },
+    "21": {
+      "play": "Sees Helen's beauty in a brow of Egypt: It comprehends some bringer of that joy;"
+    },
+    "22": {
+      "play": "Sees Helen's beauty in a brow of Egypt: Or in the night, imagining some fear,"
+    },
+    "23": {
+      "play": "Sees Helen's beauty in a brow of Egypt: How easy is a bush supposed a bear!"
+    },
+    "24": {
+      "play": "HIPPOLYTA: But all the story of the night told over,"
+    },
+    "25": {
+      "play": "HIPPOLYTA: And all their minds transfigured so together,"
+    },
+    "26": {
+      "play": "HIPPOLYTA: More witnesseth than fancy's images"
+    },
+    "27": {
+      "play": "HIPPOLYTA: And grows to something of great constancy;"
+    },
+    "28": {
+      "play": "HIPPOLYTA: But, howsoever, strange and admirable."
+    },
+    "29": {
+      "play": "THESEUS: Here come the lovers, full of joy and mirth."
+    },
+    "30": {
+      "play": "THESEUS: Joy, gentle friends! joy and fresh days of love"
+    },
+    "31": {
+      "play": "THESEUS: Accompany your hearts!"
+    },
+    "32": {
+      "play": "LYSANDER: More than to us"
+    },
+    "33": {
+      "play": "LYSANDER: Wait in your royal walks, your board, your bed!"
+    },
+    "34": {
+      "play": "THESEUS: Come now; what masques, what dances shall we have,"
+    },
+    "35": {
+      "play": "THESEUS: To wear away this long age of three hours"
+    },
+    "36": {
+      "play": "THESEUS: Between our after-supper and bed-time?"
+    },
+    "37": {
+      "play": "THESEUS: Where is our usual manager of mirth?"
+    },
+    "38": {
+      "play": "THESEUS: What revels are in hand? Is there no play,"
+    },
+    "39": {
+      "play": "THESEUS: To ease the anguish of a torturing hour?"
+    },
+    "40": {
+      "play": "THESEUS: Call Philostrate."
+    },
+    "41": {
+      "play": "PHILOSTRATE: Here, mighty Theseus."
+    },
+    "42": {
+      "play": "THESEUS: Say, what abridgement have you for this evening?"
+    },
+    "43": {
+      "play": "THESEUS: What masque? what music? How shall we beguile"
+    },
+    "44": {
+      "play": "THESEUS: The lazy time, if not with some delight?"
+    },
+    "45": {
+      "play": "PHILOSTRATE: There is a brief how many sports are ripe:"
+    },
+    "46": {
+      "play": "PHILOSTRATE: Make choice of which your highness will see first."
+    },
+    "47": {
+      "play": "THESEUS: [Reads] 'The battle with the Centaurs, to be sung"
+    },
+    "48": {
+      "play": "THESEUS: By an Athenian eunuch to the harp.'"
+    },
+    "49": {
+      "play": "We'll none of that: that have I told my love,"
+    },
+    "50": {
+      "play": "We'll none of that: In glory of my kinsman Hercules."
+    },
+    "51": {
+      "play": "We'll none of that: 'The riot of the tipsy Bacchanals,"
+    },
+    "52": {
+      "play": "We'll none of that: Tearing the Thracian singer in their rage.'"
+    },
+    "53": {
+      "play": "We'll none of that: That is an old device; and it was play'd"
+    },
+    "54": {
+      "play": "We'll none of that: When I from Thebes came last a conqueror."
+    },
+    "55": {
+      "play": "We'll none of that: 'The thrice three Muses mourning for the death"
+    },
+    "56": {
+      "play": "We'll none of that: Of Learning, late deceased in beggary.'"
+    },
+    "57": {
+      "play": "We'll none of that: That is some satire, keen and critical,"
+    },
+    "58": {
+      "play": "We'll none of that: Not sorting with a nuptial ceremony."
+    },
+    "59": {
+      "play": "We'll none of that: 'A tedious brief scene of young Pyramus"
+    },
+    "60": {
+      "play": "We'll none of that: And his love Thisbe; very tragical mirth.'"
+    },
+    "61": {
+      "play": "We'll none of that: Merry and tragical! tedious and brief!"
+    },
+    "62": {
+      "play": "We'll none of that: That is, hot ice and wondrous strange snow."
+    },
+    "63": {
+      "play": "We'll none of that: How shall we find the concord of this discord?"
+    },
+    "64": {
+      "play": "PHILOSTRATE: A play there is, my lord, some ten words long,"
+    },
+    "65": {
+      "play": "PHILOSTRATE: Which is as brief as I have known a play;"
+    },
+    "66": {
+      "play": "PHILOSTRATE: But by ten words, my lord, it is too long,"
+    },
+    "67": {
+      "play": "PHILOSTRATE: Which makes it tedious; for in all the play"
+    },
+    "68": {
+      "play": "There is not one word apt, one player fitted: "
+    },
+    "69": {
+      "play": "There is not one word apt, one player fitted: And tragical, my noble lord, it is;"
+    },
+    "70": {
+      "play": "There is not one word apt, one player fitted: For Pyramus therein doth kill himself."
+    },
+    "71": {
+      "play": "There is not one word apt, one player fitted: Which, when I saw rehearsed, I must confess,"
+    },
+    "72": {
+      "play": "There is not one word apt, one player fitted: Made mine eyes water; but more merry tears"
+    },
+    "73": {
+      "play": "There is not one word apt, one player fitted: The passion of loud laughter never shed."
+    },
+    "74": {
+      "play": "THESEUS: What are they that do play it?"
+    },
+    "75": {
+      "play": "PHILOSTRATE: Hard-handed men that work in Athens here,"
+    },
+    "76": {
+      "play": "PHILOSTRATE: Which never labour'd in their minds till now,"
+    },
+    "77": {
+      "play": "PHILOSTRATE: And now have toil'd their unbreathed memories"
+    },
+    "78": {
+      "play": "PHILOSTRATE: With this same play, against your nuptial."
+    },
+    "79": {
+      "play": "THESEUS: And we will hear it."
+    },
+    "80": {
+      "play": "PHILOSTRATE: No, my noble lord;"
+    },
+    "81": {
+      "play": "It is not for you: I have heard it over,"
+    },
+    "82": {
+      "play": "It is not for you: And it is nothing, nothing in the world;"
+    },
+    "83": {
+      "play": "It is not for you: Unless you can find sport in their intents,"
+    },
+    "84": {
+      "play": "It is not for you: Extremely stretch'd and conn'd with cruel pain,"
+    },
+    "85": {
+      "play": "It is not for you: To do you service."
+    },
+    "86": {
+      "play": "THESEUS: I will hear that play;"
+    },
+    "87": {
+      "play": "THESEUS: For never anything can be amiss,"
+    },
+    "88": {
+      "play": "THESEUS: When simpleness and duty tender it."
+    },
+    "89": {
+      "play": "Go, bring them in: and take your places, ladies."
+    },
+    "90": {
+      "play": "HIPPOLYTA: I love not to see wretchedness o'er charged"
+    },
+    "91": {
+      "play": "HIPPOLYTA: And duty in his service perishing."
+    },
+    "92": {
+      "play": "THESEUS: Why, gentle sweet, you shall see no such thing."
+    },
+    "93": {
+      "play": "HIPPOLYTA: He says they can do nothing in this kind."
+    },
+    "94": {
+      "play": "THESEUS: The kinder we, to give them thanks for nothing."
+    },
+    "95": {
+      "play": "Our sport shall be to take what they mistake: "
+    },
+    "96": {
+      "play": "Our sport shall be to take what they mistake: And what poor duty cannot do, noble respect"
+    },
+    "97": {
+      "play": "Our sport shall be to take what they mistake: Takes it in might, not merit."
+    },
+    "98": {
+      "play": "Our sport shall be to take what they mistake: Where I have come, great clerks have purposed"
+    },
+    "99": {
+      "play": "Our sport shall be to take what they mistake: To greet me with premeditated welcomes;"
+    },
+    "100": {
+      "play": "Our sport shall be to take what they mistake: Where I have seen them shiver and look pale,"
+    },
+    "101": {
+      "play": "Our sport shall be to take what they mistake: Make periods in the midst of sentences,"
+    },
+    "102": {
+      "play": "Our sport shall be to take what they mistake: Throttle their practised accent in their fears"
+    },
+    "103": {
+      "play": "Our sport shall be to take what they mistake: And in conclusion dumbly have broke off,"
+    },
+    "104": {
+      "play": "Our sport shall be to take what they mistake: Not paying me a welcome. Trust me, sweet,"
+    },
+    "105": {
+      "play": "Our sport shall be to take what they mistake: Out of this silence yet I pick'd a welcome;"
+    },
+    "106": {
+      "play": "Our sport shall be to take what they mistake: And in the modesty of fearful duty"
+    },
+    "107": {
+      "play": "Our sport shall be to take what they mistake: I read as much as from the rattling tongue"
+    },
+    "108": {
+      "play": "Our sport shall be to take what they mistake: Of saucy and audacious eloquence."
+    },
+    "109": {
+      "play": "Our sport shall be to take what they mistake: Love, therefore, and tongue-tied simplicity"
+    },
+    "110": {
+      "play": "Our sport shall be to take what they mistake: In least speak most, to my capacity."
+    },
+    "111": {
+      "play": "PHILOSTRATE: So please your grace, the Prologue is address'd."
+    },
+    "112": {
+      "play": "THESEUS: Let him approach."
+    },
+    "113": {
+      "play": "Prologue: If we offend, it is with our good will."
+    },
+    "114": {
+      "play": "Prologue: That you should think, we come not to offend,"
+    },
+    "115": {
+      "play": "Prologue: But with good will. To show our simple skill,"
+    },
+    "116": {
+      "play": "Prologue: That is the true beginning of our end."
+    },
+    "117": {
+      "play": "Prologue: Consider then we come but in despite."
+    },
+    "118": {
+      "play": "Prologue: We do not come as minding to contest you,"
+    },
+    "119": {
+      "play": "Prologue: Our true intent is. All for your delight"
+    },
+    "120": {
+      "play": "Prologue: We are not here. That you should here repent you,"
+    },
+    "121": {
+      "play": "Prologue: The actors are at hand and by their show"
+    },
+    "122": {
+      "play": "Prologue: You shall know all that you are like to know."
+    },
+    "123": {
+      "play": "THESEUS: This fellow doth not stand upon points."
+    },
+    "124": {
+      "play": "LYSANDER: He hath rid his prologue like a rough colt; he knows"
+    },
+    "125": {
+      "play": "not the stop. A good moral, my lord: it is not"
+    },
+    "126": {
+      "play": "not the stop. A good moral, my lord: enough to speak, but to speak true."
+    },
+    "127": {
+      "play": "HIPPOLYTA: Indeed he hath played on his prologue like a child"
+    },
+    "128": {
+      "play": "HIPPOLYTA: on a recorder; a sound, but not in government."
+    },
+    "129": {
+      "play": "THESEUS: His speech, was like a tangled chain; nothing"
+    },
+    "130": {
+      "play": "THESEUS: impaired, but all disordered. Who is next?"
+    },
+    "131": {
+      "play": "Prologue: Gentles, perchance you wonder at this show;"
+    },
+    "132": {
+      "play": "Prologue: But wonder on, till truth make all things plain."
+    },
+    "133": {
+      "play": "Prologue: This man is Pyramus, if you would know;"
+    },
+    "134": {
+      "play": "Prologue: This beauteous lady Thisby is certain."
+    },
+    "135": {
+      "play": "Prologue: This man, with lime and rough-cast, doth present"
+    },
+    "136": {
+      "play": "Prologue: Wall, that vile Wall which did these lovers sunder;"
+    },
+    "137": {
+      "play": "Prologue: And through Wall's chink, poor souls, they are content"
+    },
+    "138": {
+      "play": "Prologue: To whisper. At the which let no man wonder."
+    },
+    "139": {
+      "play": "Prologue: This man, with lanthorn, dog, and bush of thorn,"
+    },
+    "140": {
+      "play": "Prologue: Presenteth Moonshine; for, if you will know,"
+    },
+    "141": {
+      "play": "Prologue: By moonshine did these lovers think no scorn"
+    },
+    "142": {
+      "play": "Prologue: To meet at Ninus' tomb, there, there to woo."
+    },
+    "143": {
+      "play": "Prologue: This grisly beast, which Lion hight by name,"
+    },
+    "144": {
+      "play": "Prologue: The trusty Thisby, coming first by night,"
+    },
+    "145": {
+      "play": "Prologue: Did scare away, or rather did affright;"
+    },
+    "146": {
+      "play": "Prologue: And, as she fled, her mantle she did fall,"
+    },
+    "147": {
+      "play": "Prologue: Which Lion vile with bloody mouth did stain."
+    },
+    "148": {
+      "play": "Prologue: Anon comes Pyramus, sweet youth and tall,"
+    },
+    "149": {
+      "play": "And finds his trusty Thisby's mantle slain: "
+    },
+    "150": {
+      "play": "And finds his trusty Thisby's mantle slain: Whereat, with blade, with bloody blameful blade,"
+    },
+    "151": {
+      "play": "And finds his trusty Thisby's mantle slain: He bravely broach'd is boiling bloody breast;"
+    },
+    "152": {
+      "play": "And finds his trusty Thisby's mantle slain: And Thisby, tarrying in mulberry shade,"
+    },
+    "153": {
+      "play": "And finds his trusty Thisby's mantle slain: His dagger drew, and died. For all the rest,"
+    },
+    "154": {
+      "play": "And finds his trusty Thisby's mantle slain: Let Lion, Moonshine, Wall, and lovers twain"
+    },
+    "155": {
+      "play": "And finds his trusty Thisby's mantle slain: At large discourse, while here they do remain."
+    },
+    "156": {
+      "play": "THESEUS: I wonder if the lion be to speak."
+    },
+    "157": {
+      "play": "DEMETRIUS: No wonder, my lord: one lion may, when many asses do."
+    },
+    "158": {
+      "play": "Wall: In this same interlude it doth befall"
+    },
+    "159": {
+      "play": "Wall: That I, one Snout by name, present a wall;"
+    },
+    "160": {
+      "play": "Wall: And such a wall, as I would have you think,"
+    },
+    "161": {
+      "play": "Wall: That had in it a crannied hole or chink,"
+    },
+    "162": {
+      "play": "Wall: Through which the lovers, Pyramus and Thisby,"
+    },
+    "163": {
+      "play": "Wall: Did whisper often very secretly."
+    },
+    "164": {
+      "play": "Wall: This loam, this rough-cast and this stone doth show"
+    },
+    "165": {
+      "play": "That I am that same wall; the truth is so: "
+    },
+    "166": {
+      "play": "That I am that same wall; the truth is so: And this the cranny is, right and sinister,"
+    },
+    "167": {
+      "play": "That I am that same wall; the truth is so: Through which the fearful lovers are to whisper."
+    },
+    "168": {
+      "play": "THESEUS: Would you desire lime and hair to speak better?"
+    },
+    "169": {
+      "play": "DEMETRIUS: It is the wittiest partition that ever I heard"
+    },
+    "170": {
+      "play": "DEMETRIUS: discourse, my lord."
+    },
+    "171": {
+      "play": "THESEUS: Pyramus draws near the wall: silence!"
+    },
+    "172": {
+      "play": "Pyramus: O grim-look'd night! O night with hue so black!"
+    },
+    "173": {
+      "play": "Pyramus: O night, which ever art when day is not!"
+    },
+    "174": {
+      "play": "Pyramus: O night, O night! alack, alack, alack,"
+    },
+    "175": {
+      "play": "Pyramus: I fear my Thisby's promise is forgot!"
+    },
+    "176": {
+      "play": "Pyramus: And thou, O wall, O sweet, O lovely wall,"
+    },
+    "177": {
+      "play": "Pyramus: That stand'st between her father's ground and mine!"
+    },
+    "178": {
+      "play": "Pyramus: Thou wall, O wall, O sweet and lovely wall,"
+    },
+    "179": {
+      "play": "Pyramus: Show me thy chink, to blink through with mine eyne!"
+    },
+    "180": {
+      "play": "Thanks, courteous wall: Jove shield thee well for this!"
+    },
+    "181": {
+      "play": "Thanks, courteous wall: But what see I? No Thisby do I see."
+    },
+    "182": {
+      "play": "Thanks, courteous wall: O wicked wall, through whom I see no bliss!"
+    },
+    "183": {
+      "play": "Thanks, courteous wall: Cursed be thy stones for thus deceiving me!"
+    },
+    "184": {
+      "play": "THESEUS: The wall, methinks, being sensible, should curse again."
+    },
+    "185": {
+      "play": "Pyramus: No, in truth, sir, he should not. 'Deceiving me'"
+    },
+    "186": {
+      "play": "is Thisby's cue: she is to enter now, and I am to"
+    },
+    "187": {
+      "play": "is Thisby's cue: spy her through the wall. You shall see, it will"
+    },
+    "188": {
+      "play": "is Thisby's cue: fall pat as I told you. Yonder she comes."
+    },
+    "189": {
+      "play": "Thisbe: O wall, full often hast thou heard my moans,"
+    },
+    "190": {
+      "play": "Thisbe: For parting my fair Pyramus and me!"
+    },
+    "191": {
+      "play": "Thisbe: My cherry lips have often kiss'd thy stones,"
+    },
+    "192": {
+      "play": "Thisbe: Thy stones with lime and hair knit up in thee."
+    },
+    "193": {
+      "play": "Pyramus: I see a voice: now will I to the chink,"
+    },
+    "194": {
+      "play": "Pyramus: To spy an I can hear my Thisby's face. Thisby!"
+    },
+    "195": {
+      "play": "Thisbe: My love thou art, my love I think."
+    },
+    "196": {
+      "play": "Pyramus: Think what thou wilt, I am thy lover's grace;"
+    },
+    "197": {
+      "play": "Pyramus: And, like Limander, am I trusty still."
+    },
+    "198": {
+      "play": "Thisbe: And I like Helen, till the Fates me kill."
+    },
+    "199": {
+      "play": "Pyramus: Not Shafalus to Procrus was so true."
+    },
+    "200": {
+      "play": "Thisbe: As Shafalus to Procrus, I to you."
+    },
+    "201": {
+      "play": "Pyramus: O kiss me through the hole of this vile wall!"
+    },
+    "202": {
+      "play": "Thisbe: I kiss the wall's hole, not your lips at all."
+    },
+    "203": {
+      "play": "Pyramus: Wilt thou at Ninny's tomb meet me straightway?"
+    },
+    "204": {
+      "play": "Thisbe: 'Tide life, 'tide death, I come without delay."
+    },
+    "205": {
+      "play": "Wall: Thus have I, Wall, my part discharged so;"
+    },
+    "206": {
+      "play": "Wall: And, being done, thus Wall away doth go."
+    },
+    "207": {
+      "play": "THESEUS: Now is the mural down between the two neighbours."
+    },
+    "208": {
+      "play": "DEMETRIUS: No remedy, my lord, when walls are so wilful to hear"
+    },
+    "209": {
+      "play": "DEMETRIUS: without warning."
+    },
+    "210": {
+      "play": "HIPPOLYTA: This is the silliest stuff that ever I heard."
+    },
+    "211": {
+      "play": "THESEUS: The best in this kind are but shadows; and the worst"
+    },
+    "212": {
+      "play": "THESEUS: are no worse, if imagination amend them."
+    },
+    "213": {
+      "play": "HIPPOLYTA: It must be your imagination then, and not theirs."
+    },
+    "214": {
+      "play": "THESEUS: If we imagine no worse of them than they of"
+    },
+    "215": {
+      "play": "THESEUS: themselves, they may pass for excellent men. Here"
+    },
+    "216": {
+      "play": "THESEUS: come two noble beasts in, a man and a lion."
+    },
+    "217": {
+      "play": "Lion: You, ladies, you, whose gentle hearts do fear"
+    },
+    "218": {
+      "play": "Lion: The smallest monstrous mouse that creeps on floor,"
+    },
+    "219": {
+      "play": "Lion: May now perchance both quake and tremble here,"
+    },
+    "220": {
+      "play": "Lion: When lion rough in wildest rage doth roar."
+    },
+    "221": {
+      "play": "Lion: Then know that I, one Snug the joiner, am"
+    },
+    "222": {
+      "play": "Lion: A lion-fell, nor else no lion's dam;"
+    },
+    "223": {
+      "play": "Lion: For, if I should as lion come in strife"
+    },
+    "224": {
+      "play": "Lion: Into this place, 'twere pity on my life."
+    },
+    "225": {
+      "play": "THESEUS: A very gentle beast, of a good conscience."
+    },
+    "226": {
+      "play": "DEMETRIUS: The very best at a beast, my lord, that e'er I saw."
+    },
+    "227": {
+      "play": "LYSANDER: This lion is a very fox for his valour."
+    },
+    "228": {
+      "play": "THESEUS: True; and a goose for his discretion."
+    },
+    "229": {
+      "play": "DEMETRIUS: Not so, my lord; for his valour cannot carry his"
+    },
+    "230": {
+      "play": "DEMETRIUS: discretion; and the fox carries the goose."
+    },
+    "231": {
+      "play": "THESEUS: His discretion, I am sure, cannot carry his valour;"
+    },
+    "232": {
+      "play": "for the goose carries not the fox. It is well: "
+    },
+    "233": {
+      "play": "for the goose carries not the fox. It is well: leave it to his discretion, and let us listen to the moon."
+    },
+    "234": {
+      "play": "Moonshine: This lanthorn doth the horned moon present;--"
+    },
+    "235": {
+      "play": "DEMETRIUS: He should have worn the horns on his head."
+    },
+    "236": {
+      "play": "THESEUS: He is no crescent, and his horns are"
+    },
+    "237": {
+      "play": "THESEUS: invisible within the circumference."
+    },
+    "238": {
+      "play": "Moonshine: This lanthorn doth the horned moon present;"
+    },
+    "239": {
+      "play": "Moonshine: Myself the man i' the moon do seem to be."
+    },
+    "240": {
+      "play": "THESEUS: This is the greatest error of all the rest: the man"
+    },
+    "241": {
+      "play": "THESEUS: should be put into the lanthorn. How is it else the"
+    },
+    "242": {
+      "play": "THESEUS: man i' the moon?"
+    },
+    "243": {
+      "play": "DEMETRIUS: He dares not come there for the candle; for, you"
+    },
+    "244": {
+      "play": "DEMETRIUS: see, it is already in snuff."
+    },
+    "245": {
+      "play": "HIPPOLYTA: I am aweary of this moon: would he would change!"
+    },
+    "246": {
+      "play": "THESEUS: It appears, by his small light of discretion, that"
+    },
+    "247": {
+      "play": "THESEUS: he is in the wane; but yet, in courtesy, in all"
+    },
+    "248": {
+      "play": "THESEUS: reason, we must stay the time."
+    },
+    "249": {
+      "play": "LYSANDER: Proceed, Moon."
+    },
+    "250": {
+      "play": "Moonshine: All that I have to say, is, to tell you that the"
+    },
+    "251": {
+      "play": "Moonshine: lanthorn is the moon; I, the man in the moon; this"
+    },
+    "252": {
+      "play": "Moonshine: thorn-bush, my thorn-bush; and this dog, my dog."
+    },
+    "253": {
+      "play": "DEMETRIUS: Why, all these should be in the lanthorn; for all"
+    },
+    "254": {
+      "play": "DEMETRIUS: these are in the moon. But, silence! here comes Thisbe."
+    },
+    "255": {
+      "play": "Thisbe: This is old Ninny's tomb. Where is my love?"
+    },
+    "256": {
+      "play": "Lion: [Roaring] Oh--"
+    },
+    "257": {
+      "play": "DEMETRIUS: Well roared, Lion."
+    },
+    "258": {
+      "play": "THESEUS: Well run, Thisbe."
+    },
+    "259": {
+      "play": "HIPPOLYTA: Well shone, Moon. Truly, the moon shines with a"
+    },
+    "260": {
+      "play": "HIPPOLYTA: good grace."
+    },
+    "261": {
+      "play": "THESEUS: Well moused, Lion."
+    },
+    "262": {
+      "play": "LYSANDER: And so the lion vanished."
+    },
+    "263": {
+      "play": "DEMETRIUS: And then came Pyramus."
+    },
+    "264": {
+      "play": "Pyramus: Sweet Moon, I thank thee for thy sunny beams;"
+    },
+    "265": {
+      "play": "Pyramus: I thank thee, Moon, for shining now so bright;"
+    },
+    "266": {
+      "play": "Pyramus: For, by thy gracious, golden, glittering gleams,"
+    },
+    "267": {
+      "play": "Pyramus: I trust to take of truest Thisby sight."
+    },
+    "268": {
+      "play": "Pyramus: But stay, O spite!"
+    },
+    "269": {
+      "play": "Pyramus: But mark, poor knight,"
+    },
+    "270": {
+      "play": "Pyramus: What dreadful dole is here!"
+    },
+    "271": {
+      "play": "Pyramus: Eyes, do you see?"
+    },
+    "272": {
+      "play": "Pyramus: How can it be?"
+    },
+    "273": {
+      "play": "Pyramus: O dainty duck! O dear!"
+    },
+    "274": {
+      "play": "Pyramus: Thy mantle good,"
+    },
+    "275": {
+      "play": "Pyramus: What, stain'd with blood!"
+    },
+    "276": {
+      "play": "Pyramus: Approach, ye Furies fell!"
+    },
+    "277": {
+      "play": "Pyramus: O Fates, come, come,"
+    },
+    "278": {
+      "play": "Pyramus: Cut thread and thrum;"
+    },
+    "279": {
+      "play": "Pyramus: Quail, crush, conclude, and quell!"
+    },
+    "280": {
+      "play": "THESEUS: This passion, and the death of a dear friend, would"
+    },
+    "281": {
+      "play": "THESEUS: go near to make a man look sad."
+    },
+    "282": {
+      "play": "HIPPOLYTA: Beshrew my heart, but I pity the man."
+    },
+    "283": {
+      "play": "Pyramus: O wherefore, Nature, didst thou lions frame?"
+    },
+    "284": {
+      "play": "Since lion vile hath here deflower'd my dear: "
+    },
+    "285": {
+      "play": "Since lion vile hath here deflower'd my dear: Which is--no, no--which was the fairest dame"
+    },
+    "286": {
+      "play": "Since lion vile hath here deflower'd my dear: That lived, that loved, that liked, that look'd"
+    },
+    "287": {
+      "play": "Since lion vile hath here deflower'd my dear: with cheer."
+    },
+    "288": {
+      "play": "Since lion vile hath here deflower'd my dear: Come, tears, confound;"
+    },
+    "289": {
+      "play": "Since lion vile hath here deflower'd my dear: Out, sword, and wound"
+    },
+    "290": {
+      "play": "Since lion vile hath here deflower'd my dear: The pap of Pyramus;"
+    },
+    "291": {
+      "play": "Since lion vile hath here deflower'd my dear: Ay, that left pap,"
+    },
+    "292": {
+      "play": "Where heart doth hop: "
+    },
+    "293": {
+      "play": "Where heart doth hop: Thus die I, thus, thus, thus."
+    },
+    "294": {
+      "play": "Where heart doth hop: Now am I dead,"
+    },
+    "295": {
+      "play": "Where heart doth hop: Now am I fled;"
+    },
+    "296": {
+      "play": "My soul is in the sky: "
+    },
+    "297": {
+      "play": "My soul is in the sky: Tongue, lose thy light;"
+    },
+    "298": {
+      "play": "Moon take thy flight: "
+    },
+    "299": {
+      "play": "Moon take thy flight: Now die, die, die, die, die."
+    },
+    "300": {
+      "play": "DEMETRIUS: No die, but an ace, for him; for he is but one."
+    },
+    "301": {
+      "play": "LYSANDER: Less than an ace, man; for he is dead; he is nothing."
+    },
+    "302": {
+      "play": "THESEUS: With the help of a surgeon he might yet recover, and"
+    },
+    "303": {
+      "play": "THESEUS: prove an ass."
+    },
+    "304": {
+      "play": "HIPPOLYTA: How chance Moonshine is gone before Thisbe comes"
+    },
+    "305": {
+      "play": "HIPPOLYTA: back and finds her lover?"
+    },
+    "306": {
+      "play": "THESEUS: She will find him by starlight. Here she comes; and"
+    },
+    "307": {
+      "play": "THESEUS: her passion ends the play."
+    },
+    "308": {
+      "play": "HIPPOLYTA: Methinks she should not use a long one for such a"
+    },
+    "309": {
+      "play": "Pyramus: I hope she will be brief."
+    },
+    "310": {
+      "play": "DEMETRIUS: A mote will turn the balance, which Pyramus, which"
+    },
+    "311": {
+      "play": "DEMETRIUS: Thisbe, is the better; he for a man, God warrant us;"
+    },
+    "312": {
+      "play": "DEMETRIUS: she for a woman, God bless us."
+    },
+    "313": {
+      "play": "LYSANDER: She hath spied him already with those sweet eyes."
+    },
+    "314": {
+      "play": "DEMETRIUS: And thus she means, videlicet:--"
+    },
+    "315": {
+      "play": "Thisbe: Asleep, my love?"
+    },
+    "316": {
+      "play": "Thisbe: What, dead, my dove?"
+    },
+    "317": {
+      "play": "Thisbe: O Pyramus, arise!"
+    },
+    "318": {
+      "play": "Thisbe: Speak, speak. Quite dumb?"
+    },
+    "319": {
+      "play": "Thisbe: Dead, dead? A tomb"
+    },
+    "320": {
+      "play": "Thisbe: Must cover thy sweet eyes."
+    },
+    "321": {
+      "play": "Thisbe: These My lips,"
+    },
+    "322": {
+      "play": "Thisbe: This cherry nose,"
+    },
+    "323": {
+      "play": "Thisbe: These yellow cowslip cheeks,"
+    },
+    "324": {
+      "play": "Are gone, are gone: "
+    },
+    "325": {
+      "play": "Lovers, make moan: "
+    },
+    "326": {
+      "play": "Lovers, make moan: His eyes were green as leeks."
+    },
+    "327": {
+      "play": "Lovers, make moan: O Sisters Three,"
+    },
+    "328": {
+      "play": "Lovers, make moan: Come, come to me,"
+    },
+    "329": {
+      "play": "Lovers, make moan: With hands as pale as milk;"
+    },
+    "330": {
+      "play": "Lovers, make moan: Lay them in gore,"
+    },
+    "331": {
+      "play": "Lovers, make moan: Since you have shore"
+    },
+    "332": {
+      "play": "Lovers, make moan: With shears his thread of silk."
+    },
+    "333": {
+      "play": "Tongue, not a word: "
+    },
+    "334": {
+      "play": "Tongue, not a word: Come, trusty sword;"
+    },
+    "335": {
+      "play": "Come, blade, my breast imbrue: "
+    },
+    "336": {
+      "play": "Come, blade, my breast imbrue: And, farewell, friends;"
+    },
+    "337": {
+      "play": "Thus Thisby ends: "
+    },
+    "338": {
+      "play": "Thus Thisby ends: Adieu, adieu, adieu."
+    },
+    "339": {
+      "play": "THESEUS: Moonshine and Lion are left to bury the dead."
+    },
+    "340": {
+      "play": "DEMETRIUS: Ay, and Wall too."
+    },
+    "341": {
+      "play": "BOTTOM: [Starting up] No assure you; the wall is down that"
+    },
+    "342": {
+      "play": "BOTTOM: parted their fathers. Will it please you to see the"
+    },
+    "343": {
+      "play": "BOTTOM: epilogue, or to hear a Bergomask dance between two"
+    },
+    "344": {
+      "play": "BOTTOM: of our company?"
+    },
+    "345": {
+      "play": "THESEUS: No epilogue, I pray you; for your play needs no"
+    },
+    "346": {
+      "play": "THESEUS: excuse. Never excuse; for when the players are all"
+    },
+    "347": {
+      "play": "THESEUS: dead, there needs none to be blamed. Marry, if he"
+    },
+    "348": {
+      "play": "THESEUS: that writ it had played Pyramus and hanged himself"
+    },
+    "349": {
+      "play": "THESEUS: in Thisbe's garter, it would have been a fine"
+    },
+    "350": {
+      "play": "tragedy: and so it is, truly; and very notably"
+    },
+    "351": {
+      "play": "discharged. But come, your Bergomask: let your"
+    },
+    "352": {
+      "play": "discharged. But come, your Bergomask: epilogue alone."
+    },
+    "353": {
+      "play": "The iron tongue of midnight hath told twelve: "
+    },
+    "354": {
+      "play": "The iron tongue of midnight hath told twelve: Lovers, to bed; 'tis almost fairy time."
+    },
+    "355": {
+      "play": "The iron tongue of midnight hath told twelve: I fear we shall out-sleep the coming morn"
+    },
+    "356": {
+      "play": "The iron tongue of midnight hath told twelve: As much as we this night have overwatch'd."
+    },
+    "357": {
+      "play": "The iron tongue of midnight hath told twelve: This palpable-gross play hath well beguiled"
+    },
+    "358": {
+      "play": "The iron tongue of midnight hath told twelve: The heavy gait of night. Sweet friends, to bed."
+    },
+    "359": {
+      "play": "The iron tongue of midnight hath told twelve: A fortnight hold we this solemnity,"
+    },
+    "360": {
+      "play": "The iron tongue of midnight hath told twelve: In nightly revels and new jollity."
+    },
+    "361": {
+      "play": "PUCK: Now the hungry lion roars,"
+    },
+    "362": {
+      "play": "PUCK: And the wolf behowls the moon;"
+    },
+    "363": {
+      "play": "PUCK: Whilst the heavy ploughman snores,"
+    },
+    "364": {
+      "play": "PUCK: All with weary task fordone."
+    },
+    "365": {
+      "play": "PUCK: Now the wasted brands do glow,"
+    },
+    "366": {
+      "play": "PUCK: Whilst the screech-owl, screeching loud,"
+    },
+    "367": {
+      "play": "PUCK: Puts the wretch that lies in woe"
+    },
+    "368": {
+      "play": "PUCK: In remembrance of a shroud."
+    },
+    "369": {
+      "play": "PUCK: Now it is the time of night"
+    },
+    "370": {
+      "play": "PUCK: That the graves all gaping wide,"
+    },
+    "371": {
+      "play": "PUCK: Every one lets forth his sprite,"
+    },
+    "372": {
+      "play": "In the church-way paths to glide: "
+    },
+    "373": {
+      "play": "In the church-way paths to glide: And we fairies, that do run"
+    },
+    "374": {
+      "play": "In the church-way paths to glide: By the triple Hecate's team,"
+    },
+    "375": {
+      "play": "In the church-way paths to glide: From the presence of the sun,"
+    },
+    "376": {
+      "play": "In the church-way paths to glide: Following darkness like a dream,"
+    },
+    "377": {
+      "play": "Now are frolic: not a mouse"
+    },
+    "378": {
+      "play": "Shall disturb this hallow'd house: "
+    },
+    "379": {
+      "play": "Shall disturb this hallow'd house: I am sent with broom before,"
+    },
+    "380": {
+      "play": "Shall disturb this hallow'd house: To sweep the dust behind the door."
+    },
+    "381": {
+      "play": "OBERON: Through the house give gathering light,"
+    },
+    "382": {
+      "play": "By the dead and drowsy fire: "
+    },
+    "383": {
+      "play": "By the dead and drowsy fire: Every elf and fairy sprite"
+    },
+    "384": {
+      "play": "By the dead and drowsy fire: Hop as light as bird from brier;"
+    },
+    "385": {
+      "play": "By the dead and drowsy fire: And this ditty, after me,"
+    },
+    "386": {
+      "play": "By the dead and drowsy fire: Sing, and dance it trippingly."
+    },
+    "387": {
+      "play": "TITANIA: First, rehearse your song by rote"
+    },
+    "388": {
+      "play": "To each word a warbling note: "
+    },
+    "389": {
+      "play": "To each word a warbling note: Hand in hand, with fairy grace,"
+    },
+    "390": {
+      "play": "To each word a warbling note: Will we sing, and bless this place."
+    },
+    "391": {
+      "play": "OBERON: Now, until the break of day,"
+    },
+    "392": {
+      "play": "OBERON: Through this house each fairy stray."
+    },
+    "393": {
+      "play": "OBERON: To the best bride-bed will we,"
+    },
+    "394": {
+      "play": "OBERON: Which by us shall blessed be;"
+    },
+    "395": {
+      "play": "OBERON: And the issue there create"
+    },
+    "396": {
+      "play": "OBERON: Ever shall be fortunate."
+    },
+    "397": {
+      "play": "OBERON: So shall all the couples three"
+    },
+    "398": {
+      "play": "OBERON: Ever true in loving be;"
+    },
+    "399": {
+      "play": "OBERON: And the blots of Nature's hand"
+    },
+    "400": {
+      "play": "OBERON: Shall not in their issue stand;"
+    },
+    "401": {
+      "play": "OBERON: Never mole, hare lip, nor scar,"
+    },
+    "402": {
+      "play": "OBERON: Nor mark prodigious, such as are"
+    },
+    "403": {
+      "play": "OBERON: Despised in nativity,"
+    },
+    "404": {
+      "play": "OBERON: Shall upon their children be."
+    },
+    "405": {
+      "play": "OBERON: With this field-dew consecrate,"
+    },
+    "406": {
+      "play": "OBERON: Every fairy take his gait;"
+    },
+    "407": {
+      "play": "OBERON: And each several chamber bless,"
+    },
+    "408": {
+      "play": "OBERON: Through this palace, with sweet peace;"
+    },
+    "409": {
+      "play": "OBERON: And the owner of it blest"
+    },
+    "410": {
+      "play": "OBERON: Ever shall in safety rest."
+    },
+    "411": {
+      "play": "OBERON: Trip away; make no stay;"
+    },
+    "412": {
+      "play": "OBERON: Meet me all by break of day."
+    }
+  }
+}
