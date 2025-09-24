@@ -3240,8 +3240,32 @@
                 analysisPanel.scrollTop = 0;
             }
             
+            // Check if current play should have New Variorum Analysis
+            const playsWithoutNewVariorum = [
+                'asyoulikeit', 'coriolanus', 'cymbeline', 'henryiv1', 'henryiv2', 
+                'juliuscaesar', 'kingjohn', 'loveslabourslost', 'merchantofvenice', 
+                'midsummer', 'muchado', 'richardii', 'richardiii', 
+                'tempest', 'winterstale', 'troilus', 'twelfthnight'
+            ];
+            
+            const shouldShowNewVariorum = !playsWithoutNewVariorum.includes(currentPlay);
+            console.log('🎭 Current play:', currentPlay, '- Show New Variorum?', shouldShowNewVariorum);
+            
             // Reset analysis panel to default state by restoring original HTML
             if (analysisPanel) {
+                const variorumSectionHTML = shouldShowNewVariorum ? `
+                    <!-- New Variorum Analysis Section (Full Fathom Five Only) -->
+                    <div class="analysis-section" id="variorumSection" style="display: none;">
+                        <div class="analysis-title">
+                            <span>New Variorum Analysis</span>
+                        </div>
+                        <div class="analysis-content" id="variorumContent">
+                            Traditional commentary will appear here for Full Fathom Five mode.
+                        </div>
+                        <div id="variorumResult"></div>
+                        
+                    </div>` : '';
+                
                 analysisPanel.innerHTML = `
                     <!-- Analysis Mode Selector -->
                     <div class="segment">
@@ -3264,17 +3288,7 @@
                     <button class="analyze-button" id="analyzeButton" onclick="explainHighlighted()" style="display: none;">Analyze Text</button>
                     <div id="analysisResult"></div>
                     
-                    <!-- New Variorum Analysis Section (Full Fathom Five Only) -->
-                    <div class="analysis-section" id="variorumSection" style="display: none;">
-                        <div class="analysis-title">
-                            <span>New Variorum Analysis</span>
-                        </div>
-                        <div class="analysis-content" id="variorumContent">
-                            Traditional commentary will appear here for Full Fathom Five mode.
-                        </div>
-                        <div id="variorumResult"></div>
-                        
-                    </div>
+                    ${variorumSectionHTML}
                 `;
             }
             
@@ -6291,7 +6305,7 @@
             if (selectedPlay) {
                 if (plays[selectedPlay]) {
                     console.log('✅ Loading play:', selectedPlay);
-                    loadPlay(selectedPlay);
+                loadPlay(selectedPlay);
                 } else {
                     console.error('❌ Play not found in plays object:', selectedPlay);
                     console.log('Available plays:', Object.keys(plays));
@@ -7698,13 +7712,22 @@
                     formattedContent += '<div class="analysis-section">';
                     formattedContent += `<h4>${sectionName}</h4>`;
                     
-                    // Add buttons specifically for New Variorum Analysis section
+                    // Add buttons specifically for New Variorum Analysis section (only for appropriate plays)
                     if (sectionName === 'New Variorum Analysis') {
-                        formattedContent += '<div class="critics-button-container" style="margin-top: 10px; margin-bottom: 15px;">';
-                        formattedContent += '<button class="btn btn-secondary" onclick="openCriticsModal()" style="width: 100%; margin-bottom: 10px;">Who are the New Variorum Critics?</button>';
-                        formattedContent += '<button class="btn btn-info" onclick="openNVModal()" style="width: 100%;">What\'s New Variorum?</button>';
-                        formattedContent += '</div>';
+                        const playsWithoutNewVariorum = [
+                            'asyoulikeit', 'coriolanus', 'cymbeline', 'henryiv1', 'henryiv2', 
+                            'juliuscaesar', 'kingjohn', 'loveslabourslost', 'merchantofvenice', 
+                            'midsummer', 'muchado', 'richardii', 'richardiii', 
+                            'tempest', 'winterstale', 'troilus', 'twelfthnight'
+                        ];
+                        const shouldShowButtons = !playsWithoutNewVariorum.includes(currentPlay);
                         
+                        if (shouldShowButtons) {
+                            formattedContent += '<div class="critics-button-container" style="margin-top: 10px; margin-bottom: 15px;">';
+                            formattedContent += '<button class="btn btn-secondary" onclick="openCriticsModal()" style="width: 100%; margin-bottom: 10px;">Who are the New Variorum Critics?</button>';
+                            formattedContent += '<button class="btn btn-info" onclick="openNVModal()" style="width: 100%;">What\'s New Variorum?</button>';
+                            formattedContent += '</div>';
+                        }
                     }
                     
                     // Apply the same formatting as other modes
@@ -7714,35 +7737,51 @@
                 }
             }
             
-            // Check if New Variorum Analysis is already in the analysis object (from backend)
-            if (analysis['New Variorum Analysis']) {
-                console.log('New Variorum Analysis found in analysis object, length:', analysis['New Variorum Analysis'].length);
-                // Don't add it again since it's already been added above
-            } else if (relevantNotes && relevantNotes.length > 0) {
-                // Fallback: Add Macbeth notes section LAST (New Variorum Analysis at the bottom)
-                formattedContent += '<div class="analysis-section">';
-                formattedContent += '<h4>New Variorum Analysis</h4>';
-                formattedContent += '<div class="critics-button-container" style="margin-top: 10px; margin-bottom: 15px;">';
-                formattedContent += '<button class="btn btn-secondary" onclick="openCriticsModal()" style="width: 100%; margin-bottom: 10px;">📚 Who are the New Variorum Critics?</button>';
-                formattedContent += '<button class="btn btn-info" onclick="openNVModal()" style="width: 100%;">ℹ️ What\'s New Variorum?</button>';
-                formattedContent += '</div>';
-                formattedContent += '<div class="variorum-notes">';
-                
-                relevantNotes.forEach((note, index) => {
-                    formattedContent += `<div class="note-item">`;
-                    formattedContent += `<div class="note-header"><strong>${note.scene}, Line ${note.line}</strong></div>`;
-                    formattedContent += `<div class="note-text">"${note.play}"</div>`;
-                    formattedContent += `<div class="note-content">`;
+            // Check if current play should show New Variorum Analysis
+            const playsWithoutNewVariorum = [
+                'asyoulikeit', 'coriolanus', 'cymbeline', 'henryiv1', 'henryiv2', 
+                'juliuscaesar', 'kingjohn', 'loveslabourslost', 'merchantofvenice', 
+                'midsummer', 'muchado', 'richardii', 'richardiii', 
+                'tempest', 'winterstale', 'troilus', 'twelfthnight'
+            ];
+            
+            const shouldShowNewVariorum = !playsWithoutNewVariorum.includes(currentPlay);
+            console.log('🎭 formatStructuredAnalysis - Current play:', currentPlay, '- Show New Variorum?', shouldShowNewVariorum);
+            
+            // Only add New Variorum Analysis for plays that should have it
+            if (shouldShowNewVariorum) {
+                // Check if New Variorum Analysis is already in the analysis object (from backend)
+                if (analysis['New Variorum Analysis']) {
+                    console.log('New Variorum Analysis found in analysis object, length:', analysis['New Variorum Analysis'].length);
+                    // Don't add it again since it's already been added above
+                } else if (relevantNotes && relevantNotes.length > 0) {
+                    // Fallback: Add Macbeth notes section LAST (New Variorum Analysis at the bottom)
+                    formattedContent += '<div class="analysis-section">';
+                    formattedContent += '<h4>New Variorum Analysis</h4>';
+                    formattedContent += '<div class="critics-button-container" style="margin-top: 10px; margin-bottom: 15px;">';
+                    formattedContent += '<button class="btn btn-secondary" onclick="openCriticsModal()" style="width: 100%; margin-bottom: 10px;">📚 Who are the New Variorum Critics?</button>';
+                    formattedContent += '<button class="btn btn-info" onclick="openNVModal()" style="width: 100%;">ℹ️ What\'s New Variorum?</button>';
+                    formattedContent += '</div>';
+                    formattedContent += '<div class="variorum-notes">';
                     
-                    note.notes.forEach(noteText => {
-                        // Show full notes without truncation
-                        formattedContent += `<p>${noteText}</p>`;
+                    relevantNotes.forEach((note, index) => {
+                        formattedContent += `<div class="note-item">`;
+                        formattedContent += `<div class="note-header"><strong>${note.scene}, Line ${note.line}</strong></div>`;
+                        formattedContent += `<div class="note-text">"${note.play}"</div>`;
+                        formattedContent += `<div class="note-content">`;
+                        
+                        note.notes.forEach(noteText => {
+                            // Show full notes without truncation
+                            formattedContent += `<p>${noteText}</p>`;
+                        });
+                        
+                        formattedContent += `</div></div>`;
                     });
                     
-                    formattedContent += `</div></div>`;
-                });
-                
-                formattedContent += '</div></div>';
+                    formattedContent += '</div></div>';
+                }
+            } else {
+                console.log('🚫 New Variorum Analysis excluded for play:', currentPlay);
             }
             
             return formattedContent;
