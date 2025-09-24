@@ -4802,6 +4802,636 @@
                 }
             };
 
+            const loadLovesLaboursLost = async () => {
+                try {
+                    console.log('🔄 Loading Love\'s Labour\'s Lost...');
+                    const response = await fetch('Public/Data/loves_labours_lost.json?v=' + Date.now());
+                    
+                    if (response.ok) {
+                        const loveslabourslostData = await response.json();
+                        window.loveslabourslostData = loveslabourslostData;
+                        
+                        plays['loveslabourslost'] = {
+                            name: 'Love\'s Labour\'s Lost',
+                            originalFileName: 'loveslabourslost',
+                            characters: [],
+                            acts: {},
+                            scenes: {}
+                        };
+                        
+                        if (loveslabourslostData) {
+                            let sceneCount = 0;
+                            let lineCount = 0;
+                            Object.keys(loveslabourslostData).forEach(originalSceneKey => {
+                                const sceneData = loveslabourslostData[originalSceneKey];
+                                if (sceneData && typeof sceneData === 'object') {
+                                    const sceneContent = [];
+                                    Object.keys(sceneData).forEach(lineNum => {
+                                        const lineData = sceneData[lineNum];
+                                        if (!lineData) return;
+                                        const text = (typeof lineData === 'string') ? lineData : (lineData.play ?? lineData.text ?? lineData.line ?? null);
+                                        if (text) {
+                                            sceneContent.push(text);
+                                            lineCount++;
+                                        }
+                                    });
+                                    if (sceneContent.length > 0) {
+                                        const optimizedContent = optimizeSpeakerNames(sceneContent);
+                                        const normalizedKey = normalizeSceneKey(originalSceneKey);
+                                        plays['loveslabourslost'].scenes[normalizedKey] = optimizedContent;
+                                        sceneCount++;
+                                        const actName = parseActFromScene(normalizedKey);
+                                        if (actName) {
+                                            if (!plays['loveslabourslost'].acts[actName]) {
+                                                plays['loveslabourslost'].acts[actName] = [];
+                                            }
+                                            if (!plays['loveslabourslost'].acts[actName].includes(normalizedKey)) {
+                                                plays['loveslabourslost'].acts[actName].push(normalizedKey);
+                                            }
+                                        }
+                                    }
+                                }
+                            });
+                            console.log(`✅ Love's Labour's Lost parsed: ${sceneCount} scenes, ${lineCount} lines`);
+                        }
+                        return 'loveslabourslost';
+                    } else {
+                        console.warn('❌ Could not load Love\'s Labour\'s Lost data - Status:', response.status);
+                        return null;
+                    }
+                } catch (error) {
+                    console.error('❌ Error loading Love\'s Labour\'s Lost:', error);
+                    return null;
+                }
+            };
+
+            const loadMerchantOfVenice = async () => {
+                try {
+                    console.log('🔄 Loading The Merchant of Venice...');
+                    const response = await fetch('Public/Data/merchant_of_venice.json?v=' + Date.now());
+                    
+                    if (response.ok) {
+                        const merchantData = await response.json();
+                        window.merchantData = merchantData;
+                        
+                        plays['merchantofvenice'] = {
+                            name: 'The Merchant of Venice',
+                            originalFileName: 'merchantofvenice',
+                            characters: [],
+                            acts: {},
+                            scenes: {}
+                        };
+                        
+                        if (merchantData) {
+                            let sceneCount = 0;
+                            let lineCount = 0;
+                            Object.keys(merchantData).forEach(originalSceneKey => {
+                                const sceneData = merchantData[originalSceneKey];
+                                if (sceneData && typeof sceneData === 'object') {
+                                    const sceneContent = [];
+                                    Object.keys(sceneData).forEach(lineNum => {
+                                        const lineData = sceneData[lineNum];
+                                        if (!lineData) return;
+                                        const text = (typeof lineData === 'string') ? lineData : (lineData.play ?? lineData.text ?? lineData.line ?? null);
+                                        if (text) {
+                                            sceneContent.push(text);
+                                            lineCount++;
+                                        }
+                                    });
+                                    if (sceneContent.length > 0) {
+                                        const optimizedContent = optimizeSpeakerNames(sceneContent);
+                                        const normalizedKey = normalizeSceneKey(originalSceneKey);
+                                        plays['merchantofvenice'].scenes[normalizedKey] = optimizedContent;
+                                        sceneCount++;
+                                        const actName = parseActFromScene(normalizedKey);
+                                        if (actName) {
+                                            if (!plays['merchantofvenice'].acts[actName]) {
+                                                plays['merchantofvenice'].acts[actName] = [];
+                                            }
+                                            if (!plays['merchantofvenice'].acts[actName].includes(normalizedKey)) {
+                                                plays['merchantofvenice'].acts[actName].push(normalizedKey);
+                                            }
+                                        }
+                                    }
+                                }
+                            });
+                            console.log(`✅ The Merchant of Venice parsed: ${sceneCount} scenes, ${lineCount} lines`);
+                        }
+                        return 'merchantofvenice';
+                    } else {
+                        console.warn('❌ Could not load The Merchant of Venice data - Status:', response.status);
+                        return null;
+                    }
+                } catch (error) {
+                    console.error('❌ Error loading The Merchant of Venice:', error);
+                    return null;
+                }
+            };
+
+            const loadMidsummerNightsDream = async () => {
+                try {
+                    console.log('🔄 Loading A Midsummer Night\'s Dream...');
+                    const response = await fetch('Public/Data/midsummer_nights_dream.json?v=' + Date.now());
+                    
+                    if (response.ok) {
+                        const midsummerData = await response.json();
+                        window.midsummerData = midsummerData;
+                        
+                        plays['midsummer'] = {
+                            name: 'A Midsummer Night\'s Dream',
+                            originalFileName: 'midsummer',
+                            characters: [],
+                            acts: {},
+                            scenes: {}
+                        };
+                        
+                        if (midsummerData) {
+                            let sceneCount = 0;
+                            let lineCount = 0;
+                            Object.keys(midsummerData).forEach(originalSceneKey => {
+                                const sceneData = midsummerData[originalSceneKey];
+                                if (sceneData && typeof sceneData === 'object') {
+                                    const sceneContent = [];
+                                    Object.keys(sceneData).forEach(lineNum => {
+                                        const lineData = sceneData[lineNum];
+                                        if (!lineData) return;
+                                        const text = (typeof lineData === 'string') ? lineData : (lineData.play ?? lineData.text ?? lineData.line ?? null);
+                                        if (text) {
+                                            sceneContent.push(text);
+                                            lineCount++;
+                                        }
+                                    });
+                                    if (sceneContent.length > 0) {
+                                        const optimizedContent = optimizeSpeakerNames(sceneContent);
+                                        const normalizedKey = normalizeSceneKey(originalSceneKey);
+                                        plays['midsummer'].scenes[normalizedKey] = optimizedContent;
+                                        sceneCount++;
+                                        const actName = parseActFromScene(normalizedKey);
+                                        if (actName) {
+                                            if (!plays['midsummer'].acts[actName]) {
+                                                plays['midsummer'].acts[actName] = [];
+                                            }
+                                            if (!plays['midsummer'].acts[actName].includes(normalizedKey)) {
+                                                plays['midsummer'].acts[actName].push(normalizedKey);
+                                            }
+                                        }
+                                    }
+                                }
+                            });
+                            console.log(`✅ A Midsummer Night's Dream parsed: ${sceneCount} scenes, ${lineCount} lines`);
+                        }
+                        return 'midsummer';
+                    } else {
+                        console.warn('❌ Could not load A Midsummer Night\'s Dream data - Status:', response.status);
+                        return null;
+                    }
+                } catch (error) {
+                    console.error('❌ Error loading A Midsummer Night\'s Dream:', error);
+                    return null;
+                }
+            };
+
+            const loadMuchAdoAboutNothing = async () => {
+                try {
+                    console.log('🔄 Loading Much Ado About Nothing...');
+                    const response = await fetch('Public/Data/much_ado_about_nothing.json?v=' + Date.now());
+                    
+                    if (response.ok) {
+                        const muchadoData = await response.json();
+                        window.muchadoData = muchadoData;
+                        
+                        plays['muchado'] = {
+                            name: 'Much Ado About Nothing',
+                            originalFileName: 'muchado',
+                            characters: [],
+                            acts: {},
+                            scenes: {}
+                        };
+                        
+                        if (muchadoData) {
+                            let sceneCount = 0;
+                            let lineCount = 0;
+                            Object.keys(muchadoData).forEach(originalSceneKey => {
+                                const sceneData = muchadoData[originalSceneKey];
+                                if (sceneData && typeof sceneData === 'object') {
+                                    const sceneContent = [];
+                                    Object.keys(sceneData).forEach(lineNum => {
+                                        const lineData = sceneData[lineNum];
+                                        if (!lineData) return;
+                                        const text = (typeof lineData === 'string') ? lineData : (lineData.play ?? lineData.text ?? lineData.line ?? null);
+                                        if (text) {
+                                            sceneContent.push(text);
+                                            lineCount++;
+                                        }
+                                    });
+                                    if (sceneContent.length > 0) {
+                                        const optimizedContent = optimizeSpeakerNames(sceneContent);
+                                        const normalizedKey = normalizeSceneKey(originalSceneKey);
+                                        plays['muchado'].scenes[normalizedKey] = optimizedContent;
+                                        sceneCount++;
+                                        const actName = parseActFromScene(normalizedKey);
+                                        if (actName) {
+                                            if (!plays['muchado'].acts[actName]) {
+                                                plays['muchado'].acts[actName] = [];
+                                            }
+                                            if (!plays['muchado'].acts[actName].includes(normalizedKey)) {
+                                                plays['muchado'].acts[actName].push(normalizedKey);
+                                            }
+                                        }
+                                    }
+                                }
+                            });
+                            console.log(`✅ Much Ado About Nothing parsed: ${sceneCount} scenes, ${lineCount} lines`);
+                        }
+                        return 'muchado';
+                    } else {
+                        console.warn('❌ Could not load Much Ado About Nothing data - Status:', response.status);
+                        return null;
+                    }
+                } catch (error) {
+                    console.error('❌ Error loading Much Ado About Nothing:', error);
+                    return null;
+                }
+            };
+
+            const loadRichardII = async () => {
+                try {
+                    console.log('🔄 Loading Richard II...');
+                    const response = await fetch('Public/Data/richard_ii.json?v=' + Date.now());
+                    
+                    if (response.ok) {
+                        const richardiiData = await response.json();
+                        window.richardiiData = richardiiData;
+                        
+                        plays['richardii'] = {
+                            name: 'Richard II',
+                            originalFileName: 'richardii',
+                            characters: [],
+                            acts: {},
+                            scenes: {}
+                        };
+                        
+                        if (richardiiData) {
+                            let sceneCount = 0;
+                            let lineCount = 0;
+                            Object.keys(richardiiData).forEach(originalSceneKey => {
+                                const sceneData = richardiiData[originalSceneKey];
+                                if (sceneData && typeof sceneData === 'object') {
+                                    const sceneContent = [];
+                                    Object.keys(sceneData).forEach(lineNum => {
+                                        const lineData = sceneData[lineNum];
+                                        if (!lineData) return;
+                                        const text = (typeof lineData === 'string') ? lineData : (lineData.play ?? lineData.text ?? lineData.line ?? null);
+                                        if (text) {
+                                            sceneContent.push(text);
+                                            lineCount++;
+                                        }
+                                    });
+                                    if (sceneContent.length > 0) {
+                                        const optimizedContent = optimizeSpeakerNames(sceneContent);
+                                        const normalizedKey = normalizeSceneKey(originalSceneKey);
+                                        plays['richardii'].scenes[normalizedKey] = optimizedContent;
+                                        sceneCount++;
+                                        const actName = parseActFromScene(normalizedKey);
+                                        if (actName) {
+                                            if (!plays['richardii'].acts[actName]) {
+                                                plays['richardii'].acts[actName] = [];
+                                            }
+                                            if (!plays['richardii'].acts[actName].includes(normalizedKey)) {
+                                                plays['richardii'].acts[actName].push(normalizedKey);
+                                            }
+                                        }
+                                    }
+                                }
+                            });
+                            console.log(`✅ Richard II parsed: ${sceneCount} scenes, ${lineCount} lines`);
+                        }
+                        return 'richardii';
+                    } else {
+                        console.warn('❌ Could not load Richard II data - Status:', response.status);
+                        return null;
+                    }
+                } catch (error) {
+                    console.error('❌ Error loading Richard II:', error);
+                    return null;
+                }
+            };
+
+            const loadRichardIII = async () => {
+                try {
+                    console.log('🔄 Loading Richard III...');
+                    const response = await fetch('Public/Data/richard_iii.json?v=' + Date.now());
+                    
+                    if (response.ok) {
+                        const richardiiiData = await response.json();
+                        window.richardiiiData = richardiiiData;
+                        
+                        plays['richardiii'] = {
+                            name: 'Richard III',
+                            originalFileName: 'richardiii',
+                            characters: [],
+                            acts: {},
+                            scenes: {}
+                        };
+                        
+                        if (richardiiiData) {
+                            let sceneCount = 0;
+                            let lineCount = 0;
+                            Object.keys(richardiiiData).forEach(originalSceneKey => {
+                                const sceneData = richardiiiData[originalSceneKey];
+                                if (sceneData && typeof sceneData === 'object') {
+                                    const sceneContent = [];
+                                    Object.keys(sceneData).forEach(lineNum => {
+                                        const lineData = sceneData[lineNum];
+                                        if (!lineData) return;
+                                        const text = (typeof lineData === 'string') ? lineData : (lineData.play ?? lineData.text ?? lineData.line ?? null);
+                                        if (text) {
+                                            sceneContent.push(text);
+                                            lineCount++;
+                                        }
+                                    });
+                                    if (sceneContent.length > 0) {
+                                        const optimizedContent = optimizeSpeakerNames(sceneContent);
+                                        const normalizedKey = normalizeSceneKey(originalSceneKey);
+                                        plays['richardiii'].scenes[normalizedKey] = optimizedContent;
+                                        sceneCount++;
+                                        const actName = parseActFromScene(normalizedKey);
+                                        if (actName) {
+                                            if (!plays['richardiii'].acts[actName]) {
+                                                plays['richardiii'].acts[actName] = [];
+                                            }
+                                            if (!plays['richardiii'].acts[actName].includes(normalizedKey)) {
+                                                plays['richardiii'].acts[actName].push(normalizedKey);
+                                            }
+                                        }
+                                    }
+                                }
+                            });
+                            console.log(`✅ Richard III parsed: ${sceneCount} scenes, ${lineCount} lines`);
+                        }
+                        return 'richardiii';
+                    } else {
+                        console.warn('❌ Could not load Richard III data - Status:', response.status);
+                        return null;
+                    }
+                } catch (error) {
+                    console.error('❌ Error loading Richard III:', error);
+                    return null;
+                }
+            };
+
+            const loadTempest = async () => {
+                try {
+                    console.log('🔄 Loading The Tempest...');
+                    const response = await fetch('Public/Data/the_tempest.json?v=' + Date.now());
+                    
+                    if (response.ok) {
+                        const tempestData = await response.json();
+                        window.tempestData = tempestData;
+                        
+                        plays['tempest'] = {
+                            name: 'The Tempest',
+                            originalFileName: 'tempest',
+                            characters: [],
+                            acts: {},
+                            scenes: {}
+                        };
+                        
+                        if (tempestData) {
+                            let sceneCount = 0;
+                            let lineCount = 0;
+                            Object.keys(tempestData).forEach(originalSceneKey => {
+                                const sceneData = tempestData[originalSceneKey];
+                                if (sceneData && typeof sceneData === 'object') {
+                                    const sceneContent = [];
+                                    Object.keys(sceneData).forEach(lineNum => {
+                                        const lineData = sceneData[lineNum];
+                                        if (!lineData) return;
+                                        const text = (typeof lineData === 'string') ? lineData : (lineData.play ?? lineData.text ?? lineData.line ?? null);
+                                        if (text) {
+                                            sceneContent.push(text);
+                                            lineCount++;
+                                        }
+                                    });
+                                    if (sceneContent.length > 0) {
+                                        const optimizedContent = optimizeSpeakerNames(sceneContent);
+                                        const normalizedKey = normalizeSceneKey(originalSceneKey);
+                                        plays['tempest'].scenes[normalizedKey] = optimizedContent;
+                                        sceneCount++;
+                                        const actName = parseActFromScene(normalizedKey);
+                                        if (actName) {
+                                            if (!plays['tempest'].acts[actName]) {
+                                                plays['tempest'].acts[actName] = [];
+                                            }
+                                            if (!plays['tempest'].acts[actName].includes(normalizedKey)) {
+                                                plays['tempest'].acts[actName].push(normalizedKey);
+                                            }
+                                        }
+                                    }
+                                }
+                            });
+                            console.log(`✅ The Tempest parsed: ${sceneCount} scenes, ${lineCount} lines`);
+                        }
+                        return 'tempest';
+                    } else {
+                        console.warn('❌ Could not load The Tempest data - Status:', response.status);
+                        return null;
+                    }
+                } catch (error) {
+                    console.error('❌ Error loading The Tempest:', error);
+                    return null;
+                }
+            };
+
+            const loadWintersTale = async () => {
+                try {
+                    console.log('🔄 Loading The Winter\'s Tale...');
+                    const response = await fetch('Public/Data/the_winters_tale.json?v=' + Date.now());
+                    
+                    if (response.ok) {
+                        const winterstaleData = await response.json();
+                        window.winterstaleData = winterstaleData;
+                        
+                        plays['winterstale'] = {
+                            name: 'The Winter\'s Tale',
+                            originalFileName: 'winterstale',
+                            characters: [],
+                            acts: {},
+                            scenes: {}
+                        };
+                        
+                        if (winterstaleData) {
+                            let sceneCount = 0;
+                            let lineCount = 0;
+                            Object.keys(winterstaleData).forEach(originalSceneKey => {
+                                const sceneData = winterstaleData[originalSceneKey];
+                                if (sceneData && typeof sceneData === 'object') {
+                                    const sceneContent = [];
+                                    Object.keys(sceneData).forEach(lineNum => {
+                                        const lineData = sceneData[lineNum];
+                                        if (!lineData) return;
+                                        const text = (typeof lineData === 'string') ? lineData : (lineData.play ?? lineData.text ?? lineData.line ?? null);
+                                        if (text) {
+                                            sceneContent.push(text);
+                                            lineCount++;
+                                        }
+                                    });
+                                    if (sceneContent.length > 0) {
+                                        const optimizedContent = optimizeSpeakerNames(sceneContent);
+                                        const normalizedKey = normalizeSceneKey(originalSceneKey);
+                                        plays['winterstale'].scenes[normalizedKey] = optimizedContent;
+                                        sceneCount++;
+                                        const actName = parseActFromScene(normalizedKey);
+                                        if (actName) {
+                                            if (!plays['winterstale'].acts[actName]) {
+                                                plays['winterstale'].acts[actName] = [];
+                                            }
+                                            if (!plays['winterstale'].acts[actName].includes(normalizedKey)) {
+                                                plays['winterstale'].acts[actName].push(normalizedKey);
+                                            }
+                                        }
+                                    }
+                                }
+                            });
+                            console.log(`✅ The Winter's Tale parsed: ${sceneCount} scenes, ${lineCount} lines`);
+                        }
+                        return 'winterstale';
+                    } else {
+                        console.warn('❌ Could not load The Winter\'s Tale data - Status:', response.status);
+                        return null;
+                    }
+                } catch (error) {
+                    console.error('❌ Error loading The Winter\'s Tale:', error);
+                    return null;
+                }
+            };
+
+            const loadTroilusAndCressida = async () => {
+                try {
+                    console.log('🔄 Loading Troilus and Cressida...');
+                    const response = await fetch('Public/Data/troilus_and_cressida.json?v=' + Date.now());
+                    
+                    if (response.ok) {
+                        const troilusData = await response.json();
+                        window.troilusData = troilusData;
+                        
+                        plays['troilus'] = {
+                            name: 'Troilus and Cressida',
+                            originalFileName: 'troilus',
+                            characters: [],
+                            acts: {},
+                            scenes: {}
+                        };
+                        
+                        if (troilusData) {
+                            let sceneCount = 0;
+                            let lineCount = 0;
+                            Object.keys(troilusData).forEach(originalSceneKey => {
+                                const sceneData = troilusData[originalSceneKey];
+                                if (sceneData && typeof sceneData === 'object') {
+                                    const sceneContent = [];
+                                    Object.keys(sceneData).forEach(lineNum => {
+                                        const lineData = sceneData[lineNum];
+                                        if (!lineData) return;
+                                        const text = (typeof lineData === 'string') ? lineData : (lineData.play ?? lineData.text ?? lineData.line ?? null);
+                                        if (text) {
+                                            sceneContent.push(text);
+                                            lineCount++;
+                                        }
+                                    });
+                                    if (sceneContent.length > 0) {
+                                        const optimizedContent = optimizeSpeakerNames(sceneContent);
+                                        const normalizedKey = normalizeSceneKey(originalSceneKey);
+                                        plays['troilus'].scenes[normalizedKey] = optimizedContent;
+                                        sceneCount++;
+                                        const actName = parseActFromScene(normalizedKey);
+                                        if (actName) {
+                                            if (!plays['troilus'].acts[actName]) {
+                                                plays['troilus'].acts[actName] = [];
+                                            }
+                                            if (!plays['troilus'].acts[actName].includes(normalizedKey)) {
+                                                plays['troilus'].acts[actName].push(normalizedKey);
+                                            }
+                                        }
+                                    }
+                                }
+                            });
+                            console.log(`✅ Troilus and Cressida parsed: ${sceneCount} scenes, ${lineCount} lines`);
+                        }
+                        return 'troilus';
+                    } else {
+                        console.warn('❌ Could not load Troilus and Cressida data - Status:', response.status);
+                        return null;
+                    }
+                } catch (error) {
+                    console.error('❌ Error loading Troilus and Cressida:', error);
+                    return null;
+                }
+            };
+
+            const loadTwelfthNight = async () => {
+                try {
+                    console.log('🔄 Loading Twelfth Night...');
+                    const response = await fetch('Public/Data/twelfth_night.json?v=' + Date.now());
+                    
+                    if (response.ok) {
+                        const twelfthData = await response.json();
+                        window.twelfthData = twelfthData;
+                        
+                        plays['twelfthnight'] = {
+                            name: 'Twelfth Night',
+                            originalFileName: 'twelfthnight',
+                            characters: [],
+                            acts: {},
+                            scenes: {}
+                        };
+                        
+                        if (twelfthData) {
+                            let sceneCount = 0;
+                            let lineCount = 0;
+                            Object.keys(twelfthData).forEach(originalSceneKey => {
+                                const sceneData = twelfthData[originalSceneKey];
+                                if (sceneData && typeof sceneData === 'object') {
+                                    const sceneContent = [];
+                                    Object.keys(sceneData).forEach(lineNum => {
+                                        const lineData = sceneData[lineNum];
+                                        if (!lineData) return;
+                                        const text = (typeof lineData === 'string') ? lineData : (lineData.play ?? lineData.text ?? lineData.line ?? null);
+                                        if (text) {
+                                            sceneContent.push(text);
+                                            lineCount++;
+                                        }
+                                    });
+                                    if (sceneContent.length > 0) {
+                                        const optimizedContent = optimizeSpeakerNames(sceneContent);
+                                        const normalizedKey = normalizeSceneKey(originalSceneKey);
+                                        plays['twelfthnight'].scenes[normalizedKey] = optimizedContent;
+                                        sceneCount++;
+                                        const actName = parseActFromScene(normalizedKey);
+                                        if (actName) {
+                                            if (!plays['twelfthnight'].acts[actName]) {
+                                                plays['twelfthnight'].acts[actName] = [];
+                                            }
+                                            if (!plays['twelfthnight'].acts[actName].includes(normalizedKey)) {
+                                                plays['twelfthnight'].acts[actName].push(normalizedKey);
+                                            }
+                                        }
+                                    }
+                                }
+                            });
+                            console.log(`✅ Twelfth Night parsed: ${sceneCount} scenes, ${lineCount} lines`);
+                        }
+                        return 'twelfthnight';
+                    } else {
+                        console.warn('❌ Could not load Twelfth Night data - Status:', response.status);
+                        return null;
+                    }
+                } catch (error) {
+                    console.error('❌ Error loading Twelfth Night:', error);
+                    return null;
+                }
+            };
+
             // Load all plays in parallel for much faster performance!
             try {
                 console.log('⚡ Starting parallel load of all plays...');
@@ -4819,7 +5449,17 @@
                     loadHenryIVPart1(),
                     loadHenryIVPart2(),
                     loadJuliusCaesar(),
-                    loadKingJohn()
+                    loadKingJohn(),
+                    loadLovesLaboursLost(),
+                    loadMerchantOfVenice(),
+                    loadMidsummerNightsDream(),
+                    loadMuchAdoAboutNothing(),
+                    loadRichardII(),
+                    loadRichardIII(),
+                    loadTempest(),
+                    loadWintersTale(),
+                    loadTroilusAndCressida(),
+                    loadTwelfthNight()
                 ]);
                 
                 const endTime = Date.now();
@@ -4827,7 +5467,7 @@
                 
                 const successfulLoads = loadResults.filter(result => result !== null);
                 console.log(`🎉 Parallel loading completed in ${loadTime}s!`);
-                console.log(`✅ Successfully loaded ${successfulLoads.length}/12 plays: ${successfulLoads.join(', ')}`);
+                console.log(`✅ Successfully loaded ${successfulLoads.length}/22 plays: ${successfulLoads.join(', ')}`);
                 
                 // Update UI only once after all plays are loaded
                 console.log('🔄 Updating UI with all loaded plays...');

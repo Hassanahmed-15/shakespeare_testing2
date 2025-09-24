@@ -371,9 +371,9 @@ exports.handler = async (event, context) => {
     // Exclude 'New Variorum Analysis' for plays without New Variorum editions
     const playsWithoutNewVariorum = [
       'asyoulikeit', 'coriolanus', 'cymbeline', 'henryiv1', 'henryiv2', 
-      'juliuscaesar', 'kingjohn', 'loves_labours_lost', 'merchantofvenice', 
-      'midsummer', 'much_ado_about_nothing', 'richard_ii', 'richard_iii', 
-      'tempest', 'the_winters_tale', 'troilus_and_cressida', 'twelfth_night'
+      'juliuscaesar', 'kingjohn', 'loveslabourslost', 'merchantofvenice', 
+      'midsummer', 'muchado', 'richardii', 'richardiii', 
+      'tempest', 'winterstale', 'troilus', 'twelfthnight'
     ];
     
     if (analysisMode === 'fullfathomfive' && playsWithoutNewVariorum.includes(playName)) {
@@ -460,9 +460,9 @@ FORMAT REQUIREMENTS:
       // Check if this play has New Variorum Analysis - exclude for plays without editions
       const playsWithoutNewVariorum = [
         'asyoulikeit', 'coriolanus', 'cymbeline', 'henryiv1', 'henryiv2', 
-        'juliuscaesar', 'kingjohn', 'loves_labours_lost', 'merchantofvenice', 
-        'midsummer', 'much_ado_about_nothing', 'richard_ii', 'richard_iii', 
-        'tempest', 'the_winters_tale', 'troilus_and_cressida', 'twelfth_night'
+        'juliuscaesar', 'kingjohn', 'loveslabourslost', 'merchantofvenice', 
+        'midsummer', 'muchado', 'richardii', 'richardiii', 
+        'tempest', 'winterstale', 'troilus', 'twelfthnight'
       ];
       const includeNewVariorum = !playsWithoutNewVariorum.includes(playName)
       
@@ -663,9 +663,9 @@ IMPORTANT: The notes above are the COMPLETE notes from the database. You MUST in
     // Check if New Variorum Analysis was captured (only for plays with New Variorum editions)
     const playsWithoutNewVariorum = [
       'asyoulikeit', 'coriolanus', 'cymbeline', 'henryiv1', 'henryiv2', 
-      'juliuscaesar', 'kingjohn', 'loves_labours_lost', 'merchantofvenice', 
-      'midsummer', 'much_ado_about_nothing', 'richard_ii', 'richard_iii', 
-      'tempest', 'the_winters_tale', 'troilus_and_cressida', 'twelfth_night'
+      'juliuscaesar', 'kingjohn', 'loveslabourslost', 'merchantofvenice', 
+      'midsummer', 'muchado', 'richardii', 'richardiii', 
+      'tempest', 'winterstale', 'troilus', 'twelfthnight'
     ];
     
     if (!playsWithoutNewVariorum.includes(playName)) {
