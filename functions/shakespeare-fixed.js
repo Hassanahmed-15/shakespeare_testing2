@@ -366,7 +366,24 @@ exports.handler = async (event, context) => {
       ]
     }
 
-    const structure = analysisStructure[analysisMode] || analysisStructure.basic
+    let structure = analysisStructure[analysisMode] || analysisStructure.basic
+    
+    // Exclude 'New Variorum Analysis' for plays without New Variorum editions
+    const playsWithoutNewVariorum = [
+      'asyoulikeit', 'coriolanus', 'cymbeline', 'henryiv1', 'henryiv2', 
+      'juliuscaesar', 'kingjohn', 'loveslabourslost', 'merchantofvenice', 
+      'midsummer', 'muchado', 'richardii', 'richardiii', 
+      'tempest', 'winterstale', 'troilus', 'twelfthnight'
+    ];
+    
+    if (analysisMode === 'fullfathomfive' && playsWithoutNewVariorum.includes(playName)) {
+      structure = structure.filter(section => section !== 'New Variorum Analysis')
+      console.log(`🚫 ${playName} - EXCLUDING New Variorum Analysis section`)
+      console.log('🔧 Final analysis structure:', structure)
+    } else if (analysisMode === 'fullfathomfive') {
+      console.log(`✅ ${playName} - INCLUDING New Variorum Analysis section`)
+      console.log('🔧 Final analysis structure:', structure)
+    }
 
     // Check if text contains multiple lines
     const lines = text.split('\n').filter(line => line.trim().length > 0)
@@ -443,6 +460,16 @@ FORMAT REQUIREMENTS:
     } else if (analysisMode === 'fullfathomfive') {
       console.log('Full Fathom Five level detected - using comprehensive prompt with Textual Variants and Language and Rhetoric sections');
       console.log('DEBUG: Function version updated at', new Date().toISOString());
+      
+      // Check if this play has New Variorum Analysis - exclude for plays without editions
+      const playsWithoutNewVariorum = [
+        'asyoulikeit', 'coriolanus', 'cymbeline', 'henryiv1', 'henryiv2', 
+        'juliuscaesar', 'kingjohn', 'loveslabourslost', 'merchantofvenice', 
+        'midsummer', 'muchado', 'richardii', 'richardiii', 
+        'tempest', 'winterstale', 'troilus', 'twelfthnight'
+      ];
+      const includeNewVariorum = !playsWithoutNewVariorum.includes(playName)
+      
       systemPrompt = `You are an expert Shakespearean scholar providing the most comprehensive analysis possible.
 
 IMPORTANT CONTEXT: You are analyzing text from a Shakespearean play. Focus on the content and meaning of the selected text without mentioning specific scenes, acts, or play names.
@@ -459,7 +486,7 @@ CRITICAL: You MUST provide responses for ALL of these sections in exactly this o
 **Literary Analysis:** (REQUIRED)  
 **Critical Reception:** (REQUIRED)  
 **Similar phrases or themes in other plays:** (REQUIRED)  
-**Pointers for Further Reading:** (REQUIRED)
+**Pointers for Further Reading:** (REQUIRED)${includeNewVariorum ? '\n**New Variorum Analysis:** (REQUIRED)' : ''}
 
 FORMAT REQUIREMENTS:  
 - Start each section with the exact heading format shown above (colons are already included).  
@@ -476,7 +503,11 @@ CRITICAL CITATION REQUIREMENTS:
 - Use full publication details.  
 - Do not modify scholar names.
 
-LENGTH: 800–1200 words total
+LENGTH: 800–1200 words total`
+
+      // Add New Variorum Analysis instructions only if it's not As You Like It
+      if (includeNewVariorum) {
+        systemPrompt += `
 
 **New Variorum Analysis:**
 For this section, use the historical variorum notes provided below.  
@@ -496,9 +527,10 @@ For this section, use the historical variorum notes provided below.
 - Do not include notes for lines that are not explicitly selected.
 - IMPORTANT: Copy the notes exactly as provided, word for word, without any changes.
 - CRITICAL: Include the complete, unabridged text of every note, no matter how long.`
+      }
        
-      // Add play notes if available
-      if (relevantNotes.length > 0) {
+      // Add play notes if available (only if New Variorum Analysis is included)
+      if (relevantNotes.length > 0 && includeNewVariorum) {
         systemPrompt += `\n\nIMPORTANT: You have access to historical variorum notes from the ${currentPlayName} database. Here are the relevant notes found:`
         
         relevantNotes.forEach((note, index) => {
@@ -526,7 +558,8 @@ For this section, use the historical variorum notes provided below.
     } else if (analysisMode === 'fullfathomfive') {
       userPrompt += `\n\nPlease provide a Full Fathom Five analysis following the exact format specified in the system prompt.`
       
-      if (relevantNotes.length > 0) {
+      // Only add notes for plays that have New Variorum Analysis
+      if (relevantNotes.length > 0 && includeNewVariorum) {
         console.log('Adding notes to prompt. Total notes found:', relevantNotes.length)
         relevantNotes.forEach((note, index) => {
           console.log(`Note ${index + 1}: Line ${note.line}, ${note.notes.length} note entries`)
@@ -543,7 +576,7 @@ For this section, use the historical variorum notes provided below.
             userPrompt += `\n${noteText}`
           })
         })
-        userPrompt += `\n\nCRITICAL INSTRUCTIONS: Use these EXACT notes in your "New Variorum Analysis" section. Copy them word for word without any changes, summaries, or modifications. Show ALL notes from the database, not just parts of them. DO NOT TRUNCATE OR CUT ANY NOTES. Include the complete, full text of every note. Even if the notes are very long, you MUST include the ENTIRE text. Do not stop mid-sentence or cut off any part. Format each note as: [Line X] [EXACT commentary text from notes]. Do not add any additional commentary or speculation.
+        userPrompt += `\n\nCRITICAL INSTRUCTIONS: Use these EXACT notes in your "New Variorum Analysis" section. Copy them word for word without any changes, summaries, or modifications. Show ALL notes from the database, not just parts of them. DO NOT TRUNCATE OR CUT ANY NOTES. Include the complete, full text of every note. Even if the notes are very long, you MUST include the ENTIRE text. Do not stop mid-sentence or cut off. Format each note as: [Line X] [EXACT commentary text from notes]. Do not add any additional commentary or speculation.
 
 ABSOLUTE REQUIREMENT: Every single character of the provided notes must appear in your response. NO EXCEPTIONS. You must copy the notes exactly as provided, word for word, character for character. FAILURE TO INCLUDE COMPLETE NOTES WILL RESULT IN INCOMPLETE ANALYSIS.
 
@@ -632,33 +665,42 @@ IMPORTANT: The notes above are the COMPLETE notes from the database. You MUST in
     console.log('Parsed sections:', Object.keys(analysis))
     console.log('Looking for sections:', sections)
     
-    // Check if New Variorum Analysis was captured
-    if (analysis['New Variorum Analysis']) {
-      console.log('New Variorum Analysis found, length:', analysis['New Variorum Analysis'].length)
-    } else {
-      console.log('New Variorum Analysis NOT found in parsed sections')
-      // Try multiple patterns to find it manually in the response
-      const patterns = [
-        /\*\*New Variorum Analysis\*\*:?\s*([\s\S]*?)(?=\*\*|$)/i,
-        /New Variorum Analysis:?\s*([\s\S]*?)(?=\*\*|$)/i,
-        /New Variorum Analysis:?\s*([\s\S]*)/i
-      ]
-      
-      for (const pattern of patterns) {
-        const variorumMatch = response.match(pattern)
-        if (variorumMatch) {
-          console.log('Found New Variorum Analysis manually with pattern, length:', variorumMatch[1].length)
-          analysis['New Variorum Analysis'] = variorumMatch[1].trim()
-          break
+    // Check if New Variorum Analysis was captured (only for plays with New Variorum editions)
+    const playsWithoutNewVariorum = [
+      'asyoulikeit', 'coriolanus', 'cymbeline', 'henryiv1', 'henryiv2', 
+      'juliuscaesar', 'kingjohn', 'loveslabourslost', 'merchantofvenice', 
+      'midsummer', 'muchado', 'richardii', 'richardiii', 
+      'tempest', 'winterstale', 'troilus', 'twelfthnight'
+    ];
+    
+    if (!playsWithoutNewVariorum.includes(playName)) {
+      if (analysis['New Variorum Analysis']) {
+        console.log('New Variorum Analysis found, length:', analysis['New Variorum Analysis'].length)
+      } else {
+        console.log('New Variorum Analysis NOT found in parsed sections')
+        // Try multiple patterns to find it manually in the response
+        const patterns = [
+          /\*\*New Variorum Analysis\*\*:?\s*([\s\S]*?)(?=\*\*|$)/i,
+          /New Variorum Analysis:?\s*([\s\S]*?)(?=\*\*|$)/i,
+          /New Variorum Analysis:?\s*([\s\S]*)/i
+        ]
+        
+        for (const pattern of patterns) {
+          const variorumMatch = response.match(pattern)
+          if (variorumMatch) {
+            console.log('Found New Variorum Analysis manually with pattern, length:', variorumMatch[1].length)
+            analysis['New Variorum Analysis'] = variorumMatch[1].trim()
+            break
+          }
         }
-      }
-      
-      // If still not found, try to find it by looking for the notes content
-      if (!analysis['New Variorum Analysis']) {
-        const notesMatch = response.match(/(\[Line \d+\].*?)(?=\*\*|$)/s)
-        if (notesMatch) {
-          console.log('Found notes content manually, length:', notesMatch[1].length)
-          analysis['New Variorum Analysis'] = notesMatch[1].trim()
+        
+        // If still not found, try to find it by looking for the notes content (only for plays with New Variorum)
+        if (!analysis['New Variorum Analysis'] && !playsWithoutNewVariorum.includes(playName)) {
+          const notesMatch = response.match(/(\[Line \d+\].*?)(?=\*\*|$)/s)
+          if (notesMatch) {
+            console.log('Found notes content manually, length:', notesMatch[1].length)
+            analysis['New Variorum Analysis'] = notesMatch[1].trim()
+          }
         }
       }
     }
@@ -668,8 +710,8 @@ IMPORTANT: The notes above are the COMPLETE notes from the database. You MUST in
       analysis = { 'Analysis': response }
     }
 
-    // For Full Fathom Five, add the notes directly to the analysis object
-    if (analysisMode === 'fullfathomfive' && relevantNotes.length > 0) {
+    // For Full Fathom Five, add the notes directly to the analysis object (only for plays with New Variorum editions)
+    if (analysisMode === 'fullfathomfive' && relevantNotes.length > 0 && !playsWithoutNewVariorum.includes(playName)) {
       let notesContent = ''
       relevantNotes.forEach((note, index) => {
         notesContent += `[Line ${note.line}] ${note.play}\n`

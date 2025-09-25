@@ -31,6 +31,13 @@
     Pragma = "no-cache"
     Expires = "0"
 
+# Allow JSON files to be served directly
+[[redirects]]
+  from = "/Public/Data/*"
+  to = "/Public/Data/:splat"
+  status = 200
+
+# Catch-all redirect for everything else
 [[redirects]]
   from = "/*"
   to = "/index.html"

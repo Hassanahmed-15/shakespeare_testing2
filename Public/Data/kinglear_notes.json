@@ -1,14 +1,20 @@
 {
+  "DRAMATIS PERSONAE": {
+    "1": {
+      "play": "DRAMATIS PERSONAE\nKINGLEAR\n\nKING LEAR\nKING OF FRANCE\nOld Man\nSecond Servant\nThird Servant\n\nALBANY\nBURGUNDY\nCORDELIA\nCORNWALL\nCURAN\nEDGAR\nEDMUAND\nEDMUND\nGLOUCESTER\nGONERIL\nKENT\nLEAR\nOSWALD\nREGAN",
+      "notes": []
+    }
+  },
   "ACT 1, SCENE 1": {
     "1": {
-      "play": "KENT : I thought the king had more affected the Duke of Albany than Cornwall.",
+      "play": "KENT: I thought the king had more affected the Duke of Albany than Cornwall.",
       "notes": [
         "Coleridge: The Tragedy, &c.] *Of all Shakespeare’s plays,' says Coleridge, 'Macbeth is the most rapid, Hamlet the slowest, in movement. Lear combines length with rapidity,—like the hurricane and the whirlpool, absorbing while it advances. It begins as a stormy day in summer, with brightness ; but that brightness is lurid, and anticipates the tempest.’",
         "Wright: Albany] Holinshed {Chron, i, fol. 39 b q ed. 1577) gives the fol* lowing account of the origin of this name: ‘The third and last part of the Is|and he allotted vnto Albanacte hys youngest sonne. . . . This later parcel at the first, toke the name of Albanactus, who called it Albania. But now a small portion onely of the Region (beyng vnder the regiment of a Duke) reteyneth the sayd denomination, the reast beyng called Scotlande, of certayne Scottes that came ouer from Ireland to inhabite in those quarters. It is deuided from Loegres also by the Humber, so that Albania as Brute left it, conteyned all the north part of the Island that is to be found beyond the aforesayd streame, vnto the point of Cathenesse.’"
       ]
     },
     "2": {
-      "play": "GLOUCESTER : It did always seem so to us: but now, in the division of the kingdom, it",
+      "play": "GLOUCESTER: It did always seem so to us: but now, in the division of the kingdom, it",
       "notes": [
         "Walker (Crit. i, 13): these as seven lines of verse, ending W duke., . always, . , division M’ dukes., , . poised [sic], , . choice, , . moiety,. « After moiety he adds, ‘there is a short pause in the conversation, which is resumed in prose. Yet th^ duke^ in this place, seems very unlike Sh.| and equalities is perhaps more in place than “ qualities.” ’",
         "Johnson: division] There is something of obscurity or inaccuracy in this preparatory scene. The king has already divided his kingdom, and yet when he enters he examines his daughters, to discover in what proportion he should divide it. Perhaps Kent and Gloster only were privy to his design, which he still kept in his own hands, to be changed or performed as subsequent reasons should determine him.",
@@ -24,29 +30,29 @@
       ]
     },
     "3": {
-      "play": "KENT : Is not this your son, my lord?",
+      "play": "KENT: Is not this your son, my lord?",
       "notes": []
     },
     "4": {
-      "play": "GLOUCESTER : His breeding, sir, hath been at my charge: I have so often blushed to",
+      "play": "GLOUCESTER: His breeding, sir, hath been at my charge: I have so often blushed to",
       "notes": []
     },
     "5": {
-      "play": "KENT : I cannot conceive you.",
+      "play": "KENT: I cannot conceive you.",
       "notes": []
     },
     "6": {
-      "play": "GLOUCESTER : Sir, this young fellow's mother could: whereupon she grew round-",
+      "play": "GLOUCESTER: Sir, this young fellow's mother could: whereupon she grew round-",
       "notes": []
     },
     "7": {
-      "play": "KENT : I cannot wish the fault undone, the issue of it being so proper.",
+      "play": "KENT: I cannot wish the fault undone, the issue of it being so proper.",
       "notes": [
         "For Coleridge’s fine remarks on Edmund, see Appendix, p. 419."
       ]
     },
     "8": {
-      "play": "GLOUCESTER : But I have, sir, a son by order of law, some year elder than this, who yet is",
+      "play": "GLOUCESTER: But I have, sir, a son by order of law, some year elder than this, who yet is",
       "notes": [
         "Malone: proper] Comely, handsome.",
         "Warburton: some year] Edmund afterwards [I, ii, 5] speaks of ‘some twelve or fourteen moonshines.’",
@@ -54,42 +60,42 @@
       ]
     },
     "9": {
-      "play": "EDMUND : No, my lord.",
+      "play": "EDMUND: No, my lord.",
       "notes": [
         "Compare Ham. III, iv, 37."
       ]
     },
     "10": {
-      "play": "GLOUCESTER : My lord of Kent: remember him hereafter as my honourable friend.",
+      "play": "GLOUCESTER: My lord of Kent: remember him hereafter as my honourable friend.",
       "notes": []
     },
     "11": {
-      "play": "EDMUND : My services to your lordship.",
+      "play": "EDMUND: My services to your lordship.",
       "notes": []
     },
     "12": {
-      "play": "KENT : I must love you, and sue to know you better.",
+      "play": "KENT: I must love you, and sue to know you better.",
       "notes": []
     },
     "13": {
-      "play": "EDMUND : Sir, I shall study deserving.",
+      "play": "EDMUND: Sir, I shall study deserving.",
       "notes": []
     },
     "14": {
-      "play": "GLOUCESTER : He hath been out nine years, and away he shall again. The king is",
+      "play": "GLOUCESTER: He hath been out nine years, and away he shall again. The king is",
       "notes": [
         "For instances of something, adverbially, like < somewhat,’ see Abbott, § 68,",
         "Eccles: out] This circumstance serves to account foi Edmund’s being un- acquainted with so distinguished a man at Lear’s court as Kent ; indeed, for their mutual ignorance of each other. Gloucester appears to introduce Edmund to Kent for the first time, and that, probably, immediately after his return, either from travel or serving in the army. [See also Coleridge’s note on Edmund in Appendix, p. 419.]"
       ]
     },
     "15": {
-      "play": "KING LEAR : Attend the lords of France and Burgundy, Gloucester.",
+      "play": "KING LEAR: Attend the lords of France and Burgundy, Gloucester.",
       "notes": [
         "Moberly: France and Burgundy] King Lear lived, as the chronicle says, “in the times of Joash, king of Judah.” In III, ii, 95, Sh. himself jokes at this extravagant antiquity; and here he appears to imagine Lear as king in the rough times following Charlemagne, when France and Burgundy had become separate nations."
       ]
     },
     "16": {
-      "play": "GLOUCESTER : I shall, my liege.",
+      "play": "I shall, my liege.",
       "notes": [
         "Walker (Crit. p. 240) : Burgundy] says that the pronun- ciation “Burgun- dy” (as it is spelled in the last scene, in F1, in Hen. V) would re- store harmony to this line.",
         "Dyce: Burgundy] In a note on 2 Hen. VI: I, i, 7, says that Sh., like other early dramati- sts, considered himself at liberty occasionally to disregard the laws of metre in the case of proper names; e.g. a blank verse speech in Rich. II: IV, i, 284, con- tains the following formidable line: “Sir John Norberry, Sir Robert Waterton, and Francis Quoint.” [It is spelled Bargonya in Selimus, iii, 79, ed. Arber.]",
@@ -97,7 +103,7 @@
       ]
     },
     "17": {
-      "play": "KING LEAR : Meantime we shall express our darker purpose. Give me the map there.",
+      "play": "KING LEAR: Meantime we shall express our darker purpose. Give me the map there.",
       "notes": [
         "Warburton: darker purpose] That is, more secret; more of our design than has yet been told before; the reasons for which we shall require the partition. This interpretation will justify or palliate the apparent contradiction between this “darker purpose” and the opening of the Scene.",
         "Capell (Notes, &c. p. 93, 1765) : fast] “Fast” is determined, meant, fixed; King Lear's use of “purpose” and “intent” particularly in these opening lines is Shakespeare’s natural English for “resolution,” “determinate will,” and marks the grave, ceremonial, legal aspect of the transaction occasioned by advancing age.",
@@ -111,7 +117,7 @@
       ]
     },
     "18": {
-      "play": "GONERIL : Sir, I love you more than words can wield the matter; Dearer than eye-sight,",
+      "play": "GONERIL: Sir, I love you more than words can wield the matter; Dearer than eye-sight,",
       "notes": [
         "For instances of the use of “I shall” in the sense of “I am bound to, I am to,” and hence often used in the response of inferiors to superiors, see Abbott, §361.",
         "For Schmidt’s lexicon, s. v. for other instances of “both” being used with more than two nouns.",
@@ -128,14 +134,14 @@
       ]
     },
     "19": {
-      "play": "CORDELIA : [Aside] What shall Cordelia do? Love, and be silent.",
+      "play": "CORDELIA: [Aside] What shall Cordelia do? Love, and be silent.",
       "notes": [
         "Knight: speak] Apart from authority, the choice of readings here seems to me to depend on whether we take “Love” and “be silent” as infinitives or imperatives. If they are infinitives, we should read “do” with the Qq, but if imperatives, we should follow the Ff. I think they are imperatives, and I am supported by Schmidt (Zur Textkritik, p. 12). Moreover, Knight pronounces do of the Qq feeble, because it destroys the force of the answer : “Love, and be silent.”",
         "White and Dyce: speak] on the other hand, assert that the answer plainly shows that the Qq are right and the Ff wrong."
       ]
     },
     "20": {
-      "play": "LEAR : Of all these bounds, even from this line to this, With shadowy forests and with",
+      "play": "LEAR: Of all these bounds, even from this line to this, With shadowy forests and with",
       "notes": [
         "For an instance of the use of “shall” in the ordinary future sense, as if it had been preceded by “we”, with perhaps some idea of fixed intention, see below, line 133.",
         "Wright: champains] Plains. Compare Dent. xi. 30 (ed. 1611): “the Canaanites, which dwell in the champion over against Gilgal.” In Ezekiel xxxvii. 2, the marginal note to “valley” is “or, champian.” See Twelfth Night, II, v, 174, where it is spelt “champian” in the Ff: “Daylight and champian discovers not more.”",
@@ -143,7 +149,7 @@
       ]
     },
     "21": {
-      "play": "REGAN : Sir, I am made Of the self-same metal that my sister is, And prize me at her",
+      "play": "REGAN: Sir, I am made Of the self-same metal that my sister is, And prize me at her",
       "notes": [
         "compare “self mate and mate,” IV, iii, 34; and for many other instances of the use of this word, meaning same, see Schmidt’s Lex.",
         "Theobald: worth] Mr. Bishop prescribed the pointing of this passage as I have regulated it in the text [See Text-notes.] Regan would say that in the truth of her heart and affection she equals the worth of her sister. Without this change in the pointing, she makes a boast of herself without any cause assigned.",
@@ -173,11 +179,11 @@
       ]
     },
     "22": {
-      "play": "CORDELIA : [Aside] Then poor Cordelia! And yet not so; since, I am sure, my love's More",
+      "play": "CORDELIA: [Aside] Then poor Cordelia! And yet not so; since, I am sure, my love's More",
       "notes": []
     },
     "23": {
-      "play": "KING LEAR : To thee and thine hereditary ever Remain this ample third of our fair",
+      "play": "KING LEAR: To thee and thine hereditary ever Remain this ample third of our fair",
       "notes": [
         "Dyce: daughter, Cornwall,...speak] F1 omits “Speak;” but Lear has concluded his address to Goneril with “speak first;” and he afterwards finishes that to Cordelia with “speak.”",
         "White: ponderous] “More ponderous” of the Ff may possibly be a misprint for “more precious!” Wright thinks it “has the appearance of being a player’s correction to avoid a piece of imaginary bad grammar;” but I do not think we should desert a durior lectio but for a reason ‘more ponderous’ than this.",
@@ -196,25 +202,25 @@
       ]
     },
     "24": {
-      "play": "CORDELIA : Nothing, my lord.",
+      "play": "Nothing, my lord.",
       "notes": [
         "Coleridge: Nothing] There is something of disgust at the ruthless hypocrisy of her sisters, and some little faulty admixture of pride and sullenness in Cordelia’s “Nothing;” and her tone is well contrived, indeed, to lessen the glaring absurdity of Lear’s conduct, but answers the yet more important purpose of forcing away the attention from the nursery- tale the moment it has served its end, that of supplying the canvas for the picture. This is also materially furthered by Kent’s opposition, which displays Lear’s moral incapability of resigning the sovereign power in the very act of disposing of it, Kent is, perhaps, the nearest to perfect goodness in all Shakespeare’s characters, and yet the most individualized. There is an extraordinary charm in his bluntness, which is that only of a nobleman, arising from a contempt of overstrained courtesy, and combined with easy placability where goodness of heart is apparent. His passionate affection for, and fidelity to, Lear act on our feelings in Lear’s own favour ; virtue seems to be in company with him."
       ]
     },
     "25": {
-      "play": "KING LEAR : Nothing!",
+      "play": "KING LEAR: Nothing!",
       "notes": []
     },
     "26": {
-      "play": "CORDELIA : Nothing.",
+      "play": "Nothing.",
       "notes": []
     },
     "27": {
-      "play": "KING LEAR : Nothing will come of nothing: speak again.",
+      "play": "KING LEAR: Nothing will come of nothing: speak again.",
       "notes": []
     },
     "28": {
-      "play": "CORDELIA : Unhappy that I am, I cannot heave My heart into my mouth: I love your",
+      "play": "Unhappy that I am, I cannot heave My heart into my mouth: I love your",
       "notes": [
         "majesty] A dissyllable. See Macb. III,iv, 25 Walker, Vers. 174; Abbott, §468.",
         "W. W. Lloyd: bond] The crudity of manners expressed in Lear’s solicitation of flattery has its natural counterpart in the almost sullen and repulsive tone of the virtue which preserves Cordelia from the degradation he would tempt her to. The progress of the story required a reply that should provoke the indignation of her father, and yet not cause her to forfeit our esteem. . . . Moreover, Sh., it appears to me, designed to convey, by the very terms and rhythm of the speeches of Cordelia, an impression that her speech was usually reserved and low and laconic, and thus that the very faculty was foreign to her that might have enabled her to effect the same result for her own dignity with milder method. Certain it is, and it is sufficiently declared in the sequel of the scene, that she took too little thought for the fact that her disinheriting was a greater misfortune to her father than to herself, and that to prevent it for his sake were worth incurring some misconstruction; this thought necessarily arises from the terms in which she commends her father, whose weakness she had not had the skill to humour honorably, to the sisters, whose natures she knows too well not to foresee their course, even without the irritation which the same weakness was sure to give occasion and welcome pretext for. This, then, is the incongruity of the social state on which the tragic action of the play depends; and when Lear enters mad in the last scene, with Cordelia dead in his arms, we have but the fulfilment for either of the fate they equally provoked ; we behold the common catastrophe of affection too much qualified by unreasonable anger on one side, and unaccommodating rigour on the other.",
@@ -223,11 +229,11 @@
       ]
     },
     "29": {
-      "play": "KING LEAR : How, how, Cordelia! mend your speech a little, Lest it may mar your",
+      "play": "KING LEAR: How, how, Cordelia! mend your speech a little, Lest it may mar your",
       "notes": []
     },
     "30": {
-      "play": "CORDELIA : Good my lord, You have begot me, bred me, loved me: I Return those duties",
+      "play": "Good my lord, You have begot me, bred me, loved me: I Return those duties",
       "notes": [
         "Moberly: You have begot me...] Shakespeare, with wonderful naturalness, makes the shy and reserved Cordelia speak, when her false position is forced upon her, with a passion that will not stop to choose conciliatory expressions, and which makes up by vehemence, and what sounds like petulance, for the weakness of the argument which she is driven to use, as she cannot reveal the truth which she knows.",
         "Wright: begot] Sh. (see Mer. of Ven. III, ii, 65; II, ii, 37) uses both forms of the participle “begot” and “begotten.” In the Authorized Version the latter only occurs.",
@@ -235,25 +241,25 @@
       ]
     },
     "31": {
-      "play": "KING LEAR : But goes thy heart with this?",
+      "play": "KING LEAR: But goes thy heart with this?",
       "notes": []
     },
     "32": {
-      "play": "CORDELIA : Ay, good my lord.",
+      "play": "Ay, good my lord.",
       "notes": []
     },
     "33": {
-      "play": "KING LEAR : So young, and so untender?",
+      "play": "KING LEAR: So young, and so untender?",
       "notes": []
     },
     "34": {
-      "play": "CORDELIA : So young, my lord, and true.",
+      "play": "So young, my lord, and true.",
       "notes": [
         ""
       ]
     },
     "35": {
-      "play": "KING LEAR : Let it be so; thy truth, then, be thy dower: For, by the sacred radiance of",
+      "play": "KING LEAR: Let it be so; thy truth, then, be thy dower: For, by the sacred radiance of",
       "notes": [
         "Bucknill (p. 176): truth then be thy dower] [This curse] is madness, or it is nothing. Not indeed raving, incoherent, formed mania, as it subsequently displays itself, but exaggerated passion, perverted affection, enfeebled judgment, combining to form a state of mental disease—incipient, indeed, but still disease—in which man, though he may be paying for past errors, is during the present irresponsible.",
         "Capell: sun] The oaths given to Lear are admirable for their solemnity, and are taken from out the creed of his times as fables have given it ; he is made the builder of Leicester (Leir Cestre, Saxonid), and a temple of his erection is talk’d of to Janus Bifrons; so that as well his “Hecate” here, as his Apollo and Jupiter afterwards, are consonant to his imputed religion, whatever comes of his true ; to which, in likelihood, his address before “Hecate” has a nearer affinity.",
@@ -274,13 +280,13 @@
       ]
     },
     "36": {
-      "play": "KENT : Good my liege,--",
+      "play": "KENT: Good my liege,--",
       "notes": [
         "Capell: What] This is spoke on seeing his master put his hand to his sword."
       ]
     },
     "37": {
-      "play": "KING LEAR : Peace, Kent! Come not between the dragon and his wrath. I loved her most,",
+      "play": "KING LEAR: Peace, Kent! Come not between the dragon and his wrath. I loved her most,",
       "notes": [
         "Moberly: dragon] A natural trope for Lear to use, as, like Arthur, he would wear a helmet (Idylls of the King, p. 256): “On which for crest the golden dragon clung For Britain.” [See Godwin on helmets, Appendix, p. 449.]",
         "Heath: Hence, etc.] These words are undoubtedly addressed to Kent; for in the next words Lear sends for France and Burgundy, in order to tender to them his youngest daughter. At such a time, therefore, to drive her out of his presence would be a contradiction to his declared intention.",
@@ -300,15 +306,15 @@
       ]
     },
     "38": {
-      "play": "KENT : Royal Lear, Whom I have ever honour'd as my king, Loved as my father, as my",
+      "play": "Royal Lear, Whom I have ever honour'd as my king, Loved as my father, as my",
       "notes": []
     },
     "39": {
-      "play": "KING LEAR : The bow is bent and drawn, make from the shaft.",
+      "play": "KING LEAR: The bow is bent and drawn, make from the shaft.",
       "notes": []
     },
     "40": {
-      "play": "KENT : Let it fall rather, though the fork invade The region of my heart: be Kent",
+      "play": "Let it fall rather, though the fork invade The region of my heart: be Kent",
       "notes": [
         "Ascham says, in his Toxophilus (p. 135, ed. Arber), that Pollux describes two kinds of arrow-heads; “The one he calleth byKLVog, descrybynge it thus, hauyng two poyntes or barbes, lookyng backewarde to the stele and the fethers, which surely we call in Englishe a brode arrowe head or a swalowe tayle. The other he calleth ylcjxkt hauyng .ii. poyntes stretchyng forwarde, and this Englysh men do call a forkehead.”",
         "Johnson: Reserve thy state] I am inclined to think that Reverse thy doom was Shakespeare’s first reading, as more apposite to the present occasion, and that he changed it afterwards to “Reserve thy state,” which conduces more to the progress of the action.",
@@ -329,60 +335,60 @@
       ]
     },
     "41": {
-      "play": "KING LEAR : Kent, on thy life, no more.",
+      "play": "KING LEAR: Kent, on thy life, no more.",
       "notes": []
     },
     "42": {
-      "play": "KENT : My life I never held but as a pawn To wage against thy enemies; nor fear to lose",
+      "play": "My life I never held but as a pawn To wage against thy enemies; nor fear to lose",
       "notes": [
         "Steevens: pawn] Steevens: That is, a pledge, Capell, followed by Henley, strangely thinks that this refers to the pawn in a game of chess.",
         "Dyce: wage] Dyce {Gloss.}: That is, to stake in wager."
       ]
     },
     "43": {
-      "play": "KING LEAR : Out of my sight!",
+      "play": "KING LEAR: Out of my sight!",
       "notes": []
     },
     "44": {
-      "play": "KENT : See better, Lear; and let me still remain The true blank of thine eye.",
+      "play": "See better, Lear; and let me still remain The true blank of thine eye.",
       "notes": [
         "Johnson: blank] Johnson; The ‘blank’ is the white or exact mark at which the arrow is shot. ‘ See better,’ says Kent, ‘ and keep me always in your view.’"
       ]
     },
     "45": {
-      "play": "KING LEAR : Now, by Apollo,--",
+      "play": "KING LEAR: Now, by Apollo,--",
       "notes": [
         "Malone: Apollo] Malone; Bladud, Lear’s father, according to Geoffrey of Monmouth, attempting to fly, fell on the temple of Apollo, and was killed. This circumstance our author must have noticed, both in Holinshed’s Chronicle and The Mirrour for Magistrates. Steevens; Are we to understand, from this circumstance, that the son swears by Apollo, because the father broke his neck on the temple of that deity? Malone; We are to understand that Sh. learned from hence that Apollo was worshipped by our British ancestors, which will obviate Dr. Johnston’s objection, in a subsequent note, to Shakespeare’s making Lear too much a mythologist."
       ]
     },
     "46": {
-      "play": "KENT : Now, by Apollo, king, Thou swear'st thy gods in vain.",
+      "play": "Now, by Apollo, king, Thou swear'st thy gods in vain.",
       "notes": [
         "Abbott: swear’st] Abbott (§ 200); The preposition is omitted after some verbs which can easily be regarded as transitive. See also ‘ smile you my speeches,’ II, ii, 77. Wright; Sh. frequently uses the verb in a transitive sense when it has a person for its object, as in Jul. Cees, II, i, 129; but in the sense of appealing to a deity by an oath, it is not common."
       ]
     },
     "47": {
-      "play": "KING LEAR : O, vassal! miscreant!",
+      "play": "KING LEAR: O, vassal! miscreant!",
       "notes": [
         "Delius: miscreant] Delius says that Kent is a ‘miscreant’ in regard to Apollo and the gods, whom he has contemptuously termed ‘thy gods;’ and that recreant, of the Qq, he is in regard to Lear. But, as Schmibt says, Sh. uses ‘miscreant’ very frequently in the sense of moral worthlessness."
       ]
     },
     "48": {
-      "play": "ALBANY : Dear sir, forbear.",
+      "play": "ALBANY: Dear sir, forbear.",
       "notes": []
     },
     "49": {
-      "play": "CORNWALL : Dear sir, forbear.",
+      "play": "CORNWALL: Dear sir, forbear.",
       "notes": []
     },
     "50": {
-      "play": "KENT : Do: Kill thy physician, and the fee bestow Upon thy foul disease. Revoke thy",
+      "play": "KENT: Do: Kill thy physician, and the fee bestow Upon thy foul disease. Revoke thy",
       "notes": [
         "Walker: clamour] Walker has a section (Crit, i, 156) devoted to the meaning of this word, which, he seems to think expresses an idea of wailing or lamentation. The present passage can with difficulty be said to support this theory."
       ]
     },
     "51": {
-      "play": "KING LEAR : Hear me, recreant! On thine allegiance, hear me! Since thou hast sought to",
+      "play": "KING LEAR: Hear me, recreant! On thine allegiance, hear me! Since thou hast sought to",
       "notes": [
         "White: That] To White, ‘That’ of the Ff seems more in keeping with the style of this play. ‘ Of old that had, as it still has among our best writers, the sense of for that, seeing that, assuming. So, ScHMiDT also says, that the causative since of the Qq is less in the tone of suppressed passion which characterizes the speech, and leads, grammatically, less directly than ‘that’ to the main point: ‘take thy reward.’ See I, i, 70.",
         "Edwards: power] Edwards: That is, our power to execute it.",
@@ -396,7 +402,7 @@
       ]
     },
     "52": {
-      "play": "KENT : Fare thee well, king: sith thus thou wilt appear, Freedom lives hence, and",
+      "play": "Fare thee well, king: sith thus thou wilt appear, Freedom lives hence, and",
       "notes": [
         "Abbott: Fare thee] For instances of the use, for euphonic reasons, probably of ‘thee’ for thou, see Abbott, § 212.",
         "[General] sith] Here, as in Ham, II, ii, 6, the Ff and Qq differ in the use of ‘sith’ and ‘since,’ showing, as Clarendon points out, that Sh. did not uniformly observe the distinction laid down by Marsh. See notes on the passage in Ham,",
@@ -406,13 +412,13 @@
       ]
     },
     "53": {
-      "play": "GLOUCESTER : Here's France and Burgundy, my noble lord.",
+      "play": "GLOUCESTER: Here's France and Burgundy, my noble lord.",
       "notes": [
         "[General] Here’s] See III, iii, 171 Ham, III, iv, 202; IV, v, 5; Mad. II, iii, 137; and Abbott, §335."
       ]
     },
     "54": {
-      "play": "KING LEAR : My lord of Burgundy. We first address towards you, who with this king",
+      "play": "KING LEAR: My lord of Burgundy. We first address towards you, who with this king",
       "notes": [
         "Abbott: Hath] For instances of the relative followed by a singular verb, though the antecedent be plural, see Abbott, § 247.",
         "Schmidt: rivall’d] Schmidt; The only instance in Sh. of its use as a verb.",
@@ -420,11 +426,11 @@
       ]
     },
     "55": {
-      "play": "BURGUNDY : Most royal majesty, I crave no more than what your highness offer'd, Nor",
+      "play": "BURGUNDY: Most royal majesty, I crave no more than what your highness offer'd, Nor",
       "notes": []
     },
     "56": {
-      "play": "KING LEAR : Right noble Burgundy, When she was dear to us, we did hold her so; But",
+      "play": "KING LEAR: Right noble Burgundy, When she was dear to us, we did hold her so; But",
       "notes": [
         "Capell: so] Capell: Speaking indefinitely, as one unwilling to say how much she was dear to him ; and giving ‘ so’ the force of—so and so, or at such and such price, as men sometimes express themselves. Eccues, Malone, and Moberly think that it means ‘ worthy of that high dowry,’ in which opinion the present Editor agrees, but Wright thinks that it means simply dear.",
         "Johnson: seeming] Johnson; Beautiful. Steevens: Specious. Wright: That substance which is but little in appearance. Moberly ; Her nature that seems so slight and shallow. Lear speaks in the next line of her ‘infirmities,’ her want of established principle as compared with her decided and outspoken sisters. Schmidt thinks that all these definitions fail to take into account Shakespeare’s use of the word ‘substance,’ whereby he commonly expresses reality in opposition to shadow; ‘ seeming substance ’ means, therefore, something which pretends to be that which it is not. Perhaps, he adds, ‘ seeming ’ is to be taken as a gerund, and ‘ seeming substance ’ may then mean a creature whose reality is mere show or seeming.",
@@ -432,11 +438,11 @@
       ]
     },
     "57": {
-      "play": "BURGUNDY : I know no answer.",
+      "play": "I know no answer.",
       "notes": []
     },
     "58": {
-      "play": "KING LEAR : Will you, with those infirmities she owes, Unfriended, new-adopted to our",
+      "play": "KING LEAR: Will you, with those infirmities she owes, Unfriended, new-adopted to our",
       "notes": [
         "[General] like] See Ham. II, ii, 80.",
         "[General] owes] Owns.",
@@ -444,21 +450,21 @@
       ]
     },
     "59": {
-      "play": "BURGUNDY : Pardon me, royal sir; Election makes not up on such conditions.",
+      "play": "Pardon me, royal sir; Election makes not up on such conditions.",
       "notes": [
         "Johnson: makes not up] Johnson: To make up, in familiar language, is neutrally, to come forward, to make advances, which I think is meant here. MalonE: Election comes not to a decision. Knight: The choice of Burgundy refuses to come to a decision, in such circumstances, or on such terms. Mason thinks that up and * on ’ should be read as one word, in order to make the sense evident. But Wright’s note is conclusive: ‘ Election makes not its choice, comes to no decision, resolves not. We still say to make up one’s mind,” and the phrase is here used elliptically in the same sense.’",
         "Schmidt: in such conditions] Schmidt (Imt Texihrifik, &c., p. 14): If ‘conditions’ be here taken in its ordinary sense, it requires, even according to Shakespeare’s own mode of speaking, on before it, instead of ‘ in;’ but it is not ‘conditions’ that are spoken of in what precedes: “Will you, with those infirmities she owes, Unfriended, new-adopted to our hate. Dower’d with our curse, and stranger’d with our oath,” &c. It is qualities that are here enumerated, and it is in just this sense of quality that Shakespeare very often uses *condition.’ Meas.for Meas. I, i, 54: ‘our haste from hence is of so quick condition that it prefers itself,’ &c. Mer. of Ven. V, i, 74: ' unhandled colts, fetching mad bounds . . . which is the hot condition of their blood.’ Hen. V: IV, i, loS: ‘all his senses' have but human conditions.’ Much Ado, III, ii, 68: ‘ one that knows him, and his ill conditions,’ That the word in this sense may also have the preposition in before it can be shown by abundant examples. As You Like it, I, i, 47: ‘ I know you are my eldest brother, and in the gentle condition of blood you should so know me.’ Rich. II: II, iii, 107 ‘ in conditions of the worst degree, in gross rebellion,’ &c."
       ]
     },
     "60": {
-      "play": "KING LEAR : Then leave her, sir; for, by the power that made me, I tell you all her",
+      "play": "KING LEAR: Then leave her, sir; for, by the power that made me, I tell you all her",
       "notes": [
         "Schmidt: avert] Schmidt: Not elsewhere in Sh. as a verb.",
         "Abbott: more worthier . . . Most best] For instances of double comparatives and superlatives, see Abbott, § 11."
       ]
     },
     "61": {
-      "play": "KING OF FRANCE : This is most strange, That she, that even but now was your best",
+      "play": "KING OF FRANCE: This is most strange, That she, that even but now was your best",
       "notes": [
         "[General] such . . . To] For instances of the omission of as after such, so, see Abbott, § 281, and line 216.",
         "Schmidt: object] Schmidt {Zur Textkritik, &c., p. 14): Sh. uses this word, without an adjective, in an expanded sense, equivalent to that which one has always in his eye, or seeks out with his eye, the delight of his eye. Thus, V, and A., 255; ‘The time is spent, her object will away,’ &c.; 3., 822; ‘ So did the merciless and pitchy night Fold in the object that did feed her sight;’ Mid. N, D, IV, i, 174: the object and the pleasure of mine eye is only Helena;’ Cyjnb, V, iv, 55: ‘ fruitful object be In eye of Imogen.’ Where Timon, IV, iii, 122, tells Alcibiades to ‘ swear against objects,’ he means ‘pour out curses, when whatever touches the heart of man presents itself to the eye.’ The interpolated ‘ best,’ in the present passage, while it makes the phrase more generally understood, weakens insteads of strengthens the passage. [The omission of the adjective throws the accent on the last syllable of ’object,’ which may be correct, but I can find no other similar accentuation of this noun in Sh.—Ed.]",
@@ -467,7 +473,7 @@
       ]
     },
     "62": {
-      "play": "CORDELIA : I yet beseech your majesty,-- If for I want that glib and oily art, To speak",
+      "play": "CORDELIA: I yet beseech your majesty,-- If for I want that glib and oily art, To speak",
       "notes": [
         "[General] beseech] For instances of the omission of the nominative, see Abbott, §401.",
         "[General] majesty] A dissyllable.",
@@ -481,13 +487,13 @@
       ]
     },
     "63": {
-      "play": "KING LEAR : Better thou Hadst not been born than not to have pleased me better.",
+      "play": "KING LEAR: Better thou Hadst not been born than not to have pleased me better.",
       "notes": [
         "Bucknill: Better, &c.] Bucknill (p. 177): All this is exaggerated passion, perverted affection, weakened judgement; all the elements, in fact, of madness, except incoherence and delusion. These are added later, but they are not essential to madness; and, as we read the play, the mind of Lear is, from the first, in a state of actual unsoundness, or, to speak more precisely, of disease."
       ]
     },
     "64": {
-      "play": "KING OF FRANCE : Is it but this,--a tardiness in nature Which often leaves the history",
+      "play": "KING OF FRANCE: Is it but this,--a tardiness in nature Which often leaves the history",
       "notes": [
         "Collier: best] Collier (ed. 3); The compositor [instead of blest] caught ‘best’ from the next line but one.",
         "Warburton: history] Warburton: He will follow his old maxims; he will continue to act upon the same principles. Steevens quotes: ‘St. George for England! and Ireland now adieu. For here Tom Stukely shapes his course anew.’—Peele’s Battle off Alcazar, 1594, p. 117; ed. Dyce. As You Like It [Gent. Maga., lx, p. 402)' conjectures corse for ‘ course,’ and explains that Kent means that ‘he’ll conform his old body, approaching towards a corse, to the customs of a new country.’ Wright so far agrees with this anonymous critic as to think that there is ‘evidently a play intended upon the words “ course ” and \" corse.” ’ [The antithesis is so marked between ‘old’ and ‘ new ’ that, to me, the simpler the interpretation the better: Kent’s old age must be finished in a new countiy. The jingle between ‘ course’ and ‘ corse ’ is certainly Shakespearian, but I cannot see that it is called for here; the situation is not so tragic that it needs the relief of a smile, and, moreover, ‘to shape a corse’ is well-nigh unintelligible.—Ed.]",
@@ -499,26 +505,26 @@
       ]
     },
     "65": {
-      "play": "BURGUNDY : Royal Lear, Give but that portion which yourself proposed, And here I take",
+      "play": "BURGUNDY: Royal Lear, Give but that portion which yourself proposed, And here I take",
       "notes": []
     },
     "66": {
-      "play": "KING LEAR : Nothing: I have sworn; I am firm.",
+      "play": "KING LEAR: Nothing: I have sworn; I am firm.",
       "notes": []
     },
     "67": {
-      "play": "BURGUNDY : I am sorry, then, you have so lost a father That you must lose a husband.",
+      "play": "I am sorry, then, you have so lost a father That you must lose a husband.",
       "notes": []
     },
     "68": {
-      "play": "CORDELIA : Peace be with Burgundy! Since that respects of fortune are his love, I shall",
+      "play": "CORDELIA: Peace be with Burgundy! Since that respects of fortune are his love, I shall",
       "notes": [
         "[General] Since that] See Mach. IV, in, 106, or Abbott, §287.",
         "[General] respects of fortune] If we adopt this reading, 'respects’ is used like ‘regards’ in line 335, or in Ham. II, ii, 79, and, course, with the same meaning in Mach III, i, 68. But it is doubtful if the reading of the Ff be not better; It means the same, and the turn of the phrase is certainly Shakespearian. Schmidt (Zur Textkritik, p. 15), in reference in this line, has given several instances of hendiadys in this very play, I, ii, 45; ‘This policy and reference of equivalent to this policy of reverence,’ I, iv, 336: ‘This milky gentleness and course of yours’ equivalent to ‘gentle course of yours;’ I, vi, 74: ‘With swift gale and vary of their master’s feature’ equivalent to ‘every varying gale,’ i.e. feature;’ II, ii, 74: ‘seeming like the image and horror of it’ equivalent to ‘the horror of it;’ III, iv, 336: ‘With eyeless rage like the image and horror of it’ equivalent to 'horror of it;’ V, iii, 137: ‘With upward and downward of the moon’ equivalent to ‘with the moon’s upward and downward course;’ Hen. VI: IV, iii, 22: ‘This policy and reverence of age makes the world bitter to the best of our times;’ R.& J.: V, i, 24: ‘This same thought and hendiadys;’ and other such constructions."
       ]
     },
     "69": {
-      "play": "KING OF FRANCE : Fairest Cordelia, that art most rich, being poor; Most choice,",
+      "play": "KING OF FRANCE: Fairest Cordelia, that art most rich, being poor; Most choice,",
       "notes": [
         "Wright: waterish] Wright: Used with a tinge of contempt. See Oik. III, iii, 15. Burgundy was the best watered district of France. See Heylyn (Help to English History, ed. 1773, p. 35): ‘That which Queen Katharine said justly, that France had more rivers than all Europe hath; may in summer be said of this Province of Burgundy, the best watered of France.’",
         "Abbott: unprised] Abbott, §373: This may mean *unprized but precious to me.’ Wright; Or it may mean unvalued, i.e. ‘without price.’ In Rich. III; I, iv, 299, it signifies worthless.",
@@ -527,15 +533,15 @@
       ]
     },
     "70": {
-      "play": "KING LEAR : Thou hast her, France: let her be thine; for we Have no such daughter, nor",
+      "play": "KING LEAR: Thou hast her, France: let her be thine; for we Have no such daughter, nor",
       "notes": []
     },
     "71": {
-      "play": "KING OF FRANCE : Bid farewell to your sisters.",
+      "play": "KING OF FRANCE: Bid farewell to your sisters.",
       "notes": []
     },
     "72": {
-      "play": "CORDELIA : The jewels of our father, with wash'd eyes Cordelia leaves you: I know you",
+      "play": "The jewels of our father, with wash'd eyes Cordelia leaves you: I know you",
       "notes": [
         "Steevens: Ye jewels] Steevens: It is frequently impossible in ancient MS to distin-guish The from its customary abbreviation. Walker (Crit, iii, 276) supports the The of the QqFf by quotations from Browne and Spenser, but, as Dyce says, they are not parallel to the present passage. Moberly: ‘You who are naturally dear and precious to him.’ Halliwell: The old reading makes sense, but The and Ye being constantly written the same in MSS, there can be little hesitation in adopting the latter reading, which seems to improve the sentence. SCHMiDT gives several instances of the use of The before the vocative: Cor, I, vi, 6; yul. Cess, V, iii, 99; Per, III, i, I ; but of these the first alone is parallel, and the last is generally printed ‘Thou’ instead of The,",
         "[General] wash’d] For instances of the use of this word as applied to tears, see Schmidt, Lex. s. v.",
@@ -545,53 +551,53 @@
       ]
     },
     "73": {
-      "play": "REGAN : Prescribe not us our duties.",
+      "play": "REGAN: Prescribe not us our duties.",
       "notes": [
         "[General] not* us] In the belief that the to, in the full phrase ‘prescribe not to us’ is absorbed in the final / of ‘not’ I have printed the text as above. See II, ii, 116. Ed."
       ]
     },
     "74": {
-      "play": "GONERIL : Let your study Be to content your lord, who hath received you At fortune's",
+      "play": "GONERIL: Let your study Be to content your lord, who hath received you At fortune's",
       "notes": [
         "Theobald: wortk . . . wanted] Theobald : *You well deserve to meet with that want of love from your husband, which you have profess’d to want for our Father.* Warburton t This nonsense must be corrected thus ; ‘worth .... vaunted,’ i.e., that disherison, which you so much glory in, you deserve. Heath ; Sh. might have written : ‘the want that you have wasted,’ i.e., you will deserve to want that which you have yourself so wastefully and unnecessarily thrown away. Tollet : ‘You are well deserving of the want of dower that you are without.’ Jennens: The old reading is not elegant, indeed, but it is intelligible,—it is like ‘seeding seed’—Gen, i. 29. Capell; The Qq reading, with this addition, viz: 'are worth to want the 'worth that you have wanted' has a plain sense, and one worthy the utterer, and gives a roundness to the jingle. Eccles : It might be read: ‘worth to want that you have wanted,’— 'that' taken demonstratively, and not relatively,—or else, ‘the want of that you have wanted.’ Wright ; Dr. Badham combined the texts of Ff and Qq thus; 'And well are worthy want that worth have wanted.' The difficulty seems to arise from the imperfect connection of the relative with its antecedent. The use of the word 'want' has, apparently, the effect of always making Shakespeare’s constructions obscure. See line 229, Goneril says ‘you have come short in your obedience, and well deserve the want of that affection in which you yourself have been wanting,' Otherwise [with Jennens], we must regard 'the want that you have wanted' as an instance of the combination of a verb with its cognate accusative [which is the view Schmidt takes]. Moberly; The text of the Qq might be emended thus; ‘Which well were worth the word that you have wanted,’ i.e., yet obedience might have claimed from you the one word which you would not say."
       ]
     },
     "75": {
-      "play": "CORDELIA : Time shall unfold what plaited cunning hides: Who cover faults, at last",
+      "play": "CORDELIA: Time shall unfold what plaited cunning hides: Who cover faults, at last",
       "notes": [
         "Theobald: plighted] Theobald {Sh. Rest., p. 171) suggested pleached, i.e., twisted, entangled, but preferred plaited, i.e., wrapt in folds, which Pope adopted in his ed. 2. Malone once thought it should ho plated, as in IV, vi, 169, but was afterwards convinced, by the word ‘unfold,’ that plaited of the Qq was the true reading. Knight: To ‘plight’ and to plait equally mean 'to fold.’ In Milton’s Hist. of England, Boadicea wears ‘a plighted garment of divers colours.’ In the exquisite passage in Comus, ‘I took it for a fairy vision Of some gay creatures of the element, That in. the colours of the rainbow live, And play i’ th’ plighted clouds’—the epithet has the same meaning. STAUNTON: ‘Plighted’ means involved, complicated. WRIGHT: For the Folio spelling, see Spenser, Faery Queene, ii, 3, § 26: ‘All in a silken Camus lilly whight, Purfled upon with many a folded plight.’ Cotgrave gives, ‘Pli : m. A plait, fould, lay ; bought ; wrinkle, crumple.’",
         "Mason: cover] Mason: The Ff are right, with the change of a single letter: covert instead of ‘covers.’ Thus, ‘Who covert faults at last with shame derides.’ ‘Who’ referring to ‘time.’ [This reading was followed by Rann.] Henley; Cordelia alludes to Prov. xxviii, 13: ‘He that covereth his sins shall not prosper.’ See. Singer (ed. 2): I have no doubt we should read cover-faults, i.e. dissemblers and that the meaning is: ‘Time shall unfold what cunning duplicity hides, who (Time) at last derides such dissemblers with shame, by unmasking them.’ [And this compound Singer adopted into the text of Sh., for whose purity, as against Collier’s (MS) emendations, he had contended so vehemently, and, it should be added, so intemperately. Ed.] Dyce; I adhere to the Qq, because I feel convinced that ‘Who’ refers to people in general,—‘Those who,’ See. As to the with of the Folio (which, by the by, Mr. Collier’s (MS) changes to them), I can no more account for it, than for hundreds of other strange things which the Folio exhibits,- Schmidt refers ‘Who’ to ‘time,’ and says that ‘faults’ is the object of both ‘covers’ and ‘derides.’ [I cannot but agree with Dyce’s interpretation.— Ed.]"
       ]
     },
     "76": {
-      "play": "KING OF FRANCE : Come, my fair Cordelia.",
+      "play": "KING OF FRANCE: Come, my fair Cordelia.",
       "notes": []
     },
     "77": {
-      "play": "GONERIL : Sister, it is not a little I have to say of what most nearly appertains to us both.",
+      "play": "GONERIL: Sister, it is not a little I have to say of what most nearly appertains to us both.",
       "notes": [
         "Capell: most] Capell thinks that this ‘word is crept into Goneril’s speech out of her sister’s that follows, which makes apart of it verse; “ most,” therefore, should be discarded.’",
         "Eccles: hence] Eccles ; There is not, I think, throughout the play, the least hint given as to the particular part of the realm in which any scene lies, till we are introduced towards the conclusion into the neighborhood of Dover; nor are we informed whether it be intended that either of the sisters should make the palace of Lear her future residence. All we know is, that he was to abide alternately with them in whatsoever part they held their court. For ellipsis of the verb of motion after will and w, see Abbott, § 405."
       ]
     },
     "78": {
-      "play": "REGAN : That's most certain, and with you; next month with us.",
+      "play": "REGAN: That's most certain, and with you; next month with us.",
       "notes": []
     },
     "79": {
-      "play": "GONERIL : You see how full of changes his age is; the observation we have made of it",
+      "play": "GONERIL: You see how full of changes his age is; the observation we have made of it",
       "notes": [
         "Dyce: hath not been] Dyce says that the reading of the Ff defies common sense. Schmidt, while acknowledging that the ‘not’ may have dropped by mischance from the line of the Ff, thinks that a good sense may yet be extracted from that line by making ‘have’ emphatic. Thus; All our observation in the past is little in comparison with what we may expect in the future, to judge from Lear’s treatment of Cordelia."
       ]
     },
     "80": {
-      "play": "REGAN : 'Tis the infirmity of his age: yet he hath ever but slenderly known himself.",
+      "play": "REGAN: 'Tis the infirmity of his age: yet he hath ever but slenderly known himself.",
       "notes": [
         "Moberly: age] Moberly: These women come of themselves, and at once, to the feeling which it requires all Iago’s art to instil into Othello; on whom it is at length urged that Desdemona must be irregular in mind, or she would not have preferred him to the ‘curled darlings’ of Venice."
       ]
     },
     "81": {
-      "play": "GONERIL : The best and soundest of his time hath been but rash; then must we look to",
+      "play": "GONERIL: The best and soundest of his time hath been but rash; then must we look to",
       "notes": [
         "Wright: time] Wright : That is, his best and soundest years. See I, ii, 46.",
         "Wright: ingraffed] Wright ; This spelling, and that in the Qq, are both used by Sh., though the former is the more correct, the word being derived from the Fr. greffer. In Lucrece, 1062, we find the substantive ‘graff.’",
@@ -599,22 +605,22 @@
       ]
     },
     "82": {
-      "play": "REGAN : Such unconstant starts are we like to have from him as this of Kent's",
+      "play": "REGAN: Such unconstant starts are we like to have from him as this of Kent's",
       "notes": []
     },
     "83": {
-      "play": "GONERIL : There is further compliment of leavetaking between France and him. Pray",
+      "play": "GONERIL: There is further compliment of leavetaking between France and him. Pray",
       "notes": [
         "Steevens: hit] Steevens: That is, let us agree. Hudson: The meaning of what follows probably is, if the king continue in the same rash, headstrong, and inconstant temper, as he has just shown, in snatching back his authority the moment his will is crossed, we shall be the worse off for his surrender of the kingdom to us. Schmidt (Zur Textkritik, p. 15) earnestly contends, but I am afraid in vain, for ‘sit’ of the Ff. ‘To strike together,’ he says, ‘or to act in harmony, as it is expressed by “to hit together,” is not a matter of free will, but proceeds directly from the nature of things, and is not something to which one can be invited. . . . Whereas, the phrase “sit together,” has the plain and manifest meaning—to hold a session, to take counsel together. Goneril would forthwith see a common plan agreed upon, and to Regan’s dilatory answer: “We shall think further of it,” replies: “We must do something, and i’ th’ heat,” and for this an agreement is of course essential, and an agreement she demands in the words ‘Let us sit together.”’ Schmidt then adduces the following instances in proof: Twelfth Night, I, v, 143; Nam. V, i, 4; Hen. V: V, ii. 80; Rich. Ill: III, i, 173; Cor, V, ii, 74; Ib. V, iii, 13 1; Per. II, iii, 92. But in all these instances, except, perhaps, the last, there is reference to a judicial assembly or a session more or less formal and solemn, and a meaning is conveyed which I cannot but think strained when applied to an agreement between two sisters. Ed.",
         "Dyce: disposition] Dyce; As to ‘dispositions’ or disposition,—either reading may stand; we have afterwards both forms from the mouth of the presentspeaker. See I, iv, 215 and"
       ]
     },
     "84": {
-      "play": "REGAN : We shall further think on't.",
+      "play": "REGAN: We shall further think on't.",
       "notes": []
     },
     "85": {
-      "play": "GONERIL : We must do something, and i' the heat.",
+      "play": "GONERIL: We must do something, and i' the heat.",
       "notes": [
         "Steevens: heat] Steevens : That is, we must strike while the iron is hot."
       ]
@@ -634,7 +640,7 @@
   },
   "ACT 1, SCENE 2": {
     "1": {
-      "play": "EDMUND : Thou, nature, art my goddess; to thy law",
+      "play": "EDMUND: Thou, nature, art my goddess; to thy law",
       "notes": [
         "Warburton: Nature] Sh. makes this bastard an atheist. Italian atheism had much infected the English court. Steevens : Edmund speaks of ‘nature’ in opposition to ‘ custom,’ and not to the existence of a God. Edmund means only, that as he came not into the world as ‘ custom ’ or law had prescribed, so he had nothing to do but to follow ‘ nature ’ and her laws, which make no difference between legitimacy and illegitimacy, between the eldest and the youngest. To contradict Warburton’s assertion yet more strongly, Edmund concludes this very speech by an invocation to heaven. Mason: Edmund calls ‘ nature ’ his ‘ goddess ’ for the same reason that we call a bastard a natural son,—one who, according to the law of nature, is the child of his father, but according to that of civil society is nullius filius, COLERIDGE : In this speech of Edmund you see as soon as a man cannot reconcile himself to reason, how his conscience flies off by way of appeal to Nature, who is sure upon such occasions never to find fault, and also how shame sharpens a predisposition in the heart to evil. For it is a profound moral, that shame will naturally generate guilt; the oppressed will be vindictive, like Shylock, and in the anguish of undeserved ignominy the delusion secretly springs up, of getting over the moral quality of an action by fixing the mind on the mere physical act alone."
       ]
@@ -742,7 +748,7 @@
       "notes": []
     },
     "23": {
-      "play": "GLOUCESTER : Kent banish'd thus! and France in choler parted!",
+      "play": "GLOUCESTER: Kent banish'd thus! and France in choler parted!",
       "notes": [
         "Om, Rowe. Scene vi. Enter...letter.] Rowe (subs.). Enter Pope Jen. Bastard solus. Qq (felas Q^.) Enter The.. .castle.] A Castle belonging to the Earl of Glo'ster. Pope. A Hall in the Earl of Gloster’s Castle. Cap. Eccles disapproves of this order of the scenes; in his judgement the accusation Of Edgar by Edmund labours under a weight of improbability, which is increased the longer that Edgar remains concealed without taking any steps to vindicate himself ; that he should lie thus quiet, during all the time that passes from the opening day of the tragedy to Lear’s stormy departure for Gloster’s castle, is * an outrage upon common sense too gross to be admitted,’ thinks Eccles, who, therefore, transposes this scene to the beginning of Act II, bringing it immediately before the scene where Edmund persuades Edgar to fly, and pretends that he has been wounded. Thus, the two scenes are * brought within the compass of the same day, and a few hours only, or less, may be conceived to intervene between them.’ This consummation, however, is not attained without loss; for Sh. clearly intended that this scene should be where he put it, as the second of the tragedy: Gloster enters sadly, muttering: * Kent banished thus, And France in choler parted ? And the king gone tonight ? subscribed his power ? Confined to exhibition? All this done upon the gad I’ (lines 23-26). But Eccles says that Sh. was liable to ‘unhappy oversights’ of dramatic probability, and this must be one; ‘these obnoxious lines,’ therefore, he cuts out and ‘ degrades ’ to the bottom of the page, begging forgiveness for the act, on the ground that he is * in pursuit of a favorite object which is essential to the reasonableness and consistency of this admirable drama; more especially as the lines in themselves are of small importance, and the only ones so treated ’ by him."
       ]
@@ -766,27 +772,27 @@
       ]
     },
     "27": {
-      "play": "EDMUND : So please your lordship, none.",
+      "play": "EDMUND: So please your lordship, none.",
       "notes": []
     },
     "28": {
-      "play": "GLOUCESTER : Why so earnestly seek you to put up that letter?",
+      "play": "GLOUCESTER: Why so earnestly seek you to put up that letter?",
       "notes": []
     },
     "29": {
-      "play": "EDMUND : I know no news, my lord.",
+      "play": "EDMUND: I know no news, my lord.",
       "notes": []
     },
     "30": {
-      "play": "GLOUCESTER : What paper were you reading?",
+      "play": "GLOUCESTER: What paper were you reading?",
       "notes": []
     },
     "31": {
-      "play": "EDMUND : Nothing, my lord.",
+      "play": "EDMUND: Nothing, my lord.",
       "notes": []
     },
     "32": {
-      "play": "GLOUCESTER : No? What needed, then, that terrible dispatch of",
+      "play": "GLOUCESTER: No? What needed, then, that terrible dispatch of",
       "notes": [
         "White ; terrible] This is not the mere meaningless expletive so often used by uncultivated people. Edmund hides the letter away in haste and terror. Schmidt calls attention to the active meaning which adjectives in -ble had in Shakespeare’s time. Thus, * audible ’ in Coriolanus means hearing well ; * contemptible * means contemptuous ; ^ unmeritable,’ undeserving^ &c."
       ]
@@ -804,7 +810,7 @@
       "notes": []
     },
     "36": {
-      "play": "EDMUND : I beseech you, sir, pardon me: it is a letter",
+      "play": "EDMUND: I beseech you, sir, pardon me: it is a letter",
       "notes": []
     },
     "37": {
@@ -820,11 +826,11 @@
       "notes": []
     },
     "40": {
-      "play": "GLOUCESTER : Give me the letter, sir.",
+      "play": "GLOUCESTER: Give me the letter, sir.",
       "notes": []
     },
     "41": {
-      "play": "EDMUND : I shall offend, either to detain or give it. The",
+      "play": "EDMUND: I shall offend, either to detain or give it. The",
       "notes": [
         "For instances of the infinitive active for the infinitive passive, see Abbott, § 359 and § 405, also Ham. IV, iv, 44."
       ]
@@ -834,11 +840,11 @@
       "notes": []
     },
     "43": {
-      "play": "GLOUCESTER : Let's see, let's see.",
+      "play": "GLOUCESTER: Let's see, let's see.",
       "notes": []
     },
     "44": {
-      "play": "EDMUND : I hope, for my brother's justification, he wrote",
+      "play": "EDMUND: I hope, for my brother's justification, he wrote",
       "notes": [
         "Johnson: essay or taste] Though ‘ taste’ may stand here, yet I believe we should read, < assay or test;^ they are both metallurgical terms and properly joined. Steevens : Both are terms from royal tables. See V, iii, 144, SiNGER: Thus Baret, Alvearie : ^ to Assay or rather Essay of the French woorde Essayer^ and afterwards ; <To last or assay before. Prcelibo.^ Wright: Proof or trial. The two words < essay ^ and * assay ^ are etymologically the same. In I Samuel, xvii, 39, it is said of David in Saul’s armour that he ‘ assayed to go,’ that is, tried or attempted to go. * Taste ’ occurs both as a noun and verb as synonymous with ‘ test.’ Compare i Hen. IV: IV, i, I19. Cotgrave has, ‘Essay: m. An essay, proofe . . . also, the tast, or Essay taken of Princes meat, or drinke.’ [See Ham. II, ii, 411: taste of your quality.’]"
       ]
@@ -850,7 +856,7 @@
       ]
     },
     "46": {
-      "play": "GLOUCESTER : [Reads] 'This policy and reverence of age makes",
+      "play": "GLOUCESTER: [Reads] 'This policy and reverence of age makes",
       "notes": [
         "Wright : the best of our times] The best periods of our lives."
       ]
@@ -922,7 +928,7 @@
       "notes": []
     },
     "61": {
-      "play": "EDMUND : It was not brought me, my lord; there's the",
+      "play": "EDMUND: It was not brought me, my lord; there's the",
       "notes": []
     },
     "62": {
@@ -934,11 +940,11 @@
       "notes": []
     },
     "64": {
-      "play": "GLOUCESTER : You know the character to be your brother's?",
+      "play": "GLOUCESTER: You know the character to be your brother's?",
       "notes": []
     },
     "65": {
-      "play": "EDMUND : If the matter were good, my lord, I durst swear",
+      "play": "EDMUND: If the matter were good, my lord, I durst swear",
       "notes": []
     },
     "66": {
@@ -950,11 +956,11 @@
       "notes": []
     },
     "68": {
-      "play": "GLOUCESTER : It is his.",
+      "play": "GLOUCESTER: It is his.",
       "notes": []
     },
     "69": {
-      "play": "EDMUND : It is his hand, my lord; but I hope his heart is",
+      "play": "EDMUND: It is his hand, my lord; but I hope his heart is",
       "notes": [
         "For instances of the participle being implied, in the case of a simple word, such as being, see Abbott, § 381."
       ]
@@ -964,11 +970,11 @@
       "notes": []
     },
     "71": {
-      "play": "GLOUCESTER : Hath he never heretofore sounded you in this business?",
+      "play": "GLOUCESTER: Hath he never heretofore sounded you in this business?",
       "notes": []
     },
     "72": {
-      "play": "EDMUND : Never, my lord: but I have heard him oft",
+      "play": "EDMUND: Never, my lord: but I have heard him oft",
       "notes": []
     },
     "73": {
@@ -984,7 +990,7 @@
       "notes": []
     },
     "76": {
-      "play": "GLOUCESTER : O villain, villain! His very opinion in the",
+      "play": "GLOUCESTER: O villain, villain! His very opinion in the",
       "notes": []
     },
     "77": {
@@ -1006,7 +1012,7 @@
       "notes": []
     },
     "81": {
-      "play": "EDMUND : I do not well know, my lord. If it shall please",
+      "play": "EDMUND: I do not well know, my lord. If it shall please",
       "notes": []
     },
     "82": {
@@ -1056,11 +1062,11 @@
       ]
     },
     "92": {
-      "play": "GLOUCESTER : Think you so?",
+      "play": "GLOUCESTER: Think you so?",
       "notes": []
     },
     "93": {
-      "play": "EDMUND : If your honour judge it meet, I will place you",
+      "play": "EDMUND: If your honour judge it meet, I will place you",
       "notes": [
         "Johnson : wind me] I once thought it should be read : ‘ wind you /’ but, perhaps, it is a familiar phrase, like ‘ do me this.’ [For other instances of this ethical dative, see Abbott, § 220, or Macb. Ill, vi, 41.]"
       ]
@@ -1083,15 +1089,15 @@
       ]
     },
     "97": {
-      "play": "GLOUCESTER : He cannot be such a monster--",
+      "play": "GLOUCESTER: He cannot be such a monster--",
       "notes": []
     },
     "98": {
-      "play": "EDMUND : Nor is not, sure.",
+      "play": "EDMUND: Nor is not, sure.",
       "notes": []
     },
     "99": {
-      "play": "GLOUCESTER : To his father, that so tenderly and entirely",
+      "play": "GLOUCESTER: To his father, that so tenderly and entirely",
       "notes": []
     },
     "100": {
@@ -1111,7 +1117,7 @@
       "notes": []
     },
     "104": {
-      "play": "EDMUND : I will seek him, sir, presently: convey the",
+      "play": "EDMUND: I will seek him, sir, presently: convey the",
       "notes": []
     },
     "105": {
@@ -1119,7 +1125,7 @@
       "notes": []
     },
     "106": {
-      "play": "GLOUCESTER : These late eclipses in the sun and moon portend",
+      "play": "GLOUCESTER: These late eclipses in the sun and moon portend",
       "notes": [
         "Capell ; These late eclipses] This descant upon what were then esteemed natural prodigies is a weakness which serves admirably to give a requisite degree of the probable to Gloucester’s incredulity. Moberly ; As to current belief in astrology, we may remember that, at the time when this play was written, Dr Dee, the celebrated adept, was grieving for his lost patroness, Queen Elizabeth ; that the profligate court of James I. was in 1618 frightened by the appearance of a comet into a temporary fit of gravity; and that even Charles I. sent as a fee to William Lilly for consulting the stars as to his flight from Hampton Court in 1647. [See Appendix, « Date of the Composition,’ p. 379.]"
       ]
@@ -1197,7 +1203,7 @@
       "notes": []
     },
     "123": {
-      "play": "EDMUND : This is the excellent foppery of the world, that,",
+      "play": "EDMUND: This is the excellent foppery of the world, that,",
       "notes": [
         "Warburton: foppery] In Shakespeare’s best plays, besides the vices that arise from the subject, there is generally some peculiar prevailing folly, principally ridiculed, that runs through the whole piece. Thus, in The Tempest, the lying disposition of travellers, and in As You Like It, the fantastick humour of courtiers are exposed and satirized with infinite pleasantry. In like manner, in this play of Lear, the dotages of judicial astrology ate severely ridiculed. I fancy, was the date of its first performance well considered, it would be found that something or other happened at that time which gave a more than ordinary run to this deceit, as these words seem to intimate: ‘I am thinking, brother, of a prediction I read this other day, what should follow these eclipses.’ However this he, an impious cheat, which had so little foundation in nature or reason, so detestable an original, and such fatal consequences on the manners of the people, who were at that time strangely besotted with it, certainly deserved the severest lash of satire. It was a fundamental in this noble science, that whatever seeds of good dispositions the infant unborn might be endowed with, either from nature, or traductively from its parents, yet if, at the time of its birth, the delivery was by any casualty so accelerated or retarded as to fall in with the predominancy of a malignant constellation, that momentary influence would entirely change its nature, and bias it to all the contrary ill qualities. So wretched and monstrous an opinion did it set out with. But the Italians, to whom we owe this, as well as most other unnatural crimes and follies of these latter ages, fomented its onginal impiety to the most detestable height of extravagance. Petrus Aponensis, an Italian physician- of the 13th century, assures us that those prayers which are made to God when the moon is in conjunction with Jupiter in the Dragon’s tail, are infallibly heard. ... The great Milton, with a just indignation of this impiety, hath, in Paradise Regained (Book IV, 383), satirized it in a very beautiful manner, by putting these reveries into the mouth of the devil. ... Nor could the licentious Rabelais himself forbear to ridicule this impious dotage, which he does with exquisite address and humour, where in the fable which he so agreeably tells from iEsop of the man who applied to Jupiter for the loss of his hatchet, he makes those who, on the poor man’s good success, had projected to trick Jupiter by the same petition, a kind of astrologic atheists, who ascribed this good fortune that they imagined they were now all going to partake of, to the influence of some rare conjunction and configuration of the stars. ‘ Hen, hen, dirent ilz—Et doneques telle est au temps present la revolution des Cieulx, la constellation des Astres, et aspect des Planetes, que quiconques coingnee perdra soubdain deuiendra ainsi riche?’ Nou, Frol, du IV Livre.—But to return to Sh, So blasphemous a delusion, therefore, it became the honesty of our poet to expose. But it was a tender point, and required managing. For this impious juggle had in his time a kind of religious reverence paid to it. It was therefore to be done obliquely; and the circumstances of the scene furnished him as good an opportunity as he could wish. The persons in the drama are all Pagans, so that as, in compliance to custom, his good characters were not to speak ill of judicial astrology, they could on account of their religion give no reputation to it. But in order to expose it the more, he with great judgement makes these Pagans fatalists, as appears by these words of Lear, ‘ By all the operations of the orbs, From whom we do exist and cease to be.’^ For the doctrine of fate is the true foundation of judicial astrology. Having thus discredited it by the very commendations given to it, he was in no danger of having his direct satire against it mistaken, by its being put (as he was obliged, both in paying regard to custom and in following nature) into the mouth of the villain and atheist, especially when he has added such force of reason to his ridicule, in the words referred to in the beginning of the note. COLERIDGE : Thus scorn and misanthropy are often the anticipations and mouthpieces of wisdom in the detection of superstitions. Both individuals and nations may be free from such prejudices by being below them, as well as by rising above them.",
         "See note on ‘fops,’ line 14."
@@ -1300,7 +1306,7 @@
       "notes": []
     },
     "145": {
-      "play": "EDGAR : How now, brother Edmund! what serious",
+      "play": "EDGAR: How now, brother Edmund! what serious",
       "notes": []
     },
     "146": {
@@ -1308,7 +1314,7 @@
       "notes": []
     },
     "147": {
-      "play": "EDMUND : I am thinking, brother, of a prediction I read",
+      "play": "EDMUND: I am thinking, brother, of a prediction I read",
       "notes": []
     },
     "148": {
@@ -1316,11 +1322,11 @@
       "notes": []
     },
     "149": {
-      "play": "EDGAR : Do you busy yourself about that?",
+      "play": "EDGAR: Do you busy yourself about that?",
       "notes": []
     },
     "150": {
-      "play": "EDMUND : I promise you, the effects he writes of succeed",
+      "play": "EDMUND: I promise you, the effects he writes of succeed",
       "notes": [
         "Wright: succeed] In Elizabethan English the < success’ of an action was the issue or consequence, good or bad. Hence the word was used with a qualifying adjective. See Joshua, i, 8 : ‘ Then thou shalt have good success.'"
       ]
@@ -1358,27 +1364,27 @@
       ]
     },
     "157": {
-      "play": "EDGAR : How long have you been a sectary astronomical?",
+      "play": "EDGAR: How long have you been a sectary astronomical?",
       "notes": []
     },
     "158": {
-      "play": "EDMUND : Come, come; when saw you my father last?",
+      "play": "EDMUND: Come, come; when saw you my father last?",
       "notes": []
     },
     "159": {
-      "play": "EDGAR : Why, the night gone by.",
+      "play": "EDGAR: Why, the night gone by.",
       "notes": []
     },
     "160": {
-      "play": "EDMUND : Spake you with him?",
+      "play": "EDMUND: Spake you with him?",
       "notes": []
     },
     "161": {
-      "play": "EDGAR : Ay, two hours together.",
+      "play": "EDGAR: Ay, two hours together.",
       "notes": []
     },
     "162": {
-      "play": "EDMUND : Parted you in good terms? Found you no",
+      "play": "EDMUND: Parted you in good terms? Found you no",
       "notes": []
     },
     "163": {
@@ -1386,11 +1392,11 @@
       "notes": []
     },
     "164": {
-      "play": "EDGAR : None at all.",
+      "play": "EDGAR: None at all.",
       "notes": []
     },
     "165": {
-      "play": "EDMUND : Bethink yourself wherein you may have offended",
+      "play": "EDMUND: Bethink yourself wherein you may have offended",
       "notes": []
     },
     "166": {
@@ -1414,11 +1420,11 @@
       "notes": []
     },
     "171": {
-      "play": "EDGAR : Some villain hath done me wrong.",
+      "play": "EDGAR: Some villain hath done me wrong.",
       "notes": []
     },
     "172": {
-      "play": "EDMUND : That's my fear. I pray you, have a continent",
+      "play": "EDMUND: That's my fear. I pray you, have a continent",
       "notes": []
     },
     "173": {
@@ -1442,11 +1448,11 @@
       "notes": []
     },
     "178": {
-      "play": "EDGAR : Armed, brother!",
+      "play": "EDGAR: Armed, brother!",
       "notes": []
     },
     "179": {
-      "play": "EDMUND : Brother, I advise you to the best; go armed: I",
+      "play": "EDMUND: Brother, I advise you to the best; go armed: I",
       "notes": []
     },
     "180": {
@@ -1466,11 +1472,11 @@
       "notes": []
     },
     "184": {
-      "play": "EDGAR : Shall I hear from you anon?",
+      "play": "EDGAR: Shall I hear from you anon?",
       "notes": []
     },
     "185": {
-      "play": "EDMUND : I do serve you in this business.",
+      "play": "EDMUND: I do serve you in this business.",
       "notes": [
         "Heath : I do] If we read Pll, it will be an answer to the question Edgar asks just before his leaving the stage."
       ]
@@ -1506,17 +1512,17 @@
   },
   "ACT 1, SCENE 3": {
     "1": {
-      "play": "GONERIL : Did my father strike my gentleman for chiding of his fool?",
+      "play": "GONERIL: Did my father strike my gentleman for chiding of his fool?",
       "notes": []
     },
     "2": {
-      "play": "OSWALD : Yes, madam.",
+      "play": "OSWALD: Yes, madam.",
       "notes": [
         "Coleridge: Oswald] The steward should be placed in exact antithesis to Kent, as the only character of utter irredeemable baseness in Sh. Even in this, the judgement and invention of the poet are very observable;—for what else could the willing tool of a Goneril be? Not a vice but this of baseness was left open to him."
       ]
     },
     "3": {
-      "play": "GONERIL : By day and night he wrongs me; every hour",
+      "play": "GONERIL: By day and night he wrongs me; every hour",
       "notes": [
         "Malone: By day and night] Malone cites Ham. I, v, 164: ‘O day and night, but this is wondrous strange!’ in support of the exclamation-mark introduced by Capell; but Whalley and Steevens rightly interpret these words in their ordinary sense, signifying always, every way, as appears, says Wright, from ‘every hour’ which follows."
       ]
@@ -1550,11 +1556,11 @@
       "notes": []
     },
     "11": {
-      "play": "OSWALD : He's coming, madam; I hear him.",
+      "play": "OSWALD: He's coming, madam; I hear him.",
       "notes": []
     },
     "12": {
-      "play": "GONERIL : Put on what weary negligence you please,",
+      "play": "GONERIL: Put on what weary negligence you please,",
       "notes": [
         "Abbott: of] For instances of ‘of’ following verbal nouns, see Abbott, § 175."
       ]
@@ -1606,11 +1612,11 @@
       "notes": []
     },
     "22": {
-      "play": "OSWALD : Well, madam.",
+      "play": "OSWALD: Well, madam.",
       "notes": []
     },
     "23": {
-      "play": "GONERIL : And let his knights have colder looks among you;",
+      "play": "GONERIL: And let his knights have colder looks among you;",
       "notes": []
     },
     "24": {
@@ -1632,7 +1638,7 @@
   },
   "ACT 1, SCENE 4": {
     "1": {
-      "play": "KENT : If but as well I other accents borrow,",
+      "play": "KENT: If but as well I other accents borrow,",
       "notes": []
     },
     "2": {
@@ -1666,7 +1672,7 @@
       ]
     },
     "8": {
-      "play": "KING LEAR : Let me not stay a jot for dinner; go get it ready.",
+      "play": "KING LEAR: Let me not stay a jot for dinner; go get it ready.",
       "notes": []
     },
     "9": {
@@ -1674,17 +1680,17 @@
       "notes": []
     },
     "10": {
-      "play": "KENT : A man, sir.",
+      "play": "A man, sir.",
       "notes": []
     },
     "11": {
-      "play": "KING LEAR : What dost thou profess? what wouldst thou with us?",
+      "play": "KING LEAR: What dost thou profess? what wouldst thou with us?",
       "notes": [
         "Johnson: profess] Lear uses this in the sense of trade or calling, Kent replies in the sense of assertion."
       ]
     },
     "12": {
-      "play": "KENT : I do profess to be no less than I seem; to serve",
+      "play": "I do profess to be no less than I seem; to serve",
       "notes": []
     },
     "13": {
@@ -1709,15 +1715,15 @@
       ]
     },
     "17": {
-      "play": "KING LEAR : What art thou?",
+      "play": "KING LEAR: What art thou?",
       "notes": []
     },
     "18": {
-      "play": "KENT : A very honest-hearted fellow, and as poor as the king.",
+      "play": "A very honest-hearted fellow, and as poor as the king.",
       "notes": []
     },
     "19": {
-      "play": "KING LEAR : If thou be as poor for a subject as he is for a",
+      "play": "KING LEAR: If thou be as poor for a subject as he is for a",
       "notes": []
     },
     "20": {
@@ -1725,25 +1731,25 @@
       "notes": []
     },
     "21": {
-      "play": "KENT : Service.",
+      "play": "Service.",
       "notes": []
     },
     "22": {
-      "play": "KING LEAR : Who wouldst thou serve?",
+      "play": "KING LEAR: Who wouldst thou serve?",
       "notes": [
         "Abbott: Who] For other instances of 'who' for whom, see Abbott, § 274."
       ]
     },
     "23": {
-      "play": "KENT : You.",
+      "play": "You.",
       "notes": []
     },
     "24": {
-      "play": "KING LEAR : Dost thou know me, fellow?",
+      "play": "KING LEAR: Dost thou know me, fellow?",
       "notes": []
     },
     "25": {
-      "play": "KENT : No, sir; but you have that in your countenance",
+      "play": "No, sir; but you have that in your countenance",
       "notes": []
     },
     "26": {
@@ -1751,19 +1757,19 @@
       "notes": []
     },
     "27": {
-      "play": "KING LEAR : What's that?",
+      "play": "KING LEAR: What's that?",
       "notes": []
     },
     "28": {
-      "play": "KENT : Authority.",
+      "play": "Authority.",
       "notes": []
     },
     "29": {
-      "play": "KING LEAR : What services canst thou do?",
+      "play": "KING LEAR: What services canst thou do?",
       "notes": []
     },
     "30": {
-      "play": "KENT : I can keep honest counsel, ride, run, mar a curious",
+      "play": "I can keep honest counsel, ride, run, mar a curious",
       "notes": [
         "Schmidt/Wright: curious] Schmidt; Elegant, nice. Wright: Elaborate."
       ]
@@ -1783,11 +1789,11 @@
       ]
     },
     "34": {
-      "play": "KING LEAR : How old art thou?",
+      "play": "KING LEAR: How old art thou?",
       "notes": []
     },
     "35": {
-      "play": "KENT : Not so young, sir, to love a woman for singing, nor",
+      "play": "Not so young, sir, to love a woman for singing, nor",
       "notes": []
     },
     "36": {
@@ -1801,7 +1807,7 @@
       ]
     },
     "38": {
-      "play": "KING LEAR : Follow me; thou shalt serve me: if I like thee no",
+      "play": "KING LEAR: Follow me; thou shalt serve me: if I like thee no",
       "notes": []
     },
     "39": {
@@ -1821,13 +1827,13 @@
       "notes": []
     },
     "43": {
-      "play": "OSWALD : So please you,--",
+      "play": "OSWALD: So please you,--",
       "notes": [
         "Davies: Oswald] Davies gives what was the stage business in his times: \"He [Oswald] generally enters the stage in a careless, disengaged manner, humming a tune, as if on purpose to give umbrage to the king by his neglect of him.\""
       ]
     },
     "44": {
-      "play": "KING LEAR : What says the fellow there? Call the clotpoll back.",
+      "play": "KING LEAR: What says the fellow there? Call the clotpoll back.",
       "notes": [
         "Abbott: clotpoll] For the omission of the relative, see Abbott, § 244."
       ]
@@ -1841,7 +1847,7 @@
       "notes": []
     },
     "47": {
-      "play": "Knight : He says, my lord, your daughter is not well.",
+      "play": "Knight: He says, my lord, your daughter is not well.",
       "notes": []
     },
     "48": {
@@ -1935,7 +1941,7 @@
       ]
     },
     "68": {
-      "play": "Knight : Since my young lady's going into France, sir, the",
+      "play": "Since my young lady's going into France, sir, the",
       "notes": [
         "Schmidt: into France] Very commonly used by Sh. before the names of countries; 'to go into England,' 'into Flanders,' 'into Mauritania.'"
       ]
@@ -1967,11 +1973,11 @@
       "notes": []
     },
     "75": {
-      "play": "OSWALD : My lady's father.",
+      "play": "OSWALD: My lady's father.",
       "notes": []
     },
     "76": {
-      "play": "KING LEAR : 'My lady's father'! my lord's knave: your",
+      "play": "KING LEAR: 'My lady's father'! my lord's knave: your",
       "notes": []
     },
     "77": {
@@ -1979,25 +1985,25 @@
       "notes": []
     },
     "78": {
-      "play": "OSWALD : I am none of these, my lord; I beseech your pardon.",
+      "play": "I am none of these, my lord; I beseech your pardon.",
       "notes": []
     },
     "79": {
-      "play": "KING LEAR : Do you bandy looks with me, you rascal?",
+      "play": "KING LEAR: Do you bandy looks with me, you rascal?",
       "notes": []
     },
     "80": {
-      "play": "OSWALD : I'll not be struck, my lord.",
+      "play": "I'll not be struck, my lord.",
       "notes": []
     },
     "81": {
-      "play": "KENT : Nor tripped neither, you base football player.",
+      "play": "KENT: Nor tripped neither, you base football player.",
       "notes": [
         "Steevens: bandy] A metaphor from tennis. [Cotgrave: loyer d hander à racier contre. To bandy against, at Tennis; and (by metaphor) to pursue with all insolencie, rigour, extremitie.]"
       ]
     },
     "82": {
-      "play": "KING LEAR : I thank thee, fellow; thou servest me, and I'll",
+      "play": "KING LEAR: I thank thee, fellow; thou servest me, and I'll",
       "notes": []
     },
     "83": {
@@ -2005,7 +2011,7 @@
       "notes": []
     },
     "84": {
-      "play": "KENT : Come, sir, arise, away! I'll teach you differences:",
+      "play": "Come, sir, arise, away! I'll teach you differences:",
       "notes": []
     },
     "85": {
@@ -2023,7 +2029,7 @@
       ]
     },
     "88": {
-      "play": "KING LEAR : Now, my friendly knave, I thank thee: there's",
+      "play": "KING LEAR: Now, my friendly knave, I thank thee: there's",
       "notes": []
     },
     "89": {
@@ -2033,7 +2039,7 @@
       ]
     },
     "90": {
-      "play": "Fool : Let me hire him too: here's my coxcomb.",
+      "play": "Fool: Let me hire him too: here's my coxcomb.",
       "notes": [
         "C. A. Brown: coxcomb] C. A. Brown [Shakspeare's Autobiographical Poems p. 292, 1838]: Now, our joy, though last, not least, my dearest of all Fools, Lear's Fool! ... [Lengthy note truncated for brevity; full citation in copy text.]"
       ]
@@ -2050,11 +2056,11 @@
       ]
     },
     "93": {
-      "play": "KENT : Why, fool?",
+      "play": "KENT: Why, fool?",
       "notes": []
     },
     "94": {
-      "play": "Fool : Why, for taking one's part that's out of favour:",
+      "play": "Fool: Why, for taking one's part that's out of favour:",
       "notes": [
         "Why, Fool] Knight ; The text of the Folio [see Textual Notes] clearly shows that the speech was intended for Lear, and that, however it might have been written originally, Sh. in his amended copy would not permit Kent, in his character of serving-man, so soon to begin bandying questions with Lear’s favorite. White : The Folio is clearly wrong, as the Fool’s reply shows. Lear had taken * no one’s part that’s out of favour,’ but Kent had. The mistake seems to be due to the fact that both Lear and Kent reply interrogatively to the Fool’s remark about his coxcomb. Dyce: The eye of the transcriber or compositor most probably caught the next speech but one. It is plain that the Fool addresses the king for the first time when he says :‘ How now, nuncle,’ &c. Schmidt silently follows F^F^, which are to meunquestionably wrong."
       ]
@@ -2095,11 +2101,11 @@
       ]
     },
     "101": {
-      "play": "KING LEAR : Why, my boy?",
+      "play": "KING LEAR: Why, my boy?",
       "notes": []
     },
     "102": {
-      "play": "Fool : If I gave them all my living, I'ld keep my coxcombs",
+      "play": "If I gave them all my living, I'ld keep my coxcombs",
       "notes": []
     },
     "103": {
@@ -2185,11 +2191,11 @@
       "notes": []
     },
     "121": {
-      "play": "KENT : This is nothing, fool.",
+      "play": "KENT: This is nothing, fool.",
       "notes": []
     },
     "122": {
-      "play": "Fool : Then 'tis like the breath of an unfee'd lawyer; you",
+      "play": "Fool: Then 'tis like the breath of an unfee'd lawyer; you",
       "notes": []
     },
     "123": {
@@ -2205,11 +2211,11 @@
       ]
     },
     "125": {
-      "play": "KING LEAR : Why, no, boy; nothing can be made out of nothing.",
+      "play": "KING LEAR: Why, no, boy; nothing can be made out of nothing.",
       "notes": []
     },
     "126": {
-      "play": "Fool : [To KENT] Prithee, tell him, so much the rent of",
+      "play": "[To KENT] Prithee, tell him, so much the rent of",
       "notes": []
     },
     "127": {
@@ -2245,7 +2251,7 @@
       "notes": []
     },
     "135": {
-      "play": "Do thou for him stand:",
+      "play": "Do thou for him stand: ",
       "notes": []
     },
     "136": {
@@ -2281,11 +2287,11 @@
       ]
     },
     "143": {
-      "play": "KENT : This is not altogether fool, my lord.",
+      "play": "KENT: This is not altogether fool, my lord.",
       "notes": []
     },
     "144": {
-      "play": "Fool : No, faith, lords and great men will not let me; if",
+      "play": "Fool: No, faith, lords and great men will not let me; if",
       "notes": []
     },
     "145": {
@@ -2309,13 +2315,13 @@
       ]
     },
     "149": {
-      "play": "KING LEAR : What two crowns shall they be?",
+      "play": "KING LEAR: What two crowns shall they be?",
       "notes": [
         "Fool: lords] Collier, in his ed. i and ii: justifies his adoption of lodes of the Qq, saying that all the fool means is that, if he had a monopoly of folly, great men would have part of it, and a large part, too. Dyce, in his ed. ii, after quoting Collier’s note, adds: ‘But mark the ridiculous inconsistency of expression in the passage, if the Fool be speaking of lords only,—“they would have part on’t”—“ and loads too”—“ they’ll be snatching!”’ Dyce gives no intimation that in his ed. i, he adopted Collier’s reading with silent approval. In his ed. iii, Collier reads as in the text. 158, 159: Fool: so] Eccles: If . . . so] Possibly he means to say that he will deserve to be whipped who does not, or cannot, discover that in this instance, at least, he speaks good sense. Perhaps, better thus: The Fool was accustomed to speak bitter and unpalatable truths, and had sometimes been chastised for so doing. ‘If then,’ he says, ‘I speak on this occasion like myself—i.e. like a fool, foolishly—let not me be whipped, but him who first finds it to be as I have said’—i.e. the king himself, who was likely to be soonest sensible of the truth and justness of the sarcasm, and who, he insinuates, deserved whipping for the silly part he had acted."
       ]
     },
     "150": {
-      "play": "Fool : Why, after I have cut the egg i' the middle, and eat",
+      "play": "Why, after I have cut the egg i' the middle, and eat",
       "notes": []
     },
     "151": {
@@ -2411,7 +2417,7 @@
       "notes": []
     },
     "173": {
-      "play": "I marvel what kin thou and thy daughters are:",
+      "play": "I marvel what kin thou and thy daughters are: ",
       "notes": []
     },
     "174": {
@@ -2495,7 +2501,7 @@
       "notes": []
     },
     "192": {
-      "play": "GONERIL : Not only, sir, this your all-licensed fool,",
+      "play": "GONERIL: Not only, sir, this your all-licensed fool,",
       "notes": [
         "Fool: peascod] Warburton: That’s ... peascod] [insert a stage direction] directly referring this sentence to Lear, and he \"has been followed, I think, by all edd. except Delius. As though the point were not made thereby sufficiently clear, Warburton changed 'That’s’ to Thou art. I cannot help thinking that stage-directions like these are in general needless, not to say obtrusive. If the action is so clear that the humblest intellect can perceive it, surely a stage-direction is superfluous; for instance, when the Fool says to Kent, <Here’s my coxcomb,’ does any one require to be told that he here offers Kent his cap? When Lear says ‘There’s earnest of thy service,’ may not an editor assume that a reader has some intelligence, and needs not to be told that Lear here ‘gives Kent money’? In the present in-stance the application is sufficiently clear without any indication with the finger.—Ed."
       ]
@@ -2555,7 +2561,7 @@
       "notes": []
     },
     "206": {
-      "play": "Fool : For, you trow, nuncle,",
+      "play": "Fool: For, you trow, nuncle,",
       "notes": []
     },
     "207": {
@@ -2573,13 +2579,13 @@
       ]
     },
     "210": {
-      "play": "KING LEAR : Are you our daughter?",
+      "play": "KING LEAR: Are you our daughter?",
       "notes": [
         "Fool: darkling] Staunton: darkling] This word which, like the Scotch darklins, implied in the dark, is found in the ancient comedy of Roister Doister, III, iii. [p. 41, ed. Sh. Soc.]: ‘He will go darklyng to his grave.’ See also Mid, N. D. II, ii, 36, Wright: For the adverbial termination ‘- ling,’ or ‘-long,’ see Morris, English Accidence, p. 194, and compare ‘flatlong,’ Temp. II, i, 181. ‘Hedlynge’ and ‘hedlynges’ are found in the Glossary to the Wicliffite versions,"
       ]
     },
     "211": {
-      "play": "GONERIL : Come, sir,",
+      "play": "GONERIL: Come, sir,",
       "notes": []
     },
     "212": {
@@ -2604,7 +2610,7 @@
       ]
     },
     "216": {
-      "play": "Fool : May not an ass know when the cart",
+      "play": "Fool: May not an ass know when the cart",
       "notes": []
     },
     "217": {
@@ -2612,7 +2618,7 @@
       "notes": []
     },
     "218": {
-      "play": "KING LEAR : Doth any here know me? This is not Lear:",
+      "play": "KING LEAR: Doth any here know me? This is not Lear:",
       "notes": [
         "Fool: Jug] Steevens: Whoop...thee] This is, as I am informed, a quotation from the burthen of an old song.",
         "Fool: Jug] Halliwell: Whoop...thee] ‘Jug’ was the old nickname for Joan, and it was also a term of endearment. Edward Alleyn, the player, writing to his wife in 1593, says: ‘And, Jug, I pray you lett my orayng-tawny stokins of wolen be dyed a newe good blak against I com horn, to wear in winter.’ So also, ‘If I be I, and thou be’st one, Tell me, sweet Jugge, how spell’st thou Jone.’—Cotgrave’s Wits Interpreter, 1614, p. 116.",
@@ -2639,7 +2645,7 @@
       "notes": []
     },
     "223": {
-      "play": "Fool : Lear's shadow.",
+      "play": "Lear's shadow.",
       "notes": []
     },
     "224": {
@@ -2665,7 +2671,7 @@
       ]
     },
     "229": {
-      "play": "GONERIL : This admiration, sir, is much o' the savour",
+      "play": "GONERIL: This admiration, sir, is much o' the savour",
       "notes": []
     },
     "230": {
@@ -2677,7 +2683,7 @@
       ]
     },
     "231": {
-      "play": "To understand my purposes aright:",
+      "play": "To understand my purposes aright: ",
       "notes": []
     },
     "232": {
@@ -2746,7 +2752,7 @@
       "notes": []
     },
     "245": {
-      "play": "KING LEAR : Darkness and devils!",
+      "play": "KING LEAR: Darkness and devils!",
       "notes": []
     },
     "246": {
@@ -2762,7 +2768,7 @@
       "notes": []
     },
     "249": {
-      "play": "GONERIL : You strike my people; and your disorder'd rabble",
+      "play": "You strike my people; and your disorder'd rabble",
       "notes": []
     },
     "250": {
@@ -2770,7 +2776,7 @@
       "notes": []
     },
     "251": {
-      "play": "KING LEAR : Woe, that too late repents,--",
+      "play": "KING LEAR: Woe, that too late repents,--",
       "notes": []
     },
     "252": {
@@ -2799,13 +2805,13 @@
       "notes": []
     },
     "257": {
-      "play": "ALBANY : Pray, sir, be patient.",
+      "play": "ALBANY: Pray, sir, be patient.",
       "notes": [
         "ALBANY: choice and rarest] Wright thinks that the superlative termination belongs to both adjectives, and refers to Abbott, § 398."
       ]
     },
     "258": {
-      "play": "KING LEAR : [To GONERIL] Detested kite! thou liest.",
+      "play": "KING LEAR: [To GONERIL] Detested kite! thou liest.",
       "notes": []
     },
     "259": {
@@ -2861,7 +2867,7 @@
       ]
     },
     "269": {
-      "play": "ALBANY : My lord, I am guiltless, as I am ignorant",
+      "play": "My lord, I am guiltless, as I am ignorant",
       "notes": [
         "KING LEAR: Nature ... goddess] White thinks that the arrangement in the present text, in comparison with his (see Textual Notes), loses in freedom, force, and rhythm."
       ]
@@ -2871,7 +2877,7 @@
       "notes": []
     },
     "271": {
-      "play": "KING LEAR : It may be so, my lord.",
+      "play": "KING LEAR: It may be so, my lord.",
       "notes": []
     },
     "272": {
@@ -2959,11 +2965,11 @@
       "notes": []
     },
     "287": {
-      "play": "ALBANY : Now, gods that we adore, whereof comes this?",
+      "play": "Now, gods that we adore, whereof comes this?",
       "notes": []
     },
     "288": {
-      "play": "GONERIL : Never afflict yourself to know the cause;",
+      "play": "GONERIL: Never afflict yourself to know the cause;",
       "notes": []
     },
     "289": {
@@ -2977,7 +2983,7 @@
       "notes": []
     },
     "291": {
-      "play": "KING LEAR : What, fifty of my followers at a clap!",
+      "play": "KING LEAR: What, fifty of my followers at a clap!",
       "notes": []
     },
     "292": {
@@ -2985,11 +2991,11 @@
       "notes": []
     },
     "293": {
-      "play": "ALBANY : What's the matter, sir?",
+      "play": "ALBANY: What's the matter, sir?",
       "notes": []
     },
     "294": {
-      "play": "KING LEAR : I'll tell thee:",
+      "play": "KING LEAR: I'll tell thee:",
       "notes": [
         "KING LEAR: untented] Theobald: untented] A wounding of such a sharp, inveterate nature that nothing shall be able to tent it i.e. search the bottom, and help in the cure of it.",
         "KING LEAR: untented] Steevens: untented] It may possibly signify here such wounds as will not admit of having a tent put into them. [For 'tent,' see Ham, II, ii, 573.]"
@@ -3072,11 +3078,11 @@
       "notes": []
     },
     "311": {
-      "play": "GONERIL : Do you mark that, my lord?",
+      "play": "GONERIL: Do you mark that, my lord?",
       "notes": []
     },
     "312": {
-      "play": "ALBANY : I cannot be so partial, Goneril,",
+      "play": "ALBANY: I cannot be so partial, Goneril,",
       "notes": []
     },
     "313": {
@@ -3084,7 +3090,7 @@
       "notes": []
     },
     "314": {
-      "play": "GONERIL : Pray you, content. What, Oswald, ho!",
+      "play": "GONERIL: Pray you, content. What, Oswald, ho!",
       "notes": []
     },
     "315": {
@@ -3092,7 +3098,7 @@
       "notes": []
     },
     "316": {
-      "play": "Fool : Nuncle Lear, nuncle Lear, tarry and take the fool",
+      "play": "Fool: Nuncle Lear, nuncle Lear, tarry and take the fool",
       "notes": []
     },
     "317": {
@@ -3116,7 +3122,7 @@
       ]
     },
     "321": {
-      "play": "If my cap would buy a halter:",
+      "play": "If my cap would buy a halter: ",
       "notes": [
         "Fool: enguard] Abbott, § 440: This is here used in its proper sense of enclosing."
       ]
@@ -3128,7 +3134,7 @@
       ]
     },
     "323": {
-      "play": "This man hath had good counsel:--a hundred knights!",
+      "play": "This man hath had good counsel: --a hundred knights!",
       "notes": []
     },
     "324": {
@@ -3156,11 +3162,11 @@
       "notes": []
     },
     "329": {
-      "play": "ALBANY : Well, you may fear too far.",
+      "play": "ALBANY: Well, you may fear too far.",
       "notes": []
     },
     "330": {
-      "play": "GONERIL : Safer than trust too far:",
+      "play": "GONERIL: Safer than trust too far:",
       "notes": []
     },
     "331": {
@@ -3192,7 +3198,7 @@
       "notes": []
     },
     "338": {
-      "play": "OSWALD : Yes, madam.",
+      "play": "OSWALD: Yes, madam.",
       "notes": [
         "GONERIL: attask'd] Johnson: at task] It is a common phrase now with parents and governesses: ‘I’ll take you to task,’ i.e. I will reprehend and correct you. To be ‘at task,’ therefore, is to be liable to reprehension and correction.",
         "GONERIL: attask'd] Mason: at task] Frequently used by Sh. in the sense of tax.",
@@ -3204,7 +3210,7 @@
       ]
     },
     "339": {
-      "play": "GONERIL : Take you some company, and away to horse:",
+      "play": "GONERIL: Take you some company, and away to horse:",
       "notes": []
     },
     "340": {
@@ -3248,7 +3254,7 @@
       "notes": []
     },
     "349": {
-      "play": "ALBANY : How far your eyes may pierce I can not tell:",
+      "play": "ALBANY: How far your eyes may pierce I can not tell:",
       "notes": []
     },
     "350": {
@@ -3256,11 +3262,11 @@
       "notes": []
     },
     "351": {
-      "play": "GONERIL : Nay, then--",
+      "play": "GONERIL: Nay, then--",
       "notes": []
     },
     "352": {
-      "play": "ALBANY : Well, well; the event.",
+      "play": "ALBANY: Well, well; the event.",
       "notes": []
     },
     "1578": {
@@ -3277,12 +3283,6 @@
     }
   },
   "ACT 1, SCENE 5": {
-    "misc": {
-      "play": "",
-      "notes": [
-        "1 : Jennens : Go you] Jennens holds that this is addressed to the Gentleman whose entrance with Lear is marked in the Ff. It is plain,’ he argues, ‘that the letter to Regan was sent by Kent; those to Glo’ster by another; the order to Kent was left out,’—his text accordingly reads: ‘Lear, [to a Gentleman] Go you before to Glo’ster with these letters.—You with this to my daughter Regan, [to Kent] Acquaint,’ &c.\n1 : Capell : Gloucester] Capell, followed by the subsequent editors, has removed this difficulty, expressed by Jennens in the preceding note, by supposing that this name refers to the city of Gloucester, as is evident from the “there” [in line 4]; it is made the residence of Regan and Cornwall to give ‘likelihood’ to their evening visit to Gloucester, II, iv, whose castle is in the neighborhood; ‘earls, in old time, had some dominion in the counties that gave them their titles, and resided there usually.’\n7 : Walker : brains] Walker (Crit., i, 256): Braiùn surely.\n7 : Wright : brains] Wright: Sh. uses both ‘brains’ and ‘brain’ indiscriminately, except in such phrases as ‘to beat out the brains.’ Here it is a singular, of which there is another, though doubtful, instance in Ham. III, i, 174, and a more certain one in All’s Well III, ii, 16; “The brains of my Cupid’s knocked out.”\n7 : Morerly : brains] Morerly: The fool laughs at Kent’s promise of rapidity, and says, first, ‘that when men’s brains are in their heels’ (that is, when they have no more wit than is needed to go fast) ‘they may get brain-chilblains;’ and secondly, ‘that as Lear has no brains, he is in no such danger.’\n10 : Eccles : slip-shod] Eccles: The customary resource of those who are afflicted with kibes. Singer paraphrases: For you show you have no wit in undertaking your present journey.\n13 : Mason : kindly] Mason; Here it means both, affectionately and like the rest of her kind.\n14 : Wright : crab] Wright: Compare Lyly, Euphues, p. 120 (ed. Arber): ‘The sower Crabbe hath the shew of an Apple as well as the sweet Pippin.’\n15 : Collier : can] Collier suggests that con of the Qq (i. e. know) may be the right reading.\n19 : [Annotator] : on’s] See I, iv, 98.\n21 : Abbott : of] Abbott, § 175: signifying proximity of any kind, is sometimes used locally in the sense of on.\n23 : Weiss : I did her wrong] Weiss (p. 281): The beautiful soul of Cordelia, that is little talked of by herself, and is but stingily set forth by circumstance, engrosses our feeling in scenes from whose threshold her filial piety is banished. We know what Lear is so pathetically remembering; the sisters tell us in their cruellest moments; it mingles with the midnight storm a sigh of the daughterhood that was repulsed. In the pining of the Fool we detect it. Through every wail or gust of this awful symphony of madness, ingratitude, and irony, we feel a woman’s breath,\n31 : Abbott : Be] Abbott, § 299: As a rule, it will be found that ‘be’ is used with some notion of doubt, question, thought, &c.; for instance, in questions [as here], and after verbs of thinking.\n34 : Delius and Wright : seven stars] Both Delius and Wright refer this phrase to the Pleiades, a constellation which assuredly is known by the name of The Seven Stars; may it not, however, refer to the Great Bear, whose seven stars are the most conspicuous group in the circle of perpetual apparition in the Northern Hemisphere?—so conspicuous, indeed, that the Latin word for ‘North’ was derived from them. We call this constellation ‘The Dipper,’ from its fancied resemblance to the utensil of that name; a name, I believe, scarcely known in England.—Ed.\n37 : Johnson : perforce] Johnson: He is meditating on his resumption of royalty.\n37 : Steevens : perforce] Steevens: Rather he is meditating on his daughter’s having in so violent a manner deprived him of those privileges which before she had agreed to grant him. Delius thinks that Johnson’s interpretation is the more plausible, although ‘Monster ingratitude’ is more in the train of thought suggested by Steevens. Wright also agrees with Johnson’s interpretation, as more in keeping with what Lear says in line 31: ‘I will forget my nature.’\n43 : Coleridge : Oh, let me not be mad] Coleridge: The deepest tragic notes are often struck by a half sense of an impending blow.\n43 : Bucknill : mad] Bucknill (p. 183): This self-consciousness of gathering madness is common in various forms of the disease. ... A most remarkable instance of this was presented in the case of a patient, whose passionate, but generous, temper became morbidly exaggerated after a blow upon the head. His constantly expressed fear was that of impending madness; and when the calamity he so much dreaded had actually arrived, and he raved incessantly and incoherently, one frequently heard the very words of Lear proceeding from his lips: ‘Oh, let me not be mad!’\n48-49 : Eccles : departure...shorter] Eccles: This concluding rhyme seems to intimate that the Fool expects to return soon, because of the ill treatment which he will probably receive where he is going.\n48-49 : Steevens : departure...shorter] Steevens: This idle couplet is apparently addressed to the females present at the performance of the play; and, not improbably, crept into the playhouse copy from the mouth of some buffoon actor, who ‘spoke more than was set down for him.’ It should seem, from Shakespeare’s speaking in this strong manner, that he suffered the injury he describes. Indecent jokes, which the applause of the groundlings might occasion to be repeated, would at last find their way into the prompters’ books, &c. I am aware that such liberties were exercised by the authors of Locrine, &c., but can such another offensive and extraneous address to the audience be pointed out among all the dramas of Shakespeare?\n48-49 : Coleridge : departure...shorter] Coleridge: The Fool’s conclusion of this Act, by a grotesque prattling, seems to indicate the dislocation of feeling that has begun and is to be continued.\n48-49 : C. A. Brown : departure...shorter] C. A. Brown (p. 292): There are three passages, foisted in by the players, and adopted by the printers, which ought to be for ever expunged from the text: The couplet at the end of Act I; the whole of Merlin’s prophecy, III, ii, 79–95, as the Fool should go out with Lear, and those brutal words: ‘And I’ll go to bed at noon,’ III, vi, 83, when the old king sinks into sleep. Such contradictions puzzled me for a long time, till looking among the Annotations, a profitable task once in a hundred times, I discovered that none of these three passages are in the Qq, printed eight years before Shakespeare’s death, but are introduced into the Ff, printed seven years after it. This, together with their absurdity, makes it plain that they are not Shakespeare’s. [The present passage is not omitted in the Qq.]\n48-49 : Singer : departure...shorter] Singer: She who thinks that this journey we are now starting on will better us, and bring us mirth, is such a simpleton that, if she is a maid now, she will be cheated before long of her claim to that title.\n48-49 : White : departure...shorter] White: Steevens’s opinion that this is an interpolation appears to be well founded. The indecency is entirely gratuitous; it is ‘dragged in by the head and shoulders,’ which is not in Shakespeare’s manner. The jest, if we must call it such, is of the most miserable sort, and one which Sh. would hardly suffer in the mouth of this, the most thoughtful and subtly whimsical of all his thoughtful and subtle Fools. [See also note on the Merlin prophecy, III, ii, 81.]\n48-49 : Ellis : departure] Ellis (p. 200) refers to lists of words given by Cooper, 1685, showing that Cooper pronounced the final -ture in lecture, nature, picture, scripture, &c. as -ter; the present rhyme shows that ‘departure’ was so pronounced in Shakespeare’s day. White (vol. xii, p. 437) says that -ure final was generally, if not universally, pronounced -er among even the most polite and literate of our Elizabethan ancestors. Ellis, after quoting this observation by White, says (p. 973), that this usage was not general or confirmed till the XVIIth century. [For the rhyme, see also II, iii, 20.]"
-      ]
-    },
     "1": {
       "play": "KING LEAR: Go you before to Gloucester with these letters.",
       "notes": []
@@ -3320,7 +3320,7 @@
       "notes": []
     },
     "10": {
-      "play": "Fool: Then, I prithee, be merry; thy wit shall ne'er go",
+      "play": "Then, I prithee, be merry; thy wit shall ne'er go",
       "notes": []
     },
     "11": {
@@ -3474,6 +3474,12 @@
     "48": {
       "play": "Shall not be a maid long, unless things be cut shorter.",
       "notes": []
+    },
+    "misc": {
+      "play": "",
+      "notes": [
+        "1 : Jennens : Go you] Jennens holds that this is addressed to the Gentleman whose entrance with Lear is marked in the Ff. It is plain,’ he argues, ‘that the letter to Regan was sent by Kent; those to Glo’ster by another; the order to Kent was left out,’—his text accordingly reads: ‘Lear, [to a Gentleman] Go you before to Glo’ster with these letters.—You with this to my daughter Regan, [to Kent] Acquaint,’ &c.\n1 : Capell : Gloucester] Capell, followed by the subsequent editors, has removed this difficulty, expressed by Jennens in the preceding note, by supposing that this name refers to the city of Gloucester, as is evident from the “there” [in line 4]; it is made the residence of Regan and Cornwall to give ‘likelihood’ to their evening visit to Gloucester, II, iv, whose castle is in the neighborhood; ‘earls, in old time, had some dominion in the counties that gave them their titles, and resided there usually.’\n7 : Walker : brains] Walker (Crit., i, 256): Braiùn surely.\n7 : Wright : brains] Wright: Sh. uses both ‘brains’ and ‘brain’ indiscriminately, except in such phrases as ‘to beat out the brains.’ Here it is a singular, of which there is another, though doubtful, instance in Ham. III, i, 174, and a more certain one in All’s Well III, ii, 16; “The brains of my Cupid’s knocked out.”\n7 : Morerly : brains] Morerly: The fool laughs at Kent’s promise of rapidity, and says, first, ‘that when men’s brains are in their heels’ (that is, when they have no more wit than is needed to go fast) ‘they may get brain-chilblains;’ and secondly, ‘that as Lear has no brains, he is in no such danger.’\n10 : Eccles : slip-shod] Eccles: The customary resource of those who are afflicted with kibes. Singer paraphrases: For you show you have no wit in undertaking your present journey.\n13 : Mason : kindly] Mason; Here it means both, affectionately and like the rest of her kind.\n14 : Wright : crab] Wright: Compare Lyly, Euphues, p. 120 (ed. Arber): ‘The sower Crabbe hath the shew of an Apple as well as the sweet Pippin.’\n15 : Collier : can] Collier suggests that con of the Qq (i. e. know) may be the right reading.\n19 : [Annotator] : on’s] See I, iv, 98.\n21 : Abbott : of] Abbott, § 175: signifying proximity of any kind, is sometimes used locally in the sense of on.\n23 : Weiss : I did her wrong] Weiss (p. 281): The beautiful soul of Cordelia, that is little talked of by herself, and is but stingily set forth by circumstance, engrosses our feeling in scenes from whose threshold her filial piety is banished. We know what Lear is so pathetically remembering; the sisters tell us in their cruellest moments; it mingles with the midnight storm a sigh of the daughterhood that was repulsed. In the pining of the Fool we detect it. Through every wail or gust of this awful symphony of madness, ingratitude, and irony, we feel a woman’s breath,\n31 : Abbott : Be] Abbott, § 299: As a rule, it will be found that ‘be’ is used with some notion of doubt, question, thought, &c.; for instance, in questions [as here], and after verbs of thinking.\n34 : Delius and Wright : seven stars] Both Delius and Wright refer this phrase to the Pleiades, a constellation which assuredly is known by the name of The Seven Stars; may it not, however, refer to the Great Bear, whose seven stars are the most conspicuous group in the circle of perpetual apparition in the Northern Hemisphere?—so conspicuous, indeed, that the Latin word for ‘North’ was derived from them. We call this constellation ‘The Dipper,’ from its fancied resemblance to the utensil of that name; a name, I believe, scarcely known in England.—Ed.\n37 : Johnson : perforce] Johnson: He is meditating on his resumption of royalty.\n37 : Steevens : perforce] Steevens: Rather he is meditating on his daughter’s having in so violent a manner deprived him of those privileges which before she had agreed to grant him. Delius thinks that Johnson’s interpretation is the more plausible, although ‘Monster ingratitude’ is more in the train of thought suggested by Steevens. Wright also agrees with Johnson’s interpretation, as more in keeping with what Lear says in line 31: ‘I will forget my nature.’\n43 : Coleridge : Oh, let me not be mad] Coleridge: The deepest tragic notes are often struck by a half sense of an impending blow.\n43 : Bucknill : mad] Bucknill (p. 183): This self-consciousness of gathering madness is common in various forms of the disease. ... A most remarkable instance of this was presented in the case of a patient, whose passionate, but generous, temper became morbidly exaggerated after a blow upon the head. His constantly expressed fear was that of impending madness; and when the calamity he so much dreaded had actually arrived, and he raved incessantly and incoherently, one frequently heard the very words of Lear proceeding from his lips: ‘Oh, let me not be mad!’\n48-49 : Eccles : departure...shorter] Eccles: This concluding rhyme seems to intimate that the Fool expects to return soon, because of the ill treatment which he will probably receive where he is going.\n48-49 : Steevens : departure...shorter] Steevens: This idle couplet is apparently addressed to the females present at the performance of the play; and, not improbably, crept into the playhouse copy from the mouth of some buffoon actor, who ‘spoke more than was set down for him.’ It should seem, from Shakespeare’s speaking in this strong manner, that he suffered the injury he describes. Indecent jokes, which the applause of the groundlings might occasion to be repeated, would at last find their way into the prompters’ books, &c. I am aware that such liberties were exercised by the authors of Locrine, &c., but can such another offensive and extraneous address to the audience be pointed out among all the dramas of Shakespeare?\n48-49 : Coleridge : departure...shorter] Coleridge: The Fool’s conclusion of this Act, by a grotesque prattling, seems to indicate the dislocation of feeling that has begun and is to be continued.\n48-49 : C. A. Brown : departure...shorter] C. A. Brown (p. 292): There are three passages, foisted in by the players, and adopted by the printers, which ought to be for ever expunged from the text: The couplet at the end of Act I; the whole of Merlin’s prophecy, III, ii, 79–95, as the Fool should go out with Lear, and those brutal words: ‘And I’ll go to bed at noon,’ III, vi, 83, when the old king sinks into sleep. Such contradictions puzzled me for a long time, till looking among the Annotations, a profitable task once in a hundred times, I discovered that none of these three passages are in the Qq, printed eight years before Shakespeare’s death, but are introduced into the Ff, printed seven years after it. This, together with their absurdity, makes it plain that they are not Shakespeare’s. [The present passage is not omitted in the Qq.]\n48-49 : Singer : departure...shorter] Singer: She who thinks that this journey we are now starting on will better us, and bring us mirth, is such a simpleton that, if she is a maid now, she will be cheated before long of her claim to that title.\n48-49 : White : departure...shorter] White: Steevens’s opinion that this is an interpolation appears to be well founded. The indecency is entirely gratuitous; it is ‘dragged in by the head and shoulders,’ which is not in Shakespeare’s manner. The jest, if we must call it such, is of the most miserable sort, and one which Sh. would hardly suffer in the mouth of this, the most thoughtful and subtly whimsical of all his thoughtful and subtle Fools. [See also note on the Merlin prophecy, III, ii, 81.]\n48-49 : Ellis : departure] Ellis (p. 200) refers to lists of words given by Cooper, 1685, showing that Cooper pronounced the final -ture in lecture, nature, picture, scripture, &c. as -ter; the present rhyme shows that ‘departure’ was so pronounced in Shakespeare’s day. White (vol. xii, p. 437) says that -ure final was generally, if not universally, pronounced -er among even the most polite and literate of our Elizabethan ancestors. Ellis, after quoting this observation by White, says (p. 973), that this usage was not general or confirmed till the XVIIth century. [For the rhyme, see also II, iii, 20.]"
+      ]
     }
   },
   "ACT 2, SCENE 1": {
@@ -3570,7 +3576,7 @@
       "notes": []
     },
     "22": {
-      "play": "You have now the good advantage of the night:",
+      "play": "You have now the good advantage of the night: ",
       "notes": []
     },
     "23": {
@@ -4105,7 +4111,7 @@
       ]
     },
     "132": {
-      "play": "Wherein we must have use of your advice:",
+      "play": "Wherein we must have use of your advice: ",
       "notes": [
         "advice] Keightley; There is evidently a line lost ilifter this. We might read : « Have been the cause of this our sudden visit.’"
       ]
@@ -4809,7 +4815,7 @@
       "notes": []
     },
     "131": {
-      "play": "On whose employment I was sent to you:",
+      "play": "On whose employment I was sent to you: ",
       "notes": [
         "Cowden Clarke: Very artfully is this speech thrown in. Not only does it serve to paint the vindictive disposition of Regan, it also serves to regulate dramatic time by making the subsequent scene where Lear arrives before Gloucester’s castle and finds his faithful messenger in the stocks, appear sufficiently advanced in the morning to allow of that same scene closing with the actual approach of ‘night, without disturbing the sense of probability. Sh. makes a whole day pass before our eyes during a single scene and dialogue, yet all seems consistent and natural in the course of progression."
       ]
@@ -5187,7 +5193,7 @@
       "notes": []
     },
     "9": {
-      "play": "KENT: No, my lord.",
+      "play": "No, my lord.",
       "notes": []
     },
     "10": {
@@ -5242,7 +5248,7 @@
       "notes": []
     },
     "20": {
-      "play": "KENT: Yes.",
+      "play": "Yes.",
       "notes": []
     },
     "21": {
@@ -5250,7 +5256,7 @@
       "notes": []
     },
     "22": {
-      "play": "KENT: I say, yea.",
+      "play": "I say, yea.",
       "notes": []
     },
     "23": {
@@ -5258,7 +5264,7 @@
       "notes": []
     },
     "24": {
-      "play": "KENT: Yes, they have.",
+      "play": "Yes, they have.",
       "notes": []
     },
     "25": {
@@ -5266,7 +5272,7 @@
       "notes": []
     },
     "26": {
-      "play": "KENT: By Juno, I swear, ay.",
+      "play": "By Juno, I swear, ay.",
       "notes": []
     },
     "27": {
@@ -5278,7 +5284,7 @@
       "notes": []
     },
     "29": {
-      "play": "To do upon respect such violent outrage:",
+      "play": "To do upon respect such violent outrage: ",
       "notes": [
         "Singer & Wright: upon respect] Singer was the first to give the true explanation of this phrase: \"deliberately or upon consideration.\" Edwards, Heath, and Johnson all interpreted it as referring it to the \"respect\" or reverence due to the king’s messenger. Malone supposed that \"respect\" was personified. Singer referred to Ham. III, i, 68. Wright agrees with Singer, and cites a convincing passage from King John, IV, ii, 214: \"To know the meaning Of dangerous majesty, when perchance it frowns More upon humour than advised respect.\" \"That is, rather capriciously than deliberately.\" Bacon frequently uses \"upon\" in similar phrases. See Glossary to the Essays, ed. Wright."
       ]
@@ -5552,7 +5558,7 @@
       "notes": []
     },
     "88": {
-      "play": "And let the wise man fly:",
+      "play": "And let the wise man fly: ",
       "notes": []
     },
     "89": {
@@ -5626,7 +5632,7 @@
       "notes": []
     },
     "104": {
-      "play": "GLOUCESTER: Well, my good lord, I have inform'd them so.",
+      "play": "Well, my good lord, I have inform'd them so.",
       "notes": [
         "Coleridge: well] The strong interest now felt by Lear, to try to find excuses for his daughter, is most pathetic."
       ]
@@ -5636,7 +5642,7 @@
       "notes": []
     },
     "106": {
-      "play": "GLOUCESTER: Ay, my good lord.",
+      "play": "Ay, my good lord.",
       "notes": []
     },
     "107": {
@@ -5729,7 +5735,7 @@
       ]
     },
     "126": {
-      "play": "GLOUCESTER: I would have all well betwixt you.",
+      "play": "I would have all well betwixt you.",
       "notes": []
     },
     "127": {
@@ -5819,7 +5825,7 @@
       ]
     },
     "146": {
-      "play": "REGAN: I pray you, sir, take patience: I have hope.",
+      "play": "I pray you, sir, take patience: I have hope.",
       "notes": []
     },
     "147": {
@@ -5837,7 +5843,7 @@
       "notes": []
     },
     "150": {
-      "play": "REGAN: I cannot think my sister in the least",
+      "play": "I cannot think my sister in the least",
       "notes": []
     },
     "151": {
@@ -5861,7 +5867,7 @@
       "notes": []
     },
     "156": {
-      "play": "REGAN: O, sir, you are old.",
+      "play": "O, sir, you are old.",
       "notes": []
     },
     "157": {
@@ -5895,7 +5901,7 @@
       "notes": []
     },
     "164": {
-      "play": "Do you but mark how this becomes the house:",
+      "play": "Do you but mark how this becomes the house: ",
       "notes": [
         "Theobald, Warburton, Steevens, Capell, Collier, Schmidt: house] Theobald suggested and adopted use, i.e. the established rule and custom of nature. Warburton interpreted it as meaning the order of families, the duties of relation; and Steevens cites from Chapman’s Blind Beggar of Alexandria, 1598: “Come up to supper; it will become the house wonderful well.” But Capell takes it in a more restricted sense; “fathers are not the heads only of a house or a family, but its representatives; they are the house, what affects them affects the rest of its body; Regan, therefore, is called upon to observe an action in which she is concerned, and then say her opinion of it; and she does accordingly show herself hurt by it, and declares it ‘unsightly,’ unbecoming her and her father, i.e. the house.” Whereupon Dyce (Gloss.) remarks: I suspect that Lear is now thinking much more of himself as head of the house than of Regan as a member of it, and that, though she chides him for such “unsightly tricks,” she is not of a nature to be “hurt” by them. Collier: The (MS) tells us to read mouth, i.e. the mouth of Lear. We feel reluctant to adopt the emendation, inasmuch as, according to Warburton, the sense is pretty clear; but still it is extremely probable that the copyist, or the compositor, misheard the word, and that Lear intends to call attention to the manner in which such terms of abject submission to a child misbeseem a father’s mouth. Schmidt: Compare Coriolanus’s horror when his mother kneels to him, V, iii, 56."
       ]
@@ -5915,7 +5921,7 @@
       "notes": []
     },
     "168": {
-      "play": "REGAN: Good sir, no more; these are unsightly tricks:",
+      "play": "Good sir, no more; these are unsightly tricks:",
       "notes": []
     },
     "169": {
@@ -6045,7 +6051,7 @@
       "notes": []
     },
     "196": {
-      "play": "REGAN: Good sir, to the purpose.",
+      "play": "Good sir, to the purpose.",
       "notes": []
     },
     "197": {
@@ -6317,7 +6323,7 @@
       "notes": []
     },
     "259": {
-      "play": "REGAN: I dare avouch it, sir: what, fifty followers?",
+      "play": "I dare avouch it, sir: what, fifty followers?",
       "notes": []
     },
     "260": {
@@ -6385,7 +6391,7 @@
       "notes": []
     },
     "273": {
-      "play": "REGAN: And in good time you gave it.",
+      "play": "And in good time you gave it.",
       "notes": []
     },
     "274": {
@@ -6407,7 +6413,7 @@
       "notes": []
     },
     "278": {
-      "play": "REGAN: And speak't again, my lord; no more with me.",
+      "play": "And speak't again, my lord; no more with me.",
       "notes": []
     },
     "279": {
@@ -6465,7 +6471,7 @@
       "notes": []
     },
     "291": {
-      "play": "Are in the poorest thing superfluous:",
+      "play": "Are in the poorest thing superfluous: ",
       "notes": []
     },
     "292": {
@@ -6884,7 +6890,7 @@
       "notes": []
     },
     "45": {
-      "play": "Gentleman: I will talk further with you.",
+      "play": "I will talk further with you.",
       "notes": [
         "Delius: I will talk further with you] This implies a courteous postponement or dismissal of a request; this explains Kent’s reply."
       ]
@@ -7075,7 +7081,7 @@
       "notes": []
     },
     "25": {
-      "play": "Fool: He that has a house to put's head in has a good",
+      "play": "He that has a house to put's head in has a good",
       "notes": []
     },
     "26": {
@@ -7407,7 +7413,7 @@
       "notes": []
     },
     "96": {
-      "play": "Come to great confusion:",
+      "play": "Come to great confusion: ",
       "notes": []
     },
     "97": {
@@ -7557,7 +7563,7 @@
       "notes": []
     },
     "5": {
-      "play": "KENT: Good my lord, enter here.",
+      "play": "Good my lord, enter here.",
       "notes": []
     },
     "6": {
@@ -7567,7 +7573,7 @@
       ]
     },
     "7": {
-      "play": "KENT: I had rather break mine own. Good my lord, enter.",
+      "play": "I had rather break mine own. Good my lord, enter.",
       "notes": []
     },
     "8": {
@@ -7651,7 +7657,7 @@
       "notes": []
     },
     "26": {
-      "play": "KENT: Good my lord, enter here.",
+      "play": "Good my lord, enter here.",
       "notes": []
     },
     "27": {
@@ -7778,7 +7784,7 @@
       "notes": []
     },
     "53": {
-      "play": "EDGAR: Who gives any thing to poor Tom? whom the foul",
+      "play": "Who gives any thing to poor Tom? whom the foul",
       "notes": []
     },
     "54": {
@@ -8007,7 +8013,7 @@
       ]
     },
     "99": {
-      "play": "Still through the hawthorn blows the cold wind:",
+      "play": "Still through the hawthorn blows the cold wind: ",
       "notes": []
     },
     "100": {
@@ -8163,7 +8169,7 @@
       "notes": []
     },
     "127": {
-      "play": "KENT: Who's there? What is't you seek?",
+      "play": "Who's there? What is't you seek?",
       "notes": []
     },
     "128": {
@@ -8410,7 +8416,7 @@
       "notes": []
     },
     "180": {
-      "play": "KENT: Good my lord, soothe him; let him take the fellow.",
+      "play": "Good my lord, soothe him; let him take the fellow.",
       "notes": []
     },
     "181": {
@@ -8626,7 +8632,7 @@
       "notes": []
     },
     "12": {
-      "play": "Fool: No, he's a yeoman that has a gentleman to his son;",
+      "play": "No, he's a yeoman that has a gentleman to his son;",
       "notes": []
     },
     "13": {
@@ -8766,7 +8772,7 @@
       "notes": []
     },
     "38": {
-      "play": "Bench by his side:",
+      "play": "Bench by his side: ",
       "notes": []
     },
     "39": {
@@ -8892,7 +8898,7 @@
       ]
     },
     "64": {
-      "play": "EDGAR: Tom will throw his head at them. Avaunt, you curs!",
+      "play": "Tom will throw his head at them. Avaunt, you curs!",
       "notes": []
     },
     "65": {
@@ -8923,7 +8929,7 @@
       ]
     },
     "70": {
-      "play": "Tom will make them weep and wail:",
+      "play": "Tom will make them weep and wail: ",
       "notes": [
         "Prompt Book: stage direction] After this line in Edwin Booth’s Prompt Book there is, the stage-direction \"Throws straw crown to left.\""
       ]
@@ -9109,7 +9115,7 @@
       "notes": []
     },
     "107": {
-      "play": "Leaving free things and happy shows behind:",
+      "play": "Leaving free things and happy shows behind: ",
       "notes": [
         "Heath: free things] Things free from suffering."
       ]
@@ -9322,7 +9328,7 @@
       "notes": []
     },
     "26": {
-      "play": "Old Man: How now! Who's there?",
+      "play": "How now! Who's there?",
       "notes": [
         "Johnson: pass upon] Johnson: That is, pass a judicial sentence. Steevens: The origin of the phrase may be traced to Magna Charta: “nec super eum ibimus, nisi per legale judicium parium suorum.” It is common to most of our early writers. In If This be not a Good Play, the Devil is in it, 1612, we have: “A jury of brokers, impanePd, and deeply sworn to passe on all villains in hell.” Wright: In Spedding’s Letters and Life of Bacon, ii, 283, there is a list of “The Names of the Peers that passed upon the trial of the two Earls of Essex and Southampton.” [It is still in everyday use at the Bar and among conveyancers. Ed.] Moberly: Magna Charta prevailed, it appears, in England even in the days of Joash, king of Judah."
       ]
@@ -9361,7 +9367,7 @@
       ]
     },
     "33": {
-      "play": "Old Man: Fellow, where goest?",
+      "play": "Fellow, where goest?",
       "notes": []
     },
     "34": {
@@ -9464,7 +9470,7 @@
       ]
     },
     "54": {
-      "play": "Old Man: Alack, sir, he is mad.",
+      "play": "Alack, sir, he is mad.",
       "notes": []
     },
     "55": {
@@ -9621,7 +9627,7 @@
       "notes": []
     },
     "84": {
-      "play": "Looks fearfully in the confined deep:",
+      "play": "Looks fearfully in the confined deep: ",
       "notes": [
         "Moberly: Looks fearfully] The beetling top of the cliff seems to be looking down with alarm over the sea which it hems in. This description seems as if no particular Dover cliff were meant, as the cliffs there are not really perpendicular.",
         "Malone: in the confined deep] Sh., considered the sea as a mirrour. To look in a glass is yet our colloquial phraseology.",
@@ -9876,7 +9882,7 @@
       "notes": []
     },
     "18": {
-      "play": "Hasten his musters and conduct his powers:",
+      "play": "Hasten his musters and conduct his powers: ",
       "notes": []
     },
     "19": {
@@ -9906,7 +9912,7 @@
       ]
     },
     "25": {
-      "play": "Would stretch thy spirits up into the air:",
+      "play": "Would stretch thy spirits up into the air: ",
       "notes": []
     },
     "26": {
@@ -10310,67 +10316,6 @@
     }
   },
   "ACT 4, SCENE 3": {
-    "misc": {
-      "play": "",
-      "notes": [
-        "Scene III] Johnson: This scene seems to have been left out of the Folio only to shorten the",
-        "play. [See Appendix, The Text.] As will be seen by the Textual Notes, Eccles again makes a",
-        "transposition of scenes. Between the preceding scene and this present one, he inserts Scene",
-        "V, calling it Scene III. Wherefore our Scenes III and IV are his Scenes IV and V. The object of",
-        "this change is to bring closer together all those scenes which represent the transactions in",
-        "the neighborhood of Dover, and to render unnecessary the supposition that Lear passes a",
-        "night in the open fields. Eccles says: The distance probably imagined between the place",
-        "where Regan has that conference with the Steward, which makes the subject of the Scene",
-        "now before us [Eccles's Scene III, our Scene V], and the vicinity of Dover, seems to be such",
-        "as requires the notion of a night intervening before he arrives at the latter, and,",
-        "consequently, the same space of time must elapse between any scene which precedes that",
-        "just mentioned and any other wherein he appears to have arrived near Dover, as he does in",
-        "the sixth scene. It follows, then, that between the fourth and sixth, as hitherto numbered, a",
-        "night must pass; but the solicitude to find the King, expressed by Cordelia in the former of",
-        "these, makes it probable that her efforts were attended with success before the coming on",
-        "of night. Let, therefore, scene the fifth of the ancient distribution stand as the third in this",
-        "place, and suppose it to pass on the evening of the third day since that, inclusively taken, on",
-        "the morning of which Lear, attended by certain of his knights, began to be conveyed from",
-        "the castle of Gloucester on his route towards Dover, and that, in some former part of the",
-        "same, Edmund had departed from Regan upon the business which she here mentions as the",
-        "motive of his expedition. ... It appears that the Steward, not finding Edmund as he expected,",
-        "sets out towards Dover without loss of time in pursuit of him, I suppose the troops of",
-        "Albany to have begun their march towards Dover, but in another direction, about the time",
-        "of the Steward’s departure from home charged with the execution of Goneril’s commission.",
-        "That might be either some part of the same day on which she had reached her own",
-        "habitation accompanied by Edmund, or the morning of the succeeding one, so as to allow",
-        "time for the Steward to arrive at his destination in the evening, as there is some reason for",
-        "supposing he had done by Regan’s exhortation in this scene [our Scene V] to wait the safe",
-        "conduct of her forces on the morrow, and her hint respecting the insecurity of travelling.",
-        "[See Appendix: The Duration of the Action p.409.] When Eccles comes to this present scene,",
-        "which he calls Scene IV, he says: Let the period of this scene be supposed the fourth",
-        "morning from that (both, however, inclusively) whereon Lear, with Kent and the rest of his",
-        "attendants, began his progress from Gloucester’s castle, Goneril and Edmund from the same",
-        "set out for the palace of Albany, and, later in the day, the sightless Gloucester, conducted by",
-        "the Old Man, began to go to Dover. The Gentleman who enters, conversing with Kent, is the",
-        "same who was deputed by him as a messenger to Dover on the night of the storm. From",
-        "their conversation we infer that this meeting has but a very little while before taken place.",
-        "Kent appears to be but newly arrived. The Gentleman, though he could not have set out",
-        "many hours before the King and his party, yet, having travelled with more expedition, may",
-        "reasonably be thought to have been long enough arrived to have had an opportunity for the",
-        "conference with Cordelia.",
-        "Gentleman] Johnson: The same whom he had sent with letters to Cordelia.",
-        "2, reason] Steevens: The King of France being no longer a necessary personage, it was fit",
-        "that some pretext for getting rid of him should be formed before the play was too near",
-        "advanced towards a conclusion. Decency required that a monarch should not be silently",
-        "shuffled into the pack of insignificant characters; and therefore his dismission (which could",
-        "be effected only by a sudden recall to his own dominions) was to be accounted for before",
-        "the audience. For this purpose, among others, the present scene was introduced. It is",
-        "difficult indeed to say what use could have been made of the king, had he appeared at the",
-        "head of his own armament, and survived the murder of his queen. His conjugal concern on",
-        "the occasion might have weakened the effect of Lear’s parental sorrow; and, being an object",
-        "of respect as well as pity, he would naturally have divided the spectators' attention, and",
-        "thereby diminished the consequence of Albany, Edgar, and Kent, whose exemplary virtues",
-        "deserved to be ultimately placed in the most conspicuous point of view.",
-        "7, Who] For instances of the neglect of the inflection of who, see V, iii, 249 s. Mach. III, i, 122;",
-        "III, iv, 42; IV, iii, 171; Ham, II, ii, 193, and Abbott, §274."
-      ]
-    },
     "1": {
       "play": "KENT: Why the King of France is so suddenly gone back",
       "notes": []
@@ -10648,7 +10593,7 @@
       "notes": []
     },
     "54": {
-      "play": "Gentleman: Alack, poor gentleman!",
+      "play": "Alack, poor gentleman!",
       "notes": []
     },
     "55": {
@@ -10685,15 +10630,70 @@
     "62": {
       "play": "Along with me.",
       "notes": []
-    }
-  },
-  "ACT 4, SCENE 4": {
+    },
     "misc": {
       "play": "",
       "notes": [
-        "SCENE IV: Johnson: Scene iv.] Pope. Scena Tertia. Ff (Scaena FJ. Rowe. Scene v. Ec. The same. A tent.] Cap. A Camp. Rowe. Enter...] Enter.. .Cordelia, Gentlemen, and Souldiours. Ff. Enter Cordelia Dodlor, and others. Qq. Enter Cordelia, Physician, and Soldiers. Pope."
+        "Scene III] Johnson: This scene seems to have been left out of the Folio only to shorten the",
+        "play. [See Appendix, The Text.] As will be seen by the Textual Notes, Eccles again makes a",
+        "transposition of scenes. Between the preceding scene and this present one, he inserts Scene",
+        "V, calling it Scene III. Wherefore our Scenes III and IV are his Scenes IV and V. The object of",
+        "this change is to bring closer together all those scenes which represent the transactions in",
+        "the neighborhood of Dover, and to render unnecessary the supposition that Lear passes a",
+        "night in the open fields. Eccles says: The distance probably imagined between the place",
+        "where Regan has that conference with the Steward, which makes the subject of the Scene",
+        "now before us [Eccles's Scene III, our Scene V], and the vicinity of Dover, seems to be such",
+        "as requires the notion of a night intervening before he arrives at the latter, and,",
+        "consequently, the same space of time must elapse between any scene which precedes that",
+        "just mentioned and any other wherein he appears to have arrived near Dover, as he does in",
+        "the sixth scene. It follows, then, that between the fourth and sixth, as hitherto numbered, a",
+        "night must pass; but the solicitude to find the King, expressed by Cordelia in the former of",
+        "these, makes it probable that her efforts were attended with success before the coming on",
+        "of night. Let, therefore, scene the fifth of the ancient distribution stand as the third in this",
+        "place, and suppose it to pass on the evening of the third day since that, inclusively taken, on",
+        "the morning of which Lear, attended by certain of his knights, began to be conveyed from",
+        "the castle of Gloucester on his route towards Dover, and that, in some former part of the",
+        "same, Edmund had departed from Regan upon the business which she here mentions as the",
+        "motive of his expedition. ... It appears that the Steward, not finding Edmund as he expected,",
+        "sets out towards Dover without loss of time in pursuit of him, I suppose the troops of",
+        "Albany to have begun their march towards Dover, but in another direction, about the time",
+        "of the Steward’s departure from home charged with the execution of Goneril’s commission.",
+        "That might be either some part of the same day on which she had reached her own",
+        "habitation accompanied by Edmund, or the morning of the succeeding one, so as to allow",
+        "time for the Steward to arrive at his destination in the evening, as there is some reason for",
+        "supposing he had done by Regan’s exhortation in this scene [our Scene V] to wait the safe",
+        "conduct of her forces on the morrow, and her hint respecting the insecurity of travelling.",
+        "[See Appendix: The Duration of the Action p.409.] When Eccles comes to this present scene,",
+        "which he calls Scene IV, he says: Let the period of this scene be supposed the fourth",
+        "morning from that (both, however, inclusively) whereon Lear, with Kent and the rest of his",
+        "attendants, began his progress from Gloucester’s castle, Goneril and Edmund from the same",
+        "set out for the palace of Albany, and, later in the day, the sightless Gloucester, conducted by",
+        "the Old Man, began to go to Dover. The Gentleman who enters, conversing with Kent, is the",
+        "same who was deputed by him as a messenger to Dover on the night of the storm. From",
+        "their conversation we infer that this meeting has but a very little while before taken place.",
+        "Kent appears to be but newly arrived. The Gentleman, though he could not have set out",
+        "many hours before the King and his party, yet, having travelled with more expedition, may",
+        "reasonably be thought to have been long enough arrived to have had an opportunity for the",
+        "conference with Cordelia.",
+        "Gentleman] Johnson: The same whom he had sent with letters to Cordelia.",
+        "2, reason] Steevens: The King of France being no longer a necessary personage, it was fit",
+        "that some pretext for getting rid of him should be formed before the play was too near",
+        "advanced towards a conclusion. Decency required that a monarch should not be silently",
+        "shuffled into the pack of insignificant characters; and therefore his dismission (which could",
+        "be effected only by a sudden recall to his own dominions) was to be accounted for before",
+        "the audience. For this purpose, among others, the present scene was introduced. It is",
+        "difficult indeed to say what use could have been made of the king, had he appeared at the",
+        "head of his own armament, and survived the murder of his queen. His conjugal concern on",
+        "the occasion might have weakened the effect of Lear’s parental sorrow; and, being an object",
+        "of respect as well as pity, he would naturally have divided the spectators' attention, and",
+        "thereby diminished the consequence of Albany, Edgar, and Kent, whose exemplary virtues",
+        "deserved to be ultimately placed in the most conspicuous point of view.",
+        "7, Who] For instances of the neglect of the inflection of who, see V, iii, 249 s. Mach. III, i, 122;",
+        "III, iv, 42; IV, iii, 171; Ham, II, ii, 193, and Abbott, §274."
       ]
-    },
+    }
+  },
+  "ACT 4, SCENE 4": {
     "1": {
       "play": "CORDELIA: Alack, 'tis he: why, he was met even now",
       "notes": []
@@ -10857,6 +10857,12 @@
     "32": {
       "play": "Soon may I hear and see him!",
       "notes": []
+    },
+    "misc": {
+      "play": "",
+      "notes": [
+        "SCENE IV: Johnson: Scene iv.] Pope. Scena Tertia. Ff (Scaena FJ. Rowe. Scene v. Ec. The same. A tent.] Cap. A Camp. Rowe. Enter...] Enter.. .Cordelia, Gentlemen, and Souldiours. Ff. Enter Cordelia Dodlor, and others. Qq. Enter Cordelia, Physician, and Soldiers. Pope."
+      ]
     }
   },
   "ACT 4, SCENE 5": {
@@ -11155,7 +11161,7 @@
       "notes": []
     },
     "20": {
-      "play": "Methinks he seems no bigger than his head:",
+      "play": "Methinks he seems no bigger than his head: ",
       "notes": []
     },
     "21": {
@@ -11275,7 +11281,7 @@
       "notes": []
     },
     "44": {
-      "play": "Shake patiently my great affliction off:",
+      "play": "Shake patiently my great affliction off: ",
       "notes": []
     },
     "45": {
@@ -11376,7 +11382,7 @@
       ]
     },
     "64": {
-      "play": "Which thou hast perpendicularly fell:",
+      "play": "Which thou hast perpendicularly fell: ",
       "notes": [
         "Abbott: fell] For other irregular participial formations, see § 344."
       ]
@@ -11552,7 +11558,7 @@
       "notes": []
     },
     "98": {
-      "play": "EDGAR: O thou side-piercing sight!",
+      "play": "O thou side-piercing sight!",
       "notes": []
     },
     "99": {
@@ -11597,7 +11603,7 @@
       ]
     },
     "107": {
-      "play": "EDGAR: Sweet marjoram.",
+      "play": "Sweet marjoram.",
       "notes": []
     },
     "108": {
@@ -11659,7 +11665,7 @@
       "notes": []
     },
     "120": {
-      "play": "GLOUCESTER: The trick of that voice I do well remember:",
+      "play": "The trick of that voice I do well remember:",
       "notes": [
         "Hanmer: trick] (Gloss.): Frequently used for the air, or that peculiarity in a face, voice, or gesture which distinguishes it from others. [See Ham. IV, vii, 189.]"
       ]
@@ -11761,7 +11767,7 @@
       ]
     },
     "139": {
-      "play": "Though women all above:",
+      "play": "Though women all above: ",
       "notes": [
         "is] Wright: Emphatic; as in Mach, I, iii, 141, 142. the case] Jennens ; Having lost my eyes, would you have me read with the sockets, Steevens: That is, the socket of either eye. So in Wint. Tale^ V, ii, 14; <tear the cases of their eyes.* Malone: Also in Per. V, i, 112: *her eyes as jewel-like and cased as richly,* and Ib. HI, ii, 99; *her eyelids, cases to those heavenly jewels.* ^This case of eyes* could not have been Shakespeare’s phrase, because, in the language of that day, it would mean ^ this pair of eyes/ asense directly opposite to that intended to be conveyed. White: But still I mustregard Rowe’s reading (f. e. with such a pair of eyes as this, i. e, none at all) as being the true text."
       ]
@@ -11803,7 +11809,7 @@
       "notes": []
     },
     "148": {
-      "play": "GLOUCESTER: O, let me kiss that hand!",
+      "play": "O, let me kiss that hand!",
       "notes": []
     },
     "149": {
@@ -11811,7 +11817,7 @@
       "notes": []
     },
     "150": {
-      "play": "GLOUCESTER: O ruin'd piece of nature! This great world",
+      "play": "O ruin'd piece of nature! This great world",
       "notes": [
         "Schmidt: piece of nature] Sh. frequently uses piece with ^ where we should expect some such word as model, or masterpiece, especially a < piece of virtue* for a pattern of virtue. An expression in Ant* dr» Cleo* V, ii, 99, comes the nearest to the present phrase, where Cleopatra says, ‘to imagine An Antony, were nature’s- piece ®ga!nst fancy.®",
         "piece of nature] This great worldj See note on * little world of man,® III, 2, lo."
@@ -11840,7 +11846,7 @@
       "notes": []
     },
     "156": {
-      "play": "GLOUCESTER: Were all the letters suns, I could not see one.",
+      "play": "Were all the letters suns, I could not see one.",
       "notes": []
     },
     "157": {
@@ -11880,7 +11886,7 @@
       "notes": []
     },
     "165": {
-      "play": "GLOUCESTER: I see it feelingly.",
+      "play": "I see it feelingly.",
       "notes": [
         "feelingly] Moberly: In an inward and heartfelt way. Lear takes the word to mean “only by feeling as I have no eyes.” ‘What do you want with eyes;’ he rejoins, ‘to know how the world goes?’ 169, handy-dandy] Malone: This is a play among children, in which something is shaken between the hands, and then a guess is made in which hand it is retained. See Florio: ‘Bazzicchiare, To shake betweene two hands, to play handy-dandy.’ Coles (Latin Dict., 1679) renders ‘to play handy-dandy,’ by digitis micare; and he is followed by Ainsworth; but they appear to have been mistaken, as is Dr Johnson in his definition, in his Dictionary, which seems to have been formed on the passage before us, misunderstood. He says, Handy-dandy is ‘a play in which children change hands and places.’ Douse: This explanation is confirmed by the following extract from A free discourse touching the murmurers of the tymes, MS: ‘They ... play with your majestic as men play with little children at handye dandye, which hand will you have, when they are disposed to keep any thinge from them.’ Halliwell says this is one of the oldest games In existence, not only alluded to by Piers Plowman, but, according to Pope in his Memoirs of Martinus Scriblerus, by Plato. “Sometimes” the game is played by a sort of sleight of hand, changing the article rapidly from one hand to another. ... This is what Sh. alludes to by changing places.’ 160, lusts] This is an instance cited by Walker (Crit. ii, 125) of the substitution in the Folio of s for st in the second person singular of the verb. ‘Queere, asks Walker, ‘in cases where st would produce extreme harshness, and where at the same time the old copies have s, whether we ought not to write the latter. (In the north of England, and in Scotland (see, for example, Burns, passim), s for st in the second person seems to be the rule.)’ [To return to the usage of the Qq Ff in this instance is hardly more violent than to adopt it in place of its. Can harshness farther go than in “hotly lust’st to”? I regret that I did not soften a line correspondingly harsh in modern editions, and print in Ham, I, ii, 53 “Revisits thus the glimpses of the moon.”—Ed.]"
       ]
@@ -11910,7 +11916,7 @@
       "notes": []
     },
     "172": {
-      "play": "GLOUCESTER: Ay, sir.",
+      "play": "Ay, sir.",
       "notes": []
     },
     "173": {
@@ -11955,7 +11961,7 @@
       ]
     },
     "182": {
-      "play": "And the strong lance of justice hurtless breaks:",
+      "play": "And the strong lance of justice hurtless breaks: ",
       "notes": [
         "Plate] Cowden Clarke: That is, clothe in plate armor.",
         "sin] Sins of the Ff is to be preferred, were it not for the “it” in line 165.—Ed."
@@ -12118,7 +12124,7 @@
       ]
     },
     "218": {
-      "play": "Gentleman: You are a royal one, and we obey you.",
+      "play": "You are a royal one, and we obey you.",
       "notes": []
     },
     "219": {
@@ -12194,7 +12200,7 @@
       ]
     },
     "235": {
-      "play": "Gentleman: Though that the queen on special cause is here,",
+      "play": "Though that the queen on special cause is here,",
       "notes": []
     },
     "236": {
@@ -12593,7 +12599,7 @@
       "notes": []
     },
     "8": {
-      "play": "These weeds are memories of those worser hours:",
+      "play": "These weeds are memories of those worser hours: ",
       "notes": [
         "Malone: weeds] ‘Wright: This dress. A. S. waed, clothing.’",
         "Steevens: memories] ‘Steevens: Memorials. Compare “O you memory Of old Sir Rowland,” As You Like It, II, iii, 3.’",
@@ -12611,7 +12617,7 @@
       ]
     },
     "11": {
-      "play": "Yet to be known shortens my made intent:",
+      "play": "Yet to be known shortens my made intent: ",
       "notes": [
         "Warburton: made intent] ‘Warburton : There is a dissonancy in terms in “made intent”; one implying the idea of a thing done; the other, undone. I suppose Sh. wrote “laid intent,” i.e. projected. [Thus Warburton’s text.]’",
         "Johnson: made intent] ‘Johnson : An intent made is an intent formed. So we say, in common language, to make a design, and to make a resolution.’",
@@ -12853,7 +12859,7 @@
       ]
     },
     "57": {
-      "play": "CORDELIA: Still, still, far wide!",
+      "play": "Still, still, far wide!",
       "notes": []
     },
     "58": {
@@ -12961,7 +12967,7 @@
       "notes": []
     },
     "80": {
-      "play": "CORDELIA: And so I am, I am.",
+      "play": "And so I am, I am.",
       "notes": []
     },
     "81": {
@@ -12987,7 +12993,7 @@
       ]
     },
     "86": {
-      "play": "CORDELIA: No cause, no cause.",
+      "play": "No cause, no cause.",
       "notes": [
         "Johnson: 86-98. ‘Johnson: What is omitted in the Ff is at least proper, if not necessary; and it was omitted by the author, I suppose, for no other reason than to shorten the representation.’",
         "Malone: 86-98. ‘Malone: It is much more probable that it was omitted by the players, after the author’s departure from the stage, without consulting him. [See Appendix, The Text.]’"
@@ -13135,7 +13141,7 @@
       "notes": []
     },
     "8": {
-      "play": "You know the goodness I intend upon you:",
+      "play": "You know the goodness I intend upon you: ",
       "notes": []
     },
     "9": {
@@ -13587,7 +13593,7 @@
       "notes": []
     },
     "29": {
-      "play": "EDMUND: Come hither, captain; hark.",
+      "play": "Come hither, captain; hark.",
       "notes": []
     },
     "30": {
@@ -13747,7 +13753,7 @@
       "notes": []
     },
     "63": {
-      "play": "By those that feel their sharpness:",
+      "play": "By those that feel their sharpness: ",
       "notes": []
     },
     "64": {
@@ -13915,7 +13921,7 @@
       "notes": []
     },
     "99": {
-      "play": "I bar it in the interest of my wife:",
+      "play": "I bar it in the interest of my wife: ",
       "notes": []
     },
     "100": {
@@ -14365,7 +14371,7 @@
       ]
     },
     "202": {
-      "play": "Make instruments to plague us:",
+      "play": "Make instruments to plague us: ",
       "notes": [
         "Capell: plague us’] The text of the Qq has “scourge vs.” Delius remarks that in the text of the Qq the antecedent to ‘That’ is to be eliminated from the 'our’ in the preceding lines."
       ]
@@ -14718,7 +14724,7 @@
       "notes": []
     },
     "277": {
-      "play": "To bid my king and master aye good night:",
+      "play": "To bid my king and master aye good night: ",
       "notes": []
     },
     "278": {
@@ -14770,7 +14776,7 @@
       "notes": []
     },
     "290": {
-      "play": "Is on the life of Lear and on Cordelia:",
+      "play": "Is on the life of Lear and on Cordelia: ",
       "notes": []
     },
     "291": {
@@ -14988,7 +14994,7 @@
       ]
     },
     "334": {
-      "play": "KENT: The same,",
+      "play": "The same,",
       "notes": []
     },
     "335": {
@@ -15004,7 +15010,7 @@
       "notes": []
     },
     "338": {
-      "play": "KENT: No, my good lord; I am the very man,--",
+      "play": "No, my good lord; I am the very man,--",
       "notes": []
     },
     "339": {
@@ -15012,7 +15018,7 @@
       "notes": []
     },
     "340": {
-      "play": "KENT: That, from your first of difference and decay,",
+      "play": "That, from your first of difference and decay,",
       "notes": [
         "Schmidt: first of difference] Compare ‘That from my first have been inclined to thrift.’ Tim. I, i, 118; ‘their first of manhood.’—Macb, V, ii, so."
       ]
@@ -15026,7 +15032,7 @@
       "notes": []
     },
     "343": {
-      "play": "KENT: Nor no man else: all's cheerless, dark, and deadly.",
+      "play": "Nor no man else: all's cheerless, dark, and deadly.",
       "notes": [
         "Capell: Nor no man else] The true force of these words is; Welcome, alas! here’s no welcome for me or any one. [This interpretation is hardly satisfactory, and yet it is apparently almost the only one which the punctuation of the QqFf will yield. Rowe’s punctuation after ‘steps,’ which is followed above, in the text, seems better. Kent says, in effect, ‘I am the very man, and no one else, that has followed your sad steps.’ He does not catch either of Lear’s low apathetic replies: ‘I’ll see that straight’ and ‘You are welcome hither.’ This is also the view of Delius and of Clarke. But Ulrici objects to it, and says that not only does it leave ‘nor’ unaccounted for, but it is false in fact, since the Fool as well as Kent accompanied from the first Lear’s sad steps, and that, moreover, ‘else’ is unexplained. Instead of the present text, Ulrici proposes to transpose the ‘Nor’ and the ‘no’: \"No, nor man else,” that is, “No, neither I nor any other man is welcome here; here all’s cheerless, dark,” ’ &c. This agrees substantially with Capell, and with Moberly, who paraphrases: ‘Who can be “welcome” to such a scene as this?’]"
       ]
@@ -15088,7 +15094,7 @@
       "notes": []
     },
     "356": {
-      "play": "To him our absolute power:",
+      "play": "To him our absolute power: ",
       "notes": []
     },
     "357": {
