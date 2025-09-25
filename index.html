@@ -4985,10 +4985,6 @@
                 sidebar.classList.remove('disabled', 'stuck');
             }
             
-            // Clear any stuck loading states
-            document.querySelectorAll('.loading-indicator').forEach(el => {
-                el.style.display = 'none';
-            });
             
             // Clear any stuck selections
             document.querySelectorAll('.selected').forEach(el => {
@@ -5003,24 +4999,6 @@
             // Reset analysis in progress flag
             analysisInProgress = false;
             
-            // Force refresh play text if a play is loaded
-            if (currentPlay && plays[currentPlay]) {
-                console.log('🔄 Force refreshing play text for:', currentPlay);
-                const playText = document.getElementById('playText');
-                if (playText) {
-                    // Force clear any stuck content
-                    playText.innerHTML = '';
-                    playText.style.pointerEvents = 'auto';
-                    playText.classList.remove('stuck', 'disabled', 'loading');
-                    
-                    // Reload the current scene
-                    if (currentScene && plays[currentPlay].scenes[currentScene]) {
-                        setTimeout(() => {
-                            loadScene(currentScene);
-                        }, 100);
-                    }
-                }
-            }
             
             console.log('✅ UI force reset complete');
         }
@@ -5044,36 +5022,6 @@
             }
         }
         
-        // Force refresh play text - useful when switching plays after analysis
-        function forceRefreshPlayText() {
-            console.log('🔄 Force refreshing play text...');
-            
-            if (currentPlay && plays[currentPlay]) {
-                const playText = document.getElementById('playText');
-                if (playText) {
-                    // Force clear any stuck content
-                    playText.innerHTML = '';
-                    playText.style.pointerEvents = 'auto';
-                    playText.classList.remove('stuck', 'disabled', 'loading');
-                    
-                    // Reload the current scene or first scene
-                    if (currentScene && plays[currentPlay].scenes[currentScene]) {
-                        setTimeout(() => {
-                            loadScene(currentScene);
-                        }, 50);
-                    } else {
-                        // Load first available scene
-                        const firstAct = Object.keys(plays[currentPlay].acts)[0];
-                        if (firstAct && plays[currentPlay].acts[firstAct] && plays[currentPlay].acts[firstAct].length > 0) {
-                            const firstScene = plays[currentPlay].acts[firstAct][0];
-                            setTimeout(() => {
-                                loadScene(firstScene);
-                            }, 50);
-                        }
-                    }
-                }
-            }
-        }
         
         function updateAnalysisPanel() {
             const analysisContent = document.getElementById('analysisContent');
@@ -7975,10 +7923,6 @@
                     // Load the new play
                     loadPlay(selectedPlay);
                     
-                    // Force refresh play text after a short delay to ensure it updates
-                    setTimeout(() => {
-                        forceRefreshPlayText();
-                    }, 200);
                     
                     // Ensure dropdown remains functional
                     setTimeout(() => {
@@ -8166,35 +8110,23 @@
             // Update navigation
             updateNavigation(play);
             
-            // Force clear and reset play text element
-            console.log('🔄 Force clearing play text element...');
-            playTextElement.innerHTML = '';
-            playTextElement.style.pointerEvents = 'auto';
-            playTextElement.classList.remove('stuck', 'disabled', 'loading');
-            
             // Load first scene automatically
             const firstAct = Object.keys(play.acts)[0];
             if (firstAct && play.acts[firstAct] && play.acts[firstAct].length > 0) {
                 const firstScene = play.acts[firstAct][0];
                 console.log('✅ Loading first scene:', firstScene);
-                
-                // Force update the play text with a delay to ensure it clears first
-                setTimeout(() => {
-                    loadScene(firstScene);
-                }, 50);
+                loadScene(firstScene);
             } else {
                 console.log('⚠️ No acts/scenes found, showing welcome message');
                 // If no scenes found, show welcome message
-                setTimeout(() => {
-                    playTextElement.innerHTML = `
-                        <div class="scene-title">${play.name}</div>
-                        <div class="scene-separator"></div>
-                        <p>Play loaded successfully. Use the navigation to explore acts and scenes.</p>
-                        <p><em>Debug: Found ${Object.keys(play.acts).length} acts, ${Object.keys(play.scenes).length} scenes</em></p>
-                    `;
-                    // Update meta line even when no scenes are found
-                    updateMetaLine();
-                }, 50);
+                playTextElement.innerHTML = `
+                    <div class="scene-title">${play.name}</div>
+                    <div class="scene-separator"></div>
+                    <p>Play loaded successfully. Use the navigation to explore acts and scenes.</p>
+                    <p><em>Debug: Found ${Object.keys(play.acts).length} acts, ${Object.keys(play.scenes).length} scenes</em></p>
+                `;
+                // Update meta line even when no scenes are found
+                updateMetaLine();
             }
         }
 
@@ -8331,13 +8263,6 @@
             
             // Display scene content
             const playText = document.getElementById('playText');
-            
-            // Force clear and reset play text element
-            console.log('🔄 Force clearing play text for scene:', sceneName);
-            playText.innerHTML = '';
-            playText.style.pointerEvents = 'auto';
-            playText.classList.remove('stuck', 'disabled', 'loading');
-            
             const formattedContent = formatSceneContent(sceneContent, sceneName);
             
             // Extract act and scene names for better display
@@ -8357,15 +8282,11 @@
                 }
             }
             
-            // Force update the play text content
-            setTimeout(() => {
-                playText.innerHTML = `
-                    <div class="scene-title">${displayTitle}</div>
-                    <div class="scene-separator"></div>
-                    ${formattedContent}
-                `;
-                console.log('✅ Play text updated for scene:', sceneName);
-            }, 10);
+            playText.innerHTML = `
+                <div class="scene-title">${displayTitle}</div>
+                <div class="scene-separator"></div>
+                ${formattedContent}
+            `;
             
             // Update meta line when scene changes
             updateMetaLine();
