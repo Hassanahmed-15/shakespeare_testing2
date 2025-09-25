@@ -4877,9 +4877,18 @@
                                 });
                                     
                                     if (sceneContent.length > 0) {
-                                        // Apply speaker name optimization to the scene content
-                                        const optimizedContent = optimizeSpeakerNames(sceneContent);
-                                        plays['macbeth'].scenes[sceneKey] = optimizedContent;
+                                        let processedContent;
+                                        
+                                        // Special handling for Dramatis Personae
+                                        if (sceneKey === 'DRAMATIS PERSONAE' && sceneContent.length === 1 && sceneContent[0].includes('\n')) {
+                                            // Split the single string into individual lines
+                                            processedContent = sceneContent[0].split('\n').map(line => line.trim()).filter(line => line.length > 0);
+                                        } else {
+                                            // Apply speaker name optimization to the scene content
+                                            processedContent = optimizeSpeakerNames(sceneContent);
+                                        }
+                                        
+                                        plays['macbeth'].scenes[sceneKey] = processedContent;
                                         sceneCount++;
                                         
                                         // Group scenes by acts
@@ -4946,9 +4955,19 @@
                                     });
                                     
                                     if (sceneContent.length > 0) {
-                                        const optimizedContent = optimizeSpeakerNames(sceneContent);
+                                        let processedContent;
+                                        
+                                        // Special handling for Dramatis Personae
+                                        if (originalSceneKey === 'DRAMATIS PERSONAE' && sceneContent.length === 1 && sceneContent[0].includes('\n')) {
+                                            // Split the single string into individual lines
+                                            processedContent = sceneContent[0].split('\n').map(line => line.trim()).filter(line => line.length > 0);
+                                        } else {
+                                            // Apply speaker name optimization to the scene content
+                                            processedContent = optimizeSpeakerNames(sceneContent);
+                                        }
+                                        
                                         const normalizedKey = normalizeSceneKey(originalSceneKey);
-                                        plays['hamlet'].scenes[normalizedKey] = optimizedContent;
+                                        plays['hamlet'].scenes[normalizedKey] = processedContent;
                                         sceneCount++;
                                         
                                         const actName = parseActFromScene(normalizedKey);
@@ -5028,9 +5047,19 @@
                                         }
                                     });
                                     if (sceneContent.length > 0) {
-                                        const optimizedContent = optimizeSpeakerNames(sceneContent);
+                                        let processedContent;
+                                        
+                                        // Special handling for Dramatis Personae
+                                        if (originalSceneKey === 'DRAMATIS PERSONAE' && sceneContent.length === 1 && sceneContent[0].includes('\n')) {
+                                            // Split the single string into individual lines
+                                            processedContent = sceneContent[0].split('\n').map(line => line.trim()).filter(line => line.length > 0);
+                                        } else {
+                                            // Apply speaker name optimization to the scene content
+                                            processedContent = optimizeSpeakerNames(sceneContent);
+                                        }
+                                        
                                         const normalizedKey = normalizeSceneKey(originalSceneKey);
-                                        plays['romeo'].scenes[normalizedKey] = optimizedContent;
+                                        plays['romeo'].scenes[normalizedKey] = processedContent;
                                         sceneCount++;
                                         const actName = parseActFromScene(normalizedKey);
                                         if (actName) {
@@ -6272,17 +6301,34 @@
                 }
             };
 
-            // Load all plays in parallel for much faster performance!
+            // Load essential plays first for faster initial load, then load others in background
             try {
-                console.log('⚡ Starting parallel load of all plays...');
+                console.log('⚡ Starting prioritized play loading...');
                 const startTime = Date.now();
                 
-                const loadResults = await Promise.all([
+                // Load essential plays first (the 5 with New Variorum Analysis)
+                console.log('🎭 Loading essential plays first...');
+                const essentialResults = await Promise.all([
                     loadMacbeth(),
                     loadHamlet(),
                     loadRomeo(),
                     loadOthello(),
-                    loadKingLear(),
+                    loadKingLear()
+                ]);
+                
+                const essentialEndTime = Date.now();
+                const essentialLoadTime = (essentialEndTime - startTime) / 1000;
+                console.log(`✅ Essential plays loaded in ${essentialLoadTime}s!`);
+                
+                // Update UI immediately with essential plays
+                console.log('🔄 Updating UI with essential plays...');
+                updatePlaySelector();
+                updateLibraryPlays();
+                console.log('🎭 Essential plays ready for use!');
+                
+                // Load remaining plays in background
+                console.log('🔄 Loading remaining plays in background...');
+                const backgroundResults = await Promise.all([
                     loadAsYouLikeIt(),
                     loadCoriolanus(),
                     loadCymbeline(),
@@ -6302,18 +6348,20 @@
                     loadTwelfthNight()
                 ]);
                 
+                const allResults = [...essentialResults, ...backgroundResults];
+                
                 const endTime = Date.now();
                 const loadTime = (endTime - startTime) / 1000;
                 
-                const successfulLoads = loadResults.filter(result => result !== null);
-                console.log(`🎉 Parallel loading completed in ${loadTime}s!`);
+                const successfulLoads = allResults.filter(result => result !== null);
+                console.log(`🎉 All plays loading completed in ${loadTime}s!`);
                 console.log(`✅ Successfully loaded ${successfulLoads.length}/22 plays: ${successfulLoads.join(', ')}`);
                 
-                // Update UI only once after all plays are loaded
+                // Update UI again with all plays
                 console.log('🔄 Updating UI with all loaded plays...');
                 updatePlaySelector();
                 updateLibraryPlays();
-                console.log('🎭 Library ready - Choose from Library will now be instant!');
+                console.log('🎭 All plays ready - Library is now complete!');
                 console.log('🎭 Final plays object:', plays);
                 console.log('🎭 Number of plays loaded:', Object.keys(plays).length);
                 
@@ -7622,44 +7670,6 @@
             return line;
         }
 
-        // Update active navigation
-        function updateActiveNavigation(itemName) {
-            const navLinks = document.querySelectorAll('.navigation-list a');
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-            });
-            
-            // If it's a scene, highlight both the scene and its parent act
-            if (itemName && itemName.includes(' - ')) {
-                const actName = itemName.split(' - ')[0];
-                
-                navLinks.forEach(link => {
-                    // Highlight the parent act
-                    if (link.textContent === actName) {
-                        link.classList.add('active');
-                    }
-                    
-                    // Highlight the specific scene using data attribute
-                    if (link.getAttribute('data-scene') === itemName) {
-                        link.classList.add('active');
-                    }
-                });
-            } else if (itemName === 'dramatis') {
-                // Highlight Dramatis Personae
-                navLinks.forEach(link => {
-                    if (link.textContent === 'Dramatis Personae') {
-                        link.classList.add('active');
-                    }
-                });
-            } else if (itemName) {
-                // Highlight just the act
-                navLinks.forEach(link => {
-                    if (link.textContent === itemName) {
-                        link.classList.add('active');
-                    }
-                });
-            }
-        }
 
         // Show Dramatis Personae
         function showDramatisPersonae() {
