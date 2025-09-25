@@ -4734,33 +4734,7 @@
                 analysisPanel.scrollTop = 0;
             }
             
-            // Reset analysis panel to default state by restoring original HTML
-            if (analysisPanel) {
-                analysisPanel.innerHTML = `
-                    <!-- Analysis Mode Selector -->
-                    <div class="segment">
-                        <button onclick="switchTab('basic')" aria-pressed="${currentTab === 'basic' ? 'true' : 'false'}">Basic</button>
-                        <button onclick="switchTab('expert')" aria-pressed="${currentTab === 'expert' ? 'true' : 'false'}">Expert</button>
-                        <button onclick="switchTab('fullfathomfive')" aria-pressed="${currentTab === 'fullfathomfive' ? 'true' : 'false'}">Full Fathom Five</button>
-                    </div>
-
-                    <!-- AI Analysis Content -->
-                    <div class="analysis-header">
-                        <div class="analysis-title">Basic Analysis</div>
-                    </div>
-                    <div class="meta" style="display: none;">No play loaded</div>
-                    <div class="analysis-content" id="analysisContent">
-                        <p>Highlight text in the play to get AI-powered analysis.</p>
-                    </div>
-                    <div class="analysis-instruction" id="analysisInstruction">
-                        Select text in the play to get AI-powered analysis.
-                    </div>
-                    <button class="analyze-button" id="analyzeButton" onclick="explainHighlighted()" style="display: none;">Analyze Text</button>
-                    <div id="analysisResult"></div>
-                    
-                    <!-- New Variorum Analysis Section will be dynamically added for specific plays only -->
-                `;
-            }
+            // DON'T rebuild HTML - just clear content to preserve event handlers
             
             // Add selection to current line
             element.classList.add('selected');
@@ -4821,6 +4795,10 @@
             // Update analysis panel based on current tab
             updateAnalysisPanel();
             
+            // Ensure all UI elements remain functional
+            ensureNavigationFunctional();
+            ensurePlayTextFunctional();
+            
             console.log('✅ Analysis panel reset for new play:', currentPlay);
         }
         
@@ -4848,6 +4826,18 @@
             // Hide any open info panels
             if (criticsInfo) criticsInfo.style.display = 'none';
             if (nvInfo) nvInfo.style.display = 'none';
+            
+            // Clear any stuck highlights or selections in play text
+            const playText = document.getElementById('playText');
+            if (playText) {
+                // Remove any stuck classes
+                playText.classList.remove('stuck', 'disabled', 'loading', 'analysis-mode');
+                
+                // Clear any inline styles that might be stuck
+                playText.style.pointerEvents = 'auto';
+                playText.style.userSelect = 'text';
+                playText.style.cursor = 'default';
+            }
             
             // Reset analysis panel to default state
             if (analysisPanel) {
@@ -4914,7 +4904,43 @@
                 basicButton.setAttribute('aria-pressed', 'true');
             }
             
+            // Ensure navigation and play text remain functional
+            ensureNavigationFunctional();
+            ensurePlayTextFunctional();
+            
             console.log('✅ Analysis content cleared');
+        }
+        
+        // Ensure navigation panel remains functional
+        function ensureNavigationFunctional() {
+            const navigationList = document.getElementById('navigationList');
+            const playSelector = document.getElementById('playSelector');
+            
+            if (navigationList) {
+                navigationList.style.pointerEvents = 'auto';
+                navigationList.style.zIndex = 'auto';
+            }
+            
+            if (playSelector) {
+                playSelector.disabled = false;
+                playSelector.style.pointerEvents = 'auto';
+                playSelector.style.zIndex = '999';
+                playSelector.style.position = 'relative';
+            }
+        }
+        
+        // Ensure play text area remains functional
+        function ensurePlayTextFunctional() {
+            const playText = document.getElementById('playText');
+            
+            if (playText) {
+                playText.style.pointerEvents = 'auto';
+                playText.style.zIndex = 'auto';
+                playText.style.position = 'relative';
+                
+                // Remove any stuck selections or highlights
+                playText.classList.remove('stuck', 'disabled', 'loading');
+            }
         }
         
         function updateAnalysisPanel() {
@@ -7809,6 +7835,10 @@
                     analysisInProgress = false;
                     selectedLines = [];
                     firstSelectedLine = null;
+                    
+                    // Ensure UI remains functional before loading new play
+                    ensureNavigationFunctional();
+                    ensurePlayTextFunctional();
                     
                     // Load the new play
                     loadPlay(selectedPlay);
