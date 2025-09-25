@@ -1407,37 +1407,68 @@
         }
 
         /* Dramatis Personae specific styling */
+        .dramatis-personae-content {
+            padding: 20px 0;
+        }
+
         .dramatis-personae .character-name {
             font-weight: 600;
             color: #374151;
-            margin-bottom: 8px;
-            text-transform: uppercase;
-            padding: 4px 0;
-            border-bottom: 1px solid #e5e7eb;
-            letter-spacing: 0.5px;
+            margin-bottom: 6px;
+            padding: 6px 12px;
+            background: #f9fafb;
+            border-left: 3px solid #d1d5db;
+            border-radius: 4px;
+            letter-spacing: 0.3px;
+            transition: all 0.2s ease;
         }
 
-        .dramatis-personae .character-name:last-child {
-            border-bottom: none;
+        .dramatis-personae .character-name:hover {
+            background: #f3f4f6;
+            border-left-color: #9ca3af;
+            transform: translateX(2px);
         }
 
-        /* Main title in Dramatis Personae */
-        .dramatis-personae .character-name:first-child {
-            font-weight: 700;
-            color: #111827;
-            text-align: center;
-            margin-bottom: 16px;
-            border-bottom: 2px solid #d1d5db;
-            padding-bottom: 8px;
-        }
-
-        /* Play title in Dramatis Personae */
-        .dramatis-personae .character-name:nth-child(2) {
+        .character-name-text {
             font-weight: 600;
             color: #374151;
+        }
+
+        .character-description {
+            font-weight: 400;
+            color: #6b7280;
+            font-size: 0.9em;
+            margin-left: 8px;
+            font-style: italic;
+        }
+
+        .character-group-title {
+            font-weight: 700;
+            color: #111827;
+            font-size: 1.1em;
+            margin: 20px 0 12px 0;
+            padding: 8px 12px;
+            background: #e5e7eb;
+            border-radius: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-left: 4px solid #6b7280;
+        }
+
+        .character-group-separator {
+            height: 1px;
+            background: #e5e7eb;
+            margin: 16px 0;
+        }
+
+        .no-characters {
             text-align: center;
-            margin-bottom: 16px;
-            border-bottom: none;
+            color: #6b7280;
+            font-style: italic;
+            padding: 40px 20px;
+            background: #f9fafb;
+            border-radius: 8px;
+            border: 2px dashed #d1d5db;
         }
 
         .play {
@@ -4321,6 +4352,49 @@
             
             updateAnalysisPanel();
         }
+
+        function clearAnalysisContent() {
+            console.log('🧹 Clearing analysis content for play switch');
+            
+            // Clear all analysis-related elements
+            const analysisResult = document.getElementById('analysisResult');
+            const variorumResult = document.getElementById('variorumResult');
+            const variorumContent = document.getElementById('variorumContent');
+            const criticsInfo = document.getElementById('criticsInfo');
+            const nvInfo = document.getElementById('nvInfo');
+            const analysisContent = document.getElementById('analysisContent');
+            const analysisInstruction = document.getElementById('analysisInstruction');
+            const analyzeButton = document.getElementById('analyzeButton');
+            
+            // Clear content
+            if (analysisResult) analysisResult.innerHTML = '';
+            if (variorumResult) variorumResult.innerHTML = '';
+            if (variorumContent) variorumContent.innerHTML = '';
+            if (analysisContent) analysisContent.innerHTML = 'Select text in the play to get AI-powered analysis.';
+            if (analysisInstruction) analysisInstruction.innerHTML = 'Select text in the play to get AI-powered analysis.';
+            
+            // Hide elements
+            if (criticsInfo) criticsInfo.style.display = 'none';
+            if (nvInfo) nvInfo.style.display = 'none';
+            if (analyzeButton) analyzeButton.style.display = 'none';
+            
+            // Reset tab to basic
+            currentTab = 'basic';
+            currentAnalysisMode = 'basic';
+            
+            // Update tab buttons
+            const tabButtons = document.querySelectorAll('.segment button');
+            tabButtons.forEach(btn => {
+                btn.setAttribute('aria-pressed', 'false');
+            });
+            
+            const basicButton = document.querySelector('[onclick="switchTab(\'basic\')"]');
+            if (basicButton) {
+                basicButton.setAttribute('aria-pressed', 'true');
+            }
+            
+            console.log('✅ Analysis content cleared');
+        }
         
         function updateAnalysisPanel() {
             const analysisContent = document.getElementById('analysisContent');
@@ -7181,7 +7255,10 @@
             if (selectedPlay) {
                 if (plays[selectedPlay]) {
                     console.log('✅ Loading play:', selectedPlay);
-                loadPlay(selectedPlay);
+                    // Clear any existing analysis before loading new play
+                    clearSelection();
+                    clearAnalysisContent();
+                    loadPlay(selectedPlay);
                 } else {
                     console.error('❌ Play not found in plays object:', selectedPlay);
                     console.log('Available plays:', Object.keys(plays));
@@ -7234,6 +7311,12 @@
             
             // Reset analysis panel for the new play
             resetAnalysisPanelForNewPlay();
+            
+            // Clear any existing analysis content
+            clearAnalysisContent();
+            
+            // Update analysis panel to reflect new play
+            updateAnalysisPanel();
             
             // Validate play data
             if (!play.acts || Object.keys(play.acts).length === 0) {
@@ -7448,14 +7531,97 @@
             
             // Special handling for Dramatis Personae
             if (sceneName === 'DRAMATIS PERSONAE') {
+                let characters = [];
+                let currentGroup = '';
+                
                 sceneContent.forEach((line, index) => {
-                    if (line === '') {
-                        html += `<div class="play-line">&nbsp;</div>`;
-                    } else {
-                        // For Dramatis Personae, treat each line as a character name
-                        html += `<div class="character-name" data-line-index="${index}">${line}</div>`;
+                    const trimmedLine = line.trim();
+                    if (trimmedLine === '') {
+                        return; // Skip empty lines
                     }
+                    
+                    // Skip main titles
+                    if (trimmedLine.includes('DRAMATIS PERSONAE') || trimmedLine.includes('PERSONAE')) {
+                        return;
+                    }
+                    
+                    // Check if this is a play title (usually the second line, all caps, short)
+                    if (trimmedLine === trimmedLine.toUpperCase() && 
+                        trimmedLine.length < 20 && 
+                        !trimmedLine.includes(',') && 
+                        !trimmedLine.includes('.') && 
+                        !trimmedLine.includes(':')) {
+                        return; // Skip play title
+                    }
+                    
+                    // Check if this is a group header (all caps, no punctuation, longer than 3 chars)
+                    if (trimmedLine === trimmedLine.toUpperCase() && 
+                        !trimmedLine.includes(',') && 
+                        !trimmedLine.includes('.') && 
+                        !trimmedLine.includes(':') &&
+                        trimmedLine.length > 3 &&
+                        trimmedLine.length < 50) {
+                        
+                        // This might be a character group
+                        currentGroup = trimmedLine;
+                        return;
+                    }
+                    
+                    // This is a character name (with or without description)
+                    let characterName = trimmedLine;
+                    let characterDescription = '';
+                    
+                    // If the line contains a comma, split name and description
+                    if (trimmedLine.includes(',')) {
+                        const parts = trimmedLine.split(',');
+                        characterName = parts[0].trim();
+                        characterDescription = parts.slice(1).join(',').trim();
+                    }
+                    
+                    characters.push({
+                        name: characterName,
+                        description: characterDescription,
+                        group: currentGroup
+                    });
                 });
+                
+                // Format characters with proper structure
+                if (characters.length > 0) {
+                    html += '<div class="dramatis-personae-content">';
+                    
+                    // Group characters by their group (if any)
+                    const groupedCharacters = {};
+                    characters.forEach(char => {
+                        const group = char.group || 'Characters';
+                        if (!groupedCharacters[group]) {
+                            groupedCharacters[group] = [];
+                        }
+                        groupedCharacters[group].push(char);
+                    });
+                    
+                    // Display each group
+                    Object.keys(groupedCharacters).forEach(group => {
+                        if (group !== 'Characters') {
+                            html += `<div class="character-group-title">${group}</div>`;
+                        }
+                        groupedCharacters[group].forEach(char => {
+                            if (char.description) {
+                                html += `<div class="character-name" data-line-index="${index}">
+                                    <span class="character-name-text">${char.name}</span>
+                                    <span class="character-description">${char.description}</span>
+                                </div>`;
+                            } else {
+                                html += `<div class="character-name" data-line-index="${index}">${char.name}</div>`;
+                            }
+                        });
+                        html += '<div class="character-group-separator"></div>';
+                    });
+                    
+                    html += '</div>';
+                } else {
+                    html += '<div class="no-characters">No character list available</div>';
+                }
+                
                 return `<div class="scene-content dramatis-personae" data-scene="${sceneName}">${html}</div>`;
             }
             
@@ -7675,24 +7841,36 @@
         function showDramatisPersonae() {
             if (!currentPlay || !plays[currentPlay]) return;
             
-            const characters = plays[currentPlay].characters;
             const playText = document.getElementById('playText');
             
             // Update active navigation
             updateActiveNavigation('dramatis');
             
-            playText.innerHTML = `
-                <div class="play">
-                    <div class="scene-title">Dramatis Personae</div>
-                </div>
-                <div class="scene-separator"></div>
-                <div class="analysis-content">
-                    ${characters.length > 0 ? 
-                        characters.map(char => `<p><strong>${char}</strong></p>`).join('') :
-                        '<p><em>No character list found in this play.</em></p>'
-                    }
-                </div>
-            `;
+            // Check if dramatis personae exists in scenes
+            const dramatisScene = plays[currentPlay].scenes && plays[currentPlay].scenes['DRAMATIS PERSONAE'];
+            
+            if (dramatisScene && dramatisScene.length > 0) {
+                // Use the existing formatSceneContent function to properly display dramatis personae
+                const formattedContent = formatSceneContent(dramatisScene, 'DRAMATIS PERSONAE');
+                playText.innerHTML = `
+                    <div class="play">
+                        <div class="scene-title">Dramatis Personae</div>
+                    </div>
+                    <div class="scene-separator"></div>
+                    ${formattedContent}
+                `;
+            } else {
+                // Fallback if no dramatis personae found
+                playText.innerHTML = `
+                    <div class="play">
+                        <div class="scene-title">Dramatis Personae</div>
+                    </div>
+                    <div class="scene-separator"></div>
+                    <div class="analysis-content">
+                        <p><em>No character list found in this play.</em></p>
+                    </div>
+                `;
+            }
         }
 
         // Show Act overview
