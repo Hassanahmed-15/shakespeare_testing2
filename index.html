@@ -4189,11 +4189,11 @@
                     <!-- New Variorum Analysis Section will be dynamically added for specific plays only -->
                 `;
             }
-                
+            
             // Add selection to current line
             element.classList.add('selected');
             selectedLines = [text.trim()];
-                firstSelectedLine = null;
+            firstSelectedLine = null;
             
             console.log('✅ Line selected:', selectedLines);
             console.log('🎭 Current scene after selection:', currentScene);
@@ -4865,35 +4865,35 @@
                                 const sceneContent = [];
                                 Object.keys(sceneData).forEach(lineNum => {
                                     const lineData = sceneData[lineNum];
-                                        if (!lineData) return;
-                                        // Prefer 'play', but fall back to common alternatives if present
-                                        const text = 
-                                            (typeof lineData === 'string') ? lineData :
-                                            lineData.play ?? lineData.text ?? lineData.line ?? null;
-                                        if (text) {
-                                            sceneContent.push(text);
+                                    if (!lineData) return;
+                                    // Prefer 'play', but fall back to common alternatives if present
+                                    const text = 
+                                        (typeof lineData === 'string') ? lineData :
+                                        lineData.play ?? lineData.text ?? lineData.line ?? null;
+                                    if (text) {
+                                        sceneContent.push(text);
                                         lineCount++;
                                     }
                                 });
-                                
-                                if (sceneContent.length > 0) {
-                                    // Apply speaker name optimization to the scene content
-                                    const optimizedContent = optimizeSpeakerNames(sceneContent);
-                                    plays['macbeth'].scenes[sceneKey] = optimizedContent;
-                                    sceneCount++;
                                     
-                                    // Group scenes by acts
+                                    if (sceneContent.length > 0) {
+                                        // Apply speaker name optimization to the scene content
+                                        const optimizedContent = optimizeSpeakerNames(sceneContent);
+                                        plays['macbeth'].scenes[sceneKey] = optimizedContent;
+                                        sceneCount++;
+                                        
+                                        // Group scenes by acts
                                         const actName = parseActFromScene(sceneKey);
                                         if (actName) {
-                                        if (!plays['macbeth'].acts[actName]) {
-                                            plays['macbeth'].acts[actName] = [];
+                                            if (!plays['macbeth'].acts[actName]) {
+                                                plays['macbeth'].acts[actName] = [];
+                                            }
+                                            plays['macbeth'].acts[actName].push(sceneKey);
                                         }
-                                        plays['macbeth'].acts[actName].push(sceneKey);
                                     }
                                 }
-                            }
-                        });
-                        
+                            });
+                            
                             console.log(`✅ Macbeth parsed: ${sceneCount} scenes, ${lineCount} lines`);
                         }
                         return 'macbeth';
