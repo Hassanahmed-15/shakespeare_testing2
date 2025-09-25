@@ -5009,6 +5009,13 @@
             analysisInProgress = false;
             forceResetUI();
             
+            // Clear any stuck loading states
+            const playTextElement = document.getElementById('playText');
+            if (playTextElement) {
+                playTextElement.innerHTML = '';
+                playTextElement.classList.remove('loading', 'stuck', 'loading-indicator');
+            }
+            
             // Clear any stuck analysis content
             const analysisContent = document.getElementById('analysisContent');
             if (analysisContent) {
@@ -5019,6 +5026,13 @@
             const emergencyButton = document.querySelector('.emergency-clear-button');
             if (emergencyButton) {
                 emergencyButton.style.display = 'none';
+            }
+            
+            // If a play is loaded, reload it
+            if (currentPlay && plays[currentPlay]) {
+                setTimeout(() => {
+                    loadPlay(currentPlay);
+                }, 100);
             }
         }
         
@@ -7889,19 +7903,45 @@
                             `;
                         }
                         
-                        const success = await loadPlayData(selectedPlay);
-                        if (!success) {
-                            console.error('❌ Failed to load play data');
+                        try {
+                            // Add timeout to prevent infinite loading
+                            const loadPromise = loadPlayData(selectedPlay);
+                            const timeoutPromise = new Promise((_, reject) => 
+                                setTimeout(() => reject(new Error('Loading timeout')), 10000)
+                            );
+                            
+                            const success = await Promise.race([loadPromise, timeoutPromise]);
+                            if (!success) {
+                                console.error('❌ Failed to load play data');
+                                if (playTextElement) {
+                                    playTextElement.innerHTML = `
+                                        <div class="error-message">
+                                            <p>❌ Failed to load ${plays[selectedPlay].name}</p>
+                                            <p>Please try again or select a different play.</p>
+                                        </div>
+                                    `;
+                                }
+                                return;
+                            }
+                        } catch (error) {
+                            console.error('❌ Error loading play data:', error);
                             if (playTextElement) {
                                 playTextElement.innerHTML = `
                                     <div class="error-message">
-                                        <p>❌ Failed to load ${plays[selectedPlay].name}</p>
-                                        <p>Please try again or select a different play.</p>
+                                        <p>❌ Error loading ${plays[selectedPlay].name}</p>
+                                        <p>${error.message.includes('timeout') ? 'Loading timed out. Please try again.' : 'Please try again or select a different play.'}</p>
                                     </div>
                                 `;
                             }
                             return;
                         }
+                    }
+                    
+                    // Clear any stuck loading states first
+                    const playTextElement = document.getElementById('playText');
+                    if (playTextElement) {
+                        playTextElement.innerHTML = '';
+                        playTextElement.classList.remove('loading', 'stuck');
                     }
                     
                     // Force clear all analysis and selections immediately
