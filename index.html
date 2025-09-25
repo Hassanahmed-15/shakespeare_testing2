@@ -8064,11 +8064,21 @@
                         Object.keys(sceneData).forEach(lineNum => {
                             const lineData = sceneData[lineNum];
                             if (!lineData) return;
-                            const text = 
-                                (typeof lineData === 'string') ? lineData :
-                                lineData.play ?? lineData.text ?? lineData.line ?? null;
-                            if (text) {
-                                sceneContent.push(text);
+                            
+                            // Extract text from the lineData object
+                            let text = null;
+                            if (typeof lineData === 'string') {
+                                text = lineData;
+                            } else if (lineData.play) {
+                                text = lineData.play;
+                            } else if (lineData.text) {
+                                text = lineData.text;
+                            } else if (lineData.line) {
+                                text = lineData.line;
+                            }
+                            
+                            if (text && text.trim()) {
+                                sceneContent.push(text.trim());
                                 lineCount++;
                             }
                         });
@@ -8086,6 +8096,8 @@
                             play.scenes[sceneKey] = processedContent;
                             sceneCount++;
                             
+                            console.log(`✅ Parsed scene ${sceneKey}: ${processedContent.length} lines`);
+                            
                             // Parse act information from scene key
                             const actName = parseActFromScene(sceneKey);
                             if (actName) {
@@ -8096,6 +8108,8 @@
                                     play.acts[actName].push(sceneKey);
                                 }
                             }
+                        } else {
+                            console.warn(`⚠️ Scene ${sceneKey} has no content`);
                         }
                     }
                 });
@@ -8163,8 +8177,20 @@
                 name: play.name,
                 acts: Object.keys(play.acts).length,
                 scenes: Object.keys(play.scenes).length,
-                hasData: Object.keys(play.scenes).length > 0
+                hasData: Object.keys(play.scenes).length > 0,
+                loaded: play.loaded
             });
+            
+            // Debug: Log first few scene keys
+            const sceneKeys = Object.keys(play.scenes);
+            console.log('🎭 First 5 scene keys:', sceneKeys.slice(0, 5));
+            
+            // Debug: Log first scene content
+            if (sceneKeys.length > 0) {
+                const firstSceneKey = sceneKeys[0];
+                const firstSceneContent = play.scenes[firstSceneKey];
+                console.log('🎭 First scene content preview:', firstSceneContent ? firstSceneContent.slice(0, 3) : 'NO CONTENT');
+            }
             
             // Reset analysis panel for the new play
             resetAnalysisPanelForNewPlay();
@@ -8383,6 +8409,8 @@
             
             console.log('🔄 Updating play text with scene:', sceneName);
             console.log('🔄 Content length:', formattedContent ? formattedContent.length : 0);
+            console.log('🔄 Raw scene content length:', sceneContent ? sceneContent.length : 0);
+            console.log('🔄 First few lines of scene content:', sceneContent ? sceneContent.slice(0, 3) : 'NO CONTENT');
             
             playText.innerHTML = `
                 <div class="scene-title">${displayTitle}</div>
