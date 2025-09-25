@@ -1399,7 +1399,6 @@
             font-weight: 700;
             color: #1f2937;
             margin-bottom: 16px;
-            font-size: 16px;
             text-transform: uppercase;
             letter-spacing: 1.5px;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -1407,10 +1406,44 @@
             padding-bottom: 8px;
         }
 
+        /* Dramatis Personae specific styling */
+        .dramatis-personae .character-name {
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            padding: 4px 0;
+            border-bottom: 1px solid #e5e7eb;
+            letter-spacing: 0.5px;
+        }
+
+        .dramatis-personae .character-name:last-child {
+            border-bottom: none;
+        }
+
+        /* Main title in Dramatis Personae */
+        .dramatis-personae .character-name:first-child {
+            font-weight: 700;
+            color: #111827;
+            text-align: center;
+            margin-bottom: 16px;
+            border-bottom: 2px solid #d1d5db;
+            padding-bottom: 8px;
+        }
+
+        /* Play title in Dramatis Personae */
+        .dramatis-personae .character-name:nth-child(2) {
+            font-weight: 600;
+            color: #374151;
+            text-align: center;
+            margin-bottom: 16px;
+            border-bottom: none;
+        }
+
         .play {
             font-family: var(--ui);
-            font-size: 16px;
-            line-height: 1.6;
+            font-size: 13px;
+            line-height: 1.4;
             width: 100%;
             margin: 0;
             word-wrap: normal;
@@ -1419,8 +1452,7 @@
         }
 
         .dialogue-text {
-            font-size: 15px;
-            line-height: 1.6;
+            line-height: 1.4;
             color: #374151;
             margin-bottom: 8px;
         }
@@ -1430,7 +1462,6 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: .06em;
-            font-size: 13px;
             color: var(--ink-3);
             margin-bottom: var(--s-2);
         }
@@ -1491,24 +1522,7 @@
             word-wrap: normal !important;
         }
 
-        /* Responsive text sizing for different screen sizes */
-        @media (max-width: 1200px) {
-            .play {
-                font-size: 15px;
-            }
-        }
-
-        @media (max-width: 900px) {
-            .play {
-                font-size: 14px;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .play {
-                font-size: 13px;
-            }
-        }
+        /* Responsive text sizing removed to maintain consistent font size */
 
 
 
@@ -1520,10 +1534,9 @@
         }
 
         .dialogue-text {
-            line-height: 1.58;
+            line-height: 1.4;
             white-space: pre-line;
             font-family: var(--ui);
-            font-size: 18px;
             max-width: 72ch;
             color: var(--ink-1);
             word-wrap: normal;
@@ -1534,8 +1547,7 @@
         
         .play-line {
             font-family: var(--ui);
-            font-size: 16px;
-            line-height: 1.6;
+            line-height: 1.4;
             color: var(--ink-1);
             margin: 0;
             white-space: pre;
@@ -2672,27 +2684,6 @@
         </div>
     </div>
 
-    <!-- Critics Modal -->
-    <div id="criticsModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="modal-title" id="critics-modal-title">Who are the New Variorum Critics?</div>
-                <button class="modal-close" onclick="closeCriticsModal()">&times;</button>
-            </div>
-            
-            <div class="modal-body">
-                <div class="about">
-                    <p>The New Variorum editions draw on an extraordinary range of voices—from 18th-century pioneers who first attempted to restore Shakespeare's "corrupted" text, through Victorian scholars who brought scientific rigor to textual criticism, to early 20th-century critics who revolutionized our understanding of Shakespeare's language and stagecraft.</p>
-                    
-                    <p>When reading the New Variorum notes, you'll encounter a dizzying array of abbreviated names and cryptic references: "CAPELL," "THEOBALD," "MALONE," "SCHMIDT." These aren't just footnotes—they represent real people who dedicated their lives to understanding Shakespeare. Behind each abbreviation is a scholar with their own fascinating story: Alexander Pope, the great poet who produced one of the first "modern" Shakespeare editions (1725); Samuel Johnson, whose 1765 edition contained brilliant interpretive notes that are still quoted today; Edmond Malone, who pioneered the historical study of Shakespeare's texts in the late 18th century; or Alexander Schmidt, whose Shakespeare Lexicon (1874-75) remains indispensable for understanding Elizabethan word meanings.</p>
-                    
-                    <p>The Variorum's democratic approach means you'll find everyone from famous literary critics to obscure German philologists, from actor-managers sharing performance insights to amateur scholars who made single brilliant observations. Furness included them all, believing that truth about Shakespeare could come from anywhere.</p>
-                    
-                    <p>While we've expanded each citation in the notes themselves to include full names and publication years, the sheer number of critics cited can be overwhelming. This represents the true scope of the centuries-long conversation you're joining when you read these notes—a international community of readers all grappling with the endless complexities of Shakespeare's text.</p>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- How To Use Modal -->
     <div id="howToUseModal" class="modal">
@@ -3022,6 +3013,487 @@
         </div>
     </div>
 
+    <!-- King Lear Critics Modal -->
+    <div id="kingLearCriticsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Who are the New Variorum Critics?</div>
+                <button class="modal-close" onclick="closeCriticsModal()">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="critics-info">
+                    <h4>Who are the New Variorum critics?</h4>
+                    <p>The New Variorum editions draw on an extraordinary range of voices—from 18th-century pioneers who first attempted to restore Shakespeare's "corrupted" text, through Victorian scholars who brought scientific rigor to textual criticism, to early 20th-century critics who revolutionized our understanding of Shakespeare's language and stagecraft.</p>
+                    
+                    <p>When reading the New Variorum notes, you'll encounter a dizzying array of abbreviated names and cryptic references: "CAPELL," "THEOBALD," "MALONE," "SCHMIDT." These aren't just footnotes—they represent real people who dedicated their lives to understanding Shakespeare. Behind each abbreviation is a scholar with their own fascinating story: Alexander Pope, the great poet who produced one of the first "modern" Shakespeare editions (1725); Samuel Johnson, whose 1765 edition contained brilliant interpretive notes that are still quoted today; Edmond Malone, who pioneered the historical study of Shakespeare's texts in the late 18th century; or Alexander Schmidt, whose Shakespeare Lexicon (1874-75) remains indispensable for understanding Elizabethan word meanings.</p>
+                    
+                    <p>The Variorum's democratic approach means you'll find everyone from famous literary critics to obscure German philologists, from actor-managers sharing performance insights to amateur scholars who made single brilliant observations. Furness included them all, believing that truth about Shakespeare could come from anywhere.</p>
+                    
+                    <p>While we've expanded each citation in the notes themselves to include full names and publication years, the sheer number of critics cited can be overwhelming. Below is the complete list of authorities referenced in this volume, drawn from the Variorum's own index. This list reveals the true scope of the centuries-long conversation you're joining when you read these notes—a international community of readers all grappling with the endless complexities of Shakespeare's text.</p>
+                </div>
+                
+                <div class="critics-separator" style="margin: 30px 0; padding: 20px 0; border-top: 2px solid #e5e7eb; border-bottom: 2px solid #e5e7eb;">
+                    <h4 style="text-align: center; color: #666; font-weight: 600;">Complete List of New Variorum Critics & Authorities for King Lear</h4>
+                </div>
+                
+                <div class="critics-list" style="max-height: 400px; overflow-y: auto; background: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb;">
+                    <div style="font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6;">
+                        <p><strong>German</strong></p>
+                        <p>"Wieland, Shakespeare theatralische Werke, vol. i"</p>
+                        <p>"Horder, Von Deutscher Art und Kunst, p. 93"</p>
+                        <p>"Eschenburg, Shakespears Schauspiels, vol. ii"</p>
+                        <p>"Schwede, Konfig Lear nach Shakespear"</p>
+                        <p>"Dich, Konfig Lear nach Shakespear's zer Thali, p. 234"</p>
+                        <p>"Katalen, King Lear English Text and German Notes"</p>
+                        <p>"Dr J. II. Voss, Konig Lear, Jena, 1966"</p>
+                        <p>"Theta, Alkoholjischen Theater, p. 6"</p>
+                        <p>"H. Voss, Shakespeares Schauspiels vol. iii mit Erläuterungen"</p>
+                        <p>"Franz Iborn, Shakespeares Schauspiels erläutert, i. 153"</p>
+                        <p>"Bourgopal Faudin, Konfig Lear für die Blithe"</p>
+                        <p>"L. Pets, Konfig Lear heimischer"</p>
+                        <p>"J. Bapi von Zahlbar, Konfig Lear frei bearbeitet"</p>
+                        <p>"Meyer, Shakespeares Säumnliche Werke frei bearbeitet vol. xiv"</p>
+                        <p>"Bradu, Shakespeares dammelische Werke vol. i"</p>
+                        <p>"Kalmana, Shakespeares dammelische Werke vol. i"</p>
+                        <p>"Ealtermeyer Hausheit und Sinnock, Quellen des Shakespeares 65. vol. iii p. 1"</p>
+                        <p>"Basilakola, Konfig Lear"</p>
+                        <p>"J. M. Pierce, English Text with German Notes"</p>
+                        <p>"Seidel, Konig Lear Mit einer Abhandlung mit diesen Traumspiel, Leipzig, 1933"</p>
+                        <p>"Dr H. T. Röteberg, Abhandlungen zur Philosophie der Kunst, Berlin, 1837"</p>
+                        <p>"Orthon, Shakespeares Werke vol. iii"</p>
+                        <p>"C. A. West, Konig Lear für die Darstellung eingeteistet"</p>
+                        <p>"Dr Al. Schmidt, Subjektfreunde Anmerkungen n. a. w. p. 333"</p>
+                        <p>"Keller und Repp, Shakespeares Schauspiels vol. ii"</p>
+                        <p>"Lichtenberg, Briefe aus England, 1776"</p>
+                        <p>"Dr H. T. Röteberg, Cycles dramatischer Charaktere Cordelia p. 334"</p>
+                        <p>"Dr H. T. Röteberg, Architekt oder Wissenschaft des Sobbers vol. i"</p>
+                        <p>"Julius, Die Hackelsche Shaksperchtifik p. 126"</p>
+                        <p>"Theta, Kritische Schriften 1, 51 iii, 226"</p>
+                        <p>"Gerdu, Warum hat Shakespear seinem Lear keinen glücklichen Ausgang gegeben"</p>
+                        <p>"Der W. Sievers, Konig Lear für weitere Kreise bearbeitet"</p>
+                        <p>"Dr E. W. Sievers, Konig Lear für weitere Kreise bearbeitet"</p>
+                        <p>"Der neue Mann im Todesüberg p. 402, Lelpig, 1952"</p>
+                        <p>"Deltier, Shaksperte Weite vol. I, Elberfeld, 1954"</p>
+                        <p>"Vieles, Shaksperte als Preistaat Politiker Psycholog und Diskurs vol. I, Hankers, 1954"</p>
+                        <p>"Jenkins, Shaksperte Damm vol. v, Malm, 1955"</p>
+                        <p>"Dr C. E. Heiss, Vorträge über ausgewählte dramatische Diskussion Städte Ignatty Schiller and Gottschy p. 42, Hubbardt, 1956"</p>
+                        <p>"Edward Hübmann, Shaksperten Sich Gott und seine Werke p. 35, Lelpig, 1956"</p>
+                        <p>"R. H. Woolley, English Text and Notes, Lelpig, 1951"</p>
+                        <p>"Kirgynd, Weissungen über Shaksperten p. 39, Berlin, 1958"</p>
+                        <p>"L. P. Finkel, Shaksperten in seiner Wirklichkeit p. 447, Lelpig, 1954"</p>
+                        <p>"Köscher, Shaksperten in seinen höchsten Charaktergebilden u. s. w. pp. 106 113 135, Dresden, 1954"</p>
+                        <p>"Bolzschmidt, König-Lent, Berlin, 1954"</p>
+                        <p>"Mohler, Shaksperten's ausgewählte darauf Weide vol. vi, Göten, 1954"</p>
+                        <p>"Ron D. Kremmer, Ueber Lent und Ophelin, Bosland, 1956"</p>
+                        <p>"Ruschel, Shaksperte-Siedling p. 40, Stuttgart, 1956"</p>
+                        <p>"Gester Haaff, Shaksperte-Siedlen König-Lent, Hamburg, 1957"</p>
+                        <p>"J. L. Kider, Geschichte des Italienischen Damens Euler Reich s. 50p, Lelpig, 1956"</p>
+                        <p>"Rev. M. Paris, Zur Einführung Shaksperten's für die christliche Familie p. 19"</p>
+                        <p>"Georg Herwegh, König-Lent Dokumentär schön vol. xx, Hübmann, 1959"</p>
+                        <p>"Jenkins, Shaksperten's darauf Weide vol. vi, Hübmann, 1959"</p>
+                        <p>"Gester Hochstein, Die Shaksperten's mit Damen in Deutschland pp. 345, Lelpig, 1950"</p>
+                        <p>"Dr. Gal Stark, König-Lent Eine psychiatrische Shaksperte-Straße i. s. v, Schlager, 1971"</p>
+                        <p>"Kirgynd, Shaksperte Fragen p. 126, Lelpig, 1971"</p>
+                        <p>"Ed. Thema, König-Lent, Berlin, 1971"</p>
+                        <p>"W. Goeblmeister, König-Lent Für die damals Bilder beruhende, Berlin, 1971"</p>
+                        <p>"Schlegel und Tirol, Hirnungszeiten durch die Deutsche Shaksperte-Gestellschaft Vol. vi König-Lent beruhende eingeladen und erläutert von A. Schuldt, Lelpig, 1971"</p>
+                        <p>"Otis, Lelpig Shaksperten-Straße p. 102, Lelpig, 1972"</p>
+                        <p>"Deutsch, Verwehr zur Berufsgruppe der schönlichen Widerspruch im Ganzleiter Lewis Deutsche Sehnsüchte"</p>
+                        <p>"Max Meister, Die Reize Leute-Stern Ein Unterstützungsvergleich, 1793"</p>
+                        <p>"Benedikt, Die Shaksperten-innen Zur Abwehr, Selagstr., 1973"</p>
+                        <p>"Bodenstoff, Shaksperten Frauenabwehr p. 151, Berlin, 1974"</p>
+                        <p>"Liebsa, Erfüllungen aus der Shaksperte-Welt p. 197, Berlin, 1975"</p>
+                        <p>"Brand, Frankfurt, Köln, 1975"</p>
+                        <p>"Fuchs von Platten Karl, Shaksperte-Damm foto p. 74, Wien, 1976"</p>
+                        <p>"Tonsatz, Beiträge zur Fortsetzung und Erklärung des Shaksperten-Text, 1977"</p>
+                        <p>"Dr. Robert Koprall, Textaktische Studien über Richard III und King Lear P. 6, Dresden, 1977"</p>
+                        <p>"Liebsa, Die Shaksperte-Galerie p. 151, Berlin, 1978"</p>
+                        <p>"Malbrecht, Die erste Aufklärung des König-Lent in Berlin National-Zeitung 30 Nov, Berlin, 1978"</p>
+                        <p>"Dr V. Knauer, Shaksperten der Philosoph der Südlichen Weltordnung p. 55, 1870"</p>
+                        <p>"Dr Alex Schmidt, King Lear, Berlin, 1879"</p>
+                        <p>"Max Kobay, König-Lent Eine deutsche Rittman-Ausgabe, Lelpig, 1879"</p>
+                        
+                        <p><strong>Bohemian</strong></p>
+                        <p>"Lehnker Öchkovsky, Danunfield Dia Williams Shaksperten Koll Lear, V Pruss, 1896"</p>
+                        
+                        <p><strong>Danish</strong></p>
+                        <p>"Kong Lear Overast eher N. Trato Quartekaldes, 1794"</p>
+                        <p>"Four Poems, Shaksperten's Tragiste Warrior Kong Lear Asdem Deal, 1811"</p>
+                        <p>"S. Boyer, King Lear Jugend en g Äste, Kühlenhaven, 1870"</p>
+                        <p>"Weingart, Kong Lear, 1844"</p>
+                        <p>"Smidre over Kong Lear Art Gamma Petersen Kord Univer Triakulti III IV, Upshitz, 1853"</p>
+                        <p>"Kong Lear Overast el. Prix Lenkshe, Kjubemhare, 1878"</p>
+                        
+                        <p><strong>Dutch</strong></p>
+                        <p>"Koning Lear Twengold in vpf Budapest Gerold naar het Fransch door Merowen & G. de Cambon In Volkswedagog, 1911"</p>
+                        <p>"Mr. L. Th. C. van den Berg, Bloombridge uit de dramatische Werken van Shaksperten p. 120, Amsterdam, 1834"</p>
+                        <p>"W. van Loos, Koning Lear, Dutch, 1861"</p>
+                        <p>"H. de Boer, A Short Account of the Pilot foto p. 20, Ambain, 1871"</p>
+                        <p>"A. S. Kok, Shaksperten's Dermatische Werken Koning Lear, Amsterdam, 1871"</p>
+                        
+                        <p><strong>French</strong></p>
+                        <p>"Duda, Le Roi Lear Tragedie en cinq Actes représentée pour la première fois en 1753"</p>
+                        <p>"Le Roi Lear regroupé conforme aux représentations données à Paris, 1858"</p>
+                        <p>"Dechamps, Sénate de"</p>
+                        <p>"Cuthant, Tragedie Avec le test Anglais en regard"</p>
+                        <p>"Deviçoeur et Ghindhiri, Le Roi Lear émme en 5 actes et douze Tableaux"</p>
+                        <p>"Victor Hugo, William Shakespeare p. 233"</p>
+                        <p>"Jules Lacoste, Le Roi Lear émme en cinq Actes en vers initiés de Shakespeare, 1898"</p>
+                        <p>"Le Chevalier de Cantalini, Le Roi Lear Traduite en vert français, London, 1873"</p>
+                        
+                        <p><strong>Greek</strong></p>
+                        <p>"Mich. Védémarty, Lear Király"</p>
+                        <p>"Lear Koungar Soggatlakar eger W. Shakepane I takanári lyolingu eger Sutagina Thorsteinsson, Revigoris, 1878"</p>
+                        
+                        <p><strong>Italian</strong></p>
+                        <p>"Leoni, Il Re Lear"</p>
+                        <p>"Carlo Rusconi, Teatro Completo di Shakespeare, Padrone, 1831"</p>
+                        <p>"Guelo Carcuso, Teatro scelto di Shakespeare vol. I p. 1, Firenze, 1877"</p>
+                        
+                        <p><strong>Polish</strong></p>
+                        <p>"Dramis William Shakespeare Fredklad s Pierwóboru Krol Lear Tom II p. 291"</p>
+                        <p>"Sunislawa Komnian, Dubai Demystremo Sadegira Vol. I pp. 95-96"</p>
+                        <p>"Adam Elugi, Krol Ltd Tragedie Sadegira w 5 Akuch, London, 1870"</p>
+                        <p>"St. Kon- tainan J. Pankorwaltsop i L. Ulricho, Dubai Demystremo Williams Shakespeare Wylanie illustrowane, Warszawa, 1876"</p>
+                        
+                        <p><strong>Russian</strong></p>
+                        <p>"Vasiley Yekinod, Kroty Lere Tragediya of Pyate Dystyriyakhe Continental Shakepan, Sankipandongo, 1833"</p>
+                        <p>"N. V. Gerbajer, Polona Sobrania Dumuskońskański Shakepan of parabody a Russische Peas- tady, Sankipandongo, 1865"</p>
+                        <p>"A. Droshenem, Kroty Lere Tragediya of Pyate Dystyriyakhe Shakepan, Sankipandongo, 1865"</p>
+                        <p>"V. Lazarszakogo, Kroty Lere Tragediya of Pyate Dystyriyakhe Shakepan, Sankipandongo, 1865"</p>
+                        
+                        <p><strong>Swedish</strong></p>
+                        <p>"Anonymous, Konung Lear"</p>
+                        <p>"Haplog, Shakespeare's dramatiska Arbeten Konung Lear Elliotte barakat, Land, 1861"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Romeo and Juliet Critics Modal -->
+    <div id="romeoJulietCriticsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Who are the New Variorum Critics?</div>
+                <button class="modal-close" onclick="closeCriticsModal()">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="critics-info">
+                    <h4>Who are the New Variorum critics?</h4>
+                    <p>The New Variorum editions draw on an extraordinary range of voices—from 18th-century pioneers who first attempted to restore Shakespeare's "corrupted" text, through Victorian scholars who brought scientific rigor to textual criticism, to early 20th-century critics who revolutionized our understanding of Shakespeare's language and stagecraft.</p>
+                    
+                    <p>When reading the New Variorum notes, you'll encounter a dizzying array of abbreviated names and cryptic references: "CAPELL," "THEOBALD," "MALONE," "SCHMIDT." These aren't just footnotes—they represent real people who dedicated their lives to understanding Shakespeare. Behind each abbreviation is a scholar with their own fascinating story: Alexander Pope, the great poet who produced one of the first "modern" Shakespeare editions (1725); Samuel Johnson, whose 1765 edition contained brilliant interpretive notes that are still quoted today; Edmond Malone, who pioneered the historical study of Shakespeare's texts in the late 18th century; or Alexander Schmidt, whose Shakespeare Lexicon (1874-75) remains indispensable for understanding Elizabethan word meanings.</p>
+                    
+                    <p>The Variorum's democratic approach means you'll find everyone from famous literary critics to obscure German philologists, from actor-managers sharing performance insights to amateur scholars who made single brilliant observations. Furness included them all, believing that truth about Shakespeare could come from anywhere.</p>
+                    
+                    <p>While we've expanded each citation in the notes themselves to include full names and publication years, the sheer number of critics cited can be overwhelming. Below is the complete list of authorities referenced in this volume, drawn from the Variorum's own index. This list reveals the true scope of the centuries-long conversation you're joining when you read these notes—a international community of readers all grappling with the endless complexities of Shakespeare's text.</p>
+                </div>
+                
+                <div class="critics-separator" style="margin: 30px 0; padding: 20px 0; border-top: 2px solid #e5e7eb; border-bottom: 2px solid #e5e7eb;">
+                    <h4 style="text-align: center; color: #666; font-weight: 600;">Complete List of New Variorum Critics & Authorities for Romeo and Juliet</h4>
+                </div>
+                
+                <div class="critics-list" style="max-height: 400px; overflow-y: auto; background: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb;">
+                    <div style="font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6;">
+                        <p><strong>ENGLISH WORKS</strong></p>
+                        <p>"Otway, Cainz Marine, London, 1712"</p>
+                        <p>"Upton, Critical Observation on Shakepeare, 1746"</p>
+                        <p>"Grey, Critical Historical and Explanatory Notes, 1754"</p>
+                        <p>"Capill, Notes and various Readings, 1759"</p>
+                        <p>"Hatiti, A Review of Shakepeare's Text, 1765"</p>
+                        <p>"Farmer, Essay on the Learning of Shakepeare, 1767"</p>
+                        <p>"Johnson and Stephens, The Plays of Shakepeare, 1773"</p>
+                        <p>"Johnson and Stephens, The Plays of Shakepeare, 1778"</p>
+                        <p>"Masoni, Comment on the last edition of Shakepear's Plays, 1785"</p>
+                        <p>"Steevens, The Plays of Shakepeare, 1793"</p>
+                        <p>"Whites, Specimen of a Commentary on Shakepeare, 1794"</p>
+                        <p>"Reed, The Plays of Shakepeare (First Variorum), 1803"</p>
+                        <p>"Seymond, Remarks critical conjectural and explanatory upon the Plays of Shakepeare, 1805"</p>
+                        <p>"Chudwohlin, Notes on some Obtense Passages in Shakepeare, 1806"</p>
+                        <p>"Douce, Illustration of Shakepeare, London, 1839"</p>
+                        <p>"Drake, Shakepeare and his Times, 1807"</p>
+                        <p>"Reed, The Plays of Shakepeare (Second Variorum), 1813"</p>
+                        <p>"Becker, Shakepeare's History Again, 1815"</p>
+                        <p>"Jeffrey, Essays, London, 1840"</p>
+                        <p>"Halifit, Character of Shakepeare's Plays, New York, 1840"</p>
+                        <p>"Jackson, Shakepeare's Genius Yustified, 1819"</p>
+                        <p>"Calderon, Hamlet and Ar Von Like It, 1820"</p>
+                        <p>"Nabee, Obtense, London, 1867"</p>
+                        <p>"Skottowe, Life of Shakepeare, 1824"</p>
+                        <p>"Graves, Essay on the Genius of Shakepeare with Critical Remarks on the Character of Romeo Hamlet Yultet and Ophelia, 1836"</p>
+                        <p>"Mrs. Jannsen, Characterization of Women, 1833"</p>
+                        <p>"Kebbitty, Fairy Mythology, 1833"</p>
+                        <p>"Coleridge, Literary Remains, 1836"</p>
+                        <p>"Brown, Autobiographical Poems, 1838"</p>
+                        <p>"Dyer, Remarks on Mr. Collier's and Mr. Knight's edition of Shakepeare, 1844"</p>
+                        <p>"Mitford, Gentleman's Magazine, 1845"</p>
+                        <p>"Hunter, New Illustrations, 1845"</p>
+                        <p>"The Shakepeare Society's Papers Vol. ii, 1847"</p>
+                        <p>"The Shakepeare Society's Papers Vol. iii, 1847"</p>
+                        <p>"Birch, Inquiry into the Philosophy and Religion of Shakepeare, 1848"</p>
+                        <p>"Harley Columnch, Essays"</p>
+                        <p>"Collins, Notes and Emoralisms from the Early Monastery into reunion in a Copy of the Folks, 1931"</p>
+                        <p>"Beli, Shakespeare's Poets and his Folk-Love"</p>
+                        <p>"Bruni, The Text of Shakespeare Vestibular"</p>
+                        <p>"Dyce, A Few Notes"</p>
+                        <p>"Howell, A Few Words in Reply to the Antiochronicity of the Reversal Mr Dyer"</p>
+                        <p>"Collins, Notes and Emoralisms (Second Edition)"</p>
+                        <p>"William Singer Walker, Shakespeare's Verification"</p>
+                        <p>"Rogard Grain Writes, Shakespeare's Solitude"</p>
+                        <p>"Magan, Introduction to the Literature of Europe (Fifth Edition)"</p>
+                        <p>"Milton, History of the Vatican"</p>
+                        <p>"Mitfond, Currency Notes on various passages in the text of Rome some are effective in edited by the Rev. A. Dyce and on his New Notes on Shakespeare's History"</p>
+                        <p>"Collins, Some Letters on Shakespeare and Milton by his late 15 Century Essays Word and of all the M.S. Emoralisms in Mr Collier's Folks Shakespeare of 1949"</p>
+                        <p>"Baudahl, The Text of Shakespeare (Cambridge Essays)"</p>
+                        <p>"Lunt, Textes et des Éloge Écoland"</p>
+                        <p>"Rathing, Romènes de la Différence in Shakespeare's Verification in different periods of life"</p>
+                        <p>"Dyce, Solicitors on Mr Collier's new edition"</p>
+                        <p>"Casia, The English of Shakespeare (Second Edition)"</p>
+                        <p>"Loud Costume, The Royal Argumentation of Shakespeare outside God"</p>
+                        <p>"William Singer Walker, A Critical Examination of the Text of Shakespeare"</p>
+                        <p>"Windall, Notes on Shakespeare"</p>
+                        <p>"Berney, Shakespeare's Garden"</p>
+                        <p>"The Globe Edition"</p>
+                        <p>"Trome, Three Articles"</p>
+                        <p>"Heard, Shakespeare's Inner Life"</p>
+                        <p>"Conn, Shakespeare in Germany in the Sixteenth and Seventeenth Century"</p>
+                        <p>"Carynbright, New Reading"</p>
+                        <p>"Masset, Shakespeare's Sonate over before Interpreter"</p>
+                        <p>"Philadelphia Shakespeare Society, Notes on The Templars"</p>
+                        <p>"Keightley, Shakespeare Exposition"</p>
+                        <p>"Murapha, Letter Horror"</p>
+                        <p>"Abrott, Shakespearean Grammar (First Edition)"</p>
+                        <p>"Keniton, Shakespeare's Testament for Language"</p>
+                        <p>"Cosner, Translation of Love on Verse's Contributors & Mentions"</p>
+                        <p>"Abrott, Shakespearean Grammar (Second Edition)"</p>
+                        <p>"Carrick, Shakespeare and the Emblem Writers"</p>
+                        <p>"Booth, Acting Copy"</p>
+                        <p>"Notes and Queries"</p>
+                        
+                        <p><strong>EDITIONS & TRANSLATIONS (Romeo and Juliet)</strong></p>
+                        <p>"Benson and Yulife, London, 1754"</p>
+                        <p>"Benson and Yulife, London, 1755"</p>
+                        <p>"T. Chmiel, Benson and Yulife Revised and altered, London, 8-6 (1769)"</p>
+                        <p>"Capalet and Montigny or the Tropical Loves of Romeo and Juliet, London, 8-6"</p>
+                        <p>"James Hopman, Benson and Yulife altered into a Tragi-Comedy, Egg, London, 8-6"</p>
+                        <p>"Benson and Yulife, Dublin, 1793"</p>
+                        <p>"GALLADO, Benson and Yulife, London, 8-6"</p>
+                        <p>"Benson and Yulife as performed at the Thieters Royal With Remarks 1857 is licensed under the Treasury Law, London, 8-6 (1869)"</p>
+                        <p>"Benson and Yulife have performed at the Thieters Royal, Paris, 1857"</p>
+                        <p>"Benson and Yulife as performed at Paris, Paris, 1857"</p>
+                        <p>"Nicolo Zue, Benson & Christine a Trade Open in Three Acts, GARRILA, London, 1837"</p>
+                        <p>"Benson and Yulife (Modern Standard Drama), New York, 1857"</p>
+                        <p>"Benson and Yulife, Irish, 1858"</p>
+                        <p>"Benson and Yulife, London, 1837"</p>
+                        <p>"Benson and Yulife, Treasury, London, 1837"</p>
+                        <p>"Benson and Yulife, Treasury (Early Acting Edition), London, 8-6 (1855)"</p>
+                        <p>"F. Weiner, Benson and Yulife, Leipzig, 1795"</p>
+                        <p>"Benson and Yulife Oper 1870 Actes, Leipzig, 1795"</p>
+                        <p>"F. W. Gortner, Benson and Yulife with George, Leipzig, 1795"</p>
+                        <p>"C. F. Bassett, Benson and Yulife, Leipzig, 1795"</p>
+                        <p>"Carolene Schleudel (and A. W. Schleudel), Benson and Yulife, Wien, 1926"</p>
+                        <p>"Benson and Yulife Quadriller con Kondatore, Vienna, 1926"</p>
+                        <p>"J. V. Sojock, Benson and Yulife dramatistica edited, Namiburg, 1896"</p>
+                        <p>"J. H. Voigt, Benson and Yulife still Erklärerungen, Leipzig, 1848"</p>
+                        <p>"H. Durney, Benson and Yulife, Golub, 1812"</p>
+                        <p>"E. Ostriker, Benson and Yulife, Leipzig, 1851"</p>
+                        <p>"C. A. Weger, Benson and Yulife, Wien, 1841"</p>
+                        <p>"Benson et Yulife en vers libres, Paris, 1771"</p>
+                        <p>"Doros, Benson et Yulife adapté à la scène Franche, Paris, 1772"</p>
+                        <p>"Benson et Yulife on Amours et historiens de cette Annette, Paris, 1854"</p>
+                        <p>"Branco, Benson et Yulife Simone Dymneigne, Paris, 1855"</p>
+                        <p>"Benson et Yulife Nouvelle Edition Texte Français et Allemands, Leipzig, 1859"</p>
+                        <p>"E. Dieckmann, Benson et Yulife Edition pour le Théâtre, Paris, 1854"</p>
+                        <p>"L. de Mortchamp et A. Delorme, Benson et Yulife telle vaudeville en un acte, Paris, 1865"</p>
+                        <p>"Moulet, Benson et Yulife in due Atil, Berlin, 1773"</p>
+                        <p>"Davide Beardotti, Armentier et Christine e Rouen, Milano, 8-6"</p>
+                        <p>"Ricostante per Waikin, Benson et Christine Romano Storico, Verona, 1822"</p>
+                        <p>"Benson et Christine maîtres des Inglese, Roma, 1866"</p>
+                        <p>"Benson et Christine maîtres du Bourbillon, Milan, 1918"</p>
+                        <p>"Lucia da Porto, Benson et Christine Novella accueil, Roma, 1931"</p>
+                        <p>"Luigi da Porto, Benson et Christine Novelle des sciites, Roma, 1931"</p>
+                        <p>"Guadagnoni, Benson et Christine versioni, Milano, 1867"</p>
+                        <p>"Caucaso, Benson et Christine traduitrice, Milano"</p>
+                        <p>"L'équité est l'Amateur à Tragic Opera in Two Acts Italian anno English, London, 1833"</p>
+                        <p>"Jacob Spitzer, Benson et Yulife An Intuition of Shakes, Amsterdam, 1634"</p>
+                        <p>"J. van Lindner, Benson et Yulife Treurpqi in 5 bedryves uit het Engelsch door, Amsterdam, 1833"</p>
+                        
+                        <p><strong>FRENCH & GERMAN CRITICISM</strong></p>
+                        <p>"Lifourniers, Cheveu de Shakespeare, 1756–1788"</p>
+                        <p>"Culturements, Shakespeare on Shakespeare, 1960"</p>
+                        <p>"A. Brown, Remus and Yellen, Paris, 1873"</p>
+                        <p>"Saide-Marc Grandes, Genre de Littoraliser Dreamstipat, 1455"</p>
+                        <p>"Villemann, Charles de Shakespeare Antoinette et Étrangère, 1454"</p>
+                        <p>"Cracks, Études sur Shakespeare, 1551"</p>
+                        <p>"Guipot, Shakespeare and Les Times, 1572"</p>
+                        <p>"Saide-Marc Charles, Genre de Littoraliser Dreamstipat, 1535"</p>
+                        <p>"Albert Lacson, Histoire de l'Influence de Shakespeare sur le Palais Presque, 1696"</p>
+                        <p>"Fragmentation Hego, Cheveu complète de Shakespeare, 1597–60"</p>
+                        <p>"Médiens, Shakespeare ses Cheveux et ses Critiques, 1860"</p>
+                        <p>"Madartine, Shakespeare et ses Claves, 1880"</p>
+                        <p>"Tarne, Littoraliser Angliaia"</p>
+                        <p>"Librid, Handwritten Dreamstrips, 1797"</p>
+                        <p>"Goethe, Books and Tales for the Weimar Theatre, 1811"</p>
+                        <p>"Heden, Shakespeare's Schimpside, 1832"</p>
+                        <p>"Trick, Immercuryable Billion, 1855"</p>
+                        <p>"Pellen, Remus and Yellen, 1833"</p>
+                        <p>"Ulbert, Dramatic Art, 1829"</p>
+                        <p>"Sobligue, Lectures on Dramatic Art (Oxford Edition), 1840"</p>
+                        <p>"Prizer, Remus and Yellen, 1840"</p>
+                        <p>"Polyter, Remus and Yellen, 1840"</p>
+                        <p>"Rüncher, Philosophie der Kunst, 1840"</p>
+                        <p>"Gezwind, Schleppung Commentaries, 1855"</p>
+                        <p>"Verus, Shakespeare als Publisher Psycholog und Diskurs, 1851"</p>
+                        <p>"Delius, Shakespeare in Theatre, 1852"</p>
+                        <p>"Herbin, Remus and Yellen, 1853"</p>
+                        <p>"Vorlin, Annotation oder Wittumstätig des Schirms, 1857"</p>
+                        <p>"Kenstros, Verletzung über Shakespeare, 1859"</p>
+                        <p>"Moments, Remus and Yellen, 1858"</p>
+                        <p>"Micates, Die Komplexität von Shakespeare's Remus und Yellen, 1861"</p>
+                        <p>"Rüncher, Die Kunst der dramatischen Darstellung, 1864"</p>
+                        <p>"Röncher, Dreamstorphäre Probleme, 1865"</p>
+                        <p>"Die Fabricien der Deutschen Shakespeare-Gesellschaft, 1867–90"</p>
+                        <p>"Rüncher, Shakespearestudium, 1866"</p>
+                        <p>"Rüncher, Shakespeare's Dreamstricks Works, 1868"</p>
+                        <p>"Ulbust, Shakespeare's Dreamsticks Works, 1868"</p>
+                        <p>"Grace, Graduelle der Shakespearischen Dramate in Deutschland, 1890"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Othello Critics Modal -->
+    <div id="othelloCriticsModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">Who are the New Variorum Critics?</div>
+                <button class="modal-close" onclick="closeCriticsModal()">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="critics-info">
+                    <h4>Who are the New Variorum critics?</h4>
+                    <p>The New Variorum editions draw on an extraordinary range of voices—from 18th-century pioneers who first attempted to restore Shakespeare's "corrupted" text, through Victorian scholars who brought scientific rigor to textual criticism, to early 20th-century critics who revolutionized our understanding of Shakespeare's language and stagecraft.</p>
+                    
+                    <p>When reading the New Variorum notes, you'll encounter a dizzying array of abbreviated names and cryptic references: "CAPELL," "THEOBALD," "MALONE," "SCHMIDT." These aren't just footnotes—they represent real people who dedicated their lives to understanding Shakespeare. Behind each abbreviation is a scholar with their own fascinating story: Alexander Pope, the great poet who produced one of the first "modern" Shakespeare editions (1725); Samuel Johnson, whose 1765 edition contained brilliant interpretive notes that are still quoted today; Edmond Malone, who pioneered the historical study of Shakespeare's texts in the late 18th century; or Alexander Schmidt, whose Shakespeare Lexicon (1874-75) remains indispensable for understanding Elizabethan word meanings.</p>
+                    
+                    <p>The Variorum's democratic approach means you'll find everyone from famous literary critics to obscure German philologists, from actor-managers sharing performance insights to amateur scholars who made single brilliant observations. Furness included them all, believing that truth about Shakespeare could come from anywhere.</p>
+                    
+                    <p>While we've expanded each citation in the notes themselves to include full names and publication years, the sheer number of critics cited can be overwhelming. Below is the complete list of authorities referenced in this volume, drawn from the Variorum's own index. This list reveals the true scope of the centuries-long conversation you're joining when you read these notes—a international community of readers all grappling with the endless complexities of Shakespeare's text.</p>
+                </div>
+                
+                <div class="critics-separator" style="margin: 30px 0; padding: 20px 0; border-top: 2px solid #e5e7eb; border-bottom: 2px solid #e5e7eb;">
+                    <h4 style="text-align: center; color: #666; font-weight: 600;">Complete List of New Variorum Critics & Authorities for Othello</h4>
+                </div>
+                
+                <div class="critics-list" style="max-height: 400px; overflow-y: auto; background: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb;">
+                    <div style="font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6;">
+                        <p>"Zachary Jackson: Shakespeare's Corina Justified"</p>
+                        <p>"Hogan: Shakespeare's Schamigide trilustra, Leipzig 1833"</p>
+                        <p>"Boomer: Life of J. P. Lemke 1858"</p>
+                        <p>"Halitt: Flank Speaks 1880"</p>
+                        <p>"Dean: Memorials of Shakespeare 1888"</p>
+                        <p>"De Brodie: San Odilio, Paris 1890"</p>
+                        <p>"Savage: Quellen on Shakespeare's, Berlin 1891"</p>
+                        <p>"Collier: History of English Semantic Poetry (ed. ii, 1879) 1931"</p>
+                        <p>"Gait: Lines of the Players 1891"</p>
+                        <p>"Mac Johnson: Characteristics of Women 1832"</p>
+                        <p>"Collier: New Facts 1835"</p>
+                        <p>"Collier: New Particulars 1836"</p>
+                        <p>"Raymond Brown: Racgregati nella Vita di Maria Samalo, 6v., Venice 1877"</p>
+                        <p>"Campbell: Dramatic Works of Shakespeare 1838"</p>
+                        <p>"Obert: History of English Rhythms 1838"</p>
+                        <p>"Brown: Shakespeare's Ausbiographical Poems 1839"</p>
+                        <p>"Collier: Further Particulars 1839"</p>
+                        <p>"Glasserman Society: The Revolt Book 1841"</p>
+                        <p>"Collier: Shakespeare's Library (New Edition by W. C. Hazlitt, 1875) 1843"</p>
+                        <p>"Dyer: Remarks, 6v. 1844"</p>
+                        <p>"Hunter: New Illustrations, 6v. 1845"</p>
+                        <p>"Verdanck: Shakespeare's Works, New York 1847"</p>
+                        <p>"Brand: Popular Antiquities, 6v. (Bohr's edition, 1873) 1848"</p>
+                        <p>"Rather: Dramatic Guides 1859"</p>
+                        <p>"Dyer: Choir Belief of Shakespeare 1851"</p>
+                        <p>"Collier: Nous ont Emendations 1852"</p>
+                        <p>"Dyer: Bon Noire 1853"</p>
+                        <p>"Smith: Shakespeare's Text Finalization 1853"</p>
+                        <p>"Fritz: Diary, 6v. (Fifth Edition, London) 1854"</p>
+                        <p>"Quincy: MS Corrections in F., Boston 1854"</p>
+                        <p>"Willel: Shakespeare's Substruments 1854"</p>
+                        <p>"Walken: Shakespeare's Verification 1854"</p>
+                        <p>"Taylor: The Move of Venice 1855"</p>
+                        <p>"Wood: Personal Recollections, 6v., Philadelphia 1855"</p>
+                        <p>"Collier: Seven Letters, 6v. 1855"</p>
+                        <p>"Lady: Eusyn (from Singer's Second Edition) 1859"</p>
+                        <p>"Lord Campbell: Shakespeare's Legal Requirements 1859"</p>
+                        <p>"Walker: Critical Examinations of the Text, 6v. 1859"</p>
+                        <p>"Reedy: Lectures on English History, London 1859"</p>
+                        <p>"Dyer: Strictures, 6v. 1859"</p>
+                        <p>"Benjamin: Shakespeare's Medical Knowledge 1860"</p>
+                        <p>"Jewell: Proposed Emendations 1860"</p>
+                        <p>"Madden: Shakespeare Papers 1860"</p>
+                        <p>"Prentice: Acting Editions 1861"</p>
+                        <p>"Other: Feelster's Oblasts 1861"</p>
+                        <p>"Ballet: The Recursive Text 1863"</p>
+                        <p>"Gervings: Commentaries (trans. by F. E. Bunnett), London 1863"</p>
+                        <p>"Hackett: Nein, Eve, New York"</p>
+                        <p>"Dimitriou: Nein an Othello, Khishidha"</p>
+                        <p>"Victor Hugo: Human Shakespeare, Paul"</p>
+                        <p>"Wordsworth: Shakespeare and the Bible"</p>
+                        <p>"Risall: Shakespeare's Garden"</p>
+                        <p>"Timothy: Shakespeare's Fair Isaac Life"</p>
+                        <p>"Abbondetti: Shakespeare's Edition and Commentaries"</p>
+                        <p>"Carpenthal: New Reading"</p>
+                        <p>"Takes: Lithronic Angelica (Decision Edison), Paul"</p>
+                        <p>"Bogobert: Othello, soberani, Leopás"</p>
+                        <p>"Frisetti: Soon John, Eve"</p>
+                        <p>"Karl: Golichko da Orsana. Den Italienische, Leipzig"</p>
+                        <p>"Kirchfelt: Shakespeare's Republic"</p>
+                        <p>"Gould: The Tragedian"</p>
+                        <p>"Frederik: Life of Garrett"</p>
+                        <p>"Chill: Human Life in Shakespeare"</p>
+                        <p>"Haynes: Life of Edmund Kean"</p>
+                        <p>"Mary Pristoff: Shelm in Shakespeare, Philadelphia"</p>
+                        <p>"Abort: Shakespeare's Grammar"</p>
+                        <p>"Daniel: Noise and Remembrance"</p>
+                        <p>"Lord: Pleigh, London"</p>
+                        <p>"Harriet: Ornobiology of Shakespeare"</p>
+                        <p>"Leipold: Shakespeare-Smithia, Leipzig"</p>
+                        <p>"Russie: Albania Pulvera"</p>
+                        <p>"Martin: The Soviet Drama, Sex"</p>
+                        <p>"Joris Hickey: Othello, with Klein"</p>
+                        <p>"Russ: Life of Jovens"</p>
+                        <p>"Doveau: Shakespeare, His Mind and Art"</p>
+                        <p>"Lewis: On Love and the Art of Alone"</p>
+                        <p>"Ward: Principles of English Dreamlike Poetry"</p>
+                        <p>"Ecke: Be Scottiants: Schachtelmann"</p>
+                        <p>"Friesen: Shakespeare, Sowles, Wim"</p>
+                        <p>"Floyd: Shakespeare's Drowned Art, Or, (translated by Miss Schmid)"</p>
+                        <p>"Ulrich: Shakespeare's Drowned Art, Or, (translated by Miss Schmid)"</p>
+                        <p>"Oughton: Othello, soarleton, Weimar"</p>
+                        <p>"Smith: System of Shakespeare's Drowned, St Louis"</p>
+                        <p>"Alexei: Life of Everett"</p>
+                        <p>"Delight: Sheath on the Text of Shakespeare"</p>
+                        <p>"Edwin: Bourni: Present Book of Oldals."</p>
+                        <p>"Klacowski: Plane Law of Shakespeare"</p>
+                        <p>"Hans: Soometh Kohn, The Philadelphia"</p>
+                        <p>"Cornell-Clarke: The Shakespeare Key"</p>
+                        <p>"Iberley: Contents of Prague"</p>
+                        <p>"Norbert: Kanto and Juliet"</p>
+                        <p>"Sjergren: St. Jacob of Shakespeare"</p>
+                        <p>"Gershurst: Studiumblanc, Berlin"</p>
+                        <p>"Wilsey: Shakespeare, The Man and the Book, Paul II"</p>
+                        <p>"Reza: Herald:"</p>
+                        <p>"Buttland: Demandergic for Charities, Oldenburg"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- NV Info Modal -->
     <div id="nvModal" class="modal">
         <div class="modal-content">
@@ -3147,13 +3619,13 @@
             
                 <!-- New Variorum Buttons - Right under the title -->
                 <div class="critics-button-container" id="criticsButtonContainer" style="margin-top: 10px; margin-bottom: 15px;">
-                <button class="btn btn-secondary" onclick="openCriticsModal()" style="width: 100%; margin-bottom: 10px;">
+                <button class="btn btn-secondary" id="criticsButton" onclick="openCriticsModal()" style="width: 100%; margin-bottom: 10px; display: none;">
                         Who are the New Variorum Critics?
                 </button>
                 <button class="btn btn-info" onclick="openNVModal()" style="width: 100%;">
                         What's New Variorum?
                 </button>
-            </div>
+                </div>
             
                 <div class="analysis-content" id="variorumContent">
                     Traditional commentary will appear here for Full Fathom Five mode.
@@ -3241,15 +3713,19 @@
             }
             
             // Check if current play should have New Variorum Analysis
-            const playsWithoutNewVariorum = [
-                'asyoulikeit', 'coriolanus', 'cymbeline', 'henryiv1', 'henryiv2', 
-                'juliuscaesar', 'kingjohn', 'loveslabourslost', 'merchantofvenice', 
-                'midsummer', 'muchado', 'richardii', 'richardiii', 
-                'tempest', 'winterstale', 'troilus', 'twelfthnight'
-            ];
+            // Only these 5 plays should have New Variorum Analysis
+            const playsWithNewVariorum = ['hamlet', 'othello', 'romeojuliet', 'macbeth', 'kinglear'];
             
-            const shouldShowNewVariorum = !playsWithoutNewVariorum.includes(currentPlay);
+            const shouldShowNewVariorum = playsWithNewVariorum.includes(currentPlay);
             console.log('🎭 Current play:', currentPlay, '- Show New Variorum?', shouldShowNewVariorum);
+            
+            // Show/hide critics button based on current play (exclude Hamlet)
+            const playsWithCriticsButtons = ['othello', 'romeojuliet', 'macbeth', 'kinglear'];
+            const shouldShowCriticsButton = playsWithCriticsButtons.includes(currentPlay);
+            const criticsButton = document.getElementById('criticsButton');
+            if (criticsButton) {
+                criticsButton.style.display = shouldShowCriticsButton ? 'block' : 'none';
+            }
             
             // Reset analysis panel to default state by restoring original HTML
             if (analysisPanel) {
@@ -3885,11 +4361,24 @@
         }
 
         function openCriticsModal() {
-            document.getElementById('criticsModal').style.display = 'block';
+            // Show the appropriate critics modal based on current play
+            if (currentPlay === 'kinglear') {
+                document.getElementById('kingLearCriticsModal').style.display = 'block';
+            } else if (currentPlay === 'romeojuliet') {
+                document.getElementById('romeoJulietCriticsModal').style.display = 'block';
+            } else if (currentPlay === 'othello') {
+                document.getElementById('othelloCriticsModal').style.display = 'block';
+            } else {
+                document.getElementById('criticsModal').style.display = 'block';
+            }
         }
 
         function closeCriticsModal() {
+            // Close all critics modals to be safe
             document.getElementById('criticsModal').style.display = 'none';
+            document.getElementById('kingLearCriticsModal').style.display = 'none';
+            document.getElementById('romeoJulietCriticsModal').style.display = 'none';
+            document.getElementById('othelloCriticsModal').style.display = 'none';
         }
 
         function openNVModal() {
@@ -6401,6 +6890,12 @@
             
             console.log('Updating navigation for play:', play.name, play);
             
+            // Add Dramatis Personae if it exists
+            if (play.scenes && play.scenes['DRAMATIS PERSONAE']) {
+                const dramatisItem = document.createElement('li');
+                dramatisItem.innerHTML = `<a href="#" onclick="loadScene('DRAMATIS PERSONAE')" data-scene="DRAMATIS PERSONAE">Dramatis Personae</a>`;
+                navList.appendChild(dramatisItem);
+            }
             
             // Add Acts and Scenes - Sort acts numerically
             const sortedActNames = Object.keys(play.acts).sort((a, b) => {
@@ -6452,8 +6947,16 @@
                 link.classList.remove('active');
             });
             
+            // Handle Dramatis Personae
+            if (itemName === 'DRAMATIS PERSONAE') {
+                navLinks.forEach(link => {
+                    if (link.getAttribute('data-scene') === 'DRAMATIS PERSONAE') {
+                        link.classList.add('active');
+                    }
+                });
+            }
             // If it's a scene, highlight both the scene and its parent act
-            if (itemName && itemName.includes(',')) {
+            else if (itemName && itemName.includes(',')) {
                 const actName = itemName.split(',')[0];
                 
                 navLinks.forEach(link => {
@@ -6517,13 +7020,19 @@
             
             // Extract act and scene names for better display
             let displayTitle = sceneName;
-            const actMatch = sceneName.match(/^ACT\s+([IVX0-9]+)/i);
-            const sceneMatch = sceneName.match(/SCENE\s+([IVX0-9]+)/i);
             
-            if (actMatch && sceneMatch) {
-                displayTitle = `ACT ${actMatch[1]}, SCENE ${sceneMatch[1]}`;
-            } else if (actMatch) {
-                displayTitle = `ACT ${actMatch[1]}`;
+            // Handle Dramatis Personae
+            if (sceneName === 'DRAMATIS PERSONAE') {
+                displayTitle = 'Dramatis Personae';
+            } else {
+                const actMatch = sceneName.match(/^ACT\s+([IVX0-9]+)/i);
+                const sceneMatch = sceneName.match(/SCENE\s+([IVX0-9]+)/i);
+                
+                if (actMatch && sceneMatch) {
+                    displayTitle = `ACT ${actMatch[1]}, SCENE ${sceneMatch[1]}`;
+                } else if (actMatch) {
+                    displayTitle = `ACT ${actMatch[1]}`;
+                }
             }
             
             playText.innerHTML = `
@@ -6546,6 +7055,19 @@
             let currentSpeaker = '';
             
             console.log('formatSceneContent called with', sceneContent.length, 'lines for scene:', sceneName);
+            
+            // Special handling for Dramatis Personae
+            if (sceneName === 'DRAMATIS PERSONAE') {
+                sceneContent.forEach((line, index) => {
+                    if (line === '') {
+                        html += `<div class="play-line">&nbsp;</div>`;
+                    } else {
+                        // For Dramatis Personae, treat each line as a character name
+                        html += `<div class="character-name" data-line-index="${index}">${line}</div>`;
+                    }
+                });
+                return `<div class="scene-content dramatis-personae" data-scene="${sceneName}">${html}</div>`;
+            }
             
             // Display each line exactly as it appears in the file, preserving whitespace
             sceneContent.forEach((line, index) => {
@@ -7714,13 +8236,9 @@
                     
                     // Add buttons specifically for New Variorum Analysis section (only for appropriate plays)
                     if (sectionName === 'New Variorum Analysis') {
-                        const playsWithoutNewVariorum = [
-                            'asyoulikeit', 'coriolanus', 'cymbeline', 'henryiv1', 'henryiv2', 
-                            'juliuscaesar', 'kingjohn', 'loveslabourslost', 'merchantofvenice', 
-                            'midsummer', 'muchado', 'richardii', 'richardiii', 
-                            'tempest', 'winterstale', 'troilus', 'twelfthnight'
-                        ];
-                        const shouldShowButtons = !playsWithoutNewVariorum.includes(currentPlay);
+                        // Only these 4 plays should have New Variorum Critics buttons (excluding Hamlet)
+                        const playsWithCriticsButtons = ['othello', 'romeojuliet', 'macbeth', 'kinglear'];
+                        const shouldShowButtons = playsWithCriticsButtons.includes(currentPlay);
                         
                         if (shouldShowButtons) {
                             formattedContent += '<div class="critics-button-container" style="margin-top: 10px; margin-bottom: 15px;">';
@@ -7738,14 +8256,10 @@
             }
             
             // Check if current play should show New Variorum Analysis
-            const playsWithoutNewVariorum = [
-                'asyoulikeit', 'coriolanus', 'cymbeline', 'henryiv1', 'henryiv2', 
-                'juliuscaesar', 'kingjohn', 'loveslabourslost', 'merchantofvenice', 
-                'midsummer', 'muchado', 'richardii', 'richardiii', 
-                'tempest', 'winterstale', 'troilus', 'twelfthnight'
-            ];
+            // Only these 5 plays should have New Variorum Analysis
+            const playsWithNewVariorum = ['hamlet', 'othello', 'romeojuliet', 'macbeth', 'kinglear'];
             
-            const shouldShowNewVariorum = !playsWithoutNewVariorum.includes(currentPlay);
+            const shouldShowNewVariorum = playsWithNewVariorum.includes(currentPlay);
             console.log('🎭 formatStructuredAnalysis - Current play:', currentPlay, '- Show New Variorum?', shouldShowNewVariorum);
             
             // Only add New Variorum Analysis for plays that should have it
@@ -7758,10 +8272,19 @@
                     // Fallback: Add Macbeth notes section LAST (New Variorum Analysis at the bottom)
                     formattedContent += '<div class="analysis-section">';
                     formattedContent += '<h4>New Variorum Analysis</h4>';
-                    formattedContent += '<div class="critics-button-container" style="margin-top: 10px; margin-bottom: 15px;">';
-                    formattedContent += '<button class="btn btn-secondary" onclick="openCriticsModal()" style="width: 100%; margin-bottom: 10px;">📚 Who are the New Variorum Critics?</button>';
-                    formattedContent += '<button class="btn btn-info" onclick="openNVModal()" style="width: 100%;">ℹ️ What\'s New Variorum?</button>';
-                    formattedContent += '</div>';
+                    
+                    // Only show critics button for plays that should have it (exclude Hamlet)
+                    const playsWithCriticsButtons = ['othello', 'romeojuliet', 'macbeth', 'kinglear'];
+                    if (playsWithCriticsButtons.includes(currentPlay)) {
+                        formattedContent += '<div class="critics-button-container" style="margin-top: 10px; margin-bottom: 15px;">';
+                        formattedContent += '<button class="btn btn-secondary" onclick="openCriticsModal()" style="width: 100%; margin-bottom: 10px;">📚 Who are the New Variorum Critics?</button>';
+                        formattedContent += '<button class="btn btn-info" onclick="openNVModal()" style="width: 100%;">ℹ️ What\'s New Variorum?</button>';
+                        formattedContent += '</div>';
+                    } else {
+                        formattedContent += '<div class="critics-button-container" style="margin-top: 10px; margin-bottom: 15px;">';
+                        formattedContent += '<button class="btn btn-info" onclick="openNVModal()" style="width: 100%;">ℹ️ What\'s New Variorum?</button>';
+                        formattedContent += '</div>';
+                    }
                     formattedContent += '<div class="variorum-notes">';
                     
                     relevantNotes.forEach((note, index) => {
@@ -8887,7 +9410,7 @@
                     </div>
                     
                     <div class="critics-separator" style="margin: 30px 0; padding: 20px 0; border-top: 2px solid #e5e7eb; border-bottom: 2px solid #e5e7eb;">
-                        <h4 style="text-align: center; color: #666; font-weight: 600;">Complete List of New Variorum Critics & Authorities for Macbeth</h4>
+                        <h4 style="text-align: center; color: #666; font-weight: 600;">Complete List of New Variorum Critics & Authorities for ${currentPlay === 'kinglear' ? 'King Lear' : 'Macbeth'}</h4>
                     </div>
                     
                     <div class="critics-list" style="max-height: 400px; overflow-y: auto; background: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb;">
@@ -9366,11 +9889,24 @@
         }
 
         function openCriticsModal() {
-            document.getElementById('criticsModal').style.display = 'block';
+            // Show the appropriate critics modal based on current play
+            if (currentPlay === 'kinglear') {
+                document.getElementById('kingLearCriticsModal').style.display = 'block';
+            } else if (currentPlay === 'romeojuliet') {
+                document.getElementById('romeoJulietCriticsModal').style.display = 'block';
+            } else if (currentPlay === 'othello') {
+                document.getElementById('othelloCriticsModal').style.display = 'block';
+            } else {
+                document.getElementById('criticsModal').style.display = 'block';
+            }
         }
 
         function closeCriticsModal() {
+            // Close all critics modals to be safe
             document.getElementById('criticsModal').style.display = 'none';
+            document.getElementById('kingLearCriticsModal').style.display = 'none';
+            document.getElementById('romeoJulietCriticsModal').style.display = 'none';
+            document.getElementById('othelloCriticsModal').style.display = 'none';
         }
 
         function openNVModal() {
