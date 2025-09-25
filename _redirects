@@ -1,0 +1,5 @@
+# Allow JSON files to be served
+/Public/Data/*    /Public/Data/:splat    200
+
+# Catch-all for SPA
+/*    /index.html    200

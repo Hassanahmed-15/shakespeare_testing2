@@ -33,7 +33,7 @@
 
 # Allow JSON files to be served directly
 [[redirects]]
-  from = "/Public/Data/*.json"
+  from = "/Public/Data/*"
   to = "/Public/Data/:splat"
   status = 200
 
