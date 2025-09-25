@@ -12,6 +12,37 @@
     <title>Shakespeare Digital Variorum</title>
     <link rel="stylesheet" href="styles/tokens.css?v=1.3">
     <style>
+        /* Loading indicator styles */
+        .loading-indicator {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .loading-spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .error-message {
+            padding: 40px;
+            text-align: center;
+            color: #e74c3c;
+        }
+        
         /* Critics button - shown by default */
         .critics-button-container {
             display: block;
@@ -4747,46 +4778,7 @@
             // Clear selection first
             clearSelection();
             
-            // Check if current play should have New Variorum Analysis
-            const playsWithNewVariorum = ['hamlet', 'othello', 'romeojuliet', 'macbeth', 'kinglear'];
-            const shouldShowNewVariorum = playsWithNewVariorum.includes(currentPlay);
-            
-            // Check if current play should have critics button
-            const playsWithCriticsButtons = ['hamlet', 'othello', 'romeojuliet', 'macbeth', 'kinglear'];
-            const shouldShowCriticsButton = playsWithCriticsButtons.includes(currentPlay);
-            
-            console.log('🎭 New play:', currentPlay, '- Show New Variorum?', shouldShowNewVariorum, '- Show Critics Button?', shouldShowCriticsButton);
-            
-            // Get the analysis panel
-            const analysisPanel = document.getElementById('analysisPanel');
-            if (!analysisPanel) {
-                console.error('❌ Analysis panel not found');
-                return;
-            }
-            
-            // Create variorum section HTML based on current play
-            const variorumSectionHTML = shouldShowNewVariorum ? `
-                    <!-- New Variorum Analysis Section (Full Fathom Five Only) -->
-                    <div class="analysis-section" id="variorumSection" style="display: none;">
-                        <div class="analysis-title">
-                            <span>New Variorum Analysis</span>
-                        </div>
-                    <div class="critics-button-container" id="criticsButtonContainer" style="margin-top: 10px; margin-bottom: 15px;">
-                        <button class="btn btn-secondary" id="criticsButton" onclick="openCriticsModal()" style="width: 100%; margin-bottom: 10px; ${shouldShowCriticsButton ? 'display: block;' : 'display: none;'}">
-                            Who are the New Variorum Critics?
-                        </button>
-                        <button class="btn btn-info" onclick="openNVModal()" style="width: 100%;">
-                            What's New Variorum?
-                        </button>
-                    </div>
-                        <div class="analysis-content" id="variorumContent">
-                            Traditional commentary will appear here for Full Fathom Five mode.
-                        </div>
-                        <div id="variorumResult"></div>
-                        
-                </div>` : '';
-            
-            // Instead of rebuilding entire HTML, just update content areas to preserve dropdown functionality
+            // Get existing elements (don't rebuild HTML to preserve event handlers)
             const analysisContent = document.getElementById('analysisContent');
             const analysisInstruction = document.getElementById('analysisInstruction');
             const analysisResult = document.getElementById('analysisResult');
@@ -4794,6 +4786,9 @@
             const variorumContent = document.getElementById('variorumContent');
             const variorumSection = document.getElementById('variorumSection');
             const criticsButton = document.getElementById('criticsButton');
+            const criticsInfo = document.getElementById('criticsInfo');
+            const nvInfo = document.getElementById('nvInfo');
+            const analyzeButton = document.getElementById('analyzeButton');
             
             // Clear analysis content
             if (analysisContent) analysisContent.innerHTML = 'Select text in the play to get AI-powered analysis.';
@@ -4802,19 +4797,25 @@
             if (variorumResult) variorumResult.innerHTML = '';
             if (variorumContent) variorumContent.innerHTML = 'Traditional commentary will appear here for Full Fathom Five mode.';
             
-            // Show/hide New Variorum section based on play
-            if (variorumSection) {
-                variorumSection.style.display = shouldShowNewVariorum ? 'none' : 'none'; // Start hidden, will show when tab is selected
-            }
+            // Hide elements
+            if (criticsInfo) criticsInfo.style.display = 'none';
+            if (nvInfo) nvInfo.style.display = 'none';
+            if (analyzeButton) analyzeButton.style.display = 'none';
+            if (variorumSection) variorumSection.style.display = 'none';
             
-            // Show/hide critics button based on play
-            if (criticsButton) {
-                criticsButton.style.display = shouldShowCriticsButton ? 'block' : 'none';
-            }
+            // Reset tab to basic
+            currentTab = 'basic';
+            currentAnalysisMode = 'basic';
             
-            // If variorum section doesn't exist and should be shown, create it
-            if (!variorumSection && shouldShowNewVariorum) {
-                analysisPanel.insertAdjacentHTML('beforeend', variorumSectionHTML);
+            // Update tab buttons
+            const tabButtons = document.querySelectorAll('.segment button');
+            tabButtons.forEach(btn => {
+                btn.setAttribute('aria-pressed', 'false');
+            });
+            
+            const basicButton = document.querySelector('[onclick="switchTab(\'basic\')"]');
+            if (basicButton) {
+                basicButton.setAttribute('aria-pressed', 'true');
             }
             
             // Update analysis panel based on current tab
@@ -6896,69 +6897,59 @@
             };
 
             
-            // Load essential plays first for faster initial load, then load others in background
+            // Initialize play metadata for fast UI loading (lazy loading approach)
             try {
-                console.log('⚡ Starting prioritized play loading...');
+                console.log('⚡ Initializing play metadata for fast loading...');
                 const startTime = Date.now();
                 
-                // Load essential plays first (the 5 with New Variorum Analysis)
-                console.log('🎭 Loading essential plays first...');
-                const essentialResults = await Promise.all([
-                    loadMacbeth(),
-                    loadHamlet(),
-                    loadRomeo(),
-                    loadOthello(),
-                    loadKingLear()
-                ]);
+                // Define all play metadata (no actual loading yet)
+                const playMetadata = {
+                    'macbeth': { name: 'Macbeth', fileName: 'macbeth_notes_cleaned_play.json', loaded: false },
+                    'hamlet': { name: 'Hamlet', fileName: 'hamlet_notes (1).json', loaded: false },
+                    'romeo': { name: 'Romeo and Juliet', fileName: 'ROMEO_notes.json', loaded: false },
+                    'othello': { name: 'Othello', fileName: 'othello_notes.json', loaded: false },
+                    'kinglear': { name: 'King Lear', fileName: 'kinglear_notes.json', loaded: false },
+                    'asyoulikeit': { name: 'As You Like It', fileName: 'as_you_like_it.json', loaded: false },
+                    'coriolanus': { name: 'Coriolanus', fileName: 'Coriolanus.json', loaded: false },
+                    'cymbeline': { name: 'Cymbeline', fileName: 'cymbeline.json', loaded: false },
+                    'henryiv1': { name: 'Henry IV Part 1', fileName: 'henry_iv_part1.json', loaded: false },
+                    'henryiv2': { name: 'Henry IV Part 2', fileName: 'henry_iv_part2.json', loaded: false },
+                    'juliuscaesar': { name: 'Julius Caesar', fileName: 'julius_caesar.json', loaded: false },
+                    'kingjohn': { name: 'King John', fileName: 'king_john.json', loaded: false },
+                    'loveslabourslost': { name: "Love's Labour's Lost", fileName: 'loves_labours_lost.json', loaded: false },
+                    'merchantofvenice': { name: 'The Merchant of Venice', fileName: 'merchant_of_venice.json', loaded: false },
+                    'midsummer': { name: "A Midsummer Night's Dream", fileName: 'midsummer_nights_dream.json', loaded: false },
+                    'muchado': { name: "Much Ado About Nothing", fileName: 'much_ado_about_nothing.json', loaded: false },
+                    'richardii': { name: 'Richard II', fileName: 'richard_ii.json', loaded: false },
+                    'richardiii': { name: 'Richard III', fileName: 'richard_iii.json', loaded: false },
+                    'tempest': { name: 'The Tempest', fileName: 'the_tempest.json', loaded: false },
+                    'winterstale': { name: "The Winter's Tale", fileName: 'the_winters_tale.json', loaded: false },
+                    'troilus': { name: 'Troilus and Cressida', fileName: 'troilus_and_cressida.json', loaded: false },
+                    'twelfthnight': { name: 'Twelfth Night', fileName: 'twelfth_night.json', loaded: false }
+                };
                 
-                const essentialEndTime = Date.now();
-                const essentialLoadTime = (essentialEndTime - startTime) / 1000;
-                console.log(`✅ Essential plays loaded in ${essentialLoadTime}s!`);
-                
-                // Update UI immediately with essential plays
-                console.log('🔄 Updating UI with essential plays...');
-                updatePlaySelector();
-                updateLibraryPlays();
-                console.log('🎭 Essential plays ready for use!');
-                
-                // Load remaining plays in background
-                console.log('🔄 Loading remaining plays in background...');
-                const backgroundResults = await Promise.all([
-                    loadAsYouLikeIt(),
-                    loadCoriolanus(),
-                    loadCymbeline(),
-                    loadHenryIVPart1(),
-                    loadHenryIVPart2(),
-                    loadJuliusCaesar(),
-                    loadKingJohn(),
-                    loadLovesLaboursLost(),
-                    loadMerchantOfVenice(),
-                    loadMidsummerNightsDream(),
-                    loadMuchAdoAboutNothing(),
-                    loadRichardII(),
-                    loadRichardIII(),
-                    loadTempest(),
-                    loadWintersTale(),
-                    loadTroilusAndCressida(),
-                    loadTwelfthNight()
-                ]);
-                
-                const allResults = [...essentialResults, ...backgroundResults];
+                // Initialize plays object with metadata only
+                Object.keys(playMetadata).forEach(key => {
+                    plays[key] = {
+                        name: playMetadata[key].name,
+                        originalFileName: playMetadata[key].fileName,
+                        characters: [],
+                        acts: {},
+                        scenes: {},
+                        loaded: false
+                    };
+                });
                 
                 const endTime = Date.now();
-                const loadTime = (endTime - startTime) / 1000;
+                const initTime = (endTime - startTime) / 1000;
+                console.log(`✅ Play metadata initialized in ${initTime}s!`);
                 
-                const successfulLoads = allResults.filter(result => result !== null);
-                console.log(`🎉 All plays loading completed in ${loadTime}s!`);
-                console.log(`✅ Successfully loaded ${successfulLoads.length}/22 plays: ${successfulLoads.join(', ')}`);
-                
-                // Update UI again with all plays
-                console.log('🔄 Updating UI with all loaded plays...');
+                // Update UI immediately with all play options
+                console.log('🔄 Updating UI with play metadata...');
                 updatePlaySelector();
                 updateLibraryPlays();
-                console.log('🎭 All plays ready - Library is now complete!');
-                console.log('🎭 Final plays object:', plays);
-                console.log('🎭 Number of plays loaded:', Object.keys(plays).length);
+                console.log('🎭 All plays ready for selection - lazy loading enabled!');
+                console.log('🎭 Number of plays available:', Object.keys(plays).length);
                 
             } catch (error) {
                 console.error('❌ Error in parallel loading:', error);
@@ -7765,17 +7756,47 @@
         }
 
         // Load selected play from dropdown
-        function loadSelectedPlay() {
+        async function loadSelectedPlay() {
             const selector = document.getElementById('playSelector');
             const selectedPlay = selector.value;
-            
+
             console.log('🎭 loadSelectedPlay called, selected:', selectedPlay);
             console.log('🎭 Available plays:', Object.keys(plays));
             console.log('🎭 Play exists:', selectedPlay && plays[selectedPlay] ? 'YES' : 'NO');
-            
+
             if (selectedPlay) {
                 if (plays[selectedPlay]) {
                     console.log('✅ Loading play:', selectedPlay);
+                    
+                    // Check if play is already loaded
+                    if (!plays[selectedPlay].loaded) {
+                        console.log('🔄 Play not loaded yet, loading now...');
+                        
+                        // Show loading indicator
+                        const playTextElement = document.getElementById('playText');
+                        if (playTextElement) {
+                            playTextElement.innerHTML = `
+                                <div class="loading-indicator">
+                                    <div class="loading-spinner"></div>
+                                    <p>Loading ${plays[selectedPlay].name}...</p>
+                                </div>
+                            `;
+                        }
+                        
+                        const success = await loadPlayData(selectedPlay);
+                        if (!success) {
+                            console.error('❌ Failed to load play data');
+                            if (playTextElement) {
+                                playTextElement.innerHTML = `
+                                    <div class="error-message">
+                                        <p>❌ Failed to load ${plays[selectedPlay].name}</p>
+                                        <p>Please try again or select a different play.</p>
+                                    </div>
+                                `;
+                            }
+                            return;
+                        }
+                    }
                     
                     // Force clear all analysis and selections immediately
                     clearSelection();
@@ -7808,6 +7829,92 @@
                 }
             } else {
                 console.log('⚠️ No play selected');
+            }
+        }
+
+        // Load individual play data on demand (lazy loading)
+        async function loadPlayData(playKey) {
+            console.log('🔄 Loading play data for:', playKey);
+            
+            const play = plays[playKey];
+            if (!play) {
+                console.error('❌ Play not found:', playKey);
+                return false;
+            }
+            
+            if (play.loaded) {
+                console.log('✅ Play already loaded:', playKey);
+                return true;
+            }
+            
+            try {
+                const fileName = play.originalFileName;
+                const response = await fetch(`/Public/Data/${fileName}?v=${Date.now()}`);
+                
+                if (!response.ok) {
+                    console.error(`❌ Failed to load ${playKey}: ${response.status}`);
+                    return false;
+                }
+                
+                const playData = await response.json();
+                console.log(`✅ Loaded ${playKey} data successfully`);
+                
+                // Parse the play data
+                let sceneCount = 0;
+                let lineCount = 0;
+                
+                Object.keys(playData).forEach(sceneKey => {
+                    const sceneData = playData[sceneKey];
+                    if (sceneData && typeof sceneData === 'object') {
+                        const sceneContent = [];
+                        Object.keys(sceneData).forEach(lineNum => {
+                            const lineData = sceneData[lineNum];
+                            if (!lineData) return;
+                            const text = 
+                                (typeof lineData === 'string') ? lineData :
+                                lineData.play ?? lineData.text ?? lineData.line ?? null;
+                            if (text) {
+                                sceneContent.push(text);
+                                lineCount++;
+                            }
+                        });
+                        
+                        if (sceneContent.length > 0) {
+                            let processedContent;
+                            
+                            // Special handling for Dramatis Personae
+                            if (sceneKey === 'DRAMATIS PERSONAE' && sceneContent.length === 1 && sceneContent[0].includes('\n')) {
+                                processedContent = sceneContent[0].split('\n').map(line => line.trim()).filter(line => line.length > 0);
+                            } else {
+                                processedContent = sceneContent;
+                            }
+                            
+                            play.scenes[sceneKey] = processedContent;
+                            sceneCount++;
+                            
+                            // Parse act information from scene key
+                            const actName = parseActFromScene(sceneKey);
+                            if (actName) {
+                                if (!play.acts[actName]) {
+                                    play.acts[actName] = [];
+                                }
+                                if (!play.acts[actName].includes(sceneKey)) {
+                                    play.acts[actName].push(sceneKey);
+                                }
+                            }
+                        }
+                    }
+                });
+                
+                // Mark as loaded
+                play.loaded = true;
+                
+                console.log(`✅ ${playKey} parsed: ${sceneCount} scenes, ${lineCount} lines`);
+                return true;
+                
+            } catch (error) {
+                console.error(`❌ Error loading ${playKey}:`, error);
+                return false;
             }
         }
 
