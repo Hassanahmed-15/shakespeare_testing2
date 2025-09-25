@@ -4598,7 +4598,7 @@
             } else if (currentPlay === 'othello') {
                 document.getElementById('othelloCriticsModal').style.display = 'block';
             } else {
-            document.getElementById('criticsModal').style.display = 'block';
+                document.getElementById('criticsModal').style.display = 'block';
             }
         }
 
@@ -5160,7 +5160,7 @@
             const loadCoriolanus = async () => {
                 try {
                     console.log('🔄 Loading Coriolanus...');
-                    const response = await fetch('Public/Data/coriolanus.json?v=' + Date.now());
+                    const response = await fetch('Public/Data/Coriolanus.json?v=' + Date.now());
                     
                     if (response.ok) {
                         const coriolanusData = await response.json();
@@ -6207,6 +6207,8 @@
                 updatePlaySelector();
                 updateLibraryPlays();
                 console.log('🎭 Library ready - Choose from Library will now be instant!');
+                console.log('🎭 Final plays object:', plays);
+                console.log('🎭 Number of plays loaded:', Object.keys(plays).length);
                 
             } catch (error) {
                 console.error('❌ Error in parallel loading:', error);
@@ -10132,7 +10134,7 @@
             } else if (currentPlay === 'othello') {
                 document.getElementById('othelloCriticsModal').style.display = 'block';
             } else {
-            document.getElementById('criticsModal').style.display = 'block';
+                document.getElementById('criticsModal').style.display = 'block';
             }
         }
 
