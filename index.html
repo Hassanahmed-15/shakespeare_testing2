@@ -5424,11 +5424,10 @@
             const loadMacbeth = async () => {
             try {
                     console.log('🔄 Loading Macbeth...');
-                const response = await fetch('./Public/Data/macbeth_notes_cleaned_play.json?v=' + Date.now());
+                const response = await fetch('/Public/Data/macbeth_notes_cleaned_play.json?v=' + Date.now());
                 
                 if (response.ok) {
                     const macbethData = await response.json();
-                    console.log('✅ Macbeth data loaded successfully');
                     
                         // Store globally for Full Fathom Five commentary
                     window.macbethData = macbethData;
@@ -5506,15 +5505,15 @@
                         return null;
                 }
             } catch (error) {
-                    console.error('❌ Error loading Macbeth:', error);
-                    return null;
-                }
+                console.error('❌ Error loading Macbeth:', error);
+                return null;
+            }
             };
             
             const loadHamlet = async () => {
                 try {
                     console.log('🔄 Loading Hamlet...');
-                    const hamletUrl = encodeURI('./Public/Data/hamlet_notes (1).json');
+                    const hamletUrl = encodeURI('/Public/Data/hamlet_notes (1).json');
                     const response = await fetch(hamletUrl + '?v=' + Date.now());
                     
                     if (response.ok) {
@@ -5611,7 +5610,7 @@
             const loadRomeo = async () => {
                 try {
                     console.log('🔄 Loading Romeo and Juliet...');
-                    const response = await fetch('./Public/Data/ROMEO_notes.json?v=' + Date.now());
+                    const response = await fetch('/Public/Data/ROMEO_notes.json?v=' + Date.now());
                     
                     if (response.ok) {
                         const romeoData = await response.json();
@@ -5684,7 +5683,7 @@
             const loadOthello = async () => {
                 try {
                     console.log('🔄 Loading Othello...');
-                    const response = await fetch('./Public/Data/othello_notes.json?v=' + Date.now());
+                    const response = await fetch('/Public/Data/othello_notes.json?v=' + Date.now());
                     
                     if (response.ok) {
                         const othelloData = await response.json();
@@ -5765,7 +5764,7 @@
             const loadKingLear = async () => {
                 try {
                     console.log('🔄 Loading King Lear...');
-                    const response = await fetch('./Public/Data/kinglear_notes.json?v=' + Date.now());
+                    const response = await fetch('/Public/Data/kinglear_notes.json?v=' + Date.now());
                     
                     if (response.ok) {
                         const learData = await response.json();
@@ -5828,7 +5827,7 @@
             const loadAsYouLikeIt = async () => {
                 try {
                     console.log('🔄 Loading As You Like It...');
-                    const response = await fetch('./Public/Data/as_you_like_it.json?v=' + Date.now());
+                    const response = await fetch('/Public/Data/as_you_like_it.json?v=' + Date.now());
                     
                     if (response.ok) {
                         const asyoulikeitData = await response.json();
@@ -5891,7 +5890,7 @@
             const loadCoriolanus = async () => {
                 try {
                     console.log('🔄 Loading Coriolanus...');
-                    const response = await fetch('./Public/Data/Coriolanus.json?v=' + Date.now());
+                    const response = await fetch('/Public/Data/Coriolanus.json?v=' + Date.now());
                     
                     if (response.ok) {
                         const coriolanusData = await response.json();
@@ -5954,7 +5953,7 @@
             const loadCymbeline = async () => {
                 try {
                     console.log('🔄 Loading Cymbeline...');
-                    const response = await fetch('./Public/Data/cymbeline.json?v=' + Date.now());
+                    const response = await fetch('/Public/Data/cymbeline.json?v=' + Date.now());
                     
                     if (response.ok) {
                         const cymbelineData = await response.json();
@@ -6017,7 +6016,7 @@
             const loadHenryIVPart1 = async () => {
                 try {
                     console.log('🔄 Loading Henry IV Part 1...');
-                    const response = await fetch('./Public/Data/henry_iv_part1.json?v=' + Date.now());
+                    const response = await fetch('/Public/Data/henry_iv_part1.json?v=' + Date.now());
                     
                     if (response.ok) {
                         const henryiv1Data = await response.json();
@@ -6080,7 +6079,7 @@
             const loadHenryIVPart2 = async () => {
                 try {
                     console.log('🔄 Loading Henry IV Part 2...');
-                    const response = await fetch('./Public/Data/henry_iv_part2.json?v=' + Date.now());
+                    const response = await fetch('/Public/Data/henry_iv_part2.json?v=' + Date.now());
                     
                     if (response.ok) {
                         const henryiv2Data = await response.json();
@@ -6143,7 +6142,7 @@
             const loadJuliusCaesar = async () => {
                 try {
                     console.log('🔄 Loading Julius Caesar...');
-                    const response = await fetch('./Public/Data/julius_caesar.json?v=' + Date.now());
+                    const response = await fetch('/Public/Data/julius_caesar.json?v=' + Date.now());
                     
                     if (response.ok) {
                         const juliuscaesarData = await response.json();
@@ -6206,7 +6205,7 @@
             const loadKingJohn = async () => {
                 try {
                     console.log('🔄 Loading King John...');
-                    const response = await fetch('./Public/Data/king_john.json?v=' + Date.now());
+                    const response = await fetch('/Public/Data/king_john.json?v=' + Date.now());
                     
                     if (response.ok) {
                         const kingjohnData = await response.json();
@@ -6269,7 +6268,7 @@
             const loadLovesLaboursLost = async () => {
                 try {
                     console.log('🔄 Loading Love\'s Labour\'s Lost...');
-                    const response = await fetch('./Public/Data/loves_labours_lost.json?v=' + Date.now());
+                    const response = await fetch('/Public/Data/loves_labours_lost.json?v=' + Date.now());
                     
                     if (response.ok) {
                         const loveslabourslostData = await response.json();
@@ -6332,7 +6331,7 @@
             const loadMerchantOfVenice = async () => {
                 try {
                     console.log('🔄 Loading The Merchant of Venice...');
-                    const response = await fetch('./Public/Data/merchant_of_venice.json?v=' + Date.now());
+                    const response = await fetch('/Public/Data/merchant_of_venice.json?v=' + Date.now());
                     
                     if (response.ok) {
                         const merchantData = await response.json();
@@ -6395,7 +6394,7 @@
             const loadMidsummerNightsDream = async () => {
                 try {
                     console.log('🔄 Loading A Midsummer Night\'s Dream...');
-                    const response = await fetch('./Public/Data/midsummer_nights_dream.json?v=' + Date.now());
+                    const response = await fetch('/Public/Data/midsummer_nights_dream.json?v=' + Date.now());
                     
                     if (response.ok) {
                         const midsummerData = await response.json();
@@ -6458,7 +6457,7 @@
             const loadMuchAdoAboutNothing = async () => {
                 try {
                     console.log('🔄 Loading Much Ado About Nothing...');
-                    const response = await fetch('./Public/Data/much_ado_about_nothing.json?v=' + Date.now());
+                    const response = await fetch('/Public/Data/much_ado_about_nothing.json?v=' + Date.now());
                     
                     if (response.ok) {
                         const muchadoData = await response.json();
@@ -6521,7 +6520,7 @@
             const loadRichardII = async () => {
                 try {
                     console.log('🔄 Loading Richard II...');
-                    const response = await fetch('./Public/Data/richard_ii.json?v=' + Date.now());
+                    const response = await fetch('/Public/Data/richard_ii.json?v=' + Date.now());
                     
                     if (response.ok) {
                         const richardiiData = await response.json();
@@ -6584,7 +6583,7 @@
             const loadRichardIII = async () => {
                 try {
                     console.log('🔄 Loading Richard III...');
-                    const response = await fetch('./Public/Data/richard_iii.json?v=' + Date.now());
+                    const response = await fetch('/Public/Data/richard_iii.json?v=' + Date.now());
                     
                     if (response.ok) {
                         const richardiiiData = await response.json();
@@ -6647,7 +6646,7 @@
             const loadTempest = async () => {
                 try {
                     console.log('🔄 Loading The Tempest...');
-                    const response = await fetch('./Public/Data/the_tempest.json?v=' + Date.now());
+                    const response = await fetch('/Public/Data/the_tempest.json?v=' + Date.now());
                     
                     if (response.ok) {
                         const tempestData = await response.json();
@@ -6710,7 +6709,7 @@
             const loadWintersTale = async () => {
                 try {
                     console.log('🔄 Loading The Winter\'s Tale...');
-                    const response = await fetch('./Public/Data/the_winters_tale.json?v=' + Date.now());
+                    const response = await fetch('/Public/Data/the_winters_tale.json?v=' + Date.now());
                     
                     if (response.ok) {
                         const winterstaleData = await response.json();
@@ -6773,7 +6772,7 @@
             const loadTroilusAndCressida = async () => {
                 try {
                     console.log('🔄 Loading Troilus and Cressida...');
-                    const response = await fetch('./Public/Data/troilus_and_cressida.json?v=' + Date.now());
+                    const response = await fetch('/Public/Data/troilus_and_cressida.json?v=' + Date.now());
                     
                     if (response.ok) {
                         const troilusData = await response.json();
@@ -6836,7 +6835,7 @@
             const loadTwelfthNight = async () => {
                 try {
                     console.log('🔄 Loading Twelfth Night...');
-                    const response = await fetch('./Public/Data/twelfth_night.json?v=' + Date.now());
+                    const response = await fetch('/Public/Data/twelfth_night.json?v=' + Date.now());
                     
                     if (response.ok) {
                         const twelfthData = await response.json();
@@ -6896,23 +6895,10 @@
                 }
             };
 
-            // Test if Public/Data folder is accessible
-            const testDataAccess = async () => {
-                try {
-                    const testResponse = await fetch('./Public/Data/macbeth_notes_cleaned_play.json');
-                    console.log('✅ Data folder accessible:', testResponse.ok ? 'YES' : 'NO');
-                    if (!testResponse.ok) {
-                        console.error('❌ Data folder not accessible. Status:', testResponse.status);
-                    }
-                } catch (error) {
-                    console.error('❌ Error accessing data folder:', error);
-                }
-            };
             
             // Load essential plays first for faster initial load, then load others in background
             try {
                 console.log('⚡ Starting prioritized play loading...');
-                await testDataAccess();
                 const startTime = Date.now();
                 
                 // Load essential plays first (the 5 with New Variorum Analysis)
