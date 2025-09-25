@@ -4943,6 +4943,60 @@
             }
         }
         
+        // Force reset all UI elements to ensure they remain functional
+        function forceResetUI() {
+            console.log('🔄 Force resetting all UI elements...');
+            
+            // Reset play selector
+            const playSelector = document.getElementById('playSelector');
+            if (playSelector) {
+                playSelector.disabled = false;
+                playSelector.style.pointerEvents = 'auto';
+                playSelector.style.zIndex = '999';
+                playSelector.style.position = 'relative';
+                playSelector.style.opacity = '1';
+            }
+            
+            // Reset navigation list
+            const navigationList = document.getElementById('navigationList');
+            if (navigationList) {
+                navigationList.style.pointerEvents = 'auto';
+                navigationList.style.zIndex = 'auto';
+                navigationList.style.opacity = '1';
+                navigationList.classList.remove('disabled', 'stuck', 'loading');
+            }
+            
+            // Reset play text
+            const playText = document.getElementById('playText');
+            if (playText) {
+                playText.style.pointerEvents = 'auto';
+                playText.style.zIndex = 'auto';
+                playText.style.position = 'relative';
+                playText.style.opacity = '1';
+                playText.classList.remove('stuck', 'disabled', 'loading', 'analysis-mode');
+            }
+            
+            // Reset sidebar
+            const sidebar = document.querySelector('.sidebar');
+            if (sidebar) {
+                sidebar.style.pointerEvents = 'auto';
+                sidebar.style.zIndex = 'auto';
+                sidebar.classList.remove('disabled', 'stuck');
+            }
+            
+            // Clear any stuck selections
+            document.querySelectorAll('.selected').forEach(el => {
+                el.classList.remove('selected');
+            });
+            
+            // Clear text selection
+            if (window.getSelection) {
+                window.getSelection().removeAllRanges();
+            }
+            
+            console.log('✅ UI force reset complete');
+        }
+        
         function updateAnalysisPanel() {
             const analysisContent = document.getElementById('analysisContent');
             const analysisInstruction = document.getElementById('analysisInstruction');
@@ -9274,6 +9328,11 @@
             } finally {
                 // Reset analysis in progress flag
                 analysisInProgress = false;
+                
+                // Force reset UI to ensure all elements remain functional
+                setTimeout(() => {
+                    forceResetUI();
+                }, 100);
             }
         }
 
@@ -9320,6 +9379,11 @@
                                 isComplete = true;
                                 eventSource.close();
                                 console.log('SSE streaming completed');
+                                
+                                // Force reset UI after Full Fathom Five analysis completes
+                                setTimeout(() => {
+                                    forceResetUI();
+                                }, 100);
                                 break;
                                 
                             case 'error':
@@ -9546,6 +9610,9 @@
                     analysisDiv.insertBefore(copyButton, analysisDiv.firstChild);
                     console.log('✅ Copy button added to structured analysis after content is set');
                 }
+                
+                // Force reset UI to ensure all elements remain functional after structured analysis
+                forceResetUI();
             }, 100);
         }
 
@@ -9680,6 +9747,9 @@
                     analysisDiv.insertBefore(copyButton, analysisDiv.firstChild);
                     console.log('✅ Copy button added to analysis after content is set');
                 }
+                
+                // Force reset UI to ensure all elements remain functional after analysis
+                forceResetUI();
             }, 100);
         }
 
