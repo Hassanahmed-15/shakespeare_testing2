@@ -4596,6 +4596,7 @@
                         Select text in the play to get AI-powered analysis.
                     </div>
                     <button class="analyze-button" id="analyzeButton" onclick="explainHighlighted()" style="display: none;">Analyze Text</button>
+                    <button class="emergency-clear-button" onclick="emergencyClearLoading()" style="display: none; background: #e74c3c; color: white; margin-left: 10px;">Clear Loading</button>
                     <div id="analysisResult"></div>
                     
                     ${variorumSectionHTML}
@@ -4984,6 +4985,11 @@
                 sidebar.classList.remove('disabled', 'stuck');
             }
             
+            // Clear any stuck loading states
+            document.querySelectorAll('.loading-indicator').forEach(el => {
+                el.style.display = 'none';
+            });
+            
             // Clear any stuck selections
             document.querySelectorAll('.selected').forEach(el => {
                 el.classList.remove('selected');
@@ -4994,7 +5000,29 @@
                 window.getSelection().removeAllRanges();
             }
             
+            // Reset analysis in progress flag
+            analysisInProgress = false;
+            
             console.log('✅ UI force reset complete');
+        }
+        
+        // Emergency function to clear stuck loading states
+        function emergencyClearLoading() {
+            console.log('🚨 Emergency clearing stuck loading states...');
+            analysisInProgress = false;
+            forceResetUI();
+            
+            // Clear any stuck analysis content
+            const analysisContent = document.getElementById('analysisContent');
+            if (analysisContent) {
+                analysisContent.innerHTML = '<p>Analysis cleared. Please select text and try again.</p>';
+            }
+            
+            // Hide the emergency button
+            const emergencyButton = document.querySelector('.emergency-clear-button');
+            if (emergencyButton) {
+                emergencyButton.style.display = 'none';
+            }
         }
         
         function updateAnalysisPanel() {
@@ -9123,6 +9151,16 @@
             // Set analysis in progress flag to prevent highlight clearing
             analysisInProgress = true;
             
+            // Set a timeout to ensure loading state gets cleared even if analysis fails
+            const loadingTimeout = setTimeout(() => {
+                console.log('⚠️ Analysis timeout - clearing loading state');
+                analysisInProgress = false;
+                if (analysisContent) {
+                    analysisContent.innerHTML = '<p style="color: red;">Analysis timed out. Please try again.</p>';
+                }
+                forceResetUI();
+            }, 30000); // 30 second timeout
+            
             // Check cache first
             const playName = currentPlay && plays[currentPlay] ? plays[currentPlay].name : 'Unknown Play';
             // Cache removed - always generate fresh analysis
@@ -9150,27 +9188,29 @@
                     break;
             }
             
-            analysisPanel.innerHTML = `
-                <!-- Analysis Mode Selector -->
-                <div class="segment">
-                    <button onclick="switchTab('basic')" aria-pressed="${currentTab === 'basic' ? 'true' : 'false'}">Basic</button>
-                    <button onclick="switchTab('expert')" aria-pressed="${currentTab === 'expert' ? 'true' : 'false'}">Expert</button>
-                    <button onclick="switchTab('fullfathomfive')" aria-pressed="${currentTab === 'fullfathomfive' ? 'true' : 'false'}">Full Fathom Five</button>
-                </div>
-
-                <!-- AI Analysis Content -->
-                <div class="analysis-header">
-                    <div class="analysis-title">${analysisTitle}</div>
-                </div>
-                <div class="analysis">
-                    <div class="meta" style="font-weight: bold;">${currentScene && currentScene !== '' ? `<em>${playName}</em> · ${currentScene} · ${wordCount} ${wordCount === 1 ? 'word' : 'words'} highlighted` : `<em>${playName}</em> · ${wordCount} ${wordCount === 1 ? 'word' : 'words'} highlighted`}</div>
-                    <div class="analysis-content">
-                        <p style="font-family: var(--ui); font-style: italic;">Processing.</p>
-                    </div>
-                </div>
-                
-                <!-- Critics Button - Static buttons in HTML, no dynamic creation needed -->
-            `;
+            // DON'T rebuild HTML - just update content to preserve event handlers
+            const analysisContent = document.getElementById('analysisContent');
+            const metaElement = document.querySelector('.meta');
+            const analysisTitleElement = document.querySelector('.analysis-title');
+            
+            // Update content without rebuilding HTML
+            if (analysisContent) {
+                analysisContent.innerHTML = '<p style="font-family: var(--ui); font-style: italic;">Processing...</p>';
+            }
+            
+            if (metaElement) {
+                metaElement.innerHTML = `${currentScene && currentScene !== '' ? `<em>${playName}</em> · ${currentScene} · ${wordCount} ${wordCount === 1 ? 'word' : 'words'} highlighted` : `<em>${playName}</em> · ${wordCount} ${wordCount === 1 ? 'word' : 'words'} highlighted`}`;
+            }
+            
+            if (analysisTitleElement) {
+                analysisTitleElement.textContent = analysisTitle;
+            }
+            
+            // Show emergency clear button during analysis
+            const emergencyButton = document.querySelector('.emergency-clear-button');
+            if (emergencyButton) {
+                emergencyButton.style.display = 'inline-block';
+            }
             
             // Button outputs are now included within the analysis section itself
             
@@ -9326,12 +9366,21 @@
                     alert(`Error analyzing text: ${error.message}. Please try again.`);
                 }
             } finally {
+                // Clear the loading timeout
+                clearTimeout(loadingTimeout);
+                
                 // Reset analysis in progress flag
                 analysisInProgress = false;
                 
                 // Force reset UI to ensure all elements remain functional
                 setTimeout(() => {
                     forceResetUI();
+                    
+                    // Hide emergency clear button
+                    const emergencyButton = document.querySelector('.emergency-clear-button');
+                    if (emergencyButton) {
+                        emergencyButton.style.display = 'none';
+                    }
                 }, 100);
             }
         }
