@@ -4597,6 +4597,7 @@
                     </div>
                     <button class="analyze-button" id="analyzeButton" onclick="explainHighlighted()" style="display: none;">Analyze Text</button>
                     <button class="emergency-clear-button" onclick="emergencyClearLoading()" style="display: none; background: #e74c3c; color: white; margin-left: 10px;">Clear Loading</button>
+                    <button class="force-display-button" onclick="forceDisplayPlayContent()" style="display: none; background: #3498db; color: white; margin-left: 10px;">Show Play Content</button>
                     <div id="analysisResult"></div>
                     
                     ${variorumSectionHTML}
@@ -5033,6 +5034,40 @@
                 setTimeout(() => {
                     loadPlay(currentPlay);
                 }, 100);
+            }
+        }
+        
+        // Force display play content - useful when content doesn't appear
+        function forceDisplayPlayContent() {
+            console.log('🔄 Force displaying play content...');
+            
+            if (currentPlay && plays[currentPlay]) {
+                const play = plays[currentPlay];
+                const playTextElement = document.getElementById('playText');
+                
+                if (playTextElement) {
+                    // Clear any stuck content
+                    playTextElement.innerHTML = '';
+                    playTextElement.style.pointerEvents = 'auto';
+                    playTextElement.classList.remove('loading', 'stuck');
+                    
+                    // Try to load first available scene
+                    const firstAct = Object.keys(play.acts)[0];
+                    if (firstAct && play.acts[firstAct] && play.acts[firstAct].length > 0) {
+                        const firstScene = play.acts[firstAct][0];
+                        console.log('🔄 Force loading first scene:', firstScene);
+                        loadScene(firstScene);
+                    } else {
+                        // Show play info if no scenes
+                        playTextElement.innerHTML = `
+                            <div class="scene-title">${play.name}</div>
+                            <div class="scene-separator"></div>
+                            <p>Play loaded. Use navigation to explore content.</p>
+                        `;
+                    }
+                }
+            } else {
+                console.log('❌ No play loaded to display');
             }
         }
         
@@ -7960,8 +7995,16 @@
                     ensureNavigationFunctional();
                     ensurePlayTextFunctional();
                     
-                    // Load the new play
-                    loadPlay(selectedPlay);
+            // Load the new play
+            loadPlay(selectedPlay);
+            
+            // Show force display button in case content doesn't appear
+            setTimeout(() => {
+                const forceDisplayButton = document.querySelector('.force-display-button');
+                if (forceDisplayButton) {
+                    forceDisplayButton.style.display = 'inline-block';
+                }
+            }, 500);
                     
                     
                     // Ensure dropdown remains functional
@@ -8155,16 +8198,26 @@
             if (firstAct && play.acts[firstAct] && play.acts[firstAct].length > 0) {
                 const firstScene = play.acts[firstAct][0];
                 console.log('✅ Loading first scene:', firstScene);
+                
+                // Ensure play text element is ready
+                if (playTextElement) {
+                    playTextElement.innerHTML = '';
+                    playTextElement.style.pointerEvents = 'auto';
+                }
+                
+                // Load the scene
                 loadScene(firstScene);
             } else {
                 console.log('⚠️ No acts/scenes found, showing welcome message');
                 // If no scenes found, show welcome message
-                playTextElement.innerHTML = `
-                    <div class="scene-title">${play.name}</div>
-                    <div class="scene-separator"></div>
-                    <p>Play loaded successfully. Use the navigation to explore acts and scenes.</p>
-                    <p><em>Debug: Found ${Object.keys(play.acts).length} acts, ${Object.keys(play.scenes).length} scenes</em></p>
-                `;
+                if (playTextElement) {
+                    playTextElement.innerHTML = `
+                        <div class="scene-title">${play.name}</div>
+                        <div class="scene-separator"></div>
+                        <p>Play loaded successfully. Use the navigation to explore acts and scenes.</p>
+                        <p><em>Debug: Found ${Object.keys(play.acts).length} acts, ${Object.keys(play.scenes).length} scenes</em></p>
+                    `;
+                }
                 // Update meta line even when no scenes are found
                 updateMetaLine();
             }
@@ -8322,11 +8375,28 @@
                 }
             }
             
+            // Ensure play text element exists and is ready
+            if (!playText) {
+                console.error('❌ Play text element not found!');
+                return;
+            }
+            
+            console.log('🔄 Updating play text with scene:', sceneName);
+            console.log('🔄 Content length:', formattedContent ? formattedContent.length : 0);
+            
             playText.innerHTML = `
                 <div class="scene-title">${displayTitle}</div>
                 <div class="scene-separator"></div>
                 ${formattedContent}
             `;
+            
+            console.log('✅ Play text updated successfully');
+            
+            // Hide force display button since content is now showing
+            const forceDisplayButton = document.querySelector('.force-display-button');
+            if (forceDisplayButton) {
+                forceDisplayButton.style.display = 'none';
+            }
             
             // Update meta line when scene changes
             updateMetaLine();
