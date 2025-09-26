@@ -237,11 +237,35 @@ body {
 .main-layout {
   display: grid;
   grid-template-columns: 320px 1fr 400px;
-  gap: var(--space-10);
+  gap: 24px;
   max-width: 1400px;
   margin: 0 auto;
   padding: var(--space-6);
   min-height: calc(100vh - 80px);
+  position: relative;
+}
+
+/* Add visual separator between columns */
+.main-layout::before {
+  content: '';
+  position: absolute;
+  left: 344px; /* 320px sidebar + 24px gap */
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, #2c2c2c, transparent);
+  z-index: 1;
+}
+
+.main-layout::after {
+  content: '';
+  position: absolute;
+  right: 424px; /* 400px analysis panel + 24px gap */
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, transparent, #2c2c2c, transparent);
+  z-index: 1;
 }
 
 /* Sidebar */
@@ -249,10 +273,10 @@ body {
   background: var(--bg-tertiary);
   border-radius: var(--radius-2xl);
   padding: var(--space-6);
-  box-shadow: var(--shadow-xl), inset -2px 0 0 var(--border-secondary);
-  border: 2px solid var(--border-primary);
-  border-right: 6px solid var(--border-secondary);
-  margin-right: 4px;
+  box-shadow: var(--shadow-xl);
+  border: 3px solid var(--border-primary);
+  border-right: 8px solid #2c2c2c;
+  margin-right: 8px;
   height: fit-content;
   position: sticky;
   top: 100px;
@@ -376,10 +400,10 @@ body {
   background: var(--bg-secondary);
   border-radius: var(--radius-2xl);
   padding: var(--space-8);
-  box-shadow: var(--shadow-xl), inset 2px 0 0 var(--border-secondary);
-  border: 2px solid var(--border-primary);
-  border-left: 6px solid var(--border-secondary);
-  margin-left: 4px;
+  box-shadow: var(--shadow-xl);
+  border: 3px solid var(--border-primary);
+  border-left: 8px solid #2c2c2c;
+  margin-left: 8px;
   min-height: 600px;
   backdrop-filter: blur(10px);
   overflow: hidden;
@@ -800,8 +824,16 @@ body {
 @media (max-width: 1200px) {
   .main-layout {
     grid-template-columns: 280px 1fr 350px;
-    gap: var(--space-8);
+    gap: 20px;
     padding: var(--space-4);
+  }
+  
+  .main-layout::before {
+    left: 300px; /* 280px sidebar + 20px gap */
+  }
+  
+  .main-layout::after {
+    right: 370px; /* 350px analysis panel + 20px gap */
   }
 }
 
@@ -809,6 +841,11 @@ body {
   .main-layout {
     grid-template-columns: 1fr;
     gap: var(--space-6);
+  }
+  
+  .main-layout::before,
+  .main-layout::after {
+    display: none;
   }
   
   .sidebar,
