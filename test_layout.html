@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout Test</title>
+    <link rel="stylesheet" href="styles/tokens.css">
+    <link rel="stylesheet" href="styles/modern-ui.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+        }
+        
+        .test-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .test-title {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--text-primary);
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1 class="test-title">Layout Separation Test</h1>
+        
+        <div class="main-layout">
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-section">
+                    <div class="sidebar-title">Navigation</div>
+                    <ul class="navigation-list">
+                        <li><a href="#" class="nav-item">Test Item 1</a></li>
+                        <li><a href="#" class="nav-item">Test Item 2</a></li>
+                        <li><a href="#" class="nav-item">Test Item 3</a></li>
+                    </ul>
+                </div>
+            </aside>
+            
+            <!-- Main Content -->
+            <div class="reader-panel">
+                <div class="scene-header">
+                    <h2>Main Content Area</h2>
+                    <p>This is the main content area that should be clearly separated from the sidebar.</p>
+                </div>
+                <div class="scene-content">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                </div>
+            </div>
+            
+            <!-- Analysis Panel -->
+            <div class="analysis-panel">
+                <div class="sidebar-section">
+                    <div class="sidebar-title">Analysis</div>
+                    <p>This is the analysis panel on the right side.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -163,17 +163,7 @@ class ShakespeareApp {
         }
     }
 
-    loadSelectedPlay() {
-        const selector = document.getElementById('playSelector');
-        const selectedValue = selector.value;
-        
-        if (selectedValue === 'macbeth') {
-            this.currentPlay = 'Macbeth';
-            this.loadMacbeth();
-        } else {
-            this.showEmptyState();
-        }
-    }
+    // loadSelectedPlay() method removed - using the global function in HTML instead
 
     showEmptyState() {
         document.getElementById('readerContent').innerHTML = `
@@ -521,9 +511,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Global functions for HTML onclick handlers
-function loadSelectedPlay() {
-    app.loadSelectedPlay();
-}
+// loadSelectedPlay() function removed - using the one defined in HTML instead
 
 function loadScene(sceneName) {
     app.loadScene(sceneName);

@@ -237,7 +237,7 @@ body {
 .main-layout {
   display: grid;
   grid-template-columns: 320px 1fr 400px;
-  gap: var(--space-6);
+  gap: var(--space-8);
   max-width: 1400px;
   margin: 0 auto;
   padding: var(--space-6);
@@ -251,6 +251,7 @@ body {
   padding: var(--space-6);
   box-shadow: var(--shadow-xl);
   border: 1px solid var(--border-primary);
+  border-right: 3px solid var(--border-secondary);
   height: fit-content;
   position: sticky;
   top: 100px;
@@ -375,6 +376,7 @@ body {
   padding: var(--space-8);
   box-shadow: var(--shadow-xl);
   border: 1px solid var(--border-primary);
+  border-left: 3px solid var(--border-secondary);
   min-height: 600px;
   backdrop-filter: blur(10px);
 }
@@ -794,7 +796,7 @@ body {
 @media (max-width: 1200px) {
   .main-layout {
     grid-template-columns: 280px 1fr 350px;
-    gap: var(--space-4);
+    gap: var(--space-6);
     padding: var(--space-4);
   }
 }

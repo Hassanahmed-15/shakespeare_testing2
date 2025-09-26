@@ -7995,8 +7995,10 @@
                     ensureNavigationFunctional();
                     ensurePlayTextFunctional();
                     
-            // Load the new play
-            loadPlay(selectedPlay);
+            // Load the new play with a small delay to ensure UI is ready
+            setTimeout(() => {
+                loadPlay(selectedPlay);
+            }, 100);
             
             // Show force display button in case content doesn't appear
             setTimeout(() => {
@@ -8382,7 +8384,16 @@
             
             // Display scene content
             const playText = document.getElementById('playText');
+            if (!playText) {
+                console.error('❌ Play text element not found in loadScene!');
+                return;
+            }
+            
             const formattedContent = formatSceneContent(sceneContent, sceneName);
+            
+            // Debug: Log formatted content
+            console.log('🎭 Formatted content length:', formattedContent ? formattedContent.length : 0);
+            console.log('🎭 Formatted content preview:', formattedContent ? formattedContent.substring(0, 200) : 'NO CONTENT');
             
             // Extract act and scene names for better display
             let displayTitle = sceneName;
@@ -8412,10 +8423,13 @@
             console.log('🔄 Raw scene content length:', sceneContent ? sceneContent.length : 0);
             console.log('🔄 First few lines of scene content:', sceneContent ? sceneContent.slice(0, 3) : 'NO CONTENT');
             
+            // Ensure we have content to display
+            const contentToDisplay = formattedContent || '<p><em>No content found for this scene.</em></p>';
+            
             playText.innerHTML = `
                 <div class="scene-title">${displayTitle}</div>
                 <div class="scene-separator"></div>
-                ${formattedContent}
+                ${contentToDisplay}
             `;
             
             console.log('✅ Play text updated successfully');
@@ -8502,7 +8516,8 @@
         // Check if a line is a speaker name
         function isSpeakerName(line) {
             // Must be all caps, reasonable length, and not a stage direction
-            const isAllCaps = line.match(/^[A-Z\s]+$/) && 
+            // Updated to handle abbreviated names with periods (like "RODO.", "IAGO.")
+            const isAllCaps = line.match(/^[A-Z\s\.]+$/) && 
                              line.length > 2 && 
                              line.length < 50 && 
                              !line.startsWith('[') && 
