@@ -5098,13 +5098,13 @@
                 const lineCount = selectedLines.length;
                 const playName = currentPlay && plays[currentPlay] ? plays[currentPlay].name : 'Unknown Play';
                 // Show just the selected line text instead of the two separate messages
-                analysisContent.textContent = selectedLines[0];
-                analysisInstruction.textContent = ''; // Hide the instruction text
+                if (analysisContent) analysisContent.textContent = selectedLines[0];
+                if (analysisInstruction) analysisInstruction.textContent = ''; // Hide the instruction text
                 analyzeButton.style.display = 'block';
             } else {
-                analysisContent.textContent = 'Select text in the play to get AI-powered analysis.';
-                analysisInstruction.textContent = '';
-                analyzeButton.style.display = 'none';
+                if (analysisContent) analysisContent.textContent = 'Select text in the play to get AI-powered analysis.';
+                if (analysisInstruction) analysisInstruction.textContent = '';
+                if (analyzeButton) analyzeButton.style.display = 'none';
             }
         }
         
@@ -7344,7 +7344,9 @@
                 const successMsg = document.getElementById('uploadSuccess');
                 if (successMsg) {
                     successMsg.style.display = 'block';
-                    successMsg.textContent = `✅ "${playName}" has been included in your library!`;
+                    if (successMsg.textContent !== undefined) {
+                        successMsg.textContent = `✅ "${playName}" has been included in your library!`;
+                    }
                 }
                 
                 // Auto-select the new play
@@ -7447,8 +7449,13 @@
                     };
                     
                     // Show success message
-                    document.getElementById('uploadSuccess').style.display = 'block';
-                    document.getElementById('uploadSuccess').textContent = `✅ Text file uploaded successfully! Review the play name and click "Add Play" to include it in your library.`;
+                    const uploadSuccess = document.getElementById('uploadSuccess');
+                    if (uploadSuccess) {
+                        uploadSuccess.style.display = 'block';
+                        if (uploadSuccess.textContent !== undefined) {
+                            uploadSuccess.textContent = `✅ Text file uploaded successfully! Review the play name and click "Add Play" to include it in your library.`;
+                        }
+                    }
                     
                 } catch (error) {
                     console.error('Error processing file:', error);
@@ -7581,14 +7588,22 @@
             // Show success message (keep settings open)
             if (successCount > 0) {
                 const successMsg = document.getElementById('uploadSuccess');
-                successMsg.style.display = 'block';
-                successMsg.textContent = `✅ Successfully uploaded ${successCount} play(s)!`;
+                if (successMsg) {
+                    successMsg.style.display = 'block';
+                    if (successMsg.textContent !== undefined) {
+                        successMsg.textContent = `✅ Successfully uploaded ${successCount} play(s)!`;
+                    }
+                }
             }
             
             if (errorCount > 0) {
                 const errorMsg = document.getElementById('uploadError');
-                errorMsg.style.display = 'block';
-                errorMsg.textContent = `❌ ${errorCount} play(s) failed to upload.`;
+                if (errorMsg) {
+                    errorMsg.style.display = 'block';
+                    if (errorMsg.textContent !== undefined) {
+                        errorMsg.textContent = `❌ ${errorCount} play(s) failed to upload.`;
+                    }
+                }
             }
             
             // Clear bulk upload data
@@ -7905,22 +7920,32 @@
                 }
                 
                 // Show success message
-                document.getElementById('uploadSuccess').style.display = 'block';
-                document.getElementById('uploadSuccess').textContent = `✅ Play deleted from library.`;
+                const uploadSuccess = document.getElementById('uploadSuccess');
+                if (uploadSuccess) {
+                    uploadSuccess.style.display = 'block';
+                    if (uploadSuccess.textContent !== undefined) {
+                        uploadSuccess.textContent = `✅ Play deleted from library.`;
+                    }
+                }
             }
         }
 
         // Load selected play from dropdown - EMERGENCY FIX
         async function loadSelectedPlay() {
-            const selector = document.getElementById('playSelector');
-            const selectedPlay = selector.value;
+            try {
+                const selector = document.getElementById('playSelector');
+                if (!selector) {
+                    console.error('❌ Play selector not found');
+                    return;
+                }
+                
+                const selectedPlay = selector.value;
+                console.log('🎭 loadSelectedPlay called, selected:', selectedPlay);
 
-            console.log('🎭 loadSelectedPlay called, selected:', selectedPlay);
-
-            if (!selectedPlay || !plays[selectedPlay]) {
-                console.error('❌ Invalid play selection');
-                return;
-            }
+                if (!selectedPlay || !plays[selectedPlay]) {
+                    console.error('❌ Invalid play selection');
+                    return;
+                }
 
             // IMMEDIATELY show content to prevent blank pane
             const playTextElement = document.getElementById('playText');
@@ -7994,12 +8019,25 @@
 
             } catch (error) {
                 console.error('❌ Error loading play:', error);
+                const playTextElement = document.getElementById('playText');
                 if (playTextElement) {
                     playTextElement.innerHTML = `
-                        <div class="scene-title">Error Loading ${plays[selectedPlay].name}</div>
+                        <div class="scene-title">Error Loading ${plays[selectedPlay]?.name || 'Unknown Play'}</div>
                         <div class="scene-separator"></div>
                         <p>Failed to load the play. Please try again or select a different play.</p>
                         <p><em>Error: ${error.message}</em></p>
+                    `;
+                }
+            }
+            } catch (outerError) {
+                console.error('❌ Critical error in loadSelectedPlay:', outerError);
+                const playTextElement = document.getElementById('playText');
+                if (playTextElement) {
+                    playTextElement.innerHTML = `
+                        <div class="scene-title">Critical Error</div>
+                        <div class="scene-separator"></div>
+                        <p>An unexpected error occurred. Please refresh the page.</p>
+                        <button onclick="location.reload()" class="btn btn-primary">Refresh Page</button>
                     `;
                 }
             }
