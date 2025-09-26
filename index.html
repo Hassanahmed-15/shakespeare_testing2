@@ -7910,134 +7910,98 @@
             }
         }
 
-        // Load selected play from dropdown
+        // Load selected play from dropdown - EMERGENCY FIX
         async function loadSelectedPlay() {
             const selector = document.getElementById('playSelector');
             const selectedPlay = selector.value;
 
             console.log('🎭 loadSelectedPlay called, selected:', selectedPlay);
-            console.log('🎭 Available plays:', Object.keys(plays));
-            console.log('🎭 Play exists:', selectedPlay && plays[selectedPlay] ? 'YES' : 'NO');
 
-            if (selectedPlay) {
-                if (plays[selectedPlay]) {
-                    console.log('✅ Loading play:', selectedPlay);
-                    
-                    // Check if play is already loaded
-                    if (!plays[selectedPlay].loaded) {
-                        console.log('🔄 Play not loaded yet, loading now...');
-                        
-                        // Show loading indicator
-                        const playTextElement = document.getElementById('playText');
-                        if (playTextElement) {
-                            playTextElement.innerHTML = `
-                                <div class="loading-indicator">
-                                    <div class="loading-spinner"></div>
-                                    <p>Loading ${plays[selectedPlay].name}...</p>
-                                </div>
-                            `;
-                        }
-                        
-                        try {
-                            // Add timeout to prevent infinite loading
-                            const loadPromise = loadPlayData(selectedPlay);
-                            const timeoutPromise = new Promise((_, reject) => 
-                                setTimeout(() => reject(new Error('Loading timeout')), 10000)
-                            );
-                            
-                            const success = await Promise.race([loadPromise, timeoutPromise]);
-                            if (!success) {
-                                console.error('❌ Failed to load play data');
-                                if (playTextElement) {
-                                    playTextElement.innerHTML = `
-                                        <div class="error-message">
-                                            <p>❌ Failed to load ${plays[selectedPlay].name}</p>
-                                            <p>Please try again or select a different play.</p>
-                                        </div>
-                                    `;
-                                }
-                                return;
-                            }
-                        } catch (error) {
-                            console.error('❌ Error loading play data:', error);
-                            if (playTextElement) {
-                                playTextElement.innerHTML = `
-                                    <div class="error-message">
-                                        <p>❌ Error loading ${plays[selectedPlay].name}</p>
-                                        <p>${error.message.includes('timeout') ? 'Loading timed out. Please try again.' : 'Please try again or select a different play.'}</p>
-                                    </div>
-                                `;
-                            }
-                            return;
-                        }
+            if (!selectedPlay || !plays[selectedPlay]) {
+                console.error('❌ Invalid play selection');
+                return;
+            }
+
+            // IMMEDIATELY show content to prevent blank pane
+            const playTextElement = document.getElementById('playText');
+            if (playTextElement) {
+                playTextElement.innerHTML = `
+                    <div class="scene-title">Loading ${plays[selectedPlay].name}...</div>
+                    <div class="scene-separator"></div>
+                    <p>Please wait while the play loads...</p>
+                `;
+            }
+
+            try {
+                // Force load play data
+                if (!plays[selectedPlay].loaded) {
+                    console.log('🔄 Loading play data...');
+                    const success = await loadPlayData(selectedPlay);
+                    if (!success) {
+                        throw new Error('Failed to load play data');
                     }
-                    
-                    // Clear any stuck loading states first
-                    const playTextElement = document.getElementById('playText');
-                    if (playTextElement) {
-                        playTextElement.innerHTML = '';
-                        playTextElement.classList.remove('loading', 'stuck');
-                    }
-                    
-                    // Force clear all analysis and selections immediately
-                    clearSelection();
-                    clearAnalysisContent();
-                    
-                    // Reset analysis panel completely
-                    resetAnalysisPanelForNewPlay();
-                    
-                    // Clear any active analysis states
-                    analysisInProgress = false;
-                    selectedLines = [];
-                    firstSelectedLine = null;
-                    
-                    // Ensure UI remains functional before loading new play
-                    ensureNavigationFunctional();
-                    ensurePlayTextFunctional();
-                    
-            // Load the new play with a small delay to ensure UI is ready
-            setTimeout(() => {
-                loadPlay(selectedPlay);
+                }
+
+                // Clear analysis
+                clearSelection();
+                clearAnalysisContent();
+                resetAnalysisPanelForNewPlay();
+
+                // FORCE display content immediately
+                currentPlay = selectedPlay;
+                const play = plays[selectedPlay];
                 
-                // Add a fallback timeout to ensure content appears
-                setTimeout(() => {
-                    const playTextElement = document.getElementById('playText');
-                    if (playTextElement && (!playTextElement.innerHTML || playTextElement.innerHTML.trim() === '')) {
-                        console.warn('⚠️ Play content still empty after loading, showing fallback');
+                // Get first available scene
+                let firstScene = null;
+                if (play.scenes && Object.keys(play.scenes).length > 0) {
+                    const sceneKeys = Object.keys(play.scenes);
+                    firstScene = sceneKeys[0];
+                }
+
+                if (firstScene && play.scenes[firstScene]) {
+                    // Load the scene immediately
+                    currentScene = firstScene;
+                    const sceneContent = play.scenes[firstScene];
+                    
+                    // Force format and display content
+                    const formattedContent = formatSceneContent(sceneContent, firstScene);
+                    
+                    if (playTextElement) {
                         playTextElement.innerHTML = `
-                            <div class="scene-title">Loading ${plays[selectedPlay].name}...</div>
+                            <div class="scene-title">${firstScene}</div>
                             <div class="scene-separator"></div>
-                            <p>If content doesn't appear, please try selecting a scene from the navigation menu.</p>
+                            ${formattedContent}
                         `;
                     }
-                }, 2000);
-            }, 100);
-            
-            // Show force display button in case content doesn't appear
-            setTimeout(() => {
-                const forceDisplayButton = document.querySelector('.force-display-button');
-                if (forceDisplayButton) {
-                    forceDisplayButton.style.display = 'inline-block';
-                }
-            }, 500);
                     
-                    
-                    // Ensure dropdown remains functional
-                    setTimeout(() => {
-                        const playSelector = document.getElementById('playSelector');
-                        if (playSelector) {
-                            playSelector.value = selectedPlay;
-                            playSelector.disabled = false;
-                        }
-                    }, 100);
+                    // Update navigation
+                    updateNavigation(play);
+                    updateActiveNavigation(firstScene);
                     
                 } else {
-                    console.error('❌ Play not found in plays object:', selectedPlay);
-                    console.log('Available plays:', Object.keys(plays));
-                    alert(`Error: Play "${selectedPlay}" not found. Please try refreshing the page.`);
+                    // Show play info if no scenes
+                    if (playTextElement) {
+                        playTextElement.innerHTML = `
+                            <div class="scene-title">${play.name}</div>
+                            <div class="scene-separator"></div>
+                            <p>Play loaded successfully. Use the navigation to explore acts and scenes.</p>
+                            <p><em>Debug: Found ${Object.keys(play.acts || {}).length} acts, ${Object.keys(play.scenes || {}).length} scenes</em></p>
+                        `;
+                    }
                 }
-            } else {
-                console.log('⚠️ No play selected');
+
+                console.log('✅ Play loaded successfully:', selectedPlay);
+
+            } catch (error) {
+                console.error('❌ Error loading play:', error);
+                if (playTextElement) {
+                    playTextElement.innerHTML = `
+                        <div class="scene-title">Error Loading ${plays[selectedPlay].name}</div>
+                        <div class="scene-separator"></div>
+                        <p>Failed to load the play. Please try again or select a different play.</p>
+                        <p><em>Error: ${error.message}</em></p>
+                    `;
+                }
             }
         }
 
@@ -8151,6 +8115,31 @@
                 selector.style.position = 'relative';
             }
         }
+
+        // EMERGENCY FALLBACK: Force display content
+        function forceDisplayContent() {
+            const playTextElement = document.getElementById('playText');
+            if (!playTextElement) return;
+            
+            if (!playTextElement.innerHTML || playTextElement.innerHTML.trim() === '') {
+                console.warn('🚨 EMERGENCY: Forcing content display');
+                playTextElement.innerHTML = `
+                    <div class="scene-title">Content Loading...</div>
+                    <div class="scene-separator"></div>
+                    <p>If you see this message, please try selecting a different play or refresh the page.</p>
+                    <button onclick="location.reload()" class="btn btn-primary">Refresh Page</button>
+                `;
+            }
+        }
+
+        // EMERGENCY: Auto-fix blank panes
+        setInterval(() => {
+            const playTextElement = document.getElementById('playText');
+            if (playTextElement && (!playTextElement.innerHTML || playTextElement.innerHTML.trim() === '')) {
+                console.warn('🚨 Auto-fixing blank pane');
+                forceDisplayContent();
+            }
+        }, 3000);
 
         // Load a play
         function loadPlay(playName) {
@@ -8480,7 +8469,7 @@
             setTimeout(ensurePlaySelectorFunctional, 50);
         }
 
-        // Simple format scene content - display exactly as uploaded
+        // Simple format scene content - display exactly as uploaded - EMERGENCY FIX
         function formatSceneContent(sceneContent, sceneName) {
             try {
                 console.log('🎭 formatSceneContent called with:', sceneName, 'content length:', sceneContent ? sceneContent.length : 0);
@@ -8492,6 +8481,12 @@
                 
                 let html = '';
                 let currentSpeaker = '';
+                
+                // EMERGENCY: Force display content even if formatting fails
+                if (!Array.isArray(sceneContent)) {
+                    console.warn('⚠️ Scene content is not an array, converting...');
+                    sceneContent = [sceneContent.toString()];
+                }
             
             // Special handling for Dramatis Personae - 100% ACCURATE
             if (sceneName === 'DRAMATIS PERSONAE') {
@@ -8549,7 +8544,16 @@
             
             } catch (error) {
                 console.error('❌ Error in formatSceneContent:', error);
-                return `<div class="scene-content" data-scene="${sceneName}"><p><em>Error formatting scene content: ${error.message}</em></p></div>`;
+                // EMERGENCY FALLBACK: Force display raw content
+                let fallbackHtml = '';
+                if (sceneContent && sceneContent.length > 0) {
+                    sceneContent.forEach((line, index) => {
+                        if (line && line.toString().trim()) {
+                            fallbackHtml += `<div class="play-line">${line.toString()}</div>`;
+                        }
+                    });
+                }
+                return `<div class="scene-content" data-scene="${sceneName}">${fallbackHtml || '<p><em>No content available</em></p>'}</div>`;
             }
         }
         
