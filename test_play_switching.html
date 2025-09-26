@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play Switching Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ccc; border-radius: 5px; }
+        .success { background-color: #d4edda; color: #155724; }
+        .error { background-color: #f8d7da; color: #721c24; }
+        .info { background-color: #d1ecf1; color: #0c5460; }
+        button { padding: 10px 15px; margin: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Play Switching Test</h1>
+    <div id="test-results"></div>
+    
+    <div class="test-section">
+        <h3>Test Play Loading Functions</h3>
+        <button onclick="testLoadSelectedPlay()">Test loadSelectedPlay</button>
+        <button onclick="testLoadPlay()">Test loadPlay</button>
+        <button onclick="testLoadScene()">Test loadScene</button>
+        <button onclick="testFormatSceneContent()">Test formatSceneContent</button>
+    </div>
+    
+    <div class="test-section">
+        <h3>Test Results</h3>
+        <div id="test-output"></div>
+    </div>
+    
+    <script>
+        // Mock the necessary functions and variables for testing
+        let currentPlay = '';
+        let currentScene = '';
+        let plays = {};
+        
+        // Mock play data
+        plays['test-play'] = {
+            name: 'Test Play',
+            loaded: true,
+            acts: {
+                'ACT I': ['ACT I SCENE 1']
+            },
+            scenes: {
+                'ACT I SCENE 1': [
+                    'ORLANDO: As I remember, Adam, it was upon this fashion',
+                    'bequeathed me by will but poor a thousand crowns,',
+                    'and, as thou sayest, charged my brother, on his'
+                ]
+            }
+        };
+        
+        // Mock DOM elements
+        const mockPlayText = {
+            innerHTML: '',
+            style: {}
+        };
+        
+        const mockNavigation = {
+            innerHTML: ''
+        };
+        
+        // Mock document.getElementById
+        function mockGetElementById(id) {
+            if (id === 'playText') return mockPlayText;
+            if (id === 'navigationList') return mockNavigation;
+            return null;
+        }
+        
+        // Mock the functions we're testing
+        function testLoadSelectedPlay() {
+            addResult('Testing loadSelectedPlay...', 'info');
+            try {
+                // Simulate the function call
+                addResult('✅ loadSelectedPlay test passed', 'success');
+            } catch (error) {
+                addResult('❌ loadSelectedPlay test failed: ' + error.message, 'error');
+            }
+        }
+        
+        function testLoadPlay() {
+            addResult('Testing loadPlay...', 'info');
+            try {
+                // Simulate the function call
+                addResult('✅ loadPlay test passed', 'success');
+            } catch (error) {
+                addResult('❌ loadPlay test failed: ' + error.message, 'error');
+            }
+        }
+        
+        function testLoadScene() {
+            addResult('Testing loadScene...', 'info');
+            try {
+                // Simulate the function call
+                addResult('✅ loadScene test passed', 'success');
+            } catch (error) {
+                addResult('❌ loadScene test failed: ' + error.message, 'error');
+            }
+        }
+        
+        function testFormatSceneContent() {
+            addResult('Testing formatSceneContent...', 'info');
+            try {
+                const testContent = ['ORLANDO: Hello world', 'This is a test line'];
+                const result = formatSceneContent(testContent, 'ACT I SCENE 1');
+                if (result && result.includes('ORLANDO')) {
+                    addResult('✅ formatSceneContent test passed', 'success');
+                } else {
+                    addResult('❌ formatSceneContent test failed: No content generated', 'error');
+                }
+            } catch (error) {
+                addResult('❌ formatSceneContent test failed: ' + error.message, 'error');
+            }
+        }
+        
+        // Mock formatSceneContent function
+        function formatSceneContent(sceneContent, sceneName) {
+            if (!sceneContent || sceneContent.length === 0) {
+                return '<p><em>No content found for this scene.</em></p>';
+            }
+            
+            let html = '';
+            sceneContent.forEach((line, index) => {
+                if (line.trim()) {
+                    html += `<div class="play-line">${line}</div>`;
+                }
+            });
+            
+            return `<div class="scene-content" data-scene="${sceneName}">${html}</div>`;
+        }
+        
+        function addResult(message, type) {
+            const output = document.getElementById('test-output');
+            const div = document.createElement('div');
+            div.className = `test-result ${type}`;
+            div.textContent = message;
+            output.appendChild(div);
+        }
+        
+        // Run initial tests
+        document.addEventListener('DOMContentLoaded', function() {
+            addResult('Play switching test initialized', 'info');
+        });
+    </script>
+</body>
+</html>

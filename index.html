@@ -7998,6 +7998,19 @@
             // Load the new play with a small delay to ensure UI is ready
             setTimeout(() => {
                 loadPlay(selectedPlay);
+                
+                // Add a fallback timeout to ensure content appears
+                setTimeout(() => {
+                    const playTextElement = document.getElementById('playText');
+                    if (playTextElement && (!playTextElement.innerHTML || playTextElement.innerHTML.trim() === '')) {
+                        console.warn('⚠️ Play content still empty after loading, showing fallback');
+                        playTextElement.innerHTML = `
+                            <div class="scene-title">Loading ${plays[selectedPlay].name}...</div>
+                            <div class="scene-separator"></div>
+                            <p>If content doesn't appear, please try selecting a scene from the navigation menu.</p>
+                        `;
+                    }
+                }, 2000);
             }, 100);
             
             // Show force display button in case content doesn't appear
@@ -8233,8 +8246,18 @@
                     playTextElement.style.pointerEvents = 'auto';
                 }
                 
-                // Load the scene
-                loadScene(firstScene);
+                // Load the scene with error handling
+                try {
+                    loadScene(firstScene);
+                } catch (error) {
+                    console.error('❌ Error loading first scene:', error);
+                    playTextElement.innerHTML = `
+                        <div class="scene-title">Error Loading Scene</div>
+                        <div class="scene-separator"></div>
+                        <p>Failed to load the first scene of ${play.name}. Please try selecting a different scene from the navigation.</p>
+                        <p><em>Error: ${error.message}</em></p>
+                    `;
+                }
             } else {
                 console.log('⚠️ No acts/scenes found, showing welcome message');
                 // If no scenes found, show welcome message
@@ -8366,7 +8389,17 @@
         function loadScene(sceneName) {
             if (!currentPlay || !plays[currentPlay] || !plays[currentPlay].scenes[sceneName]) {
                 console.log('Scene not found:', sceneName, 'in play:', currentPlay);
-                alert('Scene not found: ' + sceneName);
+                
+                // Show error message in the play text area instead of alert
+                const playText = document.getElementById('playText');
+                if (playText) {
+                    playText.innerHTML = `
+                        <div class="scene-title">Scene Not Found</div>
+                        <div class="scene-separator"></div>
+                        <p>Scene "${sceneName}" not found in ${currentPlay || 'current play'}.</p>
+                        <p>Please select a different scene from the navigation menu.</p>
+                    `;
+                }
                 return;
             }
 
@@ -8449,12 +8482,16 @@
 
         // Simple format scene content - display exactly as uploaded
         function formatSceneContent(sceneContent, sceneName) {
-            if (!sceneContent || sceneContent.length === 0) {
-                return '<p><em>No content found for this scene.</em></p>';
-            }
-            
-            let html = '';
-            let currentSpeaker = '';
+            try {
+                console.log('🎭 formatSceneContent called with:', sceneName, 'content length:', sceneContent ? sceneContent.length : 0);
+                
+                if (!sceneContent || sceneContent.length === 0) {
+                    console.warn('⚠️ No scene content provided');
+                    return '<p><em>No content found for this scene.</em></p>';
+                }
+                
+                let html = '';
+                let currentSpeaker = '';
             
             // Special handling for Dramatis Personae - 100% ACCURATE
             if (sceneName === 'DRAMATIS PERSONAE') {
@@ -8509,6 +8546,11 @@
             console.log('formatSceneContent completed, currentSpeaker:', currentSpeaker);
             // Wrap the content in a container with the scene data attribute
             return `<div class="scene-content" data-scene="${sceneName}">${html}</div>`;
+            
+            } catch (error) {
+                console.error('❌ Error in formatSceneContent:', error);
+                return `<div class="scene-content" data-scene="${sceneName}"><p><em>Error formatting scene content: ${error.message}</em></p></div>`;
+            }
         }
         
 
