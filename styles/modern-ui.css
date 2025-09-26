@@ -237,7 +237,7 @@ body {
 .main-layout {
   display: grid;
   grid-template-columns: 320px 1fr 400px;
-  gap: var(--space-8);
+  gap: var(--space-10);
   max-width: 1400px;
   margin: 0 auto;
   padding: var(--space-6);
@@ -246,16 +246,18 @@ body {
 
 /* Sidebar */
 .sidebar {
-  background: var(--bg-secondary);
+  background: var(--bg-tertiary);
   border-radius: var(--radius-2xl);
   padding: var(--space-6);
-  box-shadow: var(--shadow-xl);
-  border: 1px solid var(--border-primary);
-  border-right: 3px solid var(--border-secondary);
+  box-shadow: var(--shadow-xl), inset -2px 0 0 var(--border-secondary);
+  border: 2px solid var(--border-primary);
+  border-right: 6px solid var(--border-secondary);
+  margin-right: 4px;
   height: fit-content;
   position: sticky;
   top: 100px;
   backdrop-filter: blur(10px);
+  overflow: hidden;
 }
 
 .sidebar-section {
@@ -374,11 +376,13 @@ body {
   background: var(--bg-secondary);
   border-radius: var(--radius-2xl);
   padding: var(--space-8);
-  box-shadow: var(--shadow-xl);
-  border: 1px solid var(--border-primary);
-  border-left: 3px solid var(--border-secondary);
+  box-shadow: var(--shadow-xl), inset 2px 0 0 var(--border-secondary);
+  border: 2px solid var(--border-primary);
+  border-left: 6px solid var(--border-secondary);
+  margin-left: 4px;
   min-height: 600px;
   backdrop-filter: blur(10px);
+  overflow: hidden;
 }
 
 .scene-header {
@@ -796,7 +800,7 @@ body {
 @media (max-width: 1200px) {
   .main-layout {
     grid-template-columns: 280px 1fr 350px;
-    gap: var(--space-6);
+    gap: var(--space-8);
     padding: var(--space-4);
   }
 }

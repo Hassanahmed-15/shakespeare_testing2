@@ -4596,7 +4596,6 @@
                         Select text in the play to get AI-powered analysis.
                     </div>
                     <button class="analyze-button" id="analyzeButton" onclick="explainHighlighted()" style="display: none;">Analyze Text</button>
-                    <button class="emergency-clear-button" onclick="emergencyClearLoading()" style="display: none; background: #e74c3c; color: white; margin-left: 10px;">Clear Loading</button>
                     <button class="force-display-button" onclick="forceDisplayPlayContent()" style="display: none; background: #3498db; color: white; margin-left: 10px;">Show Play Content</button>
                     <div id="analysisResult"></div>
                     
@@ -5004,38 +5003,6 @@
             console.log('✅ UI force reset complete');
         }
         
-        // Emergency function to clear stuck loading states
-        function emergencyClearLoading() {
-            console.log('🚨 Emergency clearing stuck loading states...');
-            analysisInProgress = false;
-            forceResetUI();
-            
-            // Clear any stuck loading states
-            const playTextElement = document.getElementById('playText');
-            if (playTextElement) {
-                playTextElement.innerHTML = '';
-                playTextElement.classList.remove('loading', 'stuck', 'loading-indicator');
-            }
-            
-            // Clear any stuck analysis content
-            const analysisContent = document.getElementById('analysisContent');
-            if (analysisContent) {
-                analysisContent.innerHTML = '<p>Analysis cleared. Please select text and try again.</p>';
-            }
-            
-            // Hide the emergency button
-            const emergencyButton = document.querySelector('.emergency-clear-button');
-            if (emergencyButton) {
-                emergencyButton.style.display = 'none';
-            }
-            
-            // If a play is loaded, reload it
-            if (currentPlay && plays[currentPlay]) {
-                setTimeout(() => {
-                    loadPlay(currentPlay);
-                }, 100);
-            }
-        }
         
         // Force display play content - useful when content doesn't appear
         function forceDisplayPlayContent() {
