@@ -4596,7 +4596,7 @@
                         Select text in the play to get AI-powered analysis.
                     </div>
                     <button class="analyze-button" id="analyzeButton" onclick="explainHighlighted()" style="display: none;">Analyze Text</button>
-                    <button class="emergency-clear-button" onclick="emergencyClearLoading()" style="display: none; background: #e74c3c; color: white; margin-left: 10px;">Clear Loading</button>
+                    <button class="force-display-button" onclick="forceDisplayPlayContent()" style="display: none; background: #3498db; color: white; margin-left: 10px;">Show Play Content</button>
                     <div id="analysisResult"></div>
                     
                     ${variorumSectionHTML}
@@ -4985,10 +4985,6 @@
                 sidebar.classList.remove('disabled', 'stuck');
             }
             
-            // Clear any stuck loading states
-            document.querySelectorAll('.loading-indicator').forEach(el => {
-                el.style.display = 'none';
-            });
             
             // Clear any stuck selections
             document.querySelectorAll('.selected').forEach(el => {
@@ -5003,27 +4999,45 @@
             // Reset analysis in progress flag
             analysisInProgress = false;
             
+            
             console.log('✅ UI force reset complete');
         }
         
-        // Emergency function to clear stuck loading states
-        function emergencyClearLoading() {
-            console.log('🚨 Emergency clearing stuck loading states...');
-            analysisInProgress = false;
-            forceResetUI();
+        
+        // Force display play content - useful when content doesn't appear
+        function forceDisplayPlayContent() {
+            console.log('🔄 Force displaying play content...');
             
-            // Clear any stuck analysis content
-            const analysisContent = document.getElementById('analysisContent');
-            if (analysisContent) {
-                analysisContent.innerHTML = '<p>Analysis cleared. Please select text and try again.</p>';
-            }
-            
-            // Hide the emergency button
-            const emergencyButton = document.querySelector('.emergency-clear-button');
-            if (emergencyButton) {
-                emergencyButton.style.display = 'none';
+            if (currentPlay && plays[currentPlay]) {
+                const play = plays[currentPlay];
+                const playTextElement = document.getElementById('playText');
+                
+                if (playTextElement) {
+                    // Clear any stuck content
+                    playTextElement.innerHTML = '';
+                    playTextElement.style.pointerEvents = 'auto';
+                    playTextElement.classList.remove('loading', 'stuck');
+                    
+                    // Try to load first available scene
+                    const firstAct = Object.keys(play.acts)[0];
+                    if (firstAct && play.acts[firstAct] && play.acts[firstAct].length > 0) {
+                        const firstScene = play.acts[firstAct][0];
+                        console.log('🔄 Force loading first scene:', firstScene);
+                        loadScene(firstScene);
+                    } else {
+                        // Show play info if no scenes
+                        playTextElement.innerHTML = `
+                            <div class="scene-title">${play.name}</div>
+                            <div class="scene-separator"></div>
+                            <p>Play loaded. Use navigation to explore content.</p>
+                        `;
+                    }
+                }
+            } else {
+                console.log('❌ No play loaded to display');
             }
         }
+        
         
         function updateAnalysisPanel() {
             const analysisContent = document.getElementById('analysisContent');
@@ -5051,13 +5065,13 @@
                 const lineCount = selectedLines.length;
                 const playName = currentPlay && plays[currentPlay] ? plays[currentPlay].name : 'Unknown Play';
                 // Show just the selected line text instead of the two separate messages
-                analysisContent.textContent = selectedLines[0];
-                analysisInstruction.textContent = ''; // Hide the instruction text
+                if (analysisContent) analysisContent.textContent = selectedLines[0];
+                if (analysisInstruction) analysisInstruction.textContent = ''; // Hide the instruction text
                 analyzeButton.style.display = 'block';
             } else {
-                analysisContent.textContent = 'Select text in the play to get AI-powered analysis.';
-                analysisInstruction.textContent = '';
-                analyzeButton.style.display = 'none';
+                if (analysisContent) analysisContent.textContent = 'Select text in the play to get AI-powered analysis.';
+                if (analysisInstruction) analysisInstruction.textContent = '';
+                if (analyzeButton) analyzeButton.style.display = 'none';
             }
         }
         
@@ -7297,7 +7311,9 @@
                 const successMsg = document.getElementById('uploadSuccess');
                 if (successMsg) {
                     successMsg.style.display = 'block';
-                    successMsg.textContent = `✅ "${playName}" has been included in your library!`;
+                    if (successMsg.textContent !== undefined) {
+                        successMsg.textContent = `✅ "${playName}" has been included in your library!`;
+                    }
                 }
                 
                 // Auto-select the new play
@@ -7400,8 +7416,13 @@
                     };
                     
                     // Show success message
-                    document.getElementById('uploadSuccess').style.display = 'block';
-                    document.getElementById('uploadSuccess').textContent = `✅ Text file uploaded successfully! Review the play name and click "Add Play" to include it in your library.`;
+                    const uploadSuccess = document.getElementById('uploadSuccess');
+                    if (uploadSuccess) {
+                        uploadSuccess.style.display = 'block';
+                        if (uploadSuccess.textContent !== undefined) {
+                            uploadSuccess.textContent = `✅ Text file uploaded successfully! Review the play name and click "Add Play" to include it in your library.`;
+                        }
+                    }
                     
                 } catch (error) {
                     console.error('Error processing file:', error);
@@ -7534,14 +7555,22 @@
             // Show success message (keep settings open)
             if (successCount > 0) {
                 const successMsg = document.getElementById('uploadSuccess');
-                successMsg.style.display = 'block';
-                successMsg.textContent = `✅ Successfully uploaded ${successCount} play(s)!`;
+                if (successMsg) {
+                    successMsg.style.display = 'block';
+                    if (successMsg.textContent !== undefined) {
+                        successMsg.textContent = `✅ Successfully uploaded ${successCount} play(s)!`;
+                    }
+                }
             }
             
             if (errorCount > 0) {
                 const errorMsg = document.getElementById('uploadError');
-                errorMsg.style.display = 'block';
-                errorMsg.textContent = `❌ ${errorCount} play(s) failed to upload.`;
+                if (errorMsg) {
+                    errorMsg.style.display = 'block';
+                    if (errorMsg.textContent !== undefined) {
+                        errorMsg.textContent = `❌ ${errorCount} play(s) failed to upload.`;
+                    }
+                }
             }
             
             // Clear bulk upload data
@@ -7858,89 +7887,126 @@
                 }
                 
                 // Show success message
-                document.getElementById('uploadSuccess').style.display = 'block';
-                document.getElementById('uploadSuccess').textContent = `✅ Play deleted from library.`;
+                const uploadSuccess = document.getElementById('uploadSuccess');
+                if (uploadSuccess) {
+                    uploadSuccess.style.display = 'block';
+                    if (uploadSuccess.textContent !== undefined) {
+                        uploadSuccess.textContent = `✅ Play deleted from library.`;
+                    }
+                }
             }
         }
 
-        // Load selected play from dropdown
+        // Load selected play from dropdown - EMERGENCY FIX
         async function loadSelectedPlay() {
-            const selector = document.getElementById('playSelector');
-            const selectedPlay = selector.value;
+            try {
+                const selector = document.getElementById('playSelector');
+                if (!selector) {
+                    console.error('❌ Play selector not found');
+                    return;
+                }
+                
+                const selectedPlay = selector.value;
+                console.log('🎭 loadSelectedPlay called, selected:', selectedPlay);
 
-            console.log('🎭 loadSelectedPlay called, selected:', selectedPlay);
-            console.log('🎭 Available plays:', Object.keys(plays));
-            console.log('🎭 Play exists:', selectedPlay && plays[selectedPlay] ? 'YES' : 'NO');
+                if (!selectedPlay || !plays[selectedPlay]) {
+                    console.error('❌ Invalid play selection');
+                    return;
+                }
 
-            if (selectedPlay) {
-                if (plays[selectedPlay]) {
-                    console.log('✅ Loading play:', selectedPlay);
+            // IMMEDIATELY show content to prevent blank pane
+            const playTextElement = document.getElementById('playText');
+            if (playTextElement) {
+                playTextElement.innerHTML = `
+                    <div class="scene-title">Loading ${plays[selectedPlay].name}...</div>
+                    <div class="scene-separator"></div>
+                    <p>Please wait while the play loads...</p>
+                `;
+            }
+
+            try {
+                // Force load play data
+                if (!plays[selectedPlay].loaded) {
+                    console.log('🔄 Loading play data...');
+                    const success = await loadPlayData(selectedPlay);
+                    if (!success) {
+                        throw new Error('Failed to load play data');
+                    }
+                }
+
+                // Clear analysis
+                clearSelection();
+                clearAnalysisContent();
+                resetAnalysisPanelForNewPlay();
+
+                // FORCE display content immediately
+                currentPlay = selectedPlay;
+                const play = plays[selectedPlay];
+                
+                // Get first available scene
+                let firstScene = null;
+                if (play.scenes && Object.keys(play.scenes).length > 0) {
+                    const sceneKeys = Object.keys(play.scenes);
+                    firstScene = sceneKeys[0];
+                }
+
+                if (firstScene && play.scenes[firstScene]) {
+                    // Load the scene immediately
+                    currentScene = firstScene;
+                    const sceneContent = play.scenes[firstScene];
                     
-                    // Check if play is already loaded
-                    if (!plays[selectedPlay].loaded) {
-                        console.log('🔄 Play not loaded yet, loading now...');
-                        
-                        // Show loading indicator
-                        const playTextElement = document.getElementById('playText');
-                        if (playTextElement) {
-                            playTextElement.innerHTML = `
-                                <div class="loading-indicator">
-                                    <div class="loading-spinner"></div>
-                                    <p>Loading ${plays[selectedPlay].name}...</p>
-                                </div>
-                            `;
-                        }
-                        
-                        const success = await loadPlayData(selectedPlay);
-                        if (!success) {
-                            console.error('❌ Failed to load play data');
-                            if (playTextElement) {
-                                playTextElement.innerHTML = `
-                                    <div class="error-message">
-                                        <p>❌ Failed to load ${plays[selectedPlay].name}</p>
-                                        <p>Please try again or select a different play.</p>
-                                    </div>
-                                `;
-                            }
-                            return;
-                        }
+                    // Force format and display content
+                    const formattedContent = formatSceneContent(sceneContent, firstScene);
+                    
+                    if (playTextElement) {
+                        playTextElement.innerHTML = `
+                            <div class="scene-title">${firstScene}</div>
+                            <div class="scene-separator"></div>
+                            ${formattedContent}
+                        `;
                     }
                     
-                    // Force clear all analysis and selections immediately
-                    clearSelection();
-                    clearAnalysisContent();
-                    
-                    // Reset analysis panel completely
-                    resetAnalysisPanelForNewPlay();
-                    
-                    // Clear any active analysis states
-                    analysisInProgress = false;
-                    selectedLines = [];
-                    firstSelectedLine = null;
-                    
-                    // Ensure UI remains functional before loading new play
-                    ensureNavigationFunctional();
-                    ensurePlayTextFunctional();
-                    
-                    // Load the new play
-                    loadPlay(selectedPlay);
-                    
-                    // Ensure dropdown remains functional
-                    setTimeout(() => {
-                        const playSelector = document.getElementById('playSelector');
-                        if (playSelector) {
-                            playSelector.value = selectedPlay;
-                            playSelector.disabled = false;
-                        }
-                    }, 100);
+                    // Update navigation
+                    updateNavigation(play);
+                    updateActiveNavigation(firstScene);
                     
                 } else {
-                    console.error('❌ Play not found in plays object:', selectedPlay);
-                    console.log('Available plays:', Object.keys(plays));
-                    alert(`Error: Play "${selectedPlay}" not found. Please try refreshing the page.`);
+                    // Show play info if no scenes
+                    if (playTextElement) {
+                        playTextElement.innerHTML = `
+                            <div class="scene-title">${play.name}</div>
+                            <div class="scene-separator"></div>
+                            <p>Play loaded successfully. Use the navigation to explore acts and scenes.</p>
+                            <p><em>Debug: Found ${Object.keys(play.acts || {}).length} acts, ${Object.keys(play.scenes || {}).length} scenes</em></p>
+                        `;
+                    }
                 }
-            } else {
-                console.log('⚠️ No play selected');
+
+                console.log('✅ Play loaded successfully:', selectedPlay);
+
+            } catch (error) {
+                console.error('❌ Error loading play:', error);
+                const playTextElement = document.getElementById('playText');
+                if (playTextElement) {
+                    playTextElement.innerHTML = `
+                        <div class="scene-title">Error Loading ${plays[selectedPlay]?.name || 'Unknown Play'}</div>
+                        <div class="scene-separator"></div>
+                        <p>Failed to load the play. Please try again or select a different play.</p>
+                        <p><em>Error: ${error.message}</em></p>
+                    `;
+                }
+            }
+            } catch (outerError) {
+                console.error('❌ Critical error in loadSelectedPlay:', outerError);
+                const playTextElement = document.getElementById('playText');
+                if (playTextElement) {
+                    playTextElement.innerHTML = `
+                        <div class="scene-title">Critical Error</div>
+                        <div class="scene-separator"></div>
+                        <p>An unexpected error occurred. Please refresh the page.</p>
+                        <button onclick="location.reload()" class="btn btn-primary">Refresh Page</button>
+                    `;
+                }
             }
         }
 
@@ -7982,11 +8048,21 @@
                         Object.keys(sceneData).forEach(lineNum => {
                             const lineData = sceneData[lineNum];
                             if (!lineData) return;
-                            const text = 
-                                (typeof lineData === 'string') ? lineData :
-                                lineData.play ?? lineData.text ?? lineData.line ?? null;
-                            if (text) {
-                                sceneContent.push(text);
+                            
+                            // Extract text from the lineData object
+                            let text = null;
+                            if (typeof lineData === 'string') {
+                                text = lineData;
+                            } else if (lineData.play) {
+                                text = lineData.play;
+                            } else if (lineData.text) {
+                                text = lineData.text;
+                            } else if (lineData.line) {
+                                text = lineData.line;
+                            }
+                            
+                            if (text && text.trim()) {
+                                sceneContent.push(text.trim());
                                 lineCount++;
                             }
                         });
@@ -8004,6 +8080,8 @@
                             play.scenes[sceneKey] = processedContent;
                             sceneCount++;
                             
+                            console.log(`✅ Parsed scene ${sceneKey}: ${processedContent.length} lines`);
+                            
                             // Parse act information from scene key
                             const actName = parseActFromScene(sceneKey);
                             if (actName) {
@@ -8014,6 +8092,8 @@
                                     play.acts[actName].push(sceneKey);
                                 }
                             }
+                        } else {
+                            console.warn(`⚠️ Scene ${sceneKey} has no content`);
                         }
                     }
                 });
@@ -8040,6 +8120,31 @@
                 selector.style.position = 'relative';
             }
         }
+
+        // EMERGENCY FALLBACK: Force display content
+        function forceDisplayContent() {
+            const playTextElement = document.getElementById('playText');
+            if (!playTextElement) return;
+            
+            if (!playTextElement.innerHTML || playTextElement.innerHTML.trim() === '') {
+                console.warn('🚨 EMERGENCY: Forcing content display');
+                playTextElement.innerHTML = `
+                    <div class="scene-title">Content Loading...</div>
+                    <div class="scene-separator"></div>
+                    <p>If you see this message, please try selecting a different play or refresh the page.</p>
+                    <button onclick="location.reload()" class="btn btn-primary">Refresh Page</button>
+                `;
+            }
+        }
+
+        // EMERGENCY: Auto-fix blank panes
+        setInterval(() => {
+            const playTextElement = document.getElementById('playText');
+            if (playTextElement && (!playTextElement.innerHTML || playTextElement.innerHTML.trim() === '')) {
+                console.warn('🚨 Auto-fixing blank pane');
+                forceDisplayContent();
+            }
+        }, 3000);
 
         // Load a play
         function loadPlay(playName) {
@@ -8081,8 +8186,20 @@
                 name: play.name,
                 acts: Object.keys(play.acts).length,
                 scenes: Object.keys(play.scenes).length,
-                hasData: Object.keys(play.scenes).length > 0
+                hasData: Object.keys(play.scenes).length > 0,
+                loaded: play.loaded
             });
+            
+            // Debug: Log first few scene keys
+            const sceneKeys = Object.keys(play.scenes);
+            console.log('🎭 First 5 scene keys:', sceneKeys.slice(0, 5));
+            
+            // Debug: Log first scene content
+            if (sceneKeys.length > 0) {
+                const firstSceneKey = sceneKeys[0];
+                const firstSceneContent = play.scenes[firstSceneKey];
+                console.log('🎭 First scene content preview:', firstSceneContent ? firstSceneContent.slice(0, 3) : 'NO CONTENT');
+            }
             
             // Reset analysis panel for the new play
             resetAnalysisPanelForNewPlay();
@@ -8116,16 +8233,36 @@
             if (firstAct && play.acts[firstAct] && play.acts[firstAct].length > 0) {
                 const firstScene = play.acts[firstAct][0];
                 console.log('✅ Loading first scene:', firstScene);
-                loadScene(firstScene);
+                
+                // Ensure play text element is ready
+                if (playTextElement) {
+                    playTextElement.innerHTML = '';
+                    playTextElement.style.pointerEvents = 'auto';
+                }
+                
+                // Load the scene with error handling
+                try {
+                    loadScene(firstScene);
+                } catch (error) {
+                    console.error('❌ Error loading first scene:', error);
+                    playTextElement.innerHTML = `
+                        <div class="scene-title">Error Loading Scene</div>
+                        <div class="scene-separator"></div>
+                        <p>Failed to load the first scene of ${play.name}. Please try selecting a different scene from the navigation.</p>
+                        <p><em>Error: ${error.message}</em></p>
+                    `;
+                }
             } else {
                 console.log('⚠️ No acts/scenes found, showing welcome message');
                 // If no scenes found, show welcome message
-                playTextElement.innerHTML = `
-                    <div class="scene-title">${play.name}</div>
-                    <div class="scene-separator"></div>
-                    <p>Play loaded successfully. Use the navigation to explore acts and scenes.</p>
-                    <p><em>Debug: Found ${Object.keys(play.acts).length} acts, ${Object.keys(play.scenes).length} scenes</em></p>
-                `;
+                if (playTextElement) {
+                    playTextElement.innerHTML = `
+                        <div class="scene-title">${play.name}</div>
+                        <div class="scene-separator"></div>
+                        <p>Play loaded successfully. Use the navigation to explore acts and scenes.</p>
+                        <p><em>Debug: Found ${Object.keys(play.acts).length} acts, ${Object.keys(play.scenes).length} scenes</em></p>
+                    `;
+                }
                 // Update meta line even when no scenes are found
                 updateMetaLine();
             }
@@ -8246,7 +8383,17 @@
         function loadScene(sceneName) {
             if (!currentPlay || !plays[currentPlay] || !plays[currentPlay].scenes[sceneName]) {
                 console.log('Scene not found:', sceneName, 'in play:', currentPlay);
-                alert('Scene not found: ' + sceneName);
+                
+                // Show error message in the play text area instead of alert
+                const playText = document.getElementById('playText');
+                if (playText) {
+                    playText.innerHTML = `
+                        <div class="scene-title">Scene Not Found</div>
+                        <div class="scene-separator"></div>
+                        <p>Scene "${sceneName}" not found in ${currentPlay || 'current play'}.</p>
+                        <p>Please select a different scene from the navigation menu.</p>
+                    `;
+                }
                 return;
             }
 
@@ -8264,7 +8411,16 @@
             
             // Display scene content
             const playText = document.getElementById('playText');
+            if (!playText) {
+                console.error('❌ Play text element not found in loadScene!');
+                return;
+            }
+            
             const formattedContent = formatSceneContent(sceneContent, sceneName);
+            
+            // Debug: Log formatted content
+            console.log('🎭 Formatted content length:', formattedContent ? formattedContent.length : 0);
+            console.log('🎭 Formatted content preview:', formattedContent ? formattedContent.substring(0, 200) : 'NO CONTENT');
             
             // Extract act and scene names for better display
             let displayTitle = sceneName;
@@ -8283,11 +8439,33 @@
                 }
             }
             
+            // Ensure play text element exists and is ready
+            if (!playText) {
+                console.error('❌ Play text element not found!');
+                return;
+            }
+            
+            console.log('🔄 Updating play text with scene:', sceneName);
+            console.log('🔄 Content length:', formattedContent ? formattedContent.length : 0);
+            console.log('🔄 Raw scene content length:', sceneContent ? sceneContent.length : 0);
+            console.log('🔄 First few lines of scene content:', sceneContent ? sceneContent.slice(0, 3) : 'NO CONTENT');
+            
+            // Ensure we have content to display
+            const contentToDisplay = formattedContent || '<p><em>No content found for this scene.</em></p>';
+            
             playText.innerHTML = `
                 <div class="scene-title">${displayTitle}</div>
                 <div class="scene-separator"></div>
-                ${formattedContent}
+                ${contentToDisplay}
             `;
+            
+            console.log('✅ Play text updated successfully');
+            
+            // Hide force display button since content is now showing
+            const forceDisplayButton = document.querySelector('.force-display-button');
+            if (forceDisplayButton) {
+                forceDisplayButton.style.display = 'none';
+            }
             
             // Update meta line when scene changes
             updateMetaLine();
@@ -8296,14 +8474,24 @@
             setTimeout(ensurePlaySelectorFunctional, 50);
         }
 
-        // Simple format scene content - display exactly as uploaded
+        // Simple format scene content - display exactly as uploaded - EMERGENCY FIX
         function formatSceneContent(sceneContent, sceneName) {
-            if (!sceneContent || sceneContent.length === 0) {
-                return '<p><em>No content found for this scene.</em></p>';
-            }
-            
-            let html = '';
-            let currentSpeaker = '';
+            try {
+                console.log('🎭 formatSceneContent called with:', sceneName, 'content length:', sceneContent ? sceneContent.length : 0);
+                
+                if (!sceneContent || sceneContent.length === 0) {
+                    console.warn('⚠️ No scene content provided');
+                    return '<p><em>No content found for this scene.</em></p>';
+                }
+                
+                let html = '';
+                let currentSpeaker = '';
+                
+                // EMERGENCY: Force display content even if formatting fails
+                if (!Array.isArray(sceneContent)) {
+                    console.warn('⚠️ Scene content is not an array, converting...');
+                    sceneContent = [sceneContent.toString()];
+                }
             
             // Special handling for Dramatis Personae - 100% ACCURATE
             if (sceneName === 'DRAMATIS PERSONAE') {
@@ -8358,6 +8546,20 @@
             console.log('formatSceneContent completed, currentSpeaker:', currentSpeaker);
             // Wrap the content in a container with the scene data attribute
             return `<div class="scene-content" data-scene="${sceneName}">${html}</div>`;
+            
+            } catch (error) {
+                console.error('❌ Error in formatSceneContent:', error);
+                // EMERGENCY FALLBACK: Force display raw content
+                let fallbackHtml = '';
+                if (sceneContent && sceneContent.length > 0) {
+                    sceneContent.forEach((line, index) => {
+                        if (line && line.toString().trim()) {
+                            fallbackHtml += `<div class="play-line">${line.toString()}</div>`;
+                        }
+                    });
+                }
+                return `<div class="scene-content" data-scene="${sceneName}">${fallbackHtml || '<p><em>No content available</em></p>'}</div>`;
+            }
         }
         
 
@@ -8365,7 +8567,8 @@
         // Check if a line is a speaker name
         function isSpeakerName(line) {
             // Must be all caps, reasonable length, and not a stage direction
-            const isAllCaps = line.match(/^[A-Z\s]+$/) && 
+            // Updated to handle abbreviated names with periods (like "RODO.", "IAGO.")
+            const isAllCaps = line.match(/^[A-Z\s\.]+$/) && 
                              line.length > 2 && 
                              line.length < 50 && 
                              !line.startsWith('[') && 

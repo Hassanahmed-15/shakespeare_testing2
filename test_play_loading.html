@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Play Loading</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-result { margin: 10px 0; padding: 10px; border-radius: 5px; }
+        .success { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .info { background-color: #d1ecf1; color: #0c5460; border: 1px solid #bee5eb; }
+    </style>
+</head>
+<body>
+    <h1>Shakespeare Play Loading Test</h1>
+    <div id="test-results"></div>
+    
+    <script>
+        // Test the isSpeakerName function with our updated regex
+        function testIsSpeakerName() {
+            const testCases = [
+                { input: "ORLANDO:", expected: true, description: "Regular speaker name" },
+                { input: "RODO.:", expected: true, description: "Abbreviated speaker with period" },
+                { input: "IAGO.:", expected: true, description: "Abbreviated speaker with period" },
+                { input: "ADAM:", expected: true, description: "Simple speaker name" },
+                { input: "ACT I", expected: false, description: "Act title" },
+                { input: "SCENE 1", expected: false, description: "Scene title" },
+                { input: "orlando:", expected: false, description: "Lowercase speaker" },
+                { input: "rodo.:", expected: false, description: "Lowercase abbreviated" }
+            ];
+            
+            let results = [];
+            
+            testCases.forEach(testCase => {
+                const result = isSpeakerName(testCase.input);
+                const passed = result === testCase.expected;
+                
+                results.push({
+                    test: testCase.description,
+                    input: testCase.input,
+                    expected: testCase.expected,
+                    actual: result,
+                    passed: passed
+                });
+            });
+            
+            return results;
+        }
+        
+        // Updated isSpeakerName function (copied from the main app)
+        function isSpeakerName(line) {
+            // Must be all caps, reasonable length, and not a stage direction
+            // Updated to handle abbreviated names with periods (like "RODO.", "IAGO.")
+            const isAllCaps = line.match(/^[A-Z\s\.]+$/) && 
+                             line.length > 2 && 
+                             line.length < 50 && 
+                             !line.startsWith('[') && 
+                             !line.endsWith(']') &&
+                             !line.includes('ACT') &&
+                             !line.includes('SCENE');
+            
+            if (!isAllCaps) {
+                return false;
+            }
+            
+            // Fallback to just checking if it looks like a speaker name
+            return true;
+        }
+        
+        // Run tests and display results
+        function runTests() {
+            const results = testIsSpeakerName();
+            const container = document.getElementById('test-results');
+            
+            results.forEach(result => {
+                const div = document.createElement('div');
+                div.className = `test-result ${result.passed ? 'success' : 'error'}`;
+                div.innerHTML = `
+                    <strong>${result.passed ? '✅ PASS' : '❌ FAIL'}</strong> - ${result.test}<br>
+                    Input: "${result.input}" | Expected: ${result.expected} | Actual: ${result.actual}
+                `;
+                container.appendChild(div);
+            });
+            
+            const summary = document.createElement('div');
+            const passed = results.filter(r => r.passed).length;
+            const total = results.length;
+            summary.className = `test-result ${passed === total ? 'success' : 'error'}`;
+            summary.innerHTML = `<strong>Test Summary: ${passed}/${total} tests passed</strong>`;
+            container.appendChild(summary);
+        }
+        
+        // Run tests when page loads
+        document.addEventListener('DOMContentLoaded', runTests);
+    </script>
+</body>
+</html>
