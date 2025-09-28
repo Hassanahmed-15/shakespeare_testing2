@@ -1116,6 +1116,7 @@
             overflow-y: auto;
             margin-top: 70px;
             margin-left: 280px;
+            box-sizing: border-box;
         }
 
         /* Add visual separator between columns */
@@ -1170,6 +1171,7 @@
             overflow-y: auto;
             box-shadow: var(--shadow);
             z-index: 10;
+            box-sizing: border-box;
         }
 
         /* top/bottom scroll cues like Apple */
@@ -2013,6 +2015,14 @@
             max-height: calc(100vh - 200px);
             overflow-y: auto;
             box-sizing: border-box;
+            position: relative;
+        }
+
+        /* Ensure reader panel maintains proper layout */
+        .reader.panel {
+            box-sizing: border-box;
+            overflow-y: auto;
+            max-height: calc(100vh - 200px);
         }
 
         .analysis .analysis-header {
@@ -10805,7 +10815,7 @@
             
             const playKey = playNameMap[currentPlay] || currentPlay;
             console.log('🔍 Internet Shakespeare Editions URL key:', playKey);
-            const url = `https://internetshakespeare.uvic.ca/Library/Texts/${playKey}/F1/index.html`;
+            const url = `https://internetshakespeare.uvic.ca/Library/Texts/${playKey}/`;
             window.open(url, '_blank');
         }
 
