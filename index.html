@@ -1118,6 +1118,7 @@
             margin-left: 280px;
             box-sizing: border-box;
             max-width: calc(100vw - 280px - var(--s-4) * 2);
+            z-index: 1;
         }
 
         /* Remove the black separator line */
@@ -1160,7 +1161,7 @@
             height: calc(100vh - 70px - 150px - var(--s-4) * 2);
             overflow-y: auto;
             box-shadow: var(--shadow);
-            z-index: 10;
+            z-index: 1000;
             box-sizing: border-box;
             max-width: 280px;
         }
@@ -2009,6 +2010,7 @@
             position: relative;
             width: 100%;
             max-width: 100%;
+            z-index: 1;
         }
 
         /* Ensure reader panel maintains proper layout */
@@ -2018,6 +2020,7 @@
             max-height: calc(100vh - 200px);
             width: 100%;
             max-width: 100%;
+            z-index: 1;
         }
 
         /* Prevent any panel from breaking out of its container */
@@ -4496,6 +4499,21 @@
                 "SIR TOBY BELCH",
                 "VALENTINE",
                 "VIOLA"
+            ],
+            "othello": [
+                "BIANCA",
+                "BRABANTIO",
+                "CASSIO",
+                "CLOWN",
+                "DESDEMONA",
+                "DUKE OF VENICE",
+                "EMILIA",
+                "GRATIANO",
+                "IAGO",
+                "LODOVICO",
+                "MONTANO",
+                "OTHELLO",
+                "RODERIGO"
             ]
         };
         
@@ -5870,9 +5888,19 @@
                                         }
                                     });
                                     if (sceneContent.length > 0) {
-                                        const optimizedContent = optimizeSpeakerNames(sceneContent);
+                                        let processedContent;
+                                        
+                                        // Special handling for Dramatis Personae
+                                        if (originalSceneKey === 'DRAMATIS PERSONAE' && sceneContent.length === 1 && sceneContent[0].includes('\n')) {
+                                            // Split the single string into individual lines
+                                            processedContent = sceneContent[0].split('\n').map(line => line.trim()).filter(line => line.length > 0);
+                                        } else {
+                                            // Apply speaker name optimization to the scene content
+                                            processedContent = optimizeSpeakerNames(sceneContent);
+                                        }
+                                        
                                         const normalizedKey = normalizeSceneKey(originalSceneKey);
-                                        plays['othello'].scenes[normalizedKey] = optimizedContent;
+                                        plays['othello'].scenes[normalizedKey] = processedContent;
                                         sceneCount++;
                                         const actName = parseActFromScene(normalizedKey);
                                         if (actName) {
