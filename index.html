@@ -1119,6 +1119,7 @@
             box-sizing: border-box;
             max-width: calc(100vw - 280px - var(--s-4) * 2);
             z-index: 1;
+            isolation: isolate;
         }
 
         /* Remove the black separator line */
@@ -1164,6 +1165,7 @@
             z-index: 1000;
             box-sizing: border-box;
             max-width: 280px;
+            isolation: isolate;
         }
 
         /* top/bottom scroll cues like Apple */
@@ -2011,6 +2013,8 @@
             width: 100%;
             max-width: 100%;
             z-index: 1;
+            isolation: isolate;
+            contain: layout;
         }
 
         /* Ensure reader panel maintains proper layout */
@@ -2021,6 +2025,8 @@
             width: 100%;
             max-width: 100%;
             z-index: 1;
+            isolation: isolate;
+            contain: layout;
         }
 
         /* Prevent any panel from breaking out of its container */
@@ -2028,6 +2034,26 @@
             box-sizing: border-box;
             max-width: 100%;
             overflow-x: hidden;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Ensure analysis content doesn't break layout */
+        .analysis-content,
+        .analysis-result,
+        #analysisResult {
+            position: relative;
+            z-index: 1;
+            max-width: 100%;
+            overflow-x: hidden;
+            word-wrap: break-word;
+        }
+
+        /* Prevent any dynamic content from overlaying */
+        .panel {
+            position: relative;
+            z-index: 1;
+            isolation: isolate;
         }
 
         .analysis .analysis-header {
