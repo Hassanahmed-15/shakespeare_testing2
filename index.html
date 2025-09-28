@@ -1106,11 +1106,14 @@
 
         /* Main Layout */
         .layout {
-            display: flex;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--s-4);
             height: calc(100vh - 70px);
             background: var(--bg);
             margin-top: 70px;
             margin-left: 280px;
+            padding: var(--s-4);
             box-sizing: border-box;
         }
 
@@ -1996,60 +1999,27 @@
 
         /* Reader Panel */
         .reader.panel {
-            flex: 1;
             background: var(--panel);
             border: 1px solid var(--line);
             border-radius: var(--r-lg);
             padding: var(--s-4);
-            margin-right: var(--s-2);
             overflow-y: auto;
-            overflow-x: hidden;
             box-sizing: border-box;
-            position: relative;
-            z-index: 1;
         }
 
         /* Analysis Panel */
         .analysis.panel {
-            flex: 0 0 400px;
             background: var(--panel);
             border: 1px solid var(--line);
             border-radius: var(--r-lg);
             padding: var(--s-4);
             overflow-y: auto;
-            overflow-x: hidden;
             box-sizing: border-box;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Ensure analysis content stays contained */
-        .analysis-content,
-        .analysis-result,
-        #analysisResult,
-        .analysis .analysis-content {
-            max-width: 100%;
-            overflow-x: hidden;
-            word-wrap: break-word;
-            position: relative;
-            z-index: 1;
         }
 
         /* Simple panel styling */
         .panel {
             box-sizing: border-box;
-        }
-
-        /* Prevent any content from breaking out of panels */
-        .layout {
-            contain: layout;
-        }
-
-        /* Ensure all dynamic content stays within bounds */
-        .analysis *,
-        .reader * {
-            max-width: 100%;
-            overflow-x: hidden;
         }
 
         .analysis .analysis-header {
