@@ -1106,20 +1106,12 @@
 
         /* Main Layout */
         .layout {
-            display: grid;
-            grid-template-columns: 1.5fr minmax(600px, 45%);
-            gap: var(--s-4);
+            display: flex;
             height: calc(100vh - 70px);
             background: var(--bg);
-            position: relative;
-            overflow-x: hidden;
-            overflow-y: auto;
             margin-top: 70px;
             margin-left: 280px;
             box-sizing: border-box;
-            max-width: calc(100vw - 280px - var(--s-4) * 2);
-            z-index: 1;
-            isolation: isolate;
         }
 
         /* Remove the black separator line */
@@ -1164,8 +1156,6 @@
             box-shadow: var(--shadow);
             z-index: 1000;
             box-sizing: border-box;
-            max-width: 280px;
-            isolation: isolate;
         }
 
         /* top/bottom scroll cues like Apple */
@@ -2004,56 +1994,62 @@
             margin-bottom: var(--s-4);
         }
 
-        /* Ensure analysis panel doesn't break layout */
-        .analysis.panel {
-            max-height: calc(100vh - 200px);
-            overflow-y: auto;
-            box-sizing: border-box;
-            position: relative;
-            width: 100%;
-            max-width: 100%;
-            z-index: 1;
-            isolation: isolate;
-            contain: layout;
-        }
-
-        /* Ensure reader panel maintains proper layout */
+        /* Reader Panel */
         .reader.panel {
-            box-sizing: border-box;
+            flex: 1;
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: var(--r-lg);
+            padding: var(--s-4);
+            margin-right: var(--s-2);
             overflow-y: auto;
-            max-height: calc(100vh - 200px);
-            width: 100%;
-            max-width: 100%;
-            z-index: 1;
-            isolation: isolate;
-            contain: layout;
-        }
-
-        /* Prevent any panel from breaking out of its container */
-        .layout > * {
-            box-sizing: border-box;
-            max-width: 100%;
             overflow-x: hidden;
+            box-sizing: border-box;
             position: relative;
             z-index: 1;
         }
 
-        /* Ensure analysis content doesn't break layout */
+        /* Analysis Panel */
+        .analysis.panel {
+            flex: 0 0 400px;
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: var(--r-lg);
+            padding: var(--s-4);
+            overflow-y: auto;
+            overflow-x: hidden;
+            box-sizing: border-box;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Ensure analysis content stays contained */
         .analysis-content,
         .analysis-result,
-        #analysisResult {
-            position: relative;
-            z-index: 1;
+        #analysisResult,
+        .analysis .analysis-content {
             max-width: 100%;
             overflow-x: hidden;
             word-wrap: break-word;
-        }
-
-        /* Prevent any dynamic content from overlaying */
-        .panel {
             position: relative;
             z-index: 1;
-            isolation: isolate;
+        }
+
+        /* Simple panel styling */
+        .panel {
+            box-sizing: border-box;
+        }
+
+        /* Prevent any content from breaking out of panels */
+        .layout {
+            contain: layout;
+        }
+
+        /* Ensure all dynamic content stays within bounds */
+        .analysis *,
+        .reader * {
+            max-width: 100%;
+            overflow-x: hidden;
         }
 
         .analysis .analysis-header {
