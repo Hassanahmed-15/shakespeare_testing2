@@ -1117,19 +1117,10 @@
             margin-top: 70px;
             margin-left: 280px;
             box-sizing: border-box;
+            max-width: calc(100vw - 280px - var(--s-4) * 2);
         }
 
-        /* Add visual separator between columns */
-        .layout::before {
-            content: '';
-            position: absolute;
-            left: calc(1.5fr + var(--s-4) / 2);
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: linear-gradient(to bottom, transparent, #2c2c2c, transparent);
-            z-index: 1;
-        }
+        /* Remove the black separator line */
 
         @media (min-width: 1600px) {
             .layout {
@@ -1160,7 +1151,6 @@
         .sidebar {
             background: var(--panel);
             border: 1px solid var(--line);
-            border-right: 4px solid #2c2c2c;
             border-radius: var(--r-lg);
             padding: var(--s-3) var(--s-2);
             position: fixed;
@@ -1172,6 +1162,7 @@
             box-shadow: var(--shadow);
             z-index: 10;
             box-sizing: border-box;
+            max-width: 280px;
         }
 
         /* top/bottom scroll cues like Apple */
@@ -2016,6 +2007,8 @@
             overflow-y: auto;
             box-sizing: border-box;
             position: relative;
+            width: 100%;
+            max-width: 100%;
         }
 
         /* Ensure reader panel maintains proper layout */
@@ -2023,6 +2016,15 @@
             box-sizing: border-box;
             overflow-y: auto;
             max-height: calc(100vh - 200px);
+            width: 100%;
+            max-width: 100%;
+        }
+
+        /* Prevent any panel from breaking out of its container */
+        .layout > * {
+            box-sizing: border-box;
+            max-width: 100%;
+            overflow-x: hidden;
         }
 
         .analysis .analysis-header {
@@ -3998,7 +4000,6 @@
             <!-- Research Section - Moved further down -->
             <h3>Research</h3>
             <div class="research-actions">
-                <button class="link-btn jstor" onclick="searchJSTOR('exact')">Search JSTOR for exact quotation</button>
                 <button class="link-btn jstor" onclick="searchJSTOR('passage')">Search JSTOR for this passage/scene</button>
                 <button class="link-btn scholar" onclick="searchGoogleScholar()">Google Scholar</button>
                 <button class="link-btn ise" onclick="openInternetShakespeare()">Internet Shakespeare Editions</button>
@@ -9865,7 +9866,6 @@
                     <!-- Research Section -->
                     <h3>Research</h3>
                     <div class="research-actions">
-                        <button class="link-btn jstor" onclick="searchJSTOR('exact')">Search JSTOR for exact quotation</button>
                         <button class="link-btn jstor" onclick="searchJSTOR('passage')">Search JSTOR for this passage/scene</button>
                         <button class="link-btn scholar" onclick="searchGoogleScholar()">Google Scholar</button>
                         <button class="link-btn ise" onclick="openInternetShakespeare()">Internet Shakespeare Editions</button>
@@ -10002,7 +10002,6 @@
                     <!-- Research Section -->
                     <h3>Research</h3>
                     <div class="research-actions">
-                        <button class="link-btn jstor" onclick="searchJSTOR('exact')">Search JSTOR for exact quotation</button>
                         <button class="link-btn jstor" onclick="searchJSTOR('passage')">Search JSTOR for this passage/scene</button>
                         <button class="link-btn scholar" onclick="searchGoogleScholar()">Google Scholar</button>
                         <button class="link-btn ise" onclick="openInternetShakespeare()">Internet Shakespeare Editions</button>
@@ -10734,20 +10733,8 @@
             const playName = currentPlay && plays[currentPlay] ? plays[currentPlay].name : 'Shakespeare';
             let searchQuery = '';
             
-            if (type === 'exact') {
-                // Get the currently selected text from the DOM
-                const selection = window.getSelection();
-                const selectedText = selection.toString().trim();
-                
-                if (!selectedText) {
-                    alert('Please select some text first to search JSTOR for exact quotation.');
-                    return;
-                }
-                searchQuery = `"${selectedText}"`;
-            } else {
-                // For passage/scene search, use play and scene info even without selected text
-                searchQuery = `${playName} ${currentScene || 'scene'}`;
-            }
+            // Only handle passage/scene search now
+            searchQuery = `${playName} ${currentScene || 'scene'}`;
             
             console.log('🔍 JSTOR search query:', searchQuery);
             const url = `https://www.jstor.org/action/doBasicSearch?Query=${encodeURIComponent(searchQuery)}`;
