@@ -3895,24 +3895,26 @@
 
 
     <!-- Main Content -->
-    <div class="layout">
+    <div class="main-layout">
         <!-- Sidebar -->
         <aside class="sidebar" aria-label="Play navigation">
-            <div class="section-title">Library</div>
-            <div class="play-selector-container">
-                <select class="play-selector" id="playSelector" onchange="loadSelectedPlay()" style="pointer-events: auto; z-index: 999;">
-                    <option value="" disabled selected>Choose a Play</option>
-                </select>
-                <button onclick="loadSelectedPlay()" class="go-btn" style="display: none;">Go</button>
-            </div>
+            <div class="sidebar-section">
+                <div class="sidebar-title">Library</div>
+                <div class="play-selector-container">
+                    <select class="play-selector" id="playSelector" onchange="loadSelectedPlay()" style="pointer-events: auto; z-index: 999;">
+                        <option value="" disabled selected>Choose a Play</option>
+                    </select>
+                    <button onclick="loadSelectedPlay()" class="go-btn" style="display: none;">Go</button>
+                </div>
 
-            <ul class="navigation-list" id="navigationList" aria-label="Play navigation">
-                <!-- Navigation will be populated dynamically -->
-            </ul>
+                <ul class="navigation-list" id="navigationList" aria-label="Play navigation">
+                    <!-- Navigation will be populated dynamically -->
+                </ul>
+            </div>
         </aside>
 
         <!-- Reading Pane -->
-        <div class="reader panel play" id="playText">
+        <div class="reader-panel" id="playText">
             <div class="empty">
                 <div class="empty-body">
                     <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#6B7078" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M8 13h8M8 10h5"/></svg>
@@ -3925,7 +3927,7 @@
         </div>
 
         <!-- Analysis Pane -->
-        <div class="analysis panel" id="analysisPanel">
+        <div class="analysis-panel" id="analysisPanel">
             <!-- Analysis Mode Selector -->
             <div class="segment">
                 <button onclick="switchTab('basic')" aria-pressed="true">Basic</button>
@@ -8278,6 +8280,7 @@
             // Add Dramatis Personae if it exists
             if (play.scenes && play.scenes['DRAMATIS PERSONAE']) {
                 const dramatisItem = document.createElement('li');
+                dramatisItem.className = 'nav-item';
                 dramatisItem.innerHTML = `<a href="#" onclick="loadScene('DRAMATIS PERSONAE')" data-scene="DRAMATIS PERSONAE">Dramatis Personae</a>`;
                 navList.appendChild(dramatisItem);
             }
@@ -8291,6 +8294,7 @@
             
             sortedActNames.forEach(actName => {
                 const actItem = document.createElement('li');
+                actItem.className = 'nav-item act';
                 actItem.innerHTML = `<a href="#" onclick="loadFirstSceneOfAct('${actName}')">${actName}</a>`;
                 navList.appendChild(actItem);
                 
@@ -8304,7 +8308,7 @@
                     
                     sortedScenes.forEach(sceneName => {
                         const sceneItem = document.createElement('li');
-                        sceneItem.className = 'sub-item';
+                        sceneItem.className = 'nav-item nav-subitem';
                         
                         // Extract proper scene name for display using normalization
                         const displaySceneName = normalizeSceneName(sceneName);
@@ -8327,16 +8331,17 @@
 
         // Update active navigation
         function updateActiveNavigation(itemName) {
-            const navLinks = document.querySelectorAll('.navigation-list a');
-            navLinks.forEach(link => {
-                link.classList.remove('active');
+            const navItems = document.querySelectorAll('.navigation-list .nav-item');
+            navItems.forEach(item => {
+                item.classList.remove('active');
             });
             
             // Handle Dramatis Personae
             if (itemName === 'DRAMATIS PERSONAE') {
-                navLinks.forEach(link => {
-                    if (link.getAttribute('data-scene') === 'DRAMATIS PERSONAE') {
-                        link.classList.add('active');
+                navItems.forEach(item => {
+                    const link = item.querySelector('a');
+                    if (link && link.getAttribute('data-scene') === 'DRAMATIS PERSONAE') {
+                        item.classList.add('active');
                     }
                 });
             }
@@ -8344,22 +8349,26 @@
             else if (itemName && itemName.includes(',')) {
                 const actName = itemName.split(',')[0];
                 
-                navLinks.forEach(link => {
-                    // Highlight the parent act
-                    if (link.textContent === actName) {
-                        link.classList.add('active');
-                    }
-                    
-                    // Highlight the specific scene using data attribute
-                    if (link.getAttribute('data-scene') === itemName) {
-                        link.classList.add('active');
+                navItems.forEach(item => {
+                    const link = item.querySelector('a');
+                    if (link) {
+                        // Highlight the parent act
+                        if (link.textContent === actName) {
+                            item.classList.add('active');
+                        }
+                        
+                        // Highlight the specific scene using data attribute
+                        if (link.getAttribute('data-scene') === itemName) {
+                            item.classList.add('active');
+                        }
                     }
                 });
             } else if (itemName) {
                 // Highlight just the act
-                navLinks.forEach(link => {
-                    if (link.textContent === itemName) {
-                        link.classList.add('active');
+                navItems.forEach(item => {
+                    const link = item.querySelector('a');
+                    if (link && link.textContent === itemName) {
+                        item.classList.add('active');
                     }
                 });
             }
@@ -10713,7 +10722,7 @@
             }
             
             console.log('🔍 JSTOR search query:', searchQuery);
-            const url = `https://www.jstor.org/action/doBasicSearch?Query=${encodeURIComponent(searchQuery)}`;
+            const url = `https://www.jstor.org/search?q=${encodeURIComponent(searchQuery)}`;
             window.open(url, '_blank');
         }
 
@@ -10752,33 +10761,33 @@
             console.log('🔍 Internet Shakespeare Editions search called');
             // Map play names to Internet Shakespeare Editions URLs
             const playNameMap = {
-                'macbeth': 'macbeth',
-                'hamlet': 'hamlet',
-                'romeo': 'r_and_j',
-                'othello': 'othello',
-                'kinglear': 'lear',
-                'asyoulikeit': 'ayli',
-                'coriolanus': 'coriolanus',
-                'cymbeline': 'cymbeline',
-                'henryiv1': 'h41',
-                'henryiv2': 'h42',
-                'juliuscaesar': 'j_caesar',
-                'kingjohn': 'john',
-                'loveslabourslost': 'lll',
-                'merchantofvenice': 'mv',
-                'midsummer': 'mnd',
-                'muchado': 'ado',
-                'richardii': 'r2',
-                'richardiii': 'r3',
-                'tempest': 'tempest',
-                'winterstale': 'wt',
-                'troilus': 'tc',
-                'twelfthnight': 'tn'
+                'macbeth': 'Mac',
+                'hamlet': 'Ham',
+                'romeo': 'Rom',
+                'othello': 'Oth',
+                'kinglear': 'Lr',
+                'asyoulikeit': 'AYL',
+                'coriolanus': 'Cor',
+                'cymbeline': 'Cym',
+                'henryiv1': '1H4',
+                'henryiv2': '2H4',
+                'juliuscaesar': 'JC',
+                'kingjohn': 'Jn',
+                'loveslabourslost': 'LLL',
+                'merchantofvenice': 'MV',
+                'midsummer': 'MND',
+                'muchado': 'Ado',
+                'richardii': 'R2',
+                'richardiii': 'R3',
+                'tempest': 'Tmp',
+                'winterstale': 'WT',
+                'troilus': 'TC',
+                'twelfthnight': 'TN'
             };
             
             const playKey = playNameMap[currentPlay] || currentPlay;
             console.log('🔍 Internet Shakespeare Editions URL key:', playKey);
-            const url = `https://internetshakespeare.uvic.ca/Library/plays/${playKey}/`;
+            const url = `https://internetshakespeare.uvic.ca/doc/${playKey}/index.html`;
             window.open(url, '_blank');
         }
 
