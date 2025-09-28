@@ -1112,9 +1112,22 @@
             height: calc(100vh - 70px);
             background: var(--bg);
             position: relative;
-            overflow: hidden;
+            overflow-x: hidden;
+            overflow-y: auto;
             margin-top: 70px;
             margin-left: 280px;
+        }
+
+        /* Add visual separator between columns */
+        .layout::before {
+            content: '';
+            position: absolute;
+            left: calc(1.5fr + var(--s-4) / 2);
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, #2c2c2c, transparent);
+            z-index: 1;
         }
 
         @media (min-width: 1600px) {
@@ -1146,6 +1159,7 @@
         .sidebar {
             background: var(--panel);
             border: 1px solid var(--line);
+            border-right: 4px solid #2c2c2c;
             border-radius: var(--r-lg);
             padding: var(--s-3) var(--s-2);
             position: fixed;
@@ -1710,9 +1724,10 @@
             max-width: 80ch;
             margin: 0;
             width: 100%;
-            height: calc(100vh - 70px - 150px - var(--s-4) * 2);
+            max-height: calc(100vh - 70px - 150px - var(--s-4) * 2);
             overflow-y: auto;
             position: relative;
+            box-sizing: border-box;
         }
         
         /* Academic paragraph styling */
@@ -1991,6 +2006,13 @@
         /* Analysis panel specific elements */
         .analysis .segment {
             margin-bottom: var(--s-4);
+        }
+
+        /* Ensure analysis panel doesn't break layout */
+        .analysis.panel {
+            max-height: calc(100vh - 200px);
+            overflow-y: auto;
+            box-sizing: border-box;
         }
 
         .analysis .analysis-header {
@@ -4540,13 +4562,13 @@
             
             // Check if current play should have New Variorum Analysis
             // Only these 5 plays should have New Variorum Analysis
-            const playsWithNewVariorum = ['hamlet', 'othello', 'romeojuliet', 'macbeth', 'kinglear'];
+            const playsWithNewVariorum = ['hamlet', 'othello', 'romeo', 'macbeth', 'kinglear'];
             
             const shouldShowNewVariorum = playsWithNewVariorum.includes(currentPlay);
             console.log('🎭 Current play:', currentPlay, '- Show New Variorum?', shouldShowNewVariorum);
             
             // Show/hide critics button based on current play
-            const playsWithCriticsButtons = ['hamlet', 'othello', 'romeojuliet', 'macbeth', 'kinglear'];
+            const playsWithCriticsButtons = ['hamlet', 'othello', 'romeo', 'macbeth', 'kinglear'];
             const shouldShowCriticsButton = playsWithCriticsButtons.includes(currentPlay);
             const criticsButton = document.getElementById('criticsButton');
             if (criticsButton) {
@@ -5417,7 +5439,7 @@
                 document.getElementById('hamletCriticsModal').style.display = 'block';
             } else if (currentPlay === 'kinglear') {
                 document.getElementById('kingLearCriticsModal').style.display = 'block';
-            } else if (currentPlay === 'romeojuliet') {
+            } else if (currentPlay === 'romeo') {
                 document.getElementById('romeoJulietCriticsModal').style.display = 'block';
             } else if (currentPlay === 'othello') {
                 document.getElementById('othelloCriticsModal').style.display = 'block';
@@ -8278,6 +8300,7 @@
             // Add Dramatis Personae if it exists
             if (play.scenes && play.scenes['DRAMATIS PERSONAE']) {
                 const dramatisItem = document.createElement('li');
+                dramatisItem.className = 'nav-item';
                 dramatisItem.innerHTML = `<a href="#" onclick="loadScene('DRAMATIS PERSONAE')" data-scene="DRAMATIS PERSONAE">Dramatis Personae</a>`;
                 navList.appendChild(dramatisItem);
             }
@@ -9699,7 +9722,7 @@
                     // Add buttons specifically for New Variorum Analysis section (only for appropriate plays)
                     if (sectionName === 'New Variorum Analysis') {
                         // Only these 5 plays should have New Variorum Critics buttons
-                        const playsWithCriticsButtons = ['hamlet', 'othello', 'romeojuliet', 'macbeth', 'kinglear'];
+                        const playsWithCriticsButtons = ['hamlet', 'othello', 'romeo', 'macbeth', 'kinglear'];
                         const shouldShowButtons = playsWithCriticsButtons.includes(currentPlay);
                         
                         if (shouldShowButtons) {
@@ -9719,7 +9742,7 @@
             
             // Check if current play should show New Variorum Analysis
             // Only these 5 plays should have New Variorum Analysis
-            const playsWithNewVariorum = ['hamlet', 'othello', 'romeojuliet', 'macbeth', 'kinglear'];
+            const playsWithNewVariorum = ['hamlet', 'othello', 'romeo', 'macbeth', 'kinglear'];
             
             const shouldShowNewVariorum = playsWithNewVariorum.includes(currentPlay);
             console.log('🎭 formatStructuredAnalysis - Current play:', currentPlay, '- Show New Variorum?', shouldShowNewVariorum);
@@ -9736,7 +9759,7 @@
                     formattedContent += '<h4>New Variorum Analysis</h4>';
                     
                     // Only show critics button for plays that should have it
-                    const playsWithCriticsButtons = ['hamlet', 'othello', 'romeojuliet', 'macbeth', 'kinglear'];
+                    const playsWithCriticsButtons = ['hamlet', 'othello', 'romeo', 'macbeth', 'kinglear'];
                     if (playsWithCriticsButtons.includes(currentPlay)) {
                     formattedContent += '<div class="critics-button-container" style="margin-top: 10px; margin-bottom: 15px;">';
                     formattedContent += '<button class="btn btn-secondary" onclick="openCriticsModal()" style="width: 100%; margin-bottom: 10px;">📚 Who are the New Variorum Critics?</button>';
@@ -10702,6 +10725,10 @@
             let searchQuery = '';
             
             if (type === 'exact') {
+                // Get the currently selected text from the DOM
+                const selection = window.getSelection();
+                const selectedText = selection.toString().trim();
+                
                 if (!selectedText) {
                     alert('Please select some text first to search JSTOR for exact quotation.');
                     return;
@@ -10713,7 +10740,7 @@
             }
             
             console.log('🔍 JSTOR search query:', searchQuery);
-            const url = `https://www.jstor.org/search?q=${encodeURIComponent(searchQuery)}`;
+            const url = `https://www.jstor.org/action/doBasicSearch?Query=${encodeURIComponent(searchQuery)}`;
             window.open(url, '_blank');
         }
 
@@ -10778,7 +10805,7 @@
             
             const playKey = playNameMap[currentPlay] || currentPlay;
             console.log('🔍 Internet Shakespeare Editions URL key:', playKey);
-            const url = `https://internetshakespeare.uvic.ca/doc/${playKey}/index.html`;
+            const url = `https://internetshakespeare.uvic.ca/Library/Texts/${playKey}/F1/index.html`;
             window.open(url, '_blank');
         }
 
@@ -11395,7 +11422,7 @@
                 document.getElementById('hamletCriticsModal').style.display = 'block';
             } else if (currentPlay === 'kinglear') {
                 document.getElementById('kingLearCriticsModal').style.display = 'block';
-            } else if (currentPlay === 'romeojuliet') {
+            } else if (currentPlay === 'romeo') {
                 document.getElementById('romeoJulietCriticsModal').style.display = 'block';
             } else if (currentPlay === 'othello') {
                 document.getElementById('othelloCriticsModal').style.display = 'block';
