@@ -8336,30 +8336,30 @@
                 }
             } else {
                 // Load first scene automatically if no DRAMATIS PERSONAE
-                const firstAct = Object.keys(play.acts)[0];
-                if (firstAct && play.acts[firstAct] && play.acts[firstAct].length > 0) {
-                    const firstScene = play.acts[firstAct][0];
-                    console.log('✅ Loading first scene:', firstScene);
-                    
-                    // Ensure play text element is ready
-                    if (playTextElement) {
-                        playTextElement.innerHTML = '';
-                        playTextElement.style.pointerEvents = 'auto';
-                    }
-                    
-                    // Load the scene with error handling
-                    try {
-                        loadScene(firstScene);
-                    } catch (error) {
-                        console.error('❌ Error loading first scene:', error);
-                        playTextElement.innerHTML = `
-                            <div class="scene-title">Error Loading Scene</div>
-                            <div class="scene-separator"></div>
-                            <p>Failed to load the first scene of ${play.name}. Please try selecting a different scene from the navigation.</p>
-                            <p><em>Error: ${error.message}</em></p>
-                        `;
-                    }
-                } else {
+            const firstAct = Object.keys(play.acts)[0];
+            if (firstAct && play.acts[firstAct] && play.acts[firstAct].length > 0) {
+                const firstScene = play.acts[firstAct][0];
+                console.log('✅ Loading first scene:', firstScene);
+                
+                // Ensure play text element is ready
+                if (playTextElement) {
+                    playTextElement.innerHTML = '';
+                    playTextElement.style.pointerEvents = 'auto';
+                }
+                
+                // Load the scene with error handling
+                try {
+                    loadScene(firstScene);
+                } catch (error) {
+                    console.error('❌ Error loading first scene:', error);
+                    playTextElement.innerHTML = `
+                        <div class="scene-title">Error Loading Scene</div>
+                        <div class="scene-separator"></div>
+                        <p>Failed to load the first scene of ${play.name}. Please try selecting a different scene from the navigation.</p>
+                        <p><em>Error: ${error.message}</em></p>
+                    `;
+                }
+            } else {
                 console.log('⚠️ No acts/scenes found, showing welcome message');
                 // If no scenes found, show welcome message
                 if (playTextElement) {
@@ -8600,52 +8600,52 @@
                     console.warn('⚠️ Scene content is not an array, converting...');
                     sceneContent = [sceneContent.toString()];
                 }
-            
-            // Display each line exactly as it appears in the file, preserving whitespace
-            // DRAMATIS PERSONAE is now treated exactly like play text - selectable and analyzable
-            sceneContent.forEach((line, index) => {
-                // Don't trim - preserve original spacing and empty lines
-                if (line === '') {
-                    // Empty line - preserve it
-                    html += `<div class="play-line">&nbsp;</div>`;
-                } else {
-                    // Escape single quotes and quotes in the line for onclick handler
-                    const escapedLine = line.replace(/'/g, "\\'").replace(/"/g, "&quot;").replace(/\n/g, "\\n");
-                    
-                    // For DRAMATIS PERSONAE, treat all lines as regular selectable play text
-                    if (sceneName === 'DRAMATIS PERSONAE') {
-                        html += `<div class="play-line" data-line-index="${index}" onclick="selectLine(this, '${escapedLine}', ${index})">${line}</div>`;
+                
+                // Display each line exactly as it appears in the file, preserving whitespace
+                // DRAMATIS PERSONAE is now treated exactly like play text - selectable and analyzable
+                sceneContent.forEach((line, index) => {
+                    // Don't trim - preserve original spacing and empty lines
+                    if (line === '') {
+                        // Empty line - preserve it
+                        html += `<div class="play-line">&nbsp;</div>`;
                     } else {
-                        // For regular scenes, check if this line is a speaker name
-                        if (isSpeakerName(line)) {
-                            console.log('Found speaker name:', line);
-                            currentSpeaker = line;
-                            // Show speaker name for first occurrence
+                        // Escape single quotes and quotes in the line for onclick handler
+                        const escapedLine = line.replace(/'/g, "\\'").replace(/"/g, "&quot;").replace(/\n/g, "\\n");
+                        
+                        // For DRAMATIS PERSONAE, treat all lines as regular selectable play text
+                        if (sceneName === 'DRAMATIS PERSONAE') {
                             html += `<div class="play-line" data-line-index="${index}" onclick="selectLine(this, '${escapedLine}', ${index})">${line}</div>`;
                         } else {
-                            // Check if this line is dialogue from the same speaker
-                            const trimmedLine = line.trim();
-                            if (trimmedLine && currentSpeaker && !isSpeakerName(trimmedLine) && !isStageDirection(trimmedLine)) {
-                                // This is dialogue from the same speaker - don't repeat the name
-                                console.log('Same speaker dialogue:', trimmedLine);
+                            // For regular scenes, check if this line is a speaker name
+                            if (isSpeakerName(line)) {
+                                console.log('Found speaker name:', line);
+                                currentSpeaker = line;
+                                // Show speaker name for first occurrence
                                 html += `<div class="play-line" data-line-index="${index}" onclick="selectLine(this, '${escapedLine}', ${index})">${line}</div>`;
                             } else {
-                                // This is a new speaker or different type of line - show as normal
-                                html += `<div class="play-line" data-line-index="${index}" onclick="selectLine(this, '${escapedLine}', ${index})">${line}</div>`;
-                                // Reset current speaker if this line is not dialogue
-                                if (!trimmedLine || isSpeakerName(trimmedLine) || isStageDirection(trimmedLine)) {
-                                    currentSpeaker = '';
+                                // Check if this line is dialogue from the same speaker
+                                const trimmedLine = line.trim();
+                                if (trimmedLine && currentSpeaker && !isSpeakerName(trimmedLine) && !isStageDirection(trimmedLine)) {
+                                    // This is dialogue from the same speaker - don't repeat the name
+                                    console.log('Same speaker dialogue:', trimmedLine);
+                                    html += `<div class="play-line" data-line-index="${index}" onclick="selectLine(this, '${escapedLine}', ${index})">${line}</div>`;
+                                } else {
+                                    // This is a new speaker or different type of line - show as normal
+                                    html += `<div class="play-line" data-line-index="${index}" onclick="selectLine(this, '${escapedLine}', ${index})">${line}</div>`;
+                                    // Reset current speaker if this line is not dialogue
+                                    if (!trimmedLine || isSpeakerName(trimmedLine) || isStageDirection(trimmedLine)) {
+                                        currentSpeaker = '';
+                                    }
                                 }
                             }
                         }
                     }
-                }
-            });
-            
-            console.log('formatSceneContent completed, currentSpeaker:', currentSpeaker);
-            // Wrap the content in a container with the scene data attribute
-            return `<div class="scene-content" data-scene="${sceneName}">${html}</div>`;
-            
+                });
+                
+                console.log('formatSceneContent completed, currentSpeaker:', currentSpeaker);
+                // Wrap the content in a container with the scene data attribute
+                return `<div class="scene-content" data-scene="${sceneName}">${html}</div>`;
+                
             } catch (error) {
                 console.error('❌ Error in formatSceneContent:', error);
                 // EMERGENCY FALLBACK: Force display raw content
