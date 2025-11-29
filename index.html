@@ -4005,6 +4005,8 @@
 
 
     <script>
+        // Wrap in try-catch to prevent errors from breaking entire page
+        try {
         console.log('=== SCRIPT LOADED AT:', new Date().toISOString(), '===');
         let selectedText = '';
         let plays = {};
@@ -11440,41 +11442,7 @@
             }
         }
 
-        // Modal functions
-        function openSettings() {
-            document.getElementById('settingsModal').style.display = 'block';
-            
-            // Hide any existing success/error messages when opening settings
-            const uploadSuccess = document.getElementById('uploadSuccess');
-            const uploadError = document.getElementById('uploadError');
-            if (uploadSuccess) uploadSuccess.style.display = 'none';
-            if (uploadError) uploadError.style.display = 'none';
-            
-            updateLibraryPlays(); // Refresh the library display
-        }
-
-        function closeSettings() {
-            const modal = document.getElementById('settingsModal');
-            if (modal) {
-                modal.style.display = 'none';
-            }
-        }
-
-        function openAbout() {
-            document.getElementById('aboutModal').style.display = 'block';
-        }
-
-        function closeAbout() {
-            document.getElementById('aboutModal').style.display = 'none';
-        }
-
-        function openHowToUse() {
-            document.getElementById('howToUseModal').style.display = 'block';
-        }
-
-        function closeHowToUse() {
-            document.getElementById('howToUseModal').style.display = 'none';
-        }
+        // Modal functions - duplicates removed (already defined earlier in script)
 
         function openRights() {
             document.getElementById('rightsModal').style.display = 'block';
@@ -11550,7 +11518,10 @@
                 closeNVModal();
             }
         }
-
+        } catch (error) {
+            console.error('❌ CRITICAL ERROR in main script:', error);
+            alert('A critical error occurred. Please refresh the page. Error: ' + error.message);
+        }
     </script>
 
     <!-- Footer About Section -->
