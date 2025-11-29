@@ -8147,7 +8147,13 @@
                             }
                             
                             if (text && text.trim()) {
-                                sceneContent.push(text.trim());
+                                // For DRAMATIS PERSONAE, preserve the numbering from the key
+                                if (sceneKey === 'DRAMATIS PERSONAE' && lineNum) {
+                                    // Add the number prefix: "1. Character Name"
+                                    sceneContent.push(`${lineNum}. ${text.trim()}`);
+                                } else {
+                                    sceneContent.push(text.trim());
+                                }
                                 lineCount++;
                             }
                         });
@@ -8155,7 +8161,7 @@
                         if (sceneContent.length > 0) {
                             let processedContent;
                             
-                            // Special handling for Dramatis Personae
+                            // Special handling for Dramatis Personae - if it's already split, use as is
                             if (sceneKey === 'DRAMATIS PERSONAE' && sceneContent.length === 1 && sceneContent[0].includes('\n')) {
                                 processedContent = sceneContent[0].split('\n').map(line => line.trim()).filter(line => line.length > 0);
                             } else {
