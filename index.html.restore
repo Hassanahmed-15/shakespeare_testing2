@@ -7079,43 +7079,43 @@
                 
                 // Define all play metadata (no actual loading yet)
                 const playMetadata = {
-                    'macbeth': { name: 'Macbeth', fileName: 'macbeth_notes_cleaned_play.json', loaded: false },
-                    'hamlet': { name: 'Hamlet', fileName: 'hamlet_notes (1).json', loaded: false },
-                    'romeo': { name: 'Romeo and Juliet', fileName: 'ROMEO_notes.json', loaded: false },
-                    'othello': { name: 'Othello', fileName: 'othello_notes.json', loaded: false },
-                    'kinglear': { name: 'King Lear', fileName: 'kinglear_notes.json', loaded: false },
+                    'alls_well': { name: "All's Well That Ends Well", fileName: 'alls_well_that_ends_well.json', loaded: false },
+                    'antonyandcleopatra': { name: 'Antony and Cleopatra', fileName: 'antony_and_cleopatra.json', loaded: false },
                     'asyoulikeit': { name: 'As You Like It', fileName: 'as_you_like_it.json', loaded: false },
+                    'comedyoferrors': { name: 'The Comedy of Errors', fileName: 'comedy_of_errors.json', loaded: false },
                     'coriolanus': { name: 'Coriolanus', fileName: 'Coriolanus.json', loaded: false },
                     'cymbeline': { name: 'Cymbeline', fileName: 'cymbeline.json', loaded: false },
+                    'hamlet': { name: 'Hamlet', fileName: 'hamlet_notes (1).json', loaded: false },
                     'henryiv1': { name: 'Henry IV Part 1', fileName: 'henry_iv_part1.json', loaded: false },
                     'henryiv2': { name: 'Henry IV Part 2', fileName: 'henry_iv_part2.json', loaded: false },
+                    'henryv': { name: 'Henry V', fileName: 'henry_v.json', loaded: false },
+                    'henryvi1': { name: 'Henry VI, Part 1', fileName: 'henry_vi_part1.json', loaded: false },
+                    'henryvi2': { name: 'Henry VI, Part 2', fileName: 'henry_vi_part2.json', loaded: false },
+                    'henryvi3': { name: 'Henry VI, Part 3', fileName: 'henry_vi_part3.json', loaded: false },
+                    'henryviii': { name: 'Henry VIII', fileName: 'henry_viii.json', loaded: false },
                     'juliuscaesar': { name: 'Julius Caesar', fileName: 'julius_caesar.json', loaded: false },
                     'kingjohn': { name: 'King John', fileName: 'king_john.json', loaded: false },
+                    'kinglear': { name: 'King Lear', fileName: 'kinglear_notes.json', loaded: false },
                     'loveslabourslost': { name: "Love's Labour's Lost", fileName: 'loves_labours_lost.json', loaded: false },
+                    'macbeth': { name: 'Macbeth', fileName: 'macbeth_notes_cleaned_play.json', loaded: false },
+                    'measureformeasure': { name: 'Measure for Measure', fileName: 'measure_for_measure.json', loaded: false },
                     'merchantofvenice': { name: 'The Merchant of Venice', fileName: 'merchant_of_venice.json', loaded: false },
+                    'merrywives': { name: 'The Merry Wives of Windsor', fileName: 'merry_wives_of_windsor.json', loaded: false },
                     'midsummer': { name: "A Midsummer Night's Dream", fileName: 'midsummer_nights_dream.json', loaded: false },
                     'muchado': { name: "Much Ado About Nothing", fileName: 'much_ado_about_nothing.json', loaded: false },
+                    'othello': { name: 'Othello', fileName: 'othello_notes.json', loaded: false },
+                    'pericles': { name: 'Pericles, Prince of Tyre', fileName: 'pericles.json', loaded: false },
                     'richardii': { name: 'Richard II', fileName: 'richard_ii.json', loaded: false },
                     'richardiii': { name: 'Richard III', fileName: 'richard_iii.json', loaded: false },
+                    'romeo': { name: 'Romeo and Juliet', fileName: 'ROMEO_notes.json', loaded: false },
+                    'tamingoftheshrew': { name: 'The Taming of the Shrew', fileName: 'taming_of_the_shrew.json', loaded: false },
                     'tempest': { name: 'The Tempest', fileName: 'the_tempest.json', loaded: false },
-                    'winterstale': { name: "The Winter's Tale", fileName: 'the_winters_tale.json', loaded: false },
+                    'timonofathens': { name: 'Timon of Athens', fileName: 'timon_of_athens.json', loaded: false },
+                    'titusandronicus': { name: 'Titus Andronicus', fileName: 'titus_andronicus.json', loaded: false },
                     'troilus': { name: 'Troilus and Cressida', fileName: 'troilus_and_cressida.json', loaded: false },
                     'twelfthnight': { name: 'Twelfth Night', fileName: 'twelfth_night.json', loaded: false },
-                    'allswell': { name: "All's Well That Ends Well", fileName: 'alls_well_that_ends_well.json', loaded: false },
-                    'antony': { name: 'Antony and Cleopatra', fileName: 'antony_and_cleopatra.json', loaded: false },
-                    'comedyoferrors': { name: 'The Comedy of Errors', fileName: 'comedy_of_errors.json', loaded: false },
-                    'henryv': { name: 'Henry V', fileName: 'henry_v.json', loaded: false },
-                    'henryvi1': { name: 'Henry VI Part 1', fileName: 'henry_vi_part1.json', loaded: false },
-                    'henryvi2': { name: 'Henry VI Part 2', fileName: 'henry_vi_part2.json', loaded: false },
-                    'henryvi3': { name: 'Henry VI Part 3', fileName: 'henry_vi_part3.json', loaded: false },
-                    'henryviii': { name: 'Henry VIII', fileName: 'henry_viii.json', loaded: false },
-                    'measureformeasure': { name: 'Measure for Measure', fileName: 'measure_for_measure.json', loaded: false },
-                    'merrywives': { name: 'The Merry Wives of Windsor', fileName: 'merry_wives_of_windsor.json', loaded: false },
-                    'pericles': { name: 'Pericles, Prince of Tyre', fileName: 'pericles.json', loaded: false },
-                    'taming': { name: 'The Taming of the Shrew', fileName: 'taming_of_the_shrew.json', loaded: false },
-                    'timon': { name: 'Timon of Athens', fileName: 'timon_of_athens.json', loaded: false },
-                    'titus': { name: 'Titus Andronicus', fileName: 'titus_andronicus.json', loaded: false },
-                    'twogentlemen': { name: 'Two Gentlemen of Verona', fileName: 'two_gentlemen_of_verona.json', loaded: false }
+                    'twogentlemen': { name: 'Two Gentlemen of Verona', fileName: 'two_gentlemen_of_verona.json', loaded: false },
+                    'winterstale': { name: "The Winter's Tale", fileName: 'the_winters_tale.json', loaded: false }
                 };
                 
                 // Initialize plays object with metadata only
@@ -8011,9 +8011,11 @@
                 currentPlay = selectedPlay;
                 const play = plays[selectedPlay];
                 
-                // Get first available scene
+                // Get first available scene - prefer DRAMATIS PERSONAE, otherwise first scene
                 let firstScene = null;
-                if (play.scenes && Object.keys(play.scenes).length > 0) {
+                if (play.scenes && play.scenes['DRAMATIS PERSONAE']) {
+                    firstScene = 'DRAMATIS PERSONAE';
+                } else if (play.scenes && Object.keys(play.scenes).length > 0) {
                     const sceneKeys = Object.keys(play.scenes);
                     firstScene = sceneKeys[0];
                 }
@@ -8026,9 +8028,24 @@
                     // Force format and display content
                     const formattedContent = formatSceneContent(sceneContent, firstScene);
                     
+                    // Get display title - use "Dramatis Personae" for DRAMATIS PERSONAE
+                    let displayTitle = firstScene;
+                    if (firstScene === 'DRAMATIS PERSONAE') {
+                        displayTitle = 'Dramatis Personae';
+                    } else {
+                        // Format ACT and SCENE titles
+                        const actMatch = firstScene.match(/^ACT\s+([IVX0-9]+)/i);
+                        const sceneMatch = firstScene.match(/SCENE\s+([IVX0-9]+)/i);
+                        if (actMatch && sceneMatch) {
+                            displayTitle = `ACT ${actMatch[1]}, SCENE ${sceneMatch[1]}`;
+                        } else if (actMatch) {
+                            displayTitle = `ACT ${actMatch[1]}`;
+                        }
+                    }
+                    
                     if (playTextElement) {
                         playTextElement.innerHTML = `
-                            <div class="scene-title">${firstScene}</div>
+                            <div class="scene-title">${displayTitle}</div>
                             <div class="scene-separator"></div>
                             ${formattedContent}
                         `;
@@ -8130,10 +8147,6 @@
                             }
                             
                             if (text && text.trim()) {
-                                // Add numbering for DRAMATIS PERSONAE entries
-                                if (sceneKey === 'DRAMATIS PERSONAE') {
-                                    text = `${lineNum}. ${text.trim()}`;
-                                }
                                 sceneContent.push(text.trim());
                                 lineCount++;
                             }
@@ -8300,7 +8313,29 @@
             // Update navigation
             updateNavigation(play);
             
-            // Load first scene automatically
+            // Load DRAMATIS PERSONAE first if it exists, otherwise load first scene
+            if (play.scenes && play.scenes['DRAMATIS PERSONAE']) {
+                console.log('✅ Loading DRAMATIS PERSONAE first');
+                
+                // Ensure play text element is ready
+                if (playTextElement) {
+                    playTextElement.innerHTML = '';
+                    playTextElement.style.pointerEvents = 'auto';
+                }
+                
+                // Load DRAMATIS PERSONAE with error handling
+                try {
+                    loadScene('DRAMATIS PERSONAE');
+                } catch (error) {
+                    console.error('❌ Error loading DRAMATIS PERSONAE:', error);
+                    // Fall back to first scene
+                    const firstAct = Object.keys(play.acts)[0];
+                    if (firstAct && play.acts[firstAct] && play.acts[firstAct].length > 0) {
+                        loadScene(play.acts[firstAct][0]);
+                    }
+                }
+            } else {
+                // Load first scene automatically if no DRAMATIS PERSONAE
             const firstAct = Object.keys(play.acts)[0];
             if (firstAct && play.acts[firstAct] && play.acts[firstAct].length > 0) {
                 const firstScene = play.acts[firstAct][0];
@@ -8565,43 +8600,52 @@
                     console.warn('⚠️ Scene content is not an array, converting...');
                     sceneContent = [sceneContent.toString()];
                 }
-            
-            // Display each line exactly as it appears in the file, preserving whitespace
-            sceneContent.forEach((line, index) => {
-                // Don't trim - preserve original spacing and empty lines
-                if (line === '') {
-                    // Empty line - preserve it
-                    html += `<div class="play-line">&nbsp;</div>`;
-                } else {
-                    // Check if this line is a speaker name
-                    if (isSpeakerName(line)) {
-                        console.log('Found speaker name:', line);
-                        currentSpeaker = line;
-                        // Show speaker name for first occurrence
-                        html += `<div class="play-line" data-line-index="${index}" onclick="selectLine(this, '${line.replace(/'/g, "\\'")}', ${index})">${line}</div>`;
+                
+                // Display each line exactly as it appears in the file, preserving whitespace
+                // DRAMATIS PERSONAE is now treated exactly like play text - selectable and analyzable
+                sceneContent.forEach((line, index) => {
+                    // Don't trim - preserve original spacing and empty lines
+                    if (line === '') {
+                        // Empty line - preserve it
+                        html += `<div class="play-line">&nbsp;</div>`;
                     } else {
-                        // Check if this line is dialogue from the same speaker
-                        const trimmedLine = line.trim();
-                        if (trimmedLine && currentSpeaker && !isSpeakerName(trimmedLine) && !isStageDirection(trimmedLine)) {
-                            // This is dialogue from the same speaker - don't repeat the name
-                            console.log('Same speaker dialogue:', trimmedLine);
-                            html += `<div class="play-line" data-line-index="${index}" onclick="selectLine(this, '${line.replace(/'/g, "\\'")}', ${index})">${line}</div>`;
+                        // Escape single quotes and quotes in the line for onclick handler
+                        const escapedLine = line.replace(/'/g, "\\'").replace(/"/g, "&quot;").replace(/\n/g, "\\n");
+                        
+                        // For DRAMATIS PERSONAE, treat all lines as regular selectable play text
+                        if (sceneName === 'DRAMATIS PERSONAE') {
+                            html += `<div class="play-line" data-line-index="${index}" onclick="selectLine(this, '${escapedLine}', ${index})">${line}</div>`;
                         } else {
-                            // This is a new speaker or different type of line - show as normal
-                            html += `<div class="play-line" data-line-index="${index}" onclick="selectLine(this, '${line.replace(/'/g, "\\'")}', ${index})">${line}</div>`;
-                            // Reset current speaker if this line is not dialogue
-                            if (!trimmedLine || isSpeakerName(trimmedLine) || isStageDirection(trimmedLine)) {
-                                currentSpeaker = '';
+                            // For regular scenes, check if this line is a speaker name
+                            if (isSpeakerName(line)) {
+                                console.log('Found speaker name:', line);
+                                currentSpeaker = line;
+                                // Show speaker name for first occurrence
+                                html += `<div class="play-line" data-line-index="${index}" onclick="selectLine(this, '${escapedLine}', ${index})">${line}</div>`;
+                            } else {
+                                // Check if this line is dialogue from the same speaker
+                                const trimmedLine = line.trim();
+                                if (trimmedLine && currentSpeaker && !isSpeakerName(trimmedLine) && !isStageDirection(trimmedLine)) {
+                                    // This is dialogue from the same speaker - don't repeat the name
+                                    console.log('Same speaker dialogue:', trimmedLine);
+                                    html += `<div class="play-line" data-line-index="${index}" onclick="selectLine(this, '${escapedLine}', ${index})">${line}</div>`;
+                                } else {
+                                    // This is a new speaker or different type of line - show as normal
+                                    html += `<div class="play-line" data-line-index="${index}" onclick="selectLine(this, '${escapedLine}', ${index})">${line}</div>`;
+                                    // Reset current speaker if this line is not dialogue
+                                    if (!trimmedLine || isSpeakerName(trimmedLine) || isStageDirection(trimmedLine)) {
+                                        currentSpeaker = '';
+                                    }
+                                }
                             }
                         }
                     }
-                }
-            });
-            
-            console.log('formatSceneContent completed, currentSpeaker:', currentSpeaker);
-            // Wrap the content in a container with the scene data attribute
-            return `<div class="scene-content" data-scene="${sceneName}">${html}</div>`;
-            
+                });
+                
+                console.log('formatSceneContent completed, currentSpeaker:', currentSpeaker);
+                // Wrap the content in a container with the scene data attribute
+                return `<div class="scene-content" data-scene="${sceneName}">${html}</div>`;
+                
             } catch (error) {
                 console.error('❌ Error in formatSceneContent:', error);
                 // EMERGENCY FALLBACK: Force display raw content
