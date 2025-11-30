@@ -9932,8 +9932,26 @@
             
             let formattedContent = '';
             
+            // Define blacklist for plays without NV editions
+            const playsWithoutNewVariorum = [
+                'allswell', 'comedyoferrors', 'measureformeasure', 'merrywives',
+                'pericles', 'taming', 'troilus', 'twogentlemen',
+                'henryvi1', 'henryvi2', 'henryvi3', 'henryviii',
+                'richardii', 'richardiii', 'antony', 'coriolanus',
+                'juliuscaesar', 'henryv', 'titus', 'timon', 'henryiv2'
+            ];
+            
+            const shouldHideVariorum = playsWithoutNewVariorum.includes(currentPlay);
+            console.log('🚫 formatStructuredAnalysis - Should hide variorum for', currentPlay, '?', shouldHideVariorum);
+            
             // Format each analysis section FIRST (Analysis at the top)
             for (const [sectionName, sectionContent] of Object.entries(analysis)) {
+                // SKIP "New Variorum Analysis" section for blacklisted plays
+                if (sectionName === 'New Variorum Analysis' && shouldHideVariorum) {
+                    console.log('🚫 SKIPPING New Variorum Analysis section for', currentPlay);
+                    continue; // Skip this section entirely
+                }
+                
                 if (sectionContent && sectionContent.trim()) {
                     formattedContent += '<div class="analysis-section">';
                     formattedContent += `<h4>${sectionName}</h4>`;
