@@ -4686,7 +4686,17 @@
             // Only these 5 plays should have New Variorum Analysis
             const playsWithNewVariorum = ['hamlet', 'othello', 'romeo', 'macbeth', 'kinglear'];
             
-            const shouldShowNewVariorum = playsWithNewVariorum.includes(currentPlay);
+            // Explicitly exclude the 21 plays without NV editions
+            const playsWithoutNewVariorum = [
+                'allswell', 'comedyoferrors', 'measureformeasure', 'merrywives',
+                'pericles', 'taming', 'troilus', 'twogentlemen',
+                'henryvi1', 'henryvi2', 'henryvi3', 'henryviii',
+                'richardii', 'richardiii', 'antony', 'coriolanus',
+                'juliuscaesar', 'henryv', 'titus', 'timon', 'henryiv2'
+            ];
+            
+            // Only show if in the whitelist AND not in the blacklist
+            const shouldShowNewVariorum = playsWithNewVariorum.includes(currentPlay) && !playsWithoutNewVariorum.includes(currentPlay);
             console.log('🎭 Current play:', currentPlay, '- Show New Variorum?', shouldShowNewVariorum);
             
             // Show/hide critics button based on current play
@@ -9936,7 +9946,16 @@
             // Only these 5 plays should have New Variorum Analysis
             const playsWithNewVariorum = ['hamlet', 'othello', 'romeo', 'macbeth', 'kinglear'];
             
-            const shouldShowNewVariorum = playsWithNewVariorum.includes(currentPlay);
+            // Explicitly exclude the 21 plays without NV editions
+            const playsWithoutNewVariorum = [
+                'allswell', 'comedyoferrors', 'measureformeasure', 'merrywives',
+                'pericles', 'taming', 'troilus', 'twogentlemen',
+                'henryvi1', 'henryvi2', 'henryvi3', 'henryviii',
+                'richardii', 'richardiii', 'antony', 'coriolanus',
+                'juliuscaesar', 'henryv', 'titus', 'timon', 'henryiv2'
+            ];
+            
+            const shouldShowNewVariorum = playsWithNewVariorum.includes(currentPlay) && !playsWithoutNewVariorum.includes(currentPlay);
             console.log('🎭 formatStructuredAnalysis - Current play:', currentPlay, '- Show New Variorum?', shouldShowNewVariorum);
             
             // Only add New Variorum Analysis for plays that should have it
