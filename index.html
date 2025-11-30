@@ -9310,15 +9310,32 @@
             console.log('🎭 Current scene:', currentScene);
             console.log('📝 Selected lines:', selectedLines);
             
+            // Check if this play should show New Variorum Analysis
+            const playsWithoutNewVariorum = [
+                'allswell', 'comedyoferrors', 'measureformeasure', 'merrywives',
+                'pericles', 'taming', 'troilus', 'twogentlemen',
+                'henryvi1', 'henryvi2', 'henryvi3', 'henryviii',
+                'richardii', 'richardiii', 'antony', 'coriolanus',
+                'juliuscaesar', 'henryv', 'titus', 'timon', 'henryiv2'
+            ];
+            
+            const shouldHideVariorum = playsWithoutNewVariorum.includes(currentPlay);
+            console.log('🚫 Should hide variorum for', currentPlay, '?', shouldHideVariorum);
+            
             const variorumSection = document.getElementById('variorumSection');
             const variorumResult = document.getElementById('variorumResult');
             const variorumContent = document.getElementById('variorumContent');
             const analysisResult = document.getElementById('analysisResult');
             
-            // Show the variorum section
+            // Show the variorum section ONLY if play is not in blacklist
             if (variorumSection) {
-                variorumSection.style.display = 'block';
-                console.log('✅ Variorum section displayed');
+                if (shouldHideVariorum) {
+                    variorumSection.style.display = 'none';
+                    console.log('🚫 Variorum section HIDDEN for', currentPlay);
+                } else {
+                    variorumSection.style.display = 'block';
+                    console.log('✅ Variorum section displayed');
+                }
             } else {
                 console.error('❌ Variorum section not found');
             }
