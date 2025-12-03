@@ -9791,12 +9791,27 @@
             console.log('Analysis sections:', Object.keys(analysis));
             console.log('Relevant notes:', relevantNotes);
             
-
+            // Define the 21 plays WITHOUT New Variorum editions
+            const playsWithoutNewVariorum = [
+                'allswell', 'comedyoferrors', 'measureformeasure', 'merrywives',
+                'pericles', 'taming', 'troilus', 'twogentlemen',
+                'henryvi1', 'henryvi2', 'henryvi3', 'henryviii',
+                'richardii', 'richardiii', 'antony', 'coriolanus',
+                'juliuscaesar', 'henryv', 'titus', 'timon', 'henryiv2'
+            ];
+            const isPlayWithoutNV = playsWithoutNewVariorum.includes(currentPlay);
+            console.log('🎭 Current play:', currentPlay, '- Is play without NV?', isPlayWithoutNV);
             
             let formattedContent = '';
             
             // Format each analysis section FIRST (Analysis at the top)
             for (const [sectionName, sectionContent] of Object.entries(analysis)) {
+                // For 21 plays without NV editions: SKIP the New Variorum Analysis section entirely
+                if (sectionName === 'New Variorum Analysis' && isPlayWithoutNV) {
+                    console.log('🚫 SKIPPING New Variorum Analysis for play without NV edition:', currentPlay);
+                    continue; // Skip this section entirely
+                }
+                
                 if (sectionContent && sectionContent.trim()) {
                     formattedContent += '<div class="analysis-section">';
                     formattedContent += `<h4>${sectionName}</h4>`;
