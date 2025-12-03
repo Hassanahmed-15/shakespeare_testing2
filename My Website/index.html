@@ -4585,7 +4585,17 @@
             // Only these 5 plays should have New Variorum Analysis
             const playsWithNewVariorum = ['hamlet', 'othello', 'romeo', 'macbeth', 'kinglear'];
             
-            const shouldShowNewVariorum = playsWithNewVariorum.includes(currentPlay);
+            // Explicitly exclude the 21 plays without NV editions
+            const playsWithoutNewVariorum = [
+                'allswell', 'comedyoferrors', 'measureformeasure', 'merrywives',
+                'pericles', 'taming', 'troilus', 'twogentlemen',
+                'henryvi1', 'henryvi2', 'henryvi3', 'henryviii',
+                'richardii', 'richardiii', 'antony', 'coriolanus',
+                'juliuscaesar', 'henryv', 'titus', 'timon', 'henryiv2'
+            ];
+            
+            // Only show if in the whitelist AND not in the blacklist
+            const shouldShowNewVariorum = playsWithNewVariorum.includes(currentPlay) && !playsWithoutNewVariorum.includes(currentPlay);
             console.log('🎭 Current play:', currentPlay, '- Show New Variorum?', shouldShowNewVariorum);
             
             // Show/hide critics button based on current play
@@ -5337,6 +5347,20 @@
         // Force show variorum section with test content
         function forceShowVariorum() {
             console.log('🔧 FORCING VARIORUM SECTION TO SHOW...');
+            
+            // Check if this play should show New Variorum Analysis
+            const playsWithoutNewVariorum = [
+                'allswell', 'comedyoferrors', 'measureformeasure', 'merrywives',
+                'pericles', 'taming', 'troilus', 'twogentlemen',
+                'henryvi1', 'henryvi2', 'henryvi3', 'henryviii',
+                'richardii', 'richardiii', 'antony', 'coriolanus',
+                'juliuscaesar', 'henryv', 'titus', 'timon', 'henryiv2'
+            ];
+            
+            if (playsWithoutNewVariorum.includes(currentPlay)) {
+                console.log('🚫 Cannot force show variorum for blacklisted play:', currentPlay);
+                return;
+            }
             
             // Set up test data
             selectedLines = ["First Witch: In thunder, lightning, or in rain?"];
@@ -9243,15 +9267,32 @@
             console.log('🎭 Current scene:', currentScene);
             console.log('📝 Selected lines:', selectedLines);
             
+            // Check if this play should show New Variorum Analysis
+            const playsWithoutNewVariorum = [
+                'allswell', 'comedyoferrors', 'measureformeasure', 'merrywives',
+                'pericles', 'taming', 'troilus', 'twogentlemen',
+                'henryvi1', 'henryvi2', 'henryvi3', 'henryviii',
+                'richardii', 'richardiii', 'antony', 'coriolanus',
+                'juliuscaesar', 'henryv', 'titus', 'timon', 'henryiv2'
+            ];
+            
+            const shouldHideVariorum = playsWithoutNewVariorum.includes(currentPlay);
+            console.log('🚫 Should hide variorum for', currentPlay, '?', shouldHideVariorum);
+            
             const variorumSection = document.getElementById('variorumSection');
             const variorumResult = document.getElementById('variorumResult');
             const variorumContent = document.getElementById('variorumContent');
             const analysisResult = document.getElementById('analysisResult');
             
-            // Show the variorum section
+            // Show the variorum section ONLY if play is not in blacklist
             if (variorumSection) {
-                variorumSection.style.display = 'block';
-                console.log('✅ Variorum section displayed');
+                if (shouldHideVariorum) {
+                    variorumSection.style.display = 'none';
+                    console.log('🚫 Variorum section HIDDEN for', currentPlay);
+                } else {
+                    variorumSection.style.display = 'block';
+                    console.log('✅ Variorum section displayed');
+                }
             } else {
                 console.error('❌ Variorum section not found');
             }
@@ -9791,12 +9832,27 @@
             console.log('Analysis sections:', Object.keys(analysis));
             console.log('Relevant notes:', relevantNotes);
             
-
+            // Define blacklist of 21 plays WITHOUT New Variorum editions - check FIRST before any rendering
+            const playsWithoutNewVariorum = [
+                'allswell', 'comedyoferrors', 'measureformeasure', 'merrywives',
+                'pericles', 'taming', 'troilus', 'twogentlemen',
+                'henryvi1', 'henryvi2', 'henryvi3', 'henryviii',
+                'richardii', 'richardiii', 'antony', 'coriolanus',
+                'juliuscaesar', 'henryv', 'titus', 'timon', 'henryiv2'
+            ];
+            const shouldHideVariorum = playsWithoutNewVariorum.includes(currentPlay);
+            console.log('🚫 formatStructuredAnalysis - Should hide variorum for', currentPlay, '?', shouldHideVariorum);
             
             let formattedContent = '';
             
             // Format each analysis section FIRST (Analysis at the top)
             for (const [sectionName, sectionContent] of Object.entries(analysis)) {
+                // SKIP New Variorum Analysis section entirely for blacklisted plays
+                if (sectionName === 'New Variorum Analysis' && shouldHideVariorum) {
+                    console.log('🚫 SKIPPING New Variorum Analysis section for blacklisted play:', currentPlay);
+                    continue;
+                }
+                
                 if (sectionContent && sectionContent.trim()) {
                     formattedContent += '<div class="analysis-section">';
                     formattedContent += `<h4>${sectionName}</h4>`;
@@ -9826,7 +9882,8 @@
             // Only these 5 plays should have New Variorum Analysis
             const playsWithNewVariorum = ['hamlet', 'othello', 'romeo', 'macbeth', 'kinglear'];
             
-            const shouldShowNewVariorum = playsWithNewVariorum.includes(currentPlay);
+            // Use the already defined playsWithoutNewVariorum blacklist (defined at top of function)
+            const shouldShowNewVariorum = playsWithNewVariorum.includes(currentPlay) && !playsWithoutNewVariorum.includes(currentPlay);
             console.log('🎭 formatStructuredAnalysis - Current play:', currentPlay, '- Show New Variorum?', shouldShowNewVariorum);
             
             // Only add New Variorum Analysis for plays that should have it
@@ -11424,6 +11481,21 @@
         // Debug function to manually show critics button (call from console)
         function debugShowCriticsButton() {
             console.log('🔧 Debug: Forcing critics button to show');
+            
+            // Check if this play should show New Variorum Analysis
+            const playsWithoutNewVariorum = [
+                'allswell', 'comedyoferrors', 'measureformeasure', 'merrywives',
+                'pericles', 'taming', 'troilus', 'twogentlemen',
+                'henryvi1', 'henryvi2', 'henryvi3', 'henryviii',
+                'richardii', 'richardiii', 'antony', 'coriolanus',
+                'juliuscaesar', 'henryv', 'titus', 'timon', 'henryiv2'
+            ];
+            
+            if (playsWithoutNewVariorum.includes(currentPlay)) {
+                console.log('🚫 Debug: Cannot show variorum for blacklisted play:', currentPlay);
+                return;
+            }
+            
             const criticsButtonContainer = document.getElementById('criticsButtonContainer');
             const variorumSection = document.getElementById('variorumSection');
             
