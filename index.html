@@ -5457,20 +5457,6 @@
             console.log('🎭 Using actual currentScene for force show test:', currentScene);
             currentTab = 'fullfathomfive';
             
-            // Check if this play should show New Variorum Analysis
-            const playsWithoutNewVariorum = [
-                'allswell', 'comedyoferrors', 'measureformeasure', 'merrywives',
-                'pericles', 'taming', 'troilus', 'twogentlemen',
-                'henryvi1', 'henryvi2', 'henryvi3', 'henryviii',
-                'richardii', 'richardiii', 'antony', 'coriolanus',
-                'juliuscaesar', 'henryv', 'titus', 'timon', 'henryiv2'
-            ];
-            
-            if (playsWithoutNewVariorum.includes(currentPlay)) {
-                console.log('🚫 Cannot force show variorum for blacklisted play:', currentPlay);
-                return;
-            }
-            
             // Force show the variorum section
             const variorumSection = document.getElementById('variorumSection');
             const variorumContent = document.getElementById('variorumContent');
@@ -9942,27 +9928,12 @@
             console.log('Analysis sections:', Object.keys(analysis));
             console.log('Relevant notes:', relevantNotes);
             
-            // Define blacklist of 21 plays WITHOUT New Variorum editions - check FIRST before any rendering
-            const playsWithoutNewVariorum = [
-                'allswell', 'comedyoferrors', 'measureformeasure', 'merrywives',
-                'pericles', 'taming', 'troilus', 'twogentlemen',
-                'henryvi1', 'henryvi2', 'henryvi3', 'henryviii',
-                'richardii', 'richardiii', 'antony', 'coriolanus',
-                'juliuscaesar', 'henryv', 'titus', 'timon', 'henryiv2'
-            ];
-            const shouldHideVariorum = playsWithoutNewVariorum.includes(currentPlay);
-            console.log('🚫 formatStructuredAnalysis - Should hide variorum for', currentPlay, '?', shouldHideVariorum);
+
             
             let formattedContent = '';
             
             // Format each analysis section FIRST (Analysis at the top)
             for (const [sectionName, sectionContent] of Object.entries(analysis)) {
-                // SKIP New Variorum Analysis section entirely for blacklisted plays
-                if (sectionName === 'New Variorum Analysis' && shouldHideVariorum) {
-                    console.log('🚫 SKIPPING New Variorum Analysis section for blacklisted play:', currentPlay);
-                    continue;
-                }
-                
                 if (sectionContent && sectionContent.trim()) {
                     formattedContent += '<div class="analysis-section">';
                     formattedContent += `<h4>${sectionName}</h4>`;
@@ -11599,21 +11570,6 @@
         // Debug function to manually show critics button (call from console)
         function debugShowCriticsButton() {
             console.log('🔧 Debug: Forcing critics button to show');
-            
-            // Check if this play should show New Variorum Analysis
-            const playsWithoutNewVariorum = [
-                'allswell', 'comedyoferrors', 'measureformeasure', 'merrywives',
-                'pericles', 'taming', 'troilus', 'twogentlemen',
-                'henryvi1', 'henryvi2', 'henryvi3', 'henryviii',
-                'richardii', 'richardiii', 'antony', 'coriolanus',
-                'juliuscaesar', 'henryv', 'titus', 'timon', 'henryiv2'
-            ];
-            
-            if (playsWithoutNewVariorum.includes(currentPlay)) {
-                console.log('🚫 Debug: Cannot show variorum for blacklisted play:', currentPlay);
-                return;
-            }
-            
             const criticsButtonContainer = document.getElementById('criticsButtonContainer');
             const variorumSection = document.getElementById('variorumSection');
             
