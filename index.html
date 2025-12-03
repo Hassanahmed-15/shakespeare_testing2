@@ -9940,19 +9940,10 @@
                     
                     // Add buttons specifically for New Variorum Analysis section (only for appropriate plays)
                     if (sectionName === 'New Variorum Analysis') {
-                        // 21 plays without NV editions - show hardcoded message
-                        const playsWithoutNV = [
-                            'allswell', 'comedyoferrors', 'measureformeasure', 'merrywives',
-                            'pericles', 'taming', 'troilus', 'twogentlemen',
-                            'henryvi1', 'henryvi2', 'henryvi3', 'henryviii',
-                            'richardii', 'richardiii', 'antony', 'coriolanus',
-                            'juliuscaesar', 'henryv', 'titus', 'timon', 'henryiv2'
-                        ];
-                        
+                        // 21 plays without NV - just print "No New Variorum notes"
+                        const playsWithoutNV = ['allswell', 'comedyoferrors', 'measureformeasure', 'merrywives', 'pericles', 'taming', 'troilus', 'twogentlemen', 'henryvi1', 'henryvi2', 'henryvi3', 'henryviii', 'richardii', 'richardiii', 'antony', 'coriolanus', 'juliuscaesar', 'henryv', 'titus', 'timon', 'henryiv2'];
                         if (playsWithoutNV.includes(currentPlay)) {
-                            // HARDCODED MESSAGE for 21 plays
-                            formattedContent += '<div class="section-content"><p><em>No historical commentary for this play.</em></p></div>';
-                            formattedContent += '</div>';
+                            formattedContent += '<div class="section-content"><p>No New Variorum notes.</p></div></div>';
                             continue;
                         }
                         
