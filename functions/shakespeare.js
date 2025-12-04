@@ -398,7 +398,7 @@ async function handleCriticsAnalysis(body, headers) {
 
     // Create a timeout promise
     const timeoutPromise = new Promise((_, reject) => {
-      setTimeout(() => reject(new Error('Request timeout')), 25000) // 25 second timeout
+      setTimeout(() => reject(new Error('Request timeout')), 90000) // 90 second timeout
     })
 
     const fetchPromise = fetch('https://api.openai.com/v1/chat/completions', {
