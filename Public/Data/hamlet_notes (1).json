@@ -1,8 +1,114 @@
 {
   "DRAMATIS PERSONAE": {
     "1": {
-      "play": "DRAMATIS PERSONAE\nHAMLET\n\nClaudius, King of Denmark.\nHamlet, son to the late, and nephew to the present, King.\nFortinbras, Prince of Norway.\nPolonius, Lord Chamberlain.\nHoratio, friend to Hamlet.\nLaertes, son to Polonius.\nVoltimand,\nCornelius,\nRosencrantz,\nGuildenstern,  Courtiers.\nOsric,\nA Gentleman,\nA Priest.\nMarcellus,\nBernardo,   Officers.\nFrancisco, a soldier.\nReynaldo, servant to Polonius.\nPlayers.\nTwo Clowns, grave-diggers.\nA Captain.\nEnglish Ambassadors.\n\nGertrude, Queen of Denmark, and mother to Hamlet.\nOphelia, daughter to Polonius.\n\nLords, Ladies, Officers, Soldiers, Sailors, Messengers, and other Attendants.",
+      "play": "Claudius, King of Denmark.",
+      "notes": [
+        "Dramatis Personæ] First given by Rowe."
+      ]
+    },
+    "2": {
+      "play": "Hamlet, son to the late, and nephew to the present, King.",
       "notes": []
+    },
+    "3": {
+      "play": "Fortinbras, Prince of Norway.",
+      "notes": []
+    },
+    "4": {
+      "play": "Polonius, Lord Chamberlain.",
+      "notes": []
+    },
+    "5": {
+      "play": "Horatio, friend to Hamlet.",
+      "notes": []
+    },
+    "6": {
+      "play": "Laertes, son to Polonius.",
+      "notes": []
+    },
+    "7": {
+      "play": "Voltimand.",
+      "notes": []
+    },
+    "8": {
+      "play": "Cornelius.",
+      "notes": []
+    },
+    "9": {
+      "play": "Rosencrantz.",
+      "notes": [
+        "Rosencrantz] Theob. Rosenkrans. Rowe. Rosencrantz. Pope, Jen. Rosen, Cross. Han."
+      ]
+    },
+    "10": {
+      "play": "Guildenstern.",
+      "notes": []
+    },
+    "11": {
+      "play": "Osric.",
+      "notes": []
+    },
+    "12": {
+      "play": "A Gentleman.",
+      "notes": []
+    },
+    "13": {
+      "play": "A Priest.",
+      "notes": []
+    },
+    "14": {
+      "play": "Marcellus, Officer.",
+      "notes": []
+    },
+    "15": {
+      "play": "Bernardo, Officer.",
+      "notes": []
+    },
+    "16": {
+      "play": "Francisco, a soldier.",
+      "notes": []
+    },
+    "17": {
+      "play": "Reynaldo, servant to Polonius.",
+      "notes": []
+    },
+    "18": {
+      "play": "Players.",
+      "notes": []
+    },
+    "19": {
+      "play": "Two Clowns, grave-diggers.",
+      "notes": []
+    },
+    "20": {
+      "play": "A Captain.",
+      "notes": []
+    },
+    "21": {
+      "play": "English Ambassadors.",
+      "notes": []
+    },
+    "22": {
+      "play": "Gertrude, Queen of Denmark, and mother to Hamlet.",
+      "notes": []
+    },
+    "23": {
+      "play": "Ophelia, daughter to Polonius.",
+      "notes": []
+    },
+    "24": {
+      "play": "Lords, Ladies, Officers, Soldiers, Sailors, Messengers, and other Attendants.",
+      "notes": []
+    },
+    "25": {
+      "play": "Ghost of Hamlet's Father.",
+      "notes": []
+    },
+    "26": {
+      "play": "Scene: Elsinore.",
+      "notes": [
+        "Elsinore] Mal. Elsinour. Rowe +. Elsinour. Cap. Elsinore. Steev. Denmark. Gloster."
+      ]
     }
   },
   "ACT 1, SCENE 1": {

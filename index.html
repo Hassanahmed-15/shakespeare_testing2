@@ -8681,7 +8681,7 @@
                 if (!Array.isArray(sceneContent)) {
                     console.warn('⚠️ Scene content is not an array, converting...');
                     sceneContent = [sceneContent.toString()];
-                }
+            }
             
             // Display each line exactly as it appears in the file, preserving whitespace
             sceneContent.forEach((line, index) => {
@@ -9333,8 +9333,8 @@
                     variorumSection.style.display = 'none';
                     console.log('🚫 Variorum section HIDDEN for', currentPlay);
                 } else {
-                    variorumSection.style.display = 'block';
-                    console.log('✅ Variorum section displayed');
+                variorumSection.style.display = 'block';
+                console.log('✅ Variorum section displayed');
                 }
             } else {
                 console.error('❌ Variorum section not found');

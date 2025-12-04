@@ -1,7 +1,113 @@
 {
   "DRAMATIS PERSONAE": {
     "1": {
-      "play": "DRAMATIS PERSONAE\nROMEO\n\nFRIAR JOHN\nFRIAR LAURENCE\nFirst Citizen\nFirst Musician\nFirst Servant\nLADY CAPULET\nLADY MONTAGUE\nPRINCE\nSecond Capulet\nSecond Musician\nSecond Servant\nThird Musician\n\nABRAHAM\nBALTHASAR\nBENVOLIO\nCAPULET\nGREGORY\nJULIET\nMERCUTIO\nMONTAGUE\nPARIS\nPETER\nROMEO\nSAMPSON\nTYBALT",
+      "play": "Escalus, prince of Verona.",
+      "notes": [
+        "Dramatis Personæ.] Dyce, Cambr. First given, imperfectly, by Rowe."
+      ]
+    },
+    "2": {
+      "play": "Paris, a young nobleman, kinsman to the prince.",
+      "notes": []
+    },
+    "3": {
+      "play": "Montague, heads of two Houses at variance with each other.",
+      "notes": []
+    },
+    "4": {
+      "play": "Capulet, heads of two Houses at variance with each other.",
+      "notes": []
+    },
+    "5": {
+      "play": "Romeo, son to Montague.",
+      "notes": []
+    },
+    "6": {
+      "play": "Mercutio, kinsman to the prince, and friend to Romeo.",
+      "notes": []
+    },
+    "7": {
+      "play": "Benvolio, nephew to Montague, and friend to Romeo.",
+      "notes": []
+    },
+    "8": {
+      "play": "Tybalt, nephew to Lady Capulet.",
+      "notes": []
+    },
+    "9": {
+      "play": "An old man, of the Capulet family.",
+      "notes": [
+        "of the… family] his cousin, Capell. Uncle to Capulet, Var."
+      ]
+    },
+    "10": {
+      "play": "Friar Laurence, a Franciscan.",
+      "notes": []
+    },
+    "11": {
+      "play": "Friar John, of the same order.",
+      "notes": []
+    },
+    "12": {
+      "play": "Balthasar, servant to Romeo.",
+      "notes": []
+    },
+    "13": {
+      "play": "Sampson, servant to Capulet.",
+      "notes": []
+    },
+    "14": {
+      "play": "Gregory, servant to Capulet.",
+      "notes": []
+    },
+    "15": {
+      "play": "Peter, servant to Juliet's nurse.",
+      "notes": []
+    },
+    "16": {
+      "play": "Abraham, servant to Montague.",
+      "notes": [
+        "Abraham] Dyce, Cambr. Abram, Var. et cet."
+      ]
+    },
+    "17": {
+      "play": "An Apothecary.",
+      "notes": []
+    },
+    "18": {
+      "play": "Three Musicians.",
+      "notes": []
+    },
+    "19": {
+      "play": "Page to Paris; another Page; an Officer.",
+      "notes": []
+    },
+    "20": {
+      "play": "Lady Montague, wife to Montague.",
+      "notes": []
+    },
+    "21": {
+      "play": "Lady Capulet, wife to Capulet.",
+      "notes": []
+    },
+    "22": {
+      "play": "Juliet, daughter to Capulet.",
+      "notes": []
+    },
+    "23": {
+      "play": "Nurse to Juliet.",
+      "notes": []
+    },
+    "24": {
+      "play": "Citizens of Verona; Kinsfolk of both Houses; Maskers, Guards, Watchmen, and Attendants.",
+      "notes": []
+    },
+    "25": {
+      "play": "Chorus.",
+      "notes": []
+    },
+    "26": {
+      "play": "Scene: Verona: Mantua.",
       "notes": []
     }
   },

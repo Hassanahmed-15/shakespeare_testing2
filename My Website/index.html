@@ -2303,7 +2303,7 @@
         /* Base style for all link buttons */
         .link-btn {
             display: block;
-            width: 100%;
+                width: 100%;
             padding: 10px 14px;
             border-radius: var(--r-md);
             font-size: 14px;
@@ -2642,9 +2642,9 @@
                             </div>
                             <div class="name-instructions">
                                 The system detected the play name above. You can modify it if needed, then click "Add Play" to add it to your library.
-                            </div>
-                        </div>
-                        
+        </div>
+    </div>
+
                         <div class="upload-success" id="uploadSuccess">
                             ✅ Play uploaded successfully! You can now select it from the Library dropdown.
                         </div>
@@ -3948,9 +3948,9 @@
                     <div class="empty-title">Add a play to begin</div>
                     <div class="empty-sub">Upload a text file in Settings. We'll auto-index acts and scenes.</div>
                     <button class="btn btn-primary" onclick="openSettings()">Open Settings</button>
-                </div>
             </div>
-
+        </div>
+        
         </div>
 
         <!-- Analysis Pane -->
@@ -3960,7 +3960,7 @@
                 <button onclick="switchTab('basic')" aria-pressed="true">Basic</button>
                 <button onclick="switchTab('expert')" aria-pressed="false">Expert</button>
                 <button onclick="switchTab('fullfathomfive')" aria-pressed="false">Full Fathom Five</button>
-            </div>
+    </div>
 
             <!-- AI Analysis Content -->
             <div class="analysis-header">
@@ -7287,9 +7287,9 @@
                 const playNameInput = document.getElementById('playNameInput');
                 if (!playNameInput) {
                     console.error('playNameInput element not found');
-                    return;
-                }
-                
+                return;
+            }
+            
                 const playName = playNameInput.value.trim();
                 console.log('Play name:', playName);
                 console.log('Temp play data:', window.tempPlayData);
@@ -9916,7 +9916,7 @@
                     <button onclick="switchTab('basic')" aria-pressed="${currentTab === 'basic' ? 'true' : 'false'}">Basic</button>
                     <button onclick="switchTab('expert')" aria-pressed="${currentTab === 'expert' ? 'true' : 'false'}">Expert</button>
                     <button onclick="switchTab('fullfathomfive')" aria-pressed="${currentTab === 'fullfathomfive' ? 'true' : 'false'}">Full Fathom Five</button>
-                </div>
+                        </div>
 
                 <!-- Analyze Button -->
                 <button class="analyze-button" id="analyzeButton" onclick="explainHighlighted()" style="display: block;">Analyze Text</button>
@@ -9926,7 +9926,7 @@
                     <div class="meta">${playInfo} — ${wordCount} ${wordCount === 1 ? 'word' : 'words'} selected</div>
                     <div class="analysis-content">
                         ${formattedContent}
-                    </div>
+                        </div>
                     
                     <!-- Follow-up Section -->
                     <h3>Ask a follow-up question</h3>
@@ -10025,7 +10025,7 @@
                 // For Full Fathom Five, apply paragraph formatting but not section formatting
                 formattedContent = content.replace(/\n\n/g, '</p><p>').replace(/\n/g, '<br>');
                 formattedContent = '<p>' + formattedContent + '</p>';
-            } else {
+                } else {
                 formattedContent = formatAnalysisContent(content);
             }
             
@@ -10839,7 +10839,7 @@
                 searchQuery = `${playName} ${actInfo} Shakespeare`;
             } else if (sceneName) {
                 searchQuery = `${playName} ${sceneName} Shakespeare`;
-            } else {
+                } else {
                 searchQuery = `${playName} Shakespeare`;
             }
             
