@@ -1,7 +1,130 @@
 {
   "DRAMATIS PERSONAE": {
     "1": {
-      "play": "DRAMATIS PERSONAE\nMACBETH\n\nBoth Murderers\nFirst Apparition\nFirst Murderer\nFirst Witch\nLADY MACBETH\nLADY MACDUFF\nOld Man\nSecond Apparition\nSecond Murderer\nSecond Witch\nThird Apparition\nThird Murderer\nThird Witch\nYOUNG SIWARD\n\nALL\nANGUS\nATTENDANT\nBANQUO\nCAITHNESS\nDONALBAIN\nDUNCAN\nFLEANCE\nHECATE\nLENNOX\nMACBETH\nMACDUFF\nMALCOLM\nMENTEITH\nROSS\nSEYTON\nSIWARD",
+      "play": "DUNCAN, King of Scotland.",
+      "notes": [
+        "Dramatis Personæ] As given by Dyce. First given by Rowe."
+      ]
+    },
+    "2": {
+      "play": "MALCOLM, his sons.",
+      "notes": []
+    },
+    "3": {
+      "play": "DONALBAIN,",
+      "notes": []
+    },
+    "4": {
+      "play": "MACBETH, generals of the King's army.",
+      "notes": [
+        "Macbeth] Macbeth, his cousin and general of his forces. Cap."
+      ]
+    },
+    "5": {
+      "play": "BANQUO,",
+      "notes": [
+        "Banquo] The pronunciation of this name is perhaps noteworthy. Holinshed spells it uniformly \"Banquho.\" Sir Walter Scott (iii, 135, foot-note) says: \"It is well known to all who have looked in a Scottish book of antiquity, that the letters qh, absurdly printed quh, are almost uniformly placed for wh, of which it has the power and force. So whom is printed quhom, what is printed quhat, &c., to the very unnecessary encumbrance of the Southron. This mode of expressing the sound is not, however, peculiar to Scotland. In the English chronicles, Guildhall is often printed Whidhall. In the Spanish, the same mode of writing is universally adopted, as alguazil is pronounced ahwasil. From this it would seem that Holinshed's Banquho was, in reality, Banqho, where the guttural qh was represented by qu, and pronounced Banwo. When the name first appears in the text (I, ii, 41) it is spelt Banqouh, which suggests that the compositor simply reversed the last two letters. At its next appearance (I, iii, 73) it is spelt without the final h, and so continues throughout the play. Forman, in his account (see Appendix), spells the name Banko, Bancko, Banco, and possibly wrote the name phonetically, just as he wrote Mackdowe, Mackbeth, &c. Also Burton, Anatomy of Melancholy, Pt. i, sect. 2, memb. i, subse. 2, p. 64, ed. 1621, in a passage referring to the meeting of Macbeth and Banquo with the Witches, spells the name Banco. The old form \"banket\" for banquet, and these two illustrations from Forman and from Burton, suggest that this name, in the time of Shakespeare, was possibly pronounced Banko. —Ed. ii.",
+        "5–12. Banquo… Fleance] Chalmers (Caledonia, i, 411)."
+      ]
+    },
+    "6": {
+      "play": "MACDUFF, noblemen of Scotland.",
+      "notes": []
+    },
+    "7": {
+      "play": "LENNOX,",
+      "notes": [
+        "7, 9, 11. Lennox, Menteith, Caithness] Lennox, Menteith, Cathness in all editions before Dyce's."
+      ]
+    },
+    "8": {
+      "play": "ROSS,",
+      "notes": []
+    },
+    "9": {
+      "play": "MENTEITH,",
+      "notes": [
+        "7, 9, 11. Lennox, Menteith, Caithness] Lennox, Menteith, Cathness in all editions before Dyce's."
+      ]
+    },
+    "10": {
+      "play": "ANGUS,",
+      "notes": []
+    },
+    "11": {
+      "play": "CAITHNESS,",
+      "notes": [
+        "7, 9, 11. Lennox, Menteith, Caithness] Lennox, Menteith, Cathness in all editions before Dyce's."
+      ]
+    },
+    "12": {
+      "play": "FLEANCE, son to Banquo.",
+      "notes": [
+        "5–12. Banquo… Fleance] Chalmers (Caledonia, i, 411)."
+      ]
+    },
+    "13": {
+      "play": "SIWARD, Earl of Northumberland, general of the English forces.",
+      "notes": []
+    },
+    "14": {
+      "play": "YOUNG SIWARD, his son.",
+      "notes": []
+    },
+    "15": {
+      "play": "SEYTON, an officer attending on Macbeth.",
+      "notes": []
+    },
+    "16": {
+      "play": "Son to Macduff.",
+      "notes": []
+    },
+    "17": {
+      "play": "An English Doctor.",
+      "notes": []
+    },
+    "18": {
+      "play": "A Scottish Doctor.",
+      "notes": []
+    },
+    "19": {
+      "play": "A Porter.",
+      "notes": []
+    },
+    "20": {
+      "play": "An Old Man.",
+      "notes": []
+    },
+    "21": {
+      "play": "Three Murderers.",
+      "notes": []
+    },
+    "22": {
+      "play": "LADY MACBETH.",
+      "notes": []
+    },
+    "23": {
+      "play": "LADY MACDUFF.",
+      "notes": []
+    },
+    "24": {
+      "play": "A Gentlewoman, attending on Lady Macbeth.",
+      "notes": []
+    },
+    "25": {
+      "play": "HECATE.",
+      "notes": []
+    },
+    "26": {
+      "play": "Witches.",
+      "notes": []
+    },
+    "27": {
+      "play": "Apparitions.",
+      "notes": []
+    },
+    "28": {
+      "play": "Lords, Officers, Soldiers, Attendants, and Messengers.",
       "notes": []
     }
   },

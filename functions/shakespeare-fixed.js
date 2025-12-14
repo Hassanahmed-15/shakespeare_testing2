@@ -368,12 +368,13 @@ exports.handler = async (event, context) => {
 
     let structure = analysisStructure[analysisMode] || analysisStructure.basic
     
-    // Exclude 'New Variorum Analysis' for plays without New Variorum editions
+    // Exclude 'New Variorum Analysis' for the 21 plays without New Variorum editions
     const playsWithoutNewVariorum = [
-      'asyoulikeit', 'coriolanus', 'cymbeline', 'henryiv1', 'henryiv2', 
-      'juliuscaesar', 'kingjohn', 'loveslabourslost', 'merchantofvenice', 
-      'midsummer', 'muchado', 'richardii', 'richardiii', 
-      'tempest', 'winterstale', 'troilus', 'twelfthnight'
+      'allswell', 'comedyoferrors', 'measureformeasure', 'merrywives',
+      'pericles', 'taming', 'troilus', 'twogentlemen',
+      'henryvi1', 'henryvi2', 'henryvi3', 'henryviii',
+      'richardii', 'richardiii', 'antony', 'coriolanus',
+      'juliuscaesar', 'henryv', 'titus', 'timon', 'henryiv2'
     ];
     
     if (analysisMode === 'fullfathomfive' && playsWithoutNewVariorum.includes(playName)) {
@@ -461,12 +462,13 @@ FORMAT REQUIREMENTS:
       console.log('Full Fathom Five level detected - using comprehensive prompt with Textual Variants and Language and Rhetoric sections');
       console.log('DEBUG: Function version updated at', new Date().toISOString());
       
-      // Check if this play has New Variorum Analysis - exclude for plays without editions
+      // Check if this play has New Variorum Analysis - exclude the 21 plays without editions
       const playsWithoutNewVariorum = [
-        'asyoulikeit', 'coriolanus', 'cymbeline', 'henryiv1', 'henryiv2', 
-        'juliuscaesar', 'kingjohn', 'loveslabourslost', 'merchantofvenice', 
-        'midsummer', 'muchado', 'richardii', 'richardiii', 
-        'tempest', 'winterstale', 'troilus', 'twelfthnight'
+        'allswell', 'comedyoferrors', 'measureformeasure', 'merrywives',
+        'pericles', 'taming', 'troilus', 'twogentlemen',
+        'henryvi1', 'henryvi2', 'henryvi3', 'henryviii',
+        'richardii', 'richardiii', 'antony', 'coriolanus',
+        'juliuscaesar', 'henryv', 'titus', 'timon', 'henryiv2'
       ];
       const includeNewVariorum = !playsWithoutNewVariorum.includes(playName)
       
@@ -666,11 +668,13 @@ IMPORTANT: The notes above are the COMPLETE notes from the database. You MUST in
     console.log('Looking for sections:', sections)
     
     // Check if New Variorum Analysis was captured (only for plays with New Variorum editions)
+    // Exclude the 21 plays without New Variorum editions
     const playsWithoutNewVariorum = [
-      'asyoulikeit', 'coriolanus', 'cymbeline', 'henryiv1', 'henryiv2', 
-      'juliuscaesar', 'kingjohn', 'loveslabourslost', 'merchantofvenice', 
-      'midsummer', 'muchado', 'richardii', 'richardiii', 
-      'tempest', 'winterstale', 'troilus', 'twelfthnight'
+      'allswell', 'comedyoferrors', 'measureformeasure', 'merrywives',
+      'pericles', 'taming', 'troilus', 'twogentlemen',
+      'henryvi1', 'henryvi2', 'henryvi3', 'henryviii',
+      'richardii', 'richardiii', 'antony', 'coriolanus',
+      'juliuscaesar', 'henryv', 'titus', 'timon', 'henryiv2'
     ];
     
     if (!playsWithoutNewVariorum.includes(playName)) {

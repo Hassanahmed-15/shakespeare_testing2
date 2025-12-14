@@ -1,7 +1,104 @@
 {
   "DRAMATIS PERSONAE": {
     "1": {
-      "play": "DRAMATIS PERSONAE\nKINGLEAR\n\nKING LEAR\nKING OF FRANCE\nOld Man\nSecond Servant\nThird Servant\n\nALBANY\nBURGUNDY\nCORDELIA\nCORNWALL\nCURAN\nEDGAR\nEDMUAND\nEDMUND\nGLOUCESTER\nGONERIL\nKENT\nLEAR\nOSWALD\nREGAN",
+      "play": "Lear, king of Britain.",
+      "notes": [
+        "Dramatis Personæ.] Substantially by Malone. First given by Rowe."
+      ]
+    },
+    "2": {
+      "play": "King of France.",
+      "notes": []
+    },
+    "3": {
+      "play": "Duke of Burgundy.",
+      "notes": []
+    },
+    "4": {
+      "play": "Duke of Cornwall.",
+      "notes": []
+    },
+    "5": {
+      "play": "Duke of Albany.",
+      "notes": []
+    },
+    "6": {
+      "play": "Earl of Kent.",
+      "notes": []
+    },
+    "7": {
+      "play": "Earl of Gloucester.",
+      "notes": [
+        "Gloucester.] Thus spelled by Staunton; all before him, Gloster, or Glo'ster."
+      ]
+    },
+    "8": {
+      "play": "Edgar, son to Gloucester.",
+      "notes": []
+    },
+    "9": {
+      "play": "Edmund, bastard son to Gloucester.",
+      "notes": []
+    },
+    "10": {
+      "play": "Fool.",
+      "notes": []
+    },
+    "11": {
+      "play": "Curan, a courtier.",
+      "notes": []
+    },
+    "12": {
+      "play": "Old Man, tenant to Gloucester.",
+      "notes": []
+    },
+    "13": {
+      "play": "Doctor.",
+      "notes": []
+    },
+    "14": {
+      "play": "Oswald, steward to Goneril.",
+      "notes": [
+        "14, 18. Oswald… Cornwall.] Omitted by Rowe +."
+      ]
+    },
+    "15": {
+      "play": "A captain employed by Edmund.",
+      "notes": []
+    },
+    "16": {
+      "play": "Gentleman attendant on Cordelia.",
+      "notes": []
+    },
+    "17": {
+      "play": "Herald.",
+      "notes": []
+    },
+    "18": {
+      "play": "Servants to Cornwall.",
+      "notes": [
+        "14, 18. Oswald… Cornwall.] Omitted by Rowe +.",
+        "Capell reads thus: Servants to Cornwall, three. Officers in the Troop of Albany, four. Messengers, two."
+      ]
+    },
+    "19": {
+      "play": "Goneril, daughter to Lear.",
+      "notes": []
+    },
+    "20": {
+      "play": "Regan, daughter to Lear.",
+      "notes": []
+    },
+    "21": {
+      "play": "Cordelia, daughter to Lear.",
+      "notes": []
+    },
+    "22": {
+      "play": "Knights of Lear's train, Captains, Messengers, Soldiers, and Attendants.",
+      "notes": []
+    },
+    "23": {
+      "play": "Scene: Britain.",
       "notes": []
     }
   },
