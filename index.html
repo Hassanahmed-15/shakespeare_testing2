@@ -4,17 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-age=0">
-    <meta http-equiv="Pragma" content="no-cache">dd .ush
-    
+    <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <meta http-equiv="Last-Modified" content="0">
     <meta http-equiv="ETag" content="0">
     <title>Shakespeare Digital Variorum</title>
     <link rel="stylesheet" href="styles/tokens.css?v=1.3">
     <style>
-        /* Theme variables - Light mode (default) */
+        /* Theme variables - Light mode only */
         :root {
-            --bg: #f7f7f8;
+            --bg: #ffffff;
             --surface: #ffffff;
             --ink-1: #1d1d1f;
             --ink-2: #6e6e73;
@@ -23,52 +22,6 @@
             --hl: rgba(0, 125, 250, 0.15);
             --primary: #007aff;
             --shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-        }
-
-        /* Dark mode */
-        [data-theme="dark"] {
-            --bg: #000000;
-            --surface: #1c1c1e;
-            --ink-1: #f5f5f7;
-            --ink-2: #98989d;
-            --ink-3: #6e6e73;
-            --line: #38383a;
-            --hl: rgba(10, 132, 255, 0.25);
-            --primary: #0a84ff;
-            --shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-        }
-
-        [data-theme="dark"] .header {
-            background: rgba(28, 28, 30, 0.85);
-        }
-
-        /* Theme toggle button */
-        .theme-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-            background: var(--surface);
-            border: 1px solid var(--line);
-            border-radius: 20px;
-            padding: 8px 16px;
-            cursor: pointer;
-            font-size: 14px;
-            color: var(--ink-1);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-        }
-
-        .theme-toggle:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-        }
-
-        .theme-toggle-icon {
-            font-size: 18px;
         }
 
         /* Loading indicator styles */
@@ -1167,15 +1120,16 @@
         .layout {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: var(--s-4);
+            gap: var(--s-1);
             height: calc(100vh - 70px - var(--s-4) * 2);
             min-height: calc(100vh - 70px - var(--s-4) * 2);
             max-height: calc(100vh - 70px - var(--s-4) * 2);
             background: var(--bg);
             margin-top: 70px;
-            margin-left: 280px;
+            margin-left: calc(280px + 4px);
             padding: var(--s-4);
             box-sizing: border-box;
+            align-items: stretch;
         }
 
         /* Remove the black separator line */
@@ -1212,12 +1166,10 @@
             border-radius: var(--r-lg);
             padding: var(--s-4);
             position: fixed;
-            top: calc(70px + var(--s-4));
-            left: var(--s-4);
+            top: calc(70px + var(--s-4)) !important;
+            height: calc(100vh - 70px - var(--s-4) * 8) !important;
+            left: var(--s-3);
             width: 280px;
-            height: calc(100vh - 70px - var(--s-4) * 4);
-            min-height: calc(100vh - 70px - var(--s-4) * 4);
-            max-height: calc(100vh - 70px - var(--s-4) * 4);
             overflow-y: auto;
             box-shadow: var(--shadow);
             z-index: 1000;
@@ -2663,11 +2615,6 @@
     </style>
 </head>
 <body>
-    <!-- Theme Toggle Button -->
-    <button class="theme-toggle" onclick="toggleTheme()" id="themeToggle">
-        <span class="theme-toggle-icon" id="themeIcon">🌙</span>
-        <span id="themeText">Dark Mode</span>
-    </button>
 
     <!-- Header -->
     <div class="header">
@@ -4082,40 +4029,6 @@
     <script>
         console.log('=== SCRIPT LOADED AT:', new Date().toISOString(), '===');
         
-        // Theme Toggle Functionality
-        function toggleTheme() {
-            const html = document.documentElement;
-            const currentTheme = html.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            
-            html.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            
-            updateThemeButton(newTheme);
-        }
-        
-        function updateThemeButton(theme) {
-            const icon = document.getElementById('themeIcon');
-            const text = document.getElementById('themeText');
-            
-            if (theme === 'dark') {
-                icon.textContent = '☀️';
-                text.textContent = 'Light Mode';
-            } else {
-                icon.textContent = '🌙';
-                text.textContent = 'Dark Mode';
-            }
-        }
-        
-        // Load saved theme preference on page load
-        function loadThemePreference() {
-            const savedTheme = localStorage.getItem('theme') || 'light';
-            document.documentElement.setAttribute('data-theme', savedTheme);
-            updateThemeButton(savedTheme);
-        }
-        
-        // Apply theme immediately (before page renders)
-        loadThemePreference();
         
         let selectedText = '';
         let plays = {};
