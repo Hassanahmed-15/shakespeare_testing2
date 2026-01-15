@@ -1213,7 +1213,8 @@
             top: 70px;
             left: var(--s-4);
             width: 280px;
-            height: calc(100vh - 70px - 150px - var(--s-4) * 2);
+            /* Match the main layout height so all three panels line up visually */
+            height: calc(100vh - 70px - var(--s-4) * 2);
             overflow-y: auto;
             box-shadow: var(--shadow);
             z-index: 1000;

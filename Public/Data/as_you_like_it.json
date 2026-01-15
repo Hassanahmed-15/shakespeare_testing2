@@ -1,7 +1,115 @@
 {
   "DRAMATIS PERSONAE": {
     "1": {
-      "play": "DRAMATIS PERSONAE\nAS YOU LIKE IT\n\nDUKE FREDERICK\nDUKE SENIOR\nFirst Lord\nFirst Page\nJAQUES DE BOYS\nLE BEAU\nSIR OLIVER MARTEXT\nSecond Lord\nSecond Page\n\nADAM\nAMIENS\nAUDREY\nCELIA\nCHARLES\nCORIN\nDENNIS\nHYMEN\nJAQUES\nOLIVER\nORLANDO\nPHEBE\nROSALIND\nSILVIUS\nTOUCHSTONE\nWILLIAM",
+      "play": "ORLANDO, youngest son of Sir Rowland de Boys",
+      "notes": []
+    },
+    "2": {
+      "play": "OLIVER, his elder brother",
+      "notes": []
+    },
+    "3": {
+      "play": "SECOND BROTHER, brother to Orlando and Oliver, named Jaques",
+      "notes": []
+    },
+    "4": {
+      "play": "ADAM, servant to Oliver and friend to Orlando",
+      "notes": []
+    },
+    "5": {
+      "play": "DENNIS, servant to Oliver",
+      "notes": []
+    },
+    "6": {
+      "play": "ROSALIND, daughter to Duke Senior",
+      "notes": []
+    },
+    "7": {
+      "play": "CELIA, Rosalind's cousin, daughter to Duke Frederick",
+      "notes": []
+    },
+    "8": {
+      "play": "TOUCHSTONE, a court Fool",
+      "notes": []
+    },
+    "9": {
+      "play": "DUKE FREDERICK, the usurping duke",
+      "notes": []
+    },
+    "10": {
+      "play": "CHARLES, wrestler at Duke Frederick's court",
+      "notes": []
+    },
+    "11": {
+      "play": "LE BEAU, a courtier at Duke Frederick's court",
+      "notes": []
+    },
+    "12": {
+      "play": "FIRST LORD, attending Duke Frederick",
+      "notes": []
+    },
+    "13": {
+      "play": "SECOND LORD, attending Duke Frederick",
+      "notes": []
+    },
+    "14": {
+      "play": "DUKE SENIOR, the exiled duke, brother to Duke Frederick",
+      "notes": []
+    },
+    "15": {
+      "play": "JAQUES, a lord attending Duke Senior in exile",
+      "notes": []
+    },
+    "16": {
+      "play": "AMIENS, a lord attending Duke Senior in exile",
+      "notes": []
+    },
+    "17": {
+      "play": "FIRST LORD, a lord attending Duke Senior in exile",
+      "notes": []
+    },
+    "18": {
+      "play": "SECOND LORD, a lord attending Duke Senior in exile",
+      "notes": []
+    },
+    "19": {
+      "play": "FIRST PAGE, attending Duke Senior in exile",
+      "notes": []
+    },
+    "20": {
+      "play": "SECOND PAGE, attending Duke Senior in exile",
+      "notes": []
+    },
+    "21": {
+      "play": "CORIN, a shepherd",
+      "notes": []
+    },
+    "22": {
+      "play": "SILVIUS, a young shepherd in love",
+      "notes": []
+    },
+    "23": {
+      "play": "PHOEBE, a disdainful shepherdess",
+      "notes": []
+    },
+    "24": {
+      "play": "AUDREY, a goat-keeper",
+      "notes": []
+    },
+    "25": {
+      "play": "WILLIAM, a country youth in love with Audrey",
+      "notes": []
+    },
+    "26": {
+      "play": "SIR OLIVER MARTEXT, a parish priest",
+      "notes": []
+    },
+    "27": {
+      "play": "HYMEN, god of marriage",
+      "notes": []
+    },
+    "28": {
+      "play": "Lords, Attendants, Musicians",
       "notes": []
     }
   },
