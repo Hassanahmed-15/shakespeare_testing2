@@ -1168,7 +1168,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: var(--s-4);
-            height: calc(100vh - 70px);
+            height: calc(100vh - 70px - var(--s-4) * 2);
             background: var(--bg);
             margin-top: 70px;
             margin-left: 280px;
@@ -1213,7 +1213,6 @@
             top: 70px;
             left: var(--s-4);
             width: 280px;
-            /* Match the main layout height so all three panels line up visually */
             height: calc(100vh - 70px - var(--s-4) * 2);
             overflow-y: auto;
             box-shadow: var(--shadow);
