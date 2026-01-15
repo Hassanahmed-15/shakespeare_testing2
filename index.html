@@ -1213,7 +1213,7 @@
             top: calc(70px + var(--s-4));
             left: var(--s-4);
             width: 280px;
-            height: calc(100vh - 70px - var(--s-4) * 3);
+            height: calc(100vh - 70px - var(--s-4) * 4);
             overflow-y: auto;
             box-shadow: var(--shadow);
             z-index: 1000;
@@ -4044,25 +4044,31 @@
             <!-- New Variorum Analysis Section (Full Fathom Five Only) -->
             <!-- New Variorum Analysis Section will be dynamically added for specific plays only -->
 
-            <!-- Follow-up Section -->
-            <h3>Ask a follow-up question</h3>
-            <div class="follow-up-input">
-                <input type="text" placeholder="Ask a follow-up question..." id="followUpQuestion">
-                <button class="ask-btn" onclick="askFollowUp()">Ask</button>
+            <!-- Follow-up Section - Hidden until analysis is done -->
+            <div id="followUpSection" style="display: none;">
+                <h3>Ask a follow-up question</h3>
+                <div class="follow-up-input">
+                    <input type="text" placeholder="Ask a follow-up question..." id="followUpQuestion">
+                    <button class="ask-btn" onclick="askFollowUp()">Ask</button>
+                </div>
             </div>
 
-            <!-- Media Section - Moved further down -->
-            <h3>Media</h3>
-            <div class="media-actions">
-                <button class="link-btn youtube" onclick="searchYouTube('scene')">Search YouTube for this scene</button>
+            <!-- Media Section - Hidden until analysis is done -->
+            <div id="mediaSection" style="display: none;">
+                <h3>Media</h3>
+                <div class="media-actions">
+                    <button class="link-btn youtube" onclick="searchYouTube('scene')">Search YouTube for this scene</button>
+                </div>
             </div>
 
-            <!-- Research Section - Moved further down -->
-            <h3>Research</h3>
-            <div class="research-actions">
-                <button class="link-btn jstor" onclick="searchJSTOR('passage')">Search JSTOR for this passage/scene</button>
-                <button class="link-btn scholar" onclick="searchGoogleScholar()">Google Scholar</button>
-                <button class="link-btn ise" onclick="openInternetShakespeare()">Internet Shakespeare Editions</button>
+            <!-- Research Section - Hidden until analysis is done -->
+            <div id="researchSection" style="display: none;">
+                <h3>Research</h3>
+                <div class="research-actions">
+                    <button class="link-btn jstor" onclick="searchJSTOR('passage')">Search JSTOR for this passage/scene</button>
+                    <button class="link-btn scholar" onclick="searchGoogleScholar()">Google Scholar</button>
+                    <button class="link-btn ise" onclick="openInternetShakespeare()">Internet Shakespeare Editions</button>
+                </div>
             </div>
         </div>
     </div>
@@ -4881,6 +4887,14 @@
             if (variorumResult) variorumResult.innerHTML = '';
             if (variorumContent) variorumContent.innerHTML = '';
             if (analysisContent) analysisContent.innerHTML = '<p>Highlight text in the play to get AI-powered analysis.</p>';
+            
+            // Hide follow-up, media, and research sections when analysis is cleared
+            const followUpSection = document.getElementById('followUpSection');
+            const mediaSection = document.getElementById('mediaSection');
+            const researchSection = document.getElementById('researchSection');
+            if (followUpSection) followUpSection.style.display = 'none';
+            if (mediaSection) mediaSection.style.display = 'none';
+            if (researchSection) researchSection.style.display = 'none';
             
             // Hide any open info panels
             if (criticsInfo) criticsInfo.style.display = 'none';
@@ -9873,6 +9887,14 @@
                                 isComplete = true;
                                 eventSource.close();
                                 console.log('SSE streaming completed');
+                                
+                                // Show follow-up, media, and research sections after analysis
+                                const followUpSection = document.getElementById('followUpSection');
+                                const mediaSection = document.getElementById('mediaSection');
+                                const researchSection = document.getElementById('researchSection');
+                                if (followUpSection) followUpSection.style.display = 'block';
+                                if (mediaSection) mediaSection.style.display = 'block';
+                                if (researchSection) researchSection.style.display = 'block';
                                 
                                 // Force reset UI after Full Fathom Five analysis completes
                                 setTimeout(() => {
