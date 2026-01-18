@@ -1788,11 +1788,11 @@
             margin: 0;
             white-space: pre;
             font-family: monospace;
-            cursor: pointer;
+            cursor: text;
             padding: 4px 8px;
             border-radius: 4px;
             transition: background-color 0.2s ease;
-            user-select: none;
+            user-select: text;
         }
         
         .play-line:hover {
@@ -5896,6 +5896,8 @@
                 document.getElementById('romeoJulietCriticsModal').style.display = 'block';
             } else if (currentPlay === 'othello') {
                 document.getElementById('othelloCriticsModal').style.display = 'block';
+            } else if (currentPlay === 'henryiv1') {
+                document.getElementById('henryiv1CriticsModal').style.display = 'block';
             } else {
                 document.getElementById('criticsModal').style.display = 'block';
             }
@@ -5935,6 +5937,12 @@
             const criticsModal = document.getElementById('criticsModal');
             const nvModal = document.getElementById('nvModal');
             const rightsModal = document.getElementById('rightsModal');
+            const hamletCriticsModal = document.getElementById('hamletCriticsModal');
+            const kingLearCriticsModal = document.getElementById('kingLearCriticsModal');
+            const romeoJulietCriticsModal = document.getElementById('romeoJulietCriticsModal');
+            const othelloCriticsModal = document.getElementById('othelloCriticsModal');
+            const henryiv1CriticsModal = document.getElementById('henryiv1CriticsModal');
+            
             if (event.target === settingsModal) {
                 closeSettings();
             }
@@ -5944,7 +5952,9 @@
             if (event.target === howToUseModal) {
                 closeHowToUse();
             }
-            if (event.target === criticsModal) {
+            if (event.target === criticsModal || event.target === hamletCriticsModal || 
+                event.target === kingLearCriticsModal || event.target === romeoJulietCriticsModal || 
+                event.target === othelloCriticsModal || event.target === henryiv1CriticsModal) {
                 closeCriticsModal();
             }
             if (event.target === nvModal) {
@@ -12089,6 +12099,8 @@
                 document.getElementById('romeoJulietCriticsModal').style.display = 'block';
             } else if (currentPlay === 'othello') {
                 document.getElementById('othelloCriticsModal').style.display = 'block';
+            } else if (currentPlay === 'henryiv1') {
+                document.getElementById('henryiv1CriticsModal').style.display = 'block';
             } else {
                 document.getElementById('criticsModal').style.display = 'block';
             }
@@ -12126,6 +12138,11 @@
             const rightsModal = document.getElementById('rightsModal');
             const criticsModal = document.getElementById('criticsModal');
             const nvModal = document.getElementById('nvModal');
+            const hamletCriticsModal = document.getElementById('hamletCriticsModal');
+            const kingLearCriticsModal = document.getElementById('kingLearCriticsModal');
+            const romeoJulietCriticsModal = document.getElementById('romeoJulietCriticsModal');
+            const othelloCriticsModal = document.getElementById('othelloCriticsModal');
+            const henryiv1CriticsModal = document.getElementById('henryiv1CriticsModal');
             
             if (event.target === settingsModal) {
                 closeSettings();
@@ -12139,7 +12156,9 @@
             if (event.target === rightsModal) {
                 closeRights();
             }
-            if (event.target === criticsModal) {
+            if (event.target === criticsModal || event.target === hamletCriticsModal || 
+                event.target === kingLearCriticsModal || event.target === romeoJulietCriticsModal || 
+                event.target === othelloCriticsModal || event.target === henryiv1CriticsModal) {
                 closeCriticsModal();
             }
             if (event.target === nvModal) {
