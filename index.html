@@ -9774,6 +9774,41 @@
             analyzeHighlightedText(text);
         }
         
+        // TEST FUNCTION - Run this in console to test notes without API
+        // Usage: testNotesForLine("KING HENRY IV: So shaken as we are, so wan with care,", "ACT 1, SCENE 1")
+        window.testNotesForLine = function(text, sceneName) {
+            console.log('🧪 TESTING NOTES - Text:', text);
+            console.log('🧪 TESTING NOTES - Scene:', sceneName);
+            
+            if (!sceneName && currentScene) {
+                sceneName = currentScene;
+                console.log('🧪 Using currentScene:', sceneName);
+            }
+            
+            if (!text && selectedLines.length > 0) {
+                text = selectedLines[0];
+                console.log('🧪 Using selected text:', text);
+            }
+            
+            const notesData = findNotesForLine(text, sceneName);
+            console.log('🧪 NOTES DATA RESULT:', notesData);
+            
+            if (notesData && notesData.notes && notesData.notes.length > 0) {
+                const formatted = formatNotes(notesData);
+                console.log('🧪 FORMATTED NOTES:', formatted);
+                
+                // Display in variorum section
+                const variorumContent = document.getElementById('variorumContent');
+                const variorumResult = document.getElementById('variorumResult');
+                if (variorumContent) variorumContent.innerHTML = formatted;
+                if (variorumResult) variorumResult.innerHTML = formatted;
+                
+                console.log('✅ Notes displayed!');
+            } else {
+                console.log('❌ No notes found');
+            }
+        };
+        
         function findNotesForLine(text, sceneName) {
             console.log('🔍 Searching for notes for text:', text);
             console.log('🎭 Scene name:', sceneName);
@@ -9797,16 +9832,15 @@
             
             if (!sceneNotes) {
                 // Try variations of the scene name to handle inconsistent formatting
-                // First, try all possible variations
+                // JSON has "ACT 1,SCENE 1" (no space after comma) but code uses "ACT 1, SCENE 1" (with space)
                 const variations = [
-                    sceneName,
-                    sceneName.replace(/,\s*/g, ' ,'), // "ACT 1, SCENE 1" -> "ACT 1 ,SCENE 1"
-                    sceneName.replace(/\s*,\s*/g, ' ,'), // Normalize to space before comma
-                    sceneName.replace(/,/g, ''),  // Remove all commas
-                    sceneName.replace(/\s*,\s*/g, ', '),  // Normalize to space after comma
-                    sceneName.replace(/SCENE/g, ',SCENE'),  // Add comma before SCENE
-                    sceneName.replace(/SCENE/g, ', SCENE'), // Add comma and space before SCENE
-                    sceneName.replace(/,\s*SCENE/g, ' SCENE'), // Remove comma before SCENE
+                    sceneName, // Exact match first
+                    sceneName.replace(/,\s+/g, ','), // "ACT 1, SCENE 1" -> "ACT 1,SCENE 1" (remove space after comma)
+                    sceneName.replace(/,\s*/g, ' ,'), // "ACT 1, SCENE 1" -> "ACT 1 ,SCENE 1" (space before comma)
+                    sceneName.replace(/\s*,\s*/g, ','), // Remove all spaces around comma: "ACT 1,SCENE 1"
+                    sceneName.replace(/\s*,\s*/g, ' ,'), // Space before comma: "ACT 1 ,SCENE 1"
+                    sceneName.replace(/,/g, ''),  // Remove all commas: "ACT 1 SCENE 1"
+                    sceneName.replace(/\s*,\s*/g, ', '),  // Normalize to space after comma: "ACT 1, SCENE 1"
                 ];
                 
                 // Try variations first
@@ -10576,6 +10610,8 @@
                 console.log('✅ Structured analysis complete, showing critics button for Full Fathom Five');
                 showCriticsButton();
                 
+                // SEARCH FOR NOTES LOCALLY AND DISPLAY THEM
+                handleFullFathomFiveAnalysis(text);
             }
             
             // Add Copy button dynamically after analysis content is set

@@ -56,6 +56,7 @@ function normalizePlayKey(playNameRaw) {
   if (s.includes('romeo') || s.includes('juliet')) return 'romeo'
   if (s.includes('othello')) return 'othello'
   if (s.includes('lear')) return 'kinglear'
+  if (s.includes('henry') && (s.includes('iv') || s.includes('4')) && s.includes('1')) return 'henryiv1'
   if (s.includes('macbeth')) return 'macbeth'
   return 'macbeth'
 }
@@ -72,7 +73,8 @@ async function findRelevantNotes(text, scene = null, playName = 'macbeth') {
       'hamlet': 'hamlet_notes (1).json',
       'romeo': 'ROMEO_notes.json',
       'othello': 'othello_notes.json',
-      'kinglear': 'kinglear_notes.json'
+      'kinglear': 'kinglear_notes.json',
+      'henryiv1': 'henry_iv_part1.json'
     };
     
     const normalizedKey = normalizePlayKey(playName)
