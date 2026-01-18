@@ -9601,6 +9601,18 @@
             }
             
             console.log('📖 Scene data found, searching through lines...');
+            console.log('📊 Total lines in scene:', Object.keys(sceneNotes).length);
+            console.log('🔤 Search text (raw):', JSON.stringify(text));
+            console.log('🔤 Search text (lowercase):', text.toLowerCase().trim());
+            
+            // Log first few lines from the JSON for comparison
+            const sampleLines = Object.keys(sceneNotes).slice(0, 5);
+            console.log('📝 Sample lines from JSON:');
+            sampleLines.forEach(lineNum => {
+                if (sceneNotes[lineNum] && sceneNotes[lineNum].play) {
+                    console.log(`  Line ${lineNum}: "${sceneNotes[lineNum].play}"`);
+                }
+            });
             
             // Special handling for DRAMATIS PERSONAE
             if (actualSceneName === 'DRAMATIS PERSONAE' || sceneName === 'DRAMATIS PERSONAE') {
@@ -9636,17 +9648,30 @@
             }
             
             // Regular scene handling
+            let linesChecked = 0;
             for (const lineNumber in sceneNotes) {
                 const lineData = sceneNotes[lineNumber];
                 if (lineData && lineData.play) {
-                    console.log(`🔍 Checking line ${lineNumber}: "${lineData.play}"`);
+                    linesChecked++;
+                    // Only log first 5 and last 5 to avoid spam
+                    if (linesChecked <= 5 || linesChecked > Object.keys(sceneNotes).length - 5) {
+                        console.log(`🔍 Checking line ${lineNumber}: "${lineData.play.substring(0, 80)}..."`);
+                    }
                     
                     const playLine = lineData.play.toLowerCase().trim();
                     const searchText = text.toLowerCase().trim();
                     
-                    if (matchesText(playLine, searchText)) {
+                    const matches = matchesText(playLine, searchText);
+                    if (linesChecked <= 5) {
+                        console.log(`  Match result: ${matches}`);
+                    }
+                    
+                    if (matches) {
                         console.log('✅ Found matching line:', lineData.play);
                         console.log('📝 Notes available:', lineData.notes ? lineData.notes.length : 0);
+                        if (lineData.notes && lineData.notes.length > 0) {
+                            console.log('📖 Notes content:', lineData.notes);
+                        }
                         return {
                             lineNumber: lineNumber,
                             playLine: lineData.play,
@@ -9656,6 +9681,9 @@
                     }
                 }
             }
+            
+            console.log(`❌ No matching line found after checking ${linesChecked} lines`);
+            console.log('🔍 Search text was:', text);
             
             console.log('❌ No matching line found for text:', text);
             return null;
