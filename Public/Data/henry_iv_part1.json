@@ -1,32 +1,107 @@
 {
-  "DRAMATIS PERSONAE": [
-      "DRAMATIS PERSONAE",
-      "KING HENRY IV, formerly Henry Bolingbroke",
-      "PRINCE HAL, Prince of Wales and heir to the throne (also called Harry and Harry Monmouth)",
-      "LORD JOHN OF LANCASTER, younger son of King Henry",
-      "EARL OF WESTMORELAND",
-      "SIR WALTER BLUNT",
-      "HOTSPUR (Sir Henry, or Harry, Percy)",
-      "LADY PERCY (also called Kate)",
-      "EARL OF NORTHUMBERLAND, Henry Percy, Hotspur's father",
-      "EARL OF WORCESTER, Thomas Percy, Hotspur’s uncle",
-      "EDMUND MORTIMER, earl of March",
-      "LADY MORTIMER (also called \"the Welsh lady\")",
-      "OWEN GLENDOWER, a Welsh lord, father of Lady Mortimer",
-      "DOUGLAS (Archibald, earl of Douglas)",
-      "ARCHBISHOP (Richard Scroop, archbishop of York)",
-      "SIR MICHAEL, a priest or knight associated with the archbishop",
-      "SIR RICHARD VERNON, an English knight",
-      "SIR JOHN FALSTAFF",
-      "POINS (also called Edward, Yedward, and Ned)",
-      "BARDOLPH",
-      "PETO",
-      "GADSHILL, setter for the robbers",
-      "HOSTESS of the tavern (also called Mistress Quickly)",
-      "VINTNER, or keeper of the tavern",
-      "FRANCIS, an apprentice tapster"
-  ],
-  "ACT 1 SCENE 1": {
+  "DRAMATIS PERSONAE": {
+      "1": {
+          "play": "DRAMATIS PERSONAE",
+          "notes": []
+      },
+      "2": {
+          "play": "KING HENRY IV, formerly Henry Bolingbroke",
+          "notes": []
+      },
+      "3": {
+          "play": "PRINCE HAL, Prince of Wales and heir to the throne (also called Harry and Harry Monmouth)",
+          "notes": []
+      },
+      "4": {
+          "play": "LORD JOHN OF LANCASTER, younger son of King Henry",
+          "notes": []
+      },
+      "5": {
+          "play": "EARL OF WESTMORELAND",
+          "notes": []
+      },
+      "6": {
+          "play": "SIR WALTER BLUNT",
+          "notes": []
+      },
+      "7": {
+          "play": "HOTSPUR (Sir Henry, or Harry, Percy)",
+          "notes": []
+      },
+      "8": {
+          "play": "LADY PERCY (also called Kate)",
+          "notes": []
+      },
+      "9": {
+          "play": "EARL OF NORTHUMBERLAND, Henry Percy, Hotspur's father",
+          "notes": []
+      },
+      "10": {
+          "play": "EARL OF WORCESTER, Thomas Percy, Hotspur’s uncle",
+          "notes": []
+      },
+      "11": {
+          "play": "EDMUND MORTIMER, earl of March",
+          "notes": []
+      },
+      "12": {
+          "play": "LADY MORTIMER (also called \"the Welsh lady\")",
+          "notes": []
+      },
+      "13": {
+          "play": "OWEN GLENDOWER, a Welsh lord, father of Lady Mortimer",
+          "notes": []
+      },
+      "14": {
+          "play": "DOUGLAS (Archibald, earl of Douglas)",
+          "notes": []
+      },
+      "15": {
+          "play": "ARCHBISHOP (Richard Scroop, archbishop of York)",
+          "notes": []
+      },
+      "16": {
+          "play": "SIR MICHAEL, a priest or knight associated with the archbishop",
+          "notes": []
+      },
+      "17": {
+          "play": "SIR RICHARD VERNON, an English knight",
+          "notes": []
+      },
+      "18": {
+          "play": "SIR JOHN FALSTAFF",
+          "notes": []
+      },
+      "19": {
+          "play": "POINS (also called Edward, Yedward, and Ned)",
+          "notes": []
+      },
+      "20": {
+          "play": "BARDOLPH",
+          "notes": []
+      },
+      "21": {
+          "play": "PETO",
+          "notes": []
+      },
+      "22": {
+          "play": "GADSHILL, setter for the robbers",
+          "notes": []
+      },
+      "23": {
+          "play": "HOSTESS of the tavern (also called Mistress Quickly)",
+          "notes": []
+      },
+      "24": {
+          "play": "VINTNER, or keeper of the tavern",
+          "notes": []
+      },
+      "25": {
+          "play": "FRANCIS, an apprentice tapster",
+          "notes": []
+      }
+  },
+  "ACT 1 ,SCENE 1": {
       "1": {
           "play": "[Enter KING HENRY, LORD JOHN OF LANCASTER, the EARL of WESTMORELAND, SIR WALTER BLUNT, and others]",
           "notes": []
@@ -510,7 +585,7 @@
       "101": {
           "play": "KING HENRY IV: But I have sent for him to answer this;",
           "notes": [
-              "Cowl (ed. 1914): This is not according to Holinshed. As requested, here is the full Play Text for 1 Henry IV Act 1, Scene 2 (as provided in the sources) and the Notes section with updated line numbers to match the keyword locations in the text. As instructed, no words have been changed, and spacing has been added after every line."
+              "Cowl (ed. 1914): This is not according to Holinshed."
           ]
       },
       "102": {
@@ -550,7 +625,7 @@
           "notes": []
       }
   },
-  "ACT 1, SCN 2": {
+  "ACT 1 SCENE 2": {
       "1": {
           "play": "Enter prince of Wales, and Sir Iohn Falstaffe. Falſt. Now Hal, what time of day is it lad?",
           "notes": [
@@ -3733,7 +3808,7 @@
           "notes": []
       }
   },
-  "ACT 2 SCENE 3": {
+  "ACT 2 ,SCENE 3": {
       "1": {
           "play": "[Enter HOTSPUR, solus, reading a letter]",
           "notes": [
@@ -4291,7 +4366,7 @@
           "notes": []
       }
   },
-  "ACT 2 SCENE 4": {
+  "ACT 2 ,SCENE 4": {
       "1": {
           "play": "[Enter PRINCE HENRY and POINS]",
           "notes": []
@@ -6698,7 +6773,7 @@
           "notes": []
       }
   },
-  "ACT 3 SCENE 1": {
+  "ACT 3 ,SCENE 1": {
       "1": {
           "play": "[Enter HOTSPUR, WORCESTER, MORTIMER, and GLENDOWER]",
           "notes": []
@@ -7962,7 +8037,7 @@
           "notes": []
       }
   },
-  "ACT 3 SCENE 2": {
+  "ACT 3 ,SCENE 2": {
       "1": {
           "play": "[Enter KING HENRY IV, PRINCE HENRY, and others]",
           "notes": []
@@ -8806,7 +8881,7 @@
           "notes": []
       }
   },
-  "ACT 3 SCENE 3": {
+  "ACT 3 ,SCENE 3": {
       "1": {
           "play": "[Enter FALSTAFF and BARDOLPH]",
           "notes": []
@@ -9733,7 +9808,7 @@
           "notes": []
       }
   },
-  "ACT 4 SCENE 1": {
+  "ACT 4 ,SCENE 1": {
       "1": {
           "play": "[Enter HOTSPUR, WORCESTER, and DOUGLAS]",
           "notes": []
@@ -10413,7 +10488,7 @@
           "notes": []
       }
   },
-  "ACT 4 SCENE 2": {
+  "ACT 4 ,SCENE 2": {
       "1": {
           "play": "[Enter FALSTAFF and BARDOLPH]",
           "notes": []
@@ -10816,7 +10891,7 @@
           "notes": []
       }
   },
-  "ACT 4 SCENE 3": {
+  "ACT 4 ,SCENE 3": {
       "1": {
           "play": "[Enter HOTSPUR, WORCESTER, DOUGLAS, and VERNON]",
           "notes": []
@@ -11372,7 +11447,7 @@
           ]
       }
   },
-  "ACT 4 SCENE 4": {
+  "ACT 4 ,SCENE 4": {
       "1": {
           "play": "[Enter the ARCHBISHOP OF YORK and SIR MICHAEL]",
           "notes": []
@@ -11564,7 +11639,7 @@
           "notes": []
       }
   },
-  "ACT 5 SCENE 1": {
+  "ACT 5 ,SCENE 1": {
       "1": {
           "play": "[Enter KING HENRY, PRINCE HENRY, Lord John of LANCASTER, EARL OF WESTMORELAND, SIR WALTER BLUNT, and FALSTAFF]",
           "notes": [
@@ -11573,15 +11648,12 @@
       },
       "2": {
           "play": "KING HENRY IV: How bloodily the sun begins to peer",
-          "notes": [
-              "and] WRIGHT (ed. 1897): Qq-4 and Ff omit and, apparently for the sake of the metre, which is perfectly good with it."
-          ]
+          "notes": []
       },
       "3": {
           "play": "Above yon busky hill! the day looks pale",
           "notes": [
-              "busky] STEEVENS (Var. ed. 1778): Busky is woody (Fr Bosquet) Milton writes the word, perhaps more properly, bosky—DYCE (ed. 1857): Steevens appears to have forgotten that in The Tempest, IV, i, 81, the folio has “my boskie acres.”—BLAKEWAY (Var. ed. 1821): I do not know whether Shakespeare ever surveyed the ground of the battlefield, but he has described the sun’s rising over Haughmond hill as accurately as if he had. It still merits the name of “busky hill”.",
-              "under one] COWL (ed. 1914), with all other editors, adopts the reading."
+              "busky] STEEVENS (Var. ed. 1778): Busky is woody (Fr Bosquet) Milton writes the word, perhaps more properly, bosky—DYCE (ed. 1857): Steevens appears to have forgotten that in The Tempest, IV, i, 81, the folio has “my boskie acres.”—BLAKEWAY (Var. ed. 1821): I do not know whether Shakespeare ever surveyed the ground of the battlefield, but he has described the sun’s rising over Haughmond hill as accurately as if he had. It still merits the name of “busky hill”."
           ]
       },
       "4": {
@@ -11610,15 +11682,11 @@
       },
       "9": {
           "play": "KING HENRY IV: Then with the losers let it sympathize,",
-          "notes": [
-              "in other faults] WRIGHT (ed. 1897): When punishing other faults."
-          ]
+          "notes": []
       },
       "10": {
           "play": "For nothing can seem foul to those that win.",
-          "notes": [
-              "ROWE’s emendation in his second edition (see Textual Notes) has been almost universally accepted, though many attempts have been made to regularize the metre of this line—ABBOTT (Sh. Gram., 1870, p. 401) cites the line as one of five pure Alexandrines in Shakespeare. Its purity, of course, depends upon the acceptance of Rowe’s emendation.—PERRING (Hard Knots in Sh., 1885) offers the strange suggestion that some one thought the whole line “supposititious,” and indicated his suspicion by a marginal note which the printers interpreted as part of the text. He would omit the line altogether.—COWL (ed. 1914) suggests the possibility of making the line decasyllabic by omitting all our lives and pronouncing Supposition as it is pronounced in Davenant’s Cruel Brother, 1630, V, i: “Supposition with arguments of strength.”—IBID. (Notes on Text, 1927, p. 18): In Jonson’s Masque of Queens, in the line “Thy fearful sister, wild Suspicion,” Suspicion is a word of four syllables.—JOHNSON (ed. 1765): The image of Suspicion is exhibited in a Latin tragedy called Roxana, written about the same time, by Dr. Alabaster.—COWL (ed. 1914): The imagery may be traced back to Vergil, Aeneid, iv, 180, and Ezekiel, x, 12."
-          ]
+          "notes": []
       },
       "11": {
           "play": "[The trumpet sounds]",
@@ -11638,9 +11706,7 @@
       },
       "15": {
           "play": "As now we meet. You have deceived our trust,",
-          "notes": [
-              "COWL (ed. 1914): Unfriendly critics will put an ill construction upon our looks."
-          ]
+          "notes": []
       },
       "16": {
           "play": "And made us doff our easy robes of peace,",
@@ -11662,15 +11728,12 @@
       },
       "20": {
           "play": "This curlish knot of all-abhorred war?",
-          "notes": [
-              "adopted...priueldge] JOHNSON (ed. 1765): The name of Hotspur will privilege him from censure.—COWL (ed. 1914): A “hotspur” was a common name for an impulsive person, but, according to the N. E. D., the word first occurs as surname to Sir Henry Percy."
-          ]
+          "notes": []
       },
       "21": {
           "play": "And move in that obedient orb again",
           "notes": [
-              "obedient orb] Cowl. (ed. 1914). Move again obediently in your proper orb ... The allusion is to the orbs or spheres in which, in the Ptolemaic system of astronomy, the stars are fixed, and with which they move.",
-              "hair-braind] COWL (ed. 1914): Hare-brain: rash, impulsive. . . . Wilkins, Essay towards a Real Character, 1668, distinguishes between “hare-brained,” rash, and “hair-brained,” conceited.—N. E. D (1902): Hare-brained: Having no more sense than a hare. The spelling hair-brained, suggesting another origin for the compound, is later, though occasional before 1600."
+              "obedient orb] Cowl. (ed. 1914). Move again obediently in your proper orb ... The allusion is to the orbs or spheres in which, in the Ptolemaic system of astronomy, the stars are fixed, and with which they move."
           ]
       },
       "22": {
@@ -11686,8 +11749,7 @@
       "24": {
           "play": "A prodigy of fear and a portent",
           "notes": [
-              "portent] [See Abbott on I, i, 97, aspects, and II, iii, 61, portents. If fear, in this line, is to be regarded as a monosyllable, portents must be accented on the final syllable.—Ed.].",
-              "corruption] WARBURTON (ed. 1747): Perhaps, a taint, an infection.—HEATH (Revisal, 1765, p. 254): But why should we take pains to pick holes in a sound place? The verb take signifies to catch by infection."
+              "portent] [See Abbott on I, i, 97, aspects, and II, iii, 61, portents. If fear, in this line, is to be regarded as a monosyllable, portents must be accented on the final syllable.—Ed.]."
           ]
       },
       "25": {
@@ -11726,9 +11788,7 @@
       },
       "32": {
           "play": "FALSTAFF: Rebellion lay in his way, and he found it.",
-          "notes": [
-              "CAPELL (ed. 1768, and Notes, 1779), [again followed by the faithful RANN, assigns this line to Hotspur, for the following reasons]: Hotspur, who from his station, his temper, and every consideration imaginable, must have been the first to take fire at his uncle's intelligence, which moreover is directed to him, is made the second in copies [i.e., in former editions]; for this line is taken from him and given to Douglas. [Capell's implication is unfair and misleading. If this line had been assigned to Hotspur in Qq and Ff, we should indeed condemn those who have “taken it from him”; or if the line had been assigned to him in some of the Qq or Ff, we might be inclined to follow the reading of such copies; but as there is no authority for assigning it to Hotspur, and as it is appropriate to Douglas, we must rank this suggestion of Capell's among the foolish suggestions occasionally offered by him.—MALONE (ed. 1790) supports Capell in a note, but assigns the line to Douglas.—ED.]"
-          ]
+          "notes": []
       },
       "33": {
           "play": "PRINCE HENRY: Peace, chewet, peace!",
@@ -11742,9 +11802,7 @@
       },
       "35": {
           "play": "Of favour from myself and all our house;",
-          "notes": [
-              "Douglas] MALONE (ed. 1790): A trisyllable.—WALKER (Sh. Vers., 1854, p. 7) lists this word and line under the following rule: “Words such as juggler, tickling, kindling, England, angry, children, &c., are often pronounced as though a vowel were interposed between the liquid and the preceding mute."
-          ]
+          "notes": []
       },
       "36": {
           "play": "And yet I must remember you, my lord,",
@@ -11752,9 +11810,7 @@
       },
       "37": {
           "play": "We were the first and dearest of your friends.",
-          "notes": [
-              "and shall] CAPELL (Notes, 1779): The and is made I by the four latter moderns [see Textual Notes], an unnecessary word, destructive of harmony, and of spirit and ease likewise.—COWL (ed. 1914): “Indeed, and I shall!”—an expression of eager assent; cf. Jonson, Volpone, V, i: “Sir, I must have a fairer answer. Mos. Madam! Marry, and shall!”"
-          ]
+          "notes": []
       },
       "38": {
           "play": "For you my staff of office did I break",
@@ -11762,9 +11818,7 @@
       },
       "39": {
           "play": "In Richard's time; and posted day and night",
-          "notes": [
-              "seeming mercie] WRIGHT (ed. 1897): Mercy, even in appearance."
-          ]
+          "notes": []
       },
       "40": {
           "play": "to meet you on the way, and kiss your hand,",
@@ -11780,9 +11834,7 @@
       },
       "43": {
           "play": "It was myself, my brother and his son,",
-          "notes": [
-              "now] WALKER (Crit. Exam. of Text, 1860) cites seven passages in Shakespeare, including this line, in which he thinks the printers have mistaken new for now, e.g., Shrew, III, ii, 55 “now repaired with knots.”"
-          ]
+          "notes": []
       },
       "44": {
           "play": "That brought you home and boldly did outdare",
@@ -11807,8 +11859,7 @@
       "49": {
           "play": "The seat of Gaunt, dukedom of Lancaster:",
           "notes": [
-              "seat] SCHMIDT (1874): Estate.",
-              "ingag’d] JOHNSON (ed. 1765): Delivered as a hostage."
+              "seat] SCHMIDT (1874): Estate."
           ]
       },
       "50": {
@@ -11836,15 +11887,12 @@
       "55": {
           "play": "The seeming sufferances that you had borne,",
           "notes": [
-              "sufferance] SCHMIDT (1874): Distresses, miseries, sufferings. [Ten other examples of Shakespeare’s use of the word in this sense are cited.]",
-              "Monmouth] HUDSON (ed. 1880): Henry was so named from the town in Wales where he was born."
+              "sufferance] SCHMIDT (1874): Distresses, miseries, sufferings. [Ten other examples of Shakespeare’s use of the word in this sense are cited.]"
           ]
       },
       "56": {
           "play": "And the contrarious winds that held the king",
-          "notes": [
-              "tasking] CAPELL (Notes, 1779) Challenge—MALONE (ed 1790): I know not whether “tasking” is not used here for “taxing,” or satirical representation. So, in As You Like It, II, vii, 86 “My taxing, like a wild goose, flies” “Tasking,” however, is sufficiently intelligible in its more usual acceptance: we still say “he took him to task”—COWL (ed. 1914). Task and tax (to accuse or censure) are metathetical forms of the same word."
-          ]
+          "notes": []
       },
       "57": {
           "play": "So long in his unlucky Irish wars",
@@ -11866,9 +11914,7 @@
       },
       "61": {
           "play": "To gripe the general sway into your hand;",
-          "notes": [
-              "duties of a man] CLARKE (Sh. Key, 1879, p. 312): Duties, used elliptically for “qualities duly belonging to.”—COWL (ed. 1914). A manly observance and respect, cf. Hamlet, I, ii, 87: “Tis sweet and commendable in your nature, Hamlet, To give these mourning duties to your father,” i.e., dues and observances of mourning I think “of a man” refers to the prince, and not to Hotspur, the words are perhaps parallel to “with a princely tongue” in line 57, and “like a chronicle” in line 58. Minsheu defines “Dutie” as “that which by law of nature or civil respect is due to one” [Cowl’s interpretation is attractive, and possible; but it is not as simple and obvious as that given by Clarke and many others —Ed]"
-          ]
+          "notes": []
       },
       "62": {
           "play": "Forget your oath to us at Doncaster;",
@@ -11892,9 +11938,7 @@
       },
       "67": {
           "play": "That even our love durst not come near your sight",
-          "notes": [
-              "blushing citall] POPE (ed. 1723): Cital: taxation—COLLINS (Var. '73, Appendix, vol. x): I rather think cital means recital. The verb is used in that sense in The Two Gentlemen of Verona, IV, i, 53; Henry V, V, ii, 70; Titus Andronicus, V, iii, 117.—ABBOTT (Sh. Gram., 1870, p. 339): Recital. [Abbott gives over fifty examples of the dropping of prefixes in similar words. Modern editors agree in defining the word as mention or recital, and find the idea of self-accusation sufficiently expressed in blushing.—ED.]"
-          ]
+          "notes": []
       },
       "68": {
           "play": "For fear of swallowing; but with nimble wing",
@@ -11905,15 +11949,12 @@
       "69": {
           "play": "We were enforced, for safety sake, to fly",
           "notes": [
-              "we] Capell (Notes, 1779): The inattention and haste of [the former editors] is more notorious still in this passage [cf note on V, i, 55] ... for they who run might have perceived its corruption and the change that was requisite, unless they have run in their sleep. [Cf. Textual Note. Rann is again the only subsequent editor who did not \"run in his sleep.\"—Ed]",
-              "mastred] STEEVENS (Var. ed. 1778): Was master of.—ELTON (ed. 1889): Owned."
+              "we] Capell (Notes, 1779): The inattention and haste of [the former editors] is more notorious still in this passage [cf note on V, i, 55] ... for they who run might have perceived its corruption and the change that was requisite, unless they have run in their sleep. [Cf. Textual Note. Rann is again the only subsequent editor who did not \"run in his sleep.\"—Ed]"
           ]
       },
       "70": {
           "play": "Out of sight and raise this present head;",
-          "notes": [
-              "instantly] COLLIER (ed. 1842): At the same instant. [N. E. D. gives no such definition.—COWL (ed. 1914) is probably correct in defining it as diligently, earnestly, urgently; cf. Luke, vii, 4: \"They besought him instantly.\"]"
-          ]
+          "notes": []
       },
       "71": {
           "play": "Whereby we stand opposed by such means",
@@ -11924,22 +11965,17 @@
       },
       "72": {
           "play": "As you yourself have forged against yourself",
-          "notes": [
-              "envie of this day] WRIGHT (ed. 1897): The hostile malice to which he will be exposed today."
-          ]
+          "notes": []
       },
       "73": {
           "play": "By unkind usage, dangerous countenance,",
           "notes": [
-              "daungerous countenance] Cowl (ed. 1914): Haughty, threatening looks. Ascham, Schoolemaster, says that a young gentleman learns at Court \"to face, stand foremost, shove back: and to the meaner man ... to seeme somewhat solemne, coy, big, and daungerous of looke.\" ... For \"dangerous,\" threatening, see King John, IV, ii, 212: \"To know the meaning Of dangerous Majesty when perchance it frowns\".",
-              "owe] SINGER (ed. 1826): Own."
+              "daungerous countenance] Cowl (ed. 1914): Haughty, threatening looks. Ascham, Schoolemaster, says that a young gentleman learns at Court \"to face, stand foremost, shove back: and to the meaner man ... to seeme somewhat solemne, coy, big, and daungerous of looke.\" ... For \"dangerous,\" threatening, see King John, IV, ii, 212: \"To know the meaning Of dangerous Majesty when perchance it frowns\"."
           ]
       },
       "74": {
           "play": "And violation of all faith and troth",
-          "notes": [
-              "wantonnesse] Cowl (ed. 1914): In respect to, or as a consequence of, the levity of his behaviour."
-          ]
+          "notes": []
       },
       "75": {
           "play": "Sworn to us in your younger enterprise.",
@@ -11953,9 +11989,7 @@
       },
       "77": {
           "play": "Proclaim'd at market-crosses, read in churches,",
-          "notes": [
-              "prince . . libertie] Theobald (ed 1733): a Liberty. Thus Mr. Pope has given it us in both his editions, as if a liberty could mean a libertine. Whether chance or purpose be the source of this reading is not easy to determine: for besides that this gentleman's indolence is so singular, his vein of criticism is so extravagant, that, like our author's fools, he is seldom or never called to account for his rhetoric! I have restored the reading of the old copies [But not of the oldest (see Textual Notes) which is here followed by the “indolent\" Mr. Pope. Theobald did not know Q1, but that he did know Q2 is shown by his note on I, ii, 40, old lad of the castle He, however, chose to ignore that \"old copy\" in his attack, here, on Pope.—Ed.] The meaning is that a prince of so wild and licentious a behaviour should not be suffered at liberty for fear of doing mischief.—Johnson (ed 1765): \"I never heard of any prince that played such tricks and was not confined as a madman.\"—Steevens (ed. 1793): The oldest reading may be the true one, for in The Comedy of Errors, I, ii, 101, the same phraseology occurs: \"prating mountebanks, And many suchlike liberties of sin.\"—Malone (Var. ed. 1821): I doubt whether the passage quoted from The Comedy of Errors has the meaning assigned to it by Mr. Steevens.—Singer (ed. 1826): “So wild at liberty” may mean \"so wild and licentious in his conduct.\" I much incline to \"so wild a libertine.\"—Knight (ed. 1839): So wild of his own unrestrained will.—White (ed. 1859): Never did I hear so wild a liberty reported of any prince.—Hudson (ed. 1880): \"So wild o'liberty\" plainly means, using his freedom so wantonly. [That libertie was a misprint for libertine in Q1, seems to be the best opinion, although White's ingenious interpretation makes good sense out of the reading of Q1.—Ed.]"
-          ]
+          "notes": []
       },
       "78": {
           "play": "To face the garment of rebellion",
@@ -12020,15 +12054,11 @@
       },
       "90": {
           "play": "The Prince of Wales doth join with all the world",
-          "notes": [
-              "dials point] COWL (ed. 1914): The hand or needle of a clock or sundial."
-          ]
+          "notes": []
       },
       "91": {
           "play": "In praise of Henry Percy: by my hopes,",
-          "notes": [
-              "Still] Always."
-          ]
+          "notes": []
       },
       "92": {
           "play": "This present enterprise set off his head,",
@@ -12043,15 +12073,12 @@
       "94": {
           "play": "More active-valiant or more valiant-young,",
           "notes": [
-              "active . . . yong] THEOBALD (ed. 1733): Without [the hyphens; see Textual Notes] the sense seems feeble and cold. The prince means, in my opinion, he did not know a braver gentleman than Hotspur, one more sprightly and stirring in his valour, or more valiant for his youth.—UPTON (Crit. Observ., 1746): Shakespeare uses adjectives adverbially. So here, more actively valiant or more valiantly young ... So, in Hamlet: \"I am myself indifferent honest.\". He is plainly imitating Sir Philip Sidney, who in his Astrophel and Stella thus speaks of Edward IV: \"Nor that he could young-wise, wise-valiant, frame His sire's revenge.\"—CAPELL (Notes, 1779): His compounds are beautiful, and of easy conception, importing that Hotspur's valour was of the most active kind, and the degree of it greater than is usually found in such young years.",
-              "for our consciences] Wright (ed. 1897): As regards our consciences."
+              "active . . . yong] THEOBALD (ed. 1733): Without [the hyphens; see Textual Notes] the sense seems feeble and cold. The prince means, in my opinion, he did not know a braver gentleman than Hotspur, one more sprightly and stirring in his valour, or more valiant for his youth.—UPTON (Crit. Observ., 1746): Shakespeare uses adjectives adverbially. So here, more actively valiant or more valiantly young ... So, in Hamlet: \"I am myself indifferent honest.\". He is plainly imitating Sir Philip Sidney, who in his Astrophel and Stella thus speaks of Edward IV: \"Nor that he could young-wise, wise-valiant, frame His sire's revenge.\"—CAPELL (Notes, 1779): His compounds are beautiful, and of easy conception, importing that Hotspur's valour was of the most active kind, and the degree of it greater than is usually found in such young years."
           ]
       },
       "95": {
           "play": "More daring or more bold, is now alive",
-          "notes": [
-              "intent of bearing] Wright (ed. 1897): Object for which we bear."
-          ]
+          "notes": []
       },
       "96": {
           "play": "To grace this latter age with noble deeds.",
@@ -12089,9 +12116,7 @@
       },
       "104": {
           "play": "Try fortune with him in a single fight.",
-          "notes": [
-              "Esperance] See Appendix: Sources of the Plot: Holinshed—Pope (ed. 1723): Esperance, the word of battle on Percy's side.—Percy (Var. ed. 1773): Esperance, or Esperanza, has always been the motto of the Percy family. . . \"Esperance ma Conforte\" is still legible over the great gate at Alnwick.—Capell (Notes, 1779): Esperance must be made of four syllables, more Gallico."
-          ]
+          "notes": []
       },
       "105": {
           "play": "KING HENRY IV: And, Prince of Wales, so dare we venture thee,",
@@ -12103,9 +12128,7 @@
       },
       "107": {
           "play": "Do make against it. No, good Worcester, no,",
-          "notes": [
-              "heaven to earth] Warburton (ed. 1747): \"One might wager heaven to earth.\"—Singer (N. & Q., May 15, 1852): This could hardly be tortured to fit Warburton's paraphrase, a strange thought to enter Hotspur's mind at such a time. The context requires \"here on earth.\" [Warburton's interpretation has for once, however, satisfied most of his successors, and is generally accepted]."
-          ]
+          "notes": []
       },
       "108": {
           "play": "We love our people well; even those we love",
@@ -12290,7 +12313,7 @@
       "147": {
           "play": "I'll none of it. Honour is a mere scutcheon: and so",
           "notes": [
-              "meere skutchion] WARBU. **ACT 5 SCENE 2** 1: [Enter WORCESTER and VERNON] 2: EARL OF WORCESTER: O, no, my nephew must not know, Sir Richard, 3: The liberal and kind offer of the king. 4: VERNON: 'Twere best he did. 5: EARL OF WORCESTER: Then are we all undone. 6: It is not possible, it cannot be, 7: The king should keep his word in loving us; 8: He will suspect us still and find a time 9: To punish this offence in other faults: 10: Suspicion all our lives shall be stuck full of eyes; 11: For treason is but trusted like the fox, 12: Who, ne'er so tame, so cherish'd and lock'd up, 13: Will have a wild trick of his ancestors. 14: Look how we can, or sad or merrily, 15: Interpretation will misquote our looks, 16: And we shall feed like oxen at a stall, 17: The better cherish'd, still the nearer death. 18: My nephew's trespass may be well forgot; 19: it hath the excuse of youth and heat of blood, 20: And an adopted name of privilege, 21: A hair-brain'd Hotspur, govern'd by a spleen: 22: All his offences live upon my head 23: And on his father's; we did train him on, 24: And, his corruption being ta'en from us, 25: We, as the spring of all, shall pay for all. 26: Therefore, good cousin, let not Harry know, 27: In any case, the offer of the king. 28: VERNON: Deliver what you will; I'll say 'tis so. 29: Here comes your cousin. 30: [Enter HOTSPUR and DOUGLAS] 31: HOTSPUR: My uncle is return'd: 32: Deliver up my Lord of Westmoreland. 33: Uncle, what news? 34: EARL OF WORCESTER: The king will bid you battle presently. 35: EARL OF DOUGLAS: Defy him by the Lord of Westmoreland. 36: HOTSPUR: Lord Douglas, go you and tell him so. 37: EARL OF DOUGLAS: Marry, and shall, and very willingly. 38: [Exit] 39: EARL OF WORCESTER: There is no seeming mercy in the king. 40: HOTSPUR: Did you beg any? God forbid! 41: EARL OF WORCESTER: I told him gently of our grievances, 42: Of his oath-breaking; which he mended thus, 43: By now forswearing that he is forsworn: 44: He calls us rebels, traitors; and will scourge 45: With haughty arms this hateful name in us. 46: [Re-enter the EARL OF DOUGLAS] 47: EARL OF DOUGLAS: Arm, gentlemen; to arms! for I have thrown 48: A brave defiance in King Henry's teeth, 49: And Westmoreland, that was engaged, did bear it; 50: Which cannot choose but bring him quickly on. 51: EARL OF WORCESTER: The Prince of Wales stepp'd forth before the king, 52: And, nephew, challenged you to single fight. 53: HOTSPUR: O, would the quarrel lay upon our heads, 54: And that no man might draw short breath today 55: But I and Harry Monmouth! Tell me, tell me, 56: How show'd his tasking? seem'd it in contempt? 57: VERNON: No, by my soul; I never in my life 58: Did hear a challenge urged more modestly, 59: Unless a brother should a brother dare 60: To gentle exercise and proof of arms. 61: He gave you all the duties of a man; 62: Trimm's up your praises with a princely tongue, 63: Spoke to your deservings like a chronicle, 64: Making you ever better than his praise 65: By still dispraising praise valued in you; 66: And, which became him like a prince indeed, 67: He made a blushing cital of himself; 68: And chid his truant youth with such a grace 69: As if he master'd there a double spirit. 70: Of teaching and of learning instantly. 71: There did he pause: but let me tell the world, 72: If he outlive the envy of this day, 73: England did never owe so sweet a hope, 74: So much misconstrued in his wantonness. 75: HOTSPUR: Cousin, I think thou art enamoured 76: On his follies: never did I hear 77: Of any prince so wild a libertine. 78: But be he as he will, yet once ere night 79: I will embrace him with a soldier's arm, 80: That he shall shrink under my courtesy. 81: Arm, arm with speed: and, fellows, soldiers, friends, 82: Better consider what you have to do 83: Than I, that have not well the gift of tongue, 84: Can lift your blood up with persuasion. 85: [Enter a Messenger] 86: Messenger: My lord, here are letters for you. 87: HOTSPUR: I cannot read them now. 88: O gentlemen, the time of life is short! 89: To spend that shortness basely were too long, 90: If life did ride upon a dial's point, 91: Still ending at the arrival of an hour. 92: An if we live, we live to tread on kings; 93: If die, brave death, when princes die with us! 94: Now, for our consciences, the arms are fair, 95: When the intent of bearing them is just. 96: [Enter another Messenger] 97: Messenger: My lord, prepare; the king comes on apace. 98: HOTSPUR: I thank him, that he cuts me from my tale, 99: For I profess not talking; only this-- 100: Let each man do his best: and here draw I 101: A sword, whose temper I intend to stain 102: With the best blood that I can meet withal 103: In the adventure of this perilous day. 104: Now, Esperance! Percy! and set on. 105: Sound all the lofty instruments of war, 106: And by that music let us all embrace; 107: For, heaven to earth, some of us never shall 108: A second time do such a courtesy. 109: [The trumpets sound. They embrace, and exeunt]"
+              "meere skutchion] WARBU."
           ]
       },
       "148": {
@@ -12299,6 +12322,510 @@
       },
       "149": {
           "play": "[Exit]",
+          "notes": []
+      }
+  },
+  "ACT 5 ,SCENE 2": {
+      "1": {
+          "play": "[Enter WORCESTER and VERNON]",
+          "notes": []
+      },
+      "2": {
+          "play": "EARL OF WORCESTER: O, no, my nephew must not know, Sir Richard,",
+          "notes": [
+              "and] WRIGHT (ed. 1897): Qq-4 and Ff omit and, apparently for the sake of the metre, which is perfectly good with it."
+          ]
+      },
+      "3": {
+          "play": "The liberal and kind offer of the king.",
+          "notes": [
+              "under one] COWL (ed. 1914), with all other editors, adopts the reading."
+          ]
+      },
+      "4": {
+          "play": "VERNON: 'Twere best he did.",
+          "notes": []
+      },
+      "5": {
+          "play": "EARL OF WORCESTER: Then are we all undone.",
+          "notes": []
+      },
+      "6": {
+          "play": "It is not possible, it cannot be,",
+          "notes": []
+      },
+      "7": {
+          "play": "The king should keep his word in loving us;",
+          "notes": []
+      },
+      "8": {
+          "play": "He will suspect us still and find a time",
+          "notes": []
+      },
+      "9": {
+          "play": "To punish this offence in other faults:",
+          "notes": [
+              "in other faults] WRIGHT (ed. 1897): When punishing other faults."
+          ]
+      },
+      "10": {
+          "play": "Suspicion all our lives shall be stuck full of eyes;",
+          "notes": [
+              "ROWE’s emendation in his second edition (see Textual Notes) has been almost universally accepted, though many attempts have been made to regularize the metre of this line—ABBOTT (Sh. Gram., 1870, p. 401) cites the line as one of five pure Alexandrines in Shakespeare. Its purity, of course, depends upon the acceptance of Rowe’s emendation.—PERRING (Hard Knots in Sh., 1885) offers the strange suggestion that some one thought the whole line “supposititious,” and indicated his suspicion by a marginal note which the printers interpreted as part of the text. He would omit the line altogether.—COWL (ed. 1914) suggests the possibility of making the line decasyllabic by omitting all our lives and pronouncing Supposition as it is pronounced in Davenant’s Cruel Brother, 1630, V, i: “Supposition with arguments of strength.”—IBID. (Notes on Text, 1927, p. 18): In Jonson’s Masque of Queens, in the line “Thy fearful sister, wild Suspicion,” Suspicion is a word of four syllables.—JOHNSON (ed. 1765): The image of Suspicion is exhibited in a Latin tragedy called Roxana, written about the same time, by Dr. Alabaster.—COWL (ed. 1914): The imagery may be traced back to Vergil, Aeneid, iv, 180, and Ezekiel, x, 12."
+          ]
+      },
+      "11": {
+          "play": "For treason is but trusted like the fox,",
+          "notes": []
+      },
+      "12": {
+          "play": "Who, ne'er so tame, so cherish'd and lock'd up,",
+          "notes": []
+      },
+      "13": {
+          "play": "Will have a wild trick of his ancestors.",
+          "notes": []
+      },
+      "14": {
+          "play": "Look how we can, or sad or merrily,",
+          "notes": []
+      },
+      "15": {
+          "play": "Interpretation will misquote our looks,",
+          "notes": [
+              "COWL (ed. 1914): Unfriendly critics will put an ill construction upon our looks."
+          ]
+      },
+      "16": {
+          "play": "And we shall feed like oxen at a stall,",
+          "notes": []
+      },
+      "17": {
+          "play": "The better cherish'd, still the nearer death.",
+          "notes": []
+      },
+      "18": {
+          "play": "My nephew's trespass may be well forgot;",
+          "notes": []
+      },
+      "19": {
+          "play": "it hath the excuse of youth and heat of blood,",
+          "notes": []
+      },
+      "20": {
+          "play": "And an adopted name of privilege,",
+          "notes": [
+              "adopted...priueldge] JOHNSON (ed. 1765): The name of Hotspur will privilege him from censure.—COWL (ed. 1914): A “hotspur” was a common name for an impulsive person, but, according to the N. E. D., the word first occurs as surname to Sir Henry Percy."
+          ]
+      },
+      "21": {
+          "play": "A hair-brain'd Hotspur, govern'd by a spleen:",
+          "notes": [
+              "hair-braind] COWL (ed. 1914): Hare-brain: rash, impulsive. . . . Wilkins, Essay towards a Real Character, 1668, distinguishes between “hare-brained,” rash, and “hair-brained,” conceited.—N. E. D (1902): Hare-brained: Having no more sense than a hare. The spelling hair-brained, suggesting another origin for the compound, is later, though occasional before 1600."
+          ]
+      },
+      "22": {
+          "play": "All his offences live upon my head",
+          "notes": []
+      },
+      "23": {
+          "play": "And on his father's; we did train him on,",
+          "notes": []
+      },
+      "24": {
+          "play": "And, his corruption being ta'en from us,",
+          "notes": [
+              "corruption] WARBURTON (ed. 1747): Perhaps, a taint, an infection.—HEATH (Revisal, 1765, p. 254): But why should we take pains to pick holes in a sound place? The verb take signifies to catch by infection."
+          ]
+      },
+      "25": {
+          "play": "We, as the spring of all, shall pay for all.",
+          "notes": []
+      },
+      "26": {
+          "play": "Therefore, good cousin, let not Harry know,",
+          "notes": []
+      },
+      "27": {
+          "play": "In any case, the offer of the king.",
+          "notes": []
+      },
+      "28": {
+          "play": "VERNON: Deliver what you will; I'll say 'tis so.",
+          "notes": []
+      },
+      "29": {
+          "play": "Here comes your cousin.",
+          "notes": []
+      },
+      "30": {
+          "play": "[Enter HOTSPUR and DOUGLAS]",
+          "notes": []
+      },
+      "31": {
+          "play": "HOTSPUR: My uncle is return'd:",
+          "notes": []
+      },
+      "32": {
+          "play": "Deliver up my Lord of Westmoreland.",
+          "notes": [
+              "CAPELL (ed. 1768, and Notes, 1779), [again followed by the faithful RANN, assigns this line to Hotspur, for the following reasons]: Hotspur, who from his station, his temper, and every consideration imaginable, must have been the first to take fire at his uncle's intelligence, which moreover is directed to him, is made the second in copies [i.e., in former editions]; for this line is taken from him and given to Douglas. [Capell's implication is unfair and misleading. If this line had been assigned to Hotspur in Qq and Ff, we should indeed condemn those who have “taken it from him”; or if the line had been assigned to him in some of the Qq or Ff, we might be inclined to follow the reading of such copies; but as there is no authority for assigning it to Hotspur, and as it is appropriate to Douglas, we must rank this suggestion of Capell's among the foolish suggestions occasionally offered by him.—MALONE (ed. 1790) supports Capell in a note, but assigns the line to Douglas.—ED.]"
+          ]
+      },
+      "33": {
+          "play": "Uncle, what news?",
+          "notes": []
+      },
+      "34": {
+          "play": "EARL OF WORCESTER: The king will bid you battle presently.",
+          "notes": []
+      },
+      "35": {
+          "play": "EARL OF DOUGLAS: Defy him by the Lord of Westmoreland.",
+          "notes": [
+              "Douglas] MALONE (ed. 1790): A trisyllable.—WALKER (Sh. Vers., 1854, p. 7) lists this word and line under the following rule: “Words such as juggler, tickling, kindling, England, angry, children, &c., are often pronounced as though a vowel were interposed between the liquid and the preceding mute."
+          ]
+      },
+      "36": {
+          "play": "HOTSPUR: Lord Douglas, go you and tell him so.",
+          "notes": []
+      },
+      "37": {
+          "play": "EARL OF DOUGLAS: Marry, and shall, and very willingly.",
+          "notes": [
+              "and shall] CAPELL (Notes, 1779): The and is made I by the four latter moderns [see Textual Notes], an unnecessary word, destructive of harmony, and of spirit and ease likewise.—COWL (ed. 1914): “Indeed, and I shall!”—an expression of eager assent; cf. Jonson, Volpone, V, i: “Sir, I must have a fairer answer. Mos. Madam! Marry, and shall!”"
+          ]
+      },
+      "38": {
+          "play": "[Exit]",
+          "notes": []
+      },
+      "39": {
+          "play": "EARL OF WORCESTER: There is no seeming mercy in the king.",
+          "notes": [
+              "seeming mercie] WRIGHT (ed. 1897): Mercy, even in appearance."
+          ]
+      },
+      "40": {
+          "play": "HOTSPUR: Did you beg any? God forbid!",
+          "notes": []
+      },
+      "41": {
+          "play": "EARL OF WORCESTER: I told him gently of our grievances,",
+          "notes": []
+      },
+      "42": {
+          "play": "Of his oath-breaking; which he mended thus,",
+          "notes": []
+      },
+      "43": {
+          "play": "By now forswearing that he is forsworn:",
+          "notes": [
+              "now] WALKER (Crit. Exam. of Text, 1860) cites seven passages in Shakespeare, including this line, in which he thinks the printers have mistaken new for now, e.g., Shrew, III, ii, 55 “now repaired with knots.”"
+          ]
+      },
+      "44": {
+          "play": "He calls us rebels, traitors; and will scourge",
+          "notes": []
+      },
+      "45": {
+          "play": "With haughty arms this hateful name in us.",
+          "notes": []
+      },
+      "46": {
+          "play": "[Re-enter the EARL OF DOUGLAS]",
+          "notes": []
+      },
+      "47": {
+          "play": "EARL OF DOUGLAS: Arm, gentlemen; to arms! for I have thrown",
+          "notes": []
+      },
+      "48": {
+          "play": "A brave defiance in King Henry's teeth,",
+          "notes": []
+      },
+      "49": {
+          "play": "And Westmoreland, that was engaged, did bear it;",
+          "notes": [
+              "ingag’d] JOHNSON (ed. 1765): Delivered as a hostage."
+          ]
+      },
+      "50": {
+          "play": "Which cannot choose but bring him quickly on.",
+          "notes": []
+      },
+      "51": {
+          "play": "EARL OF WORCESTER: The Prince of Wales stepp'd forth before the king,",
+          "notes": []
+      },
+      "52": {
+          "play": "And, nephew, challenged you to single fight.",
+          "notes": []
+      },
+      "53": {
+          "play": "HOTSPUR: O, would the quarrel lay upon our heads,",
+          "notes": []
+      },
+      "54": {
+          "play": "And that no man might draw short breath today",
+          "notes": []
+      },
+      "55": {
+          "play": "But I and Harry Monmouth! Tell me, tell me,",
+          "notes": [
+              "Monmouth] HUDSON (ed. 1880): Henry was so named from the town in Wales where he was born."
+          ]
+      },
+      "56": {
+          "play": "How show'd his tasking? seem'd it in contempt?",
+          "notes": [
+              "tasking] CAPELL (Notes, 1779) Challenge—MALONE (ed 1790): I know not whether “tasking” is not used here for “taxing,” or satirical representation. So, in As You Like It, II, vii, 86 “My taxing, like a wild goose, flies” “Tasking,” however, is sufficiently intelligible in its more usual acceptance: we still say “he took him to task”—COWL (ed. 1914). Task and tax (to accuse or censure) are metathetical forms of the same word."
+          ]
+      },
+      "57": {
+          "play": "VERNON: No, by my soul; I never in my life",
+          "notes": []
+      },
+      "58": {
+          "play": "Did hear a challenge urged more modestly,",
+          "notes": []
+      },
+      "59": {
+          "play": "Unless a brother should a brother dare",
+          "notes": []
+      },
+      "60": {
+          "play": "To gentle exercise and proof of arms.",
+          "notes": []
+      },
+      "61": {
+          "play": "He gave you all the duties of a man;",
+          "notes": [
+              "duties of a man] CLARKE (Sh. Key, 1879, p. 312): Duties, used elliptically for “qualities duly belonging to.”—COWL (ed. 1914). A manly observance and respect, cf. Hamlet, I, ii, 87: “Tis sweet and commendable in your nature, Hamlet, To give these mourning duties to your father,” i.e., dues and observances of mourning I think “of a man” refers to the prince, and not to Hotspur, the words are perhaps parallel to “with a princely tongue” in line 57, and “like a chronicle” in line 58. Minsheu defines “Dutie” as “that which by law of nature or civil respect is due to one” [Cowl’s interpretation is attractive, and possible; but it is not as simple and obvious as that given by Clarke and many others —Ed]"
+          ]
+      },
+      "62": {
+          "play": "Trimm's up your praises with a princely tongue,",
+          "notes": []
+      },
+      "63": {
+          "play": "Spoke to your deservings like a chronicle,",
+          "notes": []
+      },
+      "64": {
+          "play": "Making you ever better than his praise",
+          "notes": []
+      },
+      "65": {
+          "play": "By still dispraising praise valued in you;",
+          "notes": []
+      },
+      "66": {
+          "play": "And, which became him like a prince indeed,",
+          "notes": []
+      },
+      "67": {
+          "play": "He made a blushing cital of himself;",
+          "notes": [
+              "blushing citall] POPE (ed. 1723): Cital: taxation—COLLINS (Var. '73, Appendix, vol. x): I rather think cital means recital. The verb is used in that sense in The Two Gentlemen of Verona, IV, i, 53; Henry V, V, ii, 70; Titus Andronicus, V, iii, 117.—ABBOTT (Sh. Gram., 1870, p. 339): Recital. [Abbott gives over fifty examples of the dropping of prefixes in similar words. Modern editors agree in defining the word as mention or recital, and find the idea of self-accusation sufficiently expressed in blushing.—ED.]"
+          ]
+      },
+      "68": {
+          "play": "And chid his truant youth with such a grace",
+          "notes": []
+      },
+      "69": {
+          "play": "As if he master'd there a double spirit.",
+          "notes": [
+              "mastred] STEEVENS (Var. ed. 1778): Was master of.—ELTON (ed. 1889): Owned."
+          ]
+      },
+      "70": {
+          "play": "Of teaching and of learning instantly.",
+          "notes": [
+              "instantly] COLLIER (ed. 1842): At the same instant. [N. E. D. gives no such definition.—COWL (ed. 1914) is probably correct in defining it as diligently, earnestly, urgently; cf. Luke, vii, 4: \"They besought him instantly.\"]"
+          ]
+      },
+      "71": {
+          "play": "There did he pause: but let me tell the world,",
+          "notes": []
+      },
+      "72": {
+          "play": "If he outlive the envy of this day,",
+          "notes": [
+              "envie of this day] WRIGHT (ed. 1897): The hostile malice to which he will be exposed today."
+          ]
+      },
+      "73": {
+          "play": "England did never owe so sweet a hope,",
+          "notes": [
+              "owe] SINGER (ed. 1826): Own."
+          ]
+      },
+      "74": {
+          "play": "So much misconstrued in his wantonness.",
+          "notes": [
+              "wantonnesse] Cowl (ed. 1914): In respect to, or as a consequence of, the levity of his behaviour."
+          ]
+      },
+      "75": {
+          "play": "HOTSPUR: Cousin, I think thou art enamoured",
+          "notes": []
+      },
+      "76": {
+          "play": "On his follies: never did I hear",
+          "notes": []
+      },
+      "77": {
+          "play": "Of any prince so wild a libertine.",
+          "notes": [
+              "prince . . libertie] Theobald (ed 1733): a Liberty. Thus Mr. Pope has given it us in both his editions, as if a liberty could mean a libertine. Whether chance or purpose be the source of this reading is not easy to determine: for besides that this gentleman's indolence is so singular, his vein of criticism is so extravagant, that, like our author's fools, he is seldom or never called to account for his rhetoric! I have restored the reading of the old copies [But not of the oldest (see Textual Notes) which is here followed by the “indolent\" Mr. Pope. Theobald did not know Q1, but that he did know Q2 is shown by his note on I, ii, 40, old lad of the castle He, however, chose to ignore that \"old copy\" in his attack, here, on Pope.—Ed.] The meaning is that a prince of so wild and licentious a behaviour should not be suffered at liberty for fear of doing mischief.—Johnson (ed 1765): \"I never heard of any prince that played such tricks and was not confined as a madman.\"—Steevens (ed. 1793): The oldest reading may be the true one, for in The Comedy of Errors, I, ii, 101, the same phraseology occurs: \"prating mountebanks, And many suchlike liberties of sin.\"—Malone (Var. ed. 1821): I doubt whether the passage quoted from The Comedy of Errors has the meaning assigned to it by Mr. Steevens.—Singer (ed. 1826): “So wild at liberty” may mean \"so wild and licentious in his conduct.\" I much incline to \"so wild a libertine.\"—Knight (ed. 1839): So wild of his own unrestrained will.—White (ed. 1859): Never did I hear so wild a liberty reported of any prince.—Hudson (ed. 1880): \"So wild o'liberty\" plainly means, using his freedom so wantonly. [That libertie was a misprint for libertine in Q1, seems to be the best opinion, although White's ingenious interpretation makes good sense out of the reading of Q1.—Ed.]"
+          ]
+      },
+      "78": {
+          "play": "But be he as he will, yet once ere night",
+          "notes": []
+      },
+      "79": {
+          "play": "I will embrace him with a soldier's arm,",
+          "notes": []
+      },
+      "80": {
+          "play": "That he shall shrink under my courtesy.",
+          "notes": []
+      },
+      "81": {
+          "play": "Arm, arm with speed: and, fellows, soldiers, friends,",
+          "notes": []
+      },
+      "82": {
+          "play": "Better consider what you have to do",
+          "notes": []
+      },
+      "83": {
+          "play": "Than I, that have not well the gift of tongue,",
+          "notes": []
+      },
+      "84": {
+          "play": "Can lift your blood up with persuasion.",
+          "notes": []
+      },
+      "85": {
+          "play": "[Enter a Messenger]",
+          "notes": []
+      },
+      "86": {
+          "play": "Messenger: My lord, here are letters for you.",
+          "notes": []
+      },
+      "87": {
+          "play": "HOTSPUR: I cannot read them now.",
+          "notes": []
+      },
+      "88": {
+          "play": "O gentlemen, the time of life is short!",
+          "notes": []
+      },
+      "89": {
+          "play": "To spend that shortness basely were too long,",
+          "notes": []
+      },
+      "90": {
+          "play": "If life did ride upon a dial's point,",
+          "notes": [
+              "dials point] COWL (ed. 1914): The hand or needle of a clock or sundial."
+          ]
+      },
+      "91": {
+          "play": "Still ending at the arrival of an hour.",
+          "notes": [
+              "Still] Always."
+          ]
+      },
+      "92": {
+          "play": "An if we live, we live to tread on kings;",
+          "notes": []
+      },
+      "93": {
+          "play": "If die, brave death, when princes die with us!",
+          "notes": []
+      },
+      "94": {
+          "play": "Now, for our consciences, the arms are fair,",
+          "notes": [
+              "for our consciences] Wright (ed. 1897): As regards our consciences."
+          ]
+      },
+      "95": {
+          "play": "When the intent of bearing them is just.",
+          "notes": [
+              "intent of bearing] Wright (ed. 1897): Object for which we bear."
+          ]
+      },
+      "96": {
+          "play": "[Enter another Messenger]",
+          "notes": []
+      },
+      "97": {
+          "play": "Messenger: My lord, prepare; the king comes on apace.",
+          "notes": []
+      },
+      "98": {
+          "play": "HOTSPUR: I thank him, that he cuts me from my tale,",
+          "notes": []
+      },
+      "99": {
+          "play": "For I profess not talking; only this--",
+          "notes": []
+      },
+      "100": {
+          "play": "Let each man do his best: and here draw I",
+          "notes": []
+      },
+      "101": {
+          "play": "A sword, whose temper I intend to stain",
+          "notes": []
+      },
+      "102": {
+          "play": "With the best blood that I can meet withal",
+          "notes": []
+      },
+      "103": {
+          "play": "In the adventure of this perilous day.",
+          "notes": []
+      },
+      "104": {
+          "play": "Now, Esperance! Percy! and set on.",
+          "notes": [
+              "Esperance] See Appendix: Sources of the Plot: Holinshed—Pope (ed. 1723): Esperance, the word of battle on Percy's side.—Percy (Var. ed. 1773): Esperance, or Esperanza, has always been the motto of the Percy family. . . \"Esperance ma Conforte\" is still legible over the great gate at Alnwick.—Capell (Notes, 1779): Esperance must be made of four syllables, more Gallico."
+          ]
+      },
+      "105": {
+          "play": "Sound all the lofty instruments of war,",
+          "notes": []
+      },
+      "106": {
+          "play": "And by that music let us all embrace;",
+          "notes": []
+      },
+      "107": {
+          "play": "For, heaven to earth, some of us never shall",
+          "notes": [
+              "heaven to earth] Warburton (ed. 1747): \"One might wager heaven to earth.\"—Singer (N. & Q., May 15, 1852): This could hardly be tortured to fit Warburton's paraphrase, a strange thought to enter Hotspur's mind at such a time. The context requires \"here on earth.\" [Warburton's interpretation has for once, however, satisfied most of his successors, and is generally accepted]."
+          ]
+      },
+      "108": {
+          "play": "A second time do such a courtesy.",
+          "notes": []
+      },
+      "109": {
+          "play": "[The trumpets sound. They embrace, and exeunt]",
+          "notes": []
+      }
+  },
+  "ACT 5 , SCENE 3": {
+      "1": {
+          "play": "LOADING….",
           "notes": []
       }
   },
