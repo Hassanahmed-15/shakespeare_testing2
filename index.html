@@ -9789,37 +9789,42 @@
             
             if (!sceneNotes) {
                 // Try variations of the scene name to handle inconsistent formatting
+                // First, try all possible variations
                 const variations = [
                     sceneName,
-                    sceneName.replace(/,/g, ''),  // Remove commas
+                    sceneName.replace(/,\s*/g, ' ,'), // "ACT 1, SCENE 1" -> "ACT 1 ,SCENE 1"
+                    sceneName.replace(/\s*,\s*/g, ' ,'), // Normalize to space before comma
+                    sceneName.replace(/,/g, ''),  // Remove all commas
+                    sceneName.replace(/\s*,\s*/g, ', '),  // Normalize to space after comma
                     sceneName.replace(/SCENE/g, ',SCENE'),  // Add comma before SCENE
                     sceneName.replace(/SCENE/g, ', SCENE'), // Add comma and space before SCENE
                     sceneName.replace(/,\s*SCENE/g, ' SCENE'), // Remove comma before SCENE
-                    sceneName.replace(/,\s+/g, ', '),  // Normalize comma spacing
-                    sceneName.replace(/\s*,\s*/g, ' ,'), // Space before comma
                 ];
                 
-                // Also try to find by matching keys in the playData
-                for (const key in playData) {
-                    const normalizedKey = key.replace(/\s*,\s*/g, ' ').replace(/\s+/g, ' ').trim();
-                    const normalizedSceneName = sceneName.replace(/\s*,\s*/g, ' ').replace(/\s+/g, ' ').trim();
-                    
-                    if (normalizedKey === normalizedSceneName || 
-                        key.replace(/,/g, '') === sceneName.replace(/,/g, '')) {
-                        sceneNotes = playData[key];
-                        actualSceneName = key;
-                        console.log('✅ Found scene with alternate formatting:', key);
+                // Try variations first
+                for (const variation of variations) {
+                    if (playData[variation]) {
+                        sceneNotes = playData[variation];
+                        actualSceneName = variation;
+                        console.log('✅ Found scene with variation:', variation);
                         break;
                     }
                 }
                 
-                // If still not found, try the variations
+                // If still not found, try fuzzy matching by normalizing keys
                 if (!sceneNotes) {
-                    for (const variation of variations) {
-                        if (playData[variation]) {
-                            sceneNotes = playData[variation];
-                            actualSceneName = variation;
-                            console.log('✅ Found scene with variation:', variation);
+                    const searchNormalized = sceneName.replace(/\s*,\s*/g, ' ').replace(/\s+/g, ' ').trim().toUpperCase();
+                    
+                    for (const key in playData) {
+                        if (!key.startsWith('ACT')) continue;
+                        
+                        const keyNormalized = key.replace(/\s*,\s*/g, ' ').replace(/\s+/g, ' ').trim().toUpperCase();
+                        
+                        if (keyNormalized === searchNormalized || 
+                            key.replace(/,/g, '').replace(/\s+/g, ' ') === sceneName.replace(/,/g, '').replace(/\s+/g, ' ')) {
+                            sceneNotes = playData[key];
+                            actualSceneName = key;
+                            console.log('✅ Found scene with fuzzy matching:', key);
                             break;
                         }
                     }
@@ -9922,21 +9927,31 @@
         }
         
         function matchesText(playLine, searchText) {
-            if (playLine === searchText) return true;
-            if (playLine.includes(searchText) && searchText.length > 3) return true;
-            if (searchText.includes(playLine) && playLine.length > 3) return true;
+            // Normalize both strings for comparison (remove speaker prefixes, normalize spaces/punctuation)
+            const normalizedPlayLine = playLine.replace(/[:\s,]+/g, ' ').trim().toLowerCase();
+            const normalizedSearchText = searchText.replace(/[:\s,]+/g, ' ').trim().toLowerCase();
             
-            const playWords = playLine.split(/\s+/).filter(word => word.length > 2);
-            const searchWords = searchText.split(/\s+/).filter(word => word.length > 2);
+            // Exact match after normalization
+            if (normalizedPlayLine === normalizedSearchText) return true;
+            
+            // One contains the other (more lenient - 5 chars minimum)
+            if (normalizedPlayLine.includes(normalizedSearchText) && normalizedSearchText.length > 5) return true;
+            if (normalizedSearchText.includes(normalizedPlayLine) && normalizedPlayLine.length > 5) return true;
+            
+            // Extract key words (remove speaker prefixes like "KING HENRY IV:")
+            const playWords = normalizedPlayLine.replace(/^[a-z\s]+:\s*/i, '').split(/\s+/).filter(word => word.length > 2);
+            const searchWords = normalizedSearchText.replace(/^[a-z\s]+:\s*/i, '').split(/\s+/).filter(word => word.length > 2);
             
             if (playWords.length > 0 && searchWords.length > 0) {
                 const matchingWords = playWords.filter(word => 
                     searchWords.some(searchWord => 
-                        word.includes(searchWord) || searchWord.includes(word)
+                        word === searchWord || word.includes(searchWord) || searchWord.includes(word)
                     )
                 );
                 
-                return (matchingWords.length / playWords.length) > 0.5;
+                // More lenient matching - if 40% of words match, consider it a match
+                const matchRatio = matchingWords.length / Math.max(playWords.length, searchWords.length);
+                if (matchRatio >= 0.4) return true;
             }
             
             return false;
