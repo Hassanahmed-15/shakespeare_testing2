@@ -58,21 +58,23 @@
         /* Audio Player Styles */
         .audio-player {
             position: fixed;
-            bottom: 0;
+            top: 70px;
             left: 0;
             right: 0;
             background: var(--surface);
-            border-top: 1px solid var(--line);
+            border-bottom: 1px solid var(--line);
             padding: 12px 24px;
             display: none;
             align-items: center;
             gap: 16px;
-            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             z-index: 1001;
         }
 
         .audio-player.active {
-            display: flex;
+            display: flex !important;
+            visibility: visible !important;
+            opacity: 1 !important;
         }
 
         .audio-controls {
@@ -1278,11 +1280,12 @@
 
         /* Adjust layout when audio player is active */
         body:has(.audio-player.active) .layout {
-            margin-bottom: 80px;
+            margin-top: 150px;
         }
 
         body:has(.audio-player.active) .sidebar {
-            height: calc(100vh - 70px - var(--s-4) * 8 - 80px) !important;
+            top: calc(150px + var(--s-4)) !important;
+            height: calc(100vh - 150px - var(--s-4) * 8) !important;
         }
 
         /* Remove the black separator line */
@@ -8237,6 +8240,7 @@
                 resetAnalysisPanelForNewPlay();
 
                 // Show/hide audio player for All's Well That Ends Well
+                console.log('🎵 About to toggle audio player in loadSelectedPlay for:', selectedPlay);
                 toggleAudioPlayer(selectedPlay);
 
                 // FORCE display content immediately
@@ -11220,6 +11224,32 @@
         document.addEventListener('DOMContentLoaded', async function() {
             console.log('=== DOM LOADED AT:', new Date().toISOString(), '===');
             
+            // Initialize audio player - keep checking every second to ensure it stays visible
+            let audioCheckCount = 0;
+            setInterval(() => {
+                const selector = document.getElementById('playSelector');
+                const selectedPlay = selector ? selector.value : '';
+                const audioPlayer = document.getElementById('audioPlayer');
+                
+                audioCheckCount++;
+                if (audioCheckCount % 10 === 0) { // Log every 5 seconds
+                    console.log('🎵 Audio check #' + audioCheckCount + ' - currentPlay:', currentPlay, 'selectedPlay:', selectedPlay);
+                }
+                
+                if ((currentPlay === 'alls_well_that_ends_well' || selectedPlay === 'alls_well_that_ends_well') && audioPlayer) {
+                    if (!audioPlayer.classList.contains('active')) {
+                        console.log('🎵 Adding active class to audio player - check #' + audioCheckCount);
+                        audioPlayer.classList.add('active');
+                        if (!audio) {
+                            initializeAudioPlayer();
+                        }
+                    }
+                } else if (audioPlayer && audioPlayer.classList.contains('active') && selectedPlay !== 'alls_well_that_ends_well') {
+                    console.log('🎵 Removing active class - wrong play selected');
+                    audioPlayer.classList.remove('active');
+                }
+            }, 500); // Check every 500ms
+            
             // Check for service workers
             if ('serviceWorker' in navigator) {
                 navigator.serviceWorker.getRegistrations().then(function(registrations) {
@@ -11874,16 +11904,24 @@
         }
         
         function toggleAudioPlayer(playKey) {
+            console.log('🎵 toggleAudioPlayer called with playKey:', playKey);
             const audioPlayer = document.getElementById('audioPlayer');
-            if (!audioPlayer) return;
+            if (!audioPlayer) {
+                console.error('❌ Audio player element not found!');
+                return;
+            }
+            console.log('✅ Audio player element found');
             
             // Show audio player only for All's Well That Ends Well
             if (playKey === 'alls_well_that_ends_well') {
+                console.log('✅ Showing audio player for All\'s Well That Ends Well');
                 audioPlayer.classList.add('active');
+                console.log('Audio player classes:', audioPlayer.className);
                 if (!audio) {
                     initializeAudioPlayer();
                 }
             } else {
+                console.log('ℹ️ Hiding audio player for:', playKey);
                 audioPlayer.classList.remove('active');
                 // Pause audio if switching to another play
                 if (audio && isPlaying) {
