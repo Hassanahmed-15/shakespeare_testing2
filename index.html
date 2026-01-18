@@ -9704,9 +9704,16 @@
                 // Check each selected line for commentary
                 for (let i = 0; i < selectedLines.length; i++) {
                     const line = selectedLines[i];
-                    console.log(`🔍 Searching for line: "${line}"`);
+                    console.log(`🔍 Searching for line ${i}: "${line}"`);
+                    console.log('🎭 Using scene name:', currentScene);
+                    console.log('📊 Scene exists in data?:', currentPlayData[currentScene] ? 'YES' : 'NO');
+                    
                     const notesData = findNotesForLine(line, currentScene);
-                    console.log('📝 Notes data found:', notesData);
+                    console.log('📝 Notes data returned:', notesData);
+                    
+                    if (notesData) {
+                        console.log('📝 Notes count:', notesData.notes ? notesData.notes.length : 0);
+                    }
                     
                     if (notesData && notesData.notes && notesData.notes.length > 0) {
                         const formattedNotes = formatNotes(notesData);
