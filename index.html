@@ -9702,17 +9702,25 @@
                 let combinedCommentary = '';
                 
                 // Check each selected line for commentary
+                console.log('🔍 ALL SCENE KEYS IN DATA:', Object.keys(currentPlayData).filter(k => k.includes('ACT 1')));
+                
                 for (let i = 0; i < selectedLines.length; i++) {
                     const line = selectedLines[i];
                     console.log(`🔍 Searching for line ${i}: "${line}"`);
                     console.log('🎭 Using scene name:', currentScene);
                     console.log('📊 Scene exists in data?:', currentPlayData[currentScene] ? 'YES' : 'NO');
+                    console.log('📊 Scene key variations:', {
+                        exact: currentPlayData[currentScene] ? 'YES' : 'NO',
+                        withSpaceBeforeComma: currentPlayData[currentScene.replace(/,/g, ' ,')] ? 'YES' : 'NO'
+                    });
                     
                     const notesData = findNotesForLine(line, currentScene);
                     console.log('📝 Notes data returned:', notesData);
                     
                     if (notesData) {
                         console.log('📝 Notes count:', notesData.notes ? notesData.notes.length : 0);
+                    } else {
+                        console.log('❌ findNotesForLine returned NULL');
                     }
                     
                     if (notesData && notesData.notes && notesData.notes.length > 0) {
