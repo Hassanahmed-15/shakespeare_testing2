@@ -9692,9 +9692,12 @@
             
             // Check for traditional commentary
             let commentaryFound = false;
-            if (window.macbethData && currentScene) {
+            const currentPlayData = currentPlay && window[currentPlay + 'Data'] ? window[currentPlay + 'Data'] : null;
+            console.log('🎭 Current play data exists:', !!currentPlayData, 'for play:', currentPlay);
+            
+            if (currentPlayData && currentScene) {
                 console.log('🔍 Searching for commentary in scene:', currentScene);
-                console.log('📖 Available scenes in macbethData:', Object.keys(window.macbethData));
+                console.log('📖 Available scenes in current play:', Object.keys(currentPlayData).slice(0, 10));
                 
                 let combinedCommentary = '';
                 
