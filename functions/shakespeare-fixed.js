@@ -57,6 +57,7 @@ function normalizePlayKey(playNameRaw) {
   if (s.includes('othello')) return 'othello'
   if (s.includes('lear')) return 'kinglear'
   if (s.includes('henry') && (s.includes('iv') || s.includes('4')) && s.includes('1')) return 'henryiv1'
+  if (s.includes('midsummer')) return 'midsummer'
   if (s.includes('macbeth')) return 'macbeth'
   return 'macbeth'
 }
@@ -74,7 +75,8 @@ async function findRelevantNotes(text, scene = null, playName = 'macbeth') {
       'romeo': 'ROMEO_notes.json',
       'othello': 'othello_notes.json',
       'kinglear': 'kinglear_notes.json',
-      'henryiv1': 'henry_iv_part1.json'
+      'henryiv1': 'henry_iv_part1.json',
+      'midsummer': 'midsummer_nights_dream.json'
     };
     
     const normalizedKey = normalizePlayKey(playName)
@@ -376,7 +378,7 @@ exports.handler = async (event, context) => {
       'pericles', 'taming', 'troilus', 'twogentlemen',
       'henryvi1', 'henryvi2', 'henryvi3', 'henryviii',
       'richardii', 'richardiii', 'antony', 'coriolanus',
-      'juliuscaesar', 'henryv', 'titus', 'timon', 'henryiv2'
+      'juliuscaesar', 'henryv', 'titus', 'timon', 'henryiv2', 'midsummer'
     ];
     
     if (analysisMode === 'fullfathomfive' && playsWithoutNewVariorum.includes(playName)) {
