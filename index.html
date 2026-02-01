@@ -8178,10 +8178,21 @@
             const metaElement = document.querySelector('.meta');
             const analysisTitleElement = document.querySelector('.analysis-title');
             
+            // CRITICAL FIX: Clear analysisInProgress flag to allow new analysis
+            analysisInProgress = false;
+            
             // Clear all analysis content
             if (analysisResult) analysisResult.innerHTML = '';
             if (variorumResult) variorumResult.innerHTML = '';
-            if (variorumContent) variorumContent.innerHTML = '';
+            
+            // CRITICAL FIX: Reset variorumContent to default message for Full Fathom Five
+            if (variorumContent) {
+                if (currentTab === 'fullfathomfive') {
+                    variorumContent.innerHTML = 'Traditional commentary will appear here for Full Fathom Five mode.';
+                } else {
+                    variorumContent.innerHTML = '';
+                }
+            }
             
             // Reset to initial state - exactly as when website first loads
             if (analysisContent) analysisContent.innerHTML = '<p>Highlight text in the play to get AI-powered analysis.</p>';
@@ -8204,8 +8215,11 @@
                 researchSection.innerHTML = '<h3>Research</h3><div class="research-actions"><button class="link-btn jstor" onclick="searchJSTOR(\'passage\')">Search JSTOR for this passage/scene</button><button class="link-btn scholar" onclick="searchGoogleScholar()">Google Scholar</button><button class="link-btn ise" onclick="openInternetShakespeare()">Internet Shakespeare Editions</button></div>';
             }
             
-            // Hide variorum section
-            if (variorumSection) variorumSection.style.display = 'none';
+            // CRITICAL FIX: Hide variorum section when selecting new line (will show again after analysis)
+            if (variorumSection) {
+                variorumSection.style.display = 'none';
+                console.log('✅ Hidden variorum section for new line selection');
+            }
             
             // Hide any open info panels
             if (criticsInfo) criticsInfo.style.display = 'none';
@@ -8435,6 +8449,9 @@
         function forceResetUI() {
             console.log('🔄 Force resetting all UI elements...');
             
+            // CRITICAL FIX: Don't clear analysis content or selections when resetting UI
+            // Only reset UI elements that are stuck, not the analysis results
+            
             // Reset play selector
             const playSelector = document.getElementById('playSelector');
             if (playSelector) {
@@ -8472,22 +8489,31 @@
                 sidebar.classList.remove('disabled', 'stuck');
             }
             
-            
-            // Clear any stuck selections
-            document.querySelectorAll('.selected').forEach(el => {
-                el.classList.remove('selected');
-            });
-            
-            // Clear text selection
-            if (window.getSelection) {
-                window.getSelection().removeAllRanges();
+            // CRITICAL FIX: Don't clear selections or analysis when resetting UI
+            // Only clear if analysis is NOT in progress and there's no active analysis
+            if (!analysisInProgress && selectedLines.length === 0) {
+                // Only clear stuck selections if there's no active analysis
+                document.querySelectorAll('.selected').forEach(el => {
+                    // Don't clear if there's analysis content showing
+                    const analysisResult = document.getElementById('analysisResult');
+                    if (!analysisResult || !analysisResult.innerHTML.trim()) {
+                        el.classList.remove('selected');
+                    }
+                });
             }
             
-            // Reset analysis in progress flag
-            analysisInProgress = false;
+            // Clear text selection only if no analysis is active
+            if (window.getSelection && !analysisInProgress && selectedLines.length === 0) {
+                const analysisResult = document.getElementById('analysisResult');
+                if (!analysisResult || !analysisResult.innerHTML.trim()) {
+                    window.getSelection().removeAllRanges();
+                }
+            }
             
+            // Don't reset analysis in progress flag here - let it be managed by analysis functions
+            // analysisInProgress = false; // REMOVED - let analysis functions manage this
             
-            console.log('✅ UI force reset complete');
+            console.log('✅ UI force reset complete (analysis preserved)');
         }
         
         
@@ -13426,15 +13452,23 @@
                 // Reset analysis in progress flag
                 analysisInProgress = false;
                 
-                // Force reset UI to ensure all elements remain functional
+                // CRITICAL FIX: Don't reset UI after analysis completes - it clears the analysis results!
+                // Only reset UI elements that need resetting, not the analysis content
                 setTimeout(() => {
-                    forceResetUI();
+                    // Only reset UI elements that might be stuck, NOT the analysis content
+                    const playSelector = document.getElementById('playSelector');
+                    if (playSelector) {
+                        playSelector.disabled = false;
+                        playSelector.style.pointerEvents = 'auto';
+                    }
                     
                     // Hide emergency clear button
                     const emergencyButton = document.querySelector('.emergency-clear-button');
                     if (emergencyButton) {
                         emergencyButton.style.display = 'none';
                     }
+                    
+                    // DO NOT call forceResetUI() here as it interferes with analysis display
                 }, 100);
             }
         }
@@ -13491,9 +13525,17 @@
                                 if (mediaSection) mediaSection.style.display = 'block';
                                 if (researchSection) researchSection.style.display = 'block';
                                 
-                                // Force reset UI after Full Fathom Five analysis completes
+                                // CRITICAL FIX: Don't reset UI after analysis completes - it clears the analysis results!
+                                // Analysis is complete, keep it displayed
                                 setTimeout(() => {
-                                    forceResetUI();
+                                    // Only reset UI elements that might be stuck, NOT the analysis content
+                                    const playSelector = document.getElementById('playSelector');
+                                    if (playSelector) {
+                                        playSelector.disabled = false;
+                                        playSelector.style.pointerEvents = 'auto';
+                                    }
+                                    
+                                    // DO NOT call forceResetUI() here as it interferes with analysis display
                                 }, 100);
                                 break;
                                 
@@ -13718,14 +13760,27 @@
             
             // Button outputs are now included within the analysis section itself
             
-            // Show critics button if we're in Full Fathom Five mode
+            // CRITICAL FIX: Show variorum section and critics button if we're in Full Fathom Five mode
             if (currentTab === 'fullfathomfive') {
-                console.log('✅ Structured analysis complete, showing critics button for Full Fathom Five');
+                console.log('✅ Structured analysis complete, showing variorum section for Full Fathom Five');
+                
+                // Show the variorum section
+                const variorumSection = document.getElementById('variorumSection');
+                if (variorumSection) {
+                    variorumSection.style.display = 'block';
+                    console.log('✅ Variorum section displayed after Full Fathom Five analysis');
+                } else {
+                    console.warn('⚠️ Variorum section not found - may need to be created');
+                }
+                
                 showCriticsButton();
                 
                 // SEARCH FOR NOTES LOCALLY AND DISPLAY THEM
                 handleFullFathomFiveAnalysis(text);
             }
+            
+            // CRITICAL FIX: Clear analysisInProgress flag after analysis completes
+            analysisInProgress = false;
             
             // Add Copy button dynamically after analysis content is set
             setTimeout(() => {
@@ -13739,8 +13794,15 @@
                     console.log('✅ Copy button added to structured analysis after content is set');
                 }
                 
-                // Force reset UI to ensure all elements remain functional after structured analysis
-                forceResetUI();
+                // CRITICAL FIX: Don't reset UI after structured analysis - it clears the analysis results!
+                // Only reset UI elements that need resetting, not the analysis content
+                const playSelector = document.getElementById('playSelector');
+                if (playSelector) {
+                    playSelector.disabled = false;
+                    playSelector.style.pointerEvents = 'auto';
+                }
+                
+                // DO NOT call forceResetUI() here as it interferes with analysis display
             }, 100);
         }
 
