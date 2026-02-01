@@ -8161,7 +8161,7 @@
                     line.classList.remove('selected', 'range-selected');
                 });
                 
-            // Clear ALL previous analysis results and reset to default state
+            // COMPLETE RESET: Reset analysis panel to exact initial state when selecting a new line
             const analysisResult = document.getElementById('analysisResult');
             const variorumResult = document.getElementById('variorumResult');
             const variorumContent = document.getElementById('variorumContent');
@@ -8169,24 +8169,53 @@
             const criticsInfo = document.getElementById('criticsInfo');
             const nvInfo = document.getElementById('nvInfo');
             const analysisContent = document.getElementById('analysisContent');
+            const analysisInstruction = document.getElementById('analysisInstruction');
+            const analyzeButton = document.getElementById('analyzeButton');
+            const followUpSection = document.getElementById('followUpSection');
+            const mediaSection = document.getElementById('mediaSection');
+            const researchSection = document.getElementById('researchSection');
+            const variorumSection = document.getElementById('variorumSection');
+            const metaElement = document.querySelector('.meta');
+            const analysisTitleElement = document.querySelector('.analysis-title');
             
             // Clear all analysis content
             if (analysisResult) analysisResult.innerHTML = '';
             if (variorumResult) variorumResult.innerHTML = '';
             if (variorumContent) variorumContent.innerHTML = '';
-            if (analysisContent) analysisContent.innerHTML = '<p>Highlight text in the play to get AI-powered analysis.</p>';
             
-            // Hide follow-up, media, and research sections when analysis is cleared
-            const followUpSection = document.getElementById('followUpSection');
-            const mediaSection = document.getElementById('mediaSection');
-            const researchSection = document.getElementById('researchSection');
-            if (followUpSection) followUpSection.style.display = 'none';
-            if (mediaSection) mediaSection.style.display = 'none';
-            if (researchSection) researchSection.style.display = 'none';
+            // Reset to initial state - exactly as when website first loads
+            if (analysisContent) analysisContent.innerHTML = '<p>Highlight text in the play to get AI-powered analysis.</p>';
+            if (analysisInstruction) analysisInstruction.textContent = 'Select text in the play to get AI-powered analysis.';
+            
+            // Hide analyze button (will be shown by updateAnalysisPanel if line is selected)
+            if (analyzeButton) analyzeButton.style.display = 'none';
+            
+            // Hide follow-up, media, and research sections
+            if (followUpSection) {
+                followUpSection.style.display = 'none';
+                followUpSection.innerHTML = '<h3>Ask a follow-up question</h3><div class="follow-up-input"><input type="text" placeholder="Ask a follow-up question..." id="followUpQuestion"><button class="ask-btn" onclick="askFollowUp()">Ask</button></div>';
+            }
+            if (mediaSection) {
+                mediaSection.style.display = 'none';
+                mediaSection.innerHTML = '<h3>Media</h3><div class="media-actions"><button class="link-btn youtube" onclick="searchYouTube(\'scene\')">Search YouTube for this scene</button></div>';
+            }
+            if (researchSection) {
+                researchSection.style.display = 'none';
+                researchSection.innerHTML = '<h3>Research</h3><div class="research-actions"><button class="link-btn jstor" onclick="searchJSTOR(\'passage\')">Search JSTOR for this passage/scene</button><button class="link-btn scholar" onclick="searchGoogleScholar()">Google Scholar</button><button class="link-btn ise" onclick="openInternetShakespeare()">Internet Shakespeare Editions</button></div>';
+            }
+            
+            // Hide variorum section
+            if (variorumSection) variorumSection.style.display = 'none';
             
             // Hide any open info panels
             if (criticsInfo) criticsInfo.style.display = 'none';
             if (nvInfo) nvInfo.style.display = 'none';
+            
+            // Reset meta element
+            if (metaElement) metaElement.style.display = 'none';
+            
+            // Reset analysis title to Basic Analysis
+            if (analysisTitleElement) analysisTitleElement.textContent = 'Basic Analysis';
             
             // Scroll the analysis panel to the top
             if (analysisPanel) {
@@ -9208,6 +9237,13 @@
                                         } else {
                                             // Apply speaker name optimization to the scene content
                                             processedContent = optimizeSpeakerNames(sceneContent);
+                                            
+                                            // CRITICAL FIX: If all lines are empty after processing, ensure we still have an array
+                                            // This handles cases where scenes have notes but no play text (like ACT 1, SCENE 3)
+                                            if (processedContent.length === 0 && Object.keys(sceneData).length > 0) {
+                                                // Scene has data (notes) but no visible play text - add a placeholder
+                                                processedContent = ['[Scene text not available - notes exist in database]'];
+                                            }
                                         }
                                         
                                         const normalizedKey = normalizeSceneKey(originalSceneKey);
@@ -9223,11 +9259,30 @@
                                                 plays['hamlet'].acts[actName].push(normalizedKey);
                                             }
                                         }
+                                        
+                                        // Debug logging for ACT 1 scenes
+                                        if (normalizedKey.includes('ACT 1')) {
+                                            console.log(`✅ Added Hamlet scene: ${normalizedKey}, content length: ${processedContent.length}`);
+                                        }
                                     }
                                 }
                             });
                             
                             console.log(`✅ Hamlet parsed: ${sceneCount} scenes, ${lineCount} lines`);
+                            
+                            // Debug: Log ACT 1 scenes specifically
+                            if (plays['hamlet'].acts['ACT 1']) {
+                                console.log(`✅ ACT 1 scenes:`, plays['hamlet'].acts['ACT 1']);
+                            }
+                            // Debug: Check if problematic scenes exist
+                            const problematicScenes = ['ACT 1, SCENE 3', 'ACT 1, SCENE 4', 'ACT 1, SCENE 5'];
+                            problematicScenes.forEach(scene => {
+                                if (plays['hamlet'].scenes[scene]) {
+                                    console.log(`✅ Scene ${scene} exists with ${plays['hamlet'].scenes[scene].length} lines`);
+                                } else {
+                                    console.warn(`❌ Scene ${scene} NOT FOUND in plays['hamlet'].scenes`);
+                                }
+                            });
                         }
                         return 'hamlet';
                     } else {
@@ -12036,6 +12091,17 @@
                     return '<p><em>No content found for this scene.</em></p>';
                 }
                 
+                // Check if all content is empty or just placeholder text
+                const hasRealContent = sceneContent.some(line => {
+                    const trimmed = line.trim();
+                    return trimmed && trimmed !== '' && !trimmed.includes('[Scene text not available');
+                });
+                
+                if (!hasRealContent) {
+                    console.log('⚠️ Scene has no real content, showing placeholder');
+                    return '<p><em>This scene exists in the database but the play text is not available. Notes may be available for analysis.</em></p>';
+                }
+                
                 let html = '';
                 let currentSpeaker = '';
                 
@@ -12615,15 +12681,18 @@
 
         function explainHighlighted() {
             console.log('🔍 explainHighlighted called');
-            console.log('📝 Selected lines:', selectedLines);
+            
+            // CRITICAL FIX: Capture selectedLines IMMEDIATELY at function start to ensure we use current value
+            const currentSelectedLines = [...selectedLines]; // Create a copy to avoid reference issues
+            console.log('📝 Selected lines (captured):', currentSelectedLines);
             console.log('🎯 Current tab:', currentTab);
             
-            if (selectedLines.length === 0) {
+            if (currentSelectedLines.length === 0) {
                 alert('Please select text in the play first.');
                 return;
             }
             
-            const textToAnalyze = selectedLines.join('\n');
+            const textToAnalyze = currentSelectedLines.join('\n');
             console.log('📖 Text to analyze:', textToAnalyze);
             
             // Set analysis mode based on current tab
@@ -13098,13 +13167,36 @@
             console.log('Analysis mode passed:', mode);
             console.log('Current analysis mode:', currentAnalysisMode);
             
-            // Reset the right panel to original state before new analysis
+            // CRITICAL: Clear ALL previous analysis results at the start to ensure fresh analysis
+            const analysisResult = document.getElementById('analysisResult');
+            const variorumResult = document.getElementById('variorumResult');
+            const variorumContent = document.getElementById('variorumContent');
+            const variorumSection = document.getElementById('variorumSection');
             const followUpSection = document.getElementById('followUpSection');
             const mediaSection = document.getElementById('mediaSection');
             const researchSection = document.getElementById('researchSection');
-            if (followUpSection) followUpSection.innerHTML = '';
-            if (mediaSection) mediaSection.innerHTML = '';
-            if (researchSection) researchSection.innerHTML = '';
+            
+            // Clear all previous results
+            if (analysisResult) analysisResult.innerHTML = '';
+            if (variorumResult) variorumResult.innerHTML = '';
+            if (variorumContent) variorumContent.innerHTML = '';
+            
+            // Hide variorum section at start (will be shown later if needed)
+            if (variorumSection) variorumSection.style.display = 'none';
+            
+            // Reset follow-up, media, and research sections
+            if (followUpSection) {
+                followUpSection.style.display = 'none';
+                followUpSection.innerHTML = '<h3>Ask a follow-up question</h3><div class="follow-up-input"><input type="text" placeholder="Ask a follow-up question..." id="followUpQuestion"><button class="ask-btn" onclick="askFollowUp()">Ask</button></div>';
+            }
+            if (mediaSection) {
+                mediaSection.style.display = 'none';
+                mediaSection.innerHTML = '<h3>Media</h3><div class="media-actions"><button class="link-btn youtube" onclick="searchYouTube(\'scene\')">Search YouTube for this scene</button></div>';
+            }
+            if (researchSection) {
+                researchSection.style.display = 'none';
+                researchSection.innerHTML = '<h3>Research</h3><div class="research-actions"><button class="link-btn jstor" onclick="searchJSTOR(\'passage\')">Search JSTOR for this passage/scene</button><button class="link-btn scholar" onclick="searchGoogleScholar()">Google Scholar</button><button class="link-btn ise" onclick="openInternetShakespeare()">Internet Shakespeare Editions</button></div>';
+            }
             
             // Use the passed mode or fall back to currentTab
             const analysisMode = mode || currentTab || 'basic';
@@ -13160,6 +13252,7 @@
             }
             
             if (metaElement) {
+                metaElement.style.display = 'block';
                 metaElement.innerHTML = `${currentScene && currentScene !== '' ? `<em>${playName}</em> · ${currentScene} · ${wordCount} ${wordCount === 1 ? 'word' : 'words'} highlighted` : `<em>${playName}</em> · ${wordCount} ${wordCount === 1 ? 'word' : 'words'} highlighted`}`;
             }
             
