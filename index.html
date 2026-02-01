@@ -13083,7 +13083,7 @@
         }
 
         // Helper function for fetch with timeout
-        async function fetchWithTimeout(url, options, timeoutMs = 30000) {
+        async function fetchWithTimeout(url, options, timeoutMs = 90000) {
             const controller = new AbortController();
             const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
             
@@ -13097,7 +13097,7 @@
             } catch (error) {
                 clearTimeout(timeoutId);
                 if (error.name === 'AbortError') {
-                    throw new Error('Request timed out after 30 seconds. Please try again with a shorter text selection.');
+                    throw new Error('Request timed out after 90 seconds. Shakespearean analysis can take a while for longer selections. Please try again with a shorter text selection.');
                 }
                 throw error;
             }
@@ -13153,10 +13153,14 @@
                 console.log('⚠️ Analysis timeout - clearing loading state');
                 analysisInProgress = false;
                 if (analysisContent) {
-                    analysisContent.innerHTML = '<p style="color: red;">Analysis timed out. Please try again.</p>';
+                    analysisContent.innerHTML = '<p style="color: red;">Analysis timed out. Shakespearean analysis can take up to 60 seconds for complex passages. Please try again with a shorter selection or check your connection.</p>';
                 }
-                forceResetUI();
-            }, 30000); // 30 second timeout
+                const playSelector = document.getElementById('playSelector');
+                if (playSelector) {
+                    playSelector.disabled = false;
+                    playSelector.style.pointerEvents = 'auto';
+                }
+            }, 90000); // Increased to 90 second timeout for long analyses
             
             // Check cache first
             const playName = currentPlay && plays[currentPlay] ? plays[currentPlay].name : 'Unknown Play';
@@ -13353,15 +13357,20 @@
             } catch (error) {
                 console.error('Error analyzing text:', error);
                 
+                // Clear processing message on error
+                if (analysisContent) {
+                    analysisContent.innerHTML = `<p style="color: red;"><strong>Error:</strong> ${error.message}</p><p>Please try again or select a shorter passage.</p>`;
+                }
+                
                 // More specific error messages
                 if (error.message.includes('Failed to fetch') || error.message.includes('NetworkError')) {
-                    alert('Network error. Please check your internet connection and try again.');
+                    alert('Network error. Please check your internet connection and ensure your local server is running.');
                 } else if (error.message.includes('API key')) {
-                    alert('OpenAI API key not configured. Please check your Netlify environment variables.');
-                } else if (error.message.includes('504') || error.message.includes('Gateway Timeout')) {
-                    alert('Request timed out. The server is taking too long to respond. Please try again with a shorter text selection or try again later.');
+                    alert('OpenAI API key not configured. Please check your environment variables.');
+                } else if (error.message.includes('504') || error.message.includes('Gateway Timeout') || error.message.includes('timed out')) {
+                    alert('Request timed out. The analysis is taking longer than expected. Try selecting fewer lines or a different analysis level.');
                 } else {
-                    alert(`Error analyzing text: ${error.message}. Please try again.`);
+                    alert(`Error: ${error.message}`);
                 }
             } finally {
                 // Clear the loading timeout
