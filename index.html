@@ -8113,9 +8113,18 @@
             if (variorumContent) {
                 if (currentTab === 'fullfathomfive') {
                     variorumContent.innerHTML = 'Traditional commentary will appear here for Full Fathom Five mode.';
+                    // Also reset variorumResult
+                    if (variorumResult) variorumResult.innerHTML = '';
                 } else {
                     variorumContent.innerHTML = '';
+                    if (variorumResult) variorumResult.innerHTML = '';
                 }
+            }
+            
+            // Hide variorum section when selecting new line (will show again after analysis)
+            if (variorumSection && currentTab === 'fullfathomfive') {
+                variorumSection.style.display = 'none';
+                console.log('✅ Hidden variorum section for new line selection');
             }
             
             // Reset to initial state - exactly as when website first loads
@@ -13123,7 +13132,15 @@
             // Clear all previous results
             if (analysisResult) analysisResult.innerHTML = '';
             if (variorumResult) variorumResult.innerHTML = '';
-            if (variorumContent) variorumContent.innerHTML = '';
+            
+            // Reset variorumContent based on mode
+            if (variorumContent) {
+                if (currentTab === 'fullfathomfive') {
+                    variorumContent.innerHTML = 'Traditional commentary will appear here for Full Fathom Five mode.';
+                } else {
+                    variorumContent.innerHTML = '';
+                }
+            }
             
             // Hide variorum section at start (will be shown later if needed)
             if (variorumSection) variorumSection.style.display = 'none';
@@ -13654,10 +13671,77 @@
             
             // Show variorum section and critics button if we're in Full Fathom Five mode
             if (currentTab === 'fullfathomfive') {
+                console.log('✅ Full Fathom Five mode - showing variorum section');
                 const variorumSection = document.getElementById('variorumSection');
-                if (variorumSection) variorumSection.style.display = 'block';
+                const variorumContent = document.getElementById('variorumContent');
+                const variorumResult = document.getElementById('variorumResult');
+                
+                // Check if this play should show New Variorum Analysis
+                const playsWithoutNewVariorum = ['allswell', 'comedyoferrors', 'measureformeasure', 'merrywives', 'pericles', 'taming', 'troilus', 'twogentlemen', 'henryvi1', 'henryvi2', 'henryvi3', 'henryviii', 'richardii', 'antony', 'coriolanus', 'henryv', 'titus', 'timon', 'henryiv2', 'midsummer'];
+                const shouldHideVariorum = playsWithoutNewVariorum.includes(currentPlay);
+                
+                if (variorumSection) {
+                    if (shouldHideVariorum) {
+                        variorumSection.style.display = 'none';
+                        console.log('🚫 Variorum section hidden for', currentPlay);
+                    } else {
+                        variorumSection.style.display = 'block';
+                        console.log('✅ Variorum section displayed for Full Fathom Five');
+                        
+                        // Load and display traditional commentary
+                        setTimeout(() => {
+                            if (variorumContent && selectedLines.length > 0 && currentScene) {
+                                const currentPlayData = currentPlay && window[currentPlay + 'Data'] ? window[currentPlay + 'Data'] : null;
+                                
+                                if (currentPlayData) {
+                                    console.log('🔍 Loading traditional commentary for', selectedLines.length, 'lines');
+                                    let combinedCommentary = '';
+                                    let commentaryFound = false;
+                                    
+                                    for (let i = 0; i < selectedLines.length; i++) {
+                                        const line = selectedLines[i];
+                                        const notesData = findNotesForLine(line, currentScene);
+                                        
+                                        if (notesData && notesData.notes && notesData.notes.length > 0) {
+                                            const formattedNotes = formatNotes(notesData);
+                                            if (formattedNotes) {
+                                                combinedCommentary += formattedNotes;
+                                                if (i < selectedLines.length - 1) {
+                                                    combinedCommentary += '<hr style="margin: 20px 0; border: 1px solid #4b5563;">';
+                                                }
+                                                commentaryFound = true;
+                                                console.log('✅ Found commentary for line', i + 1);
+                                            }
+                                        }
+                                    }
+                                    
+                                    if (commentaryFound) {
+                                        if (variorumResult) variorumResult.innerHTML = combinedCommentary;
+                                        if (variorumContent) variorumContent.innerHTML = combinedCommentary;
+                                        console.log('✅ Traditional commentary displayed');
+                                        showCriticsButton();
+                                    } else {
+                                        if (variorumContent) variorumContent.innerHTML = '<div class="loading" style="padding: 20px; color: #9ca3af;">No traditional commentary found for selected lines.</div>';
+                                        console.log('ℹ️ No traditional commentary found');
+                                    }
+                                } else {
+                                    console.log('⚠️ No play data available for', currentPlay);
+                                    if (variorumContent) variorumContent.innerHTML = '<div class="loading" style="padding: 20px; color: #9ca3af;">Loading commentary...</div>';
+                                }
+                            } else {
+                                console.log('⚠️ Missing requirements:', {
+                                    variorumContent: !!variorumContent,
+                                    selectedLines: selectedLines.length,
+                                    currentScene: currentScene
+                                });
+                            }
+                        }, 200);
+                    }
+                } else {
+                    console.error('❌ Variorum section element not found');
+                }
+                
                 showCriticsButton();
-                handleFullFathomFiveAnalysis(text);
             }
             
             analysisInProgress = false;
@@ -13756,7 +13840,64 @@
             if (mediaSection) mediaSection.style.display = 'block';
             if (researchSection) researchSection.style.display = 'block';
             
-            if (currentTab === 'fullfathomfive') showCriticsButton();
+            if (currentTab === 'fullfathomfive') {
+                const variorumSection = document.getElementById('variorumSection');
+                const variorumContent = document.getElementById('variorumContent');
+                const variorumResult = document.getElementById('variorumResult');
+                
+                // Check if this play should show New Variorum Analysis
+                const playsWithoutNewVariorum = ['allswell', 'comedyoferrors', 'measureformeasure', 'merrywives', 'pericles', 'taming', 'troilus', 'twogentlemen', 'henryvi1', 'henryvi2', 'henryvi3', 'henryviii', 'richardii', 'antony', 'coriolanus', 'henryv', 'titus', 'timon', 'henryiv2', 'midsummer'];
+                const shouldHideVariorum = playsWithoutNewVariorum.includes(currentPlay);
+                
+                if (variorumSection && !shouldHideVariorum) {
+                    variorumSection.style.display = 'block';
+                    console.log('✅ Variorum section displayed for Full Fathom Five (updateAnalysis)');
+                    
+                    // Load traditional commentary
+                    setTimeout(() => {
+                        if (variorumContent && selectedLines.length > 0 && currentScene) {
+                            const currentPlayData = currentPlay && window[currentPlay + 'Data'] ? window[currentPlay + 'Data'] : null;
+                            
+                            if (currentPlayData) {
+                                console.log('🔍 Loading traditional commentary for', selectedLines.length, 'lines');
+                                let combinedCommentary = '';
+                                let commentaryFound = false;
+                                
+                                for (let i = 0; i < selectedLines.length; i++) {
+                                    const line = selectedLines[i];
+                                    const notesData = findNotesForLine(line, currentScene);
+                                    
+                                    if (notesData && notesData.notes && notesData.notes.length > 0) {
+                                        const formattedNotes = formatNotes(notesData);
+                                        if (formattedNotes) {
+                                            combinedCommentary += formattedNotes;
+                                            if (i < selectedLines.length - 1) {
+                                                combinedCommentary += '<hr style="margin: 20px 0; border: 1px solid #4b5563;">';
+                                            }
+                                            commentaryFound = true;
+                                            console.log('✅ Found commentary for line', i + 1);
+                                        }
+                                    }
+                                }
+                                
+                                if (commentaryFound) {
+                                    if (variorumResult) variorumResult.innerHTML = combinedCommentary;
+                                    if (variorumContent) variorumContent.innerHTML = combinedCommentary;
+                                    console.log('✅ Traditional commentary displayed');
+                                } else {
+                                    if (variorumContent) variorumContent.innerHTML = '<div class="loading" style="padding: 20px; color: #9ca3af;">No traditional commentary found for selected lines.</div>';
+                                    console.log('ℹ️ No traditional commentary found');
+                                }
+                            } else {
+                                console.log('⚠️ No play data available for', currentPlay);
+                                if (variorumContent) variorumContent.innerHTML = '<div class="loading" style="padding: 20px; color: #9ca3af;">Loading commentary...</div>';
+                            }
+                        }
+                    }, 200);
+                }
+                
+                showCriticsButton();
+            }
             
             analysisInProgress = false;
             
