@@ -7332,7 +7332,23 @@
             <div id="analysisResult"></div>
             
             <!-- New Variorum Analysis Section (Full Fathom Five Only) -->
-            <!-- New Variorum Analysis Section will be dynamically added for specific plays only -->
+            <div class="analysis-section" id="variorumSection" style="display: none;">
+                <div class="analysis-title">
+                    <span>New Variorum Analysis</span>
+                </div>
+                <div class="critics-button-container" id="criticsButtonContainer" style="margin-top: 10px; margin-bottom: 15px;">
+                    <button class="btn btn-secondary" id="criticsButton" onclick="openCriticsModal()" style="width: 100%; margin-bottom: 10px; display: none;">
+                        Who are the New Variorum Critics?
+                    </button>
+                    <button class="btn btn-info" onclick="openNVModal()" style="width: 100%;">
+                        What's New Variorum?
+                    </button>
+                </div>
+                <div class="analysis-content" id="variorumContent">
+                    Traditional commentary will appear here for Full Fathom Five mode.
+                </div>
+                <div id="variorumResult"></div>
+            </div>
 
             <!-- Follow-up Section - Hidden until analysis is done -->
             <div id="followUpSection" style="display: none;">
@@ -7954,143 +7970,51 @@
                 activeButton.setAttribute('aria-pressed', 'true');
             }
             
-            // Reset analysis panel to default state when switching tabs
-            const analysisPanel = document.getElementById('analysisPanel');
-            const analysisResult = document.getElementById('analysisResult');
-            const variorumResult = document.getElementById('variorumResult');
-            const variorumContent = document.getElementById('variorumContent');
-            const criticsInfo = document.getElementById('criticsInfo');
-            const nvInfo = document.getElementById('nvInfo');
-            
-            // Clear all analysis content
-            if (analysisResult) analysisResult.innerHTML = '';
-            if (variorumResult) variorumResult.innerHTML = '';
-            if (variorumContent) variorumContent.innerHTML = '';
-            
-            // Hide any open info panels
-            if (criticsInfo) criticsInfo.style.display = 'none';
-            if (nvInfo) nvInfo.style.display = 'none';
-            
-            // Scroll the analysis panel to the top
-            if (analysisPanel) {
-                analysisPanel.scrollTop = 0;
-            }
-            
-            // Check if current play should have New Variorum Analysis
-            // Only these 5 plays should have New Variorum Analysis
-            const playsWithNewVariorum = ['hamlet', 'othello', 'romeo', 'macbeth', 'kinglear', 'henryiv1', 'asyoulikeit', 'juliuscaesar', 'kingjohn', 'loveslabourslost', 'muchado', 'richardiii', 'merchantofvenice', 'tempest', 'winterstale', 'twelfthnight'];
-            
-            // Explicitly exclude the 21 plays without NV editions
-            const playsWithoutNewVariorum = [
-                'allswell', 'comedyoferrors', 'measureformeasure', 'merrywives',
-                'pericles', 'taming', 'troilus', 'twogentlemen',
-                'henryvi1', 'henryvi2', 'henryvi3', 'henryviii',
-                'richardii', 'antony', 'coriolanus',
-                'henryv', 'titus', 'timon', 'henryiv2', 'midsummer'
-            ];
-            
-            // Only show if in the whitelist AND not in the blacklist
-            const shouldShowNewVariorum = playsWithNewVariorum.includes(currentPlay) && !playsWithoutNewVariorum.includes(currentPlay);
-            console.log('🎭 Current play:', currentPlay, '- Show New Variorum?', shouldShowNewVariorum);
-            
-            // Show/hide critics button based on current play
-            const playsWithCriticsButtons = ['hamlet', 'othello', 'romeo', 'macbeth', 'kinglear', 'henryiv1', 'midsummer', 'asyoulikeit', 'juliuscaesar', 'kingjohn', 'loveslabourslost', 'muchado', 'richardiii', 'merchantofvenice', 'tempest', 'winterstale', 'twelfthnight'];
-            const shouldShowCriticsButton = playsWithCriticsButtons.includes(currentPlay);
-            const criticsButton = document.getElementById('criticsButton');
-            if (criticsButton) {
-                criticsButton.style.display = shouldShowCriticsButton ? 'block' : 'none';
-            }
-            
-            // Reset analysis panel to default state by restoring original HTML
-            if (analysisPanel) {
-                const variorumSectionHTML = shouldShowNewVariorum ? `
-                    <!-- New Variorum Analysis Section (Full Fathom Five Only) -->
-                    <div class="analysis-section" id="variorumSection" style="display: none;">
-                        <div class="analysis-title">
-                            <span>New Variorum Analysis</span>
-                        </div>
-                        <div class="critics-button-container" id="criticsButtonContainer" style="margin-top: 10px; margin-bottom: 15px;">
-                            <button class="btn btn-secondary" id="criticsButton" onclick="openCriticsModal()" style="width: 100%; margin-bottom: 10px; display: none;">
-                                Who are the New Variorum Critics?
-                            </button>
-                            <button class="btn btn-info" onclick="openNVModal()" style="width: 100%;">
-                                What's New Variorum?
-                            </button>
-                        </div>
-                        <div class="analysis-content" id="variorumContent">
-                            Traditional commentary will appear here for Full Fathom Five mode.
-                        </div>
-                        <div id="variorumResult"></div>
-                        
-                    </div>` : '';
-                
-                analysisPanel.innerHTML = `
-                    <!-- Analysis Mode Selector -->
-                    <div class="segment">
-                        <button onclick="switchTab('basic')" aria-pressed="${currentTab === 'basic' ? 'true' : 'false'}">Basic</button>
-                        <button onclick="switchTab('expert')" aria-pressed="${currentTab === 'expert' ? 'true' : 'false'}">Expert</button>
-                        <button onclick="switchTab('fullfathomfive')" aria-pressed="${currentTab === 'fullfathomfive' ? 'true' : 'false'}">Full Fathom Five</button>
-                    </div>
-
-                    <!-- AI Analysis Content -->
-                    <div class="analysis-header">
-                        <div class="analysis-title">${tabName === 'basic' ? 'Basic' : tabName === 'expert' ? 'Expert' : 'Full Fathom Five'} Analysis</div>
-                    </div>
-                    <div class="meta" style="display: none;">No play loaded</div>
-                    <div class="analysis-content" id="analysisContent">
-                        <p>Highlight text in the play to get AI-powered analysis.</p>
-                    </div>
-                    <div class="analysis-instruction" id="analysisInstruction">
-                        Select text in the play to get AI-powered analysis.
-                    </div>
-                    <button class="analyze-button" id="analyzeButton" onclick="explainHighlighted()" style="display: none;">Analyze Text</button>
-                    <button class="force-display-button" onclick="forceDisplayPlayContent()" style="display: none; background: #3498db; color: white; margin-left: 10px;">Show Play Content</button>
-                    <div id="analysisResult"></div>
-                    
-                    ${variorumSectionHTML}
-                `;
-                
-                // Update critics button visibility after creating the HTML
-                if (shouldShowNewVariorum) {
-                    const criticsButton = document.getElementById('criticsButton');
-                    if (criticsButton) {
-                        criticsButton.style.display = shouldShowCriticsButton ? 'block' : 'none';
-                    }
-                }
-            }
-            
-            // Update analysis panel based on tab
-            updateAnalysisPanel();
-            
             // Update analysis title
             const analysisTitle = document.querySelector('.analysis-title');
             if (analysisTitle) {
                 switch(tabName) {
-                    case 'basic':
-                        analysisTitle.textContent = 'Basic Analysis';
-                        break;
-                    case 'expert':
-                        analysisTitle.textContent = 'Expert Analysis';
-                        break;
-                    case 'fullfathomfive':
-                        analysisTitle.textContent = 'Full Fathom Five Analysis';
-                        break;
+                    case 'basic': analysisTitle.textContent = 'Basic Analysis'; break;
+                    case 'expert': analysisTitle.textContent = 'Expert Analysis'; break;
+                    case 'fullfathomfive': analysisTitle.textContent = 'Full Fathom Five Analysis'; break;
                 }
             }
             
-            console.log('✅ Tab switched to:', tabName);
+            // Reset/Update sections for the new tab
+            const variorumSection = document.getElementById('variorumSection');
+            const variorumContent = document.getElementById('variorumContent');
+            const criticsButton = document.getElementById('criticsButton');
             
-            // Force hide variorum section for Full Fathom Five (until analyze is clicked)
-            if (tabName === 'fullfathomfive') {
-                const variorumSection = document.getElementById('variorumSection');
-                if (variorumSection) {
+            // Whitelist for New Variorum Analysis
+            const playsWithNewVariorum = ['hamlet', 'othello', 'romeo', 'macbeth', 'kinglear', 'henryiv1', 'asyoulikeit', 'juliuscaesar', 'kingjohn', 'loveslabourslost', 'muchado', 'richardiii', 'merchantofvenice', 'tempest', 'winterstale', 'twelfthnight'];
+            const playsWithoutNewVariorum = ['allswell', 'comedyoferrors', 'measureformeasure', 'merrywives', 'pericles', 'taming', 'troilus', 'twogentlemen', 'henryvi1', 'henryvi2', 'henryvi3', 'henryviii', 'richardii', 'antony', 'coriolanus', 'henryv', 'titus', 'timon', 'henryiv2', 'midsummer'];
+            const shouldShowNewVariorum = playsWithNewVariorum.includes(currentPlay) && !playsWithoutNewVariorum.includes(currentPlay);
+            
+            if (variorumSection) {
+                if (tabName === 'fullfathomfive' && shouldShowNewVariorum) {
+                    // Hide it initially, it will be shown when "Analyze" is clicked
                     variorumSection.style.display = 'none';
-                    console.log('✅ Hidden variorum section for Full Fathom Five until analyze is clicked');
+                    if (variorumContent) {
+                        variorumContent.innerHTML = 'Traditional commentary will appear here for Full Fathom Five mode.';
+                    }
+                } else {
+                    variorumSection.style.display = 'none';
                 }
-                
-                // Critics button is now always visible via CSS
-                console.log('✅ Full Fathom Five mode - critics button should be visible');
             }
+            
+            // Update critics button visibility
+            const playsWithCriticsButtons = ['hamlet', 'othello', 'romeo', 'macbeth', 'kinglear', 'henryiv1', 'midsummer', 'asyoulikeit', 'juliuscaesar', 'kingjohn', 'loveslabourslost', 'muchado', 'richardiii', 'merchantofvenice', 'tempest', 'winterstale', 'twelfthnight'];
+            if (criticsButton) {
+                criticsButton.style.display = (tabName === 'fullfathomfive' && playsWithCriticsButtons.includes(currentPlay)) ? 'block' : 'none';
+            }
+            
+            // Scroll to top
+            const analysisPanel = document.getElementById('analysisPanel');
+            if (analysisPanel) analysisPanel.scrollTop = 0;
+            
+            // Update active navigation and other UI parts
+            updateAnalysisPanel();
+            console.log('✅ Tab switched to:', tabName);
         }
         
         // Line selection functionality
@@ -12771,13 +12695,7 @@
             console.log('📝 Selected lines:', selectedLines);
             
             // Check if this play should show New Variorum Analysis
-            const playsWithoutNewVariorum = [
-                'allswell', 'comedyoferrors', 'measureformeasure', 'merrywives',
-                'pericles', 'taming', 'troilus', 'twogentlemen',
-                'henryvi1', 'henryvi2', 'henryvi3', 'henryviii',
-                'richardii', 'antony', 'coriolanus',
-                'henryv', 'titus', 'timon', 'henryiv2', 'midsummer'
-            ];
+            const playsWithoutNewVariorum = ['allswell', 'comedyoferrors', 'measureformeasure', 'merrywives', 'pericles', 'taming', 'troilus', 'twogentlemen', 'henryvi1', 'henryvi2', 'henryvi3', 'henryviii', 'richardii', 'antony', 'coriolanus', 'henryv', 'titus', 'timon', 'henryiv2', 'midsummer'];
             
             const shouldHideVariorum = playsWithoutNewVariorum.includes(currentPlay);
             console.log('🚫 Should hide variorum for', currentPlay, '?', shouldHideVariorum);
@@ -13600,7 +13518,7 @@
                     // Add buttons specifically for New Variorum Analysis section (only for appropriate plays)
                     if (sectionName === 'New Variorum Analysis') {
                         // 21 plays without NV - just print "No New Variorum notes"
-                        const playsWithoutNV = ['allswell', 'comedyoferrors', 'measureformeasure', 'merrywives', 'pericles', 'taming', 'troilus', 'twogentlemen', 'henryvi1', 'henryvi2', 'henryvi3', 'henryviii', 'richardii', 'antony', 'coriolanus', 'juliuscaesar', 'henryv', 'titus', 'timon', 'henryiv2'];
+                        const playsWithoutNV = ['allswell', 'comedyoferrors', 'measureformeasure', 'merrywives', 'pericles', 'taming', 'troilus', 'twogentlemen', 'henryvi1', 'henryvi2', 'henryvi3', 'henryviii', 'richardii', 'antony', 'coriolanus', 'henryv', 'titus', 'timon', 'henryiv2', 'midsummer'];
                         if (playsWithoutNV.includes(currentPlay)) {
                             formattedContent += '<div class="section-content"><p>No New Variorum notes.</p></div></div>';
                             continue;
@@ -13630,13 +13548,7 @@
             const playsWithNewVariorum = ['hamlet', 'othello', 'romeo', 'macbeth', 'kinglear', 'henryiv1', 'asyoulikeit', 'juliuscaesar', 'kingjohn', 'loveslabourslost', 'muchado', 'richardiii', 'merchantofvenice', 'tempest', 'winterstale', 'twelfthnight'];
             
             // Explicitly exclude the 21 plays without NV editions
-            const playsWithoutNewVariorum = [
-                'allswell', 'comedyoferrors', 'measureformeasure', 'merrywives',
-                'pericles', 'taming', 'troilus', 'twogentlemen',
-                'henryvi1', 'henryvi2', 'henryvi3', 'henryviii',
-                'richardii', 'antony', 'coriolanus',
-                'henryv', 'titus', 'timon', 'henryiv2', 'midsummer'
-            ];
+            const playsWithoutNewVariorum = ['allswell', 'comedyoferrors', 'measureformeasure', 'merrywives', 'pericles', 'taming', 'troilus', 'twogentlemen', 'henryvi1', 'henryvi2', 'henryvi3', 'henryviii', 'richardii', 'antony', 'coriolanus', 'henryv', 'titus', 'timon', 'henryiv2', 'midsummer'];
             
             const shouldShowNewVariorum = playsWithNewVariorum.includes(currentPlay) && !playsWithoutNewVariorum.includes(currentPlay);
             console.log('🎭 formatStructuredAnalysis - Current play:', currentPlay, '- Show New Variorum?', shouldShowNewVariorum);
@@ -13690,119 +13602,72 @@
         }
 
         function updateAnalysisWithStructuredData(data, text) {
-            const analysisPanel = document.getElementById('analysisPanel');
+            const analysisContent = document.getElementById('analysisContent');
+            const metaElement = document.querySelector('.meta');
+            const analysisTitleElement = document.querySelector('.analysis-title');
+            const followUpSection = document.getElementById('followUpSection');
+            const mediaSection = document.getElementById('mediaSection');
+            const researchSection = document.getElementById('researchSection');
+            const analyzeButton = document.getElementById('analyzeButton');
+            
             const wordCount = countWords(text);
             const playName = currentPlay && plays[currentPlay] ? plays[currentPlay].name : 'Unknown Play';
             const playInfo = currentScene && currentScene !== '' ? `<em>${playName}</em> · ${currentScene}` : `<em>${playName}</em>`;
             
-            // Get the correct title based on current tab
+            // Get the correct title
             let analysisTitle = 'Basic Analysis';
             switch(currentTab) {
-                case 'basic':
-                    analysisTitle = 'Basic Analysis';
-                    break;
-                case 'expert':
-                    analysisTitle = 'Expert Analysis';
-                    break;
-                case 'fullfathomfive':
-                    analysisTitle = 'Full Fathom Five Analysis';
-                    break;
+                case 'basic': analysisTitle = 'Basic Analysis'; break;
+                case 'expert': analysisTitle = 'Expert Analysis'; break;
+                case 'fullfathomfive': analysisTitle = 'Full Fathom Five Analysis'; break;
             }
             
-            // Format the structured analysis content
-            let formattedContent = '';
-            if (data.analysis) {
-                formattedContent = formatStructuredAnalysis(data.analysis, data.relevantNotes);
+            // Update title and meta information
+            if (analysisTitleElement) analysisTitleElement.textContent = analysisTitle;
+            if (metaElement) {
+                metaElement.style.display = 'block';
+                metaElement.innerHTML = `${playInfo} — ${wordCount} ${wordCount === 1 ? 'word' : 'words'} selected`;
             }
             
-            analysisPanel.innerHTML = `
-                <!-- Analysis Mode Selector -->
-                <div class="segment">
-                    <button onclick="switchTab('basic')" aria-pressed="${currentTab === 'basic' ? 'true' : 'false'}">Basic</button>
-                    <button onclick="switchTab('expert')" aria-pressed="${currentTab === 'expert' ? 'true' : 'false'}">Expert</button>
-                    <button onclick="switchTab('fullfathomfive')" aria-pressed="${currentTab === 'fullfathomfive' ? 'true' : 'false'}">Full Fathom Five</button>
-                </div>
-
-                <!-- Analyze Button -->
-                <button class="analyze-button" id="analyzeButton" onclick="explainHighlighted()" style="display: block;">Analyze Text</button>
-
-                <!-- AI Analysis Content -->
-                <div class="analysis">
-                    <div class="meta">${playInfo} — ${wordCount} ${wordCount === 1 ? 'word' : 'words'} selected</div>
-                    <div class="analysis-content">
-                        ${formattedContent}
-                    </div>
-                    
-                    <!-- Follow-up Section -->
-                    <h3>Ask a follow-up question</h3>
-                    <div class="follow-up-input">
-                        <input type="text" placeholder="Ask a follow-up question..." id="followUpQuestion">
-                        <button class="ask-btn" onclick="askFollowUp()">Ask</button>
-                    </div>
-
-                    <!-- Media Section -->
-                    <h3>Media</h3>
-                    <div class="media-actions">
-                        <button class="link-btn youtube" onclick="searchYouTube('scene')">Search YouTube for this scene</button>
-                    </div>
-
-                    <!-- Research Section -->
-                    <h3>Research</h3>
-                    <div class="research-actions">
-                        <button class="link-btn jstor" onclick="searchJSTOR('passage')">Search JSTOR for this passage/scene</button>
-                        <button class="link-btn scholar" onclick="searchGoogleScholar()">Google Scholar</button>
-                        <button class="link-btn ise" onclick="openInternetShakespeare()">Internet Shakespeare Editions</button>
-                    </div>
-                </div>
-                
-                <!-- Critics Button - Static buttons in HTML, no dynamic creation needed -->
-            `;
+            // Format and update content
+            if (data.analysis && analysisContent) {
+                const formattedContent = formatStructuredAnalysis(data.analysis, data.relevantNotes);
+                analysisContent.innerHTML = formattedContent;
+            }
             
-            // Button outputs are now included within the analysis section itself
+            // Ensure analyze button is visible
+            if (analyzeButton) analyzeButton.style.display = 'block';
             
-            // CRITICAL FIX: Show variorum section and critics button if we're in Full Fathom Five mode
+            // Show follow-up, media, and research sections
+            if (followUpSection) followUpSection.style.display = 'block';
+            if (mediaSection) mediaSection.style.display = 'block';
+            if (researchSection) researchSection.style.display = 'block';
+            
+            // Show variorum section and critics button if we're in Full Fathom Five mode
             if (currentTab === 'fullfathomfive') {
-                console.log('✅ Structured analysis complete, showing variorum section for Full Fathom Five');
-                
-                // Show the variorum section
                 const variorumSection = document.getElementById('variorumSection');
-                if (variorumSection) {
-                    variorumSection.style.display = 'block';
-                    console.log('✅ Variorum section displayed after Full Fathom Five analysis');
-                } else {
-                    console.warn('⚠️ Variorum section not found - may need to be created');
-                }
-                
+                if (variorumSection) variorumSection.style.display = 'block';
                 showCriticsButton();
-                
-                // SEARCH FOR NOTES LOCALLY AND DISPLAY THEM
                 handleFullFathomFiveAnalysis(text);
             }
             
-            // CRITICAL FIX: Clear analysisInProgress flag after analysis completes
             analysisInProgress = false;
             
             // Add Copy button dynamically after analysis content is set
             setTimeout(() => {
-                const analysisDiv = analysisPanel.querySelector('.analysis');
-                if (analysisDiv && !analysisDiv.querySelector('.copy-chip')) {
+                if (analysisContent && !analysisContent.querySelector('.copy-chip')) {
                     const copyButton = document.createElement('button');
                     copyButton.className = 'copy-chip';
                     copyButton.textContent = 'Copy';
                     copyButton.onclick = copyAnalysis;
-                    analysisDiv.insertBefore(copyButton, analysisDiv.firstChild);
-                    console.log('✅ Copy button added to structured analysis after content is set');
+                    analysisContent.insertBefore(copyButton, analysisContent.firstChild);
                 }
                 
-                // CRITICAL FIX: Don't reset UI after structured analysis - it clears the analysis results!
-                // Only reset UI elements that need resetting, not the analysis content
                 const playSelector = document.getElementById('playSelector');
                 if (playSelector) {
                     playSelector.disabled = false;
                     playSelector.style.pointerEvents = 'auto';
                 }
-                
-                // DO NOT call forceResetUI() here as it interferes with analysis display
             }, 100);
         }
 
@@ -13841,104 +13706,66 @@
 
 
         function updateAnalysis(content, text) {
-            const analysisPanel = document.getElementById('analysisPanel');
+            const analysisContent = document.getElementById('analysisContent');
+            const metaElement = document.querySelector('.meta');
+            const analysisTitleElement = document.querySelector('.analysis-title');
+            const followUpSection = document.getElementById('followUpSection');
+            const mediaSection = document.getElementById('mediaSection');
+            const researchSection = document.getElementById('researchSection');
+            const analyzeButton = document.getElementById('analyzeButton');
+            
             const wordCount = countWords(text);
             const playName = currentPlay && plays[currentPlay] ? plays[currentPlay].name : 'Unknown Play';
             const playInfo = currentScene && currentScene !== '' ? `<em>${playName}</em> · ${currentScene}` : `<em>${playName}</em>`;
             
-            // Format the content with proper sections (bypass for Full Fathom Five)
+            // Get the correct title
+            let analysisTitle = 'Basic Analysis';
+            switch(currentTab) {
+                case 'basic': analysisTitle = 'Basic Analysis'; break;
+                case 'expert': analysisTitle = 'Expert Analysis'; break;
+                case 'fullfathomfive': analysisTitle = 'Full Fathom Five Analysis'; break;
+            }
+            
+            // Format the content
             let formattedContent;
             if (currentTab === 'fullfathomfive') {
-                // For Full Fathom Five, apply paragraph formatting but not section formatting
                 formattedContent = content.replace(/\n\n/g, '</p><p>').replace(/\n/g, '<br>');
                 formattedContent = '<p>' + formattedContent + '</p>';
             } else {
                 formattedContent = formatAnalysisContent(content);
             }
             
-            // Get the correct title based on current mode
-            let analysisTitle = 'Basic Analysis';
-            switch(currentTab) {
-                case 'basic':
-                    analysisTitle = 'Basic Analysis';
-                    break;
-                case 'intermediate':
-                    analysisTitle = 'Intermediate Analysis';
-                    break;
-                case 'expert':
-                    analysisTitle = 'Expert Analysis';
-                    break;
-                case 'fullfathomfive':
-                    analysisTitle = 'Full Fathom Five Analysis';
-                    break;
+            // Update UI elements
+            if (analysisTitleElement) analysisTitleElement.textContent = analysisTitle;
+            if (metaElement) {
+                metaElement.style.display = 'block';
+                metaElement.innerHTML = `${playInfo} — ${wordCount} ${wordCount === 1 ? 'word' : 'words'} selected`;
             }
+            if (analysisContent) analysisContent.innerHTML = formattedContent;
+            if (analyzeButton) analyzeButton.style.display = 'block';
+            if (followUpSection) followUpSection.style.display = 'block';
+            if (mediaSection) mediaSection.style.display = 'block';
+            if (researchSection) researchSection.style.display = 'block';
             
-            analysisPanel.innerHTML = `
-                <!-- Analysis Mode Selector -->
-                <div class="segment">
-                    <button onclick="switchTab('basic')" aria-pressed="${currentTab === 'basic' ? 'true' : 'false'}">Basic</button>
-                    <button onclick="switchTab('expert')" aria-pressed="${currentTab === 'expert' ? 'true' : 'false'}">Expert</button>
-                    <button onclick="switchTab('fullfathomfive')" aria-pressed="${currentTab === 'fullfathomfive' ? 'true' : 'false'}">Full Fathom Five</button>
-                </div>
-
-                <!-- Analyze Button -->
-                <button class="analyze-button" id="analyzeButton" onclick="explainHighlighted()" style="display: block;">Analyze Text</button>
-
-                <!-- AI Analysis Content -->
-                <div class="analysis">
-                    <div class="meta">${playInfo} — ${wordCount} ${wordCount === 1 ? 'word' : 'words'} selected</div>
-                    <div class="analysis-content">
-                        ${formattedContent}
-                    </div>
-                    
-                    <!-- Follow-up Section -->
-                    <h3>Ask a follow-up question</h3>
-                    <div class="follow-up-input">
-                        <input type="text" placeholder="Ask a follow-up question..." id="followUpQuestion">
-                        <button class="ask-btn" onclick="askFollowUp()">Ask</button>
-                    </div>
-
-                    <!-- Media Section -->
-                    <h3>Media</h3>
-                    <div class="media-actions">
-                        <button class="link-btn youtube" onclick="searchYouTube('scene')">Search YouTube for this scene</button>
-                    </div>
-
-                    <!-- Research Section -->
-                    <h3>Research</h3>
-                    <div class="research-actions">
-                        <button class="link-btn jstor" onclick="searchJSTOR('passage')">Search JSTOR for this passage/scene</button>
-                        <button class="link-btn scholar" onclick="searchGoogleScholar()">Google Scholar</button>
-                        <button class="link-btn ise" onclick="openInternetShakespeare()">Internet Shakespeare Editions</button>
-                    </div>
-                </div>
-                
-                <!-- Critics Button - Static buttons in HTML, no dynamic creation needed -->
-            `;
+            if (currentTab === 'fullfathomfive') showCriticsButton();
             
-            // Button outputs are now included within the analysis section itself
+            analysisInProgress = false;
             
-            // Show critics button if we're in Full Fathom Five mode
-            if (currentTab === 'fullfathomfive') {
-                console.log('✅ Analysis complete, showing critics button for Full Fathom Five');
-                showCriticsButton();
-                
-            }
-            
-            // Add Copy button dynamically after analysis content is set
             setTimeout(() => {
-                const analysisDiv = analysisPanel.querySelector('.analysis');
-                if (analysisDiv && !analysisDiv.querySelector('.copy-chip')) {
+                if (analysisContent && !analysisContent.querySelector('.copy-chip')) {
                     const copyButton = document.createElement('button');
                     copyButton.className = 'copy-chip';
                     copyButton.textContent = 'Copy';
                     copyButton.onclick = copyAnalysis;
-                    analysisDiv.insertBefore(copyButton, analysisDiv.firstChild);
-                    console.log('✅ Copy button added to analysis after content is set');
+                    analysisContent.insertBefore(copyButton, analysisContent.firstChild);
                 }
                 
-                // Force reset UI to ensure all elements remain functional after analysis
-                forceResetUI();
+                // Force reset UI elements that might be stuck
+                const playSelector = document.getElementById('playSelector');
+                if (playSelector) {
+                    playSelector.disabled = false;
+                    playSelector.style.pointerEvents = 'auto';
+                }
             }, 100);
         }
 

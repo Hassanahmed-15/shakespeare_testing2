@@ -3977,7 +3977,23 @@
             <div id="analysisResult"></div>
             
             <!-- New Variorum Analysis Section (Full Fathom Five Only) -->
-            <!-- New Variorum Analysis Section will be dynamically added for specific plays only -->
+            <div class="analysis-section" id="variorumSection" style="display: none;">
+                <div class="analysis-title">
+                    <span>New Variorum Analysis</span>
+                </div>
+                <div class="critics-button-container" id="criticsButtonContainer" style="margin-top: 10px; margin-bottom: 15px;">
+                    <button class="btn btn-secondary" id="criticsButton" onclick="openCriticsModal()" style="width: 100%; margin-bottom: 10px; display: none;">
+                        Who are the New Variorum Critics?
+                    </button>
+                    <button class="btn btn-info" onclick="openNVModal()" style="width: 100%;">
+                        What's New Variorum?
+                    </button>
+                </div>
+                <div class="analysis-content" id="variorumContent">
+                    Traditional commentary will appear here for Full Fathom Five mode.
+                </div>
+                <div id="variorumResult"></div>
+            </div>
 
             <!-- Follow-up Section -->
             <h3>Ask a follow-up question</h3>
