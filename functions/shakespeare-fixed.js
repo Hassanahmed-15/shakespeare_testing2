@@ -58,6 +58,16 @@ function normalizePlayKey(playNameRaw) {
   if (s.includes('lear')) return 'kinglear'
   if (s.includes('henry') && (s.includes('iv') || s.includes('4')) && s.includes('1')) return 'henryiv1'
   if (s.includes('midsummer')) return 'midsummer'
+  if (s.includes('as you like it') || s.includes('asyoulikeit')) return 'asyoulikeit'
+  if (s.includes('julius') && s.includes('caesar')) return 'juliuscaesar'
+  if (s.includes('king') && s.includes('john')) return 'kingjohn'
+  if (s.includes('love') && s.includes('labour') && s.includes('lost')) return 'loveslabourslost'
+  if (s.includes('much') && s.includes('ado')) return 'muchado'
+  if (s.includes('richard') && (s.includes('iii') || s.includes('3'))) return 'richardiii'
+  if (s.includes('merchant') && s.includes('venice')) return 'merchantofvenice'
+  if (s.includes('tempest')) return 'tempest'
+  if (s.includes('winter') && s.includes('tale')) return 'winterstale'
+  if (s.includes('twelfth') && s.includes('night')) return 'twelfthnight'
   if (s.includes('macbeth')) return 'macbeth'
   return 'macbeth'
 }
@@ -76,7 +86,17 @@ async function findRelevantNotes(text, scene = null, playName = 'macbeth') {
       'othello': 'othello_notes.json',
       'kinglear': 'kinglear_notes.json',
       'henryiv1': 'henry_iv_part1.json',
-      'midsummer': 'midsummer_nights_dream.json'
+      'midsummer': 'midsummer_nights_dream.json',
+      'asyoulikeit': 'as_you_like_it.json',
+      'juliuscaesar': 'julius_caesar_clean_(3).json',
+      'kingjohn': 'king_john.json',
+      'loveslabourslost': 'loves_labours_lost.json',
+      'muchado': 'much_ado_about_nothing.json',
+      'richardiii': 'richard_iii.json',
+      'merchantofvenice': 'merchant_of_venice.json',
+      'tempest': 'the_tempest.json',
+      'winterstale': 'the_winters_tale.json',
+      'twelfthnight': 'twelfth_night.json'
     };
     
     const normalizedKey = normalizePlayKey(playName)
@@ -378,7 +398,7 @@ exports.handler = async (event, context) => {
       'pericles', 'taming', 'troilus', 'twogentlemen',
       'henryvi1', 'henryvi2', 'henryvi3', 'henryviii',
       'richardii', 'richardiii', 'antony', 'coriolanus',
-      'juliuscaesar', 'henryv', 'titus', 'timon', 'henryiv2', 'midsummer'
+      'henryv', 'titus', 'timon', 'henryiv2', 'midsummer'
     ];
     
     if (analysisMode === 'fullfathomfive' && playsWithoutNewVariorum.includes(playName)) {
@@ -472,7 +492,7 @@ FORMAT REQUIREMENTS:
         'pericles', 'taming', 'troilus', 'twogentlemen',
         'henryvi1', 'henryvi2', 'henryvi3', 'henryviii',
         'richardii', 'richardiii', 'antony', 'coriolanus',
-        'juliuscaesar', 'henryv', 'titus', 'timon', 'henryiv2'
+        'henryv', 'titus', 'timon', 'henryiv2'
       ];
       const includeNewVariorum = !playsWithoutNewVariorum.includes(playName)
       
