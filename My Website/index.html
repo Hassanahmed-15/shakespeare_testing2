@@ -9969,8 +9969,14 @@
                     formattedContent += '<div class="analysis-section">';
                     formattedContent += `<h4>${sectionName}</h4>`;
                     
-                    // Add buttons specifically for New Variorum Analysis section (only for appropriate plays)
+                    // Skip "New Variorum Analysis" section here - it's handled by the dedicated variorumSection element
                     if (sectionName === 'New Variorum Analysis') {
+                        // Don't add it here - the static variorumSection element handles this
+                        continue;
+                    }
+                    
+                    // OLD CODE - REMOVED TO PREVENT DUPLICATION
+                    if (false && sectionName === 'New Variorum Analysis') {
                         // 21 plays without NV - just print "No New Variorum notes"
                         const playsWithoutNV = ['allswell', 'comedyoferrors', 'measureformeasure', 'merrywives', 'pericles', 'taming', 'troilus', 'twogentlemen', 'henryvi1', 'henryvi2', 'henryvi3', 'henryviii', 'richardii', 'richardiii', 'antony', 'coriolanus', 'juliuscaesar', 'henryv', 'titus', 'timon', 'henryiv2'];
                         if (playsWithoutNV.includes(currentPlay)) {
@@ -9997,57 +10003,8 @@
                 }
             }
             
-            // Check if current play should show New Variorum Analysis
-            // Only these 5 plays should have New Variorum Analysis
-            const playsWithNewVariorum = ['hamlet', 'othello', 'romeo', 'macbeth', 'kinglear'];
-            
-            const shouldShowNewVariorum = playsWithNewVariorum.includes(currentPlay);
-            console.log('🎭 formatStructuredAnalysis - Current play:', currentPlay, '- Show New Variorum?', shouldShowNewVariorum);
-            
-            // Only add New Variorum Analysis for plays that should have it
-            if (shouldShowNewVariorum) {
-                // Check if New Variorum Analysis is already in the analysis object (from backend)
-                if (analysis['New Variorum Analysis']) {
-                    console.log('New Variorum Analysis found in analysis object, length:', analysis['New Variorum Analysis'].length);
-                    // Don't add it again since it's already been added above
-                } else if (relevantNotes && relevantNotes.length > 0) {
-                    // Fallback: Add Macbeth notes section LAST (New Variorum Analysis at the bottom)
-                    formattedContent += '<div class="analysis-section">';
-                    formattedContent += '<h4>New Variorum Analysis</h4>';
-                    
-                    // Only show critics button for plays that should have it
-                    const playsWithCriticsButtons = ['hamlet', 'othello', 'romeo', 'macbeth', 'kinglear'];
-                    if (playsWithCriticsButtons.includes(currentPlay)) {
-                    formattedContent += '<div class="critics-button-container" style="margin-top: 10px; margin-bottom: 15px;">';
-                    formattedContent += '<button class="btn btn-secondary" onclick="openCriticsModal()" style="width: 100%; margin-bottom: 10px;">📚 Who are the New Variorum Critics?</button>';
-                    formattedContent += '<button class="btn btn-info" onclick="openNVModal()" style="width: 100%;">ℹ️ What\'s New Variorum?</button>';
-                    formattedContent += '</div>';
-                    } else {
-                        formattedContent += '<div class="critics-button-container" style="margin-top: 10px; margin-bottom: 15px;">';
-                        formattedContent += '<button class="btn btn-info" onclick="openNVModal()" style="width: 100%;">ℹ️ What\'s New Variorum?</button>';
-                        formattedContent += '</div>';
-                    }
-                    formattedContent += '<div class="variorum-notes">';
-                    
-                    relevantNotes.forEach((note, index) => {
-                        formattedContent += `<div class="note-item">`;
-                        formattedContent += `<div class="note-header"><strong>${note.scene}, Line ${note.line}</strong></div>`;
-                        formattedContent += `<div class="note-text">"${note.play}"</div>`;
-                        formattedContent += `<div class="note-content">`;
-                        
-                        note.notes.forEach(noteText => {
-                            // Show full notes without truncation
-                            formattedContent += `<p>${noteText}</p>`;
-                        });
-                        
-                        formattedContent += `</div></div>`;
-                    });
-                    
-                    formattedContent += '</div></div>';
-                }
-            } else {
-                console.log('🚫 New Variorum Analysis excluded for play:', currentPlay);
-            }
+            // New Variorum Analysis is now handled by the dedicated variorumSection element
+            // Don't add it here in formatStructuredAnalysis to avoid duplication
             
             return formattedContent;
         }
