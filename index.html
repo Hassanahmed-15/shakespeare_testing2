@@ -7377,13 +7377,13 @@
                 <div class="analysis-title">Basic Analysis</div>
             </div>
             <div class="meta" style="display: none;">No play loaded</div>
+            <button class="analyze-button" id="analyzeButton" onclick="explainHighlighted()" style="display: none;">Analyze Text</button>
             <div class="analysis-content" id="analysisContent">
                 <p>Highlight text in the play to get AI-powered analysis.</p>
             </div>
             <div class="analysis-instruction" id="analysisInstruction">
                 Select text in the play to get AI-powered analysis.
             </div>
-            <button class="analyze-button" id="analyzeButton" onclick="explainHighlighted()" style="display: none;">Analyze Text</button>
             <div id="analysisResult"></div>
             
             <!-- New Variorum Analysis Section (Full Fathom Five Only) - Hidden by default, only shown for variorum plays -->
@@ -8088,13 +8088,13 @@
                         <div class="analysis-title">${tabName === 'basic' ? 'Basic' : tabName === 'expert' ? 'Expert' : 'Full Fathom Five'} Analysis</div>
                     </div>
                     <div class="meta" style="display: none;">No play loaded</div>
+                    <button class="analyze-button" id="analyzeButton" onclick="explainHighlighted()" style="display: none;">Analyze Text</button>
                     <div class="analysis-content" id="analysisContent">
                         <p>Highlight text in the play to get AI-powered analysis.</p>
                     </div>
                     <div class="analysis-instruction" id="analysisInstruction">
                         Select text in the play to get AI-powered analysis.
                     </div>
-                    <button class="analyze-button" id="analyzeButton" onclick="explainHighlighted()" style="display: none;">Analyze Text</button>
                     <button class="force-display-button" onclick="forceDisplayPlayContent()" style="display: none; background: #3498db; color: white; margin-left: 10px;">Show Play Content</button>
                     <div id="analysisResult"></div>
                     
