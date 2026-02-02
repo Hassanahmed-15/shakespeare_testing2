@@ -2307,6 +2307,17 @@
             margin: 20px 0;
         }
         
+        /* Completely remove variorum section from layout when hidden */
+        #variorumSection[style*="display: none"],
+        #variorumSection[style*="display:none"] {
+            display: none !important;
+            visibility: hidden !important;
+            height: 0 !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            overflow: hidden !important;
+        }
+        
         #variorumSection .analysis-content {
             color: #333 !important;
             background: #ffffff;
@@ -7375,8 +7386,8 @@
             <button class="analyze-button" id="analyzeButton" onclick="explainHighlighted()" style="display: none;">Analyze Text</button>
             <div id="analysisResult"></div>
             
-            <!-- New Variorum Analysis Section (Full Fathom Five Only) -->
-            <div class="analysis-section" id="variorumSection" style="display: none;">
+            <!-- New Variorum Analysis Section (Full Fathom Five Only) - Hidden by default, only shown for variorum plays -->
+            <div class="analysis-section" id="variorumSection" style="display: none !important; visibility: hidden !important; height: 0 !important; margin: 0 !important; padding: 0 !important; overflow: hidden !important;">
                 <div class="analysis-title">
                     <span>New Variorum Analysis</span>
                 </div>
@@ -8087,8 +8098,8 @@
                     <button class="force-display-button" onclick="forceDisplayPlayContent()" style="display: none; background: #3498db; color: white; margin-left: 10px;">Show Play Content</button>
                     <div id="analysisResult"></div>
                     
-                    <!-- New Variorum Analysis Section (Full Fathom Five Only) -->
-                    <div class="analysis-section" id="variorumSection" style="display: none;">
+                    <!-- New Variorum Analysis Section (Full Fathom Five Only) - Hidden by default, only shown for variorum plays -->
+                    <div class="analysis-section" id="variorumSection" style="display: none !important; visibility: hidden !important; height: 0 !important; margin: 0 !important; padding: 0 !important; overflow: hidden !important;">
                         <div class="analysis-title">
                             <span>New Variorum Analysis</span>
                         </div>
@@ -8146,6 +8157,11 @@
                 const variorumSection = document.getElementById('variorumSection');
                 if (variorumSection) {
                     variorumSection.style.display = 'none';
+                    variorumSection.style.visibility = 'hidden';
+                    variorumSection.style.height = '0';
+                    variorumSection.style.margin = '0';
+                    variorumSection.style.padding = '0';
+                    variorumSection.style.overflow = 'hidden';
                 }
             }
             
@@ -8156,6 +8172,11 @@
             const variorumSection = document.getElementById('variorumSection');
             if (variorumSection) {
                 variorumSection.style.display = 'none';
+                variorumSection.style.visibility = 'hidden';
+                variorumSection.style.height = '0';
+                variorumSection.style.margin = '0';
+                variorumSection.style.padding = '0';
+                variorumSection.style.overflow = 'hidden';
             }
             
             console.log('✅ Tab switched to:', tabName);
@@ -8268,6 +8289,11 @@
             // ALWAYS hide variorum section when selecting new line (will show again only for variorum plays after analysis)
             if (variorumSection) {
                 variorumSection.style.display = 'none';
+                variorumSection.style.visibility = 'hidden';
+                variorumSection.style.height = '0';
+                variorumSection.style.margin = '0';
+                variorumSection.style.padding = '0';
+                variorumSection.style.overflow = 'hidden';
                 console.log('✅ Hidden variorum section for new line selection');
             }
             
@@ -12864,10 +12890,20 @@
             if (variorumSection) {
                 if (!shouldShowVariorum) {
                     variorumSection.style.display = 'none';
+                    variorumSection.style.visibility = 'hidden';
+                    variorumSection.style.height = '0';
+                    variorumSection.style.margin = '0';
+                    variorumSection.style.padding = '0';
+                    variorumSection.style.overflow = 'hidden';
                     console.log('🚫 Variorum section HIDDEN for', currentPlay, '- not a New Variorum play');
                     return; // Exit early if not a New Variorum play
                 } else {
                     variorumSection.style.display = 'block';
+                    variorumSection.style.visibility = 'visible';
+                    variorumSection.style.height = 'auto';
+                    variorumSection.style.margin = '';
+                    variorumSection.style.padding = '';
+                    variorumSection.style.overflow = '';
                     console.log('✅ Variorum section displayed for', currentPlay);
                 }
             } else {
