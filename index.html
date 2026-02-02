@@ -7993,9 +7993,9 @@
             const shouldShowNewVariorum = playsWithNewVariorum.includes(currentPlay) && !playsWithoutNewVariorum.includes(currentPlay);
             console.log('🎭 Current play:', currentPlay, '- Show New Variorum?', shouldShowNewVariorum);
             
-            // Show/hide critics button based on current play
-            const playsWithCriticsButtons = ['hamlet', 'othello', 'romeo', 'macbeth', 'kinglear', 'henryiv1', 'midsummer', 'asyoulikeit', 'juliuscaesar', 'kingjohn', 'loveslabourslost', 'muchado', 'richardiii', 'merchantofvenice', 'tempest', 'winterstale', 'twelfthnight'];
-            const shouldShowCriticsButton = playsWithCriticsButtons.includes(currentPlay);
+            // Show/hide critics button based on current play (New Variorum plays only)
+            const playsWithCriticsButtons = ['midsummer', 'asyoulikeit', 'henryiv1', 'juliuscaesar', 'kingjohn', 'kinglear', 'loveslabourslost', 'richardiii', 'romeo', 'merchantofvenice', 'tempest', 'winterstale', 'twelfthnight'];
+            const shouldShowCriticsButton = playsWithCriticsButtons.includes(currentPlay) && tabName === 'fullfathomfive';
             const criticsButton = document.getElementById('criticsButton');
             if (criticsButton) {
                 criticsButton.style.display = shouldShowCriticsButton ? 'block' : 'none';
@@ -12670,128 +12670,137 @@
 
         // Full Fathom Five functionality
         function handleFullFathomFiveAnalysis(text) {
-            console.log('🔄 Starting Full Fathom Five analysis...');
-            console.log('📚 Macbeth data available:', !!window.macbethData);
+            console.log('🔄 Starting Full Fathom Five analysis - loading New Variorum notes...');
+            console.log('🎭 Current play:', currentPlay);
             console.log('🎭 Current scene:', currentScene);
             console.log('📝 Selected lines:', selectedLines);
             
-            // Check if this play should show New Variorum Analysis
-            const playsWithoutNewVariorum = [
-                'allswell', 'comedyoferrors', 'measureformeasure', 'merrywives',
-                'pericles', 'taming', 'troilus', 'twogentlemen',
-                'henryvi1', 'henryvi2', 'henryvi3', 'henryviii',
-                'richardii', 'antony', 'coriolanus',
-                'henryv', 'titus', 'timon', 'henryiv2', 'midsummer'
-            ];
+            // New Variorum plays: midsummer, asyoulikeit, henryiv1, juliuscaesar, kingjohn, kinglear, loveslabourslost, richardiii, romeo, merchantofvenice, tempest, winterstale, twelfthnight
+            const playsWithNewVariorum = ['midsummer', 'asyoulikeit', 'henryiv1', 'juliuscaesar', 'kingjohn', 'kinglear', 'loveslabourslost', 'richardiii', 'romeo', 'merchantofvenice', 'tempest', 'winterstale', 'twelfthnight'];
             
-            const shouldHideVariorum = playsWithoutNewVariorum.includes(currentPlay);
-            console.log('🚫 Should hide variorum for', currentPlay, '?', shouldHideVariorum);
+            const shouldShowVariorum = playsWithNewVariorum.includes(currentPlay);
+            console.log('✅ Should show variorum for', currentPlay, '?', shouldShowVariorum);
             
             const variorumSection = document.getElementById('variorumSection');
             const variorumResult = document.getElementById('variorumResult');
             const variorumContent = document.getElementById('variorumContent');
-            const analysisResult = document.getElementById('analysisResult');
             
-            // Show the variorum section ONLY if play is not in blacklist
+            // Show the variorum section ONLY for New Variorum plays
             if (variorumSection) {
-                if (shouldHideVariorum) {
+                if (!shouldShowVariorum) {
                     variorumSection.style.display = 'none';
-                    console.log('🚫 Variorum section HIDDEN for', currentPlay);
+                    console.log('🚫 Variorum section HIDDEN for', currentPlay, '- not a New Variorum play');
+                    return; // Exit early if not a New Variorum play
                 } else {
-                variorumSection.style.display = 'block';
-                console.log('✅ Variorum section displayed');
+                    variorumSection.style.display = 'block';
+                    console.log('✅ Variorum section displayed for', currentPlay);
                 }
             } else {
-                console.error('❌ Variorum section not found');
+                console.error('❌ Variorum section element not found');
+                return;
             }
             
-            // Clear previous results
-            if (variorumResult) variorumResult.innerHTML = '';
-            if (variorumContent) variorumContent.innerHTML = '';
-            if (analysisResult) analysisResult.innerHTML = '';
-            
-            // Check for traditional commentary
-            let commentaryFound = false;
-            const currentPlayData = currentPlay && window[currentPlay + 'Data'] ? window[currentPlay + 'Data'] : null;
-            console.log('🎭 Current play data exists:', !!currentPlayData, 'for play:', currentPlay);
-            
-            if (currentPlayData && currentScene) {
-                console.log('🔍 Searching for commentary in scene:', currentScene);
-                console.log('📖 Available scenes in current play:', Object.keys(currentPlayData).slice(0, 10));
+            // Get play data using the correct mapping
+            let currentPlayData = null;
+            if (currentPlay) {
+                const playDataMap = {
+                    'merchantofvenice': 'merchantData',
+                    'twelfthnight': 'twelfthData',
+                    'midsummer': 'midsummerData',
+                    'asyoulikeit': 'asyoulikeitData',
+                    'henryiv1': 'henryiv1Data',
+                    'juliuscaesar': 'juliuscaesarData',
+                    'kingjohn': 'kingjohnData',
+                    'kinglear': 'kinglearData',
+                    'loveslabourslost': 'loveslabourslostData',
+                    'richardiii': 'richardiiiData',
+                    'romeo': 'romeoData',
+                    'tempest': 'tempestData',
+                    'winterstale': 'winterstaleData'
+                };
                 
-                let combinedCommentary = '';
-                
-                // Check each selected line for commentary
-                console.log('🔍 ALL SCENE KEYS IN DATA:', Object.keys(currentPlayData).filter(k => k.includes('ACT 1')));
-                
-                for (let i = 0; i < selectedLines.length; i++) {
-                    const line = selectedLines[i];
-                    console.log(`🔍 Searching for line ${i}: "${line}"`);
-                    console.log('🎭 Using scene name:', currentScene);
-                    console.log('📊 Scene exists in data?:', currentPlayData[currentScene] ? 'YES' : 'NO');
-                    console.log('📊 Scene key variations:', {
-                        exact: currentPlayData[currentScene] ? 'YES' : 'NO',
-                        withSpaceBeforeComma: currentPlayData[currentScene.replace(/,/g, ' ,')] ? 'YES' : 'NO'
-                    });
-                    
-                    const notesData = findNotesForLine(line, currentScene);
-                    console.log('📝 Notes data returned:', notesData);
-                    
-                    if (notesData) {
-                        console.log('📝 Notes count:', notesData.notes ? notesData.notes.length : 0);
-                    } else {
-                        console.log('❌ findNotesForLine returned NULL');
-                    }
-                    
-                    if (notesData && notesData.notes && notesData.notes.length > 0) {
-                        const formattedNotes = formatNotes(notesData);
-                        if (formattedNotes) {
-                            combinedCommentary += formattedNotes;
-                            if (i < selectedLines.length - 1) {
-                                combinedCommentary += '<hr style="margin: 20px 0; border: 1px solid #4b5563;">';
-                            }
-                            commentaryFound = true;
-                            console.log('✅ Commentary found for line:', i + 1);
-                        }
-                    }
+                const mappedKey = playDataMap[currentPlay];
+                if (mappedKey && window[mappedKey]) {
+                    currentPlayData = window[mappedKey];
+                    console.log('✅ Found play data using mapped key:', mappedKey);
+                } else if (window[currentPlay + 'Data']) {
+                    currentPlayData = window[currentPlay + 'Data'];
+                    console.log('✅ Found play data using standard key:', currentPlay + 'Data');
                 }
+            }
+            
+            if (!currentPlayData) {
+                const errorMsg = '<div class="loading" style="padding: 20px; color: #9ca3af;">Play data not loaded. Please wait for the play to finish loading.</div>';
+                if (variorumResult) variorumResult.innerHTML = errorMsg;
+                if (variorumContent) variorumContent.innerHTML = errorMsg;
+                console.error('❌ No play data available for', currentPlay);
+                return;
+            }
+            
+            if (!currentScene) {
+                const errorMsg = '<div class="loading" style="padding: 20px; color: #9ca3af;">Scene not detected. Please select text from a specific scene.</div>';
+                if (variorumResult) variorumResult.innerHTML = errorMsg;
+                if (variorumContent) variorumContent.innerHTML = errorMsg;
+                console.error('❌ No scene detected');
+                return;
+            }
+            
+            if (!selectedLines || selectedLines.length === 0) {
+                const errorMsg = '<div class="loading" style="padding: 20px; color: #9ca3af;">No text selected. Please select text to analyze.</div>';
+                if (variorumResult) variorumResult.innerHTML = errorMsg;
+                if (variorumContent) variorumContent.innerHTML = errorMsg;
+                console.error('❌ No selected lines');
+                return;
+            }
+            
+            console.log('🔍 Searching for notes in scene:', currentScene);
+            console.log('📖 Available scenes:', Object.keys(currentPlayData).slice(0, 10));
+            
+            let combinedCommentary = '';
+            let commentaryFound = false;
+            
+            // Check each selected line for notes
+            for (let i = 0; i < selectedLines.length; i++) {
+                const line = selectedLines[i];
+                console.log(`🔍 Searching for line ${i + 1}/${selectedLines.length}: "${line.substring(0, 50)}..."`);
                 
-                if (commentaryFound) {
-                    if (variorumResult) {
-                        variorumResult.innerHTML = combinedCommentary;
-                        console.log('✅ Commentary displayed in variorum result');
-                    }
-                    if (variorumContent) {
-                        variorumContent.innerHTML = combinedCommentary;
-                        console.log('✅ Commentary displayed in variorum content');
-                        // Show the critics button when variorum content is loaded
-                        showCriticsButton();
-                        // Add Copy button to the analysis title when commentary appears
-                        addCopyButtonToVariorumTitle();
+                const notesData = findNotesForLine(line, currentScene);
+                
+                if (notesData && notesData.notes && notesData.notes.length > 0) {
+                    const formattedNotes = formatNotes(notesData);
+                    if (formattedNotes) {
+                        combinedCommentary += formattedNotes;
+                        if (i < selectedLines.length - 1) {
+                            combinedCommentary += '<hr style="margin: 20px 0; border: 1px solid #4b5563;">';
+                        }
+                        commentaryFound = true;
+                        console.log('✅ Notes found for line', i + 1, '-', notesData.notes.length, 'notes');
                     }
                 } else {
-                    const noCommentaryMsg = '<div class="loading">No traditional commentary found for selected lines.</div>';
-                    if (variorumResult) {
-                        variorumResult.innerHTML = noCommentaryMsg;
-                    }
-                    if (variorumContent) {
-                        variorumContent.innerHTML = noCommentaryMsg;
-                    }
-                    console.log('⚠️ No commentary found for selected lines');
+                    console.log('⚠️ No notes found for line', i + 1);
                 }
-            } else {
-                const errorMsg = '<div class="loading">Traditional commentary database not loaded or scene not found.</div>';
+            }
+            
+            if (commentaryFound) {
                 if (variorumResult) {
-                    variorumResult.innerHTML = errorMsg;
+                    variorumResult.innerHTML = combinedCommentary;
+                    console.log('✅ Notes displayed in variorum result');
                 }
                 if (variorumContent) {
-                    variorumContent.innerHTML = errorMsg;
+                    variorumContent.innerHTML = combinedCommentary;
+                    console.log('✅ Notes displayed in variorum content');
                 }
-                console.log('❌ Macbeth data or current scene not available');
+                showCriticsButton();
+            } else {
+                const noCommentaryMsg = '<div class="loading" style="padding: 20px; color: #9ca3af; font-style: italic;">No traditional commentary found for the selected lines in the database.</div>';
+                if (variorumResult) {
+                    variorumResult.innerHTML = noCommentaryMsg;
+                }
+                if (variorumContent) {
+                    variorumContent.innerHTML = noCommentaryMsg;
+                }
+                console.log('⚠️ No notes found for any selected lines');
             }
-            
-            // Also perform regular analysis
-            analyzeHighlightedText(text);
         }
         
         // TEST FUNCTION - Run this in console to test notes without API
@@ -12833,12 +12842,33 @@
             console.log('🔍 Searching for notes for text:', text);
             console.log('🎭 Scene name:', sceneName);
             
-            // Get the currently loaded play data
+            // Get the currently loaded play data - handle special variable name mappings
             let playData = null;
-            if (currentPlay && window[currentPlay + 'Data']) {
-                playData = window[currentPlay + 'Data'];
-            } else if (window.macbethData) {
-                playData = window.macbethData;
+            if (currentPlay) {
+                const playDataMap = {
+                    'merchantofvenice': 'merchantData',
+                    'twelfthnight': 'twelfthData',
+                    'midsummer': 'midsummerData',
+                    'asyoulikeit': 'asyoulikeitData',
+                    'henryiv1': 'henryiv1Data',
+                    'juliuscaesar': 'juliuscaesarData',
+                    'kingjohn': 'kingjohnData',
+                    'kinglear': 'kinglearData',
+                    'loveslabourslost': 'loveslabourslostData',
+                    'richardiii': 'richardiiiData',
+                    'romeo': 'romeoData',
+                    'tempest': 'tempestData',
+                    'winterstale': 'winterstaleData'
+                };
+                
+                const mappedKey = playDataMap[currentPlay];
+                if (mappedKey && window[mappedKey]) {
+                    playData = window[mappedKey];
+                    console.log('✅ Found play data using mapped key:', mappedKey);
+                } else if (window[currentPlay + 'Data']) {
+                    playData = window[currentPlay + 'Data'];
+                    console.log('✅ Found play data using standard key:', currentPlay + 'Data');
+                }
             }
             
             if (!playData || !sceneName) {
@@ -13630,8 +13660,10 @@
                 console.log('✅ Structured analysis complete, showing critics button for Full Fathom Five');
                 showCriticsButton();
                 
-                // SEARCH FOR NOTES LOCALLY AND DISPLAY THEM
-                handleFullFathomFiveAnalysis(text);
+                // SEARCH FOR NOTES LOCALLY AND DISPLAY THEM (only for Full Fathom Five mode)
+                if (currentTab === 'fullfathomfive') {
+                    handleFullFathomFiveAnalysis(text);
+                }
             }
             
             // Add Copy button dynamically after analysis content is set
