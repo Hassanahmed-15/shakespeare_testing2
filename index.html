@@ -12626,6 +12626,14 @@
             const textToAnalyze = selectedLines.join('\n');
             console.log('📖 Text to analyze:', textToAnalyze);
             
+            // LOCAL-ONLY BYPASS: Skip API calls when running on localhost
+            const isLocal = location.hostname === 'localhost' || location.hostname === '127.0.0.1' || location.hostname === '';
+            if (isLocal) {
+                console.log('🏠 LOCAL MODE: Bypassing API, using local notes lookup only');
+                handleFullFathomFiveAnalysis(textToAnalyze);
+                return; // Don't call the Netlify/OpenAI API
+            }
+            
             // Set analysis mode based on current tab
             const mode = currentTab || 'basic';
             console.log('🎯 Current tab/mode:', currentTab, '→', mode);
