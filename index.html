@@ -7970,6 +7970,115 @@
                 activeButton.setAttribute('aria-pressed', 'true');
             }
             
+            // Reset analysis panel to default state when switching tabs
+            const analysisPanel = document.getElementById('analysisPanel');
+            const analysisResult = document.getElementById('analysisResult');
+            const variorumResult = document.getElementById('variorumResult');
+            const variorumContent = document.getElementById('variorumContent');
+            const criticsInfo = document.getElementById('criticsInfo');
+            const nvInfo = document.getElementById('nvInfo');
+            
+            // Clear all analysis content
+            if (analysisResult) analysisResult.innerHTML = '';
+            if (variorumResult) variorumResult.innerHTML = '';
+            if (variorumContent) variorumContent.innerHTML = '';
+            
+            // Hide any open info panels
+            if (criticsInfo) criticsInfo.style.display = 'none';
+            if (nvInfo) nvInfo.style.display = 'none';
+            
+            // Scroll the analysis panel to the top
+            if (analysisPanel) {
+                analysisPanel.scrollTop = 0;
+            }
+            
+            // Check if current play should have New Variorum Analysis
+            // Only these 5 plays should have New Variorum Analysis
+            const playsWithNewVariorum = ['hamlet', 'othello', 'romeo', 'macbeth', 'kinglear', 'henryiv1', 'asyoulikeit', 'juliuscaesar', 'kingjohn', 'loveslabourslost', 'muchado', 'richardiii', 'merchantofvenice', 'tempest', 'winterstale', 'twelfthnight', 'midsummer'];
+            
+            // Explicitly exclude the 21 plays without NV editions
+            const playsWithoutNewVariorum = [
+                'allswell', 'comedyoferrors', 'measureformeasure', 'merrywives',
+                'pericles', 'taming', 'troilus', 'twogentlemen',
+                'henryvi1', 'henryvi2', 'henryvi3', 'henryviii',
+                'richardii', 'antony', 'coriolanus',
+                'henryv', 'titus', 'timon', 'henryiv2'
+            ];
+            
+            // Only show if in the whitelist AND not in the blacklist
+            const shouldShowNewVariorum = playsWithNewVariorum.includes(currentPlay) && !playsWithoutNewVariorum.includes(currentPlay);
+            console.log('🎭 Current play:', currentPlay, '- Show New Variorum?', shouldShowNewVariorum);
+            
+            // Show/hide critics button based on current play (New Variorum plays only)
+            const playsWithCriticsButtons = ['midsummer', 'asyoulikeit', 'henryiv1', 'juliuscaesar', 'kingjohn', 'kinglear', 'loveslabourslost', 'richardiii', 'romeo', 'merchantofvenice', 'tempest', 'winterstale', 'twelfthnight'];
+            const shouldShowCriticsButton = playsWithCriticsButtons.includes(currentPlay) && tabName === 'fullfathomfive';
+            const criticsButton = document.getElementById('criticsButton');
+            if (criticsButton) {
+                criticsButton.style.display = shouldShowCriticsButton ? 'block' : 'none';
+            }
+            
+            // Reset analysis panel to default state by restoring original HTML
+            if (analysisPanel) {
+                const variorumSectionHTML = shouldShowNewVariorum ? `
+                    <!-- New Variorum Analysis Section (Full Fathom Five Only) -->
+                    <div class="analysis-section" id="variorumSection" style="display: none;">
+                        <div class="analysis-title">
+                            <span>New Variorum Analysis</span>
+                        </div>
+                        <div class="critics-button-container" id="criticsButtonContainer" style="margin-top: 10px; margin-bottom: 15px;">
+                            <button class="btn btn-secondary" id="criticsButton" onclick="openCriticsModal()" style="width: 100%; margin-bottom: 10px; display: none;">
+                                Who are the New Variorum Critics?
+                            </button>
+                            <button class="btn btn-info" onclick="openNVModal()" style="width: 100%;">
+                                What's New Variorum?
+                            </button>
+                        </div>
+                        <div class="analysis-content" id="variorumContent">
+                            Traditional commentary will appear here for Full Fathom Five mode.
+                        </div>
+                        <div id="variorumResult"></div>
+                        
+                    </div>` : '';
+                
+                analysisPanel.innerHTML = `
+                    <!-- Analysis Mode Selector -->
+                    <div class="segment">
+                        <button onclick="switchTab('basic')" aria-pressed="${currentTab === 'basic' ? 'true' : 'false'}">Basic</button>
+                        <button onclick="switchTab('expert')" aria-pressed="${currentTab === 'expert' ? 'true' : 'false'}">Expert</button>
+                        <button onclick="switchTab('fullfathomfive')" aria-pressed="${currentTab === 'fullfathomfive' ? 'true' : 'false'}">Full Fathom Five</button>
+                    </div>
+
+                    <!-- AI Analysis Content -->
+                    <div class="analysis-header">
+                        <div class="analysis-title">${tabName === 'basic' ? 'Basic' : tabName === 'expert' ? 'Expert' : 'Full Fathom Five'} Analysis</div>
+                    </div>
+                    <div class="meta" style="display: none;">No play loaded</div>
+                    <div class="analysis-content" id="analysisContent">
+                        <p>Highlight text in the play to get AI-powered analysis.</p>
+                    </div>
+                    <div class="analysis-instruction" id="analysisInstruction">
+                        Select text in the play to get AI-powered analysis.
+                    </div>
+                    <button class="analyze-button" id="analyzeButton" onclick="explainHighlighted()" style="display: none;">Analyze Text</button>
+                    <button class="force-display-button" onclick="forceDisplayPlayContent()" style="display: none; background: #3498db; color: white; margin-left: 10px;">Show Play Content</button>
+                    <div id="analysisResult"></div>
+                    
+                    ${variorumSectionHTML}
+                `;
+                
+                // Update critics button visibility after creating the HTML
+                if (shouldShowNewVariorum) {
+                    const criticsButton = document.getElementById('criticsButton');
+                    if (criticsButton) {
+                        criticsButton.style.display = shouldShowCriticsButton ? 'block' : 'none';
+                    }
+                }
+            }
+            
+            // Update analysis panel based on tab
+            updateAnalysisPanel();
+            
+>>>>>>> origin/main
             // Update analysis title
             const analysisTitle = document.querySelector('.analysis-title');
             if (analysisTitle) {
@@ -12654,6 +12763,14 @@
             const textToAnalyze = currentSelectedLines.join('\n');
             console.log('📖 Text to analyze:', textToAnalyze);
             
+            // LOCAL-ONLY BYPASS: Skip API calls when running on localhost
+            const isLocal = location.hostname === 'localhost' || location.hostname === '127.0.0.1' || location.hostname === '';
+            if (isLocal) {
+                console.log('🏠 LOCAL MODE: Bypassing API, using local notes lookup only');
+                handleFullFathomFiveAnalysis(textToAnalyze);
+                return; // Don't call the Netlify/OpenAI API
+            }
+            
             // Set analysis mode based on current tab
             const mode = currentTab || 'basic';
             console.log('🎯 Current tab/mode:', currentTab, '→', mode);
@@ -12698,28 +12815,27 @@
 
         // Full Fathom Five functionality
         function handleFullFathomFiveAnalysis(text) {
-            console.log('🔄 Starting Full Fathom Five analysis...');
+            console.log('🔄 Starting Full Fathom Five analysis - loading New Variorum notes...');
             console.log('🎭 Current play:', currentPlay);
             console.log('🎭 Current scene:', currentScene);
             console.log('📝 Selected lines:', selectedLines);
             
-            // Check if this play should show New Variorum Analysis
-            // Plays WITH New Variorum: hamlet, othello, romeo, macbeth, kinglear, henryiv1, asyoulikeit, juliuscaesar, kingjohn, loveslabourslost, muchado, richardiii, merchantofvenice, tempest, winterstale, twelfthnight
-            const playsWithoutNewVariorum = ['allswell', 'comedyoferrors', 'measureformeasure', 'merrywives', 'pericles', 'taming', 'troilus', 'twogentlemen', 'henryvi1', 'henryvi2', 'henryvi3', 'henryviii', 'richardii', 'antony', 'coriolanus', 'henryv', 'titus', 'timon', 'henryiv2', 'midsummer'];
+            // New Variorum plays: midsummer, asyoulikeit, henryiv1, juliuscaesar, kingjohn, kinglear, loveslabourslost, richardiii, romeo, merchantofvenice, tempest, winterstale, twelfthnight, hamlet, othello, macbeth, muchado
+            const playsWithNewVariorum = ['midsummer', 'asyoulikeit', 'henryiv1', 'juliuscaesar', 'kingjohn', 'kinglear', 'loveslabourslost', 'richardiii', 'romeo', 'merchantofvenice', 'tempest', 'winterstale', 'twelfthnight', 'hamlet', 'othello', 'macbeth', 'muchado'];
             
-            const shouldHideVariorum = playsWithoutNewVariorum.includes(currentPlay);
-            console.log('🚫 Should hide variorum for', currentPlay, '?', shouldHideVariorum);
+            const shouldShowVariorum = playsWithNewVariorum.includes(currentPlay);
+            console.log('✅ Should show variorum for', currentPlay, '?', shouldShowVariorum);
             
             const variorumSection = document.getElementById('variorumSection');
             const variorumResult = document.getElementById('variorumResult');
             const variorumContent = document.getElementById('variorumContent');
             
-            // Show the variorum section ONLY if play is not in blacklist
+            // Show the variorum section ONLY for New Variorum plays
             if (variorumSection) {
-                if (shouldHideVariorum) {
+                if (!shouldShowVariorum) {
                     variorumSection.style.display = 'none';
-                    console.log('🚫 Variorum section HIDDEN for', currentPlay);
-                    return; // Exit early if play shouldn't show variorum
+                    console.log('🚫 Variorum section HIDDEN for', currentPlay, '- not a New Variorum play');
+                    return; // Exit early if not a New Variorum play
                 } else {
                     variorumSection.style.display = 'block';
                     console.log('✅ Variorum section displayed for', currentPlay);
@@ -12736,6 +12852,7 @@
                 const playDataMap = {
                     'merchantofvenice': 'merchantData',
                     'twelfthnight': 'twelfthData',
+                    'midsummer': 'midsummerData',
                     'hamlet': 'hamletData',
                     'othello': 'othelloData',
                     'romeo': 'romeoData',
@@ -12795,19 +12912,18 @@
                 return;
             }
             
-            console.log('🔍 Searching for commentary in scene:', currentScene);
-            console.log('📖 Available scenes in current play:', Object.keys(currentPlayData).slice(0, 10));
+            console.log('🔍 Searching for notes in scene:', currentScene);
+            console.log('📖 Available scenes:', Object.keys(currentPlayData).slice(0, 10));
             
             let combinedCommentary = '';
             let commentaryFound = false;
             
-            // Check each selected line for commentary
+            // Check each selected line for notes
             for (let i = 0; i < selectedLines.length; i++) {
                 const line = selectedLines[i];
                 console.log(`🔍 Searching for line ${i + 1}/${selectedLines.length}: "${line.substring(0, 50)}..."`);
                 
                 const notesData = findNotesForLine(line, currentScene);
-                console.log('📝 Notes data returned:', notesData ? 'Found' : 'Not found');
                 
                 if (notesData && notesData.notes && notesData.notes.length > 0) {
                     const formattedNotes = formatNotes(notesData);
@@ -12817,7 +12933,7 @@
                             combinedCommentary += '<hr style="margin: 20px 0; border: 1px solid #4b5563;">';
                         }
                         commentaryFound = true;
-                        console.log('✅ Commentary found for line', i + 1, '-', notesData.notes.length, 'notes');
+                        console.log('✅ Notes found for line', i + 1, '-', notesData.notes.length, 'notes');
                     }
                 } else {
                     console.log('⚠️ No notes found for line', i + 1);
@@ -12827,11 +12943,11 @@
             if (commentaryFound) {
                 if (variorumResult) {
                     variorumResult.innerHTML = combinedCommentary;
-                    console.log('✅ Commentary displayed in variorum result');
+                    console.log('✅ Notes displayed in variorum result');
                 }
                 if (variorumContent) {
                     variorumContent.innerHTML = combinedCommentary;
-                    console.log('✅ Commentary displayed in variorum content');
+                    console.log('✅ Notes displayed in variorum content');
                 }
                 showCriticsButton();
             } else {
@@ -12842,8 +12958,9 @@
                 if (variorumContent) {
                     variorumContent.innerHTML = noCommentaryMsg;
                 }
-                console.log('⚠️ No commentary found for any selected lines');
+                console.log('⚠️ No notes found for any selected lines');
             }
+>>>>>>> origin/main
         }
         
         // TEST FUNCTION - Run this in console to test notes without API
@@ -12892,6 +13009,7 @@
                 const playDataMap = {
                     'merchantofvenice': 'merchantData',
                     'twelfthnight': 'twelfthData',
+                    'midsummer': 'midsummerData',
                     'hamlet': 'hamletData',
                     'othello': 'othelloData',
                     'romeo': 'romeoData',
@@ -12913,18 +13031,17 @@
                 if (mappedKey && window[mappedKey]) {
                     playData = window[mappedKey];
                     console.log('✅ Found play data using mapped key:', mappedKey);
-                } else if (window[currentPlay + 'Data']) {
+                } else {
                     // Try the standard format: window[currentPlay + 'Data']
-                    playData = window[currentPlay + 'Data'];
-                    console.log('✅ Found play data using standard key:', currentPlay + 'Data');
-                } else if (window.macbethData) {
-                    // Fallback to macbethData
-                    playData = window.macbethData;
-                    console.log('⚠️ Using macbethData as fallback');
+                    const standardKey = currentPlay + 'Data';
+                    if (window[standardKey]) {
+                        playData = window[standardKey];
+                        console.log('✅ Found play data using standard key:', standardKey);
+                    } else {
+                        console.log('⚠️ No data found for play:', currentPlay, 'Available keys:', Object.keys(window).filter(k => k.endsWith('Data')));
+                    }
                 }
-            } else if (window.macbethData) {
-                playData = window.macbethData;
-                console.log('⚠️ No currentPlay set, using macbethData');
+            }
             }
             
             if (!playData || !sceneName) {
