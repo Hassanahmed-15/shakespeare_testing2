@@ -2307,6 +2307,21 @@
             margin: 20px 0;
         }
         
+        #variorumSection .analysis-content {
+            color: #333 !important;
+            background: #ffffff;
+            padding: 15px;
+            border-radius: 6px;
+        }
+        
+        #variorumSection .analysis-title {
+            color: #333 !important;
+        }
+        
+        #variorumSection .analysis-title span {
+            color: #333 !important;
+        }
+        
         .notes-header h4 {
             color: #f59e0b;
             margin-bottom: 10px;
@@ -2320,6 +2335,24 @@
             margin-bottom: 15px;
             border-radius: 6px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            color: #333;
+        }
+        
+        /* Ensure text is white in dark note items */
+        .note-item[style*="background: #1a1a1a"],
+        .note-item[style*="background:#1a1a1a"] {
+            color: #ffffff !important;
+        }
+        
+        .note-item[style*="background: #1a1a1a"] p,
+        .note-item[style*="background:#1a1a1a"] p {
+            color: #ffffff !important;
+        }
+        
+        /* Also target any dark backgrounds */
+        div[style*="background: #1a1a1a"] p,
+        div[style*="background:#1a1a1a"] p {
+            color: #ffffff !important;
         }
         
         .loading {
@@ -2586,6 +2619,17 @@
             display: flex;
             flex-direction: column;
             gap: var(--s-2);
+        }
+        
+        /* Ensure Media and Research sections are visible when displayed */
+        #mediaSection[style*="display: block"],
+        #mediaSection:not([style*="display: none"]) {
+            display: block !important;
+        }
+        
+        #researchSection[style*="display: block"],
+        #researchSection:not([style*="display: none"]) {
+            display: block !important;
         }
 
         /* Empty State */
@@ -8019,27 +8063,7 @@
             
             // Reset analysis panel to default state by restoring original HTML
             if (analysisPanel) {
-                const variorumSectionHTML = shouldShowNewVariorum ? `
-                    <!-- New Variorum Analysis Section (Full Fathom Five Only) -->
-                    <div class="analysis-section" id="variorumSection" style="display: none;">
-                        <div class="analysis-title">
-                            <span>New Variorum Analysis</span>
-                        </div>
-                        <div class="critics-button-container" id="criticsButtonContainer" style="margin-top: 10px; margin-bottom: 15px;">
-                            <button class="btn btn-secondary" id="criticsButton" onclick="openCriticsModal()" style="width: 100%; margin-bottom: 10px; display: none;">
-                                Who are the New Variorum Critics?
-                            </button>
-                            <button class="btn btn-info" onclick="openNVModal()" style="width: 100%;">
-                                What's New Variorum?
-                            </button>
-                        </div>
-                        <div class="analysis-content" id="variorumContent">
-                            Traditional commentary will appear here for Full Fathom Five mode.
-                        </div>
-                        <div id="variorumResult"></div>
-                        
-                    </div>` : '';
-                
+                // Don't create variorum section dynamically - it already exists in static HTML
                 analysisPanel.innerHTML = `
                     <!-- Analysis Mode Selector -->
                     <div class="segment">
@@ -8063,7 +8087,51 @@
                     <button class="force-display-button" onclick="forceDisplayPlayContent()" style="display: none; background: #3498db; color: white; margin-left: 10px;">Show Play Content</button>
                     <div id="analysisResult"></div>
                     
-                    ${variorumSectionHTML}
+                    <!-- New Variorum Analysis Section (Full Fathom Five Only) -->
+                    <div class="analysis-section" id="variorumSection" style="display: none;">
+                        <div class="analysis-title">
+                            <span>New Variorum Analysis</span>
+                        </div>
+                        <div class="critics-button-container" id="criticsButtonContainer" style="margin-top: 10px; margin-bottom: 15px;">
+                            <button class="btn btn-secondary" id="criticsButton" onclick="openCriticsModal()" style="width: 100%; margin-bottom: 10px; display: none;">
+                                Who are the New Variorum Critics?
+                            </button>
+                            <button class="btn btn-info" onclick="openNVModal()" style="width: 100%;">
+                                What's New Variorum?
+                            </button>
+                        </div>
+                        <div class="analysis-content" id="variorumContent">
+                            Traditional commentary will appear here for Full Fathom Five mode.
+                        </div>
+                        <div id="variorumResult"></div>
+                    </div>
+
+                    <!-- Follow-up Section - Hidden until analysis is done -->
+                    <div id="followUpSection" style="display: none;">
+                        <h3>Ask a follow-up question</h3>
+                        <div class="follow-up-input">
+                            <input type="text" placeholder="Ask a follow-up question..." id="followUpQuestion">
+                            <button class="ask-btn" onclick="askFollowUp()">Ask</button>
+                        </div>
+                    </div>
+
+                    <!-- Media Section - Hidden until analysis is done -->
+                    <div id="mediaSection" style="display: none;">
+                        <h3>Media</h3>
+                        <div class="media-actions">
+                            <button class="link-btn youtube" onclick="searchYouTube('scene')">Search YouTube for this scene</button>
+                        </div>
+                    </div>
+
+                    <!-- Research Section - Hidden until analysis is done -->
+                    <div id="researchSection" style="display: none;">
+                        <h3>Research</h3>
+                        <div class="research-actions">
+                            <button class="link-btn jstor" onclick="searchJSTOR('passage')">Search JSTOR for this passage/scene</button>
+                            <button class="link-btn scholar" onclick="searchGoogleScholar()">Google Scholar</button>
+                            <button class="link-btn ise" onclick="openInternetShakespeare()">Internet Shakespeare Editions</button>
+                        </div>
+                    </div>
                 `;
                 
                 // Update critics button visibility after creating the HTML
@@ -8718,7 +8786,7 @@
                 const formattedNotes = formatNotes(notesData);
                 console.log('📖 Formatted notes length:', formattedNotes ? formattedNotes.length : 0);
                 
-                // Manually set the variorum content
+                // Manually set the variorum content (only variorumContent to avoid duplication)
                 if (variorumContent && formattedNotes) {
                     variorumContent.innerHTML = formattedNotes;
                     console.log('✅ Variorum content set manually');
@@ -8726,10 +8794,6 @@
                     showCriticsButton();
                     // Add Copy button to the analysis title when commentary appears
                     addCopyButtonToVariorumTitle();
-                }
-                if (variorumResult && formattedNotes) {
-                    variorumResult.innerHTML = formattedNotes;
-                    console.log('✅ Variorum result set manually');
                 }
             } else {
                 console.log('❌ No commentary found');
@@ -12722,6 +12786,11 @@
             if (isLocal) {
                 console.log('🏠 LOCAL MODE: Bypassing API, using local notes lookup only');
                 handleFullFathomFiveAnalysis(textToAnalyze);
+                // Show buttons after analysis completes (for local mode)
+                ensureButtonsVisible();
+                setTimeout(ensureButtonsVisible, 100);
+                setTimeout(ensureButtonsVisible, 500);
+                setTimeout(ensureButtonsVisible, 1000);
                 return; // Don't call the Netlify/OpenAI API
             }
             
@@ -12844,7 +12913,6 @@
             
             if (!currentPlayData) {
                 const errorMsg = '<div class="loading" style="padding: 20px; color: #9ca3af;">Play data not loaded. Please wait for the play to finish loading.</div>';
-                if (variorumResult) variorumResult.innerHTML = errorMsg;
                 if (variorumContent) variorumContent.innerHTML = errorMsg;
                 console.error('❌ No play data available for', currentPlay);
                 return;
@@ -12852,7 +12920,6 @@
             
             if (!currentScene) {
                 const errorMsg = '<div class="loading" style="padding: 20px; color: #9ca3af;">Scene not detected. Please select text from a specific scene.</div>';
-                if (variorumResult) variorumResult.innerHTML = errorMsg;
                 if (variorumContent) variorumContent.innerHTML = errorMsg;
                 console.error('❌ No scene detected');
                 return;
@@ -12860,7 +12927,6 @@
             
             if (!selectedLines || selectedLines.length === 0) {
                 const errorMsg = '<div class="loading" style="padding: 20px; color: #9ca3af;">No text selected. Please select text to analyze.</div>';
-                if (variorumResult) variorumResult.innerHTML = errorMsg;
                 if (variorumContent) variorumContent.innerHTML = errorMsg;
                 console.error('❌ No selected lines');
                 return;
@@ -12895,10 +12961,7 @@
             }
             
             if (commentaryFound) {
-                if (variorumResult) {
-                    variorumResult.innerHTML = combinedCommentary;
-                    console.log('✅ Notes displayed in variorum result');
-                }
+                // Only set variorumContent to avoid duplication - variorumResult is redundant
                 if (variorumContent) {
                     variorumContent.innerHTML = combinedCommentary;
                     console.log('✅ Notes displayed in variorum content');
@@ -12906,14 +12969,17 @@
                 showCriticsButton();
             } else {
                 const noCommentaryMsg = '<div class="loading" style="padding: 20px; color: #9ca3af; font-style: italic;">No traditional commentary found for the selected lines in the database.</div>';
-                if (variorumResult) {
-                    variorumResult.innerHTML = noCommentaryMsg;
-                }
                 if (variorumContent) {
                     variorumContent.innerHTML = noCommentaryMsg;
                 }
                 console.log('⚠️ No notes found for any selected lines');
             }
+            
+            // Always show buttons after Full Fathom Five analysis completes
+            ensureButtonsVisible();
+            setTimeout(ensureButtonsVisible, 100);
+            setTimeout(ensureButtonsVisible, 500);
+            setTimeout(ensureButtonsVisible, 1000);
         }
         
         // TEST FUNCTION - Run this in console to test notes without API
@@ -12941,9 +13007,8 @@
                 
                 // Display in variorum section
                 const variorumContent = document.getElementById('variorumContent');
-                const variorumResult = document.getElementById('variorumResult');
+                // Only set variorumContent to avoid duplication - variorumResult is redundant
                 if (variorumContent) variorumContent.innerHTML = formatted;
-                if (variorumResult) variorumResult.innerHTML = formatted;
                 
                 console.log('✅ Notes displayed!');
             } else {
@@ -13196,7 +13261,7 @@
                 console.log('ℹ️ No notes available for this line');
                 formattedHTML += `
                     <div class="note-item" style="margin-bottom: 15px; padding: 10px; background: #1a1a1a; border-radius: 6px; border-left: 3px solid #6b7280;">
-                        <p style="margin: 0; line-height: 1.6; color: #9ca3af; font-style: italic;">No notes available for this line.</p>
+                        <p style="margin: 0; line-height: 1.6; color: #ffffff !important; font-style: italic;">No notes available for this line.</p>
                     </div>
                 `;
                 return formattedHTML;
@@ -13206,7 +13271,7 @@
                 console.log(`📖 Formatting note ${index + 1}:`, note.substring(0, 100) + '...');
                 formattedHTML += `
                     <div class="note-item" style="margin-bottom: 15px; padding: 10px; background: #1a1a1a; border-radius: 6px; border-left: 3px solid #f59e0b;">
-                        <p style="margin: 0; line-height: 1.6;">${note}</p>
+                        <p style="margin: 0; line-height: 1.6; color: #ffffff !important;">${note}</p>
                     </div>
                     `;
             });
@@ -13595,12 +13660,9 @@
                                 console.log('SSE streaming completed');
                                 
                                 // Show follow-up, media, and research sections after analysis
-                                const followUpSection = document.getElementById('followUpSection');
-                                const mediaSection = document.getElementById('mediaSection');
-                                const researchSection = document.getElementById('researchSection');
-                                if (followUpSection) followUpSection.style.display = 'block';
-                                if (mediaSection) mediaSection.style.display = 'block';
-                                if (researchSection) researchSection.style.display = 'block';
+                                ensureButtonsVisible();
+                                setTimeout(ensureButtonsVisible, 100);
+                                setTimeout(ensureButtonsVisible, 500);
                                 
                                 // CRITICAL FIX: Don't reset UI after analysis completes - it clears the analysis results!
                                 // Analysis is complete, keep it displayed
@@ -13693,6 +13755,55 @@
             return formattedContent;
         }
 
+        // Helper function to ensure buttons exist and are visible
+        function ensureButtonsVisible() {
+            const analysisPanel = document.getElementById('analysisPanel');
+            if (!analysisPanel) return;
+            
+            // Check if buttons exist, if not create them
+            let followUpSection = document.getElementById('followUpSection');
+            let mediaSection = document.getElementById('mediaSection');
+            let researchSection = document.getElementById('researchSection');
+            
+            if (!followUpSection) {
+                followUpSection = document.createElement('div');
+                followUpSection.id = 'followUpSection';
+                followUpSection.innerHTML = '<h3>Ask a follow-up question</h3><div class="follow-up-input"><input type="text" placeholder="Ask a follow-up question..." id="followUpQuestion"><button class="ask-btn" onclick="askFollowUp()">Ask</button></div>';
+                analysisPanel.appendChild(followUpSection);
+            }
+            
+            if (!mediaSection) {
+                mediaSection = document.createElement('div');
+                mediaSection.id = 'mediaSection';
+                mediaSection.innerHTML = '<h3>Media</h3><div class="media-actions"><button class="link-btn youtube" onclick="searchYouTube(\'scene\')">Search YouTube for this scene</button></div>';
+                analysisPanel.appendChild(mediaSection);
+            }
+            
+            if (!researchSection) {
+                researchSection = document.createElement('div');
+                researchSection.id = 'researchSection';
+                researchSection.innerHTML = '<h3>Research</h3><div class="research-actions"><button class="link-btn jstor" onclick="searchJSTOR(\'passage\')">Search JSTOR for this passage/scene</button><button class="link-btn scholar" onclick="searchGoogleScholar()">Google Scholar</button><button class="link-btn ise" onclick="openInternetShakespeare()">Internet Shakespeare Editions</button></div>';
+                analysisPanel.appendChild(researchSection);
+            }
+            
+            // Force show all buttons
+            followUpSection.style.display = 'block';
+            followUpSection.style.visibility = 'visible';
+            followUpSection.style.opacity = '1';
+            mediaSection.style.display = 'block';
+            mediaSection.style.visibility = 'visible';
+            mediaSection.style.opacity = '1';
+            researchSection.style.display = 'block';
+            researchSection.style.visibility = 'visible';
+            researchSection.style.opacity = '1';
+            
+            console.log('✅ Buttons ensured visible:', {
+                followUp: followUpSection.style.display,
+                media: mediaSection.style.display,
+                research: researchSection.style.display
+            });
+        }
+
         function updateAnalysisWithStructuredData(data, text) {
             const analysisContent = document.getElementById('analysisContent');
             const metaElement = document.querySelector('.meta');
@@ -13730,18 +13841,19 @@
             // Ensure analyze button is visible
             if (analyzeButton) analyzeButton.style.display = 'block';
             
-            // Show follow-up, media, and research sections
-            if (followUpSection) followUpSection.style.display = 'block';
-            if (mediaSection) mediaSection.style.display = 'block';
-            if (researchSection) researchSection.style.display = 'block';
-            
             // Show variorum section and critics button if we're in Full Fathom Five mode
             if (currentTab === 'fullfathomfive') {
-                console.log('✅ Full Fathom Five mode - showing variorum section');
-                showCriticsButton();
-                // Use the original handleFullFathomFiveAnalysis function
+                // Call handleFullFathomFiveAnalysis to load New Variorum notes
                 handleFullFathomFiveAnalysis(text);
             }
+            
+            // Ensure buttons are visible (create if needed and show)
+            ensureButtonsVisible();
+            
+            // Also show after delays to ensure they persist
+            setTimeout(ensureButtonsVisible, 100);
+            setTimeout(ensureButtonsVisible, 500);
+            setTimeout(ensureButtonsVisible, 1000);
             
             analysisInProgress = false;
             
@@ -13835,15 +13947,39 @@
             }
             if (analysisContent) analysisContent.innerHTML = formattedContent;
             if (analyzeButton) analyzeButton.style.display = 'block';
-            if (followUpSection) followUpSection.style.display = 'block';
-            if (mediaSection) mediaSection.style.display = 'block';
-            if (researchSection) researchSection.style.display = 'block';
+            // Always show buttons after analysis completes
+            // Force show all buttons with multiple attempts to ensure they're visible
+            const showButtons = () => {
+                const followUpSection = document.getElementById('followUpSection');
+                const mediaSection = document.getElementById('mediaSection');
+                const researchSection = document.getElementById('researchSection');
+                
+                if (followUpSection) {
+                    followUpSection.style.display = 'block';
+                    followUpSection.style.visibility = 'visible';
+                    followUpSection.style.opacity = '1';
+                }
+                if (mediaSection) {
+                    mediaSection.style.display = 'block';
+                    mediaSection.style.visibility = 'visible';
+                    mediaSection.style.opacity = '1';
+                }
+                if (researchSection) {
+                    researchSection.style.display = 'block';
+                    researchSection.style.visibility = 'visible';
+                    researchSection.style.opacity = '1';
+                }
+            };
             
-            if (currentTab === 'fullfathomfive') {
-                showCriticsButton();
-                // Use the original handleFullFathomFiveAnalysis function
-                handleFullFathomFiveAnalysis(text);
-            }
+            // Show immediately
+            showButtons();
+            
+            // Show again after delays to ensure they persist
+            setTimeout(showButtons, 100);
+            setTimeout(showButtons, 500);
+            setTimeout(showButtons, 1000);
+            
+            // NOTE: handleFullFathomFiveAnalysis is called separately in formatStructuredAnalysis, don't call it here to avoid duplication
             
             analysisInProgress = false;
             
