@@ -8141,10 +8141,23 @@
                         criticsButton.style.display = shouldShowCriticsButton ? 'block' : 'none';
                     }
                 }
+                
+                // CRITICAL: Hide variorum section by default - it will only show for variorum plays after analysis
+                const variorumSection = document.getElementById('variorumSection');
+                if (variorumSection) {
+                    variorumSection.style.display = 'none';
+                }
             }
             
             // Update analysis panel based on tab
             updateAnalysisPanel();
+            
+            // Ensure variorum section is hidden when switching tabs (will show later only for variorum plays)
+            const variorumSection = document.getElementById('variorumSection');
+            if (variorumSection) {
+                variorumSection.style.display = 'none';
+            }
+            
             console.log('✅ Tab switched to:', tabName);
         }
         
@@ -8252,8 +8265,8 @@
                 }
             }
             
-            // Hide variorum section when selecting new line (will show again after analysis)
-            if (variorumSection && currentTab === 'fullfathomfive') {
+            // ALWAYS hide variorum section when selecting new line (will show again only for variorum plays after analysis)
+            if (variorumSection) {
                 variorumSection.style.display = 'none';
                 console.log('✅ Hidden variorum section for new line selection');
             }
@@ -8277,12 +8290,6 @@
             if (researchSection) {
                 researchSection.style.display = 'none';
                 researchSection.innerHTML = '<h3>Research</h3><div class="research-actions"><button class="link-btn jstor" onclick="searchJSTOR(\'passage\')">Search JSTOR for this passage/scene</button><button class="link-btn scholar" onclick="searchGoogleScholar()">Google Scholar</button><button class="link-btn ise" onclick="openInternetShakespeare()">Internet Shakespeare Editions</button></div>';
-            }
-            
-            // CRITICAL FIX: Hide variorum section when selecting new line (will show again after analysis)
-            if (variorumSection) {
-                variorumSection.style.display = 'none';
-                console.log('✅ Hidden variorum section for new line selection');
             }
             
             // Hide any open info panels
@@ -13733,14 +13740,18 @@
             // Format each analysis section FIRST (Analysis at the top)
             for (const [sectionName, sectionContent] of Object.entries(analysis)) {
                 if (sectionContent && sectionContent.trim()) {
+                    // COMPLETELY REMOVE "New Variorum Analysis" section from formatted content
+                    // It should never appear in the analysis content - only in the dedicated variorumSection element
+                    const normalizedSectionName = sectionName.toLowerCase().trim();
+                    if (normalizedSectionName === 'new variorum analysis' || 
+                        normalizedSectionName.includes('variorum') ||
+                        sectionName === 'New Variorum Analysis') {
+                        console.log('🚫 Skipping "New Variorum Analysis" section from formatted content');
+                        continue; // Skip this section entirely
+                    }
+                    
                     formattedContent += '<div class="analysis-section">';
                     formattedContent += `<h4>${sectionName}</h4>`;
-                    
-                    // Skip "New Variorum Analysis" section here - it's handled by the dedicated variorumSection element
-                    if (sectionName === 'New Variorum Analysis') {
-                        // Don't add it here - the static variorumSection element handles this
-                        continue;
-                    }
                     
                     // Apply the same formatting as other modes
                     const processedContent = processContentForFormatting(sectionContent);
@@ -13749,8 +13760,8 @@
                 }
             }
             
-            // New Variorum Analysis is now handled by the dedicated variorumSection element
-            // Don't add it here in formatStructuredAnalysis to avoid duplication
+            // New Variorum Analysis is completely removed from formatted content
+            // It only appears in the dedicated variorumSection element (and only for variorum plays)
             
             return formattedContent;
         }
@@ -13832,7 +13843,7 @@
                 metaElement.innerHTML = `${playInfo} — ${wordCount} ${wordCount === 1 ? 'word' : 'words'} selected`;
             }
             
-            // Format and update content
+            // Format and update content (New Variorum Analysis section is filtered out)
             if (data.analysis && analysisContent) {
                 const formattedContent = formatStructuredAnalysis(data.analysis, data.relevantNotes);
                 analysisContent.innerHTML = formattedContent;
@@ -13841,9 +13852,15 @@
             // Ensure analyze button is visible
             if (analyzeButton) analyzeButton.style.display = 'block';
             
-            // Show variorum section and critics button if we're in Full Fathom Five mode
+            // CRITICAL: Hide variorum section by default - it will only show for variorum plays
+            const variorumSection = document.getElementById('variorumSection');
+            if (variorumSection) {
+                variorumSection.style.display = 'none';
+            }
+            
+            // Show variorum section and critics button ONLY if we're in Full Fathom Five mode AND it's a variorum play
             if (currentTab === 'fullfathomfive') {
-                // Call handleFullFathomFiveAnalysis to load New Variorum notes
+                // Call handleFullFathomFiveAnalysis to load New Variorum notes (it will check if play is variorum)
                 handleFullFathomFiveAnalysis(text);
             }
             
