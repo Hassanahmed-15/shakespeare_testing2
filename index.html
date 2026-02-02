@@ -8077,51 +8077,6 @@
             
             // Update analysis panel based on tab
             updateAnalysisPanel();
-            
-            // Update analysis title
-            const analysisTitle = document.querySelector('.analysis-title');
-            if (analysisTitle) {
-                switch(tabName) {
-                    case 'basic': analysisTitle.textContent = 'Basic Analysis'; break;
-                    case 'expert': analysisTitle.textContent = 'Expert Analysis'; break;
-                    case 'fullfathomfive': analysisTitle.textContent = 'Full Fathom Five Analysis'; break;
-                }
-            }
-            
-            // Reset/Update sections for the new tab
-            const variorumSection = document.getElementById('variorumSection');
-            const variorumContent = document.getElementById('variorumContent');
-            const criticsButton = document.getElementById('criticsButton');
-            
-            // Whitelist for New Variorum Analysis
-            const playsWithNewVariorum = ['hamlet', 'othello', 'romeo', 'macbeth', 'kinglear', 'henryiv1', 'asyoulikeit', 'juliuscaesar', 'kingjohn', 'loveslabourslost', 'muchado', 'richardiii', 'merchantofvenice', 'tempest', 'winterstale', 'twelfthnight'];
-            const playsWithoutNewVariorum = ['allswell', 'comedyoferrors', 'measureformeasure', 'merrywives', 'pericles', 'taming', 'troilus', 'twogentlemen', 'henryvi1', 'henryvi2', 'henryvi3', 'henryviii', 'richardii', 'antony', 'coriolanus', 'henryv', 'titus', 'timon', 'henryiv2', 'midsummer'];
-            const shouldShowNewVariorum = playsWithNewVariorum.includes(currentPlay) && !playsWithoutNewVariorum.includes(currentPlay);
-            
-            if (variorumSection) {
-                if (tabName === 'fullfathomfive' && shouldShowNewVariorum) {
-                    // Hide it initially, it will be shown when "Analyze" is clicked
-                    variorumSection.style.display = 'none';
-                    if (variorumContent) {
-                        variorumContent.innerHTML = 'Traditional commentary will appear here for Full Fathom Five mode.';
-                    }
-                } else {
-                    variorumSection.style.display = 'none';
-                }
-            }
-            
-            // Update critics button visibility
-            const playsWithCriticsButtons = ['hamlet', 'othello', 'romeo', 'macbeth', 'kinglear', 'henryiv1', 'midsummer', 'asyoulikeit', 'juliuscaesar', 'kingjohn', 'loveslabourslost', 'muchado', 'richardiii', 'merchantofvenice', 'tempest', 'winterstale', 'twelfthnight'];
-            if (criticsButton) {
-                criticsButton.style.display = (tabName === 'fullfathomfive' && playsWithCriticsButtons.includes(currentPlay)) ? 'block' : 'none';
-            }
-            
-            // Scroll to top
-            const analysisPanel = document.getElementById('analysisPanel');
-            if (analysisPanel) analysisPanel.scrollTop = 0;
-            
-            // Update active navigation and other UI parts
-            updateAnalysisPanel();
             console.log('✅ Tab switched to:', tabName);
         }
         
