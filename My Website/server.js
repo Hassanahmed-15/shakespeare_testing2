@@ -27,7 +27,10 @@ const server = http.createServer((req, res) => {
     console.log(`${req.method} ${req.url}`);
 
     // Handle Netlify function endpoint
-    if (req.url === '/.netlify/functions/shakespeare' && req.method === 'POST') {
+    const parsedUrl = url.parse(req.url);
+    const pathname = parsedUrl.pathname;
+
+    if (pathname === '/.netlify/functions/shakespeare' && req.method === 'POST') {
         let body = '';
         
         req.on('data', chunk => {

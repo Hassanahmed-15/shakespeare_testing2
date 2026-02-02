@@ -7332,7 +7332,23 @@
             <div id="analysisResult"></div>
             
             <!-- New Variorum Analysis Section (Full Fathom Five Only) -->
-            <!-- New Variorum Analysis Section will be dynamically added for specific plays only -->
+            <div class="analysis-section" id="variorumSection" style="display: none;">
+                <div class="analysis-title">
+                    <span>New Variorum Analysis</span>
+                </div>
+                <div class="critics-button-container" id="criticsButtonContainer" style="margin-top: 10px; margin-bottom: 15px;">
+                    <button class="btn btn-secondary" id="criticsButton" onclick="openCriticsModal()" style="width: 100%; margin-bottom: 10px; display: none;">
+                        Who are the New Variorum Critics?
+                    </button>
+                    <button class="btn btn-info" onclick="openNVModal()" style="width: 100%;">
+                        What's New Variorum?
+                    </button>
+                </div>
+                <div class="analysis-content" id="variorumContent">
+                    Traditional commentary will appear here for Full Fathom Five mode.
+                </div>
+                <div id="variorumResult"></div>
+            </div>
 
             <!-- Follow-up Section - Hidden until analysis is done -->
             <div id="followUpSection" style="display: none;">
@@ -7978,7 +7994,7 @@
             
             // Check if current play should have New Variorum Analysis
             // Only these 5 plays should have New Variorum Analysis
-            const playsWithNewVariorum = ['hamlet', 'othello', 'romeo', 'macbeth', 'kinglear', 'henryiv1', 'asyoulikeit', 'juliuscaesar', 'kingjohn', 'loveslabourslost', 'muchado', 'richardiii', 'merchantofvenice', 'tempest', 'winterstale', 'twelfthnight'];
+            const playsWithNewVariorum = ['hamlet', 'othello', 'romeo', 'macbeth', 'kinglear', 'henryiv1', 'asyoulikeit', 'juliuscaesar', 'kingjohn', 'loveslabourslost', 'muchado', 'richardiii', 'merchantofvenice', 'tempest', 'winterstale', 'twelfthnight', 'midsummer'];
             
             // Explicitly exclude the 21 plays without NV editions
             const playsWithoutNewVariorum = [
@@ -7986,7 +8002,7 @@
                 'pericles', 'taming', 'troilus', 'twogentlemen',
                 'henryvi1', 'henryvi2', 'henryvi3', 'henryviii',
                 'richardii', 'antony', 'coriolanus',
-                'henryv', 'titus', 'timon', 'henryiv2', 'midsummer'
+                'henryv', 'titus', 'timon', 'henryiv2'
             ];
             
             // Only show if in the whitelist AND not in the blacklist
@@ -8062,35 +8078,52 @@
             // Update analysis panel based on tab
             updateAnalysisPanel();
             
+>>>>>>> origin/main
             // Update analysis title
             const analysisTitle = document.querySelector('.analysis-title');
             if (analysisTitle) {
                 switch(tabName) {
-                    case 'basic':
-                        analysisTitle.textContent = 'Basic Analysis';
-                        break;
-                    case 'expert':
-                        analysisTitle.textContent = 'Expert Analysis';
-                        break;
-                    case 'fullfathomfive':
-                        analysisTitle.textContent = 'Full Fathom Five Analysis';
-                        break;
+                    case 'basic': analysisTitle.textContent = 'Basic Analysis'; break;
+                    case 'expert': analysisTitle.textContent = 'Expert Analysis'; break;
+                    case 'fullfathomfive': analysisTitle.textContent = 'Full Fathom Five Analysis'; break;
                 }
             }
             
-            console.log('✅ Tab switched to:', tabName);
+            // Reset/Update sections for the new tab
+            const variorumSection = document.getElementById('variorumSection');
+            const variorumContent = document.getElementById('variorumContent');
+            const criticsButton = document.getElementById('criticsButton');
             
-            // Force hide variorum section for Full Fathom Five (until analyze is clicked)
-            if (tabName === 'fullfathomfive') {
-                const variorumSection = document.getElementById('variorumSection');
-                if (variorumSection) {
+            // Whitelist for New Variorum Analysis
+            const playsWithNewVariorum = ['hamlet', 'othello', 'romeo', 'macbeth', 'kinglear', 'henryiv1', 'asyoulikeit', 'juliuscaesar', 'kingjohn', 'loveslabourslost', 'muchado', 'richardiii', 'merchantofvenice', 'tempest', 'winterstale', 'twelfthnight'];
+            const playsWithoutNewVariorum = ['allswell', 'comedyoferrors', 'measureformeasure', 'merrywives', 'pericles', 'taming', 'troilus', 'twogentlemen', 'henryvi1', 'henryvi2', 'henryvi3', 'henryviii', 'richardii', 'antony', 'coriolanus', 'henryv', 'titus', 'timon', 'henryiv2', 'midsummer'];
+            const shouldShowNewVariorum = playsWithNewVariorum.includes(currentPlay) && !playsWithoutNewVariorum.includes(currentPlay);
+            
+            if (variorumSection) {
+                if (tabName === 'fullfathomfive' && shouldShowNewVariorum) {
+                    // Hide it initially, it will be shown when "Analyze" is clicked
                     variorumSection.style.display = 'none';
-                    console.log('✅ Hidden variorum section for Full Fathom Five until analyze is clicked');
+                    if (variorumContent) {
+                        variorumContent.innerHTML = 'Traditional commentary will appear here for Full Fathom Five mode.';
+                    }
+                } else {
+                    variorumSection.style.display = 'none';
                 }
-                
-                // Critics button is now always visible via CSS
-                console.log('✅ Full Fathom Five mode - critics button should be visible');
             }
+            
+            // Update critics button visibility
+            const playsWithCriticsButtons = ['hamlet', 'othello', 'romeo', 'macbeth', 'kinglear', 'henryiv1', 'midsummer', 'asyoulikeit', 'juliuscaesar', 'kingjohn', 'loveslabourslost', 'muchado', 'richardiii', 'merchantofvenice', 'tempest', 'winterstale', 'twelfthnight'];
+            if (criticsButton) {
+                criticsButton.style.display = (tabName === 'fullfathomfive' && playsWithCriticsButtons.includes(currentPlay)) ? 'block' : 'none';
+            }
+            
+            // Scroll to top
+            const analysisPanel = document.getElementById('analysisPanel');
+            if (analysisPanel) analysisPanel.scrollTop = 0;
+            
+            // Update active navigation and other UI parts
+            updateAnalysisPanel();
+            console.log('✅ Tab switched to:', tabName);
         }
         
         // Line selection functionality
@@ -8161,7 +8194,7 @@
                     line.classList.remove('selected', 'range-selected');
                 });
                 
-            // Clear ALL previous analysis results and reset to default state
+            // COMPLETE RESET: Reset analysis panel to exact initial state when selecting a new line
             const analysisResult = document.getElementById('analysisResult');
             const variorumResult = document.getElementById('variorumResult');
             const variorumContent = document.getElementById('variorumContent');
@@ -8169,24 +8202,76 @@
             const criticsInfo = document.getElementById('criticsInfo');
             const nvInfo = document.getElementById('nvInfo');
             const analysisContent = document.getElementById('analysisContent');
+            const analysisInstruction = document.getElementById('analysisInstruction');
+            const analyzeButton = document.getElementById('analyzeButton');
+            const followUpSection = document.getElementById('followUpSection');
+            const mediaSection = document.getElementById('mediaSection');
+            const researchSection = document.getElementById('researchSection');
+            const variorumSection = document.getElementById('variorumSection');
+            const metaElement = document.querySelector('.meta');
+            const analysisTitleElement = document.querySelector('.analysis-title');
+            
+            // CRITICAL FIX: Clear analysisInProgress flag to allow new analysis
+            analysisInProgress = false;
             
             // Clear all analysis content
             if (analysisResult) analysisResult.innerHTML = '';
             if (variorumResult) variorumResult.innerHTML = '';
-            if (variorumContent) variorumContent.innerHTML = '';
-            if (analysisContent) analysisContent.innerHTML = '<p>Highlight text in the play to get AI-powered analysis.</p>';
             
-            // Hide follow-up, media, and research sections when analysis is cleared
-            const followUpSection = document.getElementById('followUpSection');
-            const mediaSection = document.getElementById('mediaSection');
-            const researchSection = document.getElementById('researchSection');
-            if (followUpSection) followUpSection.style.display = 'none';
-            if (mediaSection) mediaSection.style.display = 'none';
-            if (researchSection) researchSection.style.display = 'none';
+            // CRITICAL FIX: Reset variorumContent to default message for Full Fathom Five
+            if (variorumContent) {
+                if (currentTab === 'fullfathomfive') {
+                    variorumContent.innerHTML = 'Traditional commentary will appear here for Full Fathom Five mode.';
+                    // Also reset variorumResult
+                    if (variorumResult) variorumResult.innerHTML = '';
+                } else {
+                    variorumContent.innerHTML = '';
+                    if (variorumResult) variorumResult.innerHTML = '';
+                }
+            }
+            
+            // Hide variorum section when selecting new line (will show again after analysis)
+            if (variorumSection && currentTab === 'fullfathomfive') {
+                variorumSection.style.display = 'none';
+                console.log('✅ Hidden variorum section for new line selection');
+            }
+            
+            // Reset to initial state - exactly as when website first loads
+            if (analysisContent) analysisContent.innerHTML = '<p>Highlight text in the play to get AI-powered analysis.</p>';
+            if (analysisInstruction) analysisInstruction.textContent = 'Select text in the play to get AI-powered analysis.';
+            
+            // Hide analyze button (will be shown by updateAnalysisPanel if line is selected)
+            if (analyzeButton) analyzeButton.style.display = 'none';
+            
+            // Hide follow-up, media, and research sections
+            if (followUpSection) {
+                followUpSection.style.display = 'none';
+                followUpSection.innerHTML = '<h3>Ask a follow-up question</h3><div class="follow-up-input"><input type="text" placeholder="Ask a follow-up question..." id="followUpQuestion"><button class="ask-btn" onclick="askFollowUp()">Ask</button></div>';
+            }
+            if (mediaSection) {
+                mediaSection.style.display = 'none';
+                mediaSection.innerHTML = '<h3>Media</h3><div class="media-actions"><button class="link-btn youtube" onclick="searchYouTube(\'scene\')">Search YouTube for this scene</button></div>';
+            }
+            if (researchSection) {
+                researchSection.style.display = 'none';
+                researchSection.innerHTML = '<h3>Research</h3><div class="research-actions"><button class="link-btn jstor" onclick="searchJSTOR(\'passage\')">Search JSTOR for this passage/scene</button><button class="link-btn scholar" onclick="searchGoogleScholar()">Google Scholar</button><button class="link-btn ise" onclick="openInternetShakespeare()">Internet Shakespeare Editions</button></div>';
+            }
+            
+            // CRITICAL FIX: Hide variorum section when selecting new line (will show again after analysis)
+            if (variorumSection) {
+                variorumSection.style.display = 'none';
+                console.log('✅ Hidden variorum section for new line selection');
+            }
             
             // Hide any open info panels
             if (criticsInfo) criticsInfo.style.display = 'none';
             if (nvInfo) nvInfo.style.display = 'none';
+            
+            // Reset meta element
+            if (metaElement) metaElement.style.display = 'none';
+            
+            // Reset analysis title to Basic Analysis
+            if (analysisTitleElement) analysisTitleElement.textContent = 'Basic Analysis';
             
             // Scroll the analysis panel to the top
             if (analysisPanel) {
@@ -8406,6 +8491,9 @@
         function forceResetUI() {
             console.log('🔄 Force resetting all UI elements...');
             
+            // CRITICAL FIX: Don't clear analysis content or selections when resetting UI
+            // Only reset UI elements that are stuck, not the analysis results
+            
             // Reset play selector
             const playSelector = document.getElementById('playSelector');
             if (playSelector) {
@@ -8443,22 +8531,31 @@
                 sidebar.classList.remove('disabled', 'stuck');
             }
             
-            
-            // Clear any stuck selections
-            document.querySelectorAll('.selected').forEach(el => {
-                el.classList.remove('selected');
-            });
-            
-            // Clear text selection
-            if (window.getSelection) {
-                window.getSelection().removeAllRanges();
+            // CRITICAL FIX: Don't clear selections or analysis when resetting UI
+            // Only clear if analysis is NOT in progress and there's no active analysis
+            if (!analysisInProgress && selectedLines.length === 0) {
+                // Only clear stuck selections if there's no active analysis
+                document.querySelectorAll('.selected').forEach(el => {
+                    // Don't clear if there's analysis content showing
+                    const analysisResult = document.getElementById('analysisResult');
+                    if (!analysisResult || !analysisResult.innerHTML.trim()) {
+                        el.classList.remove('selected');
+                    }
+                });
             }
             
-            // Reset analysis in progress flag
-            analysisInProgress = false;
+            // Clear text selection only if no analysis is active
+            if (window.getSelection && !analysisInProgress && selectedLines.length === 0) {
+                const analysisResult = document.getElementById('analysisResult');
+                if (!analysisResult || !analysisResult.innerHTML.trim()) {
+                    window.getSelection().removeAllRanges();
+                }
+            }
             
+            // Don't reset analysis in progress flag here - let it be managed by analysis functions
+            // analysisInProgress = false; // REMOVED - let analysis functions manage this
             
-            console.log('✅ UI force reset complete');
+            console.log('✅ UI force reset complete (analysis preserved)');
         }
         
         
@@ -9208,6 +9305,13 @@
                                         } else {
                                             // Apply speaker name optimization to the scene content
                                             processedContent = optimizeSpeakerNames(sceneContent);
+                                            
+                                            // CRITICAL FIX: If all lines are empty after processing, ensure we still have an array
+                                            // This handles cases where scenes have notes but no play text (like ACT 1, SCENE 3)
+                                            if (processedContent.length === 0 && Object.keys(sceneData).length > 0) {
+                                                // Scene has data (notes) but no visible play text - add a placeholder
+                                                processedContent = ['[Scene text not available - notes exist in database]'];
+                                            }
                                         }
                                         
                                         const normalizedKey = normalizeSceneKey(originalSceneKey);
@@ -9223,11 +9327,30 @@
                                                 plays['hamlet'].acts[actName].push(normalizedKey);
                                             }
                                         }
+                                        
+                                        // Debug logging for ACT 1 scenes
+                                        if (normalizedKey.includes('ACT 1')) {
+                                            console.log(`✅ Added Hamlet scene: ${normalizedKey}, content length: ${processedContent.length}`);
+                                        }
                                     }
                                 }
                             });
                             
                             console.log(`✅ Hamlet parsed: ${sceneCount} scenes, ${lineCount} lines`);
+                            
+                            // Debug: Log ACT 1 scenes specifically
+                            if (plays['hamlet'].acts['ACT 1']) {
+                                console.log(`✅ ACT 1 scenes:`, plays['hamlet'].acts['ACT 1']);
+                            }
+                            // Debug: Check if problematic scenes exist
+                            const problematicScenes = ['ACT 1, SCENE 3', 'ACT 1, SCENE 4', 'ACT 1, SCENE 5'];
+                            problematicScenes.forEach(scene => {
+                                if (plays['hamlet'].scenes[scene]) {
+                                    console.log(`✅ Scene ${scene} exists with ${plays['hamlet'].scenes[scene].length} lines`);
+                                } else {
+                                    console.warn(`❌ Scene ${scene} NOT FOUND in plays['hamlet'].scenes`);
+                                }
+                            });
                         }
                         return 'hamlet';
                     } else {
@@ -12036,6 +12159,17 @@
                     return '<p><em>No content found for this scene.</em></p>';
                 }
                 
+                // Check if all content is empty or just placeholder text
+                const hasRealContent = sceneContent.some(line => {
+                    const trimmed = line.trim();
+                    return trimmed && trimmed !== '' && !trimmed.includes('[Scene text not available');
+                });
+                
+                if (!hasRealContent) {
+                    console.log('⚠️ Scene has no real content, showing placeholder');
+                    return '<p><em>This scene exists in the database but the play text is not available. Notes may be available for analysis.</em></p>';
+                }
+                
                 let html = '';
                 let currentSpeaker = '';
                 
@@ -12615,15 +12749,18 @@
 
         function explainHighlighted() {
             console.log('🔍 explainHighlighted called');
-            console.log('📝 Selected lines:', selectedLines);
+            
+            // CRITICAL FIX: Capture selectedLines IMMEDIATELY at function start to ensure we use current value
+            const currentSelectedLines = [...selectedLines]; // Create a copy to avoid reference issues
+            console.log('📝 Selected lines (captured):', currentSelectedLines);
             console.log('🎯 Current tab:', currentTab);
             
-            if (selectedLines.length === 0) {
+            if (currentSelectedLines.length === 0) {
                 alert('Please select text in the play first.');
                 return;
             }
             
-            const textToAnalyze = selectedLines.join('\n');
+            const textToAnalyze = currentSelectedLines.join('\n');
             console.log('📖 Text to analyze:', textToAnalyze);
             
             // LOCAL-ONLY BYPASS: Skip API calls when running on localhost
@@ -12683,8 +12820,8 @@
             console.log('🎭 Current scene:', currentScene);
             console.log('📝 Selected lines:', selectedLines);
             
-            // New Variorum plays: midsummer, asyoulikeit, henryiv1, juliuscaesar, kingjohn, kinglear, loveslabourslost, richardiii, romeo, merchantofvenice, tempest, winterstale, twelfthnight
-            const playsWithNewVariorum = ['midsummer', 'asyoulikeit', 'henryiv1', 'juliuscaesar', 'kingjohn', 'kinglear', 'loveslabourslost', 'richardiii', 'romeo', 'merchantofvenice', 'tempest', 'winterstale', 'twelfthnight'];
+            // New Variorum plays: midsummer, asyoulikeit, henryiv1, juliuscaesar, kingjohn, kinglear, loveslabourslost, richardiii, romeo, merchantofvenice, tempest, winterstale, twelfthnight, hamlet, othello, macbeth, muchado
+            const playsWithNewVariorum = ['midsummer', 'asyoulikeit', 'henryiv1', 'juliuscaesar', 'kingjohn', 'kinglear', 'loveslabourslost', 'richardiii', 'romeo', 'merchantofvenice', 'tempest', 'winterstale', 'twelfthnight', 'hamlet', 'othello', 'macbeth', 'muchado'];
             
             const shouldShowVariorum = playsWithNewVariorum.includes(currentPlay);
             console.log('✅ Should show variorum for', currentPlay, '?', shouldShowVariorum);
@@ -12708,34 +12845,48 @@
                 return;
             }
             
-            // Get play data using the correct mapping
+            // Get play data - handle special variable name mappings
             let currentPlayData = null;
             if (currentPlay) {
+                // Map play keys to their actual data variable names
                 const playDataMap = {
                     'merchantofvenice': 'merchantData',
                     'twelfthnight': 'twelfthData',
                     'midsummer': 'midsummerData',
-                    'asyoulikeit': 'asyoulikeitData',
+                    'hamlet': 'hamletData',
+                    'othello': 'othelloData',
+                    'romeo': 'romeoData',
+                    'macbeth': 'macbethData',
+                    'kinglear': 'kinglearData',
                     'henryiv1': 'henryiv1Data',
+                    'asyoulikeit': 'asyoulikeitData',
                     'juliuscaesar': 'juliuscaesarData',
                     'kingjohn': 'kingjohnData',
-                    'kinglear': 'kinglearData',
                     'loveslabourslost': 'loveslabourslostData',
+                    'muchado': 'muchadoData',
                     'richardiii': 'richardiiiData',
-                    'romeo': 'romeoData',
                     'tempest': 'tempestData',
                     'winterstale': 'winterstaleData'
                 };
                 
+                // Try mapped name first
                 const mappedKey = playDataMap[currentPlay];
                 if (mappedKey && window[mappedKey]) {
                     currentPlayData = window[mappedKey];
                     console.log('✅ Found play data using mapped key:', mappedKey);
-                } else if (window[currentPlay + 'Data']) {
-                    currentPlayData = window[currentPlay + 'Data'];
-                    console.log('✅ Found play data using standard key:', currentPlay + 'Data');
+                } else {
+                    // Try the standard format: window[currentPlay + 'Data']
+                    const standardKey = currentPlay + 'Data';
+                    if (window[standardKey]) {
+                        currentPlayData = window[standardKey];
+                        console.log('✅ Found play data using standard key:', standardKey);
+                    } else {
+                        console.log('⚠️ No data found for play:', currentPlay, 'Available keys:', Object.keys(window).filter(k => k.endsWith('Data')));
+                    }
                 }
             }
+            
+            console.log('🎭 Current play data exists:', !!currentPlayData, 'for play:', currentPlay);
             
             if (!currentPlayData) {
                 const errorMsg = '<div class="loading" style="padding: 20px; color: #9ca3af;">Play data not loaded. Please wait for the play to finish loading.</div>';
@@ -12809,6 +12960,7 @@
                 }
                 console.log('⚠️ No notes found for any selected lines');
             }
+>>>>>>> origin/main
         }
         
         // TEST FUNCTION - Run this in console to test notes without API
@@ -12853,30 +13005,43 @@
             // Get the currently loaded play data - handle special variable name mappings
             let playData = null;
             if (currentPlay) {
+                // Map play keys to their actual data variable names
                 const playDataMap = {
                     'merchantofvenice': 'merchantData',
                     'twelfthnight': 'twelfthData',
                     'midsummer': 'midsummerData',
-                    'asyoulikeit': 'asyoulikeitData',
+                    'hamlet': 'hamletData',
+                    'othello': 'othelloData',
+                    'romeo': 'romeoData',
+                    'macbeth': 'macbethData',
+                    'kinglear': 'kinglearData',
                     'henryiv1': 'henryiv1Data',
+                    'asyoulikeit': 'asyoulikeitData',
                     'juliuscaesar': 'juliuscaesarData',
                     'kingjohn': 'kingjohnData',
-                    'kinglear': 'kinglearData',
                     'loveslabourslost': 'loveslabourslostData',
+                    'muchado': 'muchadoData',
                     'richardiii': 'richardiiiData',
-                    'romeo': 'romeoData',
                     'tempest': 'tempestData',
                     'winterstale': 'winterstaleData'
                 };
                 
+                // Try mapped name first
                 const mappedKey = playDataMap[currentPlay];
                 if (mappedKey && window[mappedKey]) {
                     playData = window[mappedKey];
                     console.log('✅ Found play data using mapped key:', mappedKey);
-                } else if (window[currentPlay + 'Data']) {
-                    playData = window[currentPlay + 'Data'];
-                    console.log('✅ Found play data using standard key:', currentPlay + 'Data');
+                } else {
+                    // Try the standard format: window[currentPlay + 'Data']
+                    const standardKey = currentPlay + 'Data';
+                    if (window[standardKey]) {
+                        playData = window[standardKey];
+                        console.log('✅ Found play data using standard key:', standardKey);
+                    } else {
+                        console.log('⚠️ No data found for play:', currentPlay, 'Available keys:', Object.keys(window).filter(k => k.endsWith('Data')));
+                    }
                 }
+            }
             }
             
             if (!playData || !sceneName) {
@@ -13108,7 +13273,7 @@
         }
 
         // Helper function for fetch with timeout
-        async function fetchWithTimeout(url, options, timeoutMs = 30000) {
+        async function fetchWithTimeout(url, options, timeoutMs = 90000) {
             const controller = new AbortController();
             const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
             
@@ -13122,7 +13287,7 @@
             } catch (error) {
                 clearTimeout(timeoutId);
                 if (error.name === 'AbortError') {
-                    throw new Error('Request timed out after 30 seconds. Please try again with a shorter text selection.');
+                    throw new Error('Request timed out after 90 seconds. Shakespearean analysis can take a while for longer selections. Please try again with a shorter text selection.');
                 }
                 throw error;
             }
@@ -13136,13 +13301,44 @@
             console.log('Analysis mode passed:', mode);
             console.log('Current analysis mode:', currentAnalysisMode);
             
-            // Reset the right panel to original state before new analysis
+            // CRITICAL: Clear ALL previous analysis results at the start to ensure fresh analysis
+            const analysisResult = document.getElementById('analysisResult');
+            const variorumResult = document.getElementById('variorumResult');
+            const variorumContent = document.getElementById('variorumContent');
+            const variorumSection = document.getElementById('variorumSection');
             const followUpSection = document.getElementById('followUpSection');
             const mediaSection = document.getElementById('mediaSection');
             const researchSection = document.getElementById('researchSection');
-            if (followUpSection) followUpSection.innerHTML = '';
-            if (mediaSection) mediaSection.innerHTML = '';
-            if (researchSection) researchSection.innerHTML = '';
+            
+            // Clear all previous results
+            if (analysisResult) analysisResult.innerHTML = '';
+            if (variorumResult) variorumResult.innerHTML = '';
+            
+            // Reset variorumContent based on mode
+            if (variorumContent) {
+                if (currentTab === 'fullfathomfive') {
+                    variorumContent.innerHTML = 'Traditional commentary will appear here for Full Fathom Five mode.';
+                } else {
+                    variorumContent.innerHTML = '';
+                }
+            }
+            
+            // Hide variorum section at start (will be shown later if needed)
+            if (variorumSection) variorumSection.style.display = 'none';
+            
+            // Reset follow-up, media, and research sections
+            if (followUpSection) {
+                followUpSection.style.display = 'none';
+                followUpSection.innerHTML = '<h3>Ask a follow-up question</h3><div class="follow-up-input"><input type="text" placeholder="Ask a follow-up question..." id="followUpQuestion"><button class="ask-btn" onclick="askFollowUp()">Ask</button></div>';
+            }
+            if (mediaSection) {
+                mediaSection.style.display = 'none';
+                mediaSection.innerHTML = '<h3>Media</h3><div class="media-actions"><button class="link-btn youtube" onclick="searchYouTube(\'scene\')">Search YouTube for this scene</button></div>';
+            }
+            if (researchSection) {
+                researchSection.style.display = 'none';
+                researchSection.innerHTML = '<h3>Research</h3><div class="research-actions"><button class="link-btn jstor" onclick="searchJSTOR(\'passage\')">Search JSTOR for this passage/scene</button><button class="link-btn scholar" onclick="searchGoogleScholar()">Google Scholar</button><button class="link-btn ise" onclick="openInternetShakespeare()">Internet Shakespeare Editions</button></div>';
+            }
             
             // Use the passed mode or fall back to currentTab
             const analysisMode = mode || currentTab || 'basic';
@@ -13155,10 +13351,14 @@
                 console.log('⚠️ Analysis timeout - clearing loading state');
                 analysisInProgress = false;
                 if (analysisContent) {
-                    analysisContent.innerHTML = '<p style="color: red;">Analysis timed out. Please try again.</p>';
+                    analysisContent.innerHTML = '<p style="color: red;">Analysis timed out. Shakespearean analysis can take up to 60 seconds for complex passages. Please try again with a shorter selection or check your connection.</p>';
                 }
-                forceResetUI();
-            }, 30000); // 30 second timeout
+                const playSelector = document.getElementById('playSelector');
+                if (playSelector) {
+                    playSelector.disabled = false;
+                    playSelector.style.pointerEvents = 'auto';
+                }
+            }, 90000); // Increased to 90 second timeout for long analyses
             
             // Check cache first
             const playName = currentPlay && plays[currentPlay] ? plays[currentPlay].name : 'Unknown Play';
@@ -13198,6 +13398,7 @@
             }
             
             if (metaElement) {
+                metaElement.style.display = 'block';
                 metaElement.innerHTML = `${currentScene && currentScene !== '' ? `<em>${playName}</em> · ${currentScene} · ${wordCount} ${wordCount === 1 ? 'word' : 'words'} highlighted` : `<em>${playName}</em> · ${wordCount} ${wordCount === 1 ? 'word' : 'words'} highlighted`}`;
             }
             
@@ -13354,15 +13555,20 @@
             } catch (error) {
                 console.error('Error analyzing text:', error);
                 
+                // Clear processing message on error
+                if (analysisContent) {
+                    analysisContent.innerHTML = `<p style="color: red;"><strong>Error:</strong> ${error.message}</p><p>Please try again or select a shorter passage.</p>`;
+                }
+                
                 // More specific error messages
                 if (error.message.includes('Failed to fetch') || error.message.includes('NetworkError')) {
-                    alert('Network error. Please check your internet connection and try again.');
+                    alert('Network error. Please check your internet connection and ensure your local server is running.');
                 } else if (error.message.includes('API key')) {
-                    alert('OpenAI API key not configured. Please check your Netlify environment variables.');
-                } else if (error.message.includes('504') || error.message.includes('Gateway Timeout')) {
-                    alert('Request timed out. The server is taking too long to respond. Please try again with a shorter text selection or try again later.');
+                    alert('OpenAI API key not configured. Please check your environment variables.');
+                } else if (error.message.includes('504') || error.message.includes('Gateway Timeout') || error.message.includes('timed out')) {
+                    alert('Request timed out. The analysis is taking longer than expected. Try selecting fewer lines or a different analysis level.');
                 } else {
-                    alert(`Error analyzing text: ${error.message}. Please try again.`);
+                    alert(`Error: ${error.message}`);
                 }
             } finally {
                 // Clear the loading timeout
@@ -13371,15 +13577,23 @@
                 // Reset analysis in progress flag
                 analysisInProgress = false;
                 
-                // Force reset UI to ensure all elements remain functional
+                // CRITICAL FIX: Don't reset UI after analysis completes - it clears the analysis results!
+                // Only reset UI elements that need resetting, not the analysis content
                 setTimeout(() => {
-                    forceResetUI();
+                    // Only reset UI elements that might be stuck, NOT the analysis content
+                    const playSelector = document.getElementById('playSelector');
+                    if (playSelector) {
+                        playSelector.disabled = false;
+                        playSelector.style.pointerEvents = 'auto';
+                    }
                     
                     // Hide emergency clear button
                     const emergencyButton = document.querySelector('.emergency-clear-button');
                     if (emergencyButton) {
                         emergencyButton.style.display = 'none';
                     }
+                    
+                    // DO NOT call forceResetUI() here as it interferes with analysis display
                 }, 100);
             }
         }
@@ -13436,9 +13650,17 @@
                                 if (mediaSection) mediaSection.style.display = 'block';
                                 if (researchSection) researchSection.style.display = 'block';
                                 
-                                // Force reset UI after Full Fathom Five analysis completes
+                                // CRITICAL FIX: Don't reset UI after analysis completes - it clears the analysis results!
+                                // Analysis is complete, keep it displayed
                                 setTimeout(() => {
-                                    forceResetUI();
+                                    // Only reset UI elements that might be stuck, NOT the analysis content
+                                    const playSelector = document.getElementById('playSelector');
+                                    if (playSelector) {
+                                        playSelector.disabled = false;
+                                        playSelector.style.pointerEvents = 'auto';
+                                    }
+                                    
+                                    // DO NOT call forceResetUI() here as it interferes with analysis display
                                 }, 100);
                                 break;
                                 
@@ -13500,25 +13722,10 @@
                     formattedContent += '<div class="analysis-section">';
                     formattedContent += `<h4>${sectionName}</h4>`;
                     
-                    // Add buttons specifically for New Variorum Analysis section (only for appropriate plays)
+                    // Skip "New Variorum Analysis" section here - it's handled by the dedicated variorumSection element
                     if (sectionName === 'New Variorum Analysis') {
-                        // 21 plays without NV - just print "No New Variorum notes"
-                        const playsWithoutNV = ['allswell', 'comedyoferrors', 'measureformeasure', 'merrywives', 'pericles', 'taming', 'troilus', 'twogentlemen', 'henryvi1', 'henryvi2', 'henryvi3', 'henryviii', 'richardii', 'antony', 'coriolanus', 'juliuscaesar', 'henryv', 'titus', 'timon', 'henryiv2'];
-                        if (playsWithoutNV.includes(currentPlay)) {
-                            formattedContent += '<div class="section-content"><p>No New Variorum notes.</p></div></div>';
-                            continue;
-                        }
-                        
-                        // Only these 6 plays should have New Variorum Critics buttons
-                        const playsWithCriticsButtons = ['hamlet', 'othello', 'romeo', 'macbeth', 'kinglear', 'henryiv1', 'midsummer', 'asyoulikeit', 'juliuscaesar', 'kingjohn', 'loveslabourslost', 'muchado', 'richardiii', 'merchantofvenice', 'tempest', 'winterstale', 'twelfthnight'];
-                        const shouldShowButtons = playsWithCriticsButtons.includes(currentPlay);
-                        
-                        if (shouldShowButtons) {
-                            formattedContent += '<div class="critics-button-container" style="margin-top: 10px; margin-bottom: 15px;">';
-                            formattedContent += '<button class="btn btn-secondary" onclick="openCriticsModal()" style="width: 100%; margin-bottom: 10px;">Who are the New Variorum Critics?</button>';
-                            formattedContent += '<button class="btn btn-info" onclick="openNVModal()" style="width: 100%;">What\'s New Variorum?</button>';
-                            formattedContent += '</div>';
-                        }
+                        // Don't add it here - the static variorumSection element handles this
+                        continue;
                     }
                     
                     // Apply the same formatting as other modes
@@ -13528,166 +13735,79 @@
                 }
             }
             
-            // Check if current play should show New Variorum Analysis
-            // Only these 5 plays should have New Variorum Analysis
-            const playsWithNewVariorum = ['hamlet', 'othello', 'romeo', 'macbeth', 'kinglear', 'henryiv1', 'asyoulikeit', 'juliuscaesar', 'kingjohn', 'loveslabourslost', 'muchado', 'richardiii', 'merchantofvenice', 'tempest', 'winterstale', 'twelfthnight'];
-            
-            // Explicitly exclude the 21 plays without NV editions
-            const playsWithoutNewVariorum = [
-                'allswell', 'comedyoferrors', 'measureformeasure', 'merrywives',
-                'pericles', 'taming', 'troilus', 'twogentlemen',
-                'henryvi1', 'henryvi2', 'henryvi3', 'henryviii',
-                'richardii', 'antony', 'coriolanus',
-                'henryv', 'titus', 'timon', 'henryiv2', 'midsummer'
-            ];
-            
-            const shouldShowNewVariorum = playsWithNewVariorum.includes(currentPlay) && !playsWithoutNewVariorum.includes(currentPlay);
-            console.log('🎭 formatStructuredAnalysis - Current play:', currentPlay, '- Show New Variorum?', shouldShowNewVariorum);
-            
-            // Only add New Variorum Analysis for plays that should have it
-            if (shouldShowNewVariorum) {
-                // Check if New Variorum Analysis is already in the analysis object (from backend)
-                if (analysis['New Variorum Analysis']) {
-                    console.log('New Variorum Analysis found in analysis object, length:', analysis['New Variorum Analysis'].length);
-                    // Don't add it again since it's already been added above
-                } else if (relevantNotes && relevantNotes.length > 0) {
-                    // Fallback: Add Macbeth notes section LAST (New Variorum Analysis at the bottom)
-                    formattedContent += '<div class="analysis-section">';
-                    formattedContent += '<h4>New Variorum Analysis</h4>';
-                    
-                    // Only show critics button for plays that should have it
-                    const playsWithCriticsButtons = ['hamlet', 'othello', 'romeo', 'macbeth', 'kinglear', 'henryiv1', 'midsummer', 'asyoulikeit', 'juliuscaesar', 'kingjohn', 'loveslabourslost', 'muchado', 'richardiii', 'merchantofvenice', 'tempest', 'winterstale', 'twelfthnight'];
-                    if (playsWithCriticsButtons.includes(currentPlay)) {
-                    formattedContent += '<div class="critics-button-container" style="margin-top: 10px; margin-bottom: 15px;">';
-                    formattedContent += '<button class="btn btn-secondary" onclick="openCriticsModal()" style="width: 100%; margin-bottom: 10px;">📚 Who are the New Variorum Critics?</button>';
-                    formattedContent += '<button class="btn btn-info" onclick="openNVModal()" style="width: 100%;">ℹ️ What\'s New Variorum?</button>';
-                    formattedContent += '</div>';
-                    } else {
-                        formattedContent += '<div class="critics-button-container" style="margin-top: 10px; margin-bottom: 15px;">';
-                        formattedContent += '<button class="btn btn-info" onclick="openNVModal()" style="width: 100%;">ℹ️ What\'s New Variorum?</button>';
-                        formattedContent += '</div>';
-                    }
-                    formattedContent += '<div class="variorum-notes">';
-                    
-                    relevantNotes.forEach((note, index) => {
-                        formattedContent += `<div class="note-item">`;
-                        formattedContent += `<div class="note-header"><strong>${note.scene}, Line ${note.line}</strong></div>`;
-                        formattedContent += `<div class="note-text">"${note.play}"</div>`;
-                        formattedContent += `<div class="note-content">`;
-                        
-                        note.notes.forEach(noteText => {
-                            // Show full notes without truncation
-                            formattedContent += `<p>${noteText}</p>`;
-                        });
-                        
-                        formattedContent += `</div></div>`;
-                    });
-                    
-                    formattedContent += '</div></div>';
-                }
-            } else {
-                console.log('🚫 New Variorum Analysis excluded for play:', currentPlay);
-            }
+            // New Variorum Analysis is now handled by the dedicated variorumSection element
+            // Don't add it here in formatStructuredAnalysis to avoid duplication
             
             return formattedContent;
         }
 
         function updateAnalysisWithStructuredData(data, text) {
-            const analysisPanel = document.getElementById('analysisPanel');
+            const analysisContent = document.getElementById('analysisContent');
+            const metaElement = document.querySelector('.meta');
+            const analysisTitleElement = document.querySelector('.analysis-title');
+            const followUpSection = document.getElementById('followUpSection');
+            const mediaSection = document.getElementById('mediaSection');
+            const researchSection = document.getElementById('researchSection');
+            const analyzeButton = document.getElementById('analyzeButton');
+            
             const wordCount = countWords(text);
             const playName = currentPlay && plays[currentPlay] ? plays[currentPlay].name : 'Unknown Play';
             const playInfo = currentScene && currentScene !== '' ? `<em>${playName}</em> · ${currentScene}` : `<em>${playName}</em>`;
             
-            // Get the correct title based on current tab
+            // Get the correct title
             let analysisTitle = 'Basic Analysis';
             switch(currentTab) {
-                case 'basic':
-                    analysisTitle = 'Basic Analysis';
-                    break;
-                case 'expert':
-                    analysisTitle = 'Expert Analysis';
-                    break;
-                case 'fullfathomfive':
-                    analysisTitle = 'Full Fathom Five Analysis';
-                    break;
+                case 'basic': analysisTitle = 'Basic Analysis'; break;
+                case 'expert': analysisTitle = 'Expert Analysis'; break;
+                case 'fullfathomfive': analysisTitle = 'Full Fathom Five Analysis'; break;
             }
             
-            // Format the structured analysis content
-            let formattedContent = '';
-            if (data.analysis) {
-                formattedContent = formatStructuredAnalysis(data.analysis, data.relevantNotes);
+            // Update title and meta information
+            if (analysisTitleElement) analysisTitleElement.textContent = analysisTitle;
+            if (metaElement) {
+                metaElement.style.display = 'block';
+                metaElement.innerHTML = `${playInfo} — ${wordCount} ${wordCount === 1 ? 'word' : 'words'} selected`;
             }
             
-            analysisPanel.innerHTML = `
-                <!-- Analysis Mode Selector -->
-                <div class="segment">
-                    <button onclick="switchTab('basic')" aria-pressed="${currentTab === 'basic' ? 'true' : 'false'}">Basic</button>
-                    <button onclick="switchTab('expert')" aria-pressed="${currentTab === 'expert' ? 'true' : 'false'}">Expert</button>
-                    <button onclick="switchTab('fullfathomfive')" aria-pressed="${currentTab === 'fullfathomfive' ? 'true' : 'false'}">Full Fathom Five</button>
-                </div>
-
-                <!-- Analyze Button -->
-                <button class="analyze-button" id="analyzeButton" onclick="explainHighlighted()" style="display: block;">Analyze Text</button>
-
-                <!-- AI Analysis Content -->
-                <div class="analysis">
-                    <div class="meta">${playInfo} — ${wordCount} ${wordCount === 1 ? 'word' : 'words'} selected</div>
-                    <div class="analysis-content">
-                        ${formattedContent}
-                    </div>
-                    
-                    <!-- Follow-up Section -->
-                    <h3>Ask a follow-up question</h3>
-                    <div class="follow-up-input">
-                        <input type="text" placeholder="Ask a follow-up question..." id="followUpQuestion">
-                        <button class="ask-btn" onclick="askFollowUp()">Ask</button>
-                    </div>
-
-                    <!-- Media Section -->
-                    <h3>Media</h3>
-                    <div class="media-actions">
-                        <button class="link-btn youtube" onclick="searchYouTube('scene')">Search YouTube for this scene</button>
-                    </div>
-
-                    <!-- Research Section -->
-                    <h3>Research</h3>
-                    <div class="research-actions">
-                        <button class="link-btn jstor" onclick="searchJSTOR('passage')">Search JSTOR for this passage/scene</button>
-                        <button class="link-btn scholar" onclick="searchGoogleScholar()">Google Scholar</button>
-                        <button class="link-btn ise" onclick="openInternetShakespeare()">Internet Shakespeare Editions</button>
-                    </div>
-                </div>
-                
-                <!-- Critics Button - Static buttons in HTML, no dynamic creation needed -->
-            `;
+            // Format and update content
+            if (data.analysis && analysisContent) {
+                const formattedContent = formatStructuredAnalysis(data.analysis, data.relevantNotes);
+                analysisContent.innerHTML = formattedContent;
+            }
             
-            // Button outputs are now included within the analysis section itself
+            // Ensure analyze button is visible
+            if (analyzeButton) analyzeButton.style.display = 'block';
             
-            // Show critics button if we're in Full Fathom Five mode
+            // Show follow-up, media, and research sections
+            if (followUpSection) followUpSection.style.display = 'block';
+            if (mediaSection) mediaSection.style.display = 'block';
+            if (researchSection) researchSection.style.display = 'block';
+            
+            // Show variorum section and critics button if we're in Full Fathom Five mode
             if (currentTab === 'fullfathomfive') {
-                console.log('✅ Structured analysis complete, showing critics button for Full Fathom Five');
+                console.log('✅ Full Fathom Five mode - showing variorum section');
                 showCriticsButton();
-                
-                // SEARCH FOR NOTES LOCALLY AND DISPLAY THEM (only for Full Fathom Five mode)
-                if (currentTab === 'fullfathomfive') {
-                    handleFullFathomFiveAnalysis(text);
-                }
+                // Use the original handleFullFathomFiveAnalysis function
+                handleFullFathomFiveAnalysis(text);
             }
+            
+            analysisInProgress = false;
             
             // Add Copy button dynamically after analysis content is set
             setTimeout(() => {
-                const analysisDiv = analysisPanel.querySelector('.analysis');
-                if (analysisDiv && !analysisDiv.querySelector('.copy-chip')) {
+                if (analysisContent && !analysisContent.querySelector('.copy-chip')) {
                     const copyButton = document.createElement('button');
                     copyButton.className = 'copy-chip';
                     copyButton.textContent = 'Copy';
                     copyButton.onclick = copyAnalysis;
-                    analysisDiv.insertBefore(copyButton, analysisDiv.firstChild);
-                    console.log('✅ Copy button added to structured analysis after content is set');
+                    analysisContent.insertBefore(copyButton, analysisContent.firstChild);
                 }
                 
-                // Force reset UI to ensure all elements remain functional after structured analysis
-                forceResetUI();
+                const playSelector = document.getElementById('playSelector');
+                if (playSelector) {
+                    playSelector.disabled = false;
+                    playSelector.style.pointerEvents = 'auto';
+                }
             }, 100);
         }
 
@@ -13726,104 +13846,70 @@
 
 
         function updateAnalysis(content, text) {
-            const analysisPanel = document.getElementById('analysisPanel');
+            const analysisContent = document.getElementById('analysisContent');
+            const metaElement = document.querySelector('.meta');
+            const analysisTitleElement = document.querySelector('.analysis-title');
+            const followUpSection = document.getElementById('followUpSection');
+            const mediaSection = document.getElementById('mediaSection');
+            const researchSection = document.getElementById('researchSection');
+            const analyzeButton = document.getElementById('analyzeButton');
+            
             const wordCount = countWords(text);
             const playName = currentPlay && plays[currentPlay] ? plays[currentPlay].name : 'Unknown Play';
             const playInfo = currentScene && currentScene !== '' ? `<em>${playName}</em> · ${currentScene}` : `<em>${playName}</em>`;
             
-            // Format the content with proper sections (bypass for Full Fathom Five)
+            // Get the correct title
+            let analysisTitle = 'Basic Analysis';
+            switch(currentTab) {
+                case 'basic': analysisTitle = 'Basic Analysis'; break;
+                case 'expert': analysisTitle = 'Expert Analysis'; break;
+                case 'fullfathomfive': analysisTitle = 'Full Fathom Five Analysis'; break;
+            }
+            
+            // Format the content
             let formattedContent;
             if (currentTab === 'fullfathomfive') {
-                // For Full Fathom Five, apply paragraph formatting but not section formatting
                 formattedContent = content.replace(/\n\n/g, '</p><p>').replace(/\n/g, '<br>');
                 formattedContent = '<p>' + formattedContent + '</p>';
             } else {
                 formattedContent = formatAnalysisContent(content);
             }
             
-            // Get the correct title based on current mode
-            let analysisTitle = 'Basic Analysis';
-            switch(currentTab) {
-                case 'basic':
-                    analysisTitle = 'Basic Analysis';
-                    break;
-                case 'intermediate':
-                    analysisTitle = 'Intermediate Analysis';
-                    break;
-                case 'expert':
-                    analysisTitle = 'Expert Analysis';
-                    break;
-                case 'fullfathomfive':
-                    analysisTitle = 'Full Fathom Five Analysis';
-                    break;
+            // Update UI elements
+            if (analysisTitleElement) analysisTitleElement.textContent = analysisTitle;
+            if (metaElement) {
+                metaElement.style.display = 'block';
+                metaElement.innerHTML = `${playInfo} — ${wordCount} ${wordCount === 1 ? 'word' : 'words'} selected`;
             }
+            if (analysisContent) analysisContent.innerHTML = formattedContent;
+            if (analyzeButton) analyzeButton.style.display = 'block';
+            if (followUpSection) followUpSection.style.display = 'block';
+            if (mediaSection) mediaSection.style.display = 'block';
+            if (researchSection) researchSection.style.display = 'block';
             
-            analysisPanel.innerHTML = `
-                <!-- Analysis Mode Selector -->
-                <div class="segment">
-                    <button onclick="switchTab('basic')" aria-pressed="${currentTab === 'basic' ? 'true' : 'false'}">Basic</button>
-                    <button onclick="switchTab('expert')" aria-pressed="${currentTab === 'expert' ? 'true' : 'false'}">Expert</button>
-                    <button onclick="switchTab('fullfathomfive')" aria-pressed="${currentTab === 'fullfathomfive' ? 'true' : 'false'}">Full Fathom Five</button>
-                </div>
-
-                <!-- Analyze Button -->
-                <button class="analyze-button" id="analyzeButton" onclick="explainHighlighted()" style="display: block;">Analyze Text</button>
-
-                <!-- AI Analysis Content -->
-                <div class="analysis">
-                    <div class="meta">${playInfo} — ${wordCount} ${wordCount === 1 ? 'word' : 'words'} selected</div>
-                    <div class="analysis-content">
-                        ${formattedContent}
-                    </div>
-                    
-                    <!-- Follow-up Section -->
-                    <h3>Ask a follow-up question</h3>
-                    <div class="follow-up-input">
-                        <input type="text" placeholder="Ask a follow-up question..." id="followUpQuestion">
-                        <button class="ask-btn" onclick="askFollowUp()">Ask</button>
-                    </div>
-
-                    <!-- Media Section -->
-                    <h3>Media</h3>
-                    <div class="media-actions">
-                        <button class="link-btn youtube" onclick="searchYouTube('scene')">Search YouTube for this scene</button>
-                    </div>
-
-                    <!-- Research Section -->
-                    <h3>Research</h3>
-                    <div class="research-actions">
-                        <button class="link-btn jstor" onclick="searchJSTOR('passage')">Search JSTOR for this passage/scene</button>
-                        <button class="link-btn scholar" onclick="searchGoogleScholar()">Google Scholar</button>
-                        <button class="link-btn ise" onclick="openInternetShakespeare()">Internet Shakespeare Editions</button>
-                    </div>
-                </div>
-                
-                <!-- Critics Button - Static buttons in HTML, no dynamic creation needed -->
-            `;
-            
-            // Button outputs are now included within the analysis section itself
-            
-            // Show critics button if we're in Full Fathom Five mode
             if (currentTab === 'fullfathomfive') {
-                console.log('✅ Analysis complete, showing critics button for Full Fathom Five');
                 showCriticsButton();
-                
+                // Use the original handleFullFathomFiveAnalysis function
+                handleFullFathomFiveAnalysis(text);
             }
             
-            // Add Copy button dynamically after analysis content is set
+            analysisInProgress = false;
+            
             setTimeout(() => {
-                const analysisDiv = analysisPanel.querySelector('.analysis');
-                if (analysisDiv && !analysisDiv.querySelector('.copy-chip')) {
+                if (analysisContent && !analysisContent.querySelector('.copy-chip')) {
                     const copyButton = document.createElement('button');
                     copyButton.className = 'copy-chip';
                     copyButton.textContent = 'Copy';
                     copyButton.onclick = copyAnalysis;
-                    analysisDiv.insertBefore(copyButton, analysisDiv.firstChild);
-                    console.log('✅ Copy button added to analysis after content is set');
+                    analysisContent.insertBefore(copyButton, analysisContent.firstChild);
                 }
                 
-                // Force reset UI to ensure all elements remain functional after analysis
-                forceResetUI();
+                // Force reset UI elements that might be stuck
+                const playSelector = document.getElementById('playSelector');
+                if (playSelector) {
+                    playSelector.disabled = false;
+                    playSelector.style.pointerEvents = 'auto';
+                }
             }, 100);
         }
 
