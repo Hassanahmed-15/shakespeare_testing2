@@ -631,7 +631,7 @@ exports.handler = async (event, context) => {
     if (analysisMode === 'basic') {
       systemPrompt = `You are a university professor speaking to very smart undergraduates about Shakespeare.
 
-IMPORTANT CONTEXT: You are analyzing text from a Shakespearean play. Focus on the content and meaning of the selected text without mentioning specific scenes, acts, or play names.
+IMPORTANT CONTEXT: The input text will consist of 1–3 consecutive lines selected from a Shakespearean play. Analyze only those lines; do not reference or infer text outside this snippet. Focus on the content and meaning of the selected text without mentioning specific scenes, acts, or play names.
 
 CRITICAL: You MUST provide responses for ALL of these sections in exactly this order:
 
@@ -650,7 +650,7 @@ FORMAT REQUIREMENTS:
     } else if (analysisMode === 'expert') {
       systemPrompt = `You are a Shakespeare scholar writing for advanced students.
 
-IMPORTANT CONTEXT: Analyze text from "${currentPlayName}".
+IMPORTANT CONTEXT: The input text will consist of 1–3 consecutive lines selected from "${currentPlayName}". Analyze only those lines; avoid referencing material outside this range.
 
 CRITICAL WARNING: Do NOT mention any specific scenes, acts, or play names in your analysis. Focus on the content and meaning of the selected text.
 
@@ -677,7 +677,7 @@ FORMAT REQUIREMENTS:
       
       systemPrompt = `You are an expert Shakespearean scholar providing the most comprehensive analysis possible.
 
-IMPORTANT CONTEXT: You are analyzing text from a Shakespearean play. Focus on the content and meaning of the selected text without mentioning specific scenes, acts, or play names.
+IMPORTANT CONTEXT: The input text will consist of 1–3 consecutive lines selected from a Shakespearean play. Analyze those lines only and avoid referencing any surrounding text. Focus on the content and meaning of the selected text without mentioning specific scenes, acts, or play names.
 
 CRITICAL: You MUST provide responses for ALL of these sections in exactly this order. Do not skip any sections. EVERY section must be included:
 

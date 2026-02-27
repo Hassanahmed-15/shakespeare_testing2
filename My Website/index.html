@@ -278,6 +278,35 @@
             color: var(--ink-1);
         }
 
+        /* Context menu for line analysis */
+        .context-menu {
+            position: absolute;
+            display: none;
+            background: var(--surface);
+            border: 1px solid var(--line);
+            border-radius: var(--r-sm);
+            padding: 4px;
+            z-index: 10000;
+            box-shadow: var(--shadow);
+        }
+
+        .context-menu button {
+            background: none;
+            border: none;
+            padding: 8px 12px;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+            font-family: var(--ui);
+            font-size: 14px;
+            color: var(--ink-2);
+        }
+
+        .context-menu button:hover {
+            background: var(--panel);
+            color: var(--ink-1);
+        }
+
         .explain-btn:disabled {
             background: #a0aec0;
             cursor: not-allowed;
@@ -8148,9 +8177,17 @@
                         `;
                     }
                     
-                    // Update navigation
-                    updateNavigation(play);
-                    updateActiveNavigation(firstScene);
+                    // Update navigation (guarded in case definitions haven't loaded yet)
+                    if (typeof updateNavigation === 'function') {
+                        updateNavigation(play);
+                    } else {
+                        console.warn('⚠️ updateNavigation not defined yet');
+                    }
+                    if (typeof updateActiveNavigation === 'function') {
+                        updateActiveNavigation(firstScene);
+                    } else {
+                        console.warn('⚠️ updateActiveNavigation not defined yet');
+                    }
                     
                 } else {
                     // Show play info if no scenes
@@ -8587,6 +8624,19 @@
             if (scenes && scenes.length > 0) {
                 const firstScene = scenes[0];
                 loadScene(firstScene);
+            }
+        }
+
+        // If a play was already loaded before navigation functions became available,
+        // update the navigation now that the helpers exist.
+        if (typeof currentPlay !== 'undefined' && currentPlay && typeof updateNavigation === 'function') {
+            try {
+                updateNavigation(plays[currentPlay]);
+                if (typeof currentScene !== 'undefined' && currentScene && typeof updateActiveNavigation === 'function') {
+                    updateActiveNavigation(currentScene);
+                }
+            } catch (e) {
+                console.warn('⚠️ Failed to refresh navigation after definitions:', e);
             }
         }
 
@@ -11793,6 +11843,40 @@
                 closeNVModal();
             }
         }
+
+        // Custom context-menu handlers for line analysis
+        document.addEventListener('click', () => {
+            const menu = document.getElementById('contextMenu');
+            if (menu) menu.style.display = 'none';
+        });
+
+        document.addEventListener('contextmenu', (e) => {
+            const target = e.target.closest('.play-line');
+            if (target) {
+                e.preventDefault();
+                // treat right-click as a selection start or update
+                const text = target.textContent || '';
+                const idx = parseInt(target.getAttribute('data-line-index'), 10);
+                if (!Number.isNaN(idx)) {
+                    selectLine(target, text, idx);
+                }
+                const menu = document.getElementById('contextMenu');
+                if (menu) {
+                    menu.style.top = `${e.pageY}px`;
+                    menu.style.left = `${e.pageX}px`;
+                    menu.style.display = 'block';
+                }
+            }
+        });
+
+        const contextAnalyzeBtn = document.getElementById('contextAnalyze');
+        if (contextAnalyzeBtn) {
+            contextAnalyzeBtn.addEventListener('click', () => {
+                explainHighlighted();
+                const menu = document.getElementById('contextMenu');
+                if (menu) menu.style.display = 'none';
+            });
+        }
         } // Closing brace for main script wrapper
     </script>
 
@@ -11808,5 +11892,11 @@
             <a href="#" onclick="openRights(); return false;">Full Rights & Usage Information</a>
         </div>
     </footer>
+
+    <!-- Custom context menu for line analysis -->
+    <div id="contextMenu" class="context-menu">
+        <button id="contextAnalyze">🧠 Analyze Selection</button>
+    </div>
+
 </body>
 </html>
