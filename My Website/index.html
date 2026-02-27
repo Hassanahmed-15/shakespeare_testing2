@@ -4741,7 +4741,7 @@
             }
         }
         
-        // Line selection functionality
+        // Line selection functionality (supports 1–3 consecutive lines)
         function selectLine(element, text, lineIndex) {
             console.log('Selecting line:', lineIndex, 'Text:', text);
             
@@ -4804,11 +4804,61 @@
                 }
             }
             
-            // Clear all previous selections
+            // If no starting line yet, or user is restarting selection, start fresh with this line
+            const isStartingNewSelection = firstSelectedLine === null || selectedLines.length === 0;
+            
+            if (isStartingNewSelection) {
+                // Clear all previous selections
                 document.querySelectorAll('.play-line').forEach(line => {
                     line.classList.remove('selected', 'range-selected');
                 });
                 
+                // This click defines the first line in the selection
+                element.classList.add('selected');
+                selectedLines = [text.trim()];
+                firstSelectedLine = lineIndex;
+                
+                console.log('✅ Started new selection at line:', firstSelectedLine, 'Selected lines:', selectedLines);
+            } else {
+                // We already have a starting line; this click defines a range end
+                const startIndex = Math.min(firstSelectedLine, lineIndex);
+                const endIndex = Math.max(firstSelectedLine, lineIndex);
+                const count = endIndex - startIndex + 1;
+                
+                // Enforce maximum of 3 consecutive lines
+                if (count > 3) {
+                    alert('Please select between 1 and 3 consecutive lines for analysis.');
+                    console.warn('🚫 Selection range too large:', startIndex, 'to', endIndex, '(', count, 'lines)');
+                    return;
+                }
+                
+                // Clear all previous visual selections
+                document.querySelectorAll('.play-line').forEach(line => {
+                    line.classList.remove('selected', 'range-selected');
+                });
+                
+                // Apply selection across the range and rebuild selectedLines
+                const newSelectedLines = [];
+                for (let i = startIndex; i <= endIndex; i++) {
+                    const lineEl = document.querySelector(`.play-line[data-line-index="${i}"]`);
+                    if (!lineEl) continue;
+                    
+                    // First and last lines use 'selected'; middle lines use 'range-selected'
+                    if (i === startIndex || i === endIndex) {
+                        lineEl.classList.add('selected');
+                    } else {
+                        lineEl.classList.add('range-selected');
+                    }
+                    
+                    newSelectedLines.push(lineEl.textContent.trim());
+                }
+                
+                selectedLines = newSelectedLines;
+                firstSelectedLine = startIndex;
+                
+                console.log('✅ Updated selection range:', startIndex, 'to', endIndex, 'Selected lines:', selectedLines);
+            }
+            
             // Clear ALL previous analysis results and reset to default state
             const analysisResult = document.getElementById('analysisResult');
             const variorumResult = document.getElementById('variorumResult');
@@ -4833,12 +4883,6 @@
             
             // DON'T rebuild HTML - just clear content to preserve event handlers
             
-            // Add selection to current line
-            element.classList.add('selected');
-            selectedLines = [text.trim()];
-            firstSelectedLine = null;
-            
-            console.log('✅ Line selected:', selectedLines);
             console.log('🎭 Current scene after selection:', currentScene);
             updateAnalysisPanel();
         }
