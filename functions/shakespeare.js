@@ -732,72 +732,72 @@ For this section, use the historical variorum notes provided below.
 - IMPORTANT: Copy the notes exactly as provided, word for word, without any changes.
 - CRITICAL: Include the complete, unabridged text of every note, no matter how long.`
        
-        // Add play notes if available (for fullfathomfive level)
-        if (relevantNotes.length > 0) {
-          systemPrompt += `\n\nIMPORTANT: You have access to historical variorum notes from the ${currentPlayName} database. Here are the relevant notes found:`
-          
-          relevantNotes.forEach((note, index) => {
-            systemPrompt += `\n\n[Line ${note.line}] ${note.play}`
-            note.notes.forEach((noteText, noteIndex) => {
-              systemPrompt += `\n\nNote ${noteIndex + 1}: ${noteText}`
-            })
-          })
-          
-          systemPrompt += `\n\nUse these exact notes in your "New Variorum Analysis" section. Format each note as: [Line X] [Commentary from notes]. Do not add any additional commentary or speculation.`
-        } else {
-          systemPrompt += `\n\nNOTE: No historical variorum notes were found for this text in the database. In the "New Variorum Analysis" section, state: "No historical commentary found for the selected text in the database."`
+        // We no longer inline the full historical notes into the system prompt.
+        // They are attached to the final response server‑side via the
+        // "New Variorum Analysis" section, built directly from the JSON.
+        if (relevantNotes.length === 0) {
+          systemPrompt += `\n\nNOTE: No historical variorum notes were found for this text in the database. In the "New Variorum Analysis" section, state briefly that no traditional commentary was located for these lines.`
         }
       }
-    }
+    } else if (analysisMode === 'followup') {
+      // Special lightweight mode for "Ask a follow-up question"
+      // The incoming text contains context plus a line that starts with
+      // "Follow-up question:". We want to answer that question directly,
+      // using the rest of the text only as background.
+      systemPrompt = `You are a concise, expert Shakespeare guide answering a follow-up question about previously analyzed lines.
 
-    // Build the user prompt
-    let userPrompt = `Text to analyze: "${text}"`
+The user message you receive will contain:
+- The current play name
+- (Sometimes) the original selected passage
+- (Sometimes) the previous analysis text
+- A final line that begins with "Follow-up question:" followed by the user's actual question.
 
-    if (isMultipleLines) {
-      userPrompt += `\n\nThis selection contains ${lines.length} lines. Please provide analysis that considers both the individual lines and their relationship to each other.`
-    }
-
-    // Add notes to user prompt only for fullfathomfive level AND only for plays WITH New Variorum editions
-    const includeNewVariorumInPrompt = !playsWithoutNewVariorum.includes(playName)
-    if (analysisMode === 'fullfathomfive' && relevantNotes.length > 0 && includeNewVariorumInPrompt) {
-        console.log('Adding notes to prompt. Total notes found:', relevantNotes.length)
-        relevantNotes.forEach((note, index) => {
-          console.log(`Note ${index + 1}: Line ${note.line}, ${note.notes.length} note entries`)
-          note.notes.forEach((noteText, noteIndex) => {
-            console.log(`  Note entry ${noteIndex + 1} length:`, noteText.length)
-          })
-        })
-        
-        userPrompt += `\n\nHISTORICAL VARIORUM NOTES TO USE:`
-        relevantNotes.forEach((note, index) => {
-          userPrompt += `\n\n[Line ${note.line}] ${note.play}`
-          note.notes.forEach((noteText, noteIndex) => {
-            // Include the complete, full text of every note
-            userPrompt += `\n${noteText}`
-          })
-        })
-        userPrompt += `\n\nCRITICAL INSTRUCTIONS: Use these EXACT notes in your "New Variorum Analysis" section. Copy them word for word without any changes, summaries, or modifications. Show ALL notes from the database, not just parts of them. DO NOT TRUNCATE OR CUT ANY NOTES. Include the complete, full text of every note. Even if the notes are very long, you MUST include the ENTIRE text. Do not stop mid-sentence or cut off any part. Format each note as: [Line X] [EXACT commentary text from notes]. Do not add any additional commentary or speculation.
-
-ABSOLUTE REQUIREMENT: Every single character of the provided notes must appear in your response. NO EXCEPTIONS. You must copy the notes exactly as provided, word for word, character for character. FAILURE TO INCLUDE COMPLETE NOTES WILL RESULT IN INCOMPLETE ANALYSIS.
-
-IMPORTANT: The notes above are the COMPLETE notes from the database. You MUST include ALL of them in your "New Variorum Analysis" section. Do not summarize, do not truncate, do not cut off. Copy them exactly as shown above.`
-      }
-
-    if (analysisMode === 'basic') {
-      userPrompt += `\n\nPlease provide a Basic Analysis following the exact format specified in the system prompt.`
-    } else if (analysisMode === 'expert') {
-      userPrompt += `\n\nPlease provide an Expert Analysis following the exact format specified in the system prompt.`
-    } else if (analysisMode === 'fullfathomfive') {
-      userPrompt += `\n\nPlease provide a Full Fathom Five analysis following the exact format specified in the system prompt.`
-    } else {
-      userPrompt += `\n\nPlease provide a comprehensive ${analysisMode} analysis of this text.`
+Your job:
+- Identify the follow-up question and answer **that question only**.
+- Use any other text purely as background context; do **not** summarize or critique it.
+- Give a direct, helpful answer in 2–5 sentences.
+- If the question is factual (e.g., "What year was the play written?"), just answer it clearly.
+- Do **not** talk about "lines", "snippets", or how the input is structured unless the question explicitly asks about that.
+- Do not restate the entire original passage or analysis; focus on the question.`;
     }
     
-    // Add critical instruction to avoid scene references
-    userPrompt += `\n\nCRITICAL INSTRUCTION: Do NOT mention any specific scenes, acts, or play names in your synopsis. Focus only on the content and meaning of the selected text.`
-
+    // Build the user prompt
+    let userPrompt
+    if (analysisMode === 'followup') {
+      userPrompt = `Here is the full context plus the follow-up question:\n\n${text}\n\nAnswer ONLY the follow-up question.`
+    } else {
+      userPrompt = `Text to analyze: "${text}"`
+      
+      if (isMultipleLines) {
+        userPrompt += `\n\nThis selection contains ${lines.length} lines. Please provide analysis that considers both the individual lines and their relationship to each other.`
+      }
+      
+      // We deliberately do NOT inline the full historical notes into the user prompt
+      // any more, because they are extremely long and were causing very large
+      // payloads and OpenAI timeouts. The raw notes are still attached to the
+      // final response via the "New Variorum Analysis" section using relevantNotes.
+      
+      if (analysisMode === 'basic') {
+        userPrompt += `\n\nPlease provide a Basic Analysis following the exact format specified in the system prompt.`
+      } else if (analysisMode === 'expert') {
+        userPrompt += `\n\nPlease provide an Expert Analysis following the exact format specified in the system prompt.`
+      } else if (analysisMode === 'fullfathomfive') {
+        userPrompt += `\n\nPlease provide a Full Fathom Five analysis following the exact format specified in the system prompt.`
+      } else {
+        userPrompt += `\n\nPlease provide a comprehensive ${analysisMode} analysis of this text.`
+      }
+      
+      // Add critical instruction to avoid scene references
+      userPrompt += `\n\nCRITICAL INSTRUCTION: Do NOT mention any specific scenes, acts, or play names in your synopsis. Focus only on the content and meaning of the selected text.`
+    }
+    
     // Get max_tokens from request or use default
-    const maxTokens = (analysisMode === 'fullfathomfive' ? 8000 : 3000)
+    const maxTokens =
+      analysisMode === 'fullfathomfive'
+        ? 8000
+        : analysisMode === 'followup'
+        ? 800
+        : 3000
 
     // Debug: Log the user prompt length
     console.log('User prompt length:', userPrompt.length)

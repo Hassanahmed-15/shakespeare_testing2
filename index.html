@@ -8065,7 +8065,9 @@
             console.log('🎭 Current play:', currentPlay, '- Show New Variorum?', shouldShowNewVariorum);
             
             // Show/hide critics button based on current play (New Variorum plays only)
-            const playsWithCriticsButtons = ['midsummer', 'asyoulikeit', 'henryiv1', 'juliuscaesar', 'kingjohn', 'kinglear', 'loveslabourslost', 'richardiii', 'romeo', 'merchantofvenice', 'tempest', 'winterstale', 'twelfthnight'];
+            // Include Macbeth explicitly so the "Who are the New Variorum Critics?"
+            // button appears for Macbeth as well.
+            const playsWithCriticsButtons = ['macbeth', 'midsummer', 'asyoulikeit', 'henryiv1', 'juliuscaesar', 'kingjohn', 'kinglear', 'loveslabourslost', 'richardiii', 'romeo', 'merchantofvenice', 'tempest', 'winterstale', 'twelfthnight'];
             const shouldShowCriticsButton = playsWithCriticsButtons.includes(currentPlay) && tabName === 'fullfathomfive';
             const criticsButton = document.getElementById('criticsButton');
             if (criticsButton) {
@@ -8245,6 +8247,13 @@
                 }
             }
             
+            // If the user clicks on an already-selected line, treat it as a toggle to clear the selection
+            if (element.classList.contains('selected') || element.classList.contains('range-selected')) {
+                clearSelection();
+                console.log('✅ Selection cleared by clicking an already-selected line');
+                return;
+            }
+            
             // If no starting line yet, or user is restarting selection, start fresh with this line
             const isStartingNewSelection = firstSelectedLine === null || selectedLines.length === 0;
             
@@ -8384,13 +8393,10 @@
             }
             
             // DON'T rebuild HTML - just clear content to preserve event handlers
-            
-            // Add selection to current line
-            element.classList.add('selected');
-            selectedLines = [text.trim()];
-            firstSelectedLine = null;
-            
-            console.log('✅ Line selected:', selectedLines);
+            // At this point, `selectedLines` and `firstSelectedLine` have already been
+            // correctly set based on whether the user selected a single line or a
+            // range of up to three consecutive lines. Do not override that state here.
+            console.log('✅ Line selection state:', selectedLines);
             console.log('🎭 Current scene after selection:', currentScene);
             updateAnalysisPanel();
         }
@@ -9210,6 +9216,26 @@
             };
             
             return romanMap[romanStr] || romanStr;
+        }
+
+        // Convert Arabic numbers to Roman numerals (used for scoped searches like "I.i")
+        function arabicToRoman(num) {
+            const n = parseInt(num, 10);
+            if (!Number.isFinite(n) || n <= 0) return '';
+            const map = [
+                [1000, 'M'], [900, 'CM'], [500, 'D'], [400, 'CD'],
+                [100, 'C'], [90, 'XC'], [50, 'L'], [40, 'XL'],
+                [10, 'X'], [9, 'IX'], [5, 'V'], [4, 'IV'], [1, 'I'],
+            ];
+            let out = '';
+            let remaining = n;
+            for (const [value, roman] of map) {
+                while (remaining >= value) {
+                    out += roman;
+                    remaining -= value;
+                }
+            }
+            return out;
         }
         
         // Enhanced act parsing that handles all formats and normalizes them
@@ -13323,33 +13349,48 @@
         }
         
         function matchesText(playLine, searchText) {
-            // Normalize both strings for comparison (remove speaker prefixes, normalize spaces/punctuation)
-            const normalizedPlayLine = playLine.replace(/[:\s,]+/g, ' ').trim().toLowerCase();
-            const normalizedSearchText = searchText.replace(/[:\s,]+/g, ' ').trim().toLowerCase();
-            
-            // Exact match after normalization
+            // Very strict, line-by-line matching so only the selected line's notes show.
+            // 1) Normalize: collapse spaces/punctuation, lower-case
+            const normalize = (str) => str
+                .replace(/[[:\s,]+]+/g, ' ')
+                .replace(/\s+/g, ' ')
+                .trim()
+                .toLowerCase();
+
+            const stripSpeaker = (str) =>
+                str.replace(/^[A-Z][A-Z\s.'-]*:\s*/i, '').trim();
+
+            const normalizedPlayLine = normalize(playLine);
+            const normalizedSearchText = normalize(searchText);
+
+            // Also compare versions with speaker prefixes removed
+            const normalizedPlayNoSpeaker = normalize(stripSpeaker(playLine));
+            const normalizedSearchNoSpeaker = normalize(stripSpeaker(searchText));
+
+            // Exact match on full line
             if (normalizedPlayLine === normalizedSearchText) return true;
-            
-            // One contains the other (more lenient - 5 chars minimum)
-            if (normalizedPlayLine.includes(normalizedSearchText) && normalizedSearchText.length > 5) return true;
-            if (normalizedSearchText.includes(normalizedPlayLine) && normalizedPlayLine.length > 5) return true;
-            
-            // Extract key words (remove speaker prefixes like "KING HENRY IV:")
-            const playWords = normalizedPlayLine.replace(/^[a-z\s]+:\s*/i, '').split(/\s+/).filter(word => word.length > 2);
-            const searchWords = normalizedSearchText.replace(/^[a-z\s]+:\s*/i, '').split(/\s+/).filter(word => word.length > 2);
-            
-            if (playWords.length > 0 && searchWords.length > 0) {
-                const matchingWords = playWords.filter(word => 
-                    searchWords.some(searchWord => 
-                        word === searchWord || word.includes(searchWord) || searchWord.includes(word)
-                    )
-                );
-                
-                // More lenient matching - if 40% of words match, consider it a match
-                const matchRatio = matchingWords.length / Math.max(playWords.length, searchWords.length);
-                if (matchRatio >= 0.4) return true;
+
+            // Exact match after stripping speakers
+            if (normalizedPlayNoSpeaker && normalizedPlayNoSpeaker === normalizedSearchNoSpeaker) {
+                return true;
             }
-            
+
+            // As a **very small** fallback, allow one side to contain the other
+            // but only if their lengths are very close (to avoid random matches).
+            const lenPlay = normalizedPlayNoSpeaker.length;
+            const lenSearch = normalizedSearchNoSpeaker.length;
+            const maxLen = Math.max(lenPlay, lenSearch);
+            const minLen = Math.min(lenPlay, lenSearch);
+
+            if (maxLen > 0 && minLen / maxLen > 0.85) {
+                if (
+                    normalizedPlayNoSpeaker.includes(normalizedSearchNoSpeaker) ||
+                    normalizedSearchNoSpeaker.includes(normalizedPlayNoSpeaker)
+                ) {
+                    return true;
+                }
+            }
+
             return false;
         }
         
@@ -14819,12 +14860,66 @@
         function searchJSTOR(type) {
             console.log('🔍 JSTOR search called with type:', type);
             const playName = currentPlay && plays[currentPlay] ? plays[currentPlay].name : 'Shakespeare';
-            let searchQuery = '';
             
-            // Only handle passage/scene search now
-            searchQuery = `${playName} ${currentScene || 'scene'}`;
+            // Build a tightly-scoped JSTOR query:
+            // - Always include play name
+            // - Include act/scene when available
+            // - Include the exact selected word/phrase when available
+            const safeScene = (currentScene || '').toString().trim();
             
-            console.log('🔍 JSTOR search query:', searchQuery);
+            // Extract act/scene numbers from strings like:
+            // "ACT 1, SCENE 1", "ACT 1,SCENE 1", "ACT I, SCENE I", "ACT 1 - SCENE 1", etc.
+            const extractActScene = (sceneStr) => {
+                if (!sceneStr) return { act: null, scene: null };
+                const s = sceneStr.toUpperCase();
+                const actMatch = s.match(/\bACT\s+([IVX0-9]+)\b/);
+                const sceneMatch = s.match(/\bSCENE\s+([IVX0-9]+)\b/);
+                const actRaw = actMatch ? actMatch[1] : null;
+                const sceneRaw = sceneMatch ? sceneMatch[1] : null;
+                const act = actRaw ? convertRomanToArabic(actRaw) : null;
+                const scene = sceneRaw ? convertRomanToArabic(sceneRaw) : null;
+                return { act, scene };
+            };
+            
+            const { act, scene } = extractActScene(safeScene);
+            
+            // Prefer clicked-line selection (`selectedLines`) over free highlight (`selectedText`)
+            let phrase = '';
+            if (Array.isArray(selectedLines) && selectedLines.length > 0) {
+                phrase = selectedLines.join(' ').trim();
+            } else if (selectedText && typeof selectedText === 'string') {
+                phrase = selectedText.trim();
+            }
+            
+            // Keep the phrase short + meaningful (JSTOR queries get noisy if too long)
+            // - If it's a single word/short phrase (<= 10 words), keep it
+            // - Otherwise, use the first 8 words as a phrase snippet
+            const phraseWords = phrase.split(/\s+/).filter(Boolean);
+            if (phraseWords.length > 10) {
+                phrase = phraseWords.slice(0, 8).join(' ');
+            }
+            // Remove wrapping quotes to avoid breaking the query
+            phrase = phrase.replace(/^["']+|["']+$/g, '');
+            
+            const clauses = [];
+            // Require play name
+            clauses.push(`"${playName}"`);
+            // Add act/scene scoping when possible (common scholarly shorthand: 1.1, I.i)
+            if (act && scene) {
+                const romanAct = arabicToRoman(parseInt(act, 10));
+                const romanScene = arabicToRoman(parseInt(scene, 10));
+                clauses.push(`("${act}.${scene}" OR "${romanAct}.${romanScene.toLowerCase()}" OR "Act ${act}" OR "Scene ${scene}")`);
+            } else if (safeScene) {
+                clauses.push(`"${safeScene.replace(/\s+/g, ' ').trim()}"`);
+            }
+            // Add the selected term/phrase if present
+            if (phrase) {
+                clauses.push(`"${phrase}"`);
+            }
+            
+            const searchQuery = clauses.join(' AND ');
+            
+            console.log('🔍 JSTOR search query (scoped):', searchQuery);
             const url = `https://www.jstor.org/action/doBasicSearch?Query=${encodeURIComponent(searchQuery)}`;
             window.open(url, '_blank');
         }
@@ -14833,27 +14928,47 @@
             console.log('🔍 Google Scholar search called');
             const playName = currentPlay && plays[currentPlay] ? plays[currentPlay].name : 'Shakespeare';
             const sceneName = currentScene && currentScene !== '' ? currentScene : null;
-            
-            // Extract Act information from the scene name
-            let actInfo = '';
-            if (currentScene && currentScene.includes(' - ')) {
-                const actPart = currentScene.split(' - ')[0];
-                if (actPart && actPart.includes('ACT')) {
-                    actInfo = actPart;
-                }
+
+            // Build a tightly-scoped Google Scholar query:
+            // - Always include play name
+            // - Include act/scene when available (e.g. 1.1, I.i, Act 1, Scene 1)
+            // - Include the exact selected word/phrase when available
+            const safeScene = (sceneName || '').toString().trim();
+            const s = safeScene.toUpperCase();
+            const actMatch = s.match(/\bACT\s+([IVX0-9]+)\b/);
+            const sceneMatch = s.match(/\bSCENE\s+([IVX0-9]+)\b/);
+            const act = actMatch ? convertRomanToArabic(actMatch[1]) : null;
+            const scene = sceneMatch ? convertRomanToArabic(sceneMatch[1]) : null;
+
+            // Prefer clicked-line selection (`selectedLines`) over free highlight (`selectedText`)
+            let phrase = '';
+            if (Array.isArray(selectedLines) && selectedLines.length > 0) {
+                phrase = selectedLines.join(' ').trim();
+            } else if (selectedText && typeof selectedText === 'string') {
+                phrase = selectedText.trim();
             }
-            
-            // Build search query with Act information
-            let searchQuery = '';
-            if (actInfo) {
-                searchQuery = `${playName} ${actInfo} Shakespeare`;
-            } else if (sceneName) {
-                searchQuery = `${playName} ${sceneName} Shakespeare`;
-            } else {
-                searchQuery = `${playName} Shakespeare`;
+
+            // Keep phrase short to avoid noisy/overbroad results
+            const phraseWords = phrase.split(/\s+/).filter(Boolean);
+            if (phraseWords.length > 10) phrase = phraseWords.slice(0, 8).join(' ');
+            phrase = phrase.replace(/^["']+|["']+$/g, '');
+
+            const clauses = [];
+            clauses.push(`"${playName}"`);
+            if (act && scene) {
+                const romanAct = arabicToRoman(parseInt(act, 10));
+                const romanScene = arabicToRoman(parseInt(scene, 10));
+                clauses.push(`("${act}.${scene}" OR "${romanAct}.${romanScene.toLowerCase()}")`);
+                clauses.push(`("Act ${act}" OR "Scene ${scene}")`);
+            } else if (safeScene) {
+                clauses.push(`"${safeScene.replace(/\s+/g, ' ').trim()}"`);
             }
-            
-            console.log('🔍 Google Scholar search query:', searchQuery);
+            if (phrase) clauses.push(`"${phrase}"`);
+            clauses.push('Shakespeare');
+
+            const searchQuery = clauses.join(' ');
+
+            console.log('🔍 Google Scholar search query (scoped):', searchQuery);
             const url = `https://scholar.google.com/scholar?q=${encodeURIComponent(searchQuery)}`;
             window.open(url, '_blank');
         }
