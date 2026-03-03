@@ -79,6 +79,8 @@ This project provides an interactive web application that combines Shakespeare's
 1. **Select a Play**: Choose from the dropdown in the sidebar
 2. **Navigate**: Click on scenes in the left navigation panel
 3. **Analyze Text**: Select text and choose an analysis mode
+   - You can highlight up to 1–3 consecutive lines by clicking and dragging over the passage.  The selection is what the analysis tools will use.
+   - To clear your selection, just click anywhere outside the text or press the `Esc` key; this will un‑highlight the lines and reset the interface.
 4. **Explore Commentary**: Access New Variorum critics lists for supported plays
 
 ## Supported Plays
