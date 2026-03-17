@@ -437,14 +437,15 @@
             border: 1px solid var(--line);
             border-radius: var(--r-lg);
             box-shadow: var(--shadow);
-            padding: var(--s-5);
+            padding: 0;
             max-width: 820px;
             margin: 0 auto;
             position: relative;
             top: 50%;
             transform: translateY(-50%);
             max-height: 90vh;
-            overflow: hidden;
+            display: flex;
+            flex-direction: column;
             animation: modalIn .18s ease-out;
         }
 
@@ -452,7 +453,8 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: var(--s-4);
+            padding: var(--s-5) var(--s-5) 0 var(--s-5);
+            flex-shrink: 0;
         }
 
         .modal-title {
@@ -477,8 +479,12 @@
 
         .modal-body {
             max-height: calc(90vh - 140px);
-            overflow: auto;
-            padding-right: var(--s-2);
+            overflow-y: auto;
+            overflow-x: hidden;
+            padding: var(--s-4) var(--s-5);
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
 
         .modal-footer {
@@ -488,6 +494,7 @@
             margin-top: var(--s-4);
             padding-top: var(--s-4);
             border-top: 1px solid var(--line);
+            flex-shrink: 0;
         }
 
         .close-settings-btn {
@@ -508,6 +515,45 @@
             background: #333333;
             transform: translateY(-1px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Improved scrolling for modal content */
+        .modal-body > div {
+            width: 100%;
+        }
+
+        .about, .critics-info {
+            width: 100%;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .about ul, .about ol {
+            margin: var(--s-3) 0;
+            padding-left: var(--s-5);
+        }
+
+        .about li {
+            margin-bottom: var(--s-2);
+            line-height: 1.6;
+        }
+
+        /* Scrollbar styling for modern browsers */
+        .modal-body::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .modal-body::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .modal-body::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+
+        .modal-body::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
         }
 
         /* Focus ring & entry motion */
@@ -1095,6 +1141,12 @@
             font: 600 16px Inter, system-ui;
             color: var(--ink-1);
             margin: var(--s-4) 0 var(--s-2);
+        }
+
+        .critics-list {
+            max-height: 60vh !important;
+            overflow-y: auto !important;
+            flex: 1;
         }
 
         .about-footer {
@@ -1789,38 +1841,115 @@
             margin: 8px 0;
         }
         
+        @keyframes underlineReveal {
+            from { width: 0; opacity: 0; }
+            to { width: 100%; opacity: 1; }
+        }
+        
+        @keyframes glowExpand {
+            0% { box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 0px rgba(37, 99, 235, 0); }
+            50% { box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.411), 0 0 12px rgba(37, 99, 235, 0.3); }
+            100% { box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 4px 16px rgba(37, 99, 235, 0.25); }
+        }
+        
+        @keyframes shimmerSlide {
+            0% { background-position: -100% 0; }
+            100% { background-position: 100% 0; }
+        }
+        
         .play-line {
             font-family: var(--ui);
-            line-height: 1.4;
+            line-height: 1.6;
             color: var(--ink-1);
-            margin: 0;
+            margin: 0.25rem 0;
             white-space: pre;
             font-family: monospace;
             cursor: text;
-            padding: 4px 8px;
-            border-radius: 4px;
-            transition: background-color 0.2s ease;
+            padding: 6px 12px;
+            border-radius: 2px;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
             user-select: text;
+            position: relative;
+            letter-spacing: 0.3px;
+        }
+        
+        .play-line::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #2563eb, #6366f1, #2563eb);
+            transition: width 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border-radius: 1px;
+            z-index: 1;
         }
         
         .play-line:hover {
-            background-color: rgba(0, 0, 0, 0.05);
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(99, 102, 241, 0.12), rgba(37, 99, 235, 0.08));
+            transform: translateX(2px);
+            animation: glowExpand 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+        
+        .play-line:hover::before {
+            width: 100%;
+            animation: shimmerSlide 1s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
         }
         
         .play-line.selected {
-            background-color: #fbbf24;
-            color: #000;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.12), rgba(99, 102, 241, 0.14), rgba(37, 99, 235, 0.1));
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 4px 16px rgba(37, 99, 235, 0.22);
+            color: inherit;
+            padding-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .play-line.selected::before {
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #2563eb, #6366f1, #2563eb);
         }
         
         .play-line.range-selected {
-            background-color: #f59e0b;
-            color: #000;
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(99, 102, 241, 0.12), rgba(37, 99, 235, 0.08));
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 3px 12px rgba(37, 99, 235, 0.18);
+            color: inherit;
+            padding-bottom: 5px;
+        }
+        
+        .play-line.range-selected::before {
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, #2563eb, #6366f1, #2563eb);
+        }
+        
+        .play-line {
+            cursor: pointer;
+            overflow: hidden;
+        }
+        
+        .play-line:active {
+            transform: scale(0.99);
+            animation: none;
         }
 
+        @keyframes shimmerFlow {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+        
+        @keyframes glowPulse {
+            0%, 100% { box-shadow: 0 1px 3px rgba(37, 99, 235, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 8px rgba(37, 99, 235, 0); }
+            50% { box-shadow: 0 1px 3px rgba(37, 99, 235, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 0 12px rgba(37, 99, 235, 0.15); }
+        }
+        
         .highlight {
-            background: #e5e7eb !important;
-            border-radius: 4px;
-            transition: background .18s;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.06), rgba(147, 112, 219, 0.06), rgba(59, 130, 246, 0.04)) !important;
+            border-bottom: 2px solid;
+            border-image: linear-gradient(90deg, #2563eb, #6366f1, #2563eb) 1 !important;
+            box-shadow: 0 1px 3px rgba(37, 99, 235, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
             /* Preserve original text formatting */
             font-family: inherit !important;
             font-size: inherit !important;
@@ -3019,12 +3148,8 @@
                 <button class="modal-close" onclick="closeCriticsModal()">&times;</button>
             </div>
             
-            <div class="modal-body">
-                <div class="critics-info">
-                    <h4>Who are the New Variorum critics?</h4>
-                    <p>The New Variorum editions draw on an extraordinary range of voices—from 18th-century pioneers who first attempted to restore Shakespeare's "corrupted" text, through Victorian scholars who brought scientific rigor to textual criticism, to early 20th-century critics who revolutionized our understanding of Shakespeare's language and stagecraft.</p>
-                    
-                    <p>When reading the New Variorum notes, you'll encounter a dizzying array of abbreviated names and cryptic references: "CAPELL," "THEOBALD," "MALONE," "SCHMIDT." These aren't just footnotes—they represent real people who dedicated their lives to understanding Shakespeare. Behind each abbreviation is a scholar with their own fascinating story: Alexander Pope, the great poet who produced one of the first "modern" Shakespeare editions (1725); Samuel Johnson, whose 1765 edition contained brilliant interpretive notes that are still quoted today; Edmond Malone, who pioneered the historical study of Shakespeare's texts in the late 18th century; or Alexander Schmidt, whose Shakespeare Lexicon (1874-75) remains indispensable for understanding Elizabethan word meanings.</p>
+            <div id="criticsContent" class="modal-body">
+                <!-- This div will be populated by the showCritics() JavaScript function -->
                     
                     <p>The Variorum's democratic approach means you'll find everyone from famous literary critics to obscure German philologists, from actor-managers sharing performance insights to amateur scholars who made single brilliant observations. Furness included them all, believing that truth about Shakespeare could come from anywhere.</p>
                     
@@ -3035,83 +3160,329 @@
                     <h4 style="text-align: center; color: #666; font-weight: 600;">Complete List of New Variorum Critics & Authorities for Macbeth</h4>
                 </div>
                 
-                <div class="critics-list" style="max-height: 400px; overflow-y: auto; background: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb;">
+                <div class="critics-list" style="max-height: 50vh; overflow-y: auto; background: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb;">
                     <div style="font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6;">
-                        <p>"E. A. Abbott, Shakespearean Grammar, London, 1870"</p>
+                        <p>"E. A. Abbott, Shakespearian Grammar, London, 1870"</p>
                         <p>"Prof. Allen, MS notes on Macbeth, 1867"</p>
-                        <p>"Macbeth, Paris, 1889"</p>
-                        <p>"Variorum Edition of Macbeth, London, 1807"</p>
+                        <p>"Angellier et Montegut, Macbeth, Paris, 1889"</p>
+                        <p>"Anonymous, Variorum Edition of Macbeth, London, 1807"</p>
                         <p>"Ethics of Macbeth (Dublin University Magazine, March), 1865"</p>
                         <p>"Theatrical Register, York, 1788"</p>
-                        <p>"Macbeth on the Stage (English Illustrated Magazine, December), 1875"</p>
+                        <p>"Antidote Against Melancholy (Collier's reprint), 1661"</p>
+                        <p>"W. Archer and R. W. Lowe, Macbeth on the Stage (English Illustrated Magazine, December), 1888"</p>
                         <p>"W. R. Arrowsmith, Shakespeare's Editors and Commentators, London, 1865"</p>
                         <p>"C. Badham, Text of Shakespeare (Cambridge Essays), 1856"</p>
+                        <p>"Criticism Applied to Shakespeare, 1846"</p>
                         <p>"S. Bailey, The Received Text of Shakespeare, 1862"</p>
                         <p>"J. Baret, An Alvearie, 1580"</p>
-                        <p>"C. Barhurst, Differences of Shakespeare's Versification, 1867"</p>
-                        <p>"T. S. Baynes, Shakespeare Studies and other Essays, 1872"</p>
-                        <p>"Works (ed. Dyce), 1843"</p>
+                        <p>"C. Bathurst, Differences of Shakespeare's Versification, 1857"</p>
+                        <p>"T. S. Baynes, Shakespeare Studies and other Essays, 1896"</p>
+                        <p>"Beaumont and Fletcher, Works (ed. Dyce), 1843"</p>
                         <p>"A. Becket, Shakespeare Himself Again, 1815"</p>
                         <p>"S. Beisley, Shakespeare's Garden, 1864"</p>
-                        <p>"J. W. O. Benda, Shakespeare's Dramatische Werke, Leipzig, 1823"</p>
+                        <p>"H. Beckhaus, Shakespeare's Macbeth und die Schillersche Bearbeitung, Ostrovo, 1889"</p>
+                        <p>"J. W. O. Benda, Shakespeare's Dramatische Werke, Leipzig, 1825"</p>
+                        <p>"A. Beljame, Macbeth, Paris, 1897"</p>
+                        <p>"G. J. Bell, Notes on Mrs. Siddons's Lady Macbeth (Nineteenth Century, February), 1878"</p>
+                        <p>"Edwin Booth, Macbeth, Prompt-book (ed. W. Winter), New York, 1878"</p>
                         <p>"W. J. Birch, Inquiry into the Philosophy and Religion of Shakespeare, London, 1848"</p>
                         <p>"J. B. Bittinger, Transactions American Philological Association, 1876"</p>
-                        <p>"K. Blackwell, Shakespeare's Dramatische Werke, 1870"</p>
-                        <p>"H. Boas, Shakespeare and His Works, London, 1879"</p>
-                        <p>"G. Bohlen, Shakespeare's Dramatische Werke, London, 1853"</p>
-                        <p>"E. Booth, Macbeth, Prompt-book (ed. W. Winter), New York, 1887"</p>
-                        <p>"J. Boswell, Shakespeare's Dramatic Works, 1821"</p>
-                        <p>"J. Boydell, Shakespeare's Works, London, 1802"</p>
-                        <p>"A. C. Bradley, Shakespearean Tragedy, London, 1904"</p>
-                        <p>"J. Brady, Shakespeare's Plays, Dublin, 1779"</p>
-                        <p>"G. Brandes, William Shakespeare, London, 1898"</p>
-                        <p>"M. Breal, Shakespeare's Works, Paris, 1861"</p>
-                        <p>"E. von Brentano, Shakespeare's Dramatische Werke, Leipzig, 1846"</p>
-                        <p>"A. Brewer, Shakespeare's Dramatische Werke, London, 1836"</p>
-                        <p>"S. A. Brooke, Shakespeare's Life, London, 1894"</p>
-                        <p>"J. Brown, Shakespeare's Life, London, 1869"</p>
-                        <p>"R. Browning, Shakespeare's Life, London, 1840"</p>
-                        <p>"W. Bryce, Shakespeare's Life, London, 1872"</p>
-                        <p>"R. Buchanan, Shakespeare's Life, London, 1869"</p>
-                        <p>"G. Buchner, Shakespeare's Dramatische Werke, Leipzig, 1888"</p>
-                        <p>"J. C. Bucknill, Mad Folk of Shakespeare, London, 1860"</p>
-                        <p>"J. G. Bullock, Studies in the Text of Shakespeare, London, 1878"</p>
-                        <p>"H. S. Bungay, Shakespeare's Life, London, 1877"</p>
-                        <p>"A. Burdett-Coutts, Shakespeare's Life, London, 1864"</p>
-                        <p>"E. Burke, Shakespeare's Life, London, 1797"</p>
-                        <p>"H. Busch, Shakespeare's Life, Leipzig, 1878"</p>
-                        <p>"A. Buschmann, Shakespeare's Life, Leipzig, 1855"</p>
-                        <p>"S. Butler, Shakespeare's Life, London, 1868"</p>
-                        <p>"P. Calderon, Shakespeare's Life, Madrid, 1883"</p>
-                        <p>"C. Calvert, Shakespeare's Life, London, 1881"</p>
-                        <p>"E. Capell, Notes, 1779"</p>
-                        <p>"Earl of Carlisle, Shakespeare's Life, London, 1867"</p>
-                        <p>"P. Carnegy, Shakespeare's Life, London, 1887"</p>
-                        <p>"W. and R. Chambers, Shakespeare's Life, London, 1865"</p>
-                        <p>"J. B. Chatelain, Shakespeare's Life, Paris, 1851"</p>
-                        <p>"T. Chatterton, Shakespeare's Life, London, 1778"</p>
-                        <p>"W. G. Clark, Shakespeare's Life, Cambridge, 1863"</p>
-                        <p>"C. Cowden Clarke, The Shakespeare Key, London, 1879"</p>
-                        <p>"Clarendon Press Edition, Oxford, 1869"</p>
-                        <p>"E. W. Clemens, Shakespeare's Life, London, 1886"</p>
-                        <p>"J. P. Collier, Annals of the Stage, London, 1831"</p>
-                        <p>"J. P. Collier, Notes and Emendations, London, 1853"</p>
-                        <p>"J. Conrad, Shakespeare's Life, Stuttgart, 1885"</p>
-                        <p>"G. Conradi, Shakespeare's Life, Leipzig, 1866"</p>
-                        <p>"A. Cooper, Shakespeare's Life, London, 1827"</p>
-                        <p>"W. J. Courthope, Shakespeare's Life, London, 1879"</p>
-                        <p>"H. Craig, Shakespeare's Life, London, 1891"</p>
-                        <p>"G. L. Craik, English of Shakespeare, London, 1857"</p>
-                        <p>"G. Cunningham, Shakespeare's Life, London, 1855"</p>
-                        <p>"A. Cuthbert, Shakespeare's Life, London, 1866"</p>
+                        <p>"K. Blind, Shakespeare's Schicksalsschwestern. Die Gegenwart, 26 April, 1879"</p>
+                        <p>"J. Boaden, Life of J. P. Kemble, 1825"</p>
+                        <p>"K. Börner, Ueber Shakespeare's Macbeth, Lüdenscheid, 1870"</p>
+                        <p>"J. T. Brockett, Glossary of North Country Words, Newcastle, 1829"</p>
+                        <p>"C. A. Brown, Shakespeare's Autobiographical Poems, London, 1838"</p>
+                        <p>"J. C. Bucknill, Mad Folk of Shakespeare, 1867"</p>
+                        <p>"J. Bulloch, Studies on Text of Shakespeare, 1878"</p>
+                        <p>"G. N. Bürger, Macbeth, Göttingen, 1784"</p>
+                        <p>"N. Butler, Miscellanies, Louisville, 1880"</p>
+                        <p>"R. Böttner, Erläuterungen zu Shakespeare's Macbeth, Leipzig, n. d."</p>
+                        <p>"T. Campbell, Life of Mrs. Siddons, London, 1834"</p>
+                        <p>"Lord Campbell, Legal Acquirements of Shakespeare, New York, 1859"</p>
+                        <p>"E. Capell, Notes, etc., London, 1779"</p>
+                        <p>"Miss C. Carmichael, Academy, 8 February, 1879"</p>
+                        <p>"J. C. Carr, Lord and Lady Macbeth, 1897"</p>
+                        <p>"W. Carr, Dialect of Craven, 1828"</p>
+                        <p>"R. Carruthers and W. Chambers, Works of Shakespeare, 1861"</p>
+                        <p>"R. Cartwright, New Readings in Shakespeare, 1866"</p>
+                        <p>"G. Chalmers, Supplemental Apology, etc., 1799"</p>
+                        <p>"Caledonia, 1807"</p>
+                        <p>"W. and R. Chambers, Book of Days, 1863"</p>
+                        <p>"V. E. P. Chasles, Études sur Shakespeare, Paris, 1851"</p>
+                        <p>"Chevalier de Chatelain, Macbeth, traduite en Vers Français, London, 1862"</p>
+                        <p>"Lord John Chedworth, Notes on some of the Obscure Passages of Shakespeare's Plays, London, 1805"</p>
+                        <p>"C. Cowden-Clarke, Shakespeare Characters, etc., 1863"</p>
+                        <p>"P. W. Clayden, Macbeth and Lady Macbeth (Fortnightly Review, 1 August), 1867"</p>
+                        <p>"J. Coleman, Gentleman's Magazine, March, 1889"</p>
+                        <p>"S. T. Coleridge, Notes and Lectures upon Shakespeare, 1849"</p>
+                        <p>"Seven Lectures on Shakespeare and Milton (ed. Collier), 1856"</p>
+                        <p>"J. P. Collier, Annals of the Stage, 1831"</p>
+                        <p>"New Particulars, etc., 1836"</p>
+                        <p>"Notes and Emendations, 1853"</p>
+                        <p>"H. Corson, Chaucer's Legende of Goode Women, Boston, 1864"</p>
+                        <p>"Introduction to Shakespeare, 1889"</p>
+                        <p>"R. Cotgrave, Dictionarie of the French and English Tongues, London, 1632"</p>
+                        <p>"G. L. Craik, English of Shakespeare (ed. Rolfe), Boston, 1872"</p>
+                        <p>"J. H. Crawford, Good Words, June, 1893"</p>
                         <p>"W. S. Dalgleish, Macbeth, London, 1869"</p>
                         <p>"P. A. Daniel, Notes and Conjectural Emendations, 1870"</p>
-                        <p>"J. Darling, Shakespeare's Life, London, 1863"</p>
-                        <p>"A. Darmstetter, Macbeth, Paris, 1881"</p>
-                        <p>"W. D'Avenant, Macbeth, 1674"</p>
+                        <p>"J. Darmesteter, Macbeth, Paris, 1881"</p>
                         <p>"T. Davies, Dramatic Miscellanies, London, 1784"</p>
-                        <p>"T. De Quincey, Macbeth, Edinburgh, 1859"</p>
-                        <p>"A. De Vere, Shakespeare's Life, London, 1879"</p>
+                        <p>"N. Delius, Macbeth, Bremen, 1841"</p>
+                        <p>"Die Tieck'sche Shakspere-kritik, Elberfeld, 1846"</p>
+                        <p>"Shakespeare-Lexikon, 1852"</p>
+                        <p>"Shakespeare's Dramatische Werke (ed. ii.), 1869"</p>
+                        <p>"T. De Quincey, Miscellaneous Essays, Boston, 1851"</p>
+                        <p>"E. Dowden, Shakespeare, His Mind and Art, London, 1875"</p>
+                        <p>"G. D'Hugues, Macbeth, Paris, 1883"</p>
+                        <p>"F. Douce, Illustrations of Shakespeare, London, 1807"</p>
+                        <p>"N. Drake, Shakespeare and His Times, 1817"</p>
+                        <p>"Memorials of Shakespeare, 1828"</p>
+                        <p>"P. Duport, Essais Littéraire sur Shakespeare, Paris, 1828"</p>
+                        <p>"A. Dyce, Remarks on Collier's and Knight's Editions, London, 1844"</p>
+                        <p>"Few Notes, etc., 1853"</p>
+                        <p>"Strictures on Collier's New Edition, 1859"</p>
+                        <p>"J. F. T. Dyer, Folk-Lore of Shakespeare, New York, 1884"</p>
+                        <p>"T. R. Eaton, Shakespeare and the Bible, London, 1858"</p>
+                        <p>"T. Edwards, Canons of Criticism (Seventh Edition), 1765"</p>
+                        <p>"A. J. Ellis, Early English Pronunciation, etc., 1869"</p>
+                        <p>"L. C. Elson, Shakespeare in Music, 1901"</p>
+                        <p>"H. Elwin, Shakespeare Restored, Norwich, 1853"</p>
+                        <p>"K. Elze, Notes on Elizabethan Dramatists, Halle, 1889"</p>
+                        <p>"J. J. Eschenburg, Shakespeare's Schauspiele, Strassburg, 1776"</p>
+                        <p>"R. Farmer, Essay on the Learning of Shakespeare, London, 1767"</p>
+                        <p>"J. C. Fick, Macbeth, with German Notes, Erlangen, 1812"</p>
+                        <p>"H. Fietkau, Schiller's Macbeth, Königsberg, 1897"</p>
+                        <p>"P. Fitzgerald, Life of Garrick, London, 1868"</p>
+                        <p>"J. L. F. Flathe, Shakespeare in seiner Wirklichkeit, Leipzig, 1863"</p>
+                        <p>"F. G. Fleay, Shakespeare Manual, London, 1876"</p>
+                        <p>"F. G. Fleay, Life and Work of Shakespeare, London, 1886"</p>
+                        <p>"G. Fletcher, Studies of Shakespeare, 1847"</p>
+                        <p>"R. Fletcher, Witches Pharmacopoeia, Baltimore, 1896"</p>
+                        <p>"R. Forby, Vocabulary of East Anglia, London, 1830"</p>
+                        <p>"J. Florio, A World of Words, 1598"</p>
+                        <p>"J. Ford, Works (ed. Gifford), 1869"</p>
+                        <p>"E. Forsyth, Some Notes on Shakespeare's Character and Writings, 1867"</p>
+                        <p>"C. L. Francke, Macbeth sprachlich und sachlich erläutert, Braunschweig, 1833"</p>
+                        <p>"G. R. French, Shakespeareana Genealogica, London, 1869"</p>
+                        <p>"F. Fritzart, War Shakespeare ein Christ ?, Heidelberg, 1832"</p>
+                        <p>"F. Friesen, Shakespeare von Gervinus, Leipzig, 1869"</p>
+                        <p>"F. J. Furnivall, Introduction to Leopold Shakespeare, London, 1877"</p>
+                        <p>"R. Genée, Geschichte der Shakespear'schen Dramen in Deutschland, Leipzig, 1870"</p>
+                        <p>"G. G. Gervinus, Shakespeare, 1862"</p>
+                        <p>"H. Giles, Human Life in Shakespeare, Boston, 1868"</p>
+                        <p>"A. H. Gilkes, Electra and Macbeth, London, 1880"</p>
+                        <p>"St. M. Girardin, Cours de Litterature Dramatique, Paris, 1845"</p>
+                        <p>"T. R. Gould, The Tragedian, London, 1868"</p>
+                        <p>"G. Gould, Corrigenda, etc., 1884"</p>
+                        <p>"H. Green, Shakespeare and the Emblem Writers, 1870"</p>
+                        <p>"Z. Grey, Critical, Historical, and Explanatory Notes on Shakespeare, 1754"</p>
+                        <p>"Mrs Griffiths, Morality of Shakespeare's Dramas, 1775"</p>
+                        <p>"Sir G. Grove, Dictionary of Music, 1890"</p>
+                        <p>"E. Guest, History of English Rhythms, 1838"</p>
+                        <p>"M. Guizot, Œuvres complètes de Shakespeare (ed. vii.), Paris, 1821"</p>
+                        <p>"Shakespeare et son Temps (Nouvelle Edition), 1869"</p>
+                        <p>"W. E. Hales, Notes and Essays, London, 1884"</p>
+                        <p>"H. Hallam, Introduction to the Literature of Europe, 1855"</p>
+                        <p>"Dr R. P. Harris, Tolerance in Pregnant Women, Philadelphia, 1892"</p>
+                        <p>"J. E. Harting, Ornithology of Shakespeare, London, 1871"</p>
+                        <p>"W. Hazlitt, Characters of Shakespeare's Plays, 1817"</p>
+                        <p>"F. F. Heard, Legal Acquirements of Shakespeare, Boston, 1865"</p>
+                        <p>"Shakespeare a Lawyer, 1883"</p>
+                        <p>"B. Heath, A Revisal of Shakespeare's Text, London, 1765"</p>
+                        <p>"C. Hebler, Aufsätze über Shakespeare, Bern, 1865"</p>
+                        <p>"H. Heine, Shakespeare's Mädchen und Frauen, Philadelphia, 1839"</p>
+                        <p>"C. Heinichen, Macbeth, Bonn, 1841"</p>
+                        <p>"J. Henry, Æneidea, or Critical, Exegetical, and Æsthetical Remarks on the Æneis, Dublin, 1881"</p>
+                        <p>"L. Herrig, Macbeth, Berlin, 1853"</p>
+                        <p>"C. C. Heuse, Vorträge über Shakespeare, etc., Halberstadt, 1856"</p>
+                        <p>"J. A. Heraud, Shakespeare's Inner Life, London, 1865"</p>
+                        <p>"R. H. Hiecke, Macbeth, erläutert und gewürdigt, Merseburg, 1846"</p>
+                        <p>"L. Hilsenberg, Shakespeare's Dramatische Werke, Leipzig, 1836"</p>
+                        <p>"E. Hills, Notes & Queries, 2 October, 1869"</p>
+                        <p>"C. W. Hodell, Poet Lore, vol. xiii, No. 2, 1901"</p>
+                        <p>"Holinshed, Chronicles, London, 1587"</p>
+                        <p>"C. Hollyband, French Dictionary, 1593"</p>
+                        <p>"F. Hörn, Shakespeare's Schauspiele Erlaütert, Leipzig, 1823"</p>
+                        <p>"H. N. Hudson, Shakespeare: His Life, Art, and Character, Boston, 1872"</p>
+                        <p>"François-Victor Hugo, Œuvres complètes de Shakespeare, Paris, 1859"</p>
+                        <p>"V. Hugo, William Shakespeare, 1864"</p>
+                        <p>"E. Hülseman, Shakespeare, sein Geist und seine Werke, Leipzig, 1856"</p>
+                        <p>"Joseph Hunter, New Illustrations of Shakespeare, London, 1853"</p>
+                        <p>"Few Words, etc., 1853"</p>
+                        <p>"Rev. John Hunter, Macbeth, 1869"</p>
+                        <p>"C. M. Ingleby, The Shakespeare Fabrications, 1859"</p>
+                        <p>"Henry Irving, Nineteenth Century, April, 1877"</p>
+                        <p>"Macbeth, as produced at the Lyceum, 1889"</p>
+                        <p>"Character of Macbeth (Lecture delivered at Owens College, Manchester, 11 December), 1894"</p>
+                        <p>"Z. Jackson, Shakespeare's Genius Justified, 1819"</p>
+                        <p>"A. Jacob, Macbeth, Berlin, 1848"</p>
+                        <p>"Mrs Jameson, Characteristics of Women, London, 1833"</p>
+                        <p>"M. Jastrow, Jr., Poet Lore, vol. ii., 1890"</p>
+                        <p>"J. Jekeli, Die Gesetze der Tragödie nach gewiesen an Shakespeare's Macbeth, Hermanstadt, 1873"</p>
+                        <p>"F. Jencken, Macbeth, Mainz, 1855"</p>
+                        <p>"S. Jervis, Proposed Emendations, etc., London, 1860"</p>
+                        <p>"S. Johnson, Miscellaneous Observations on Macbeth (Works, ed. 1825), 1745"</p>
+                        <p>"B. Jonson, Works (ed. Gifford), 1816"</p>
+                        <p>"I. M. Jost, Erklärendes Wörterbuch zu Shakespeare's Plays, Berlin, 1840"</p>
+                        <p>"J. J. Jusserand, Shakespeare in France, London, 1899"</p>
+                        <p>"F. Kaim, Shakespeare's Macbeth, Stuttgart, 1888"</p>
+                        <p>"P. Kaufmann, Shakespeare's Dramatische Werke, Berlin, 1830"</p>
+                        <p>"T. Keightley, Shakespeare Expositor, London, 1867"</p>
+                        <p>"Keller und Rapp, Shakespeare's Dramatische Werke, Stuttgart, 1843"</p>
+                        <p>"Mrs F. A. Kemble, Some Notes upon the Characters in Macbeth (Macmillan's Magazine, May), 1867"</p>
+                        <p>"Lady Macbeth (Macmillan's Magazine, May), 1867"</p>
+                        <p>"J. P. Kemble, Macbeth, as represented on opening Drury Lane Theatre, 21st of April, London, 1786"</p>
+                        <p>"Macbeth Reconsidered, 1786"</p>
+                        <p>"Macbeth and Richard the Third, 1817"</p>
+                        <p>"Kemp's nine daies wonder (Dyce's reprint), 1600"</p>
+                        <p>"B. G. Kinnear, Cruce's Shakespeariana, 1883"</p>
+                        <p>"J. S. Knowles, Lectures on Dramatic Literature, 1843"</p>
+                        <p>"E. Kölbing, Byron und Shakespeare's Macbeth (Englische Studien, xix, 2), 1894"</p>
+                        <p>"R. Koppel, Shakespeare-Studien, Berlin, 1896"</p>
+                        <p>"J. Körner, Shakespeare's Dramatische Werke, Wien, 1836"</p>
+                        <p>"F. Kreyssig, Vorlesungen über Shakespeare, Berlin, 1862"</p>
+                        <p>"Shakespeare-Fragen, 1871"</p>
+                        <p>"K. Lachmann, Macbeth, Berlin, 1829"</p>
+                        <p>"A. Lacroix, Histoire de l' Influence de Shakespeare sur le Théâtre Français, Bruxelles, 1856"</p>
+                        <p>"A. de Lamartine, Shakespeare et son Œuvres, Paris, 1865"</p>
+                        <p>"C. Lamb, Dramatic Poets (ed. Bohn, 1854), London, 1808"</p>
+                        <p>"R. J. Lane, Charles Kemble's Shakspere Readings, 1870"</p>
+                        <p>"G. Langbaine, English Dramatic Poets, Oxford, 1691"</p>
+                        <p>"B. Laroche, Œuvres complètes de Shakespeare (ed. v.), Paris, 1842"</p>
+                        <p>"S. Lee, Life of William Shakespeare, London, 1898"</p>
+                        <p>"W. Leighton, Robinson's Epitome of Literature, 15 April, 1879"</p>
+                        <p>"T. Lennig, Macbeth (Penn Monthly, May), 1870"</p>
+                        <p>"F. A. Leo, Shakespeare's Frauen-Ideale, Halle, 1868"</p>
+                        <p>"Macbeth, 1871"</p>
+                        <p>"M. F. Libby, Some New Notes on Macbeth, Toronto, 1893"</p>
+                        <p>"W. W. Lloyd, Essays on Shakespeare, London, 1858"</p>
+                        <p>"T. R. Lounsbury, Shakespeare as a Dramatic Artist, New York, 1901"</p>
+                        <p>"O. Ludwig, Shakespeare-Studien, Leipzig, 1872"</p>
+                        <p>"G. MacDonald, A Disk of Orts, London, 1895"</p>
+                        <p>"W. Macready, Reminiscences (ed. F. Pollock), 1875"</p>
+                        <p>"W. Maginn, Shakespeare Papers, 1860"</p>
+                        <p>"Lady Martin, Some of Shakespeare's Female Characters, Edinburgh, 1891"</p>
+                        <p>"J. M. Mason, Comments on the Last Edition of Shakespeare, London, 1785"</p>
+                        <p>"Comments on the Plays of Beaumont & Fletcher, 1798"</p>
+                        <p>"Comments on the Several Editions of Shakespeare, 1807"</p>
+                        <p>"P. Massinger, Works (ed. Gifford), 1805"</p>
+                        <p>"G. Massey, Secret Drama of Shakespeare's Sonnets Unfolded, 1872"</p>
+                        <p>"Ad. Meyer, Shakespeare's Verletzung der historischen und natürlichen Wahrheit, Schwerm, 1863"</p>
+                        <p>"E. Meyer, Shakespeare's Dramatische Werke, Hamburg, 1825"</p>
+                        <p>"A. Mézières, Shakespeare, ses Œuvres et ses Critiques, Paris, 1860"</p>
+                        <p>"F. Michel, Œuvres complètes de Shakespeare. Précédée de la vie de Shakespeare par (Thomas Campbell), 1855"</p>
+                        <p>"T. Middleton, Works (ed. Dyce), London, 1843"</p>
+                        <p>"The Witch, 1778"</p>
+                        <p>"C. Mitchell, Essay on the Character of Macbeth (A Reply to Fletcher), 1846"</p>
+                        <p>"J. Mitford, Cursory Notes, etc., 1856"</p>
+                        <p>"M. Max Moltke, Shakespeare's Dramatische Werke, Leipzig, n. d."</p>
+                        <p>"J. P. Morris, Glossary of the Words and Phrases of Furness, London, 1869"</p>
+                        <p>"R. G. Moulton, Shakespeare as a Dramatic Artist, Oxford, 1893"</p>
+                        <p>"J. Moyes, Medicine in Shakespeare, Glasgow, 1896"</p>
+                        <p>"M. Mull, Macbeth, London, 1889"</p>
+                        <p>"R. Nares, Glossary (ed. Halliwell and Wright), 1888"</p>
+                        <p>"G. Neilson, Scottish Antiquary, October, 1897"</p>
+                        <p>"New Exegesis of Shakespeare, 1859"</p>
+                        <p>"New Shakespeare Society (Transactions), 1877-9"</p>
+                        <p>"J. Nichols, Literary Illustrations, etc., 1817"</p>
+                        <p>"Notes on Shakespeare, 1861"</p>
+                        <p>"M. Leigh-Noel, Lady Macbeth, London, 1884"</p>
+                        <p>"Notes & Queries, 1873-1901"</p>
+                        <p>"J. G. Orger, Notes on Shakespeare's Histories and Tragedies, 1890"</p>
+                        <p>"E. Ortlepp, Shakespeare's Dramatische Werke, Stuttgart, 1838"</p>
+                        <p>"Oxon, Analysis and Study of the Characters in Macbeth, London, 1886"</p>
+                        <p>"A. P. Paton, Few Notes on Macbeth, Edinburgh, 1877"</p>
+                        <p>"R. Patterson, Natural History, etc., London, 1838"</p>
+                        <p>"F. Peck, Memoirs of Milton, 1740"</p>
+                        <p>"Sir Philip Perring, Hard Knots in Shakespeare (ed. ii.), 1886"</p>
+                        <p>"M. Petri, Zur Einführung Shakespeare's in die Christliche Familie, Hanover, 1868"</p>
+                        <p>"R. Pitcairn, Ancient Criminal Trials in Scotland, Edinborough, 1822"</p>
+                        <p>"J. R. Planché, British Costume, London, 1846"</p>
+                        <p>"K. L. Pörschke, Ueber Shakespeare's Macbeth, Königsberg, 1801"</p>
+                        <p>"Lin Rayne, Macbeth, Arranged for Dramatic Reading, 1868"</p>
+                        <p>"Henry Reed, English History and Poetry, London, 1869"</p>
+                        <p>"J. Rees, Life of Edwin Forrest, Philadelphia, 1874"</p>
+                        <p>"J. W. Redhouse, Academy, 24 July, 1886"</p>
+                        <p>"Miss A. Repplier, Fireside Sphinx, 1901"</p>
+                        <p>"J. E. Riddle, Illustrations of Aristotle from Shakespeare, Oxford, 1832"</p>
+                        <p>"W. Richardson, Essays on Shakespeare's Dramatic Characters, London, 1797"</p>
+                        <p>"J. Ritson, Remarks Critical and Illustrative, etc., 1783"</p>
+                        <p>"J. G. Ritter, Programm der Realschule zu Leer, 1871"</p>
+                        <p>"J. Forbes-Robertson, Macbeth, 1898"</p>
+                        <p>"A. Roffe, Handbook of Shakespearian Music, 1878"</p>
+                        <p>"E. Roffe, Essay Upon the Ghost Belief of Shakespeare, 1851"</p>
+                        <p>"Rossi and Corbould, Side-lights on Shakespeare, 1897"</p>
+                        <p>"H. T. Rötscher, Cyclus Dramatische Charaktere, Berlin, 1844"</p>
+                        <p>"Die Kunst der Dramatischen Darstellung, 1864"</p>
+                        <p>"Shakespeare in seinen höchsten Charakter-bilden, 1864"</p>
+                        <p>"Harry Rowe, Macbeth (Second Edition), London, 1799"</p>
+                        <p>"H. I. Ruggles, Method of Shakespeare, New York, 1870"</p>
+                        <p>"G. Rümelin, Shakespeare-Studien, Stuttgart, 1866"</p>
+                        <p>"W. L. Rushton, Shakespeare a Lawyer, London, 1858"</p>
+                        <p>"Shakespeare's Legal Maxims, 1859"</p>
+                        <p>"Shakespeare Illustrated by Old Authors, 1867"</p>
+                        <p>"Shakespeare's Testamentary Language, 1869"</p>
+                        <p>"Shakespeare Illustrated by the Lex Scripta, 1870"</p>
+                        <p>"W. B. Rye, England as seen by Foreigners, 1865"</p>
+                        <p>"G. Sarrazin, Shakespeare's Macbeth und Kyd's Spanische Tragödie (Englische Studien, xxi, 2), Berlin, 1895"</p>
+                        <p>"A. W. Schlegel, Lectures (trans. by J. Black), London, 1815"</p>
+                        <p>"Schlegel und Tieck, Shakespeare's Dramatische Werke, Berlin, 1833, 1855"</p>
+                        <p>"J. Schiller, Macbeth, Leipzig, 1801"</p>
+                        <p>"R. Scot, Discoverie of Witchcraft, 1584"</p>
+                        <p>"A. Schwartzkopf, Shakespeare in seiner bedeutung für die Kirche in unserer Tage, Halle, 1864"</p>
+                        <p>"Sir W. Scott, Miscellaneous Essays, Philadelphia, 1826"</p>
+                        <p>"E. H. Seymour, Remarks, Critical, Conjectural, and Explanatory, on Shakespeare, London, 1805"</p>
+                        <p>"Shakespeare Society's Publications, 1850"</p>
+                        <p>"K. Simrock, Shakespeare als Vermittler, etc., Hildburghausen, 1842"</p>
+                        <p>"Die Quellen des Shakespeare, 1870"</p>
+                        <p>"S. W. Singer, Text of Shakespeare Vindicated, London, 1853"</p>
+                        <p>"W. W. Skeat, Notes on English Etymology, Oxford, 1901"</p>
+                        <p>"A. Skottowe, Life of Shakespeare, London, 1824"</p>
+                        <p>"D. J. Snider, System of Shakespeare's Dramas, St. Louis, 1877"</p>
+                        <p>"T. A. Spalding, Elizabethan Demonology, London, 1880"</p>
+                        <p>"S. H. Spiker, Macbeth, Berlin, 1826"</p>
+                        <p>"C. W. Stearns, Shakespeare's Medical Knowledge, London, 1865"</p>
+                        <p>"Stephanie der Jüngere, Macbeth, Wien, 1773"</p>
+                        <p>"G. Stephens, Macbeth, Earl Siward, and Dundee, London, 1876"</p>
+                        <p>"H. P. Stokes, Chronological Order of Shakespeare's Plays, 1878"</p>
+                        <p>"W. W. Story, Excursions in Art and Letters, Edinburgh, 1891"</p>
+                        <p>"A. Symons, Studies in Two Literatures, London, 1897"</p>
+                        <p>"H. Taine, Litterature Anglaise, Paris, 1866"</p>
+                        <p>"E. Taunton, History of Jesuits in England, London, 1901"</p>
+                        <p>"L. Theobald, Shakespeare Restored, 1726"</p>
+                        <p>"R. M. Theobald, Shakespeare Studies in Baconian Light, 1901"</p>
+                        <p>"Moy Thomas, Athenæum, 14 April, 1877"</p>
+                        <p>"A. H. Tolman, Notes on Macbeth, Baltimore, 1896"</p>
+                        <p>"E. Topsell, History of Serpents, London, 1608"</p>
+                        <p>"C. Travers, Macbeth, Boulogne, 1844"</p>
+                        <p>"B. Tschischwitz, Shakespeare-Forschungen, Halle, 1868"</p>
+                        <p>"De Ornantibus Epithetis, etc., 1871"</p>
+                        <p>"T. Tyrwhitt, Observations and Conjectures upon some Passages of Shakespeare, London, 1766"</p>
+                        <p>"H. Ulrici, Shakespeare's dramatische Kunst (trans. by A. J. W. Morrison), 1846"</p>
+                        <p>"J. Upton, Critical Observations on Shakespeare, 1746"</p>
+                        <p>"B. A. P. Van Dam, William Shakespeare: Prosody and Text, 1899"</p>
+                        <p>"E. Vehse, Shakespeare als Protestant, etc., Hamburg, 1851"</p>
+                        <p>"A. F. Villemain, Études de Litterature Ancienne et Étrangere, Paris, 1849"</p>
+                        <p>"F. T. Vischer, Æsthetik, oder Wissenschaft des Schönen, Stuttgart, 1846"</p>
+                        <p>"Shakespeare-Vorträge, 1900"</p>
+                        <p>"N. Voss, Shakespeare's Dramatische Werke, Leipzig, 1810, 1829"</p>
+                        <p>"W. S. Walker, Shakespeare's Versification, London, 1854"</p>
+                        <p>"Critical Examination, etc., 1860"</p>
+                        <p>"J. Webster, Works (ed. Dyce), 1830"</p>
+                        <p>"H. Wellesley, Stray Notes on the Text of Shakespeare, 1865"</p>
+                        <p>"K. Werder, Vorlesungen über Shakespeare's Macbeth, Berlin, 1885"</p>
+                        <p>"W. Wetz, Die Inneren Beziehungen Zwischen Shakespeare's Macbeth und seinen Königsdramen (Englische Studien, xvi, 1), 1891"</p>
+                        <p>"T. Whately, Remarks on Some of the Characters of Shakespeare (Second Edition, 1808; Third Edition, edited by Archbishop Whately, 1839), Oxford, 1785"</p>
+                        <p>"R. G. White, Shakespeare's Scholar, New York, 1854"</p>
+                        <p>"Lady Gruch's Husband (The Galaxy, May), 1870"</p>
+                        <p>"Words and their Use, 1871"</p>
+                        <p>"Studies in Shakespeare, Boston, 1886"</p>
+                        <p>"W. Whiter, Specimen of a Commentary on Shakespeare, London, 1794"</p>
+                        <p>"J. Wilson, Dies Boreales (Blackwood's Magazine, November), 1849"</p>
+                        <p>"W. Winter, Life and Art of Edwin Booth, New York, 1893"</p>
+                        <p>"C. Wordsworth, Shakespeare's Knowledge and Use of the Bible, London, 1864"</p>
+                        <p>"'X', Courier, 25 April, Boston, 1857"</p>
                     </div>
                 </div>
             </div>
@@ -3181,272 +3552,327 @@
                 
                 <div class="critics-list" style="max-height: 400px; overflow-y: auto; background: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb;">
                     <div style="font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6;">
-                        <p>"E. A. Abbott, Shakespearean Grammar, London, 1870"</p>
+                        <p>"E. A. Abbott, Shakespearian Grammar, London, 1870"</p>
                         <p>"Prof. Allen, MS notes on Macbeth, 1867"</p>
-                        <p>"Macbeth, Paris, 1889"</p>
-                        <p>"Variorum Edition of Macbeth, London, 1807"</p>
+                        <p>"Angellier et Montegut, Macbeth, Paris, 1889"</p>
+                        <p>"Anonymous, Variorum Edition of Macbeth, London, 1807"</p>
                         <p>"Ethics of Macbeth (Dublin University Magazine, March), 1865"</p>
                         <p>"Theatrical Register, York, 1788"</p>
-                        <p>"Macbeth on the Stage (English Illustrated Magazine, December), 1875"</p>
+                        <p>"Antidote Against Melancholy (Collier's reprint), 1661"</p>
+                        <p>"W. Archer and R. W. Lowe, Macbeth on the Stage (English Illustrated Magazine, December), 1888"</p>
                         <p>"W. R. Arrowsmith, Shakespeare's Editors and Commentators, London, 1865"</p>
                         <p>"C. Badham, Text of Shakespeare (Cambridge Essays), 1856"</p>
+                        <p>"Criticism Applied to Shakespeare, 1846"</p>
                         <p>"S. Bailey, The Received Text of Shakespeare, 1862"</p>
                         <p>"J. Baret, An Alvearie, 1580"</p>
-                        <p>"C. Barhurst, Differences of Shakespeare's Versification, 1867"</p>
-                        <p>"T. S. Baynes, Shakespeare Studies and other Essays, 1872"</p>
-                        <p>"Works (ed. Dyce), 1843"</p>
+                        <p>"C. Bathurst, Differences of Shakespeare's Versification, 1857"</p>
+                        <p>"T. S. Baynes, Shakespeare Studies and other Essays, 1896"</p>
+                        <p>"Beaumont and Fletcher, Works (ed. Dyce), 1843"</p>
                         <p>"A. Becket, Shakespeare Himself Again, 1815"</p>
                         <p>"S. Beisley, Shakespeare's Garden, 1864"</p>
-                        <p>"J. W. O. Benda, Shakespeare's Dramatische Werke, Leipzig, 1823"</p>
+                        <p>"H. Beckhaus, Shakespeare's Macbeth und die Schillersche Bearbeitung, Ostrovo, 1889"</p>
+                        <p>"J. W. O. Benda, Shakespeare's Dramatische Werke, Leipzig, 1825"</p>
+                        <p>"A. Beljame, Macbeth, Paris, 1897"</p>
+                        <p>"G. J. Bell, Notes on Mrs. Siddons's Lady Macbeth (Nineteenth Century, February), 1878"</p>
+                        <p>"Edwin Booth, Macbeth, Prompt-book (ed. W. Winter), New York, 1878"</p>
                         <p>"W. J. Birch, Inquiry into the Philosophy and Religion of Shakespeare, London, 1848"</p>
                         <p>"J. B. Bittinger, Transactions American Philological Association, 1876"</p>
-                        <p>"K. Blackwell, Shakespeare's Dramatische Werke, 1870"</p>
-                        <p>"H. Boas, Shakespeare and His Works, London, 1879"</p>
-                        <p>"G. Bohlen, Shakespeare's Dramatische Werke, London, 1853"</p>
-                        <p>"E. Booth, Macbeth, Prompt-book (ed. W. Winter), New York, 1887"</p>
-                        <p>"J. Boswell, Shakespeare's Dramatic Works, 1821"</p>
-                        <p>"J. Boydell, Shakespeare's Works, London, 1802"</p>
-                        <p>"A. C. Bradley, Shakespearean Tragedy, London, 1904"</p>
-                        <p>"J. Brady, Shakespeare's Plays, Dublin, 1779"</p>
-                        <p>"G. Brandes, William Shakespeare, London, 1898"</p>
-                        <p>"M. Breal, Shakespeare's Works, Paris, 1861"</p>
-                        <p>"E. von Brentano, Shakespeare's Dramatische Werke, Leipzig, 1846"</p>
-                        <p>"A. Brewer, Shakespeare's Dramatische Werke, London, 1836"</p>
-                        <p>"S. A. Brooke, Shakespeare's Life, London, 1894"</p>
-                        <p>"J. Brown, Shakespeare's Life, London, 1869"</p>
-                        <p>"R. Browning, Shakespeare's Life, London, 1840"</p>
-                        <p>"W. Bryce, Shakespeare's Life, London, 1872"</p>
-                        <p>"R. Buchanan, Shakespeare's Life, London, 1869"</p>
-                        <p>"G. Buchner, Shakespeare's Dramatische Werke, Leipzig, 1888"</p>
-                        <p>"J. C. Bucknill, Mad Folk of Shakespeare, London, 1860"</p>
-                        <p>"J. G. Bullock, Studies in the Text of Shakespeare, London, 1878"</p>
-                        <p>"H. S. Bungay, Shakespeare's Life, London, 1877"</p>
-                        <p>"A. Burdett-Coutts, Shakespeare's Life, London, 1864"</p>
-                        <p>"E. Burke, Shakespeare's Life, London, 1797"</p>
-                        <p>"H. Busch, Shakespeare's Life, Leipzig, 1878"</p>
-                        <p>"A. Buschmann, Shakespeare's Life, Leipzig, 1855"</p>
-                        <p>"S. Butler, Shakespeare's Life, London, 1868"</p>
-                        <p>"P. Calderon, Shakespeare's Life, Madrid, 1883"</p>
-                        <p>"C. Calvert, Shakespeare's Life, London, 1881"</p>
-                        <p>"E. Capell, Notes, 1779"</p>
-                        <p>"Earl of Carlisle, Shakespeare's Life, London, 1867"</p>
-                        <p>"P. Carnegy, Shakespeare's Life, London, 1887"</p>
-                        <p>"W. and R. Chambers, Shakespeare's Life, London, 1865"</p>
-                        <p>"J. B. Chatelain, Shakespeare's Life, Paris, 1851"</p>
-                        <p>"T. Chatterton, Shakespeare's Life, London, 1778"</p>
-                        <p>"W. G. Clark, Shakespeare's Life, Cambridge, 1863"</p>
-                        <p>"C. Cowden Clarke, The Shakespeare Key, London, 1879"</p>
-                        <p>"Clarendon Press Edition, Oxford, 1869"</p>
-                        <p>"E. W. Clemens, Shakespeare's Life, London, 1886"</p>
-                        <p>"J. P. Collier, Annals of the Stage, London, 1831"</p>
-                        <p>"J. P. Collier, Notes and Emendations, London, 1853"</p>
-                        <p>"J. Conrad, Shakespeare's Life, Stuttgart, 1885"</p>
-                        <p>"G. Conradi, Shakespeare's Life, Leipzig, 1866"</p>
-                        <p>"A. Cooper, Shakespeare's Life, London, 1827"</p>
-                        <p>"W. J. Courthope, Shakespeare's Life, London, 1879"</p>
-                        <p>"H. Craig, Shakespeare's Life, London, 1891"</p>
-                        <p>"G. L. Craik, English of Shakespeare, London, 1857"</p>
-                        <p>"G. Cunningham, Shakespeare's Life, London, 1855"</p>
-                        <p>"A. Cuthbert, Shakespeare's Life, London, 1866"</p>
+                        <p>"K. Blind, Shakespeare's Schicksalsschwestern. Die Gegenwart, 26 April, 1879"</p>
+                        <p>"J. Boaden, Life of J. P. Kemble, 1825"</p>
+                        <p>"K. Börner, Ueber Shakespeare's Macbeth, Lüdenscheid, 1870"</p>
+                        <p>"J. T. Brockett, Glossary of North Country Words, Newcastle, 1829"</p>
+                        <p>"C. A. Brown, Shakespeare's Autobiographical Poems, London, 1838"</p>
+                        <p>"J. C. Bucknill, Mad Folk of Shakespeare, 1867"</p>
+                        <p>"J. Bulloch, Studies on Text of Shakespeare, 1878"</p>
+                        <p>"G. N. Bürger, Macbeth, Göttingen, 1784"</p>
+                        <p>"N. Butler, Miscellanies, Louisville, 1880"</p>
+                        <p>"R. Böttner, Erläuterungen zu Shakespeare's Macbeth, Leipzig, n. d."</p>
+                        <p>"T. Campbell, Life of Mrs. Siddons, London, 1834"</p>
+                        <p>"Lord Campbell, Legal Acquirements of Shakespeare, New York, 1859"</p>
+                        <p>"E. Capell, Notes, etc., London, 1779"</p>
+                        <p>"Miss C. Carmichael, Academy, 8 February, 1879"</p>
+                        <p>"J. C. Carr, Lord and Lady Macbeth, 1897"</p>
+                        <p>"W. Carr, Dialect of Craven, 1828"</p>
+                        <p>"R. Carruthers and W. Chambers, Works of Shakespeare, 1861"</p>
+                        <p>"R. Cartwright, New Readings in Shakespeare, 1866"</p>
+                        <p>"G. Chalmers, Supplemental Apology, etc., 1799"</p>
+                        <p>"Caledonia, 1807"</p>
+                        <p>"W. and R. Chambers, Book of Days, 1863"</p>
+                        <p>"V. E. P. Chasles, Études sur Shakespeare, Paris, 1851"</p>
+                        <p>"Chevalier de Chatelain, Macbeth, traduite en Vers Français, London, 1862"</p>
+                        <p>"Lord John Chedworth, Notes on some of the Obscure Passages of Shakespeare's Plays, London, 1805"</p>
+                        <p>"C. Cowden-Clarke, Shakespeare Characters, etc., 1863"</p>
+                        <p>"P. W. Clayden, Macbeth and Lady Macbeth (Fortnightly Review, 1 August), 1867"</p>
+                        <p>"J. Coleman, Gentleman's Magazine, March, 1889"</p>
+                        <p>"S. T. Coleridge, Notes and Lectures upon Shakespeare, 1849"</p>
+                        <p>"Seven Lectures on Shakespeare and Milton (ed. Collier), 1856"</p>
+                        <p>"J. P. Collier, Annals of the Stage, 1831"</p>
+                        <p>"New Particulars, etc., 1836"</p>
+                        <p>"Notes and Emendations, 1853"</p>
+                        <p>"H. Corson, Chaucer's Legende of Goode Women, Boston, 1864"</p>
+                        <p>"Introduction to Shakespeare, 1889"</p>
+                        <p>"R. Cotgrave, Dictionarie of the French and English Tongues, London, 1632"</p>
+                        <p>"G. L. Craik, English of Shakespeare (ed. Rolfe), Boston, 1872"</p>
+                        <p>"J. H. Crawford, Good Words, June, 1893"</p>
                         <p>"W. S. Dalgleish, Macbeth, London, 1869"</p>
                         <p>"P. A. Daniel, Notes and Conjectural Emendations, 1870"</p>
-                        <p>"J. Darling, Shakespeare's Life, London, 1863"</p>
-                        <p>"A. Darmstetter, Macbeth, Paris, 1881"</p>
-                        <p>"W. D'Avenant, Macbeth, 1674"</p>
+                        <p>"J. Darmesteter, Macbeth, Paris, 1881"</p>
                         <p>"T. Davies, Dramatic Miscellanies, London, 1784"</p>
-                        <p>"T. De Quincey, Macbeth, Edinburgh, 1859"</p>
-                        <p>"A. De Vere, Shakespeare's Life, London, 1879"</p>
-                        <p>"N. Delius, Macbeth, 1846"</p>
-                        <p>"Deutsches Theater, 1862"</p>
-                        <p>"E. Devrient, Shakespeare's Life, Weimar, 1854"</p>
-                        <p>"T. F. Dibdin, Shakespeare's Life, London, 1819"</p>
-                        <p>"T. Dilke, Shakespeare's Life, London, 1856"</p>
-                        <p>"T. S. Dixon, Shakespeare's Life, London, 1865"</p>
-                        <p>"W. Dodd, Shakespeare's Life, London, 1780"</p>
-                        <p>"J. Douglas, Shakespeare's Life, London, 1863"</p>
-                        <p>"E. Dowden, Shakespeare's Life, London, 1881"</p>
-                        <p>"N. Drake, Shakespeare and his Times, London, 1817"</p>
-                        <p>"J. Dryden, Shakespeare's Life, London, 1668"</p>
-                        <p>"M. A. Duff, Shakespeare's Life, London, 1876"</p>
-                        <p>"Earl of Dufferin, Shakespeare's Life, London, 1875"</p>
-                        <p>"C. Dupont, Shakespeare's Life, Paris, 1848"</p>
-                        <p>"A. Dyce, Remarks on Collier and Knight's Editions of Shakespeare, London, 1844"</p>
-                        <p>"A. Dyer, Shakespeare's Life, London, 1876"</p>
-                        <p>"T. Eaton, Shakespeare and the Bible, London, 1888"</p>
-                        <p>"T. Edwards, Canons of Criticism, London, 1765"</p>
-                        <p>"K. Elze, Shakespeare's Life, London, 1886"</p>
-                        <p>"R. W. Emerson, Shakespeare's Life, Boston, 1867"</p>
-                        <p>"J. Erdmann, Shakespeare's Life, Leipzig, 1872"</p>
-                        <p>"F. W. Fairholt, Shakespeare's Life, London, 1853"</p>
-                        <p>"K. Fischer, Shakespeare's Life, Stuttgart, 1866"</p>
-                        <p>"J. Fletcher, Shakespeare's Life, London, 1679"</p>
-                        <p>"F. G. Fleay, Shakespearean Manual, London, 1876"</p>
-                        <p>"J. Florio, A World of Words, London, 1598"</p>
-                        <p>"J. Forde, Works (ed. Gilford), 1848"</p>
-                        <p>"J. Forster, Some Notes on Shakespeare's Characters, 1864"</p>
-                        <p>"J. Fraser, Shakespeare's Life, London, 1868"</p>
-                        <p>"H. Franz, Shakespeare's Life, Berlin, 1867"</p>
-                        <p>"A. R. Frey, Shakespeare's Life, London, 1889"</p>
-                        <p>"O. Fritsch, Shakespeare's Life, London, 1866"</p>
-                        <p>"H. H. Furness, Shakespeare's Life, Philadelphia, 1871"</p>
-                        <p>"J. Gildon, Shakespeare's Life, London, 1710"</p>
-                        <p>"J. Glaser, Shakespeare's Life, Berlin, 1872"</p>
-                        <p>"J. W. Goethe, Shakespeare's Life, Weimar, 1827"</p>
-                        <p>"S. Baring-Gould, Shakespeare's Life, London, 1890"</p>
-                        <p>"A. Gray, Shakespeare's Life, London, 1871"</p>
-                        <p>"H. Green, Shakespeare's Life, London, 1864"</p>
-                        <p>"J. Greswell, Shakespeare's Life, London, 1868"</p>
-                        <p>"G. Grote, Shakespeare's Life, London, 1879"</p>
-                        <p>"F. P. G. Guizot, Shakespeare's Life, Paris, 1821"</p>
-                        <p>"J. O. Halliwell, The Folio Edition of Shakespeare, London, 1856"</p>
-                        <p>"J. O. Halliwell, A New Edition of Shakespeare's Works, London, 1886"</p>
-                        <p>"J. Harington, Shakespeare's Life, London, 1847"</p>
-                        <p>"J. Harris, Shakespeare's Life, London, 1878"</p>
-                        <p>"A. Hart, Shakespeare's Life, Dublin, 1881"</p>
-                        <p>"W. Harness, Shakespeare's Life, London, 1836"</p>
-                        <p>"J. Haynes, Shakespeare's Life, London, 1859"</p>
-                        <p>"W. Hazlitt, Characters of Shakespeare's Plays, London, 1817"</p>
-                        <p>"W. E. Henley, Shakespeare's Life, London, 1883"</p>
-                        <p>"J. Hennell, Shakespeare's Life, London, 1865"</p>
-                        <p>"H. Herbert, Shakespeare's Life, London, 1863"</p>
-                        <p>"G. Hilaire, Shakespeare's Life, Paris, 1849"</p>
-                        <p>"H. Hilberg, Shakespeare's Life, Leipzig, 1890"</p>
-                        <p>"J. Hilgenfeld, Shakespeare's Life, Leipzig, 1860"</p>
-                        <p>"W. Hildebrand, Shakespeare's Life, Berlin, 1864"</p>
-                        <p>"T. H. Holland, Shakespeare's Life, London, 1864"</p>
-                        <p>"J. Holliday, Shakespeare's Life, London, 1799"</p>
-                        <p>"J. Holmes, Shakespeare's Life, New York, 1870"</p>
-                        <p>"R. G. Honey, Macbeth, London, 1866"</p>
-                        <p>"H. N. Hudson, Shakespeare's Life, Boston, 1872"</p>
-                        <p>"V. Hugo, Shakespeare's Life, Paris, 1863"</p>
-                        <p>"J. Hunter, Shakespeare's Life, Edinburgh, 1817"</p>
-                        <p>"C. M. Ingleby, Shakespeare's Life, London, 1869"</p>
-                        <p>"H. B. Irving, Shakespeare's Life, London, 1883"</p>
-                        <p>"J. Jackson, Shakespeare's Life, London, 1846"</p>
-                        <p>"A. James, Shakespeare's Life, London, 1868"</p>
-                        <p>"H. Jenner, Shakespeare's Life, London, 1833"</p>
-                        <p>"J. Jereli, Shakespeare's Life, London, 1870"</p>
-                        <p>"J. Jolier, Shakespeare's Life, Paris, 1881"</p>
-                        <p>"J. Kalm, Shakespeare's Life, London, 1869"</p>
-                        <p>"H. F. Keary, Macbeth, London, 1866"</p>
-                        <p>"J. L. Kellogg, Shakespeare's Life, London, 1871"</p>
-                        <p>"J. Kindermann, Shakespeare's Life, Leipzig, 1856"</p>
-                        <p>"C. Knight, Shakespeare's Life, London, 1843"</p>
-                        <p>"A. Kruse, Shakespeare's Life, Berlin, 1894"</p>
-                        <p>"J. Kühling, Shakespeare's Life, Leipzig, 1886"</p>
-                        <p>"J. P. Köller, Shakespeare's Life, Stuttgart, 1866"</p>
-                        <p>"J. Kreyssig, Shakespeare's Life, London, 1869"</p>
-                        <p>"A. M. Kurth, Shakespeare's Life, Paris, 1851"</p>
-                        <p>"G. Lambert, Shakespeare's Life, London, 1845"</p>
-                        <p>"J. Lanchs, Shakespeare's Life, London, 1867"</p>
-                        <p>"A. Lang, Shakespeare's Life, London, 1869"</p>
-                        <p>"J. Laurent, Shakespeare's Life, London, 1846"</p>
-                        <p>"H. Lester, Shakespeare's Life, London, 1815"</p>
-                        <p>"G. H. Lewes, Shakespeare's Life, London, 1851"</p>
-                        <p>"G. Lillo, Shakespeare's Life, London, 1853"</p>
-                        <p>"J. Lindner, Shakespeare's Life, London, 1855"</p>
-                        <p>"H. Lister, Shakespeare's Life, London, 1845"</p>
-                        <p>"T. R. Lounsbury, Shakespeare's Life, New York, 1891"</p>
-                        <p>"J. R. Lowell, Shakespeare's Life, London, 1883"</p>
-                        <p>"J. Lubbock, Shakespeare's Life, London, 1879"</p>
-                        <p>"T. B. Macaulay, Shakespeare's Life, London, 1865"</p>
-                        <p>"G. MacDonald, Shakespeare's Life, London, 1866"</p>
-                        <p>"A. Mackintosh, Shakespeare's Life, London, 1888"</p>
-                        <p>"A. Macnaught, Shakespeare's Life, London, 1870"</p>
-                        <p>"H. Magnus, Shakespeare's Life, Leipzig, 1885"</p>
-                        <p>"C. Mair, Shakespeare's Life, London, 1867"</p>
-                        <p>"E. Malone, Shakespeare's Life, London, 1790"</p>
-                        <p>"T. Manning, Shakespeare's Life, London, 1866"</p>
-                        <p>"A. Menzel, Shakespeare's Life, London, 1870"</p>
-                        <p>"J. Michaud, Shakespeare's Life, Paris, 1855"</p>
-                        <p>"H. Milman, Shakespeare's Life, London, 1863"</p>
-                        <p>"J. Moser, Shakespeare's Life, London, 1866"</p>
-                        <p>"M. Muller, Shakespeare's Life, London, 1867"</p>
-                        <p>"T. Mundt, Shakespeare's Life, Munich, 1855"</p>
-                        <p>"R. Munich, Shakespeare's Life, London, 1867"</p>
-                        <p>"J. Murray, Shakespeare's Life, London, 1875"</p>
-                        <p>"H. Mutter, Shakespeare's Life, London, 1868"</p>
-                        <p>"G. Nash, Shakespeare's Life, London, 1877"</p>
-                        <p>"P. Nuttall, Shakespeare's Life, London, 1868"</p>
-                        <p>"J. Ogle, Shakespeare's Life, London, 1884"</p>
-                        <p>"R. O'Hanlon, Shakespeare's Life, Dublin, 1886"</p>
-                        <p>"C. Olin, Shakespeare's Life, London, 1867"</p>
-                        <p>"L. Oliphant, Shakespeare's Life, London, 1885"</p>
-                        <p>"J. Otto, Shakespeare's Life, London, 1866"</p>
-                        <p>"F. Palmer, Shakespeare's Life, London, 1866"</p>
-                        <p>"T. Park, Shakespeare's Life, London, 1865"</p>
-                        <p>"T. Pasco, Shakespeare's Life, London, 1870"</p>
-                        <p>"W. Paterson, Shakespeare's Life, London, 1866"</p>
-                        <p>"T. Patterson, Shakespeare's Life, Edinburgh, 1877"</p>
-                        <p>"J. Peers, Shakespeare's Life, London, 1870"</p>
-                        <p>"G. Phillimore, Shakespeare's Life, London, 1870"</p>
-                        <p>"A. Philippi, Shakespeare's Life, London, 1867"</p>
-                        <p>"J. Phillips, Shakespeare's Life, London, 1866"</p>
-                        <p>"R. Pritchard, Shakespeare's Life, London, 1869"</p>
-                        <p>"W. Rassmann, Shakespeare's Life, London, 1867"</p>
-                        <p>"I. Reed, Shakespeare's Life, London, 1803"</p>
-                        <p>"J. Ritson, Shakespeare's Life, London, 1795"</p>
-                        <p>"J. Rohlfs, Shakespeare's Life, London, 1886"</p>
-                        <p>"W. J. Rolfe, Shakespeare's Life, London, 1871"</p>
-                        <p>"G. Rümelin, Shakespeare's Life, Stuttgart, 1866"</p>
-                        <p>"W. Russell, Shakespeare's Life, London, 1899"</p>
-                        <p>"J. Sabine, Shakespeare's Life, London, 1859"</p>
-                        <p>"W. Sandys, Shakespeare's Life, London, 1859"</p>
-                        <p>"A. Schmidt, Shakespeare's Life, London, 1878"</p>
-                        <p>"H. Schwarz, Shakespeare's Life, London, 1867"</p>
-                        <p>"W. Seward, Shakespeare's Life, London, 1867"</p>
-                        <p>"E. H. Seymour, Shakespeare's Life, London, 1865"</p>
-                        <p>"S. W. Singer, Shakespeare's Life, London, 1826"</p>
-                        <p>"W. W. Skeat, Shakespeare's Life, London, 1870"</p>
-                        <p>"A. Skottowe, Shakespeare's Life, London, 1824"</p>
-                        <p>"J. D. Snedeker, Shakespeare's Life, St. Louis, 1877"</p>
-                        <p>"A. Spencer, Shakespeare's Life, London, 1856"</p>
-                        <p>"A. Stahr, Shakespeare's Life, London, 1871"</p>
-                        <p>"S. Stephens, Shakespeare's Life, London, 1845"</p>
-                        <p>"W. Stoker, Shakespeare's Life, London, 1873"</p>
-                        <p>"W. Stones, Shakespeare's Life, London, 1876"</p>
-                        <p>"H. Sturzen, Shakespeare's Life, London, 1878"</p>
-                        <p>"H. Taine, Shakespeare's Life, Paris, 1866"</p>
-                        <p>"H. Tausch, Shakespeare's Life, London, 1901"</p>
-                        <p>"C. Thirlwall, Shakespeare's Life, London, 1836"</p>
-                        <p>"W. J. Thoms, Shakespeare's Life, London, 1871"</p>
-                        <p>"J. Timms, Shakespeare's Life, London, 1877"</p>
-                        <p>"J. Tobin, Shakespeare's Life, London, 1856"</p>
-                        <p>"A. H. Tolman, Shakespeare's Life, London, 1877"</p>
-                        <p>"R. Travers, Shakespeare's Life, London, 1868"</p>
-                        <p>"E. Trebitsch, Shakespeare's Life, Halle, 1868"</p>
-                        <p>"H. Trebitschwitz, Shakespeare's Life, London, 1871"</p>
-                        <p>"E. Trelawny, Shakespeare's Life, London, 1866"</p>
-                        <p>"A. Trench, Shakespeare's Life, London, 1876"</p>
-                        <p>"A. Tyler, Shakespeare's Life, London, 1846"</p>
-                        <p>"J. Tyssen, Shakespeare's Life, London, 1846"</p>
-                        <p>"J. Upton, Shakespeare's Life, London, 1746"</p>
-                        <p>"A. F. Upjohn, Shakespeare's Life, London, 1899"</p>
-                        <p>"J. E. Urie, Shakespeare's Life, London, 1879"</p>
-                        <p>"B. A. P. Van Dam, Shakespeare's Life, Paris, 1889"</p>
-                        <p>"A. F. Veirer, Shakespeare's Life, Paris, 1849"</p>
-                        <p>"E. Villain, Shakespeare's Life, Stuttgart, 1846"</p>
-                        <p>"F. T. Vischer, Shakespeare's Life, London, 1900"</p>
-                        <p>"H. Voigt, Shakespeare's Life, Leipzig, 1874"</p>
-                        <p>"H. Von, Shakespeare's Life, London, 1890"</p>
-                        <p>"W. S. Walker, Shakespeare's Life, London, 1888"</p>
-                        <p>"W. Wall, Shakespeare's Life, London, 1810"</p>
-                        <p>"H. Ware, Shakespeare's Life, London, 1865"</p>
-                        <p>"J. Weller, Shakespeare's Life, London, 1815"</p>
-                        <p>"R. Wellesley, Shakespeare's Life, London, 1885"</p>
-                        <p>"K. Werrer, Shakespeare's Life, Berlin, 1885"</p>
-                        <p>"W. Wetz, Shakespeare's Life, 1891"</p>
-                        <p>"H. B. Wheatley, Shakespeare's Life, Oxford, 1785"</p>
-                        <p>"O. Wilde, Shakespeare's Life, London, 1836"</p>
-                        <p>"R. Williams, Shakespeare's Life, London, 1863"</p>
-                        <p>"W. Winter, Shakespeare's Life, London, 1893"</p>
-                        <p>"C. Wordsworth, Shakespeare's Life, London, 1884"</p>
-                        <p>"K. Crowley, Shakespeare's Life, Boston, 1857"</p>
-                        <p>"W. Whitaker, Shakespeare's Life, New York, 1884"</p>
-                        <p>"R. G. White, Shakespeare's Life, London, 1880"</p>
-                        <p>"J. Wither, Shakespeare's Life, London, 1849"</p>
-                        <p>"E. H. Wool, Shakespeare's Life, London, 1871"</p>
-                        <p>"K. Zimmermann, Shakespeare's Life, London, 1864"</p>
+                        <p>"N. Delius, Macbeth, Bremen, 1841"</p>
+                        <p>"Die Tieck'sche Shakspere-kritik, Elberfeld, 1846"</p>
+                        <p>"Shakespeare-Lexikon, 1852"</p>
+                        <p>"Shakespeare's Dramatische Werke (ed. ii.), 1869"</p>
+                        <p>"T. De Quincey, Miscellaneous Essays, Boston, 1851"</p>
+                        <p>"E. Dowden, Shakespeare, His Mind and Art, London, 1875"</p>
+                        <p>"G. D'Hugues, Macbeth, Paris, 1883"</p>
+                        <p>"F. Douce, Illustrations of Shakespeare, London, 1807"</p>
+                        <p>"N. Drake, Shakespeare and His Times, 1817"</p>
+                        <p>"Memorials of Shakespeare, 1828"</p>
+                        <p>"P. Duport, Essais Littéraire sur Shakespeare, Paris, 1828"</p>
+                        <p>"A. Dyce, Remarks on Collier's and Knight's Editions, London, 1844"</p>
+                        <p>"Few Notes, etc., 1853"</p>
+                        <p>"Strictures on Collier's New Edition, 1859"</p>
+                        <p>"J. F. T. Dyer, Folk-Lore of Shakespeare, New York, 1884"</p>
+                        <p>"T. R. Eaton, Shakespeare and the Bible, London, 1858"</p>
+                        <p>"T. Edwards, Canons of Criticism (Seventh Edition), 1765"</p>
+                        <p>"A. J. Ellis, Early English Pronunciation, etc., 1869"</p>
+                        <p>"L. C. Elson, Shakespeare in Music, 1901"</p>
+                        <p>"H. Elwin, Shakespeare Restored, Norwich, 1853"</p>
+                        <p>"K. Elze, Notes on Elizabethan Dramatists, Halle, 1889"</p>
+                        <p>"J. J. Eschenburg, Shakespeare's Schauspiele, Strassburg, 1776"</p>
+                        <p>"R. Farmer, Essay on the Learning of Shakespeare, London, 1767"</p>
+                        <p>"J. C. Fick, Macbeth, with German Notes, Erlangen, 1812"</p>
+                        <p>"H. Fietkau, Schiller's Macbeth, Königsberg, 1897"</p>
+                        <p>"P. Fitzgerald, Life of Garrick, London, 1868"</p>
+                        <p>"J. L. F. Flathe, Shakespeare in seiner Wirklichkeit, Leipzig, 1863"</p>
+                        <p>"F. G. Fleay, Shakespeare Manual, London, 1876"</p>
+                        <p>"F. G. Fleay, Life and Work of Shakespeare, London, 1886"</p>
+                        <p>"G. Fletcher, Studies of Shakespeare, 1847"</p>
+                        <p>"R. Fletcher, Witches Pharmacopoeia, Baltimore, 1896"</p>
+                        <p>"R. Forby, Vocabulary of East Anglia, London, 1830"</p>
+                        <p>"J. Florio, A World of Words, 1598"</p>
+                        <p>"J. Ford, Works (ed. Gifford), 1869"</p>
+                        <p>"E. Forsyth, Some Notes on Shakespeare's Character and Writings, 1867"</p>
+                        <p>"C. L. Francke, Macbeth sprachlich und sachlich erläutert, Braunschweig, 1833"</p>
+                        <p>"G. R. French, Shakespeareana Genealogica, London, 1869"</p>
+                        <p>"F. Fritzart, War Shakespeare ein Christ ?, Heidelberg, 1832"</p>
+                        <p>"F. Friesen, Shakespeare von Gervinus, Leipzig, 1869"</p>
+                        <p>"F. J. Furnivall, Introduction to Leopold Shakespeare, London, 1877"</p>
+                        <p>"R. Genée, Geschichte der Shakespear'schen Dramen in Deutschland, Leipzig, 1870"</p>
+                        <p>"G. G. Gervinus, Shakespeare, 1862"</p>
+                        <p>"H. Giles, Human Life in Shakespeare, Boston, 1868"</p>
+                        <p>"A. H. Gilkes, Electra and Macbeth, London, 1880"</p>
+                        <p>"St. M. Girardin, Cours de Litterature Dramatique, Paris, 1845"</p>
+                        <p>"T. R. Gould, The Tragedian, London, 1868"</p>
+                        <p>"G. Gould, Corrigenda, etc., 1884"</p>
+                        <p>"H. Green, Shakespeare and the Emblem Writers, 1870"</p>
+                        <p>"Z. Grey, Critical, Historical, and Explanatory Notes on Shakespeare, 1754"</p>
+                        <p>"Mrs Griffiths, Morality of Shakespeare's Dramas, 1775"</p>
+                        <p>"Sir G. Grove, Dictionary of Music, 1890"</p>
+                        <p>"E. Guest, History of English Rhythms, 1838"</p>
+                        <p>"M. Guizot, Œuvres complètes de Shakespeare (ed. vii.), Paris, 1821"</p>
+                        <p>"Shakespeare et son Temps (Nouvelle Edition), 1869"</p>
+                        <p>"W. E. Hales, Notes and Essays, London, 1884"</p>
+                        <p>"H. Hallam, Introduction to the Literature of Europe, 1855"</p>
+                        <p>"Dr R. P. Harris, Tolerance in Pregnant Women, Philadelphia, 1892"</p>
+                        <p>"J. E. Harting, Ornithology of Shakespeare, London, 1871"</p>
+                        <p>"W. Hazlitt, Characters of Shakespeare's Plays, 1817"</p>
+                        <p>"F. F. Heard, Legal Acquirements of Shakespeare, Boston, 1865"</p>
+                        <p>"Shakespeare a Lawyer, 1883"</p>
+                        <p>"B. Heath, A Revisal of Shakespeare's Text, London, 1765"</p>
+                        <p>"C. Hebler, Aufsätze über Shakespeare, Bern, 1865"</p>
+                        <p>"H. Heine, Shakespeare's Mädchen und Frauen, Philadelphia, 1839"</p>
+                        <p>"C. Heinichen, Macbeth, Bonn, 1841"</p>
+                        <p>"J. Henry, Æneidea, or Critical, Exegetical, and Æsthetical Remarks on the Æneis, Dublin, 1881"</p>
+                        <p>"L. Herrig, Macbeth, Berlin, 1853"</p>
+                        <p>"C. C. Heuse, Vorträge über Shakespeare, etc., Halberstadt, 1856"</p>
+                        <p>"J. A. Heraud, Shakespeare's Inner Life, London, 1865"</p>
+                        <p>"R. H. Hiecke, Macbeth, erläutert und gewürdigt, Merseburg, 1846"</p>
+                        <p>"L. Hilsenberg, Shakespeare's Dramatische Werke, Leipzig, 1836"</p>
+                        <p>"E. Hills, Notes & Queries, 2 October, 1869"</p>
+                        <p>"C. W. Hodell, Poet Lore, vol. xiii, No. 2, 1901"</p>
+                        <p>"Holinshed, Chronicles, London, 1587"</p>
+                        <p>"C. Hollyband, French Dictionary, 1593"</p>
+                        <p>"F. Hörn, Shakespeare's Schauspiele Erlaütert, Leipzig, 1823"</p>
+                        <p>"H. N. Hudson, Shakespeare: His Life, Art, and Character, Boston, 1872"</p>
+                        <p>"François-Victor Hugo, Œuvres complètes de Shakespeare, Paris, 1859"</p>
+                        <p>"V. Hugo, William Shakespeare, 1864"</p>
+                        <p>"E. Hülseman, Shakespeare, sein Geist und seine Werke, Leipzig, 1856"</p>
+                        <p>"Joseph Hunter, New Illustrations of Shakespeare, London, 1853"</p>
+                        <p>"Few Words, etc., 1853"</p>
+                        <p>"Rev. John Hunter, Macbeth, 1869"</p>
+                        <p>"C. M. Ingleby, The Shakespeare Fabrications, 1859"</p>
+                        <p>"Henry Irving, Nineteenth Century, April, 1877"</p>
+                        <p>"Macbeth, as produced at the Lyceum, 1889"</p>
+                        <p>"Character of Macbeth (Lecture delivered at Owens College, Manchester, 11 December), 1894"</p>
+                        <p>"Z. Jackson, Shakespeare's Genius Justified, 1819"</p>
+                        <p>"A. Jacob, Macbeth, Berlin, 1848"</p>
+                        <p>"Mrs Jameson, Characteristics of Women, London, 1833"</p>
+                        <p>"M. Jastrow, Jr., Poet Lore, vol. ii., 1890"</p>
+                        <p>"J. Jekeli, Die Gesetze der Tragödie nach gewiesen an Shakespeare's Macbeth, Hermanstadt, 1873"</p>
+                        <p>"F. Jencken, Macbeth, Mainz, 1855"</p>
+                        <p>"S. Jervis, Proposed Emendations, etc., London, 1860"</p>
+                        <p>"S. Johnson, Miscellaneous Observations on Macbeth (Works, ed. 1825), 1745"</p>
+                        <p>"B. Jonson, Works (ed. Gifford), 1816"</p>
+                        <p>"I. M. Jost, Erklärendes Wörterbuch zu Shakespeare's Plays, Berlin, 1840"</p>
+                        <p>"J. J. Jusserand, Shakespeare in France, London, 1899"</p>
+                        <p>"F. Kaim, Shakespeare's Macbeth, Stuttgart, 1888"</p>
+                        <p>"P. Kaufmann, Shakespeare's Dramatische Werke, Berlin, 1830"</p>
+                        <p>"T. Keightley, Shakespeare Expositor, London, 1867"</p>
+                        <p>"Keller und Rapp, Shakespeare's Dramatische Werke, Stuttgart, 1843"</p>
+                        <p>"Mrs F. A. Kemble, Some Notes upon the Characters in Macbeth (Macmillan's Magazine, May), 1867"</p>
+                        <p>"Lady Macbeth (Macmillan's Magazine, May), 1867"</p>
+                        <p>"J. P. Kemble, Macbeth, as represented on opening Drury Lane Theatre, 21st of April, London, 1786"</p>
+                        <p>"Macbeth Reconsidered, 1786"</p>
+                        <p>"Macbeth and Richard the Third, 1817"</p>
+                        <p>"Kemp's nine daies wonder (Dyce's reprint), 1600"</p>
+                        <p>"B. G. Kinnear, Cruce's Shakespeariana, 1883"</p>
+                        <p>"J. S. Knowles, Lectures on Dramatic Literature, 1843"</p>
+                        <p>"E. Kölbing, Byron und Shakespeare's Macbeth (Englische Studien, xix, 2), 1894"</p>
+                        <p>"R. Koppel, Shakespeare-Studien, Berlin, 1896"</p>
+                        <p>"J. Körner, Shakespeare's Dramatische Werke, Wien, 1836"</p>
+                        <p>"F. Kreyssig, Vorlesungen über Shakespeare, Berlin, 1862"</p>
+                        <p>"Shakespeare-Fragen, 1871"</p>
+                        <p>"K. Lachmann, Macbeth, Berlin, 1829"</p>
+                        <p>"A. Lacroix, Histoire de l' Influence de Shakespeare sur le Théâtre Français, Bruxelles, 1856"</p>
+                        <p>"A. de Lamartine, Shakespeare et son Œuvres, Paris, 1865"</p>
+                        <p>"C. Lamb, Dramatic Poets (ed. Bohn, 1854), London, 1808"</p>
+                        <p>"R. J. Lane, Charles Kemble's Shakspere Readings, 1870"</p>
+                        <p>"G. Langbaine, English Dramatic Poets, Oxford, 1691"</p>
+                        <p>"B. Laroche, Œuvres complètes de Shakespeare (ed. v.), Paris, 1842"</p>
+                        <p>"S. Lee, Life of William Shakespeare, London, 1898"</p>
+                        <p>"W. Leighton, Robinson's Epitome of Literature, 15 April, 1879"</p>
+                        <p>"T. Lennig, Macbeth (Penn Monthly, May), 1870"</p>
+                        <p>"F. A. Leo, Shakespeare's Frauen-Ideale, Halle, 1868"</p>
+                        <p>"Macbeth, 1871"</p>
+                        <p>"M. F. Libby, Some New Notes on Macbeth, Toronto, 1893"</p>
+                        <p>"W. W. Lloyd, Essays on Shakespeare, London, 1858"</p>
+                        <p>"T. R. Lounsbury, Shakespeare as a Dramatic Artist, New York, 1901"</p>
+                        <p>"O. Ludwig, Shakespeare-Studien, Leipzig, 1872"</p>
+                        <p>"G. MacDonald, A Disk of Orts, London, 1895"</p>
+                        <p>"W. Macready, Reminiscences (ed. F. Pollock), 1875"</p>
+                        <p>"W. Maginn, Shakespeare Papers, 1860"</p>
+                        <p>"Lady Martin, Some of Shakespeare's Female Characters, Edinburgh, 1891"</p>
+                        <p>"J. M. Mason, Comments on the Last Edition of Shakespeare, London, 1785"</p>
+                        <p>"Comments on the Plays of Beaumont & Fletcher, 1798"</p>
+                        <p>"Comments on the Several Editions of Shakespeare, 1807"</p>
+                        <p>"P. Massinger, Works (ed. Gifford), 1805"</p>
+                        <p>"G. Massey, Secret Drama of Shakespeare's Sonnets Unfolded, 1872"</p>
+                        <p>"Ad. Meyer, Shakespeare's Verletzung der historischen und natürlichen Wahrheit, Schwerm, 1863"</p>
+                        <p>"E. Meyer, Shakespeare's Dramatische Werke, Hamburg, 1825"</p>
+                        <p>"A. Mézières, Shakespeare, ses Œuvres et ses Critiques, Paris, 1860"</p>
+                        <p>"F. Michel, Œuvres complètes de Shakespeare. Précédée de la vie de Shakespeare par (Thomas Campbell), 1855"</p>
+                        <p>"T. Middleton, Works (ed. Dyce), London, 1843"</p>
+                        <p>"The Witch, 1778"</p>
+                        <p>"C. Mitchell, Essay on the Character of Macbeth (A Reply to Fletcher), 1846"</p>
+                        <p>"J. Mitford, Cursory Notes, etc., 1856"</p>
+                        <p>"M. Max Moltke, Shakespeare's Dramatische Werke, Leipzig, n. d."</p>
+                        <p>"J. P. Morris, Glossary of the Words and Phrases of Furness, London, 1869"</p>
+                        <p>"R. G. Moulton, Shakespeare as a Dramatic Artist, Oxford, 1893"</p>
+                        <p>"J. Moyes, Medicine in Shakespeare, Glasgow, 1896"</p>
+                        <p>"M. Mull, Macbeth, London, 1889"</p>
+                        <p>"R. Nares, Glossary (ed. Halliwell and Wright), 1888"</p>
+                        <p>"G. Neilson, Scottish Antiquary, October, 1897"</p>
+                        <p>"New Exegesis of Shakespeare, 1859"</p>
+                        <p>"New Shakespeare Society (Transactions), 1877-9"</p>
+                        <p>"J. Nichols, Literary Illustrations, etc., 1817"</p>
+                        <p>"Notes on Shakespeare, 1861"</p>
+                        <p>"M. Leigh-Noel, Lady Macbeth, London, 1884"</p>
+                        <p>"Notes & Queries, 1873-1901"</p>
+                        <p>"J. G. Orger, Notes on Shakespeare's Histories and Tragedies, 1890"</p>
+                        <p>"E. Ortlepp, Shakespeare's Dramatische Werke, Stuttgart, 1838"</p>
+                        <p>"Oxon, Analysis and Study of the Characters in Macbeth, London, 1886"</p>
+                        <p>"A. P. Paton, Few Notes on Macbeth, Edinburgh, 1877"</p>
+                        <p>"R. Patterson, Natural History, etc., London, 1838"</p>
+                        <p>"F. Peck, Memoirs of Milton, 1740"</p>
+                        <p>"Sir Philip Perring, Hard Knots in Shakespeare (ed. ii.), 1886"</p>
+                        <p>"M. Petri, Zur Einführung Shakespeare's in die Christliche Familie, Hanover, 1868"</p>
+                        <p>"R. Pitcairn, Ancient Criminal Trials in Scotland, Edinborough, 1822"</p>
+                        <p>"J. R. Planché, British Costume, London, 1846"</p>
+                        <p>"K. L. Pörschke, Ueber Shakespeare's Macbeth, Königsberg, 1801"</p>
+                        <p>"Lin Rayne, Macbeth, Arranged for Dramatic Reading, 1868"</p>
+                        <p>"Henry Reed, English History and Poetry, London, 1869"</p>
+                        <p>"J. Rees, Life of Edwin Forrest, Philadelphia, 1874"</p>
+                        <p>"J. W. Redhouse, Academy, 24 July, 1886"</p>
+                        <p>"Miss A. Repplier, Fireside Sphinx, 1901"</p>
+                        <p>"J. E. Riddle, Illustrations of Aristotle from Shakespeare, Oxford, 1832"</p>
+                        <p>"W. Richardson, Essays on Shakespeare's Dramatic Characters, London, 1797"</p>
+                        <p>"J. Ritson, Remarks Critical and Illustrative, etc., 1783"</p>
+                        <p>"J. G. Ritter, Programm der Realschule zu Leer, 1871"</p>
+                        <p>"J. Forbes-Robertson, Macbeth, 1898"</p>
+                        <p>"A. Roffe, Handbook of Shakespearian Music, 1878"</p>
+                        <p>"E. Roffe, Essay Upon the Ghost Belief of Shakespeare, 1851"</p>
+                        <p>"Rossi and Corbould, Side-lights on Shakespeare, 1897"</p>
+                        <p>"H. T. Rötscher, Cyclus Dramatische Charaktere, Berlin, 1844"</p>
+                        <p>"Die Kunst der Dramatischen Darstellung, 1864"</p>
+                        <p>"Shakespeare in seinen höchsten Charakter-bilden, 1864"</p>
+                        <p>"Harry Rowe, Macbeth (Second Edition), London, 1799"</p>
+                        <p>"H. I. Ruggles, Method of Shakespeare, New York, 1870"</p>
+                        <p>"G. Rümelin, Shakespeare-Studien, Stuttgart, 1866"</p>
+                        <p>"W. L. Rushton, Shakespeare a Lawyer, London, 1858"</p>
+                        <p>"Shakespeare's Legal Maxims, 1859"</p>
+                        <p>"Shakespeare Illustrated by Old Authors, 1867"</p>
+                        <p>"Shakespeare's Testamentary Language, 1869"</p>
+                        <p>"Shakespeare Illustrated by the Lex Scripta, 1870"</p>
+                        <p>"W. B. Rye, England as seen by Foreigners, 1865"</p>
+                        <p>"G. Sarrazin, Shakespeare's Macbeth und Kyd's Spanische Tragödie (Englische Studien, xxi, 2), Berlin, 1895"</p>
+                        <p>"A. W. Schlegel, Lectures (trans. by J. Black), London, 1815"</p>
+                        <p>"Schlegel und Tieck, Shakespeare's Dramatische Werke, Berlin, 1833, 1855"</p>
+                        <p>"J. Schiller, Macbeth, Leipzig, 1801"</p>
+                        <p>"R. Scot, Discoverie of Witchcraft, 1584"</p>
+                        <p>"A. Schwartzkopf, Shakespeare in seiner bedeutung für die Kirche in unserer Tage, Halle, 1864"</p>
+                        <p>"Sir W. Scott, Miscellaneous Essays, Philadelphia, 1826"</p>
+                        <p>"E. H. Seymour, Remarks, Critical, Conjectural, and Explanatory, on Shakespeare, London, 1805"</p>
+                        <p>"Shakespeare Society's Publications, 1850"</p>
+                        <p>"K. Simrock, Shakespeare als Vermittler, etc., Hildburghausen, 1842"</p>
+                        <p>"Die Quellen des Shakespeare, 1870"</p>
+                        <p>"S. W. Singer, Text of Shakespeare Vindicated, London, 1853"</p>
+                        <p>"W. W. Skeat, Notes on English Etymology, Oxford, 1901"</p>
+                        <p>"A. Skottowe, Life of Shakespeare, London, 1824"</p>
+                        <p>"D. J. Snider, System of Shakespeare's Dramas, St. Louis, 1877"</p>
+                        <p>"T. A. Spalding, Elizabethan Demonology, London, 1880"</p>
+                        <p>"S. H. Spiker, Macbeth, Berlin, 1826"</p>
+                        <p>"C. W. Stearns, Shakespeare's Medical Knowledge, London, 1865"</p>
+                        <p>"Stephanie der Jüngere, Macbeth, Wien, 1773"</p>
+                        <p>"G. Stephens, Macbeth, Earl Siward, and Dundee, London, 1876"</p>
+                        <p>"H. P. Stokes, Chronological Order of Shakespeare's Plays, 1878"</p>
+                        <p>"W. W. Story, Excursions in Art and Letters, Edinburgh, 1891"</p>
+                        <p>"A. Symons, Studies in Two Literatures, London, 1897"</p>
+                        <p>"H. Taine, Litterature Anglaise, Paris, 1866"</p>
+                        <p>"E. Taunton, History of Jesuits in England, London, 1901"</p>
+                        <p>"L. Theobald, Shakespeare Restored, 1726"</p>
+                        <p>"R. M. Theobald, Shakespeare Studies in Baconian Light, 1901"</p>
+                        <p>"Moy Thomas, Athenæum, 14 April, 1877"</p>
+                        <p>"A. H. Tolman, Notes on Macbeth, Baltimore, 1896"</p>
+                        <p>"E. Topsell, History of Serpents, London, 1608"</p>
+                        <p>"C. Travers, Macbeth, Boulogne, 1844"</p>
+                        <p>"B. Tschischwitz, Shakespeare-Forschungen, Halle, 1868"</p>
+                        <p>"De Ornantibus Epithetis, etc., 1871"</p>
+                        <p>"T. Tyrwhitt, Observations and Conjectures upon some Passages of Shakespeare, London, 1766"</p>
+                        <p>"H. Ulrici, Shakespeare's dramatische Kunst (trans. by A. J. W. Morrison), 1846"</p>
+                        <p>"J. Upton, Critical Observations on Shakespeare, 1746"</p>
+                        <p>"B. A. P. Van Dam, William Shakespeare: Prosody and Text, 1899"</p>
+                        <p>"E. Vehse, Shakespeare als Protestant, etc., Hamburg, 1851"</p>
+                        <p>"A. F. Villemain, Études de Litterature Ancienne et Étrangere, Paris, 1849"</p>
+                        <p>"F. T. Vischer, Æsthetik, oder Wissenschaft des Schönen, Stuttgart, 1846"</p>
+                        <p>"Shakespeare-Vorträge, 1900"</p>
+                        <p>"N. Voss, Shakespeare's Dramatische Werke, Leipzig, 1810, 1829"</p>
+                        <p>"W. S. Walker, Shakespeare's Versification, London, 1854"</p>
+                        <p>"Critical Examination, etc., 1860"</p>
+                        <p>"J. Webster, Works (ed. Dyce), 1830"</p>
+                        <p>"H. Wellesley, Stray Notes on the Text of Shakespeare, 1865"</p>
+                        <p>"K. Werder, Vorlesungen über Shakespeare's Macbeth, Berlin, 1885"</p>
+                        <p>"W. Wetz, Die Inneren Beziehungen Zwischen Shakespeare's Macbeth und seinen Königsdramen (Englische Studien, xvi, 1), 1891"</p>
+                        <p>"T. Whately, Remarks on Some of the Characters of Shakespeare (Second Edition, 1808; Third Edition, edited by Archbishop Whately, 1839), Oxford, 1785"</p>
+                        <p>"R. G. White, Shakespeare's Scholar, New York, 1854"</p>
+                        <p>"Lady Gruch's Husband (The Galaxy, May), 1870"</p>
+                        <p>"Words and their Use, 1871"</p>
+                        <p>"Studies in Shakespeare, Boston, 1886"</p>
+                        <p>"W. Whiter, Specimen of a Commentary on Shakespeare, London, 1794"</p>
+                        <p>"J. Wilson, Dies Boreales (Blackwood's Magazine, November), 1849"</p>
+                        <p>"W. Winter, Life and Art of Edwin Booth, New York, 1893"</p>
+                        <p>"C. Wordsworth, Shakespeare's Knowledge and Use of the Bible, London, 1864"</p>
+                        <p>"'X', Courier, 25 April, Boston, 1857"</p>
                     </div>
                 </div>
             </div>
@@ -8194,221 +8620,280 @@
             console.log('✅ Tab switched to:', tabName);
         }
         
-        // Line selection functionality (supports 1–3 consecutive lines)
-        function selectLine(element, text, lineIndex) {
-            console.log('Selecting line:', lineIndex, 'Text:', text);
-            
-            // Determine the current scene from the context where the text was selected
-            console.log('🔍 DEBUG: Starting scene detection for element:', element);
-            
-            // Look for scene information in the DOM or use the currently loaded scene
-            const sceneContainer = element.closest('.scene-content') || element.closest('[data-scene]');
-            console.log('🔍 DEBUG: Found sceneContainer:', sceneContainer);
-            
-            if (sceneContainer && sceneContainer.getAttribute('data-scene')) {
-                currentScene = sceneContainer.getAttribute('data-scene');
-                console.log('🎭 Updated currentScene from DOM context:', currentScene);
-            } else {
-                console.log('🔍 DEBUG: No scene container found, trying fallback methods...');
-                
-                // Fallback: try to determine scene from the current loaded content
-                const readerElement = document.getElementById('reader');
-                console.log('🔍 DEBUG: Found readerElement:', readerElement);
-                
-                if (readerElement) {
-                    const sceneTitle = readerElement.querySelector('.scene-title');
-                    console.log('🔍 DEBUG: Found sceneTitle:', sceneTitle);
-                    
-                    if (sceneTitle) {
-                        currentScene = sceneTitle.textContent.trim();
-                        console.log('🎭 Updated currentScene from scene title:', currentScene);
-                    } else {
-                        console.log('🔍 DEBUG: No scene title found');
+        // Hover state to show what lines will be selected
+        let hoveredLineIndex = null;
+        let hoverStartLineIndex = null;
+        
+        function addLineEventListeners() {
+            // Add hover listeners to all play lines for smooth preview highlighting
+            document.querySelectorAll('.play-line').forEach(line => {
+                line.addEventListener('mouseenter', function() {
+                    const lineIndex = parseInt(this.getAttribute('data-line-index'), 10);
+                    if (!Number.isNaN(lineIndex)) {
+                        hoveredLineIndex = lineIndex;
+                        updateHoverPreview();
                     }
-                } else {
-                    console.log('🔍 DEBUG: No reader element found');
-                }
-                
-                // Additional fallback: check if we have a current scene from navigation
-                if (!currentScene) {
-                    console.log('🔍 DEBUG: No scene found, checking navigation...');
-                    const activeNavLink = document.querySelector('.nav-list a.active');
-                    if (activeNavLink) {
-                        currentScene = activeNavLink.getAttribute('data-scene') || activeNavLink.textContent.trim();
-                        console.log('🎭 Updated currentScene from active nav link:', currentScene);
-                    }
-                }
-            }
-            
-            console.log('🎭 FINAL currentScene value:', currentScene);
-            
-            // EMERGENCY FALLBACK: If we still don't have a scene, try to get it from the URL or set a default
-            if (!currentScene || currentScene === '') {
-                console.log('🚨 EMERGENCY: No scene detected, using fallback...');
-                
-                // Try to get scene from URL hash
-                const hash = window.location.hash;
-                if (hash && hash.includes('scene')) {
-                    currentScene = hash.replace('#', '').replace('scene-', '');
-                    console.log('🎭 Set currentScene from URL hash:', currentScene);
-                } else {
-                    // No scene detected - leave currentScene empty
-                    console.log('🎭 No scene detected, leaving currentScene empty');
-                }
-            }
-            
-            // If the user clicks on an already-selected line, treat it as a toggle to clear the selection
-            if (element.classList.contains('selected') || element.classList.contains('range-selected')) {
-                clearSelection();
-                console.log('✅ Selection cleared by clicking an already-selected line');
-                return;
-            }
-            
-            // If no starting line yet, or user is restarting selection, start fresh with this line
-            const isStartingNewSelection = firstSelectedLine === null || selectedLines.length === 0;
-            
-            if (isStartingNewSelection) {
-                // Clear all previous selections
-                document.querySelectorAll('.play-line').forEach(line => {
-                    line.classList.remove('selected', 'range-selected');
                 });
                 
-                // This click defines the first line in the selection
-                element.classList.add('selected');
-                selectedLines = [text.trim()];
-                firstSelectedLine = lineIndex;
+                line.addEventListener('mouseleave', function() {
+                    hoveredLineIndex = null;
+                    updateHoverPreview();
+                });
+            });
+        }
+        
+        function updateHoverPreview() {
+            if (hoveredLineIndex === null || firstSelectedLine === null) return;
+            
+            const startIndex = Math.min(firstSelectedLine, hoveredLineIndex);
+            const endIndex = Math.max(firstSelectedLine, hoveredLineIndex);
+            const count = endIndex - startIndex + 1;
+            
+            // Only show preview if within 1-3 line range
+            if (count > 3) return;
+            
+            // Update visual preview during hover
+            document.querySelectorAll('.play-line').forEach(line => {
+                const idx = parseInt(line.getAttribute('data-line-index'), 10);
+                if (idx >= startIndex && idx <= endIndex && !line.classList.contains('selected')) {
+                    line.style.backgroundColor = 'rgba(59, 130, 246, 0.15)';
+                } else if (!line.classList.contains('selected') && !line.classList.contains('range-selected')) {
+                    line.style.backgroundColor = 'transparent';
+                }
+            });
+        }
+        
+        // Initialize hover listeners when page loads
+        document.addEventListener('DOMContentLoaded', addLineEventListeners);
+        // Also re-initialize when content is dynamically loaded
+        const originalLoadPlay = window.loadPlay ? window.loadPlay.toString() : '';
+        window.addEventListener('play-loaded', addLineEventListeners);
+        
+        // Line selection functionality (supports 1–3 consecutive lines)
+        function selectLine(element, text, lineIndex) {
+            try {
+                // Reset hover state when user clicks
+                hoveredLineIndex = null;
                 
-                console.log('✅ Started new selection at line:', firstSelectedLine, 'Selected lines:', selectedLines);
-            } else {
-                // We already have a starting line; this click defines a range end
-                const startIndex = Math.min(firstSelectedLine, lineIndex);
-                const endIndex = Math.max(firstSelectedLine, lineIndex);
-                const count = endIndex - startIndex + 1;
-                
-                // Enforce maximum of 3 consecutive lines
-                if (count > 3) {
-                    alert('Please select between 1 and 3 consecutive lines for analysis.');
-                    console.warn('🚫 Selection range too large:', startIndex, 'to', endIndex, '(', count, 'lines)');
+                // Validate element exists and is a play line
+                if (!element || !element.classList.contains('play-line')) {
+                    console.error('❌ Invalid element passed to selectLine');
                     return;
                 }
                 
-                // Clear all previous visual selections
+                // CRITICAL: Ensure selectedLines is an array (fix for search + click error)
+                if (!Array.isArray(selectedLines)) {
+                    console.warn('⚠️ Resetting selectedLines array after error state');
+                    selectedLines = [];
+                    firstSelectedLine = null;
+                }
+                
+                // FORCE CLEAR any previous selections before starting new selection
                 document.querySelectorAll('.play-line').forEach(line => {
                     line.classList.remove('selected', 'range-selected');
                 });
                 
-                // Apply selection across the range and rebuild selectedLines
-                const newSelectedLines = [];
-                for (let i = startIndex; i <= endIndex; i++) {
-                    const lineEl = document.querySelector(`.play-line[data-line-index="${i}"]`);
-                    if (!lineEl) continue;
+                console.log('Selecting line:', lineIndex, 'Text:', text);
+                
+                // Look for scene information in the DOM or use the currently loaded scene
+                const sceneContainer = element.closest('.scene-content') || element.closest('[data-scene]');
+                console.log('🔍 DEBUG: Found sceneContainer:', sceneContainer);
+                
+                if (sceneContainer && sceneContainer.getAttribute('data-scene')) {
+                    currentScene = sceneContainer.getAttribute('data-scene');
+                    console.log('🎭 Updated currentScene from DOM context:', currentScene);
+                } else {
+                    console.log('🔍 DEBUG: No scene container found, trying fallback methods...');
                     
-                    // First and last lines use 'selected'; middle lines use 'range-selected'
-                    if (i === startIndex || i === endIndex) {
-                        lineEl.classList.add('selected');
+                    // Fallback: try to determine scene from the current loaded content
+                    const readerElement = document.getElementById('reader');
+                    console.log('🔍 DEBUG: Found readerElement:', readerElement);
+                    
+                    if (readerElement) {
+                        const sceneTitle = readerElement.querySelector('.scene-title');
+                        console.log('🔍 DEBUG: Found sceneTitle:', sceneTitle);
+                        
+                        if (sceneTitle) {
+                            currentScene = sceneTitle.textContent.trim();
+                            console.log('🎭 Updated currentScene from scene title:', currentScene);
+                        } else {
+                            console.log('🔍 DEBUG: No scene title found');
+                        }
                     } else {
-                        lineEl.classList.add('range-selected');
+                        console.log('🔍 DEBUG: No reader element found');
                     }
                     
-                    newSelectedLines.push(lineEl.textContent.trim());
+                    // Additional fallback: check if we have a current scene from navigation
+                    if (!currentScene) {
+                        console.log('🔍 DEBUG: No scene found, checking navigation...');
+                        const activeNavLink = document.querySelector('.nav-list a.active');
+                        if (activeNavLink) {
+                            currentScene = activeNavLink.getAttribute('data-scene') || activeNavLink.textContent.trim();
+                            console.log('🎭 Updated currentScene from active nav link:', currentScene);
+                        }
+                    }
                 }
                 
-                selectedLines = newSelectedLines;
-                firstSelectedLine = startIndex;
+                console.log('🎭 FINAL currentScene value:', currentScene);
                 
-                console.log('✅ Updated selection range:', startIndex, 'to', endIndex, 'Selected lines:', selectedLines);
-            }
-            
-            // COMPLETE RESET: Reset analysis panel to exact initial state when selecting a new line
-            const analysisResult = document.getElementById('analysisResult');
-            const variorumResult = document.getElementById('variorumResult');
-            const variorumContent = document.getElementById('variorumContent');
-            const analysisPanel = document.getElementById('analysisPanel');
-            const criticsInfo = document.getElementById('criticsInfo');
-            const nvInfo = document.getElementById('nvInfo');
-            const analysisContent = document.getElementById('analysisContent');
-            const analysisInstruction = document.getElementById('analysisInstruction');
-            const analyzeButton = document.getElementById('analyzeButton');
-            const followUpSection = document.getElementById('followUpSection');
-            const mediaSection = document.getElementById('mediaSection');
-            const researchSection = document.getElementById('researchSection');
-            const variorumSection = document.getElementById('variorumSection');
-            const metaElement = document.querySelector('.meta');
-            const analysisTitleElement = document.querySelector('.analysis-title');
-            
-            // CRITICAL FIX: Clear analysisInProgress flag to allow new analysis
-            analysisInProgress = false;
-            
-            // Clear all analysis content
-            if (analysisResult) analysisResult.innerHTML = '';
-            if (variorumResult) variorumResult.innerHTML = '';
-            
-            // CRITICAL FIX: Reset variorumContent to default message for Full Fathom Five
-            if (variorumContent) {
-                if (currentTab === 'fullfathomfive') {
-                    variorumContent.innerHTML = 'Traditional commentary will appear here for Full Fathom Five mode.';
-                    // Also reset variorumResult
-                    if (variorumResult) variorumResult.innerHTML = '';
+                // EMERGENCY FALLBACK: If we still don't have a scene, try to get it from the URL
+                if (!currentScene || currentScene === '') {
+                    console.log('🚨 EMERGENCY: No scene detected, using fallback...');
+                    
+                    // Try to get scene from URL hash
+                    const hash = window.location.hash;
+                    if (hash && hash.includes('scene')) {
+                        currentScene = hash.replace('#', '').replace('scene-', '');
+                        console.log('🎭 Set currentScene from URL hash:', currentScene);
+                    } else {
+                        console.log('🎭 No scene detected, leaving currentScene empty');
+                    }
+                }
+                
+                // If the user clicks on an already-selected line, treat it as a toggle to clear the selection
+                if (element.classList.contains('selected') || element.classList.contains('range-selected')) {
+                    clearSelection();
+                    console.log('✅ Selection cleared by clicking an already-selected line');
+                    return;
+                }
+                
+                // RESET analysis panel BEFORE starting new selection
+                const analysisResult = document.getElementById('analysisResult');
+                const variorumResult = document.getElementById('variorumResult');
+                const variorumContent = document.getElementById('variorumContent');
+                const analysisPanel = document.getElementById('analysisPanel');
+                const criticsInfo = document.getElementById('criticsInfo');
+                const nvInfo = document.getElementById('nvInfo');
+                const analysisContent = document.getElementById('analysisContent');
+                const analysisInstruction = document.getElementById('analysisInstruction');
+                const analyzeButton = document.getElementById('analyzeButton');
+                const followUpSection = document.getElementById('followUpSection');
+                const mediaSection = document.getElementById('mediaSection');
+                const researchSection = document.getElementById('researchSection');
+                const variorumSection = document.getElementById('variorumSection');
+                const metaElement = document.querySelector('.meta');
+                const analysisTitleElement = document.querySelector('.analysis-title');
+                
+                // CRITICAL FIX: Clear analysisInProgress flag to allow new analysis
+                analysisInProgress = false;
+                
+                // IMMEDIATELY clear all analysis content
+                if (analysisResult) analysisResult.innerHTML = '';
+                if (variorumResult) variorumResult.innerHTML = '';
+                if (variorumContent) variorumContent.innerHTML = '';
+                
+                // ALWAYS hide variorum section when starting new selection
+                if (variorumSection) {
+                    variorumSection.style.display = 'none';
+                    variorumSection.style.visibility = 'hidden';
+                    variorumSection.style.height = '0';
+                    variorumSection.style.margin = '0';
+                    variorumSection.style.padding = '0';
+                    variorumSection.style.overflow = 'hidden';
+                }
+                
+                // Reset to initial state
+                if (analysisContent) analysisContent.innerHTML = '<p>Highlight text in the play to get AI-powered analysis.</p>';
+                if (analysisInstruction) analysisInstruction.textContent = 'Select text in the play to get AI-powered analysis.';
+                if (analyzeButton) analyzeButton.style.display = 'none';
+                
+                // Hide follow-up, media, and research sections
+                if (followUpSection) {
+                    followUpSection.style.display = 'none';
+                    followUpSection.innerHTML = '<h3>Ask a follow-up question</h3><div class="follow-up-input"><input type="text" placeholder="Ask a follow-up question..." id="followUpQuestion"><button class="ask-btn" onclick="askFollowUp()">Ask</button></div>';
+                }
+                if (mediaSection) {
+                    mediaSection.style.display = 'none';
+                    mediaSection.innerHTML = '<h3>Media</h3><div class="media-actions"><button class="link-btn youtube" onclick="searchYouTube(\'scene\')">Search YouTube for this scene</button></div>';
+                }
+                if (researchSection) {
+                    researchSection.style.display = 'none';
+                    researchSection.innerHTML = '<h3>Research</h3><div class="research-actions"><button class="link-btn jstor" onclick="searchJSTOR(\'passage\')">Search JSTOR for this passage/scene</button><button class="link-btn scholar" onclick="searchGoogleScholar()">Google Scholar</button><button class="link-btn ise" onclick="openInternetShakespeare()">Internet Shakespeare Editions</button></div>';
+                }
+                
+                // Hide any open info panels
+                if (criticsInfo) criticsInfo.style.display = 'none';
+                if (nvInfo) nvInfo.style.display = 'none';
+                if (metaElement) metaElement.style.display = 'none';
+                
+                // Reset analysis title
+                if (analysisTitleElement) analysisTitleElement.textContent = 'Basic Analysis';
+                
+                // Scroll analysis panel to top
+                if (analysisPanel) analysisPanel.scrollTop = 0;
+                
+                // NOW process the new selection
+                const isStartingNewSelection = firstSelectedLine === null || selectedLines.length === 0;
+                
+                if (isStartingNewSelection) {
+                    // This click defines the first line in the selection
+                    element.classList.add('selected');
+                    selectedLines = [text.trim()];
+                    firstSelectedLine = lineIndex;
+                    
+                    console.log('✅ Started new selection at line:', firstSelectedLine, 'Selected lines:', selectedLines);
                 } else {
-                    variorumContent.innerHTML = '';
-                    if (variorumResult) variorumResult.innerHTML = '';
+                    // We already have a starting line; this click defines a range end
+                    const startIndex = Math.min(firstSelectedLine, lineIndex);
+                    const endIndex = Math.max(firstSelectedLine, lineIndex);
+                    const count = endIndex - startIndex + 1;
+                    
+                    // If selection is more than 3 lines, auto-reset and select just this new line
+                    if (count > 3) {
+                        console.log('ℹ️ Selection exceeds 3 lines, auto-resetting to just this line');
+                        // Clear all previous selections
+                        document.querySelectorAll('.play-line').forEach(line => {
+                            line.classList.remove('selected', 'range-selected');
+                        });
+                        // Start fresh with just the clicked line
+                        element.classList.add('selected');
+                        selectedLines = [text.trim()];
+                        firstSelectedLine = lineIndex;
+                        console.log('✅ Auto-reset: New selection at line:', lineIndex);
+                    } else {
+                        // Apply selection across the range and rebuild selectedLines
+                        const newSelectedLines = [];
+                        for (let i = startIndex; i <= endIndex; i++) {
+                            const lineEl = document.querySelector(`.play-line[data-line-index="${i}"]`);
+                            if (!lineEl) continue;
+                            
+                            // First and last lines use 'selected'; middle lines use 'range-selected'
+                            if (i === startIndex || i === endIndex) {
+                                lineEl.classList.add('selected');
+                            } else {
+                                lineEl.classList.add('range-selected');
+                            }
+                            
+                            newSelectedLines.push(lineEl.textContent.trim());
+                        }
+                        
+                        selectedLines = newSelectedLines;
+                        firstSelectedLine = startIndex;
+                        
+                        console.log('✅ Updated selection range:', startIndex, 'to', endIndex, 'Selected lines:', selectedLines);
+                    }
+                }
+                
+                // Final state update
+                console.log('✅ Line selection state:', selectedLines);
+                console.log('🎭 Current scene after selection:', currentScene);
+                updateAnalysisPanel();
+                
+            } catch (error) {
+                console.error('❌ Error in selectLine function:', error);
+                console.error('Stack trace:', error.stack);
+                // Reset state to prevent cascading errors
+                clearSelection();
+                selectedLines = [];
+                firstSelectedLine = null;
+                hoveredLineIndex = null;
+                analysisInProgress = false;
+                // Show user-friendly error message
+                const analysisContent = document.getElementById('analysisContent');
+                if (analysisContent) {
+                    analysisContent.innerHTML = '❌ An error occurred while selecting text. Please try again.';
                 }
             }
-            
-            // ALWAYS hide variorum section when selecting new line (will show again only for variorum plays after analysis)
-            if (variorumSection) {
-                variorumSection.style.display = 'none';
-                variorumSection.style.visibility = 'hidden';
-                variorumSection.style.height = '0';
-                variorumSection.style.margin = '0';
-                variorumSection.style.padding = '0';
-                variorumSection.style.overflow = 'hidden';
-                console.log('✅ Hidden variorum section for new line selection');
-            }
-            
-            // Reset to initial state - exactly as when website first loads
-            if (analysisContent) analysisContent.innerHTML = '<p>Highlight text in the play to get AI-powered analysis.</p>';
-            if (analysisInstruction) analysisInstruction.textContent = 'Select text in the play to get AI-powered analysis.';
-            
-            // Hide analyze button (will be shown by updateAnalysisPanel if line is selected)
-            if (analyzeButton) analyzeButton.style.display = 'none';
-            
-            // Hide follow-up, media, and research sections
-            if (followUpSection) {
-                followUpSection.style.display = 'none';
-                followUpSection.innerHTML = '<h3>Ask a follow-up question</h3><div class="follow-up-input"><input type="text" placeholder="Ask a follow-up question..." id="followUpQuestion"><button class="ask-btn" onclick="askFollowUp()">Ask</button></div>';
-            }
-            if (mediaSection) {
-                mediaSection.style.display = 'none';
-                mediaSection.innerHTML = '<h3>Media</h3><div class="media-actions"><button class="link-btn youtube" onclick="searchYouTube(\'scene\')">Search YouTube for this scene</button></div>';
-            }
-            if (researchSection) {
-                researchSection.style.display = 'none';
-                researchSection.innerHTML = '<h3>Research</h3><div class="research-actions"><button class="link-btn jstor" onclick="searchJSTOR(\'passage\')">Search JSTOR for this passage/scene</button><button class="link-btn scholar" onclick="searchGoogleScholar()">Google Scholar</button><button class="link-btn ise" onclick="openInternetShakespeare()">Internet Shakespeare Editions</button></div>';
-            }
-            
-            // Hide any open info panels
-            if (criticsInfo) criticsInfo.style.display = 'none';
-            if (nvInfo) nvInfo.style.display = 'none';
-            
-            // Reset meta element
-            if (metaElement) metaElement.style.display = 'none';
-            
-            // Reset analysis title to Basic Analysis
-            if (analysisTitleElement) analysisTitleElement.textContent = 'Basic Analysis';
-            
-            // Scroll the analysis panel to the top
-            if (analysisPanel) {
-                analysisPanel.scrollTop = 0;
-            }
-            
-            // DON'T rebuild HTML - just clear content to preserve event handlers
-            // At this point, `selectedLines` and `firstSelectedLine` have already been
-            // correctly set based on whether the user selected a single line or a
-            // range of up to three consecutive lines. Do not override that state here.
-            console.log('✅ Line selection state:', selectedLines);
-            console.log('🎭 Current scene after selection:', currentScene);
-            updateAnalysisPanel();
         }
         
         function resetAnalysisPanelForNewPlay() {
@@ -15179,8 +15664,321 @@
                     
                     <div class="critics-list" style="max-height: 400px; overflow-y: auto; background: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb;">
                         <div style="font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6;">
-                            <p>"E. A. Abbott, Shakespearean Grammar, London, 1870"</p>
-                            <p>"Prof. Allen, MS notes on Macbeth, 1867"</p>
+                            <p>Antidote Against Melancholy (Collier's reprint), 1661</p>
+                            <p>W. Archer and R. W. Lowe, Macbeth on the Stage (English Illustrated Magazine, December), 1888</p>
+                            <p>W. R. Arrowsmith, Shakespeare's Editors and Commentators, London, 1865</p>
+                            <p>C. Badham, Text of Shakespeare (Cambridge Essays), 1856</p>
+                            <p>Criticism Applied to Shakespeare, 1846</p>
+                            <p>S. Bailey, The Received Text of Shakespeare, 1862</p>
+                            <p>J. Baret, An Alvearie, 1580</p>
+                            <p>C. Bathurst, Differences of Shakespeare's Versification, 1857</p>
+                            <p>T. S. Baynes, Shakespeare Studies and other Essays, 1896</p>
+                            <p>Beaumont and Fletcher, Works (ed. Dyce), 1843</p>
+                            <p>A. Becket, Shakespeare Himself Again, 1815</p>
+                            <p>S. Beisley, Shakespeare's Garden, 1864</p>
+                            <p>H. Beckhaus, Shakespeare's Macbeth und die Schillersche Bearbeitung, Ostrovo, 1889</p>
+                            <p>J. W. O. Benda, Shakespeare's Dramatische Werke, Leipzig, 1825</p>
+                            <p>A. Beljame, Macbeth, Paris, 1897</p>
+                            <p>G. J. Bell, Notes on Mrs. Siddons's Lady Macbeth (Nineteenth Century, February), 1878</p>
+                            <p>Edwin Booth, Macbeth, Prompt-book (ed. W. Winter), New York, 1878</p>
+                            <p>W. J. Birch, Inquiry into the Philosophy and Religion of Shakespeare, London, 1848</p>
+                            <p>J. B. Bittinger, Transactions American Philological Association, 1876</p>
+                            <p>K. Blind, Shakespeare's Schicksalsschwestern. Die Gegenwart, 26 April, 1879</p>
+                            <p>J. Boaden, Life of J. P. Kemble, 1825</p>
+                            <p>K. Börner, Ueber Shakespeare's Macbeth, Lüdenscheid, 1870</p>
+                            <p>J. T. Brockett, Glossary of North Country Words, Newcastle, 1829</p>
+                            <p>C. A. Brown, Shakespeare's Autobiographical Poems, London, 1838</p>
+                            <p>J. C. Bucknill, Mad Folk of Shakespeare, 1867</p>
+                            <p>J. Bulloch, Studies on Text of Shakespeare, 1878</p>
+                            <p>G. N. Bürger, Macbeth, Göttingen, 1784</p>
+                            <p>N. Butler, Miscellanies, Louisville, 1880</p>
+                            <p>R. Böttner, Erläuterungen zu Shakespeare's Macbeth, Leipzig, n. d.</p>
+                            <p>T. Campbell, Life of Mrs. Siddons, London, 1834</p>
+                            <p>Lord Campbell, Legal Acquirements of Shakespeare, New York, 1859</p>
+                            <p>E. Capell, Notes, etc., London, 1779</p>
+                            <p>Miss C. Carmichael, Academy, 8 February, 1879</p>
+                            <p>J. C. Carr, Lord and Lady Macbeth, 1897</p>
+                            <p>W. Carr, Dialect of Craven, 1828</p>
+                            <p>R. Carruthers and W. Chambers, Works of Shakespeare, 1861</p>
+                            <p>R. Cartwright, New Readings in Shakespeare, 1866</p>
+                            <p>G. Chalmers, Supplemental Apology, etc., 1799</p>
+                            <p>Caledonia, 1807</p>
+                            <p>W. and R. Chambers, Book of Days, 1863</p>
+                            <p>V. E. P. Chasles, Études sur Shakespeare, Paris, 1851</p>
+                            <p>Chevalier de Chatelain, Macbeth, traduite en Vers Français, London, 1862</p>
+                            <p>Lord John Chedworth, Notes on some of the Obscure Passages of Shakespeare's Plays, London, 1805</p>
+                            <p>C. Cowden-Clarke, Shakespeare Characters, etc., 1863</p>
+                            <p>P. W. Clayden, Macbeth and Lady Macbeth (Fortnightly Review, 1 August), 1867</p>
+                            <p>J. Coleman, Gentleman's Magazine, March, 1889</p>
+                            <p>S. T. Coleridge, Notes and Lectures upon Shakespeare, 1849</p>
+                            <p>Seven Lectures on Shakespeare and Milton (ed. Collier), 1856</p>
+                            <p>J. P. Collier, Annals of the Stage, 1831</p>
+                            <p>New Particulars, etc., 1836</p>
+                            <p>Notes and Emendations, 1853</p>
+                            <p>H. Corson, Chaucer's Legende of Goode Women, Boston, 1864</p>
+                            <p>Introduction to Shakespeare, 1889</p>
+                            <p>R. Cotgrave, Dictionarie of the French and English Tongues, London, 1632</p>
+                            <p>G. L. Craik, English of Shakespeare (ed. Rolfe), Boston, 1872</p>
+                            <p>J. H. Crawford, Good Words, June, 1893</p>
+                            <p>W. S. Dalgleish, Macbeth, London, 1869</p>
+                            <p>P. A. Daniel, Notes and Conjectural Emendations, 1870</p>
+                            <p>J. Darmesteter, Macbeth, Paris, 1881</p>
+                            <p>T. Davies, Dramatic Miscellanies, London, 1784</p>
+                            <p>N. Delius, Macbeth, Bremen, 1841</p>
+                            <p>Die Tieck'sche Shakspere-kritik, Elberfeld, 1846</p>
+                            <p>Shakespeare-Lexikon, 1852</p>
+                            <p>Shakespeare's Dramatische Werke (ed. ii.), 1869</p>
+                            <p>T. De Quincey, Miscellaneous Essays, Boston, 1851</p>
+                            <p>E. Dowden, Shakespeare, His Mind and Art, London, 1875</p>
+                            <p>G. D'Hugues, Macbeth, Paris, 1883</p>
+                            <p>F. Douce, Illustrations of Shakespeare, London, 1807</p>
+                            <p>N. Drake, Shakespeare and His Times, 1817</p>
+                            <p>Memorials of Shakespeare, 1828</p>
+                            <p>P. Duport, Essais Littéraire sur Shakespeare, Paris, 1828</p>
+                            <p>A. Dyce, Remarks on Collier's and Knight's Editions, London, 1844</p>
+                            <p>Few Notes, etc., 1853</p>
+                            <p>Strictures on Collier's New Edition, 1859</p>
+                            <p>J. F. T. Dyer, Folk-Lore of Shakespeare, New York, 1884</p>
+                            <p>T. R. Eaton, Shakespeare and the Bible, London, 1858</p>
+                            <p>T. Edwards, Canons of Criticism (Seventh Edition), 1765</p>
+                            <p>A. J. Ellis, Early English Pronunciation, etc., 1869</p>
+                            <p>L. C. Elson, Shakespeare in Music, 1901</p>
+                            <p>H. Elwin, Shakespeare Restored, Norwich, 1853</p>
+                            <p>K. Elze, Notes on Elizabethan Dramatists, Halle, 1889</p>
+                            <p>J. J. Eschenburg, Shakespeare's Schauspiele, Strassburg, 1776</p>
+                            <p>R. Farmer, Essay on the Learning of Shakespeare, London, 1767</p>
+                            <p>J. C. Fick, Macbeth, with German Notes, Erlangen, 1812</p>
+                            <p>H. Fietkau, Schiller's Macbeth, Königsberg, 1897</p>
+                            <p>P. Fitzgerald, Life of Garrick, London, 1868</p>
+                            <p>J. L. F. Flathe, Shakespeare in seiner Wirklichkeit, Leipzig, 1863</p>
+                            <p>F. G. Fleay, Shakespeare Manual, London, 1876</p>
+                            <p>F. G. Fleay, Life and Work of Shakespeare, London, 1886</p>
+                            <p>G. Fletcher, Studies of Shakespeare, 1847</p>
+                            <p>R. Fletcher, Witches Pharmacopoeia, Baltimore, 1896</p>
+                            <p>R. Forby, Vocabulary of East Anglia, London, 1830</p>
+                            <p>J. Florio, A World of Words, 1598</p>
+                            <p>J. Ford, Works (ed. Gifford), 1869</p>
+                            <p>E. Forsyth, Some Notes on Shakespeare's Character and Writings, 1867</p>
+                            <p>C. L. Francke, Macbeth sprachlich und sachlich erläutert, Braunschweig, 1833</p>
+                            <p>G. R. French, Shakespeareana Genealogica, London, 1869</p>
+                            <p>F. Fritzart, War Shakespeare ein Christ ?, Heidelberg, 1832</p>
+                            <p>F. Friesen, Shakespeare von Gervinus, Leipzig, 1869</p>
+                            <p>F. J. Furnivall, Introduction to Leopold Shakespeare, London, 1877</p>
+                            <p>R. Genée, Geschichte der Shakespear'schen Dramen in Deutschland, Leipzig, 1870</p>
+                            <p>G. G. Gervinus, Shakespeare, 1862</p>
+                            <p>H. Giles, Human Life in Shakespeare, Boston, 1868</p>
+                            <p>A. H. Gilkes, Electra and Macbeth, London, 1880</p>
+                            <p>St. M. Girardin, Cours de Litterature Dramatique, Paris, 1845</p>
+                            <p>T. R. Gould, The Tragedian, London, 1868</p>
+                            <p>G. Gould, Corrigenda, etc., 1884</p>
+                            <p>H. Green, Shakespeare and the Emblem Writers, 1870</p>
+                            <p>Z. Grey, Critical, Historical, and Explanatory Notes on Shakespeare, 1754</p>
+                            <p>Mrs Griffiths, Morality of Shakespeare's Dramas, 1775</p>
+                            <p>Sir G. Grove, Dictionary of Music, 1890</p>
+                            <p>E. Guest, History of English Rhythms, 1838</p>
+                            <p>M. Guizot, Œuvres complètes de Shakespeare (ed. vii.), Paris, 1821</p>
+                            <p>Shakespeare et son Temps (Nouvelle Edition), 1869</p>
+                            <p>W. E. Hales, Notes and Essays, London, 1884</p>
+                            <p>H. Hallam, Introduction to the Literature of Europe, 1855</p>
+                            <p>Dr R. P. Harris, Tolerance in Pregnant Women, Philadelphia, 1892</p>
+                            <p>J. E. Harting, Ornithology of Shakespeare, London, 1871</p>
+                            <p>W. Hazlitt, Characters of Shakespeare's Plays, 1817</p>
+                            <p>F. F. Heard, Legal Acquirements of Shakespeare, Boston, 1865</p>
+                            <p>Shakespeare a Lawyer, 1883</p>
+                            <p>B. Heath, A Revisal of Shakespeare's Text, London, 1765</p>
+                            <p>C. Hebler, Aufsätze über Shakespeare, Bern, 1865</p>
+                            <p>H. Heine, Shakespeare's Mädchen und Frauen, Philadelphia, 1839</p>
+                            <p>C. Heinichen, Macbeth, Bonn, 1841</p>
+                            <p>J. Henry, Æneidea, or Critical, Exegetical, and Æsthetical Remarks on the Æneis, Dublin, 1881</p>
+                            <p>L. Herrig, Macbeth, Berlin, 1853</p>
+                            <p>C. C. Heuse, Vorträge über Shakespeare, etc., Halberstadt, 1856</p>
+                            <p>J. A. Heraud, Shakespeare's Inner Life, London, 1865</p>
+                            <p>R. H. Hiecke, Macbeth, erläutert und gewürdigt, Merseburg, 1846</p>
+                            <p>L. Hilsenberg, Shakespeare's Dramatische Werke, Leipzig, 1836</p>
+                            <p>E. Hills, Notes & Queries, 2 October, 1869</p>
+                            <p>C. W. Hodell, Poet Lore, vol. xiii, No. 2, 1901</p>
+                            <p>Holinshed, Chronicles, London, 1587</p>
+                            <p>C. Hollyband, French Dictionary, 1593</p>
+                            <p>F. Hörn, Shakespeare's Schauspiele Erlaütert, Leipzig, 1823</p>
+                            <p>H. N. Hudson, Shakespeare: His Life, Art, and Character, Boston, 1872</p>
+                            <p>François-Victor Hugo, Œuvres complètes de Shakespeare, Paris, 1859</p>
+                            <p>V. Hugo, William Shakespeare, 1864</p>
+                            <p>E. Hülseman, Shakespeare, sein Geist und seine Werke, Leipzig, 1856</p>
+                            <p>Joseph Hunter, New Illustrations of Shakespeare, London, 1853</p>
+                            <p>Few Words, etc., 1853</p>
+                            <p>Rev. John Hunter, Macbeth, 1869</p>
+                            <p>C. M. Ingleby, The Shakespeare Fabrications, 1859</p>
+                            <p>Henry Irving, Nineteenth Century, April, 1877</p>
+                            <p>Macbeth, as produced at the Lyceum, 1889</p>
+                            <p>Character of Macbeth (Lecture delivered at Owens College, Manchester, 11 December), 1894</p>
+                            <p>Z. Jackson, Shakespeare's Genius Justified, 1819</p>
+                            <p>A. Jacob, Macbeth, Berlin, 1848</p>
+                            <p>Mrs Jameson, Characteristics of Women, London, 1833</p>
+                            <p>M. Jastrow, Jr., Poet Lore, vol. ii., 1890</p>
+                            <p>J. Jekeli, Die Gesetze der Tragödie nach gewiesen an Shakespeare's Macbeth, Hermanstadt, 1873</p>
+                            <p>F. Jencken, Macbeth, Mainz, 1855</p>
+                            <p>S. Jervis, Proposed Emendations, etc., London, 1860</p>
+                            <p>S. Johnson, Miscellaneous Observations on Macbeth (Works, ed. 1825), 1745</p>
+                            <p>B. Jonson, Works (ed. Gifford), 1816</p>
+                            <p>I. M. Jost, Erklärendes Wörterbuch zu Shakespeare's Plays, Berlin, 1840</p>
+                            <p>J. J. Jusserand, Shakespeare in France, London, 1899</p>
+                            <p>F. Kaim, Shakespeare's Macbeth, Stuttgart, 1888</p>
+                            <p>P. Kaufmann, Shakespeare's Dramatische Werke, Berlin, 1830</p>
+                            <p>T. Keightley, Shakespeare Expositor, London, 1867</p>
+                            <p>Keller und Rapp, Shakespeare's Dramatische Werke, Stuttgart, 1843</p>
+                            <p>Mrs F. A. Kemble, Some Notes upon the Characters in Macbeth (Macmillan's Magazine, May), 1867</p>
+                            <p>Lady Macbeth (Macmillan's Magazine, May), 1867</p>
+                            <p>J. P. Kemble, Macbeth, as represented on opening Drury Lane Theatre, 21st of April, London, 1786</p>
+                            <p>Macbeth Reconsidered, 1786</p>
+                            <p>Macbeth and Richard the Third, 1817</p>
+                            <p>Kemp's nine daies wonder (Dyce's reprint), 1600</p>
+                            <p>B. G. Kinnear, Cruce's Shakespeariana, 1883</p>
+                            <p>J. S. Knowles, Lectures on Dramatic Literature, 1843</p>
+                            <p>E. Kölbing, Byron und Shakespeare's Macbeth (Englische Studien, xix, 2), 1894</p>
+                            <p>R. Koppel, Shakespeare-Studien, Berlin, 1896</p>
+                            <p>J. Körner, Shakespeare's Dramatische Werke, Wien, 1836</p>
+                            <p>F. Kreyssig, Vorlesungen über Shakespeare, Berlin, 1862</p>
+                            <p>Shakespeare-Fragen, 1871</p>
+                            <p>K. Lachmann, Macbeth, Berlin, 1829</p>
+                            <p>A. Lacroix, Histoire de l' Influence de Shakespeare sur le Théâtre Français, Bruxelles, 1856</p>
+                            <p>A. de Lamartine, Shakespeare et son Œuvres, Paris, 1865</p>
+                            <p>C. Lamb, Dramatic Poets (ed. Bohn, 1854), London, 1808</p>
+                            <p>R. J. Lane, Charles Kemble's Shakspere Readings, 1870</p>
+                            <p>G. Langbaine, English Dramatic Poets, Oxford, 1691</p>
+                            <p>B. Laroche, Œuvres complètes de Shakespeare (ed. v.), Paris, 1842</p>
+                            <p>S. Lee, Life of William Shakespeare, London, 1898</p>
+                            <p>W. Leighton, Robinson's Epitome of Literature, 15 April, 1879</p>
+                            <p>T. Lennig, Macbeth (Penn Monthly, May), 1870</p>
+                            <p>F. A. Leo, Shakespeare's Frauen-Ideale, Halle, 1868</p>
+                            <p>Macbeth, 1871</p>
+                            <p>M. F. Libby, Some New Notes on Macbeth, Toronto, 1893</p>
+                            <p>W. W. Lloyd, Essays on Shakespeare, London, 1858</p>
+                            <p>T. R. Lounsbury, Shakespeare as a Dramatic Artist, New York, 1901</p>
+                            <p>O. Ludwig, Shakespeare-Studien, Leipzig, 1872</p>
+                            <p>G. MacDonald, A Disk of Orts, London, 1895</p>
+                            <p>W. Macready, Reminiscences (ed. F. Pollock), 1875</p>
+                            <p>W. Maginn, Shakespeare Papers, 1860</p>
+                            <p>Lady Martin, Some of Shakespeare's Female Characters, Edinburgh, 1891</p>
+                            <p>J. M. Mason, Comments on the Last Edition of Shakespeare, London, 1785</p>
+                            <p>Comments on the Plays of Beaumont & Fletcher, 1798</p>
+                            <p>Comments on the Several Editions of Shakespeare, 1807</p>
+                            <p>P. Massinger, Works (ed. Gifford), 1805</p>
+                            <p>G. Massey, Secret Drama of Shakespeare's Sonnets Unfolded, 1872</p>
+                            <p>Ad. Meyer, Shakespeare's Verletzung der historischen und natürlichen Wahrheit, Schwerm, 1863</p>
+                            <p>E. Meyer, Shakespeare's Dramatische Werke, Hamburg, 1825</p>
+                            <p>A. Mézières, Shakespeare, ses Œuvres et ses Critiques, Paris, 1860</p>
+                            <p>F. Michel, Œuvres complètes de Shakespeare. Précédée de la vie de Shakespeare par (Thomas Campbell), 1855</p>
+                            <p>T. Middleton, Works (ed. Dyce), London, 1843</p>
+                            <p>The Witch, 1778</p>
+                            <p>C. Mitchell, Essay on the Character of Macbeth (A Reply to Fletcher), 1846</p>
+                            <p>J. Mitford, Cursory Notes, etc., 1856</p>
+                            <p>M. Max Moltke, Shakespeare's Dramatische Werke, Leipzig, n. d.</p>
+                            <p>J. P. Morris, Glossary of the Words and Phrases of Furness, London, 1869</p>
+                            <p>R. G. Moulton, Shakespeare as a Dramatic Artist, Oxford, 1893</p>
+                            <p>J. Moyes, Medicine in Shakespeare, Glasgow, 1896</p>
+                            <p>M. Mull, Macbeth, London, 1889</p>
+                            <p>R. Nares, Glossary (ed. Halliwell and Wright), 1888</p>
+                            <p>G. Neilson, Scottish Antiquary, October, 1897</p>
+                            <p>New Exegesis of Shakespeare, 1859</p>
+                            <p>New Shakespeare Society (Transactions), 1877-9</p>
+                            <p>J. Nichols, Literary Illustrations, etc., 1817</p>
+                            <p>Notes on Shakespeare, 1861</p>
+                            <p>M. Leigh-Noel, Lady Macbeth, London, 1884</p>
+                            <p>Notes & Queries, 1873-1901</p>
+                            <p>J. G. Orger, Notes on Shakespeare's Histories and Tragedies, 1890</p>
+                            <p>E. Ortlepp, Shakespeare's Dramatische Werke, Stuttgart, 1838</p>
+                            <p>Oxon, Analysis and Study of the Characters in Macbeth, London, 1886</p>
+                            <p>A. P. Paton, Few Notes on Macbeth, Edinburgh, 1877</p>
+                            <p>R. Patterson, Natural History, etc., London, 1838</p>
+                            <p>F. Peck, Memoirs of Milton, 1740</p>
+                            <p>Sir Philip Perring, Hard Knots in Shakespeare (ed. ii.), 1886</p>
+                            <p>M. Petri, Zur Einführung Shakespeare's in die Christliche Familie, Hanover, 1868</p>
+                            <p>R. Pitcairn, Ancient Criminal Trials in Scotland, Edinborough, 1822</p>
+                            <p>J. R. Planché, British Costume, London, 1846</p>
+                            <p>K. L. Pörschke, Ueber Shakespeare's Macbeth, Königsberg, 1801</p>
+                            <p>Lin Rayne, Macbeth, Arranged for Dramatic Reading, 1868</p>
+                            <p>Henry Reed, English History and Poetry, London, 1869</p>
+                            <p>J. Rees, Life of Edwin Forrest, Philadelphia, 1874</p>
+                            <p>J. W. Redhouse, Academy, 24 July, 1886</p>
+                            <p>Miss A. Repplier, Fireside Sphinx, 1901</p>
+                            <p>J. E. Riddle, Illustrations of Aristotle from Shakespeare, Oxford, 1832</p>
+                            <p>W. Richardson, Essays on Shakespeare's Dramatic Characters, London, 1797</p>
+                            <p>J. Ritson, Remarks Critical and Illustrative, etc., 1783</p>
+                            <p>J. G. Ritter, Programm der Realschule zu Leer, 1871</p>
+                            <p>J. Forbes-Robertson, Macbeth, 1898</p>
+                            <p>A. Roffe, Handbook of Shakespearian Music, 1878</p>
+                            <p>E. Roffe, Essay Upon the Ghost Belief of Shakespeare, 1851</p>
+                            <p>Rossi and Corbould, Side-lights on Shakespeare, 1897</p>
+                            <p>H. T. Rötscher, Cyclus Dramatische Charaktere, Berlin, 1844</p>
+                            <p>Die Kunst der Dramatischen Darstellung, 1864</p>
+                            <p>Shakespeare in seinen höchsten Charakter-bilden, 1864</p>
+                            <p>Harry Rowe, Macbeth (Second Edition), London, 1799</p>
+                            <p>H. I. Ruggles, Method of Shakespeare, New York, 1870</p>
+                            <p>G. Rümelin, Shakespeare-Studien, Stuttgart, 1866</p>
+                            <p>W. L. Rushton, Shakespeare a Lawyer, London, 1858</p>
+                            <p>Shakespeare's Legal Maxims, 1859</p>
+                            <p>Shakespeare Illustrated by Old Authors, 1867</p>
+                            <p>Shakespeare's Testamentary Language, 1869</p>
+                            <p>Shakespeare Illustrated by the Lex Scripta, 1870</p>
+                            <p>W. B. Rye, England as seen by Foreigners, 1865</p>
+                            <p>G. Sarrazin, Shakespeare's Macbeth und Kyd's Spanische Tragödie (Englische Studien, xxi, 2), Berlin, 1895</p>
+                            <p>A. W. Schlegel, Lectures (trans. by J. Black), London, 1815</p>
+                            <p>Schlegel und Tieck, Shakespeare's Dramatische Werke, Berlin, 1833, 1855</p>
+                            <p>J. Schiller, Macbeth, Leipzig, 1801</p>
+                            <p>R. Scot, Discoverie of Witchcraft, 1584</p>
+                            <p>A. Schwartzkopf, Shakespeare in seiner bedeutung für die Kirche in unserer Tage, Halle, 1864</p>
+                            <p>Sir W. Scott, Miscellaneous Essays, Philadelphia, 1826</p>
+                            <p>E. H. Seymour, Remarks, Critical, Conjectural, and Explanatory, on Shakespeare, London, 1805</p>
+                            <p>Shakespeare Society's Publications, 1850</p>
+                            <p>K. Simrock, Shakespeare als Vermittler, etc., Hildburghausen, 1842</p>
+                            <p>Die Quellen des Shakespeare, 1870</p>
+                            <p>S. W. Singer, Text of Shakespeare Vindicated, London, 1853</p>
+                            <p>W. W. Skeat, Notes on English Etymology, Oxford, 1901</p>
+                            <p>A. Skottowe, Life of Shakespeare, London, 1824</p>
+                            <p>D. J. Snider, System of Shakespeare's Dramas, St. Louis, 1877</p>
+                            <p>T. A. Spalding, Elizabethan Demonology, London, 1880</p>
+                            <p>S. H. Spiker, Macbeth, Berlin, 1826</p>
+                            <p>C. W. Stearns, Shakespeare's Medical Knowledge, London, 1865</p>
+                            <p>Stephanie der Jüngere, Macbeth, Wien, 1773</p>
+                            <p>G. Stephens, Macbeth, Earl Siward, and Dundee, London, 1876</p>
+                            <p>H. P. Stokes, Chronological Order of Shakespeare's Plays, 1878</p>
+                            <p>W. W. Story, Excursions in Art and Letters, Edinburgh, 1891</p>
+                            <p>A. Symons, Studies in Two Literatures, London, 1897</p>
+                            <p>H. Taine, Litterature Anglaise, Paris, 1866</p>
+                            <p>E. Taunton, History of Jesuits in England, London, 1901</p>
+                            <p>L. Theobald, Shakespeare Restored, 1726</p>
+                            <p>R. M. Theobald, Shakespeare Studies in Baconian Light, 1901</p>
+                            <p>Moy Thomas, Athenæum, 14 April, 1877</p>
+                            <p>A. H. Tolman, Notes on Macbeth, Baltimore, 1896</p>
+                            <p>E. Topsell, History of Serpents, London, 1608</p>
+                            <p>C. Travers, Macbeth, Boulogne, 1844</p>
+                            <p>B. Tschischwitz, Shakespeare-Forschungen, Halle, 1868</p>
+                            <p>De Ornantibus Epithetis, etc., 1871</p>
+                            <p>T. Tyrwhitt, Observations and Conjectures upon some Passages of Shakespeare, London, 1766</p>
+                            <p>H. Ulrici, Shakespeare's dramatische Kunst (trans. by A. J. W. Morrison), 1846</p>
+                            <p>J. Upton, Critical Observations on Shakespeare, 1746</p>
+                            <p>B. A. P. Van Dam, William Shakespeare: Prosody and Text, 1899</p>
+                            <p>E. Vehse, Shakespeare als Protestant, etc., Hamburg, 1851</p>
+                            <p>A. F. Villemain, Études de Litterature Ancienne et Étrangere, Paris, 1849</p>
+                            <p>F. T. Vischer, Æsthetik, oder Wissenschaft des Schönen, Stuttgart, 1846</p>
+                            <p>Shakespeare-Vorträge, 1900</p>
+                            <p>N. Voss, Shakespeare's Dramatische Werke, Leipzig, 1810, 1829</p>
+                            <p>W. S. Walker, Shakespeare's Versification, London, 1854</p>
+                            <p>Critical Examination, etc., 1860</p>
+                            <p>J. Webster, Works (ed. Dyce), 1830</p>
+                            <p>H. Wellesley, Stray Notes on the Text of Shakespeare, 1865</p>
+                            <p>K. Werder, Vorlesungen über Shakespeare's Macbeth, Berlin, 1885</p>
+                            <p>W. Wetz, Die Inneren Beziehungen Zwischen Shakespeare's Macbeth und seinen Königsdramen (Englische Studien, xvi, 1), 1891</p>
+                            <p>T. Whately, Remarks on Some of the Characters of Shakespeare (Second Edition, 1808; Third Edition, edited by Archbishop Whately, 1839), Oxford, 1785</p>
+                            <p>R. G. White, Shakespeare's Scholar, New York, 1854</p>
+                            <p>Lady Gruch's Husband (The Galaxy, May), 1870</p>
+                            <p>Words and their Use, 1871</p>
+                            <p>Studies in Shakespeare, Boston, 1886</p>
+                            <p>W. Whiter, Specimen of a Commentary on Shakespeare, London, 1794</p>
+                            <p>J. Wilson, Dies Boreales (Blackwood's Magazine, November), 1849</p>
+                            <p>W. Winter, Life and Art of Edwin Booth, New York, 1893</p>
+                            <p>C. Wordsworth, Shakespeare's Knowledge and Use of the Bible, London, 1864</p>
+                            <p>'X', Courier, 25 April, Boston, 1857</p>
                             <p>"Macbeth, Paris, 1889"</p>
                             <p>"Variorum Edition of Macbeth, London, 1807"</p>
                             <p>"Ethics of Macbeth (Dublin University Magazine, March), 1865"</p>
