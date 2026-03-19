@@ -1,160 +1,97 @@
 import requests
 from bs4 import BeautifulSoup
 import json
-import re
 import time
+import os
 
 def extract_text_from_scene(act, scene):
-    """Extract text from a specific act and scene"""
-    url = f"https://shakespeare.mit.edu/cymbeline/cymbeline.{act}.{scene}.html"
+    """Extract all text (dialogue and stage directions) from a scene"""
+    url = f"https://shakespeare.mit.edu/macbeth/macbeth.{act}.{scene}.html"
     print(f"Fetching Act {act}, Scene {scene}...")
     
     try:
         response = requests.get(url, timeout=10)
+        if response.status_code == 404:
+            print(f"  Warning: Page not found for Act {act}, Scene {scene}")
+            return []
+            
         response.raise_for_status()
         soup = BeautifulSoup(response.content, 'html.parser')
         
-        lines = []
-        
         body = soup.find('body')
         if not body:
-            print(f"Warning: Could not find body for Act {act}, Scene {scene}")
-            return lines
-        
-        # Process elements in document order
-        # Character names are in <a name="speechX"><b>CHARACTER</b></a>
-        # Dialogue is in <blockquote> following character, with <a name="N">dialogue</a> tags
-        # Stage directions are in <blockquote><i>direction</i></blockquote>
-        
-        # Collect all elements with their positions
-        elements_with_pos = []
-        
-        # Find all speech links
-        all_speech_links = body.find_all('a', {'name': re.compile(r'^speech')})
-        for speech_link in all_speech_links:
-            bold = speech_link.find('b')
-            if bold:
-                char_name = bold.get_text(strip=True)
-                if char_name and char_name.isupper():
-                    # Find the following blockquote
-                    next_elem = speech_link.next_sibling
-                    found_blockquote = None
-                    
-                    while next_elem:
-                        if hasattr(next_elem, 'name'):
-                            if next_elem.name == 'blockquote':
-                                found_blockquote = next_elem
-                                break
-                            elif next_elem.name == 'a' and next_elem.get('name', '').startswith('speech'):
-                                break
-                        next_elem = getattr(next_elem, 'next_sibling', None)
-                    
-                    if not found_blockquote and speech_link.parent:
-                        next_parent_sib = speech_link.parent.next_sibling
-                        while next_parent_sib:
-                            if hasattr(next_parent_sib, 'name') and next_parent_sib.name == 'blockquote':
-                                found_blockquote = next_parent_sib
-                                break
-                            next_parent_sib = getattr(next_parent_sib, 'next_sibling', None)
-                    
-                    if found_blockquote:
-                        dialogue_lines = []
-                        for dialogue_a in found_blockquote.find_all('a'):
-                            dialogue_text = dialogue_a.get_text(strip=True)
-                            if dialogue_text and not dialogue_a.get('name', '').startswith('speech'):
-                                dialogue_lines.append(dialogue_text)
-                        
-                        if dialogue_lines:
-                            # Store with speech link position
-                            elements_with_pos.append(('speech', speech_link.sourceline or 0, char_name, dialogue_lines, found_blockquote))
-        
-        # Find all stage direction blockquotes
-        all_blockquotes = body.find_all('blockquote')
-        processed_blockquotes = {elem[4] for elem in elements_with_pos if len(elem) > 4}
-        
-        for blockquote in all_blockquotes:
-            if blockquote not in processed_blockquotes:
-                italic = blockquote.find('i')
-                if italic:
-                    stage_dir = italic.get_text(strip=True)
-                    if stage_dir and re.match(r'^(Enter|Exit|Exeunt|Re-enter|Flourish|Alarum|Aside)', stage_dir, re.IGNORECASE):
-                        elements_with_pos.append(('stage', blockquote.sourceline or 0, stage_dir, None, blockquote))
-        
-        # Sort by position in document
-        elements_with_pos.sort(key=lambda x: x[1])
-        
-        # Build lines list (without scene headings)
-        all_lines = []
-        for elem_type, pos, content, dialogue_lines, blockquote in elements_with_pos:
-            if elem_type == 'speech':
-                for dialogue in dialogue_lines:
-                    all_lines.append(f"{content}: {dialogue}")
-            elif elem_type == 'stage':
-                all_lines.append(content)
-        
-        # Group consecutive lines from the same speaker
-        grouped_lines = []
-        current_speaker = None
-        
-        for line in all_lines:
-            if not line or not line.strip():
-                continue
-                
-            # Check if it's a stage direction
-            if re.match(r'^(Enter|Exit|Exeunt|Re-enter|Flourish|Alarum|Aside)', line, re.IGNORECASE):
-                grouped_lines.append(line)
-                current_speaker = None
-            elif ':' in line:
-                # It's a character line
-                parts = line.split(':', 1)
-                if len(parts) == 2:
-                    speaker = parts[0].strip()
-                    dialogue = parts[1].strip()
-                    
-                    if speaker == current_speaker:
-                        # Same speaker, just add dialogue without name
-                        grouped_lines.append(dialogue)
-                    else:
-                        # New speaker
-                        grouped_lines.append(line)
-                        current_speaker = speaker
+            return []
+
+        scene_elements = []
+
+        # REMOVED recursive=False so it finds blockquotes even if they are hidden inside <p> tags
+        for element in body.find_all(['a', 'blockquote']):
+            
+            # 1. Handle Speaker Names
+            name_attr = element.get('name', '')
+            if element.name == 'a' and name_attr.startswith('speech'):
+                speaker_bold = element.find('b')
+                if speaker_bold:
+                    scene_elements.append({
+                        'type': 'speaker',
+                        'text': speaker_bold.get_text(strip=True)
+                    })
+            
+            # 2. Handle Dialogue and Stage Directions
+            elif element.name == 'blockquote':
+                # If it contains <i>, it's usually a stage direction
+                if element.find('i'):
+                    scene_elements.append({
+                        'type': 'stage',
+                        'text': element.get_text(strip=True)
+                    })
                 else:
-                    grouped_lines.append(line)
-                    current_speaker = None
-            else:
-                # Regular line
-                grouped_lines.append(line)
-                current_speaker = None
+                    # It's dialogue. Get all lines within the blockquote
+                    lines = list(element.stripped_strings)
+                    for line in lines:
+                        scene_elements.append({
+                            'type': 'line',
+                            'text': line
+                        })
+
+        # Format into the final list
+        final_lines = []
+        current_speaker = ""
         
-        return grouped_lines
+        for item in scene_elements:
+            if item['type'] == 'speaker':
+                current_speaker = item['text']
+            elif item['type'] == 'line':
+                if current_speaker:
+                    final_lines.append(f"{current_speaker}: {item['text']}")
+                    current_speaker = "" # Clear so we don't repeat the name on the next line
+                else:
+                    final_lines.append(item['text'])
+            elif item['type'] == 'stage':
+                final_lines.append(item['text'])
+                current_speaker = "" # Clear speaker after a stage direction
+
+        return final_lines
     
     except Exception as e:
-        print(f"Error fetching Act {act}, Scene {scene}: {e}")
-        import traceback
-        traceback.print_exc()
+        print(f"  Error fetching Act {act}, Scene {scene}: {e}")
         return []
 
 def extract_play_text():
-    """Extract all text from Cymbeline"""
+    """Extract all text from Macbeth"""
     all_scenes = {}
     
-    # Cymbeline structure:
-    # Act 1: 6 scenes
-    # Act 2: 5 scenes (scene 3 missing in some editions)
-    # Act 3: 7 scenes
-    # Act 4: 4 scenes
-    # Act 5: 5 scenes
-    
+    # Macbeth structure:
     scenes_structure = {
-        1: [1, 2, 3, 4, 5, 6],
-        2: [1, 2, 4, 5],  # Scene 3 might not exist
-        3: [1, 2, 3, 4, 5, 6, 7],
-        4: [1, 2, 3, 4],
-        5: [1, 2, 3, 4, 5]
+        1: 7, # Act 1: 7 scenes
+        2: 4, # Act 2: 4 scenes
+        3: 6, # Act 3: 6 scenes
+        4: 3, # Act 4: 3 scenes
+        5: 8  # Act 5: 8 scenes
     }
     
-    for act in range(1, 6):
-        for scene in scenes_structure[act]:
+    for act, num_scenes in scenes_structure.items():
+        for scene in range(1, num_scenes + 1):
             scene_key = f"ACT {act} SCENE {scene}"
             lines = extract_text_from_scene(act, scene)
             
@@ -174,41 +111,21 @@ def extract_play_text():
     return all_scenes
 
 def main():
-    print("Extracting Cymbeline from MIT Shakespeare website...")
+    print("Extracting Macbeth from MIT Shakespeare website...")
     print("=" * 60)
     
-    # Read existing file to preserve DRAMATIS PERSONAE
-    existing_file = "Public/Data/cymbeline.json"
-    existing_data = {}
+    output_dir = "Public/Data"
+    output_file = f"{output_dir}/macbeth.json"
     
-    try:
-        with open(existing_file, 'r', encoding='utf-8') as f:
-            existing_data = json.load(f)
-        print(f"Read existing file: {existing_file}")
-    except Exception as e:
-        print(f"Could not read existing file ({e}), creating new structure")
-        existing_data = {
-            "DRAMATIS PERSONAE": {
-                "1": {
-                    "play": "DRAMATIS PERSONAE\nCYMBELINE\n\nCAIUS LUCIUS\nFirst Brother\nFirst Captain\nFirst Gaoler\nFirst Gentleman\nFirst Lady\nFirst Lord\nFirst Senator\nFirst Tribune\nIn France\nPOSTHUMUS LEONATUS\nPosthumus Leonatus\nQUEEN\nSecond Brother\nSecond Captain\nSecond Gaoler\nSecond Gentleman\nSecond Lord\nSecond Senator\nSicilius Leonatus\n\nARVIRAGUS\nBELARIUS\nCLOTEN\nCORNELIUS\nCYMBELINE\nGUIDERIUS\nIACHIMO\nIMOGEN\nPHILARIO\nPISANIO",
-                    "notes": []
-                }
-            }
-        }
+    # Ensure the directory exists
+    os.makedirs(output_dir, exist_ok=True)
     
     # Extract all scenes
     all_scenes = extract_play_text()
     
-    # Combine with existing data
-    output_data = {
-        "DRAMATIS PERSONAE": existing_data.get("DRAMATIS PERSONAE", {})
-    }
-    output_data.update(all_scenes)
-    
-    # Write to file
-    output_file = "Public/Data/cymbeline.json"
+    # Write to file directly (no Dramatis Personae logic)
     with open(output_file, 'w', encoding='utf-8') as f:
-        json.dump(output_data, f, indent=2, ensure_ascii=False)
+        json.dump(all_scenes, f, indent=2, ensure_ascii=False)
     
     print("=" * 60)
     print(f"Extraction complete! Data saved to {output_file}")
@@ -220,8 +137,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-
-
-

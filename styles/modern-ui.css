@@ -785,7 +785,7 @@ body {
   height: 100%;
   background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(10px);
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   z-index: 1000;
@@ -794,9 +794,12 @@ body {
 .modal-content {
   background: var(--bg-secondary);
   border-radius: var(--radius-2xl);
-  padding: var(--space-6);
-  max-width: 500px;
-  width: 90%;
+  padding: 0;
+  max-width: 820px;
+  width: min(820px, 92vw);
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
   box-shadow: var(--shadow-xl);
   border: 1px solid var(--border-primary);
 }
@@ -818,6 +821,36 @@ body {
 
 .modal-body {
   color: var(--text-secondary);
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: var(--space-4) var(--space-6);
+  flex: 1 1 auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+/* Ensure critics modal always scrolls (single scroll container) */
+#criticsModal .modal-content {
+  height: 90vh;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#criticsModal .modal-body {
+  overflow-y: auto;
+  max-height: calc(90vh - 120px);
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+/* Critics list should be the reliable scroll container */
+#criticsModal .critics-list {
+  max-height: min(50vh, 420px) !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
 }
 
 /* Responsive Design */

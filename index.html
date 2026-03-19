@@ -443,7 +443,7 @@
             position: relative;
             top: 50%;
             transform: translateY(-50%);
-            max-height: 90vh;
+            max-height: 95vh;
             display: flex;
             flex-direction: column;
             animation: modalIn .18s ease-out;
@@ -478,7 +478,7 @@
         }
 
         .modal-body {
-            max-height: calc(90vh - 140px);
+            max-height: calc(95vh - 140px);
             overflow-y: auto;
             overflow-x: hidden;
             padding: var(--s-4) var(--s-5);
@@ -1143,10 +1143,11 @@
             margin: var(--s-4) 0 var(--s-2);
         }
 
+        /* Critics modal lists: avoid nested scroll boxes.
+           The modal body is the single scroll container. */
         .critics-list {
-            max-height: 60vh !important;
-            overflow-y: auto !important;
-            flex: 1;
+            max-height: none !important;
+            overflow: visible !important;
         }
 
         .about-footer {
@@ -1841,20 +1842,13 @@
             margin: 8px 0;
         }
         
-        @keyframes underlineReveal {
-            from { width: 0; opacity: 0; }
-            to { width: 100%; opacity: 1; }
-        }
-        
-        @keyframes glowExpand {
-            0% { box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 0px rgba(37, 99, 235, 0); }
-            50% { box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.411), 0 0 12px rgba(37, 99, 235, 0.3); }
-            100% { box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 4px 16px rgba(37, 99, 235, 0.25); }
-        }
-        
-        @keyframes shimmerSlide {
-            0% { background-position: -100% 0; }
-            100% { background-position: 100% 0; }
+        /* ===== Selection styling (high-contrast, clearly visible) ===== */
+        :root {
+            --sel-bg: #1f2937;
+            --sel-bg-strong: #111827;
+            --sel-border: #000000;
+            --sel-text: #ffffff;
+            --sel-hover: #f3f4f6;
         }
         
         .play-line {
@@ -1866,8 +1860,8 @@
             font-family: monospace;
             cursor: text;
             padding: 6px 12px;
-            border-radius: 2px;
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border-radius: 10px;
+            transition: background-color 180ms ease, box-shadow 180ms ease, transform 180ms ease, border-radius 180ms ease;
             user-select: text;
             position: relative;
             letter-spacing: 0.3px;
@@ -1876,52 +1870,110 @@
         .play-line::before {
             content: '';
             position: absolute;
-            bottom: 0;
             left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, #2563eb, #6366f1, #2563eb);
-            transition: width 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-            border-radius: 1px;
-            z-index: 1;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            border-radius: 3px 0 0 3px;
+            pointer-events: none;
+            opacity: 0;
+            background: var(--sel-border);
+            transition: opacity 180ms ease;
+        }
+
+        .play-line::after {
+            display: none;
+        }
+
+        .play-line .sel-bar {
+            display: none;
         }
         
         .play-line:hover {
-            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(99, 102, 241, 0.12), rgba(37, 99, 235, 0.08));
-            transform: translateX(2px);
-            animation: glowExpand 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            background: var(--sel-hover);
+            box-shadow: none;
         }
         
         .play-line:hover::before {
-            width: 100%;
-            animation: shimmerSlide 1s cubic-bezier(0.34, 1.56, 0.64, 1) infinite;
+            opacity: 0.5;
         }
         
         .play-line.selected {
-            background: linear-gradient(135deg, rgba(37, 99, 235, 0.12), rgba(99, 102, 241, 0.14), rgba(37, 99, 235, 0.1));
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 4px 16px rgba(37, 99, 235, 0.22);
-            color: inherit;
-            padding-bottom: 5px;
+            background: var(--sel-bg);
+            color: #ffffff !important;
+            box-shadow: 0 0 0 1px rgba(0,0,0,0.12);
             font-weight: 500;
+            border-radius: 6px;
+        }
+        .play-line.selected,
+        .play-line.selected * {
+            color: #ffffff !important;
         }
         
         .play-line.selected::before {
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, #2563eb, #6366f1, #2563eb);
+            opacity: 1;
+        }
+
+        .play-line.selected::after {
+            display: none;
         }
         
         .play-line.range-selected {
-            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(99, 102, 241, 0.12), rgba(37, 99, 235, 0.08));
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 3px 12px rgba(37, 99, 235, 0.18);
-            color: inherit;
-            padding-bottom: 5px;
+            background: var(--sel-bg);
+            color: #ffffff !important;
+            box-shadow: 0 0 0 1px rgba(0,0,0,0.12);
+            border-radius: 6px;
+        }
+        .play-line.range-selected,
+        .play-line.range-selected * {
+            color: #ffffff !important;
         }
         
         .play-line.range-selected::before {
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, #2563eb, #6366f1, #2563eb);
+            opacity: 1;
+        }
+
+        .play-line.range-selected::after {
+            display: none;
+        }
+
+        /* Make multi-line selections feel like one ribbon */
+        .play-line.selected + .play-line.range-selected {
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        .play-line.range-selected + .play-line.selected {
+            border-bottom-left-radius: 14px;
+            border-bottom-right-radius: 14px;
+        }
+
+        /* Subtle left accent bar for selected/range lines */
+        .play-line.selected,
+        .play-line.range-selected {
+            padding-left: 16px;
+            color: #ffffff !important;
+            -webkit-text-fill-color: #ffffff !important;
+        }
+        .play-line.selected *,
+        .play-line.range-selected *,
+        .play-line.selected span,
+        .play-line.range-selected span,
+        .reader .play-line.selected,
+        .reader .play-line.range-selected,
+        .reader .play-line.selected *,
+        .reader .play-line.range-selected * {
+            color: #ffffff !important;
+            -webkit-text-fill-color: #ffffff !important;
+        }
+        .play-line.selected > *,
+        .play-line.range-selected > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .play-line.selected::before,
+        .play-line.range-selected::before {
+            background: var(--sel-border);
         }
         
         .play-line {
@@ -1934,22 +1986,15 @@
             animation: none;
         }
 
-        @keyframes shimmerFlow {
-            0% { background-position: -1000px 0; }
-            100% { background-position: 1000px 0; }
-        }
-        
-        @keyframes glowPulse {
-            0%, 100% { box-shadow: 0 1px 3px rgba(37, 99, 235, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 8px rgba(37, 99, 235, 0); }
-            50% { box-shadow: 0 1px 3px rgba(37, 99, 235, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.15), 0 0 12px rgba(37, 99, 235, 0.15); }
-        }
-        
         .highlight {
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.06), rgba(147, 112, 219, 0.06), rgba(59, 130, 246, 0.04)) !important;
-            border-bottom: 2px solid;
-            border-image: linear-gradient(90deg, #2563eb, #6366f1, #2563eb) 1 !important;
-            box-shadow: 0 1px 3px rgba(37, 99, 235, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            background: #374151 !important;
+            color: #ffffff !important;
+            box-shadow: none !important;
+            border-radius: 4px !important;
+            padding: 0 1px !important;
+            text-decoration: none !important;
+            position: relative !important;
+            transition: background-color 180ms ease !important;
             /* Preserve original text formatting */
             font-family: inherit !important;
             font-size: inherit !important;
@@ -1969,7 +2014,21 @@
             /* Ensure no layout disruption */
             box-sizing: border-box !important;
             float: none !important;
-            position: static !important;
+            position: relative !important;
+        }
+
+        .highlight::after {
+            display: none;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .play-line,
+            .play-line::before,
+            .play-line::after,
+            .highlight {
+                transition: none !important;
+                animation: none !important;
+            }
         }
 
         /* Analysis Mode Selector */
@@ -3140,15 +3199,15 @@
     </div>
 
 
-    <!-- Critics Modal -->
-    <div id="criticsModal" class="modal">
+    <!-- Critics Modal (legacy duplicate; kept for historical content but unused) -->
+    <div id="criticsModalLegacy" class="modal">
         <div class="modal-content">
             <div class="modal-header">
                 <div class="modal-title" id="critics-modal-title">Who are the New Variorum Critics?</div>
                 <button class="modal-close" onclick="closeCriticsModal()">&times;</button>
             </div>
             
-            <div id="criticsContent" class="modal-body">
+            <div id="criticsContentLegacy" class="modal-body">
                 <!-- This div will be populated by the showCritics() JavaScript function -->
                     
                     <p>The Variorum's democratic approach means you'll find everyone from famous literary critics to obscure German philologists, from actor-managers sharing performance insights to amateur scholars who made single brilliant observations. Furness included them all, believing that truth about Shakespeare could come from anywhere.</p>
@@ -3534,7 +3593,7 @@
                 <button class="modal-close" onclick="closeCriticsModal()">&times;</button>
             </div>
             
-            <div class="modal-body">
+            <div class="modal-body" id="criticsContent">
                 <div class="critics-info">
                     <h4>Who are the New Variorum critics?</h4>
                     <p>The New Variorum editions draw on an extraordinary range of voices—from 18th-century pioneers who first attempted to restore Shakespeare's "corrupted" text, through Victorian scholars who brought scientific rigor to textual criticism, to early 20th-century critics who revolutionized our understanding of Shakespeare's language and stagecraft.</p>
@@ -3550,7 +3609,7 @@
                     <h4 style="text-align: center; color: #666; font-weight: 600;">Complete List of New Variorum Critics & Authorities for Macbeth</h4>
                 </div>
                 
-                <div class="critics-list" style="max-height: 400px; overflow-y: auto; background: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb;">
+                <div class="critics-list" style="background: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb;">
                     <div style="font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6;">
                         <p>"E. A. Abbott, Shakespearian Grammar, London, 1870"</p>
                         <p>"Prof. Allen, MS notes on Macbeth, 1867"</p>
@@ -7843,28 +7902,28 @@
 
             <!-- Follow-up Section - Hidden until analysis is done -->
             <div id="followUpSection" style="display: none;">
-                <h3>Ask a follow-up question</h3>
-                <div class="follow-up-input">
-                    <input type="text" placeholder="Ask a follow-up question..." id="followUpQuestion">
-                    <button class="ask-btn" onclick="askFollowUp()">Ask</button>
+            <h3>Ask a follow-up question</h3>
+            <div class="follow-up-input">
+                <input type="text" placeholder="Ask a follow-up question..." id="followUpQuestion">
+                <button class="ask-btn" onclick="askFollowUp()">Ask</button>
                 </div>
             </div>
 
             <!-- Media Section - Hidden until analysis is done -->
             <div id="mediaSection" style="display: none;">
-                <h3>Media</h3>
-                <div class="media-actions">
-                    <button class="link-btn youtube" onclick="searchYouTube('scene')">Search YouTube for this scene</button>
+            <h3>Media</h3>
+            <div class="media-actions">
+                <button class="link-btn youtube" onclick="searchYouTube('scene')">Search YouTube for this scene</button>
                 </div>
             </div>
 
             <!-- Research Section - Hidden until analysis is done -->
             <div id="researchSection" style="display: none;">
-                <h3>Research</h3>
-                <div class="research-actions">
-                    <button class="link-btn jstor" onclick="searchJSTOR('passage')">Search JSTOR for this passage/scene</button>
-                    <button class="link-btn scholar" onclick="searchGoogleScholar()">Google Scholar</button>
-                    <button class="link-btn ise" onclick="openInternetShakespeare()">Internet Shakespeare Editions</button>
+            <h3>Research</h3>
+            <div class="research-actions">
+                <button class="link-btn jstor" onclick="searchJSTOR('passage')">Search JSTOR for this passage/scene</button>
+                <button class="link-btn scholar" onclick="searchGoogleScholar()">Google Scholar</button>
+                <button class="link-btn ise" onclick="openInternetShakespeare()">Internet Shakespeare Editions</button>
                 </div>
             </div>
         </div>
@@ -8623,6 +8682,12 @@
         // Hover state to show what lines will be selected
         let hoveredLineIndex = null;
         let hoverStartLineIndex = null;
+
+        // Track pointer position for scroll-to-select behavior
+        let lastPointerX = null;
+        let lastPointerY = null;
+        let wheelSelectRaf = null;
+        let lastWheelSelectedIndex = null;
         
         function addLineEventListeners() {
             // Add hover listeners to all play lines for smooth preview highlighting
@@ -8641,6 +8706,55 @@
                 });
             });
         }
+
+        function getPlayLineUnderPointer() {
+            if (lastPointerX === null || lastPointerY === null) return null;
+            const el = document.elementFromPoint(lastPointerX, lastPointerY);
+            if (!el) return null;
+            return el.closest ? el.closest('.play-line') : null;
+        }
+
+        function setupScrollToSelect() {
+            // Track pointer position only when over the reader area
+            const reader = document.getElementById('readerPanel') || document.querySelector('.reader') || document.querySelector('.reader.panel') || document.querySelector('.reader-panel');
+            const target = reader || document;
+
+            target.addEventListener('pointermove', (e) => {
+                lastPointerX = e.clientX;
+                lastPointerY = e.clientY;
+            }, { passive: true });
+
+            target.addEventListener('mousemove', (e) => {
+                lastPointerX = e.clientX;
+                lastPointerY = e.clientY;
+            }, { passive: true });
+
+            // When scrolling with cursor over the reader, auto-select the line under the pointer.
+            target.addEventListener('wheel', () => {
+                if (wheelSelectRaf) return;
+                wheelSelectRaf = requestAnimationFrame(() => {
+                    wheelSelectRaf = null;
+
+                    const lineEl = getPlayLineUnderPointer();
+                    if (!lineEl) return;
+
+                    const lineIndex = parseInt(lineEl.getAttribute('data-line-index'), 10);
+                    if (Number.isNaN(lineIndex)) return;
+
+                    // Don't re-trigger selection on the same line (prevents toggle/clear)
+                    if (lineIndex === lastWheelSelectedIndex) return;
+
+                    // Avoid clearing selection by repeatedly selecting an already-selected line
+                    if (lineEl.classList.contains('selected') || lineEl.classList.contains('range-selected')) {
+                        lastWheelSelectedIndex = lineIndex;
+                        return;
+                    }
+
+                    lastWheelSelectedIndex = lineIndex;
+                    selectLine(lineEl, (lineEl.textContent || '').trim(), lineIndex);
+                });
+            }, { passive: true });
+        }
         
         function updateHoverPreview() {
             if (hoveredLineIndex === null || firstSelectedLine === null) return;
@@ -8656,7 +8770,7 @@
             document.querySelectorAll('.play-line').forEach(line => {
                 const idx = parseInt(line.getAttribute('data-line-index'), 10);
                 if (idx >= startIndex && idx <= endIndex && !line.classList.contains('selected')) {
-                    line.style.backgroundColor = 'rgba(59, 130, 246, 0.15)';
+                    line.style.backgroundColor = 'rgba(0, 0, 0, 0.04)';
                 } else if (!line.classList.contains('selected') && !line.classList.contains('range-selected')) {
                     line.style.backgroundColor = 'transparent';
                 }
@@ -8665,6 +8779,7 @@
         
         // Initialize hover listeners when page loads
         document.addEventListener('DOMContentLoaded', addLineEventListeners);
+        document.addEventListener('DOMContentLoaded', setupScrollToSelect);
         // Also re-initialize when content is dynamically loaded
         const originalLoadPlay = window.loadPlay ? window.loadPlay.toString() : '';
         window.addEventListener('play-loaded', addLineEventListeners);
@@ -8694,62 +8809,62 @@
                 });
                 
                 console.log('Selecting line:', lineIndex, 'Text:', text);
+            
+            // Look for scene information in the DOM or use the currently loaded scene
+            const sceneContainer = element.closest('.scene-content') || element.closest('[data-scene]');
+            console.log('🔍 DEBUG: Found sceneContainer:', sceneContainer);
+            
+            if (sceneContainer && sceneContainer.getAttribute('data-scene')) {
+                currentScene = sceneContainer.getAttribute('data-scene');
+                console.log('🎭 Updated currentScene from DOM context:', currentScene);
+            } else {
+                console.log('🔍 DEBUG: No scene container found, trying fallback methods...');
                 
-                // Look for scene information in the DOM or use the currently loaded scene
-                const sceneContainer = element.closest('.scene-content') || element.closest('[data-scene]');
-                console.log('🔍 DEBUG: Found sceneContainer:', sceneContainer);
+                // Fallback: try to determine scene from the current loaded content
+                const readerElement = document.getElementById('reader');
+                console.log('🔍 DEBUG: Found readerElement:', readerElement);
                 
-                if (sceneContainer && sceneContainer.getAttribute('data-scene')) {
-                    currentScene = sceneContainer.getAttribute('data-scene');
-                    console.log('🎭 Updated currentScene from DOM context:', currentScene);
+                if (readerElement) {
+                    const sceneTitle = readerElement.querySelector('.scene-title');
+                    console.log('🔍 DEBUG: Found sceneTitle:', sceneTitle);
+                    
+                    if (sceneTitle) {
+                        currentScene = sceneTitle.textContent.trim();
+                        console.log('🎭 Updated currentScene from scene title:', currentScene);
+                    } else {
+                        console.log('🔍 DEBUG: No scene title found');
+                    }
                 } else {
-                    console.log('🔍 DEBUG: No scene container found, trying fallback methods...');
-                    
-                    // Fallback: try to determine scene from the current loaded content
-                    const readerElement = document.getElementById('reader');
-                    console.log('🔍 DEBUG: Found readerElement:', readerElement);
-                    
-                    if (readerElement) {
-                        const sceneTitle = readerElement.querySelector('.scene-title');
-                        console.log('🔍 DEBUG: Found sceneTitle:', sceneTitle);
-                        
-                        if (sceneTitle) {
-                            currentScene = sceneTitle.textContent.trim();
-                            console.log('🎭 Updated currentScene from scene title:', currentScene);
-                        } else {
-                            console.log('🔍 DEBUG: No scene title found');
-                        }
-                    } else {
-                        console.log('🔍 DEBUG: No reader element found');
-                    }
-                    
-                    // Additional fallback: check if we have a current scene from navigation
-                    if (!currentScene) {
-                        console.log('🔍 DEBUG: No scene found, checking navigation...');
-                        const activeNavLink = document.querySelector('.nav-list a.active');
-                        if (activeNavLink) {
-                            currentScene = activeNavLink.getAttribute('data-scene') || activeNavLink.textContent.trim();
-                            console.log('🎭 Updated currentScene from active nav link:', currentScene);
-                        }
-                    }
+                    console.log('🔍 DEBUG: No reader element found');
                 }
                 
-                console.log('🎭 FINAL currentScene value:', currentScene);
-                
+                // Additional fallback: check if we have a current scene from navigation
+                if (!currentScene) {
+                    console.log('🔍 DEBUG: No scene found, checking navigation...');
+                    const activeNavLink = document.querySelector('.nav-list a.active');
+                    if (activeNavLink) {
+                        currentScene = activeNavLink.getAttribute('data-scene') || activeNavLink.textContent.trim();
+                        console.log('🎭 Updated currentScene from active nav link:', currentScene);
+                    }
+                }
+            }
+            
+            console.log('🎭 FINAL currentScene value:', currentScene);
+            
                 // EMERGENCY FALLBACK: If we still don't have a scene, try to get it from the URL
-                if (!currentScene || currentScene === '') {
-                    console.log('🚨 EMERGENCY: No scene detected, using fallback...');
-                    
-                    // Try to get scene from URL hash
-                    const hash = window.location.hash;
-                    if (hash && hash.includes('scene')) {
-                        currentScene = hash.replace('#', '').replace('scene-', '');
-                        console.log('🎭 Set currentScene from URL hash:', currentScene);
-                    } else {
-                        console.log('🎭 No scene detected, leaving currentScene empty');
-                    }
-                }
+            if (!currentScene || currentScene === '') {
+                console.log('🚨 EMERGENCY: No scene detected, using fallback...');
                 
+                // Try to get scene from URL hash
+                const hash = window.location.hash;
+                if (hash && hash.includes('scene')) {
+                    currentScene = hash.replace('#', '').replace('scene-', '');
+                    console.log('🎭 Set currentScene from URL hash:', currentScene);
+                } else {
+                    console.log('🎭 No scene detected, leaving currentScene empty');
+                }
+            }
+            
                 // If the user clicks on an already-selected line, treat it as a toggle to clear the selection
                 if (element.classList.contains('selected') || element.classList.contains('range-selected')) {
                     clearSelection();
@@ -8758,13 +8873,13 @@
                 }
                 
                 // RESET analysis panel BEFORE starting new selection
-                const analysisResult = document.getElementById('analysisResult');
-                const variorumResult = document.getElementById('variorumResult');
-                const variorumContent = document.getElementById('variorumContent');
-                const analysisPanel = document.getElementById('analysisPanel');
-                const criticsInfo = document.getElementById('criticsInfo');
-                const nvInfo = document.getElementById('nvInfo');
-                const analysisContent = document.getElementById('analysisContent');
+            const analysisResult = document.getElementById('analysisResult');
+            const variorumResult = document.getElementById('variorumResult');
+            const variorumContent = document.getElementById('variorumContent');
+            const analysisPanel = document.getElementById('analysisPanel');
+            const criticsInfo = document.getElementById('criticsInfo');
+            const nvInfo = document.getElementById('nvInfo');
+            const analysisContent = document.getElementById('analysisContent');
                 const analysisInstruction = document.getElementById('analysisInstruction');
                 const analyzeButton = document.getElementById('analyzeButton');
                 const followUpSection = document.getElementById('followUpSection');
@@ -8778,9 +8893,9 @@
                 analysisInProgress = false;
                 
                 // IMMEDIATELY clear all analysis content
-                if (analysisResult) analysisResult.innerHTML = '';
-                if (variorumResult) variorumResult.innerHTML = '';
-                if (variorumContent) variorumContent.innerHTML = '';
+            if (analysisResult) analysisResult.innerHTML = '';
+            if (variorumResult) variorumResult.innerHTML = '';
+            if (variorumContent) variorumContent.innerHTML = '';
                 
                 // ALWAYS hide variorum section when starting new selection
                 if (variorumSection) {
@@ -8793,7 +8908,7 @@
                 }
                 
                 // Reset to initial state
-                if (analysisContent) analysisContent.innerHTML = '<p>Highlight text in the play to get AI-powered analysis.</p>';
+            if (analysisContent) analysisContent.innerHTML = '<p>Highlight text in the play to get AI-powered analysis.</p>';
                 if (analysisInstruction) analysisInstruction.textContent = 'Select text in the play to get AI-powered analysis.';
                 if (analyzeButton) analyzeButton.style.display = 'none';
                 
@@ -8810,10 +8925,10 @@
                     researchSection.style.display = 'none';
                     researchSection.innerHTML = '<h3>Research</h3><div class="research-actions"><button class="link-btn jstor" onclick="searchJSTOR(\'passage\')">Search JSTOR for this passage/scene</button><button class="link-btn scholar" onclick="searchGoogleScholar()">Google Scholar</button><button class="link-btn ise" onclick="openInternetShakespeare()">Internet Shakespeare Editions</button></div>';
                 }
-                
-                // Hide any open info panels
-                if (criticsInfo) criticsInfo.style.display = 'none';
-                if (nvInfo) nvInfo.style.display = 'none';
+            
+            // Hide any open info panels
+            if (criticsInfo) criticsInfo.style.display = 'none';
+            if (nvInfo) nvInfo.style.display = 'none';
                 if (metaElement) metaElement.style.display = 'none';
                 
                 // Reset analysis title
@@ -8827,8 +8942,8 @@
                 
                 if (isStartingNewSelection) {
                     // This click defines the first line in the selection
-                    element.classList.add('selected');
-                    selectedLines = [text.trim()];
+            element.classList.add('selected');
+            selectedLines = [text.trim()];
                     firstSelectedLine = lineIndex;
                     
                     console.log('✅ Started new selection at line:', firstSelectedLine, 'Selected lines:', selectedLines);
@@ -8876,8 +8991,8 @@
                 
                 // Final state update
                 console.log('✅ Line selection state:', selectedLines);
-                console.log('🎭 Current scene after selection:', currentScene);
-                updateAnalysisPanel();
+            console.log('🎭 Current scene after selection:', currentScene);
+            updateAnalysisPanel();
                 
             } catch (error) {
                 console.error('❌ Error in selectLine function:', error);
@@ -9141,11 +9256,11 @@
             // Only clear if analysis is NOT in progress and there's no active analysis
             if (!analysisInProgress && selectedLines.length === 0) {
                 // Only clear stuck selections if there's no active analysis
-                document.querySelectorAll('.selected').forEach(el => {
+            document.querySelectorAll('.selected').forEach(el => {
                     // Don't clear if there's analysis content showing
                     const analysisResult = document.getElementById('analysisResult');
                     if (!analysisResult || !analysisResult.innerHTML.trim()) {
-                        el.classList.remove('selected');
+                el.classList.remove('selected');
                     }
                 });
             }
@@ -9154,7 +9269,7 @@
             if (window.getSelection && !analysisInProgress && selectedLines.length === 0) {
                 const analysisResult = document.getElementById('analysisResult');
                 if (!analysisResult || !analysisResult.innerHTML.trim()) {
-                    window.getSelection().removeAllRanges();
+                window.getSelection().removeAllRanges();
                 }
             }
             
@@ -9571,39 +9686,39 @@
         function openCriticsModal() {
             // Show the appropriate critics modal based on current play
             if (currentPlay === 'hamlet') {
-                document.getElementById('hamletCriticsModal').style.display = 'block';
+                document.getElementById('hamletCriticsModal').style.display = 'flex';
             } else if (currentPlay === 'kinglear') {
-                document.getElementById('kingLearCriticsModal').style.display = 'block';
+                document.getElementById('kingLearCriticsModal').style.display = 'flex';
             } else if (currentPlay === 'romeo') {
-                document.getElementById('romeoJulietCriticsModal').style.display = 'block';
+                document.getElementById('romeoJulietCriticsModal').style.display = 'flex';
             } else if (currentPlay === 'othello') {
-                document.getElementById('othelloCriticsModal').style.display = 'block';
+                document.getElementById('othelloCriticsModal').style.display = 'flex';
             } else if (currentPlay === 'henryiv1') {
-                document.getElementById('henryiv1CriticsModal').style.display = 'block';
+                document.getElementById('henryiv1CriticsModal').style.display = 'flex';
             } else if (currentPlay === 'midsummer') {
-                document.getElementById('midsummerCriticsModal').style.display = 'block';
+                document.getElementById('midsummerCriticsModal').style.display = 'flex';
             } else if (currentPlay === 'asyoulikeit') {
-                document.getElementById('asyoulikeitCriticsModal').style.display = 'block';
+                document.getElementById('asyoulikeitCriticsModal').style.display = 'flex';
             } else if (currentPlay === 'juliuscaesar') {
-                document.getElementById('juliuscaesarCriticsModal').style.display = 'block';
+                document.getElementById('juliuscaesarCriticsModal').style.display = 'flex';
             } else if (currentPlay === 'kingjohn') {
-                document.getElementById('kingjohnCriticsModal').style.display = 'block';
+                document.getElementById('kingjohnCriticsModal').style.display = 'flex';
             } else if (currentPlay === 'loveslabourslost') {
-                document.getElementById('loveslabourslostCriticsModal').style.display = 'block';
+                document.getElementById('loveslabourslostCriticsModal').style.display = 'flex';
             } else if (currentPlay === 'muchado') {
-                document.getElementById('muchadoCriticsModal').style.display = 'block';
+                document.getElementById('muchadoCriticsModal').style.display = 'flex';
             } else if (currentPlay === 'richardiii') {
-                document.getElementById('richardiiiCriticsModal').style.display = 'block';
+                document.getElementById('richardiiiCriticsModal').style.display = 'flex';
             } else if (currentPlay === 'merchantofvenice') {
-                document.getElementById('merchantofveniceCriticsModal').style.display = 'block';
+                document.getElementById('merchantofveniceCriticsModal').style.display = 'flex';
             } else if (currentPlay === 'tempest') {
-                document.getElementById('tempestCriticsModal').style.display = 'block';
+                document.getElementById('tempestCriticsModal').style.display = 'flex';
             } else if (currentPlay === 'winterstale') {
-                document.getElementById('winterstaleCriticsModal').style.display = 'block';
+                document.getElementById('winterstaleCriticsModal').style.display = 'flex';
             } else if (currentPlay === 'twelfthnight') {
-                document.getElementById('twelfthnightCriticsModal').style.display = 'block';
+                document.getElementById('twelfthnightCriticsModal').style.display = 'flex';
             } else {
-                document.getElementById('criticsModal').style.display = 'block';
+                document.getElementById('criticsModal').style.display = 'flex';
             }
         }
 
@@ -12280,7 +12395,7 @@
                     `;
                 }
             }
-        } catch (outerError) {
+            } catch (outerError) {
                 console.error('❌ Critical error in loadSelectedPlay:', outerError);
                 const playTextElement = document.getElementById('playText');
                 if (playTextElement) {
@@ -13381,7 +13496,7 @@
                 alert('Please select text in the play first.');
                 return;
             }
-
+            
             // Enforce 1–3 consecutive line selection rule
             const lineCount = currentSelectedLines.length;
             if (lineCount < 1 || lineCount > 3) {
@@ -13490,7 +13605,7 @@
                     console.log('🚫 Variorum section HIDDEN for', currentPlay, '- not a New Variorum play');
                     return; // Exit early if not a New Variorum play
                 } else {
-                    variorumSection.style.display = 'block';
+                variorumSection.style.display = 'block';
                     variorumSection.style.visibility = 'visible';
                     variorumSection.style.height = 'auto';
                     variorumSection.style.margin = '';
@@ -13569,44 +13684,44 @@
             
             console.log('🔍 Searching for notes in scene:', currentScene);
             console.log('📖 Available scenes:', Object.keys(currentPlayData).slice(0, 10));
-            
-            let combinedCommentary = '';
+                
+                let combinedCommentary = '';
             let commentaryFound = false;
-            
+                
             // Check each selected line for notes
-            for (let i = 0; i < selectedLines.length; i++) {
-                const line = selectedLines[i];
+                for (let i = 0; i < selectedLines.length; i++) {
+                    const line = selectedLines[i];
                 console.log(`🔍 Searching for line ${i + 1}/${selectedLines.length}: "${line.substring(0, 50)}..."`);
                 
-                const notesData = findNotesForLine(line, currentScene);
-                
-                if (notesData && notesData.notes && notesData.notes.length > 0) {
-                    const formattedNotes = formatNotes(notesData);
-                    if (formattedNotes) {
-                        combinedCommentary += formattedNotes;
-                        if (i < selectedLines.length - 1) {
-                            combinedCommentary += '<hr style="margin: 20px 0; border: 1px solid #4b5563;">';
-                        }
-                        commentaryFound = true;
+                    const notesData = findNotesForLine(line, currentScene);
+                    
+                    if (notesData && notesData.notes && notesData.notes.length > 0) {
+                        const formattedNotes = formatNotes(notesData);
+                        if (formattedNotes) {
+                            combinedCommentary += formattedNotes;
+                            if (i < selectedLines.length - 1) {
+                                combinedCommentary += '<hr style="margin: 20px 0; border: 1px solid #4b5563;">';
+                            }
+                            commentaryFound = true;
                         console.log('✅ Notes found for line', i + 1, '-', notesData.notes.length, 'notes');
-                    }
+                        }
                 } else {
                     console.log('⚠️ No notes found for line', i + 1);
+                    }
                 }
-            }
-            
-            if (commentaryFound) {
+                
+                if (commentaryFound) {
                 // Only set variorumContent to avoid duplication - variorumResult is redundant
-                if (variorumContent) {
-                    variorumContent.innerHTML = combinedCommentary;
+                    if (variorumContent) {
+                        variorumContent.innerHTML = combinedCommentary;
                     console.log('✅ Notes displayed in variorum content');
                 }
                 showCriticsButton();
-            } else {
+                } else {
                 const noCommentaryMsg = '<div class="loading" style="padding: 20px; color: #9ca3af; font-style: italic;">No traditional commentary found for the selected lines in the database.</div>';
-                if (variorumContent) {
-                    variorumContent.innerHTML = noCommentaryMsg;
-                }
+                    if (variorumContent) {
+                        variorumContent.innerHTML = noCommentaryMsg;
+                    }
                 console.log('⚠️ No notes found for any selected lines');
             }
             
@@ -13885,7 +14000,7 @@
                     return true;
                 }
             }
-
+            
             return false;
         }
         
@@ -15423,7 +15538,7 @@
             console.log('🔍 Google Scholar search called');
             const playName = currentPlay && plays[currentPlay] ? plays[currentPlay].name : 'Shakespeare';
             const sceneName = currentScene && currentScene !== '' ? currentScene : null;
-
+            
             // Build a tightly-scoped Google Scholar query:
             // - Always include play name
             // - Include act/scene when available (e.g. 1.1, I.i, Act 1, Scene 1)
@@ -16453,39 +16568,39 @@
         function openCriticsModal() {
             // Show the appropriate critics modal based on current play
             if (currentPlay === 'hamlet') {
-                document.getElementById('hamletCriticsModal').style.display = 'block';
+                document.getElementById('hamletCriticsModal').style.display = 'flex';
             } else if (currentPlay === 'kinglear') {
-                document.getElementById('kingLearCriticsModal').style.display = 'block';
+                document.getElementById('kingLearCriticsModal').style.display = 'flex';
             } else if (currentPlay === 'romeo') {
-                document.getElementById('romeoJulietCriticsModal').style.display = 'block';
+                document.getElementById('romeoJulietCriticsModal').style.display = 'flex';
             } else if (currentPlay === 'othello') {
-                document.getElementById('othelloCriticsModal').style.display = 'block';
+                document.getElementById('othelloCriticsModal').style.display = 'flex';
             } else if (currentPlay === 'henryiv1') {
-                document.getElementById('henryiv1CriticsModal').style.display = 'block';
+                document.getElementById('henryiv1CriticsModal').style.display = 'flex';
             } else if (currentPlay === 'midsummer') {
-                document.getElementById('midsummerCriticsModal').style.display = 'block';
+                document.getElementById('midsummerCriticsModal').style.display = 'flex';
             } else if (currentPlay === 'asyoulikeit') {
-                document.getElementById('asyoulikeitCriticsModal').style.display = 'block';
+                document.getElementById('asyoulikeitCriticsModal').style.display = 'flex';
             } else if (currentPlay === 'juliuscaesar') {
-                document.getElementById('juliuscaesarCriticsModal').style.display = 'block';
+                document.getElementById('juliuscaesarCriticsModal').style.display = 'flex';
             } else if (currentPlay === 'kingjohn') {
-                document.getElementById('kingjohnCriticsModal').style.display = 'block';
+                document.getElementById('kingjohnCriticsModal').style.display = 'flex';
             } else if (currentPlay === 'loveslabourslost') {
-                document.getElementById('loveslabourslostCriticsModal').style.display = 'block';
+                document.getElementById('loveslabourslostCriticsModal').style.display = 'flex';
             } else if (currentPlay === 'muchado') {
-                document.getElementById('muchadoCriticsModal').style.display = 'block';
+                document.getElementById('muchadoCriticsModal').style.display = 'flex';
             } else if (currentPlay === 'richardiii') {
-                document.getElementById('richardiiiCriticsModal').style.display = 'block';
+                document.getElementById('richardiiiCriticsModal').style.display = 'flex';
             } else if (currentPlay === 'merchantofvenice') {
-                document.getElementById('merchantofveniceCriticsModal').style.display = 'block';
+                document.getElementById('merchantofveniceCriticsModal').style.display = 'flex';
             } else if (currentPlay === 'tempest') {
-                document.getElementById('tempestCriticsModal').style.display = 'block';
+                document.getElementById('tempestCriticsModal').style.display = 'flex';
             } else if (currentPlay === 'winterstale') {
-                document.getElementById('winterstaleCriticsModal').style.display = 'block';
+                document.getElementById('winterstaleCriticsModal').style.display = 'flex';
             } else if (currentPlay === 'twelfthnight') {
-                document.getElementById('twelfthnightCriticsModal').style.display = 'block';
+                document.getElementById('twelfthnightCriticsModal').style.display = 'flex';
             } else {
-                document.getElementById('criticsModal').style.display = 'block';
+                document.getElementById('criticsModal').style.display = 'flex';
             }
         }
 

@@ -3,8 +3,6 @@ import os
 from docx import Document
 from docx.shared import Pt, RGBColor
 from docx.enum.text import WD_ALIGN_PARAGRAPH
-from docx.oxml.ns import qn
-from docx.oxml import OxmlElement
 
 def add_highlighted_heading(doc, text):
     """Add a bold, highlighted heading"""
@@ -18,9 +16,7 @@ def add_highlighted_heading(doc, text):
     try:
         run.font.highlight_color = WD_COLOR_INDEX.YELLOW
     except:
-        # If highlight doesn't work, use shading
-        para_format = para.paragraph_format
-        para_format.shading.background_color = RGBColor(255, 255, 0)
+        pass
     return para
 
 def add_section_heading(doc, text):
@@ -44,6 +40,7 @@ def add_separator(doc, text):
 def main():
     # Get the script directory and construct the path
     script_dir = os.path.dirname(os.path.abspath(__file__))
+    
     json_file = os.path.join(script_dir, "Public", "Data", "twelfth_night.json")
     print(f"Reading {json_file}...")
     
@@ -59,6 +56,7 @@ def main():
     
     # Find all ACT and SCENE keys in the data (excluding DRAMATIS PERSONAE)
     scene_keys = [key for key in data.keys() if key.startswith("ACT")]
+    
     # Sort scenes by act and scene number
     def sort_key(key):
         parts = key.split()
@@ -123,6 +121,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-

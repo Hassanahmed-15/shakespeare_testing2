@@ -1,0 +1,16 @@
+TASK: Correct scholarly commentary line numbers to match the play text.
+
+INPUT: (1) Play text with numbered lines (1. 2. 3... per scene). (2) Scholarly commentary with line-number references (e.g., "5. WARBURTON: ...").
+
+PROCESS: For each commentary entry, identify the phrase being discussed. Search the play text for that exact phrase. Replace the commentary's line number with the play-text line number where that phrase actually appears.
+
+RULES:
+- Change ONLY the line number. Keep all other text identical.
+- Match by exact phrase. Use first occurrence if multiple matches.
+- If no match: keep original number but append [unverified].
+- Process one scene at a time (line numbers restart per scene).
+
+OUTPUT: Return the scholarly commentary with corrected line numbers only. No extra explanation.
+
+EXAMPLE:
+Play: "3. SECOND WITCH: When the hurly-burly's done" | Commentary input: "5. WARBURTON: 'hurly-burly' derives..." | Output: "3. WARBURTON: 'hurly-burly' derives..."
