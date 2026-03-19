@@ -44,9 +44,13 @@ This project provides an interactive web application that combines Shakespeare's
 - **Modular Design** - Easy to add new plays or update existing ones
 - **Optimized Loading** - Efficient parsing and display of large text files
 
+### Deployment (Netlify)
+- **`netlify.toml`** sets `publish = "."` — the live site uses **`index.html` in the repo root only**.
+- **`My Website/index.html`** is a symlink to that root file so local work in either place stays aligned. **Edit the root `index.html` for changes to go live.**
+
 ### File Organization
 ```
-├── index.html              # Main application file
+├── index.html              # Main application file (this is what Netlify serves)
 ├── styles/                 # CSS styling
 │   ├── modern-ui.css      # Main stylesheet
 │   └── tokens.css         # Design tokens
