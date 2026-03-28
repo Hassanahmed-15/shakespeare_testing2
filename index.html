@@ -16487,84 +16487,176 @@
         }
 
         function formatBibliography() {
+            var TITLE_STARTERS = /^(New|Notes|Few|Die|Der|Das|Seven|Eight|Nine|Ten|Introduction|Ethics|Criticism|Antidote|Theatrical|Memorials|Strictures|Critical|Remarks|Observations|History|Life|Works|Letters|Lectures|Studies|Inquiry|Text|Glossary|Canons|Essays|Supplemental|Old|Some|Shakespeare|Miscellaneous|More|Prose|Index|Account|Notices|Caledonia|Specimens|Memoirs|Illustrations|Supplement|Chronicle|Register|Annals|Anecdotes|Literary|Dramatic|Philosophical|Variorum|General|Translation|Treatise|Dissertation|Extracts|Outlines|Select|Poems|Collection|Dictionary|Grammar|Manual|Handbook|Correspondence|Diary|Journal|Magazine|Review|Gazette|Record|Report|Survey|Abstract|Summary|Catalogue|Calendar|Selections)$/i;
+            var SURNAME_PREFIXES = /^(de|von|van|di|du|la|le|del|delle|des|da|ten|ter|den)$/i;
+
             document.querySelectorAll('.critics-list').forEach(function(list) {
                 if (list.dataset.formatted) return;
                 list.dataset.formatted = '1';
 
-                var entries = [];
+                var rawItems = [];
+                var sectionHeadings = [];
                 list.querySelectorAll('p').forEach(function(p) {
-                    var raw = p.textContent.trim().replace(/^"|"$/g, '');
-                    if (!raw) return;
-
                     var strong = p.querySelector('strong');
                     if (strong) {
-                        entries.push({heading: strong.textContent.trim()});
+                        sectionHeadings.push(strong.textContent.trim());
                         return;
                     }
+                    var raw = p.textContent.trim().replace(/^\u201c|\u201d$/g, '').replace(/^"|"$/g, '');
+                    if (raw) rawItems.push(raw);
+                });
 
-                    var parts = raw.split(',');
-                    if (parts.length >= 2) {
-                        var first = parts[0].trim();
-                        var rest = parts.slice(1).join(',').trim();
-                        var nameish = /^[A-Z]/.test(first) && first.length < 60;
+                function hasAuthor(text) {
+                    var ci = text.indexOf(',');
+                    if (ci === -1) return false;
+                    var seg = text.substring(0, ci).trim();
 
-                        if (nameish && rest.length > 0) {
-                            var titleParts = rest.split(',');
-                            var title = '', after = '';
-                            var yearIdx = -1;
-                            for (var i = titleParts.length - 1; i >= 0; i--) {
-                                if (/\d{4}/.test(titleParts[i])) { yearIdx = i; break; }
+                    if (/\b[A-Z]\.\s*[A-Z]/.test(seg)) return true;
+                    if (/\b[A-Z]\.\s*$/.test(seg)) return true;
+                    if (/^[A-Z]\.\s/.test(seg)) return true;
+
+                    if (/^(Anonymous|\[Anonymous\]|Lord |Sir |Prof\.|Miss |Mrs |Dr\.|Chevalier |Dame |Mme |Madame |Rev\.|Bishop )/i.test(seg)) return true;
+
+                    if (/\b(and|et)\b/i.test(seg) && /^[A-Z]/.test(seg) && seg.length < 50) return true;
+
+                    var words = seg.split(/\s+/);
+                    if (words.length >= 2 && words.length <= 4) {
+                        if (TITLE_STARTERS.test(words[0])) return false;
+                        var allCap = words.every(function(w) {
+                            return /^[A-Z]/.test(w) || SURNAME_PREFIXES.test(w);
+                        });
+                        if (allCap && seg.length < 40) return true;
+                    }
+
+                    return false;
+                }
+
+                function flipName(nameStr) {
+                    nameStr = nameStr.trim();
+                    if (/^(Anonymous|\[Anonymous\])$/i.test(nameStr))
+                        return { display: '[Anonymous]', sort: 'anonymous' };
+
+                    if (/\b(and|et)\b/.test(nameStr)) {
+                        var parts = nameStr.split(/\s+(?:and|et)\s+/);
+                        var flipped = parts.map(function(p) {
+                            var w = p.trim().split(/\s+/);
+                            if (w.length < 2) return p.trim();
+                            var sn = w[w.length - 1];
+                            if (w.length >= 2 && SURNAME_PREFIXES.test(w[w.length - 2])) {
+                                sn = w[w.length - 2] + ' ' + sn;
+                                return sn + ', ' + w.slice(0, -2).join(' ');
                             }
-                            if (yearIdx > 0) {
-                                var splitAt = yearIdx === 1 ? 1 : yearIdx - 1;
-                                title = titleParts.slice(0, splitAt).join(',').trim();
-                                after = titleParts.slice(splitAt).join(',').trim();
-                            } else {
-                                title = titleParts[0].trim();
-                                after = titleParts.slice(1).join(',').trim();
-                            }
-                            entries.push({
-                                author: first,
-                                title: title.replace(/\.+$/, ''),
-                                after: after ? after + '.' : ''
-                            });
-                        } else {
-                            entries.push({text: raw});
-                        }
+                            return sn + ', ' + w.slice(0, -1).join(' ');
+                        });
+                        var sortKey = parts[0].trim().split(/\s+/);
+                        var sk = sortKey[sortKey.length - 1];
+                        return { display: flipped.join(', and '), sort: sk.toLowerCase() };
+                    }
+
+                    var words = nameStr.split(/\s+/);
+                    if (words.length < 2) return { display: nameStr, sort: nameStr.toLowerCase() };
+
+                    var surname, given;
+                    if (words.length >= 2 && SURNAME_PREFIXES.test(words[words.length - 2])) {
+                        surname = words[words.length - 2] + ' ' + words[words.length - 1];
+                        given = words.slice(0, -2).join(' ');
                     } else {
-                        entries.push({text: raw});
+                        surname = words[words.length - 1];
+                        given = words.slice(0, -1).join(' ');
+                    }
+                    var display = given ? surname + ', ' + given : surname;
+                    return { display: display, sort: surname.replace(/^(de|von|van|la|le)\s+/i, '').toLowerCase() };
+                }
+
+                function splitTitleAndAfter(rest) {
+                    if (!rest) return { title: '', after: '' };
+                    var tp = rest.split(',');
+                    var yearIdx = -1;
+                    for (var i = tp.length - 1; i >= 0; i--) {
+                        if (/\d{4}/.test(tp[i])) { yearIdx = i; break; }
+                    }
+                    var title, after;
+                    if (yearIdx > 0) {
+                        var splitAt = Math.max(1, yearIdx - 1);
+                        title = tp.slice(0, splitAt).join(',').trim();
+                        after = tp.slice(splitAt).join(',').trim();
+                    } else if (yearIdx === 0) {
+                        title = '';
+                        after = rest;
+                    } else {
+                        title = tp[0].trim();
+                        after = tp.slice(1).join(',').trim();
+                    }
+                    title = title.replace(/\.+$/, '');
+                    if (after && !/\.\s*$/.test(after)) after += '.';
+                    return { title: title, after: after };
+                }
+
+                var entries = [];
+                var lastAuthor = null;
+
+                rawItems.forEach(function(raw) {
+                    if (hasAuthor(raw)) {
+                        var ci = raw.indexOf(',');
+                        var authorRaw = raw.substring(0, ci).trim();
+                        var rest = raw.substring(ci + 1).trim();
+                        var flipped = flipName(authorRaw);
+                        var ta = splitTitleAndAfter(rest);
+                        lastAuthor = { display: flipped.display, sort: flipped.sort };
+                        entries.push({
+                            authorDisplay: flipped.display,
+                            authorSort: flipped.sort,
+                            title: ta.title,
+                            after: ta.after
+                        });
+                    } else {
+                        var ta = splitTitleAndAfter(raw);
+                        var auth = lastAuthor
+                            ? { display: lastAuthor.display, sort: lastAuthor.sort }
+                            : { display: '[Anonymous]', sort: 'anonymous' };
+                        entries.push({
+                            authorDisplay: auth.display,
+                            authorSort: auth.sort,
+                            title: ta.title,
+                            after: ta.after
+                        });
                     }
                 });
 
                 entries.sort(function(a, b) {
-                    var ak = a.heading || a.author || a.text || '';
-                    var bk = b.heading || b.author || b.text || '';
-                    return ak.localeCompare(bk, undefined, {sensitivity: 'base'});
+                    var cmp = a.authorSort.localeCompare(b.authorSort, undefined, {sensitivity: 'base'});
+                    if (cmp !== 0) return cmp;
+                    return (a.title || '').localeCompare(b.title || '', undefined, {sensitivity: 'base'});
                 });
 
+                var hasHeadings = sectionHeadings.length > 0;
                 var html = '';
+                if (hasHeadings) {
+                    sectionHeadings.forEach(function(h) {
+                        html += '<div class="bib-letter" style="margin-top:24px;">' + h + '</div>';
+                    });
+                    html += '<hr style="border:none;border-top:1px solid #d1d5db;margin:16px 0;">';
+                }
+
                 var lastLetter = '';
                 entries.forEach(function(e) {
-                    if (e.heading) {
-                        html += '<div class="bib-letter" style="margin-top:24px;">' + e.heading + '</div>';
-                        lastLetter = '';
-                        return;
-                    }
-                    var key = e.author || e.text || '';
-                    var letter = key.charAt(0).toUpperCase();
+                    var sortChar = (e.authorSort || '').replace(/^[^a-z]/i, '');
+                    var letter = (sortChar.charAt(0) || '').toUpperCase();
                     if (/[A-Z]/.test(letter) && letter !== lastLetter) {
                         html += '<div class="bib-letter">' + letter + '</div>';
                         lastLetter = letter;
                     }
-                    if (e.author) {
-                        html += '<div class="bib-entry">'
-                            + '<span class="bib-author">' + e.author + '.</span> '
-                            + '<span class="bib-title">' + e.title + '.</span> '
-                            + (e.after || '')
-                            + '</div>';
-                    } else {
-                        html += '<div class="bib-entry">' + (e.text || '') + '</div>';
+                    html += '<div class="bib-entry">';
+                    if (e.authorDisplay) {
+                        html += '<span class="bib-author">' + e.authorDisplay + '.</span> ';
                     }
+                    if (e.title) {
+                        html += '<span class="bib-title">' + e.title + '.</span> ';
+                    }
+                    if (e.after) {
+                        html += e.after;
+                    }
+                    html += '</div>';
                 });
 
                 list.innerHTML = html;
