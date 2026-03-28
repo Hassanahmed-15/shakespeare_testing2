@@ -9227,7 +9227,7 @@
                 if (analysisInstruction) analysisInstruction.textContent = '';
                 analyzeButton.style.display = 'block';
             } else {
-                if (analysisContent) analysisContent.textContent = 'Click lines in the play to select them (up to ' + MAX_SELECTED_LINES + '). Press Escape or click Clear to reset.';
+                if (analysisContent) analysisContent.innerHTML = '<span style="color:#6b7280;font-size:13px;">Click lines in the play to select them (up to ' + MAX_SELECTED_LINES + '). Press <kbd style="background:#f3f4f6;border:1px solid #d1d5db;border-radius:3px;padding:1px 5px;font-size:11px;font-family:inherit;">Esc</kbd> for a new search.</span>';
                 if (analysisInstruction) analysisInstruction.textContent = '';
                 if (analyzeButton) analyzeButton.style.display = 'none';
             }
