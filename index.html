@@ -1143,11 +1143,38 @@
             margin: var(--s-4) 0 var(--s-2);
         }
 
-        /* Critics modal lists: clean typography matching site font */
+        /* Critics modal lists: academic bibliography style */
         .critics-list {
             max-height: none !important;
             overflow: visible !important;
             font-family: inherit;
+            columns: 1;
+        }
+        .critics-list .bib-letter {
+            font-size: 20px;
+            font-weight: 700;
+            color: #111827;
+            margin: 28px 0 10px;
+            padding-bottom: 4px;
+            border-bottom: 1px solid #d1d5db;
+        }
+        .critics-list .bib-letter:first-child {
+            margin-top: 0;
+        }
+        .critics-list .bib-entry {
+            font-family: inherit;
+            font-size: 14px;
+            line-height: 1.65;
+            margin: 0;
+            padding: 4px 0 4px 24px;
+            text-indent: -24px;
+            color: #1f2937;
+        }
+        .critics-list .bib-entry .bib-author {
+            font-weight: 700;
+        }
+        .critics-list .bib-entry .bib-title {
+            font-style: italic;
         }
         .critics-list p {
             font-family: inherit;
@@ -8857,6 +8884,15 @@
             }
         }
 
+        function appendNewSearchHint(container) {
+            if (!container || container.querySelector('.new-search-hint')) return;
+            const hint = document.createElement('div');
+            hint.className = 'new-search-hint';
+            hint.style.cssText = 'margin-top:16px;padding:10px 14px;background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;text-align:center;font-size:13px;color:#6b7280;';
+            hint.innerHTML = 'Press <kbd style="background:#fff;border:1px solid #d1d5db;border-radius:3px;padding:1px 5px;font-size:11px;font-family:inherit;">Esc</kbd> to clear selection and start a new search';
+            container.appendChild(hint);
+        }
+
         // Reset analysis panels when selection changes (without clearing the selection)
         function resetAnalysisForNewSelection() {
             analysisInProgress = false;
@@ -14499,7 +14535,7 @@
             
             analysisInProgress = false;
             
-            // Add Copy button dynamically after analysis content is set
+            // Add Copy button and "new search" hint after analysis content is set
             setTimeout(() => {
                 if (analysisContent && !analysisContent.querySelector('.copy-chip')) {
                     const copyButton = document.createElement('button');
@@ -14508,6 +14544,7 @@
                     copyButton.onclick = copyAnalysis;
                     analysisContent.insertBefore(copyButton, analysisContent.firstChild);
                 }
+                appendNewSearchHint(analysisContent);
                 
                 const playSelector = document.getElementById('playSelector');
                 if (playSelector) {
@@ -14633,6 +14670,7 @@
                     copyButton.onclick = copyAnalysis;
                     analysisContent.insertBefore(copyButton, analysisContent.firstChild);
                 }
+                appendNewSearchHint(analysisContent);
                 
                 // Force reset UI elements that might be stuck
                 const playSelector = document.getElementById('playSelector');
@@ -16436,7 +16474,97 @@
             document.getElementById('rightsModal').style.display = 'none';
         }
 
+        function formatBibliography() {
+            document.querySelectorAll('.critics-list').forEach(function(list) {
+                if (list.dataset.formatted) return;
+                list.dataset.formatted = '1';
+
+                var entries = [];
+                list.querySelectorAll('p').forEach(function(p) {
+                    var raw = p.textContent.trim().replace(/^"|"$/g, '');
+                    if (!raw) return;
+
+                    var strong = p.querySelector('strong');
+                    if (strong) {
+                        entries.push({heading: strong.textContent.trim()});
+                        return;
+                    }
+
+                    var parts = raw.split(',');
+                    if (parts.length >= 2) {
+                        var first = parts[0].trim();
+                        var rest = parts.slice(1).join(',').trim();
+                        var nameish = /^[A-Z]/.test(first) && first.length < 60;
+
+                        if (nameish && rest.length > 0) {
+                            var titleParts = rest.split(',');
+                            var title = '', after = '';
+                            var yearIdx = -1;
+                            for (var i = titleParts.length - 1; i >= 0; i--) {
+                                if (/\d{4}/.test(titleParts[i])) { yearIdx = i; break; }
+                            }
+                            if (yearIdx > 0) {
+                                var splitAt = yearIdx === 1 ? 1 : yearIdx - 1;
+                                title = titleParts.slice(0, splitAt).join(',').trim();
+                                after = titleParts.slice(splitAt).join(',').trim();
+                            } else {
+                                title = titleParts[0].trim();
+                                after = titleParts.slice(1).join(',').trim();
+                            }
+                            entries.push({
+                                author: first,
+                                title: title.replace(/\.+$/, ''),
+                                after: after ? after + '.' : ''
+                            });
+                        } else {
+                            entries.push({text: raw});
+                        }
+                    } else {
+                        entries.push({text: raw});
+                    }
+                });
+
+                entries.sort(function(a, b) {
+                    var ak = a.heading || a.author || a.text || '';
+                    var bk = b.heading || b.author || b.text || '';
+                    return ak.localeCompare(bk, undefined, {sensitivity: 'base'});
+                });
+
+                var html = '';
+                var lastLetter = '';
+                entries.forEach(function(e) {
+                    if (e.heading) {
+                        html += '<div class="bib-letter" style="margin-top:24px;">' + e.heading + '</div>';
+                        lastLetter = '';
+                        return;
+                    }
+                    var key = e.author || e.text || '';
+                    var letter = key.charAt(0).toUpperCase();
+                    if (/[A-Z]/.test(letter) && letter !== lastLetter) {
+                        html += '<div class="bib-letter">' + letter + '</div>';
+                        lastLetter = letter;
+                    }
+                    if (e.author) {
+                        html += '<div class="bib-entry">'
+                            + '<span class="bib-author">' + e.author + '.</span> '
+                            + '<span class="bib-title">' + e.title + '.</span> '
+                            + (e.after || '')
+                            + '</div>';
+                    } else {
+                        html += '<div class="bib-entry">' + (e.text || '') + '</div>';
+                    }
+                });
+
+                list.innerHTML = html;
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(formatBibliography, 300);
+        });
+
         function openCriticsModal() {
+            formatBibliography();
             // Show the appropriate critics modal based on current play
             if (currentPlay === 'hamlet') {
                 document.getElementById('hamletCriticsModal').style.display = 'flex';
