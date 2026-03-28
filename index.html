@@ -2807,20 +2807,39 @@
         
         /* Follow-up Answer Styling */
         .analysis .follow-up-answer {
-            background: var(--surface-2);
-            border: 1px solid var(--line);
-            border-radius: var(--radius-2);
-            padding: var(--s-4);
-            margin: var(--s-4) 0;
+            background: #ffffff;
+            border: 1px solid rgba(0,0,0,0.08);
+            border-radius: 8px;
+            padding: 20px 24px;
+            margin: 16px 0;
+            font-family: "Inter", "SF Pro Text", system-ui, sans-serif;
+            line-height: 1.7;
+            color: var(--ink-1, #1d1d1f);
         }
         
         .analysis .follow-up-answer h3 {
-            color: var(--ink-1);
-            margin-bottom: var(--s-2);
+            font-family: "Inter", "SF Pro Text", system-ui, sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--ink-2, #6e6e73);
+            margin: 0 0 10px 0;
+            letter-spacing: 0.01em;
+        }
+
+        .analysis .follow-up-answer p {
+            font-family: "Inter", "SF Pro Text", system-ui, sans-serif;
+            font-size: 14px;
+            line-height: 1.7;
+            margin: 0 0 8px 0;
         }
         
         .analysis .follow-up-answer .answer-content {
-            margin-top: var(--s-2);
+            font-family: "Inter", "SF Pro Text", system-ui, sans-serif;
+            font-size: 14px;
+            line-height: 1.7;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(0,0,0,0.06);
         }
 
         .list a:hover {
@@ -3003,6 +3022,7 @@
             border-top: 1px solid rgba(0,0,0,0.08);
             border-radius: 0 0 6px 6px;
             margin-top: 0;
+            font-family: "Inter", "SF Pro Text", system-ui, sans-serif;
         }
 
         .follow-up-input {
@@ -3015,8 +3035,8 @@
             flex: 1;
             padding: 10px 12px;
             border: 1px solid #ced4da;
-            border-radius: 4px;
-            font-family: inherit;
+            border-radius: 6px;
+            font-family: "Inter", "SF Pro Text", system-ui, sans-serif;
             font-size: 14px;
         }
 
@@ -15236,26 +15256,29 @@
                     // Create a new section for the follow-up answer
                     const followUpSection = document.createElement('div');
                     followUpSection.className = 'section follow-up-answer';
+                    followUpSection.style.cssText = 'font-family: "Inter", "SF Pro Text", system-ui, sans-serif; background: #fff; border: 1px solid rgba(0,0,0,0.08); border-radius: 8px; padding: 20px 24px; margin: 16px 0; line-height: 1.7; color: #1d1d1f;';
                     followUpSection.innerHTML = `
-                        <h3><strong>Follow-up Answer:</strong></h3>
-                        <p><strong>Question:</strong> ${question}</p>
-                        <div class="answer-content">${answer}</div>
+                        <div style="font-size:12px; font-weight:600; color:#6e6e73; text-transform:uppercase; letter-spacing:0.05em; margin-bottom:10px;">Follow-up Answer</div>
+                        <p style="font-size:14px; margin:0 0 12px 0;"><strong>Question:</strong> ${question}</p>
+                        <div class="answer-content" style="font-size:14px; line-height:1.7; padding-top:12px; border-top:1px solid rgba(0,0,0,0.06);">${answer}</div>
                     `;
                     
-                    // Insert the follow-up answer directly before the follow-up input
-                    // so it appears right below where the question was asked
+                    // Insert the follow-up answer AFTER the follow-up input section,
+                    // before the media section, so answers stack chronologically below the input
                     const followUpInput = document.getElementById('followUpSection');
-                    if (followUpInput && followUpInput.parentNode) {
-                        followUpInput.parentNode.insertBefore(followUpSection, followUpInput);
+                    const mediaSection = document.getElementById('mediaSection');
+                    if (mediaSection && mediaSection.parentNode) {
+                        mediaSection.parentNode.insertBefore(followUpSection, mediaSection);
+                    } else if (followUpInput && followUpInput.nextSibling) {
+                        followUpInput.parentNode.insertBefore(followUpSection, followUpInput.nextSibling);
+                    } else if (followUpInput && followUpInput.parentNode) {
+                        followUpInput.parentNode.appendChild(followUpSection);
                     } else if (hasAnalysis) {
                         currentAnalysis.appendChild(followUpSection);
                     } else {
                         const analysisContainer = document.querySelector('.analysis-content') || document.querySelector('.ai-analysis-content');
                         if (analysisContainer) {
                             analysisContainer.appendChild(followUpSection);
-                        } else {
-                            const mainContent = document.querySelector('.reader') || document.body;
-                            mainContent.appendChild(followUpSection);
                         }
                     }
                     
