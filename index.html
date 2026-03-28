@@ -14589,6 +14589,7 @@
 
 
         function updateAnalysis(content, text) {
+            content = fixAIScholarNames(content);
             const analysisContent = document.getElementById('analysisContent');
             const metaElement = document.querySelector('.meta');
             const analysisTitleElement = document.querySelector('.analysis-title');
@@ -14596,7 +14597,7 @@
             const mediaSection = document.getElementById('mediaSection');
             const researchSection = document.getElementById('researchSection');
             const analyzeButton = document.getElementById('analyzeButton');
-            
+
             const wordCount = countWords(text);
             const playName = currentPlay && plays[currentPlay] ? plays[currentPlay].name : 'Unknown Play';
             const playInfo = currentScene && currentScene !== '' ? `<em>${playName}</em> · ${currentScene}` : `<em>${playName}</em>`;
@@ -14683,7 +14684,18 @@
 
 
 
+        function fixAIScholarNames(text) {
+            return text
+                .replace(/A\.?\s*circa\s+Bradley/gi, 'A.C. Bradley')
+                .replace(/A\.?\s*circa\s+Swinburne/gi, 'A.C. Swinburne')
+                .replace(/A\.?\s*circa\s+Sprague/gi, 'A.C. Sprague')
+                .replace(/(\b[A-Z])\.?\s*circa\s+(\b[A-Z])/g, '$1.C. $2')
+                .replace(/G\.?\s*Wilson\s+Knight/gi, 'G. Wilson Knight')
+                .replace(/H\.?\s*circa\s+Hart/gi, 'H.C. Hart');
+        }
+
         function formatAnalysisContent(content) {
+            content = fixAIScholarNames(content);
             // Debug: Log the raw content to see what the AI is returning
             console.log('=== NEW FORMATTING CODE IS RUNNING ===');
             console.log('Raw AI content:', content);
