@@ -1996,9 +1996,13 @@
             background: var(--sel-border);
         }
         
-        .play-line {
+        .play-line[data-line-index] {
             cursor: pointer;
             overflow: hidden;
+        }
+
+        .play-line[data-line-index]:hover:not(.selected):not(.range-selected) {
+            background: rgba(0,0,0,0.03);
         }
         
         .play-line:active {
@@ -8754,8 +8758,11 @@
         const originalLoadPlay = window.loadPlay ? window.loadPlay.toString() : '';
         window.addEventListener('play-loaded', addLineEventListeners);
         
-        // Line selection: click to toggle individual lines on/off.
-        // Multiple lines accumulate; click a selected line to deselect it.
+        var MAX_SELECTED_LINES = 5;
+
+        // Line selection: click to select consecutive lines (up to MAX_SELECTED_LINES).
+        // Only lines adjacent to the current selection can be added.
+        // Click a selected line at the top or bottom edge to deselect it.
         function selectLine(element, text, lineIndex) {
             try {
                 hoveredLineIndex = null;
@@ -8767,28 +8774,55 @@
                     firstSelectedLine = null;
                 }
                 
-                // Detect current scene
                 detectCurrentScene(element);
 
-                // Toggle OFF: if clicking an already-selected line, deselect just that line
+                // Get current selection range from DOM
+                const currentSelected = Array.from(document.querySelectorAll('.play-line.selected, .play-line.range-selected'));
+                const currentIndices = currentSelected
+                    .map(el => parseInt(el.getAttribute('data-line-index'), 10))
+                    .filter(i => !Number.isNaN(i))
+                    .sort((a, b) => a - b);
+
+                // Toggle OFF: only allow deselecting from the edges of the range
                 if (element.classList.contains('selected') || element.classList.contains('range-selected')) {
-                    element.classList.remove('selected', 'range-selected');
-                    rebuildSelectedLines();
-                    if (selectedLines.length === 0) {
-                        firstSelectedLine = null;
+                    if (currentIndices.length <= 1 ||
+                        lineIndex === currentIndices[0] ||
+                        lineIndex === currentIndices[currentIndices.length - 1]) {
+                        element.classList.remove('selected', 'range-selected');
+                        rebuildSelectedLines();
+                        if (selectedLines.length === 0) {
+                            firstSelectedLine = null;
+                        }
+                        updateAnalysisPanel();
                     }
+                    return;
+                }
+
+                // Enforce maximum selection limit
+                if (currentIndices.length >= MAX_SELECTED_LINES) {
+                    return;
+                }
+
+                // First selection — anything goes
+                if (currentIndices.length === 0) {
+                    element.classList.add('selected');
+                    rebuildSelectedLines();
+                    firstSelectedLine = lineIndex;
+                    resetAnalysisForNewSelection();
                     updateAnalysisPanel();
                     return;
                 }
 
-                // Toggle ON: add this line to the current selection
+                // Subsequent selections must be adjacent to the current range
+                const minIdx = currentIndices[0];
+                const maxIdx = currentIndices[currentIndices.length - 1];
+                if (lineIndex !== minIdx - 1 && lineIndex !== maxIdx + 1) {
+                    return;
+                }
+
                 element.classList.add('selected');
                 rebuildSelectedLines();
-                if (firstSelectedLine === null) firstSelectedLine = lineIndex;
-
-                // Reset analysis results (but not the selection itself)
                 resetAnalysisForNewSelection();
-
                 updateAnalysisPanel();
 
             } catch (error) {
@@ -9167,21 +9201,33 @@
             }
             
             if (selectedLines.length > 0) {
-                const lineCount = selectedLines.length;
-                // Show selected lines summary + Clear Selection button
                 if (analysisContent) {
-                    const summary = selectedLines.length === 1
-                        ? selectedLines[0]
-                        : selectedLines.length + ' lines selected';
-                    analysisContent.innerHTML = '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">'
-                        + '<span>' + summary + '</span>'
-                        + '<button onclick="clearSelection()" style="padding:4px 12px;font-size:12px;border:1px solid var(--line);border-radius:4px;background:#fff;cursor:pointer;white-space:nowrap;">Clear Selection</button>'
+                    const n = selectedLines.length;
+                    const summary = n === 1
+                        ? '1 line selected'
+                        : n + ' of ' + MAX_SELECTED_LINES + ' lines selected';
+
+                    let linesHtml = '';
+                    selectedLines.forEach(function(line, i) {
+                        const safe = line.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+                        linesHtml += '<div style="padding:5px 0;'
+                            + (i < selectedLines.length - 1 ? 'border-bottom:1px solid #e5e7eb;' : '')
+                            + 'font-size:13px;line-height:1.5;color:#374151;">' + safe + '</div>';
+                    });
+
+                    analysisContent.innerHTML =
+                        '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px;">'
+                            + '<span style="font-size:13px;color:#6b7280;">' + summary + '</span>'
+                            + '<button onclick="clearSelection()" style="padding:5px 12px;font-size:12px;border:none;border-radius:5px;background:#1f2937;color:#fff;cursor:pointer;white-space:nowrap;">Clear Selection</button>'
+                        + '</div>'
+                        + '<div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;padding:10px 14px;max-height:180px;overflow-y:auto;">'
+                            + linesHtml
                         + '</div>';
                 }
                 if (analysisInstruction) analysisInstruction.textContent = '';
                 analyzeButton.style.display = 'block';
             } else {
-                if (analysisContent) analysisContent.textContent = 'Click lines in the play to select them for analysis. Press Escape to clear.';
+                if (analysisContent) analysisContent.textContent = 'Click lines in the play to select them (up to ' + MAX_SELECTED_LINES + '). Press Escape or click Clear to reset.';
                 if (analysisInstruction) analysisInstruction.textContent = '';
                 if (analyzeButton) analyzeButton.style.display = 'none';
             }
@@ -11348,6 +11394,15 @@
                 });
             });
 
+            // Delegated click handler for play lines (avoids inline onclick quote-escaping issues)
+            document.addEventListener('click', function(e) {
+                const line = e.target.closest('.play-line[data-line-index]');
+                if (!line) return;
+                const idx = parseInt(line.getAttribute('data-line-index'), 10);
+                const text = line.textContent || '';
+                selectLine(line, text, idx);
+            });
+
             // Escape key to close modals
             document.addEventListener('keydown', e => {
                 if (e.key === 'Escape') {
@@ -12757,33 +12812,18 @@
             }
             
             // Display each line exactly as it appears in the file, preserving whitespace
+            // Lines use data attributes instead of inline onclick to avoid quote-escaping issues
             sceneContent.forEach((line, index) => {
-                // Don't trim - preserve original spacing and empty lines
                 if (line === '') {
-                    // Empty line - preserve it
                     html += `<div class="play-line">&nbsp;</div>`;
                 } else {
-                    // Check if this line is a speaker name
+                    const escaped = line.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+                    html += `<div class="play-line" data-line-index="${index}">${escaped}</div>`;
+                    const trimmedLine = line.trim();
                     if (isSpeakerName(line)) {
-                        console.log('Found speaker name:', line);
                         currentSpeaker = line;
-                        // Show speaker name for first occurrence
-                        html += `<div class="play-line" data-line-index="${index}" onclick="selectLine(this, '${line.replace(/'/g, "\\'")}', ${index})">${line}</div>`;
-                    } else {
-                        // Check if this line is dialogue from the same speaker
-                        const trimmedLine = line.trim();
-                        if (trimmedLine && currentSpeaker && !isSpeakerName(trimmedLine) && !isStageDirection(trimmedLine)) {
-                            // This is dialogue from the same speaker - don't repeat the name
-                            console.log('Same speaker dialogue:', trimmedLine);
-                            html += `<div class="play-line" data-line-index="${index}" onclick="selectLine(this, '${line.replace(/'/g, "\\'")}', ${index})">${line}</div>`;
-                        } else {
-                            // This is a new speaker or different type of line - show as normal
-                            html += `<div class="play-line" data-line-index="${index}" onclick="selectLine(this, '${line.replace(/'/g, "\\'")}', ${index})">${line}</div>`;
-                            // Reset current speaker if this line is not dialogue
-                            if (!trimmedLine || isSpeakerName(trimmedLine) || isStageDirection(trimmedLine)) {
-                                currentSpeaker = '';
-                            }
-                        }
+                    } else if (!trimmedLine || isSpeakerName(trimmedLine) || isStageDirection(trimmedLine)) {
+                        currentSpeaker = '';
                     }
                 }
             });
@@ -12799,7 +12839,8 @@
                 if (sceneContent && sceneContent.length > 0) {
                     sceneContent.forEach((line, index) => {
                         if (line && line.toString().trim()) {
-                            fallbackHtml += `<div class="play-line">${line.toString()}</div>`;
+                            const escaped = line.toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+                            fallbackHtml += `<div class="play-line" data-line-index="${index}">${escaped}</div>`;
                         }
                     });
                 }
@@ -13229,10 +13270,11 @@
             const readerElement = document.querySelector('.reader');
             if (!readerElement) return;
             
-            // Don't clear highlights if clicking on any interactive elements
+            // Don't clear highlights if clicking on any interactive elements or play lines
             if (event.target.tagName === 'INPUT' || 
                 event.target.tagName === 'BUTTON' || 
                 event.target.tagName === 'TEXTAREA' ||
+                event.target.closest('.play-line[data-line-index]') ||
                 event.target.closest('.analysis') ||
                 event.target.closest('.segment') ||
                 event.target.closest('.analysis-header') ||
@@ -13337,25 +13379,10 @@
                 return;
             }
             
-            // Enforce 1–3 consecutive line selection rule
             const lineCount = currentSelectedLines.length;
-            if (lineCount < 1 || lineCount > 3) {
-                alert('Please select between 1 and 3 consecutive lines for analysis.');
+            if (lineCount > MAX_SELECTED_LINES) {
+                alert('Please select up to ' + MAX_SELECTED_LINES + ' lines for analysis.');
                 return;
-            }
-            
-            // Check that the selected lines are consecutive, based on their data-line-index
-            const selectedLineElements = Array.from(document.querySelectorAll('.play-line.selected, .play-line.range-selected'));
-            if (selectedLineElements.length > 0) {
-                const indices = selectedLineElements
-                    .map(el => parseInt(el.getAttribute('data-line-index'), 10))
-                    .filter(idx => !Number.isNaN(idx))
-                    .sort((a, b) => a - b);
-                
-                if (indices.length !== lineCount || indices[indices.length - 1] - indices[0] + 1 !== indices.length) {
-                    alert('Please select between 1 and 3 consecutive lines for analysis.');
-                    return;
-                }
             }
             
             const textToAnalyze = currentSelectedLines.join('\n');
