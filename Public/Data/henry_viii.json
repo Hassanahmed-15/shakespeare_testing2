@@ -1,79 +1,79 @@
 {
   "DRAMATIS PERSONAE": {
     "1": {
-      "play": "King Henry the Eighth",
+      "play": "KING HENRY THE EIGHTH",
       "notes": []
     },
     "2": {
-      "play": "Cardinal Wolsey",
+      "play": "CARDINAL WOLSEY",
       "notes": []
     },
     "3": {
-      "play": "Cardinal Campeius",
+      "play": "CARDINAL CAMPEIUS",
       "notes": []
     },
     "4": {
-      "play": "Capucius, Ambassador from the Emperor Charles V",
+      "play": "CAPUCIUS, Ambassador from the Emperor Charles V",
       "notes": []
     },
     "5": {
-      "play": "Cranmer, Archbishop of Canterbury",
+      "play": "CRANMER, Archbishop of Canterbury",
       "notes": []
     },
     "6": {
-      "play": "Duke of Norfolk",
+      "play": "DUKE OF NORFOLK",
       "notes": []
     },
     "7": {
-      "play": "Duke of Buckingham",
+      "play": "DUKE OF BUCKINGHAM",
       "notes": []
     },
     "8": {
-      "play": "Duke of Suffolk",
+      "play": "DUKE OF SUFFOLK",
       "notes": []
     },
     "9": {
-      "play": "Earl of Surrey",
+      "play": "EARL OF SURREY",
       "notes": []
     },
     "10": {
-      "play": "Lord Chamberlain",
+      "play": "LORD CHAMBERLAIN",
       "notes": []
     },
     "11": {
-      "play": "Lord Chancellor",
+      "play": "LORD CHANCELLOR",
       "notes": []
     },
     "12": {
-      "play": "Gardiner, Bishop of Winchester",
+      "play": "GARDINER, Bishop of Winchester",
       "notes": []
     },
     "13": {
-      "play": "Bishop of Lincoln",
+      "play": "BISHOP OF LINCOLN",
       "notes": []
     },
     "14": {
-      "play": "Lord Abergavenny",
+      "play": "LORD ABERGAVENNY",
       "notes": []
     },
     "15": {
-      "play": "Lord Sands",
+      "play": "LORD SANDS",
       "notes": []
     },
     "16": {
-      "play": "Sir Henry Guildford",
+      "play": "SIR HENRY GUILDFORD",
       "notes": []
     },
     "17": {
-      "play": "Sir Thomas Lovell",
+      "play": "SIR THOMAS LOVELL",
       "notes": []
     },
     "18": {
-      "play": "Sir Anthony Denny",
+      "play": "SIR ANTHONY DENNY",
       "notes": []
     },
     "19": {
-      "play": "Sir Nicholas Vaux",
+      "play": "SIR NICHOLAS VAUX",
       "notes": []
     },
     "20": {
@@ -81,11 +81,11 @@
       "notes": []
     },
     "21": {
-      "play": "Cromwell, Servant to Wolsey",
+      "play": "CROMWELL, Servant to Wolsey",
       "notes": []
     },
     "22": {
-      "play": "Griffith, Gentleman-usher to Queen Katharine",
+      "play": "GRIFFITH, Gentleman-usher to Queen Katharine",
       "notes": []
     },
     "23": {
@@ -93,11 +93,11 @@
       "notes": []
     },
     "24": {
-      "play": "Doctor Butts, Physician to the King",
+      "play": "DOCTOR BUTTS, Physician to the King",
       "notes": []
     },
     "25": {
-      "play": "Garter King-at-Arms",
+      "play": "GARTER KING-AT-ARMS",
       "notes": []
     },
     "26": {
@@ -105,7 +105,7 @@
       "notes": []
     },
     "27": {
-      "play": "Brandon, and a Sergeant-at-Arms",
+      "play": "BRANDON, and a Sergeant-at-Arms",
       "notes": []
     },
     "28": {
@@ -121,11 +121,11 @@
       "notes": []
     },
     "31": {
-      "play": "Queen Katharine, wife to King Henry, afterwards divorced",
+      "play": "QUEEN KATHARINE, wife to King Henry, afterwards divorced",
       "notes": []
     },
     "32": {
-      "play": "Anne Bullen, her Maid of Honour, afterwards Queen",
+      "play": "ANNE BULLEN, her Maid of Honour, afterwards Queen",
       "notes": []
     },
     "33": {
@@ -133,7 +133,7 @@
       "notes": []
     },
     "34": {
-      "play": "Patience, woman to Queen Katharine",
+      "play": "PATIENCE, woman to Queen Katharine",
       "notes": []
     },
     "35": {
@@ -142,10 +142,6 @@
     },
     "36": {
       "play": "Spirits",
-      "notes": []
-    },
-    "37": {
-      "play": "Scene: London; Westminster; Kimbolton.",
       "notes": []
     }
   },

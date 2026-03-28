@@ -1,7 +1,115 @@
 {
   "DRAMATIS PERSONAE": {
     "1": {
-      "play": "DRAMATIS PERSONAE\nCYMBELINE\n\nCAIUS LUCIUS\nFirst Brother\nFirst Captain\nFirst Gaoler\nFirst Gentleman\nFirst Lady\nFirst Lord\nFirst Senator\nFirst Tribune\nIn France\nPOSTHUMUS LEONATUS\nPosthumus Leonatus\nQUEEN\nSecond Brother\nSecond Captain\nSecond Gaoler\nSecond Gentleman\nSecond Lord\nSecond Senator\nSicilius Leonatus\n\nARVIRAGUS\nBELARIUS\nCLOTEN\nCORNELIUS\nCYMBELINE\nGUIDERIUS\nIACHIMO\nIMOGEN\nPHILARIO\nPISANIO",
+      "play": "CYMBELINE",
+      "notes": []
+    },
+    "2": {
+      "play": "CAIUS LUCIUS",
+      "notes": []
+    },
+    "3": {
+      "play": "FIRST BROTHER",
+      "notes": []
+    },
+    "4": {
+      "play": "FIRST CAPTAIN",
+      "notes": []
+    },
+    "5": {
+      "play": "FIRST GAOLER",
+      "notes": []
+    },
+    "6": {
+      "play": "FIRST GENTLEMAN",
+      "notes": []
+    },
+    "7": {
+      "play": "FIRST LADY",
+      "notes": []
+    },
+    "8": {
+      "play": "FIRST LORD",
+      "notes": []
+    },
+    "9": {
+      "play": "FIRST SENATOR",
+      "notes": []
+    },
+    "10": {
+      "play": "FIRST TRIBUNE",
+      "notes": []
+    },
+    "11": {
+      "play": "POSTHUMUS LEONATUS",
+      "notes": []
+    },
+    "12": {
+      "play": "QUEEN",
+      "notes": []
+    },
+    "13": {
+      "play": "SECOND BROTHER",
+      "notes": []
+    },
+    "14": {
+      "play": "SECOND CAPTAIN",
+      "notes": []
+    },
+    "15": {
+      "play": "SECOND GAOLER",
+      "notes": []
+    },
+    "16": {
+      "play": "SECOND GENTLEMAN",
+      "notes": []
+    },
+    "17": {
+      "play": "SECOND LORD",
+      "notes": []
+    },
+    "18": {
+      "play": "SECOND SENATOR",
+      "notes": []
+    },
+    "19": {
+      "play": "SICILIUS LEONATUS",
+      "notes": []
+    },
+    "20": {
+      "play": "ARVIRAGUS",
+      "notes": []
+    },
+    "21": {
+      "play": "BELARIUS",
+      "notes": []
+    },
+    "22": {
+      "play": "CLOTEN",
+      "notes": []
+    },
+    "23": {
+      "play": "CORNELIUS",
+      "notes": []
+    },
+    "24": {
+      "play": "GUIDERIUS",
+      "notes": []
+    },
+    "25": {
+      "play": "IACHIMO",
+      "notes": []
+    },
+    "26": {
+      "play": "IMOGEN",
+      "notes": []
+    },
+    "27": {
+      "play": "PHILARIO",
+      "notes": []
+    },
+    "28": {
+      "play": "PISANIO",
       "notes": []
     }
   },

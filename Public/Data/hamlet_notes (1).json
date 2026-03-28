@@ -1,51 +1,49 @@
 {
   "DRAMATIS PERSONAE": {
     "1": {
-      "play": "Claudius, King of Denmark.",
-      "notes": [
-        
-      ]
+      "play": "CLAUDIUS, King of Denmark.",
+      "notes": []
     },
     "2": {
-      "play": "Hamlet, son to the late, and nephew to the present, King.",
+      "play": "HAMLET, son to the late, and nephew to the present, King.",
       "notes": []
     },
     "3": {
-      "play": "Fortinbras, Prince of Norway.",
+      "play": "FORTINBRAS, Prince of Norway.",
       "notes": []
     },
     "4": {
-      "play": "Polonius, Lord Chamberlain.",
+      "play": "POLONIUS, Lord Chamberlain.",
       "notes": []
     },
     "5": {
-      "play": "Horatio, friend to Hamlet.",
+      "play": "HORATIO, friend to Hamlet.",
       "notes": []
     },
     "6": {
-      "play": "Laertes, son to Polonius.",
+      "play": "LAERTES, son to Polonius.",
       "notes": []
     },
     "7": {
-      "play": "Voltimand.",
+      "play": "VOLTIMAND.",
       "notes": []
     },
     "8": {
-      "play": "Cornelius.",
+      "play": "CORNELIUS.",
       "notes": []
     },
     "9": {
-      "play": "Rosencrantz.",
+      "play": "ROSENCRANTZ.",
       "notes": [
         "Rosencrantz] Theob. Rosenkrans. Rowe. Rosencrantz. Pope, Jen. Rosen, Cross. Han."
       ]
     },
     "10": {
-      "play": "Guildenstern.",
+      "play": "GUILDENSTERN.",
       "notes": []
     },
     "11": {
-      "play": "Osric.",
+      "play": "OSRIC.",
       "notes": []
     },
     "12": {
@@ -57,23 +55,23 @@
       "notes": []
     },
     "14": {
-      "play": "Marcellus, Officer.",
+      "play": "MARCELLUS, Officer.",
       "notes": []
     },
     "15": {
-      "play": "Bernardo, Officer.",
+      "play": "BERNARDO, Officer.",
       "notes": []
     },
     "16": {
-      "play": "Francisco, a soldier.",
+      "play": "FRANCISCO, a soldier.",
       "notes": []
     },
     "17": {
-      "play": "Reynaldo, servant to Polonius.",
+      "play": "REYNALDO, servant to Polonius.",
       "notes": []
     },
     "18": {
-      "play": "Players.",
+      "play": "PLAYERS.",
       "notes": []
     },
     "19": {
@@ -89,11 +87,11 @@
       "notes": []
     },
     "22": {
-      "play": "Gertrude, Queen of Denmark, and mother to Hamlet.",
+      "play": "GERTRUDE, Queen of Denmark, and mother to Hamlet.",
       "notes": []
     },
     "23": {
-      "play": "Ophelia, daughter to Polonius.",
+      "play": "OPHELIA, daughter to Polonius.",
       "notes": []
     },
     "24": {
@@ -101,14 +99,8 @@
       "notes": []
     },
     "25": {
-      "play": "Ghost of Hamlet's Father.",
+      "play": "GHOST OF HAMLET'S FATHER.",
       "notes": []
-    },
-    "26": {
-      "play": "Scene: Elsinore.",
-      "notes": [
-        "Elsinore] Mal. Elsinour. Rowe +. Elsinour. Cap. Elsinore. Steev. Denmark. Gloster."
-      ]
     }
   },
   "ACT 1, SCENE 1": {

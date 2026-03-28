@@ -1143,11 +1143,31 @@
             margin: var(--s-4) 0 var(--s-2);
         }
 
-        /* Critics modal lists: avoid nested scroll boxes.
-           The modal body is the single scroll container. */
+        /* Critics modal lists: clean typography matching site font */
         .critics-list {
             max-height: none !important;
             overflow: visible !important;
+            font-family: inherit;
+        }
+        .critics-list p {
+            font-family: inherit;
+            font-size: 14px;
+            line-height: 1.7;
+            margin: 0;
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.04);
+            color: var(--ink-1, #1d1d1f);
+        }
+        .critics-list p:last-child {
+            border-bottom: none;
+        }
+        .critics-list p strong {
+            display: block;
+            font-size: 15px;
+            margin-top: 12px;
+            margin-bottom: 4px;
+            color: var(--ink-1, #1d1d1f);
+            border-bottom: none;
         }
 
         .about-footer {
@@ -1856,8 +1876,8 @@
             line-height: 1.6;
             color: var(--ink-1);
             margin: 0.25rem 0;
-            white-space: pre;
-            font-family: monospace;
+            white-space: pre-wrap;
+            font-family: inherit;
             cursor: text;
             padding: 6px 12px;
             border-radius: 10px;
@@ -3028,7 +3048,8 @@
         <h1>Shakespeare Digital Variorum</h1>
         <div class="header-nav">
             <span class="nav-text" onclick="openHowToUse()">How To Use</span>
-            <button class="nav-btn" onclick="openSettings()">Settings</button>
+            <!-- Settings button hidden for public release; uncomment to re-enable for admin use -->
+            <!-- <button class="nav-btn" onclick="openSettings()">Settings</button> -->
             <button class="nav-btn" onclick="openAbout()">About</button>
             <span class="instruction-text">Use your cursor to highlight text in the play for analysis.</span>
         </div>
@@ -3131,7 +3152,7 @@
                     
                     <p>The Shakespeare Digital Variorum represents the next evolution of the variorum tradition: comprehensive, scholarly, and designed for universal access. Shakespeare's world is vast, and now everyone can explore all of it.</p>
                     
-                    <p><em>Created by Jack David Carson, Massachusetts Institute of Technology • 2025</em></p>
+                    <p><em>Created by Jack David Carson, Massachusetts Institute of Technology • 2026</em></p>
 
                     <div class="meta">
                         <div class="badge">Version <strong>1.0.0</strong></div>
@@ -3220,7 +3241,7 @@
                 </div>
                 
                 <div class="critics-list" style="max-height: 50vh; overflow-y: auto; background: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb;">
-                    <div style="font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6;">
+                    <div>
                         <p>"E. A. Abbott, Shakespearian Grammar, London, 1870"</p>
                         <p>"Prof. Allen, MS notes on Macbeth, 1867"</p>
                         <p>"Angellier et Montegut, Macbeth, Paris, 1889"</p>
@@ -3562,9 +3583,9 @@
                     
                     <p><strong>Selecting Text for Analysis:</strong></p>
                     <ul>
-                        <li>Highlight <strong>1–3 consecutive lines</strong> by clicking and dragging over the text in the play.</li>
+                        <li><strong>Click</strong> any line in the play to select it (highlighted). Click additional lines to add them to your selection.</li>
                         <li>Once you've selected lines, an <strong>Analyze Text</strong> button will appear on the right panel.</li>
-                        <li>To clear your selection, simply <strong>click on the highlighted lines again</strong>—this will un-highlight them and remove the analysis button.</li>
+                        <li>To <strong>deselect</strong> a single line, click it again. To <strong>clear all</strong> selections, press <strong>Escape</strong> or click the <strong>Clear Selection</strong> button.</li>
                     </ul>
                     
                     <p>To use this site, begin by selecting any lines of the play. Each selection opens three levels of analysis:</p>
@@ -3610,7 +3631,7 @@
                 </div>
                 
                 <div class="critics-list" style="background: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb;">
-                    <div style="font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6;">
+                    <div>
                         <p>"E. A. Abbott, Shakespearian Grammar, London, 1870"</p>
                         <p>"Prof. Allen, MS notes on Macbeth, 1867"</p>
                         <p>"Angellier et Montegut, Macbeth, Paris, 1889"</p>
@@ -3963,7 +3984,7 @@
                 </div>
                 
                 <div class="critics-list" style="max-height: 400px; overflow-y: auto; background: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb;">
-                    <div style="font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6;">
+                    <div>
                         <p><strong>German</strong></p>
                         <p>"Wieland, Shakespeare theatralische Werke, vol. i"</p>
                         <p>"Horder, Von Deutscher Art und Kunst, p. 93"</p>
@@ -4122,7 +4143,7 @@
                 </div>
                 
                 <div class="critics-list" style="max-height: 400px; overflow-y: auto; background: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb;">
-                    <div style="font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6;">
+                    <div>
                         <p><strong>German Critics & Editions</strong></p>
                         <p>"Hamlet: [Die Beziehung von Herfeld...], 1773"</p>
                         <p>"Hamlet: Ein Trennergleiche Auflagen..., 1777"</p>
@@ -4289,7 +4310,7 @@
                 </div>
                 
                 <div class="critics-list" style="max-height: 400px; overflow-y: auto; background: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb;">
-                    <div style="font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6;">
+                    <div>
                         <p><strong>ENGLISH WORKS</strong></p>
                         <p>"Otway, Cainz Marine, London, 1712"</p>
                         <p>"Upton, Critical Observation on Shakepeare, 1746"</p>
@@ -4483,7 +4504,7 @@
                 </div>
                 
                 <div class="critics-list" style="max-height: 400px; overflow-y: auto; background: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb;">
-                    <div style="font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6;">
+                    <div>
                         <p>"Zachary Jackson: Shakespeare's Corina Justified"</p>
                         <p>"Hogan: Shakespeare's Schamigide trilustra, Leipzig 1833"</p>
                         <p>"Boomer: Life of J. P. Lemke 1858"</p>
@@ -4639,7 +4660,7 @@
                     
                     <div class="rights-footer">
                         <h4>Shakespeare Digital Variorum</h4>
-                        <p>Created by Jack David Carson, Massachusetts Institute of Technology • 2025</p>
+                        <p>Created by Jack David Carson, Massachusetts Institute of Technology • 2026</p>
                         <p>Questions about usage? Contact: <a href="mailto:jdcarson@mit.edu">jdcarson@mit.edu</a></p>
                         <button class="close-rights-btn" onclick="closeRights()">Close</button>
                     </div>
@@ -4673,7 +4694,7 @@
                 </div>
                 
                 <div class="critics-list" style="max-height: 400px; overflow-y: auto; background: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb;">
-                    <div style="font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6;">
+                    <div>
                         <p>"Abbott, Edwin A.: A Shakespearian Grammar, 1870"</p>
                         <p>"Acheson, Arthur: Shakespeare's Lost Years in London, 1586-1592, 1920"</p>
                         <p>"Actors by Daylight, Pencillings in the Pit (a periodical), 1838-1839"</p>
@@ -4874,7 +4895,7 @@
                 </div>
                 
                 <div class="critics-list" style="max-height: 400px; overflow-y: auto; background: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb;">
-                    <div style="font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6;">
+                    <div>
                         <p>"E. A. Abbott: Shakespearian Grammar (3d ed.), 1870"</p>
                         <p>"E. Arber: English Garner (vol. iii), 1880"</p>
                         <p>"S. Bailey: The Received Text of Shakespeare, 1862"</p>
@@ -5064,7 +5085,7 @@
                 </div>
                 
                 <div class="critics-list" style="max-height: 400px; overflow-y: auto; background: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb;">
-                    <div style="font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6;">
+                    <div>
                         <p>"Holinshed: Chronicles, 1574"</p>
                         <p>"Painter: Palace of Pleasure (ed. Haslewood), 1575"</p>
                         <p>"Scot: Discoverie of Witchcraft (ed. Nicholson), 1584"</p>
@@ -5246,7 +5267,7 @@
                 </div>
                 
                 <div class="critics-list" style="max-height: 300px; overflow-y: auto; background: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb; margin-bottom: 30px;">
-                    <div style="font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6;">
+                    <div>
                         <p>"The Second Folio [F2], 1632"</p>
                         <p>"The Third Folio [F3], 1664"</p>
                         <p>"The Fourth Folio [F4], 1685"</p>
@@ -5298,7 +5319,7 @@
                 </div>
                 
                 <div class="critics-list" style="max-height: 400px; overflow-y: auto; background: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb;">
-                    <div style="font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6;">
+                    <div>
                         <p>"Abbott, E. A.: Shakespearian Grammar, London, 1870"</p>
                         <p>"Appian: History of Rome (translated by H. White), London, 1899"</p>
                         <p>"Badham, C.: Text of Shakspeare, Cambridge, 1856"</p>
@@ -5457,7 +5478,7 @@
                 </div>
                 
                 <div class="critics-list" style="max-height: 400px; overflow-y: auto; background: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb;">
-                    <div style="font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6;">
+                    <div>
                         <p>"Abbott, E. A.: Shakespearian Grammar, London, 1870"</p>
                         <p>"Appian: History of Rome (translated by H. White), London, 1899"</p>
                         <p>"Badham, C.: Text of Shakspeare, Cambridge, 1856"</p>
@@ -5802,7 +5823,7 @@
                 </div>
                 
                 <div class="critics-list" style="max-height: 300px; overflow-y: auto; background: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb; margin-bottom: 30px;">
-                    <div style="font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6;">
+                    <div>
                         <p>"Holinshed: Chronicles, 1574"</p>
                         <p>"Painter: Palace of Pleasure (ed. Haslewood), 1575"</p>
                         <p>"Scot: Discoverie of Witchcraft (ed. Nicholson), 1584"</p>
@@ -5942,7 +5963,7 @@
                 </div>
                 
                 <div class="critics-list" style="max-height: 250px; overflow-y: auto; background: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb; margin-bottom: 30px;">
-                    <div style="font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6;">
+                    <div>
                         <p>"Cooper's Latin Dictionary, 1573"</p>
                         <p>"Florio: His firste Fruites, 1578"</p>
                         <p>"Baret's Alvearie, 1580"</p>
@@ -5970,7 +5991,7 @@
                 </div>
                 
                 <div class="critics-list" style="max-height: 300px; overflow-y: auto; background: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb; margin-bottom: 30px;">
-                    <div style="font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6;">
+                    <div>
                         <p>"The Second Folio [F2], 1632"</p>
                         <p>"The Third Folio [F3], 1664"</p>
                         <p>"The Fourth Folio [F4], 1685"</p>
@@ -6047,7 +6068,7 @@
                 </div>
                 
                 <div class="critics-list" style="max-height: 400px; overflow-y: auto; background: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb;">
-                    <div style="font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6;">
+                    <div>
                         <p>"Abbott, E. A.: Shakespearian Grammar, London, 1870"</p>
                         <p>"Allen, George: MS Annotated copy of Much Ado about Nothing, Philadelphia, 1867"</p>
                         <p>"Anonymous: Shakespeare's Garden of Girls, London, 1885"</p>
@@ -6476,7 +6497,7 @@
                 </div>
                 
                 <div class="critics-list" style="max-height: 400px; overflow-y: auto; background: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb;">
-                    <div style="font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6;">
+                    <div>
                         <p>"E. A. Abbott: Shakespearian Grammar (3d ed.), 1870"</p>
                         <p>"Appian: History of Rome (translated by H. White), 1899"</p>
                         <p>"C. Badham: Text of Shakespeare, 1856"</p>
@@ -6647,7 +6668,7 @@
                 </div>
                 
                 <div class="critics-list" style="max-height: 400px; overflow-y: auto; background: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb;">
-                    <div style="font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6;">
+                    <div>
                         <p>"A. Dyce: Shakespeare's Works, 1868"</p>
                         <p>"T. F. T. Dyer: Folk-lore of Shakespeare (Reprint), New York, 1884"</p>
                         <p>"J. Earle: Philology of the English Tongue, Oxford, 1871"</p>
@@ -6781,7 +6802,7 @@
                 </div>
                 
                 <div class="critics-list" style="max-height: 400px; overflow-y: auto; background: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb;">
-                    <div style="font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6;">
+                    <div>
                         <p>"E. A. Abbott: Shakespearian Grammar (3d ed.), 1870"</p>
                         <p>"A. C. Bradley: Shakespearian Tragedy, 1905"</p>
                         <p>"G. Brandes: William Shakespeare, 1900"</p>
@@ -6914,7 +6935,7 @@
                 </div>
                 
                 <div class="critics-list" style="max-height: 400px; overflow-y: auto; background: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb;">
-                    <div style="font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6;">
+                    <div>
                         <p>"E. A. Abbott: Shakespearian Grammar (3d ed.), 1870"</p>
                         <p>"George Allen: MS Annotated copy of Much Ado about Nothing, 1867"</p>
                         <p>"Appian: History of Rome (translated by H. White), 1899"</p>
@@ -7383,7 +7404,7 @@
                 </div>
                 
                 <div class="critics-list" style="max-height: 400px; overflow-y: auto; background: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb;">
-                    <div style="font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6;">
+                    <div>
                         <p>"E. A. Abbott: Shakespearian Grammar (3d ed.), 1870"</p>
                         <p>"George Allen: MS Annotated copy of Much Ado about Nothing, 1867"</p>
                         <p>"Appian: History of Rome (translated by H. White), 1899"</p>
@@ -7848,8 +7869,7 @@
                 <div class="empty-body">
                     <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#6B7078" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M8 13h8M8 10h5"/></svg>
                     <div class="empty-title">Add a play to begin</div>
-                    <div class="empty-sub">Upload a text file in Settings. We'll auto-index acts and scenes.</div>
-                    <button class="btn btn-primary" onclick="openSettings()">Open Settings</button>
+                    <div class="empty-sub">Select a play from the sidebar to begin exploring.</div>
                 </div>
             </div>
 
@@ -7876,8 +7896,7 @@
             <div class="analysis-instruction" id="analysisInstruction">
                 Select text in the play to get AI-powered analysis.
                 <br>
-                You can highlight 1–3 consecutive lines by dragging over them, and the analysis will focus only on those lines.
-                Click on the highlighted lines again to clear your selection and hide the analysis button.
+                Click lines in the play to select them for analysis. Click a selected line again to deselect it. Press Escape or the Clear Selection button to start over.
             </div>
             <div id="analysisResult"></div>
             
@@ -8690,21 +8709,7 @@
         let lastWheelSelectedIndex = null;
         
         function addLineEventListeners() {
-            // Add hover listeners to all play lines for smooth preview highlighting
-            document.querySelectorAll('.play-line').forEach(line => {
-                line.addEventListener('mouseenter', function() {
-                    const lineIndex = parseInt(this.getAttribute('data-line-index'), 10);
-                    if (!Number.isNaN(lineIndex)) {
-                        hoveredLineIndex = lineIndex;
-                        updateHoverPreview();
-                    }
-                });
-                
-                line.addEventListener('mouseleave', function() {
-                    hoveredLineIndex = null;
-                    updateHoverPreview();
-                });
-            });
+            // No hover-based highlighting; selection is click-only
         }
 
         function getPlayLineUnderPointer() {
@@ -8715,66 +8720,11 @@
         }
 
         function setupScrollToSelect() {
-            // Track pointer position only when over the reader area
-            const reader = document.getElementById('readerPanel') || document.querySelector('.reader') || document.querySelector('.reader.panel') || document.querySelector('.reader-panel');
-            const target = reader || document;
-
-            target.addEventListener('pointermove', (e) => {
-                lastPointerX = e.clientX;
-                lastPointerY = e.clientY;
-            }, { passive: true });
-
-            target.addEventListener('mousemove', (e) => {
-                lastPointerX = e.clientX;
-                lastPointerY = e.clientY;
-            }, { passive: true });
-
-            // When scrolling with cursor over the reader, auto-select the line under the pointer.
-            target.addEventListener('wheel', () => {
-                if (wheelSelectRaf) return;
-                wheelSelectRaf = requestAnimationFrame(() => {
-                    wheelSelectRaf = null;
-
-                    const lineEl = getPlayLineUnderPointer();
-                    if (!lineEl) return;
-
-                    const lineIndex = parseInt(lineEl.getAttribute('data-line-index'), 10);
-                    if (Number.isNaN(lineIndex)) return;
-
-                    // Don't re-trigger selection on the same line (prevents toggle/clear)
-                    if (lineIndex === lastWheelSelectedIndex) return;
-
-                    // Avoid clearing selection by repeatedly selecting an already-selected line
-                    if (lineEl.classList.contains('selected') || lineEl.classList.contains('range-selected')) {
-                        lastWheelSelectedIndex = lineIndex;
-                        return;
-                    }
-
-                    lastWheelSelectedIndex = lineIndex;
-                    selectLine(lineEl, (lineEl.textContent || '').trim(), lineIndex);
-                });
-            }, { passive: true });
+            // Scroll-to-select disabled; selection is click-only
         }
         
         function updateHoverPreview() {
-            if (hoveredLineIndex === null || firstSelectedLine === null) return;
-            
-            const startIndex = Math.min(firstSelectedLine, hoveredLineIndex);
-            const endIndex = Math.max(firstSelectedLine, hoveredLineIndex);
-            const count = endIndex - startIndex + 1;
-            
-            // Only show preview if within 1-3 line range
-            if (count > 3) return;
-            
-            // Update visual preview during hover
-            document.querySelectorAll('.play-line').forEach(line => {
-                const idx = parseInt(line.getAttribute('data-line-index'), 10);
-                if (idx >= startIndex && idx <= endIndex && !line.classList.contains('selected')) {
-                    line.style.backgroundColor = 'rgba(0, 0, 0, 0.04)';
-                } else if (!line.classList.contains('selected') && !line.classList.contains('range-selected')) {
-                    line.style.backgroundColor = 'transparent';
-                }
-            });
+            // Hover preview disabled; selection is click-only
         }
         
         // Initialize hover listeners when page loads
@@ -8784,231 +8734,90 @@
         const originalLoadPlay = window.loadPlay ? window.loadPlay.toString() : '';
         window.addEventListener('play-loaded', addLineEventListeners);
         
-        // Line selection functionality (supports 1–3 consecutive lines)
+        // Line selection: click to toggle individual lines on/off.
+        // Multiple lines accumulate; click a selected line to deselect it.
         function selectLine(element, text, lineIndex) {
             try {
-                // Reset hover state when user clicks
                 hoveredLineIndex = null;
-                
-                // Validate element exists and is a play line
-                if (!element || !element.classList.contains('play-line')) {
-                    console.error('❌ Invalid element passed to selectLine');
-                    return;
-                }
-                
-                // CRITICAL: Ensure selectedLines is an array (fix for search + click error)
+
+                if (!element || !element.classList.contains('play-line')) return;
+
                 if (!Array.isArray(selectedLines)) {
-                    console.warn('⚠️ Resetting selectedLines array after error state');
                     selectedLines = [];
                     firstSelectedLine = null;
                 }
                 
-                // FORCE CLEAR any previous selections before starting new selection
-                document.querySelectorAll('.play-line').forEach(line => {
-                    line.classList.remove('selected', 'range-selected');
-                });
-                
-                console.log('Selecting line:', lineIndex, 'Text:', text);
-            
-            // Look for scene information in the DOM or use the currently loaded scene
-            const sceneContainer = element.closest('.scene-content') || element.closest('[data-scene]');
-            console.log('🔍 DEBUG: Found sceneContainer:', sceneContainer);
-            
-            if (sceneContainer && sceneContainer.getAttribute('data-scene')) {
-                currentScene = sceneContainer.getAttribute('data-scene');
-                console.log('🎭 Updated currentScene from DOM context:', currentScene);
-            } else {
-                console.log('🔍 DEBUG: No scene container found, trying fallback methods...');
-                
-                // Fallback: try to determine scene from the current loaded content
-                const readerElement = document.getElementById('reader');
-                console.log('🔍 DEBUG: Found readerElement:', readerElement);
-                
-                if (readerElement) {
-                    const sceneTitle = readerElement.querySelector('.scene-title');
-                    console.log('🔍 DEBUG: Found sceneTitle:', sceneTitle);
-                    
-                    if (sceneTitle) {
-                        currentScene = sceneTitle.textContent.trim();
-                        console.log('🎭 Updated currentScene from scene title:', currentScene);
-                    } else {
-                        console.log('🔍 DEBUG: No scene title found');
-                    }
-                } else {
-                    console.log('🔍 DEBUG: No reader element found');
-                }
-                
-                // Additional fallback: check if we have a current scene from navigation
-                if (!currentScene) {
-                    console.log('🔍 DEBUG: No scene found, checking navigation...');
-                    const activeNavLink = document.querySelector('.nav-list a.active');
-                    if (activeNavLink) {
-                        currentScene = activeNavLink.getAttribute('data-scene') || activeNavLink.textContent.trim();
-                        console.log('🎭 Updated currentScene from active nav link:', currentScene);
-                    }
-                }
-            }
-            
-            console.log('🎭 FINAL currentScene value:', currentScene);
-            
-                // EMERGENCY FALLBACK: If we still don't have a scene, try to get it from the URL
-            if (!currentScene || currentScene === '') {
-                console.log('🚨 EMERGENCY: No scene detected, using fallback...');
-                
-                // Try to get scene from URL hash
-                const hash = window.location.hash;
-                if (hash && hash.includes('scene')) {
-                    currentScene = hash.replace('#', '').replace('scene-', '');
-                    console.log('🎭 Set currentScene from URL hash:', currentScene);
-                } else {
-                    console.log('🎭 No scene detected, leaving currentScene empty');
-                }
-            }
-            
-                // If the user clicks on an already-selected line, treat it as a toggle to clear the selection
+                // Detect current scene
+                detectCurrentScene(element);
+
+                // Toggle OFF: if clicking an already-selected line, deselect just that line
                 if (element.classList.contains('selected') || element.classList.contains('range-selected')) {
-                    clearSelection();
-                    console.log('✅ Selection cleared by clicking an already-selected line');
+                    element.classList.remove('selected', 'range-selected');
+                    rebuildSelectedLines();
+                    if (selectedLines.length === 0) {
+                        firstSelectedLine = null;
+                    }
+                    updateAnalysisPanel();
                     return;
                 }
-                
-                // RESET analysis panel BEFORE starting new selection
-            const analysisResult = document.getElementById('analysisResult');
-            const variorumResult = document.getElementById('variorumResult');
-            const variorumContent = document.getElementById('variorumContent');
-            const analysisPanel = document.getElementById('analysisPanel');
-            const criticsInfo = document.getElementById('criticsInfo');
-            const nvInfo = document.getElementById('nvInfo');
-            const analysisContent = document.getElementById('analysisContent');
-                const analysisInstruction = document.getElementById('analysisInstruction');
-                const analyzeButton = document.getElementById('analyzeButton');
-                const followUpSection = document.getElementById('followUpSection');
-                const mediaSection = document.getElementById('mediaSection');
-                const researchSection = document.getElementById('researchSection');
-                const variorumSection = document.getElementById('variorumSection');
-                const metaElement = document.querySelector('.meta');
-                const analysisTitleElement = document.querySelector('.analysis-title');
-                
-                // CRITICAL FIX: Clear analysisInProgress flag to allow new analysis
-                analysisInProgress = false;
-                
-                // IMMEDIATELY clear all analysis content
-            if (analysisResult) analysisResult.innerHTML = '';
-            if (variorumResult) variorumResult.innerHTML = '';
-            if (variorumContent) variorumContent.innerHTML = '';
-                
-                // ALWAYS hide variorum section when starting new selection
-                if (variorumSection) {
-                    variorumSection.style.display = 'none';
-                    variorumSection.style.visibility = 'hidden';
-                    variorumSection.style.height = '0';
-                    variorumSection.style.margin = '0';
-                    variorumSection.style.padding = '0';
-                    variorumSection.style.overflow = 'hidden';
-                }
-                
-                // Reset to initial state
-            if (analysisContent) analysisContent.innerHTML = '<p>Highlight text in the play to get AI-powered analysis.</p>';
-                if (analysisInstruction) analysisInstruction.textContent = 'Select text in the play to get AI-powered analysis.';
-                if (analyzeButton) analyzeButton.style.display = 'none';
-                
-                // Hide follow-up, media, and research sections
-                if (followUpSection) {
-                    followUpSection.style.display = 'none';
-                    followUpSection.innerHTML = '<h3>Ask a follow-up question</h3><div class="follow-up-input"><input type="text" placeholder="Ask a follow-up question..." id="followUpQuestion"><button class="ask-btn" onclick="askFollowUp()">Ask</button></div>';
-                }
-                if (mediaSection) {
-                    mediaSection.style.display = 'none';
-                    mediaSection.innerHTML = '<h3>Media</h3><div class="media-actions"><button class="link-btn youtube" onclick="searchYouTube(\'scene\')">Search YouTube for this scene</button></div>';
-                }
-                if (researchSection) {
-                    researchSection.style.display = 'none';
-                    researchSection.innerHTML = '<h3>Research</h3><div class="research-actions"><button class="link-btn jstor" onclick="searchJSTOR(\'passage\')">Search JSTOR for this passage/scene</button><button class="link-btn scholar" onclick="searchGoogleScholar()">Google Scholar</button><button class="link-btn ise" onclick="openInternetShakespeare()">Internet Shakespeare Editions</button></div>';
-                }
-            
-            // Hide any open info panels
-            if (criticsInfo) criticsInfo.style.display = 'none';
-            if (nvInfo) nvInfo.style.display = 'none';
-                if (metaElement) metaElement.style.display = 'none';
-                
-                // Reset analysis title
-                if (analysisTitleElement) analysisTitleElement.textContent = 'Basic Analysis';
-                
-                // Scroll analysis panel to top
-                if (analysisPanel) analysisPanel.scrollTop = 0;
-                
-                // NOW process the new selection
-                const isStartingNewSelection = firstSelectedLine === null || selectedLines.length === 0;
-                
-                if (isStartingNewSelection) {
-                    // This click defines the first line in the selection
-            element.classList.add('selected');
-            selectedLines = [text.trim()];
-                    firstSelectedLine = lineIndex;
-                    
-                    console.log('✅ Started new selection at line:', firstSelectedLine, 'Selected lines:', selectedLines);
-                } else {
-                    // We already have a starting line; this click defines a range end
-                    const startIndex = Math.min(firstSelectedLine, lineIndex);
-                    const endIndex = Math.max(firstSelectedLine, lineIndex);
-                    const count = endIndex - startIndex + 1;
-                    
-                    // If selection is more than 3 lines, auto-reset and select just this new line
-                    if (count > 3) {
-                        console.log('ℹ️ Selection exceeds 3 lines, auto-resetting to just this line');
-                        // Clear all previous selections
-                        document.querySelectorAll('.play-line').forEach(line => {
-                            line.classList.remove('selected', 'range-selected');
-                        });
-                        // Start fresh with just the clicked line
-                        element.classList.add('selected');
-                        selectedLines = [text.trim()];
-                        firstSelectedLine = lineIndex;
-                        console.log('✅ Auto-reset: New selection at line:', lineIndex);
-                    } else {
-                        // Apply selection across the range and rebuild selectedLines
-                        const newSelectedLines = [];
-                        for (let i = startIndex; i <= endIndex; i++) {
-                            const lineEl = document.querySelector(`.play-line[data-line-index="${i}"]`);
-                            if (!lineEl) continue;
-                            
-                            // First and last lines use 'selected'; middle lines use 'range-selected'
-                            if (i === startIndex || i === endIndex) {
-                                lineEl.classList.add('selected');
-                            } else {
-                                lineEl.classList.add('range-selected');
-                            }
-                            
-                            newSelectedLines.push(lineEl.textContent.trim());
-                        }
-                        
-                        selectedLines = newSelectedLines;
-                        firstSelectedLine = startIndex;
-                        
-                        console.log('✅ Updated selection range:', startIndex, 'to', endIndex, 'Selected lines:', selectedLines);
-                    }
-                }
-                
-                // Final state update
-                console.log('✅ Line selection state:', selectedLines);
-            console.log('🎭 Current scene after selection:', currentScene);
-            updateAnalysisPanel();
-                
+
+                // Toggle ON: add this line to the current selection
+                element.classList.add('selected');
+                rebuildSelectedLines();
+                if (firstSelectedLine === null) firstSelectedLine = lineIndex;
+
+                // Reset analysis results (but not the selection itself)
+                resetAnalysisForNewSelection();
+
+                updateAnalysisPanel();
+
             } catch (error) {
-                console.error('❌ Error in selectLine function:', error);
-                console.error('Stack trace:', error.stack);
-                // Reset state to prevent cascading errors
+                console.error('Error in selectLine:', error);
                 clearSelection();
-                selectedLines = [];
-                firstSelectedLine = null;
-                hoveredLineIndex = null;
-                analysisInProgress = false;
-                // Show user-friendly error message
-                const analysisContent = document.getElementById('analysisContent');
-                if (analysisContent) {
-                    analysisContent.innerHTML = '❌ An error occurred while selecting text. Please try again.';
-                }
             }
+        }
+
+        // Rebuild selectedLines from DOM-highlighted elements (sorted by index)
+        function rebuildSelectedLines() {
+            const selected = Array.from(document.querySelectorAll('.play-line.selected, .play-line.range-selected'));
+            selected.sort((a, b) =>
+                (parseInt(a.getAttribute('data-line-index'), 10) || 0) -
+                (parseInt(b.getAttribute('data-line-index'), 10) || 0)
+            );
+            selectedLines = selected.map(el => (el.textContent || '').trim());
+        }
+
+        // Detect scene from DOM context around the clicked element
+        function detectCurrentScene(element) {
+            const sc = element.closest('.scene-content') || element.closest('[data-scene]');
+            if (sc && sc.getAttribute('data-scene')) { currentScene = sc.getAttribute('data-scene'); return; }
+            const rd = document.getElementById('reader');
+            if (rd) { const t = rd.querySelector('.scene-title'); if (t) { currentScene = t.textContent.trim(); return; } }
+            if (!currentScene) {
+                const nav = document.querySelector('.nav-list a.active');
+                if (nav) currentScene = nav.getAttribute('data-scene') || nav.textContent.trim();
+            }
+            if (!currentScene) {
+                const hash = window.location.hash;
+                if (hash && hash.includes('scene')) currentScene = hash.replace('#', '').replace('scene-', '');
+            }
+        }
+
+        // Reset analysis panels when selection changes (without clearing the selection)
+        function resetAnalysisForNewSelection() {
+            analysisInProgress = false;
+            ['analysisResult', 'variorumResult', 'variorumContent'].forEach(id => {
+                const el = document.getElementById(id); if (el) el.innerHTML = '';
+            });
+            const vs = document.getElementById('variorumSection');
+            if (vs) { vs.style.display = 'none'; vs.style.visibility = 'hidden'; vs.style.height = '0'; vs.style.margin = '0'; vs.style.padding = '0'; vs.style.overflow = 'hidden'; }
+
+            const fu = document.getElementById('followUpSection');
+            if (fu) { fu.style.display = 'none'; fu.innerHTML = '<h3>Ask a follow-up question</h3><div class="follow-up-input"><input type="text" placeholder="Ask a follow-up question..." id="followUpQuestion"><button class="ask-btn" onclick="askFollowUp()">Ask</button></div>'; }
+            const ms = document.getElementById('mediaSection'); if (ms) ms.style.display = 'none';
+            const rs = document.getElementById('researchSection'); if (rs) rs.style.display = 'none';
+            ['criticsInfo', 'nvInfo'].forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'none'; });
+            const meta = document.querySelector('.meta'); if (meta) meta.style.display = 'none';
         }
         
         function resetAnalysisPanelForNewPlay() {
@@ -9339,13 +9148,20 @@
             
             if (selectedLines.length > 0) {
                 const lineCount = selectedLines.length;
-                const playName = currentPlay && plays[currentPlay] ? plays[currentPlay].name : 'Unknown Play';
-                // Show just the selected line text instead of the two separate messages
-                if (analysisContent) analysisContent.textContent = selectedLines[0];
-                if (analysisInstruction) analysisInstruction.textContent = ''; // Hide the instruction text
+                // Show selected lines summary + Clear Selection button
+                if (analysisContent) {
+                    const summary = selectedLines.length === 1
+                        ? selectedLines[0]
+                        : selectedLines.length + ' lines selected';
+                    analysisContent.innerHTML = '<div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">'
+                        + '<span>' + summary + '</span>'
+                        + '<button onclick="clearSelection()" style="padding:4px 12px;font-size:12px;border:1px solid var(--line);border-radius:4px;background:#fff;cursor:pointer;white-space:nowrap;">Clear Selection</button>'
+                        + '</div>';
+                }
+                if (analysisInstruction) analysisInstruction.textContent = '';
                 analyzeButton.style.display = 'block';
             } else {
-                if (analysisContent) analysisContent.textContent = 'Select text in the play to get AI-powered analysis.';
+                if (analysisContent) analysisContent.textContent = 'Click lines in the play to select them for analysis. Press Escape to clear.';
                 if (analysisInstruction) analysisInstruction.textContent = '';
                 if (analyzeButton) analyzeButton.style.display = 'none';
             }
@@ -10645,7 +10461,7 @@
             const loadJuliusCaesar = async () => {
                 try {
                     console.log('🔄 Loading Julius Caesar...');
-                    const response = await fetch('/Public/Data/julius_caesar_clean_(3).json?v=' + Date.now());
+                    const response = await fetch('/Public/Data/julius_caesar.json?v=' + Date.now());
                     
                     if (response.ok) {
                         const juliuscaesarData = await response.json();
@@ -11416,7 +11232,7 @@
                     'cymbeline': { name: 'Cymbeline', fileName: 'cymbeline.json', loaded: false },
                     'henryiv1': { name: 'Henry IV Part 1', fileName: 'henry_iv_part1.json', loaded: false },
                     'henryiv2': { name: 'Henry IV Part 2', fileName: 'henry_iv_part2.json', loaded: false },
-                    'juliuscaesar': { name: 'Julius Caesar', fileName: 'julius_caesar_clean_(3).json', loaded: false },
+                    'juliuscaesar': { name: 'Julius Caesar', fileName: 'julius_caesar.json', loaded: false },
                     'kingjohn': { name: 'King John', fileName: 'king_john.json', loaded: false },
                     'loveslabourslost': { name: "Love's Labour's Lost", fileName: 'loves_labours_lost.json', loaded: false },
                     'merchantofvenice': { name: 'The Merchant of Venice', fileName: 'merchant_of_venice.json', loaded: false },
@@ -11529,6 +11345,10 @@
                     }
                     if (nvModal && nvModal.style.display === 'block') {
                         closeNVModal();
+                    }
+                    // Escape clears line selection
+                    if (selectedLines && selectedLines.length > 0) {
+                        clearSelection();
                     }
                 }
             });
@@ -15422,17 +15242,18 @@
                         <div class="answer-content">${answer}</div>
                     `;
                     
-                    // Insert the follow-up answer in the appropriate location
-                    if (hasAnalysis) {
-                        // If there's existing analysis, append to it
+                    // Insert the follow-up answer directly before the follow-up input
+                    // so it appears right below where the question was asked
+                    const followUpInput = document.getElementById('followUpSection');
+                    if (followUpInput && followUpInput.parentNode) {
+                        followUpInput.parentNode.insertBefore(followUpSection, followUpInput);
+                    } else if (hasAnalysis) {
                         currentAnalysis.appendChild(followUpSection);
                     } else {
-                        // If no existing analysis, create a new analysis container
                         const analysisContainer = document.querySelector('.analysis-content') || document.querySelector('.ai-analysis-content');
                         if (analysisContainer) {
                             analysisContainer.appendChild(followUpSection);
                         } else {
-                            // Fallback: append to the main content area
                             const mainContent = document.querySelector('.reader') || document.body;
                             mainContent.appendChild(followUpSection);
                         }
@@ -15778,7 +15599,7 @@
                     </div>
                     
                     <div class="critics-list" style="max-height: 400px; overflow-y: auto; background: #f9f9f9; padding: 20px; border-radius: 8px; border: 1px solid #e5e7eb;">
-                        <div style="font-family: 'Courier New', monospace; font-size: 14px; line-height: 1.6;">
+                        <div>
                             <p>Antidote Against Melancholy (Collier's reprint), 1661</p>
                             <p>W. Archer and R. W. Lowe, Macbeth on the Stage (English Illustrated Magazine, December), 1888</p>
                             <p>W. R. Arrowsmith, Shakespeare's Editors and Commentators, London, 1865</p>
@@ -16862,7 +16683,7 @@
             All Shakespeare texts are public domain and based on the Folger Shakespeare Library editions.
         </div>
         <div>
-            Created by Jack David Carson, Massachusetts Institute of Technology · 2025 ·
+            Created by Jack David Carson, Massachusetts Institute of Technology · 2026 ·
             <a href="#" onclick="openRights(); return false;">Full Rights & Usage Information</a>
         </div>
     </footer>

@@ -1,63 +1,63 @@
 {
   "DRAMATIS PERSONAE": {
     "1": {
-      "play": "King Henry the Fifth",
+      "play": "KING HENRY THE FIFTH",
       "notes": []
     },
     "2": {
-      "play": "Duke of Gloucester, brothers to the King",
+      "play": "DUKE OF GLOUCESTER, brothers to the King",
       "notes": []
     },
     "3": {
-      "play": "Duke of Bedford, brothers to the King",
+      "play": "DUKE OF BEDFORD, brothers to the King",
       "notes": []
     },
     "4": {
-      "play": "Duke of Exeter, uncle to the King",
+      "play": "DUKE OF EXETER, uncle to the King",
       "notes": []
     },
     "5": {
-      "play": "Duke of York, cousin to the King",
+      "play": "DUKE OF YORK, cousin to the King",
       "notes": []
     },
     "6": {
-      "play": "Earls of Salisbury, Westmoreland, and Warwick",
+      "play": "EARLS OF SALISBURY, Westmoreland, and Warwick",
       "notes": []
     },
     "7": {
-      "play": "Archbishop of Canterbury",
+      "play": "ARCHBISHOP OF CANTERBURY",
       "notes": []
     },
     "8": {
-      "play": "Bishop of Ely",
+      "play": "BISHOP OF ELY",
       "notes": []
     },
     "9": {
-      "play": "Earl of Cambridge",
+      "play": "EARL OF CAMBRIDGE",
       "notes": []
     },
     "10": {
-      "play": "Lord Scroop",
+      "play": "LORD SCROOP",
       "notes": []
     },
     "11": {
-      "play": "Sir Thomas Grey",
+      "play": "SIR THOMAS GREY",
       "notes": []
     },
     "12": {
-      "play": "Sir Thomas Erpingham, Gower, Fluellen, Macmorris, Jamy, officers in King Henry's army",
+      "play": "SIR THOMAS ERPINGHAM, Gower, Fluellen, Macmorris, Jamy, officers in King Henry's army",
       "notes": []
     },
     "13": {
-      "play": "Bates, Court, Williams, soldiers in the same",
+      "play": "BATES, Court, Williams, soldiers in the same",
       "notes": []
     },
     "14": {
-      "play": "Pistol, Nym, Bardolph",
+      "play": "PISTOL, Nym, Bardolph",
       "notes": []
     },
     "15": {
-      "play": "Boy",
+      "play": "BOY",
       "notes": []
     },
     "16": {
@@ -65,15 +65,15 @@
       "notes": []
     },
     "17": {
-      "play": "Charles the Sixth, King of France",
+      "play": "CHARLES THE SIXTH, King of France",
       "notes": []
     },
     "18": {
-      "play": "Lewis, the Dauphin",
+      "play": "LEWIS, the Dauphin",
       "notes": []
     },
     "19": {
-      "play": "Dukes of Burgundy, Orleans, and Bourbon",
+      "play": "DUKES OF BURGUNDY, Orleans, and Bourbon",
       "notes": []
     },
     "20": {
@@ -81,15 +81,15 @@
       "notes": []
     },
     "21": {
-      "play": "Rambures and Grandpré, French Lords",
+      "play": "RAMBURES AND GRANDPRÉ, French Lords",
       "notes": []
     },
     "22": {
-      "play": "Governor of Harfleur",
+      "play": "GOVERNOR OF HARFLEUR",
       "notes": []
     },
     "23": {
-      "play": "Montjoy, a French Herald",
+      "play": "MONTJOY, a French Herald",
       "notes": []
     },
     "24": {
@@ -97,19 +97,19 @@
       "notes": []
     },
     "25": {
-      "play": "Isabel, Queen of France",
+      "play": "ISABEL, Queen of France",
       "notes": []
     },
     "26": {
-      "play": "Katharine, daughter to Charles and Isabel",
+      "play": "KATHARINE, daughter to Charles and Isabel",
       "notes": []
     },
     "27": {
-      "play": "Alice, a lady attending on her",
+      "play": "ALICE, a lady attending on her",
       "notes": []
     },
     "28": {
-      "play": "Hostess of a tavern in Eastcheap, formerly Mistress Quickly, and now married to Pistol",
+      "play": "HOSTESS OF A TAVERN IN EASTCHEAP, formerly Mistress Quickly, and now married to Pistol",
       "notes": []
     },
     "29": {
@@ -117,11 +117,7 @@
       "notes": []
     },
     "30": {
-      "play": "Chorus",
-      "notes": []
-    },
-    "31": {
-      "play": "Scene: England; afterwards France",
+      "play": "CHORUS",
       "notes": []
     }
   },

@@ -1,224 +1,216 @@
 {
   "DRAMATIS PERSONAE": {
     "1": {
-      "play": "RICHARD III",
+      "play": "RICHARD, Duke of Gloucester, later King Richard III.",
       "notes": []
     },
     "2": {
-      "play": "Dramatis Personae",
+      "play": "LADY ANNE, widow of Edward, son to the late King Henry VI; later wife to Richard.",
       "notes": []
     },
     "3": {
-      "play": "Richard, Duke of Gloucester, later King Richard III.",
-      "notes": []
-    },
-    "4": {
-      "play": "Lady Anne, widow of Edward, son to the late King Henry VI; later wife to Richard.",
-      "notes": []
-    },
-    "5": {
-      "play": "King Edward IV, brother to Richard.",
+      "play": "KING EDWARD IV, brother to Richard.",
       "notes": [
         "King Edward IV.] STUBBS (iii, 219): Edward IV. was not perhaps quite so bad a man or so bad a king as his enemies have represented; but even those writers who have laboured hard to rehabilitate him, have failed to discover any conspicuous merits. With great personal courage he may be freely credited; he was, moreover, eloquent, affable, and fairly well educated. He was as a man, vicious far beyond anything that England had seen since the days of John; and more cruel and blood-thirsty than any king she had ever known. There had been fierce deeds of bloodshed; cruel and secret murders under former kings; but Edward IV. far outdid all that his forefathers and his enemies together had done. The death of Clarence was but the summing up and crowning act of an unparalleled list of judicial and extra-judicial cruelties which those of the next reign supplement but do not surpass.—RAMSAY (ii, 453): Edward IV. was a man of much the same type as the Fastolfs, and Pastons, and Plumptons, who have left us their portraits in their private correspondence: hard, narrow, unscrupulous; and endowed with the iron will and relentless purpose necessary to keep the men he had to rule in order. But these characteristics were not developed in a day. Twenty-two years of government turned him from the most trustful to the most suspicious of men; yet he was always true to those who served him well. With the middle and lower classes he appears to have been distinctly popular to the last; his convivial habits and easy accessible manners would account for that. The Londoners might well like a king who lived and moved so much among them. What the gentry thought of him is more doubtful; but Lancastrian opposition had died out, partly through Edward's consistent efforts at conciliation. His private life was more irregular than that of any king since John; but he never imported the royal prerogative of might into love-affairs, always working his way through blandishment and largess. His intrigues seem to have been mostly carried on with women not of the highest position."
       ]
     },
-    "6": {
-      "play": "Queen Elizabeth, Edward’s wife, formerly the Lady Grey.",
+    "4": {
+      "play": "QUEEN ELIZABETH, Edward’s wife, formerly the Lady Grey.",
       "notes": []
     },
-    "7": {
-      "play": "Prince Edward (son of Edward IV).",
+    "5": {
+      "play": "PRINCE EDWARD (SON OF EDWARD IV).",
       "notes": [
         "Queen to Edward IV.] FRENCH says (p. 243) that in only one instance has he ‘met with the time of Elizabeth Woodville's death, and then it was merely stated to have occurred the Friday before Whitsuntide. As Easter Day in 1492 fell on the 22nd of April, the exact date of her decease was the 8th of June. Her will, dated April 10, 1492, exhibits a touching picture of her maternal affection, and her poverty, having nothing but her blessing to bequeath to her children, for—“I have no worldly goods” is her mournful confession. She was buried in St. George’s Chapel, Windsor.’—STRICKLAND (iii, 346): That Elizabeth died destitute of personal property is no proof of previous persecution, since several queens who were possessed of the undivided dower appanage, and whose children were provided for, died not much richer. (The creditors of Eleanora of Castile and Marguerite of France were not paid till long after the deaths of those queens. Queen Phillippa died in debt.) Edward IV. had endowed his proud mother as though she were a queen-dowager; while his wife was dowered on property to which he had no real title.—OECHELHAÜSER (Einführungen, i, 149): Next to Richard’s, Elizabeth’s may be considered the principal rôle. With due regard to her having two grown sons, Dorset and Grey, by her former husband, she should not be represented as too young (perhaps the latter half of her thirtieth year), yet still lovely and charming. The chroniclers lay great stress on the loveliness of her character, her charm, and well-chosen speech. [Oechelhaüser has, perhaps, been herein slightly misled by the chroniclers, Hall and Holinshed, who systematically, and purposely, lightened the characters of all those in opposition to Richard III. Later historians give a different account of Elizabeth, describing her as utterly selfish and unscrupulous where the advancement of her relatives was at stake. MISS STRICKLAND says there doubtless never was a queen ‘who had a more unfortunate faculty of making enemies.’—ED.]"
       ]
     },
-    "8": {
-      "play": "Richard, Duke of York (son of Edward IV).",
+    "6": {
+      "play": "RICHARD, Duke of York (son of Edward IV).",
       "notes": []
     },
-    "9": {
-      "play": "George, Duke of Clarence, brother to Edward and Richard.",
+    "7": {
+      "play": "GEORGE, Duke of Clarence, brother to Edward and Richard.",
       "notes": [
         "George, Duke of Clarence] MARSHALL: Shakespeare has invested the character of this worthless scion of the House of York with an interest which, as far as history shows, he did not deserve. He had all the vices of his two brothers, without their courage. The enmity between him and Richard dated from the time when the latter proposed, soon after the murder of her youthful husband, to marry the widow of Edward, Prince of Wales. Richard's object was to obtain some portion of the great wealth which the king-maker had left and which Clarence had coolly appropriated without a thought. This quarrel began as early as 1472. In December, 1476, Clarence's wife died. For some time before that event he had withdrawn from court and held very little communication with his elder brother. Scarcely was his wife consigned to the tomb when Clarence solicited the hand of Mary, only daughter of Charles the Bold. The opposition of Edward to this match made the breach between the brothers still wider."
       ]
     },
+    "8": {
+      "play": "CLARENCE’S BOY.",
+      "notes": []
+    },
+    "9": {
+      "play": "CLARENCE’S DAUGHTER.",
+      "notes": []
+    },
     "10": {
-      "play": "Clarence’s Boy.",
+      "play": "DUCHESS OF YORK, mother of Richard, Edward, and Clarence.",
       "notes": []
     },
     "11": {
-      "play": "Clarence’s Daughter.",
-      "notes": []
-    },
-    "12": {
-      "play": "Duchess of York, mother of Richard, Edward, and Clarence.",
-      "notes": []
-    },
-    "13": {
-      "play": "Queen Margaret, widow of King Henry VI.",
+      "play": "QUEEN MARGARET, widow of King Henry VI.",
       "notes": [
         "Queen Margaret] MRS. JAMESON (ii, 199): Margaret, as exhibited in these tragedies, is a dramatic portrait of considerable truth, and vigour, and consistency—but she is not one of Shakespeare’s women. He who knew so well in what true greatness of spirit consisted—who could excite our respect and sympathy, even for a Lady Macbeth, would never have given us a heroine without a touch of heroism; he would not have portrayed a high-hearted woman struggling unsubdued against the strangest vicissitudes of fortune; yet left her without a single quality which would excite our interest in her bravely endured misfortunes—and this in the very face of history; he would have breathed into the woman some of his own sweet spirit—he would have given her a soul.—VERPLANCK (Note on IV, iv, 1): As we find in Richard III., all these characteristics of Margaret are adopted and recapitulated, it is clear that this argument against the character being Shakespeare’s destroys itself, by proving too much; for it would prove that this play too was not his, which no one can assert in the wildest mood of critical conjecture. Shakespeare might certainly have given a more heroic cast to Margaret of Anjou; but the truth evidently is that, having, partly from the intimation of the chroniclers, adopted this view of Margaret's ferocity and conjugal infidelity, he must have seen that he could not breathe into such a personage ‘his own sweet spirit’ any more than into Goneril or Regan, and therefore placed her in bold and unmitigated contrast to the mild virtues of the ‘holy Henry.’ The comparison of Margaret with Lady Macbeth suggests a deep moral truth, which must have been in the Poet’s mind, though he has not embodied it in formal moral declamation. Our interest in Lady Macbeth is kept up in spite of her crimes, by her unflagging and devoted attachment to her husband, and their mutual and touching confidence and solace in each other, even in guilt as well as in sorrow. Margaret has no communion with Henry’s heart: she scorns him, and her affections roam elsewhere. That last redeeming virtue of woman being lost, Margaret has nothing left but her talent and courage; and those qualities alone cannot impart the respect and sympathy which we continue to feel for the guilty but nobler wife of Macbeth.—MARSHALL: Students who read Shakespeare only, can discourse most eloquently on the grand idea of Margaret, the impersonation of Nemesis, glorying in the vengeance which falls on those who had been either principals or accomplices in all the horrible acts of cruelty which the Yorkist party perpetrated. But when the play is brought to the true test of a play—when it is acted—were Margaret to be represented by one who had inherited all the talent and reputation of a Siddons, added to the prestige of a popular favorite at the present day, no one would take much interest in her, or regard her otherwise than as something of a bore, who interferes with the main action of the drama.—MOYTO (286): Amidst the circle of tearful, afflicted women bereaved by the multiplied villainies of Richard, Margaret stands out with irrepressible fierceness flashing through and burning up her tears, husbandless, childless, friendless, utterly impotent, but indomitable. In her young and beautiful days, when Suffolk brought her from France as ‘nature’s miracle,’ to be the wife of King Henry, she gave ample proof that she was a woman of spirit. This was one of Shakespeare’s earlier efforts; but he never again equalled the concentrated bitter fierceness of this she-wolf’s hunger for revenge, fiendish laughter over its partial accomplishment, and savage prayer for its completion. Words could not hiss and sting with more envenomed intensity than in the speech that she concludes with the prayer for Richard’s death: ‘Cancel his bond of life, dear God, I pray That I may live to say The dog is dead.’—FRENCH (245): Sir Walter Scott has introduced Margaret in Anne of Geierstein in the decline of her age, and in the loss of her power, but not of her intellect; and he speaks of her as one ‘who, if she occasionally abused victory by cruelty and revenge, had made some atonement by the indomitable resolution with which she had supported the fiercest storms of adversity.’—S. A. BROOKE (Trans. New Sh. Soc., 1880-86, p. 512): Margaret is a mighty figure: more Greek in conception than any other figure in Shakespeare—the Fate and Fury together of the play. She does nothing for its movement. She is outside its action, but broods above it, with arms outstretched in cursing, an evil bird of God—the impersonation of all the woe and crime of the civil strife of England, and of its avenging punishment. Worn, like ‘a wrinkled witch,’ tall, with the habit of command, she has not, like Richard, been inhuman, but she has outlived humanity, and passed into an elemental power. She has also been so long under the curse of men for her cruelty, that the curse has divided her from men. So also has her strange sorrow—she is altogether joyless. It is not till she finds the Duchess of York and Edward’s Queen in their hopeless pain that she feels herself at one, even for a little while, with any human creature. Then she sits down and curses with them. She has all the eloquence of primeval sorrow and hate. ‘Life is her shame,’ but she ‘waits vengeance,’ hungering for it like a wolf. It is the only thing that brings a smile to her withered lip. And her vengeance is felt, like an actual presence in the air, by all who die. She is not only Margaret and hate to them, but the spirit in whom, for punishment, the Divine justice abides. And when she passes away, still alive, departs in awful joy, like one of the immortals: ‘These English woes will make me smile in France.’ It is the most supernatural conception in Shakespeare.—LLOYD: The introduction of Queen Margaret, contrary to the truth of history, is invented with admirable effect; her invectives bring up the horrors of the civil war with the liveliness that is required to give force to their sequel; her penetration and denouncement of the nature and purposes of Richard heighten our sense of the blindness and weakness of his victims, who neglect the warning, and generally relieve the great contrast of the piece by the intervention of a second character of eloquence, pertinacity, clear-sightedness, and decision.—HUDSON (Introd., p. 38): As in the earlier plays Richard supplies a forecast of the style of character which the proceedings then on foot were likely to generate and hand down to future times, so in the later play Margaret supplies a corresponding retrospect. She was continued on the scene, to the end, apparently, that the parties might have a terrible present remembrancer of their former deeds; just as the manhood of Richard had been anticipated for the purpose, as it would seem, of forecasting the final issues from the earlier stages of that multitudinous tragedy. So that there appears to be some reason in the ways of Providence, as well as in the laws of Art, why Margaret should still be kept in presence, as the fitting counterpart of that terrible man as he grows on from youth to manhood, and from manhood to his end, at once the offspring and the avenger of civil butchery. Her condition is, here, vastly different indeed from what it was in the earlier plays, but her character remains the same. She is here stripped of arms and instruments, so that her thoughts can no longer work out in acts. But, for this very cause, her Amazonian energies concentrate themselves so much the more in her speech; and her eloquence, while retaining all its strength and fluency, burns the deeper, forasmuch as it is the only organ of her mind which she has left. In brief, she is still the same high-grown, wide-branching tree, now rendered leafless indeed, and, therefore, all the fitter for the blasts of heaven to howl and whistle through! Long suffering has deepened her fierceness into sublimity. At once vindictive and broken-hearted, her part runs into a most impressive blending of the terrible and the pathetic . . . She is a sort of wailing or ululating chorus to the thick-thronging butcheries and agonies that wind their course through the play. A great, brave, fearful woman indeed made sacred by all the anguishes that a wife and a mother can know!—WARNER (p. 218): Margaret is introduced much after the fashion of a Chorus, a combination of prediction and commentary upon the persons and events with whom her influence is still"
       ]
     },
-    "14": {
-      "play": "Duke of Buckingham.",
+    "12": {
+      "play": "DUKE OF BUCKINGHAM.",
       "notes": [
         "Duke of Buckingham] OECHELHAÜSER (Einführungen, i, 149) sees in the character of Buckingham, as drawn by Shakespeare, ‘a mere puppet of Richard with whose cleverness Buckingham’s is placed in direct contrast; somewhat the same relation as in the characters of Wagner and Faust. Richard is the type of an intellectual hypocrite, while Buckingham is that of a soft-hearted hypocrite, he hesitates for a moment at the murder of Edward’s sons, and this hesitation is his destruction. But, throughout, Buckingham stands more closely to Richard than the others of Richard’s party,—Catesby, Ratcliffe, and Lovel,—who are merely his implements,—Buckingham is his confidant. Moreover, his royal blood should be evident both in his bearing and dress. These points being considered and the rôle interpreted by a clever actor, the part will gain a significance greater than heretofore.’"
       ]
     },
+    "13": {
+      "play": "WILLIAM, Lord Hastings, Lord Chamberlain.",
+      "notes": []
+    },
+    "14": {
+      "play": "LORD STANLEY, Earl of Derby.",
+      "notes": []
+    },
     "15": {
-      "play": "William, Lord Hastings, Lord Chamberlain.",
+      "play": "EARL RIVERS, brother to Queen Elizabeth.",
       "notes": []
     },
     "16": {
-      "play": "Lord Stanley, Earl of Derby.",
-      "notes": []
-    },
-    "17": {
-      "play": "Earl Rivers, brother to Queen Elizabeth.",
-      "notes": []
-    },
-    "18": {
-      "play": "Lord Grey, son of Queen Elizabeth by her former marriage.",
+      "play": "LORD GREY, son of Queen Elizabeth by her former marriage.",
       "notes": [
         "Lord Grey] FRENCH (p. 225): This character, sometimes styled the ‘Lord Richard Grey,’ was, strictly speaking, only of knightly degree, Sir Richard Grey, youngest son of Elizabeth Woodville and Sir John Grey."
       ]
     },
+    "17": {
+      "play": "MARQUESS OF DORSET, son of Queen Elizabeth by her former marriage.",
+      "notes": []
+    },
+    "18": {
+      "play": "SIR THOMAS VAUGHAN.",
+      "notes": []
+    },
     "19": {
-      "play": "Marquess of Dorset, son of Queen Elizabeth by her former marriage.",
-      "notes": []
-    },
-    "20": {
-      "play": "Sir Thomas Vaughan.",
-      "notes": []
-    },
-    "21": {
-      "play": "Sir William Catesby (Richard’s supporter).",
+      "play": "SIR WILLIAM CATESBY (RICHARD’S SUPPORTER).",
       "notes": [
         "Duke of Norfolk] FRENCH (p. 221): This is the first time that a member of the house of Howard, destined to take the highest rank next to princes of the blood, is brought upon the scene in one of Shakespeare’s plays. The father of this character was Sir Robert Howard, a zealous Lancastrian, who married Margaret Mowbray, eldest daughter of the banished Duke of Norfolk in King Richard II. The male line of the ancient Mowbrays having become extinct in 1475, Richard III. created John Howard, the character in this play, Duke of Norfolk, June 28th, 1483, and Earl Marshal of England, honours which have remained in the family of Howard to the present day. This date is well worthy of remark, as it was only six days after the time which is usually given for the death of Edward the Fourth’s second son, Richard, Duke of York, who was also Duke of Norfolk. Was not King Richard, therefore, certain that his nephew was no more before he raised his own friend to that young prince’s dignity?",
         "Catesby] FRENCH (p. 235): This character in the play married Margaret, daughter of Lord Zouch of Harringworth, by whom he had a son, George Catesby, to whom his father’s forfeited estates were restored, by Henry VII., probably through the interest of that king’s minister, Sir Richard Empson, George Catesby’s father-in-law. After his death Margaret married Sir Thomas Lucy of Charlecote and their grandson is the Justice Shallow of Shakespeare’s time."
       ]
     },
-    "22": {
-      "play": "Sir Richard Ratcliffe (Richard’s supporter).",
+    "20": {
+      "play": "SIR RICHARD RATCLIFFE (RICHARD’S SUPPORTER).",
       "notes": [
         "Richard] WRIGHT: In the first year of his reign (1461) Edward IV. created his two younger brothers dukes. As Richard was born October 2, 1452, he was not nineteen years old when Henry VI. was murdered and could not have fought at the battle of St. Alban's in 1455, or at Wakefield in 1460, or at Mortimer's Cross in 1461, as is represented in 2 and 3 Henry VI.; still less could he have taken part in the scene immediately after the death of Cade in 1450.—J. C. COLLINS (p. 270): It is scarcely necessary to say that in this drama Shakespeare has immortalised a portrait and a career as purely fictitious as the popular representation of Machiavelli. In truth, More's account of Richard is as purely a figment of the imagination as his Utopia. Whether he or Cardinal Morton is to be held responsible for it, grosser, and in all probability more baseless, calumnies have never been circulated about an English prince. When Shakespeare adopted them they had passed into tradition, and, even if he suspected them to be fiction, he would probably have had little scruple in giving currency to a fiction so acceptable to his audience and to Queen Elizabeth.",
         "Sir Richard Ratcliff] MARSHALL: It seems that to Ratcliff was entrusted the charge of all Richard’s interests in the north of England. In the Paston Letters is one from Richard Duke of Gloucester to Lord Neville, dated June 11th, 1483 (No. 874), in which he requests that he ‘wyll yef credence to . . . Richarde Ratclyff, thys beerrer, whom I nowe do sende to you, enstructed with all my mynde and entent’ (vol. iii, p. 306). This Lord Neville was probably the heir to the earldom of Westmoreland."
       ]
     },
+    "21": {
+      "play": "LORD LOVELL (RICHARD’S SUPPORTER).",
+      "notes": []
+    },
+    "22": {
+      "play": "DUKE OF NORFOLK (RICHARD’S SUPPORTER).",
+      "notes": []
+    },
     "23": {
-      "play": "Lord Lovell (Richard’s supporter).",
+      "play": "EARL OF SURREY (RICHARD’S SUPPORTER).",
       "notes": []
     },
     "24": {
-      "play": "Duke of Norfolk (Richard’s supporter).",
+      "play": "EARL OF RICHMOND, Henry Tudor, later King Henry VII.",
       "notes": []
     },
     "25": {
-      "play": "Earl of Surrey (Richard’s supporter).",
+      "play": "EARL OF OXFORD (RICHMOND’S SUPPORTER).",
       "notes": []
     },
     "26": {
-      "play": "Earl of Richmond, Henry Tudor, later King Henry VII.",
+      "play": "SIR JAMES BLUNT (RICHMOND’S SUPPORTER).",
       "notes": []
     },
     "27": {
-      "play": "Earl of Oxford (Richmond’s supporter).",
+      "play": "SIR WALTER HERBERT (RICHMOND’S SUPPORTER).",
       "notes": []
     },
     "28": {
-      "play": "Sir James Blunt (Richmond’s supporter).",
-      "notes": []
-    },
-    "29": {
-      "play": "Sir Walter Herbert (Richmond’s supporter).",
-      "notes": []
-    },
-    "30": {
-      "play": "Sir William Brandon (Richmond’s supporter).",
+      "play": "SIR WILLIAM BRANDON (RICHMOND’S SUPPORTER).",
       "notes": [
         "Sir William Stanley] At Stanley’s first entrance (I, iii, 21) he is called Derby. THEOBALD says: ‘This is a blunder of inadvertence which has run through the whole chain of impressions. It could not well be original in Shakespeare, who was most minutely intimate with his history, and the intermarriages of the nobility. The person here called “Derby” was Thomas Lord Stanley, Lord Steward of Edward the Fourth’s household. But this Thomas Lord Stanley was not created Earl of Derby till after the accession of Henry the Seventh; and accordingly, afterwards, in the Fourth and Fifth Acts of this play, before the Battle of Bosworth-field, he is everywhere called Lord Stanley.’—R. G. WHITE: Theobald’s reason for changing ‘Derby’ to Stanley is insufficient, as there can be no doubt that the mistake was Shakespeare’s, and an editor is not justifiable in substituting what his author should have written for what he did write. But as the personage in question is called Stanley thirteen times during the Third, Fourth, and Fifth Acts in the Folio, and as the variation has no essential importance, and Stanley has held possession of the Text for a century and a quarter, it may, under protest, be allowed to remain.—CAMBRIDGE EDD.: The error must have been due to the author, who would not have written ‘my lord of Stanley,’ and, therefore, we have retained ‘Derby’ wherever both Quarto and Folio agree in reading it.—DYCE (ed. ii): Grant White’s is, I think, the best method of dealing with this difficulty. To suppose that Shakespeare would have called the same person ‘Derby’ in some places of the play, and Stanley in other places, appears to me a most extravagant idea: nor have I any doubt that the confusion of the names was occasioned by the conflicting texts of the Tragedy.—SPEDDING (Sh. Soc. Trans., 1875-’76; p. 67): If the Quarto had kept to ‘Darby’ all through, the explanation would have been comparatively easy. I should have thought that the corrector of the Folio had observed the anachronism and meant to remove it; that he had begun his work of correction in the Third Act, and had completed it for the remainder, as far as the dialogue was concerned; but that he had forgotten or postponed the two first Acts, and had not attended to the stage-directions and marginal names in the two last. For it is to be observed that Stanley is never called ‘Derby’ in the dialogue after the Second Act.—W. W. LLOYD: Stanley shares a portion of the mental qualifications of Richard; but he approaches him only as nearly as simulation to dissimulation, coolness to daring, prudence of caution to that of adventurousness. Much of the value of the character would be due to his being seen on the stage when he was not heard. In Act I, Sc. iii, he makes conciliatory reply to the Queen’s accusation of his wife,—the Queen who risks affronting him as she pursues vindictively Hastings, the only other lord who had the disposition to protect her son. Richard enumerates Stanley among his dupes, but there is no proof of it, and Stanley’s silence is marked, and was designed to be remarkable, throughout the scene of weak wrangling with Margaret and weaker part-taking with Richard against her by Dorset and the rest. Not less significant is his silence when Hastings, who had rejected his counsel, is arrested, and he follows with the rest to Gloster’s invitation, ‘The rest who love me rise and follow me.’ Thus he foils the penetration even of Richard, who trusts him with suspicion but still trusts him, with pledge in keeping; thus he carries on the important negotiations between Richmond and Elizabeth, and at last, at the decisive and very latest moment, he lays aside the mask, though his son’s life may be the forfeit, and the fortune of Bosworth Field is decided."
       ]
     },
-    "31": {
-      "play": "Sir Christopher, a priest.",
+    "29": {
+      "play": "SIR CHRISTOPHER, a priest.",
       "notes": [
         "Sir Christopher] FRENCH (p. 239): Lysons says (Environs of London, ii, 475): ‘Christopher Urswick, presented to the rectory of Hackney, by Bishop Hall, anno 1502, was a man of very considerable eminence. His abilities as a statesman which had been evinced in his successful endeavor to promote the union between Henry VII., to whom he was chaplain, and Elizabeth of York, induced the King to employ him in various important negociations and embassies. He was installed Dean of Windsor in 1495, and enjoyed at the same time the archdeaconry of Richmond and Yorkshire.’"
       ]
     },
-    "32": {
-      "play": "Archbishop.",
+    "30": {
+      "play": "ARCHBISHOP.",
       "notes": [
         "Cardinal, Archbishop of York] FRENCH (p. 217): According to some writers the real name of this prelate was Scot, but being born in 1423 at Rotherham county, York, he is said to have assumed the name of his birthplace in lieu of his own patronymic. But in Cooper's Athenæ Cantabrigienses he is called ‘the son of Sir Thomas Rotheram, Knight and Alice his wife.’ Thomas Rotheram was ‘a lance’ in the retinue of Lord Ros at Agincourt, and he was probably the Bishop’s father. [See also CAMPBELL, Lives of the Chancellors, i, pp. 369-374.]"
       ]
     },
-    "33": {
-      "play": "Cardinal (Thomas Bourchier).",
+    "31": {
+      "play": "CARDINAL (THOMAS BOURCHIER).",
       "notes": [
         "Cardinal Bourchier] FRENCH (p. 217): This prelate was Thomas Bourchier, second son of William Bourchier, Earl of Eu, by his wife Anne Plantagenet, daughter and eventually sole heir of Thomas of Woodstock, youngest son of Edward the Third. Thomas Bourchier was appointed to the see of Worcester in 1434, and promoted to Canterbury in 1454. He died in 1486 very soon after he united Henry VII. to Elizabeth of York."
       ]
     },
+    "32": {
+      "play": "JOHN MORTON, Bishop of Ely.",
+      "notes": []
+    },
+    "33": {
+      "play": "SIR ROBERT BRAKENBURY, Lieutenant of the Tower in London.",
+      "notes": []
+    },
     "34": {
-      "play": "John Morton, Bishop of Ely.",
+      "play": "JAMES TYRRELL, gentleman.",
       "notes": []
     },
     "35": {
-      "play": "Sir Robert Brakenbury, Lieutenant of the Tower in London.",
+      "play": "GENTLEMAN, attending Lady Anne.",
       "notes": []
     },
     "36": {
-      "play": "James Tyrrell, gentleman.",
-      "notes": []
-    },
-    "37": {
-      "play": "Gentleman, attending Lady Anne.",
-      "notes": []
-    },
-    "38": {
       "play": "Two Murderers.",
       "notes": []
     },
-    "39": {
-      "play": "Keeper in the Tower.",
+    "37": {
+      "play": "KEEPER IN THE TOWER.",
       "notes": []
     },
-    "40": {
+    "38": {
       "play": "Three Citizens.",
       "notes": []
     },
+    "39": {
+      "play": "LORD MAYOR OF LONDON.",
+      "notes": []
+    },
+    "40": {
+      "play": "PURSUIVANT.",
+      "notes": []
+    },
     "41": {
-      "play": "Lord Mayor of London.",
+      "play": "SIR JOHN, a priest.",
       "notes": []
     },
     "42": {
-      "play": "Pursuivant.",
+      "play": "SCRIVENER.",
       "notes": []
     },
     "43": {
-      "play": "Sir John, a priest.",
-      "notes": []
-    },
-    "44": {
-      "play": "Scrivener.",
-      "notes": []
-    },
-    "45": {
       "play": "Page.",
       "notes": []
     },
-    "46": {
+    "44": {
       "play": "Sheriff.",
       "notes": []
     },
-    "47": {
+    "45": {
       "play": "Seven Messengers.",
       "notes": []
     },
-    "48": {
-      "play": "Ghosts of King Henry VI, his son Prince Edward, Clarence, Rivers, Grey, Vaughan, the two Princes, Hastings, Lady Anne, and Buckingham.",
+    "46": {
+      "play": "GHOSTS OF KING HENRY VI, his son Prince Edward, Clarence, Rivers, Grey, Vaughan, the two Princes, Hastings, Lady Anne, and Buckingham.",
       "notes": []
     },
-    "49": {
+    "47": {
       "play": "Guards, Tressel, Berkeley, Halberds, Gentlemen, Anthony Woodville and Lord Scales (brothers to Queen Elizabeth), Two Bishops, Sir William Brandon, Lords, Attendants, Citizens, Aldermen, Councillors, Soldiers.",
       "notes": []
     }

@@ -1,95 +1,95 @@
 {
   "DRAMATIS PERSONAE": {
     "1": {
-      "play": "Antony",
+      "play": "ANTONY",
       "notes": []
     },
     "2": {
-      "play": "Octavius Caesar, triumvir",
+      "play": "OCTAVIUS CAESAR, triumvir",
       "notes": []
     },
     "3": {
-      "play": "Lepidus, triumvir",
+      "play": "LEPIDUS, triumvir",
       "notes": []
     },
     "4": {
-      "play": "Sextus Pompeius, friends to Caesar",
+      "play": "SEXTUS POMPEIUS, friends to Caesar",
       "notes": []
     },
     "5": {
-      "play": "Marcus Antonius, friends to Antony",
+      "play": "MARCUS ANTONIUS, friends to Antony",
       "notes": []
     },
     "6": {
-      "play": "Ventidius",
+      "play": "VENTIDIUS",
       "notes": []
     },
     "7": {
-      "play": "Eros",
+      "play": "EROS",
       "notes": []
     },
     "8": {
-      "play": "Scarus",
+      "play": "SCARUS",
       "notes": []
     },
     "9": {
-      "play": "Dercetas",
+      "play": "DERCETAS",
       "notes": []
     },
     "10": {
-      "play": "Ptolemaeus",
+      "play": "PTOLEMAEUS",
       "notes": []
     },
     "11": {
-      "play": "Agrippa, friends to Caesar",
+      "play": "AGRIPPA, friends to Caesar",
       "notes": []
     },
     "12": {
-      "play": "Thidias",
+      "play": "THIDIAS",
       "notes": []
     },
     "13": {
-      "play": "Gallus",
+      "play": "GALLUS",
       "notes": []
     },
     "14": {
-      "play": "Mena, friends to Scrates Pompeius",
+      "play": "MENA, friends to Scrates Pompeius",
       "notes": []
     },
     "15": {
-      "play": "Varrius",
+      "play": "VARRIUS",
       "notes": []
     },
     "16": {
-      "play": "Tarsius, lieutenant-general to Caesar",
+      "play": "TARSIUS, lieutenant-general to Caesar",
       "notes": []
     },
     "17": {
-      "play": "Canidius, lieutenant-general to Antony",
+      "play": "CANIDIUS, lieutenant-general to Antony",
       "notes": []
     },
     "18": {
-      "play": "Salvius, officer in Ventidius' army",
+      "play": "SALVIUS, officer in Ventidius' army",
       "notes": []
     },
     "19": {
-      "play": "Euphronius, an ambassador from Antony to Caesar",
+      "play": "EUPHRONIUS, an ambassador from Antony to Caesar",
       "notes": []
     },
     "20": {
-      "play": "Alexas, a coachman, attendants on Cleopatra",
+      "play": "ALEXAS, a coachman, attendants on Cleopatra",
       "notes": []
     },
     "21": {
-      "play": "Mardian, attendants on Cleopatra",
+      "play": "MARDIAN, attendants on Cleopatra",
       "notes": []
     },
     "22": {
-      "play": "Seleucus, attendants on Cleopatra",
+      "play": "SELEUCUS, attendants on Cleopatra",
       "notes": []
     },
     "23": {
-      "play": "Dercetus, attendants on Cleopatra",
+      "play": "DERCETUS, attendants on Cleopatra",
       "notes": []
     },
     "24": {
@@ -101,27 +101,23 @@
       "notes": []
     },
     "26": {
-      "play": "Cleopatra, queen of Egypt",
+      "play": "CLEOPATRA, queen of Egypt",
       "notes": []
     },
     "27": {
-      "play": "Clytania, sister to Caesar, and wife to Antony",
+      "play": "CLYTANIA, sister to Caesar, and wife to Antony",
       "notes": []
     },
     "28": {
-      "play": "Charmian, attendants on Cleopatra",
+      "play": "CHARMIAN, attendants on Cleopatra",
       "notes": []
     },
     "29": {
-      "play": "Iras, attendants on Cleopatra",
+      "play": "IRAS, attendants on Cleopatra",
       "notes": []
     },
     "30": {
       "play": "Officers, Soldiers, Messengers, and other Attendants",
-      "notes": []
-    },
-    "31": {
-      "play": "Scene: In several parts of the Roman Empire",
       "notes": []
     }
   },

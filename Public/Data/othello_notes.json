@@ -1,7 +1,11 @@
 {
   "DRAMATIS PERSONAE": {
     "1": {
-      "play": "DRAMATIS PERSONAE\nOTHELLO\n\nFirst Senator\nTheir Affayres\nWelcome Miftris",
+      "play": "OTHELLO",
+      "notes": []
+    },
+    "2": {
+      "play": "FIRST SENATOR",
       "notes": []
     }
   },

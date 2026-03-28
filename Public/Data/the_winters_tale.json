@@ -1,102 +1,98 @@
 {
   "DRAMATIS PERSONAE": {
     "1": {
-      "play": "THE WINTER'S TALE",
+      "play": "LEONTES, King of Sicilia",
       "notes": []
     },
     "2": {
-      "play": "Leontes, King of Sicilia",
+      "play": "HERMIONE, Queen of Sicilia",
       "notes": []
     },
     "3": {
-      "play": "Hermione, Queen of Sicilia",
+      "play": "MAMILLIUS, their son",
       "notes": []
     },
     "4": {
-      "play": "Mamillius, their son",
+      "play": "PERDITA, their daughter",
       "notes": []
     },
     "5": {
-      "play": "Perdita, their daughter",
+      "play": "POLIXENES, King of Bohemia Florizell, his son",
       "notes": []
     },
     "6": {
-      "play": "Polixenes, King of Bohemia Florizell, his son",
+      "play": "CAMILLO, a courtier, friend to Leontes and then to Polixenes",
+      "notes": []
+    },
+    "7": {
+      "play": "ANTIGONUS, a Sicilian courtier",
       "notes": []
     },
     "8": {
-      "play": "Camillo, a courtier, friend to Leontes and then to Polixenes",
+      "play": "PAULINA, his wife and lady-in-waiting to Hermione Cleomenes",
       "notes": []
     },
     "9": {
-      "play": "Antigonus, a Sicilian courtier",
+      "play": "DION BRACKET",
       "notes": []
     },
     "10": {
-      "play": "Paulina, his wife and lady-in-waiting to Hermione Cleomenes",
-      "notes": []
-    },
-    "12": {
-      "play": "Dion bracket",
-      "notes": []
-    },
-    "14": {
       "play": "courtiers in Sicilia",
       "notes": []
     },
-    "15": {
-      "play": "Emilia, a lady-in-waiting to Hermione",
+    "11": {
+      "play": "EMILIA, a lady-in-waiting to Hermione",
       "notes": []
     },
-    "16": {
-      "play": "Shepherd, foster father to Perdita Shepherd’s Son",
+    "12": {
+      "play": "SHEPHERD, foster father to Perdita Shepherd’s Son",
       "notes": []
     },
-    "18": {
-      "play": "Autolycus, former servanxt to Florizell, now a rogue",
+    "13": {
+      "play": "AUTOLYCUS, former servanxt to Florizell, now a rogue",
       "notes": [
         "Autolycus.] When this character enters on the scene in the Fourth Act, and says that he received his name because he was born under Mercury, the god of thieves, THEOBALD remarks that the allusion is unquestionably to Ovid, Metam. xi, 312:—"
       ]
     },
-    "19": {
-      "play": "Archidamus, a Bohemian courtier Time, as Chorus",
+    "14": {
+      "play": "ARCHIDAMUS, a Bohemian courtier Time, as Chorus",
       "notes": []
     },
-    "21": {
+    "15": {
       "play": "Two Ladies attending on Hermione",
       "notes": [
         "Hermione] Co.ier (ed. i, Zntrod. 427): It may be noticed that, just anterior to the time of our poet, the name he assigns to the Queen of Leontes had been employed as that of a male character: in The rare Triumphs of Love and Fortune, acted at court in 1581–2, and printed in 1589, Hermione is the lover of the heroine. RUSKIN (Munera Pulveris, 127): Shakespeare’s names are curiously—often barbarously—much by Providence,—but assuredly not without Shakespeare’s cunning purpose—mixed out of the various traditions he confusedly adopted, and languages which he imperfectly knew. . . . Hermione (ἑρμα) ‘pillar-like’ (ἢ εἶδος ἔχε χρηστῆς Ἀφροδίτης). C. ELLIOT BROWNE (Athenæum, 29 July, 1876): Hermione, no doubt, was named after the daughter of Menelaus, who was carried off by Orestes, but the name was not uncommon in contemporary literature."
       ]
     },
-    "22": {
+    "16": {
       "play": "Lords, Servants, and Gentlemen attending on Leontes",
       "notes": []
     },
-    "23": {
+    "17": {
       "play": "An Officer of the court A Mariner",
       "notes": []
     },
-    "25": {
+    "18": {
       "play": "A Jailer Mopsa",
       "notes": []
     },
-    "27": {
-      "play": "Dorcas bracket",
+    "19": {
+      "play": "DORCAS BRACKET",
       "notes": []
     },
-    "29": {
+    "20": {
       "play": "shepherdesses in Bohemia",
       "notes": []
     },
-    "30": {
+    "21": {
       "play": "Servant to the Shepherd",
       "notes": []
     },
-    "31": {
+    "22": {
       "play": "Shepherds and Shepherdesses",
       "notes": []
     },
-    "32": {
+    "23": {
       "play": "Twelve Countrymen disguised as satyrs",
       "notes": []
     }

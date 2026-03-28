@@ -1,23 +1,23 @@
 {
   "DRAMATIS PERSONAE": {
     "1": {
-      "play": "Vincentio, the Duke.",
+      "play": "VINCENTIO, the Duke.",
       "notes": []
     },
     "2": {
-      "play": "Angelo, Deputy.",
+      "play": "ANGELO, Deputy.",
       "notes": []
     },
     "3": {
-      "play": "Escalus, an ancient Lord.",
+      "play": "ESCALUS, an ancient Lord.",
       "notes": []
     },
     "4": {
-      "play": "Claudio, a young gentleman.",
+      "play": "CLAUDIO, a young gentleman.",
       "notes": []
     },
     "5": {
-      "play": "Lucio, a fantastic.",
+      "play": "LUCIO, a fantastic.",
       "notes": []
     },
     "6": {
@@ -25,15 +25,15 @@
       "notes": []
     },
     "7": {
-      "play": "Provost.",
+      "play": "PROVOST.",
       "notes": []
     },
     "8": {
-      "play": "Thomas, two friars.",
+      "play": "THOMAS, two friars.",
       "notes": []
     },
     "9": {
-      "play": "Peter, two friars.",
+      "play": "PETER, two friars.",
       "notes": []
     },
     "10": {
@@ -41,55 +41,51 @@
       "notes": []
     },
     "11": {
-      "play": "Varrius.",
+      "play": "VARRIUS.",
       "notes": []
     },
     "12": {
-      "play": "Elbow, a simple constable.",
+      "play": "ELBOW, a simple constable.",
       "notes": []
     },
     "13": {
-      "play": "Froth, a foolish gentleman.",
+      "play": "FROTH, a foolish gentleman.",
       "notes": []
     },
     "14": {
-      "play": "Pompey, servant to Mistress Overdone.",
+      "play": "POMPEY, servant to Mistress Overdone.",
       "notes": []
     },
     "15": {
-      "play": "Abhorson, an executioner.",
+      "play": "ABHORSON, an executioner.",
       "notes": []
     },
     "16": {
-      "play": "Barnardine, a dissolute prisoner.",
+      "play": "BARNARDINE, a dissolute prisoner.",
       "notes": []
     },
     "17": {
-      "play": "Isabella, sister to Claudio.",
+      "play": "ISABELLA, sister to Claudio.",
       "notes": []
     },
     "18": {
-      "play": "Mariana, betrothed to Angelo.",
+      "play": "MARIANA, betrothed to Angelo.",
       "notes": []
     },
     "19": {
-      "play": "Juliet, beloved of Claudio.",
+      "play": "JULIET, beloved of Claudio.",
       "notes": []
     },
     "20": {
-      "play": "Francisca, a nun.",
+      "play": "FRANCISCA, a nun.",
       "notes": []
     },
     "21": {
-      "play": "Mistress Overdone, a bawd.",
+      "play": "MISTRESS OVERDONE, a bawd.",
       "notes": []
     },
     "22": {
       "play": "Lords, Officers, Citizens, Boy, and Attendants.",
-      "notes": []
-    },
-    "23": {
-      "play": "Scene: Vienna.",
       "notes": []
     }
   },

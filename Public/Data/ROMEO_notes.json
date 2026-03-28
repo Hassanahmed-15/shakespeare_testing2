@@ -1,37 +1,37 @@
 {
   "DRAMATIS PERSONAE": {
     "1": {
-      "play": "Escalus, prince of Verona.",
+      "play": "ESCALUS, prince of Verona.",
       "notes": [
         "Dramatis Personæ.] Dyce, Cambr. First given, imperfectly, by Rowe."
       ]
     },
     "2": {
-      "play": "Paris, a young nobleman, kinsman to the prince.",
+      "play": "PARIS, a young nobleman, kinsman to the prince.",
       "notes": []
     },
     "3": {
-      "play": "Montague, heads of two Houses at variance with each other.",
+      "play": "MONTAGUE, heads of two Houses at variance with each other.",
       "notes": []
     },
     "4": {
-      "play": "Capulet, heads of two Houses at variance with each other.",
+      "play": "CAPULET, heads of two Houses at variance with each other.",
       "notes": []
     },
     "5": {
-      "play": "Romeo, son to Montague.",
+      "play": "ROMEO, son to Montague.",
       "notes": []
     },
     "6": {
-      "play": "Mercutio, kinsman to the prince, and friend to Romeo.",
+      "play": "MERCUTIO, kinsman to the prince, and friend to Romeo.",
       "notes": []
     },
     "7": {
-      "play": "Benvolio, nephew to Montague, and friend to Romeo.",
+      "play": "BENVOLIO, nephew to Montague, and friend to Romeo.",
       "notes": []
     },
     "8": {
-      "play": "Tybalt, nephew to Lady Capulet.",
+      "play": "TYBALT, nephew to Lady Capulet.",
       "notes": []
     },
     "9": {
@@ -41,31 +41,31 @@
       ]
     },
     "10": {
-      "play": "Friar Laurence, a Franciscan.",
+      "play": "FRIAR LAURENCE, a Franciscan.",
       "notes": []
     },
     "11": {
-      "play": "Friar John, of the same order.",
+      "play": "FRIAR JOHN, of the same order.",
       "notes": []
     },
     "12": {
-      "play": "Balthasar, servant to Romeo.",
+      "play": "BALTHASAR, servant to Romeo.",
       "notes": []
     },
     "13": {
-      "play": "Sampson, servant to Capulet.",
+      "play": "SAMPSON, servant to Capulet.",
       "notes": []
     },
     "14": {
-      "play": "Gregory, servant to Capulet.",
+      "play": "GREGORY, servant to Capulet.",
       "notes": []
     },
     "15": {
-      "play": "Peter, servant to Juliet's nurse.",
+      "play": "PETER, servant to Juliet's nurse.",
       "notes": []
     },
     "16": {
-      "play": "Abraham, servant to Montague.",
+      "play": "ABRAHAM, servant to Montague.",
       "notes": [
         "Abraham] Dyce, Cambr. Abram, Var. et cet."
       ]
@@ -83,15 +83,15 @@
       "notes": []
     },
     "20": {
-      "play": "Lady Montague, wife to Montague.",
+      "play": "LADY MONTAGUE, wife to Montague.",
       "notes": []
     },
     "21": {
-      "play": "Lady Capulet, wife to Capulet.",
+      "play": "LADY CAPULET, wife to Capulet.",
       "notes": []
     },
     "22": {
-      "play": "Juliet, daughter to Capulet.",
+      "play": "JULIET, daughter to Capulet.",
       "notes": []
     },
     "23": {
@@ -103,11 +103,7 @@
       "notes": []
     },
     "25": {
-      "play": "Chorus.",
-      "notes": []
-    },
-    "26": {
-      "play": "Scene: Verona: Mantua.",
+      "play": "CHORUS.",
       "notes": []
     }
   },

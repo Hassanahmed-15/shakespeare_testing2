@@ -1,65 +1,61 @@
 {
   "DRAMATIS PERSONAE": {
     "1": {
-      "play": "Dramatis Personae",
+      "play": "PROSPERO, the former duke of Milan, now a magician on a Mediterranean island",
+      "notes": []
+    },
+    "2": {
+      "play": "MIRANDA, Prospero’s daughter",
       "notes": []
     },
     "3": {
-      "play": "Prospero, the former duke of Milan, now a magician on a Mediterranean island",
+      "play": "ARIEL, a spirit, servant to Prospero",
       "notes": []
     },
-    "5": {
-      "play": "Miranda, Prospero’s daughter",
-      "notes": []
-    },
-    "6": {
-      "play": "Ariel, a spirit, servant to Prospero",
-      "notes": []
-    },
-    "7": {
-      "play": "Caliban, an inhabitant of the island, servant to Prospero",
+    "4": {
+      "play": "CALIBAN, an inhabitant of the island, servant to Prospero",
       "notes": [
         "Caliban] Dr. Farmer's derivation of this name as merely a metathesis of Cannibal has been generally accepted. 'To me it is unsatisfactory. There should be, I think, something in the descriptions of cannibals, either of their features or of their natures, to indicate some sort of fellowship with a monster like Caliban. No such description has been pointed out. None of the manifold accounts of early voyages to the Caribbean Sea, as far as I have been able to discover, attributes to cannibals any other characteristic than that of eating human flesh; it is their one constant quality. Moreover, Shakespeare needed none of this help in vivifying his characters, which the mere extrinsic associations of a name could supply. What name soever he gave to Caliban, the deformed slave would have made it typical for all time. Is it likely, moreover, that when The Tempest was acted before the motley audience of the Globe Theatre, there was a single auditor who, on hearing Prospero speak of Caliban, thought him of the Caribbean Sea, and instantly surmised that the name was a metathesis of Cannibal? Under this impression, the appearance of the monster without a trace of his bloodthirsty characteristic must have been disappointing. Other derivations of the name have been proposed, but none of them, I think, with better success. In N. & Qu. 34. S. vi, p. 202, H. C. thinks that 'it is possible that \"Shakespeare was acquainted with parts of the story of the Ramayana; and in that case Caliban would be Kalle-bam, meaning the story of Kalce, the Indian Prospero's pine.'—Dr. Nicholson (N. & Qu. 34. S. vi, p. 61) thinks that 'Perhaps, too, the origin of the name is to be found in the Calibs of the isles and the Spanish main rather than in the transposition of the syllables of the word cannibal.'—In N. & Qu. 48. S. vii, p. 56, T. E. Winnington asks 'if kekr?n, a drinking-cup, can have suggested the name.'—Phillpotts (p. viii) remarks that Caliban's name can hardly have any more connection with the word Cannibal than his nature has. The mention of his mother's country points to a Moorish origin for his name, which may possibly be the Kaleb?n, or 'wide dog,' of Arabic slang.'—Finally, The ELZE (Jahrb. xv, 252), in a passage which is quoted above in the discussion of the location of the vn-inhabited Island suggests, with what I must confess seems to be more plausibility than any other suggestion, that the name comes from the region called Caliba in the Moorish coast. In this case, I think Shakespeare possibly inherited the name from the old story or drama which is the foundation of this play. Miranda] Malone, in a foregoing note, queries whether Miranda be not a contraction of Miranda. Such a contraction is neither likely nor needed. 'Earl of Miranda,' apparently a prominent courtier at the Court of Spain, is men tioned (Winwood's Memorials, ii, 312) by James's ambassador at Madrid, Sir George Cornwallis, in a letter to the Earl of Salisbury, in 1607. This fact shows clearly that the name is not an invention of Shakespeare.—Ed. Ariel] Malone: A name taken from the sacred writings: 'Woe to Ariel, to Ariel, the city where David dwelt'—Isaiah xxix. He also found this in old verses, which may have particularly struck our scholar, and induced him to denominate Prospero's principal ministering spirit: 'And thou [Ariel] shalt be brought down, and shalt speak out of the ground, and thy speech shall be low out of the dust, and thy voice shall be as of one that hath a familiar spirit, out of the ground,'—'Thou shalt be visited of the Lord of Hosts with thunder, and with earthquake, and with great noise, with storm and tempest, and the flame of devouring fire.' (After reading this note, one almost doubts if Malone, when he wrote it, had read the play.—Ed.)—Hunter (i, 181): 'An airy spirit' says the old personage, whence perhaps the choice of the name, which literally signifies the Lion of God, or the Strong Lion, and is used by the prophet Isaiah as a personation of the city of Jerusalem.—Thoms (Three Novels, p. 21): That Shakespeare learned the name of Ariel from his Bible, and selected it from the resemblance its sound bore to the character of his quaint spirit, and that some of the feats and attributes of that spirit were suggested by the words of Isaiah, is extremely probable; but, at the same time, it is important to know, as confirmatory of the Hebraistic character of this glorious play, that Ariel not only answers to the description of the Jewish spirits, Scheidim, but that Ariel is not the name of one of the seven princes of angels or spirits who preside over waters under Micael the arch-prince. Heywood [Notes on 1k iv, Hierarchie of the Blessed Angels] furnishes us with the following illustration of the belief upon which the character and agency of Ariel in The Tempest is founded: 'Saint Augustine, in his booke De Cognitione Vera Vita, is persuaded that spirits by God's permission can raise Stormes and Tempests, and command raine, hail, snow, thunder, and light ening at their pleasures.'—Staunton: According to the system of witchcraft or magic which formed an article of popular creed in Shakespeare's day, the elementary spirits were divided into six classes by some demonologists, and into four—these the Air, of the Water, of the Fire, and of the Earth,—by others. . . . Ariel is here called an airy spirit. The particular functions of this order of beings, Burton tells us, are to cause many tempests, thunder, and lightnings, tear oaks like steeples, houses, strike men and beasts, make it rain stones, &c., cause whirlwinds on a sudden, and tempestuous storms. But at the behest of his own influence and potency, the airy spirit in a twin becomes not only a spirit of fire,—one of those, according to the same authority, which commonly work by blazing stars, fire drakes, or igmes fatuati . . . . counterfeit suns and moons, stars . . ."
       ]
     },
+    "5": {
+      "play": "FERDINAND, prince of Naples",
+      "notes": []
+    },
+    "6": {
+      "play": "ALONSO, king of Naples",
+      "notes": []
+    },
+    "7": {
+      "play": "ANTONIO, duke of Milan and Prospero’s brother",
+      "notes": []
+    },
     "8": {
-      "play": "Ferdinand, prince of Naples",
+      "play": "SEBASTIAN, Alonso’s brother",
       "notes": []
     },
     "9": {
-      "play": "Alonso, king of Naples",
+      "play": "GONZALO, councillor to Alonso and friend to Prospero Adrian",
       "notes": []
     },
     "10": {
-      "play": "Antonio, duke of Milan and Prospero’s brother",
+      "play": "FRANCISCO, courtiers in attendance on Alonso",
       "notes": []
     },
     "11": {
-      "play": "Sebastian, Alonso’s brother",
+      "play": "TRINCULO, servant to Alonso",
       "notes": []
     },
     "12": {
-      "play": "Gonzalo, councillor to Alonso and friend to Prospero Adrian",
+      "play": "STEPHANO, Alonso’s butler Shipmaster",
+      "notes": []
+    },
+    "13": {
+      "play": "BOATSWAIN, Mariners",
       "notes": []
     },
     "14": {
-      "play": "Francisco courtiers in attendance on Alonso",
-      "notes": []
-    },
-    "16": {
-      "play": "Trinculo, servant to Alonso",
-      "notes": []
-    },
-    "17": {
-      "play": "Stephano, Alonso’s butler Shipmaster",
-      "notes": []
-    },
-    "19": {
-      "play": "Boatswain Mariners",
-      "notes": []
-    },
-    "21": {
-      "play": "Players who, as spirits, take the roles of Iris, Ceres, Juno, Nymphs, and Reapers in Prospero’s masque, and who, in other scenes, take the roles of “islanders” and of hunting dogs",
+      "play": "PLAYERS WHO, as spirits, take the roles of Iris, Ceres, Juno, Nymphs, and Reapers in Prospero’s masque, and who, in other scenes, take the roles of “islanders” and of hunting dogs",
       "notes": []
     }
   },

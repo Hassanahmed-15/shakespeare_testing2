@@ -1,76 +1,72 @@
 {
   "DRAMATIS PERSONAE": {
     "1": {
-      "play": "TWELFTH NIGHT",
-      "notes": []
-    },
-    "2": {
-      "play": "Viola, a lady of Messaline shipwrecked on the coast of Illyria (later disguised as Cesario)",
+      "play": "VIOLA, a lady of Messaline shipwrecked on the coast of Illyria (later disguised as Cesario)",
       "notes": [
         "Viola.] STEEVENS: Viola is the name of a lady in the fifth book of Gower de Confessione Amantis.—GENÉE (Klass. Frauenbilder, 79): The name Viola is given to her because of her exquisite grace, and because of her concealment, under"
       ]
     },
+    "2": {
+      "play": "OLIVIA, an Illyrian countess",
+      "notes": []
+    },
     "3": {
-      "play": "Olivia, an Illyrian countess",
+      "play": "MARIA, her waiting-gentlewoman",
       "notes": []
     },
     "4": {
-      "play": "Maria, her waiting-gentlewoman",
-      "notes": []
-    },
-    "5": {
-      "play": "Sir Toby Belch, Olivia’s kinsman",
+      "play": "SIR TOBY BELCH, Olivia’s kinsman",
       "notes": [
         "Sir.] It is not easy to comprehend the ‘anfractuosities’ of the German mind when it deals with the names of Shakespeare’s dramatis personæ. German translators, from the highest to the lowest, assume the permission, wherever a name seems to be a clew to the character, to change Shakespeare’s nomenclature, and herein they are probably right; but unfortunately they do not always restrict themselves to this limit. Thus here, the knighthood of Sir Toby and Sir Andrew is not without its meaning; the contrast between the dignity of the title and the inferiority of the man is sharp enough to create a sense of mild amusement, and it also elevates the bearer somewhat in the social plane. Both of these effects are lost when these characters are presented, as they always are, to a German audience as Junker. Nor is the effect restored when, instead of the familiar nickname, ‘Toby,’ we have the sonorous, somewhat Puritanic Tobias, given in full. Whatever humour there is in Junker is silenced in Tobias. But what is to be said of SCHLEGEL’S change of ‘Sir Andrew’ into Junker Christoph, a change which is still retained by Dr SCHMIDT in his revision, for The German Shakespeare Society, of Schlegel’s translation? Is it one of the anfractuosities that to German ears Christoph is funnier than ‘Andrew’ or Andreas as other translators have it? That ‘Belch’ should be translated Rülp, and ‘Ague-cheek’ Bleichwangen is harmless enough, probably right; as President Lincoln was wont to say: ‘for those who like this kind of thing, this is just the kind of thing those people would like.’ I doubt, however, that any such palliation will cover the translation of an historic name like Hotspur into Heissporn; or even ‘Juliet’ into Julia, which is, I think, universal in Germany. The indignant derision would be colossal which Germans would heap on an English translator who should convert ‘Gretchen’ into Peggy.—ED."
       ]
     },
-    "6": {
-      "play": "Sir Andrew Aguecheek, Sir Toby’s companion",
+    "5": {
+      "play": "SIR ANDREW AGUECHEEK, Sir Toby’s companion",
       "notes": []
     },
-    "7": {
-      "play": "Malvolio, steward in Olivia’s household",
+    "6": {
+      "play": "MALVOLIO, steward in Olivia’s household",
       "notes": [
         "Malvolio.] FARMER: This name seems to have been formed by an accidental transposition in the word Malivolo.—HUNTER (i, 396): Malvolio is a happy adaptation from Malevoli, a character in the Il Sacrificio. [Il Sacrificio, be it observed, is a so-called ‘Comedia,’ which precedes Gl’ Ingannati, the comedy whereon Shakespeare, as Hunter believes, founded the present play. (See Preface, or Appendix: The Source of the Plot.) Hunter’s remark in regard to Malvolio’s name conveys the impression that Il Sacrificio is a comedy in the ordinary acceptation of the word, which it certainly is not. It appears that in 1531 there existed in Siena a society who called themselves Gl’ Intronati, or The Thunderstruck, and that during the festivities of the Carnival in that year they performed this ‘Comedia’ of Il Sacrificio, wherein the members of the Society, under the leadership of the ‘sodo dignissimo Archintronato,’ sacrificed to the flames the mementoes of their love, singing madrigals the while to the accompaniment of a lyre. The offerings are eminently sentimental, such as ‘a handkerchief bathed with tears,’ ‘a lock of hair,’ ‘a silver love-knot,’ ‘a glove of his Donna,’ etc. Nowhere do the performers appear under their own names, but as ‘The Sad One,’ ‘The Stunned One,’ ‘The Fantastical One,’ etc. The solitary exception is the instance mentioned by Hunter, where the madrigal is entitled: Messer Agnol Maleuolti un Cupido scolpito, dono della sua donna; and in the madrigal itself Messer Malevolti reproaches the little sculptured god with the loss of those joys which he had foretold him, and recalls the fair promises given by his mistress when she made him this present; and how bitterly those promises had failed. Wherefore, Cupid is no longer worthy to be called a god; but shall expiate in the fire the numberless wounds he has caused, and shall prove in his own image how sweet is the flame. The likelihood is extremely small, I think, that Shakespeare, even granting that he had ever read Il Sacrificio, took the trouble to coin ‘Malvolio’ out of Malevoli, when he had before him, on Hunter’s own supposition, the long list of Dramatis Personæ of Gl’ Ingannati. There is nothing whatsoever in Malevoli’s madrigal which corresponds to the character which Shakespeare gives to Malvolio.—ED."
       ]
     },
-    "8": {
-      "play": "Fool, Olivia’s jester, named Feste",
+    "7": {
+      "play": "FOOL, Olivia’s jester, named Feste",
       "notes": []
     },
-    "9": {
-      "play": "Fabian, a gentleman in Olivia’s household",
+    "8": {
+      "play": "FABIAN, a gentleman in Olivia’s household",
       "notes": [
         "Fabian.] HUNTER (i, 396): The name of Fabian was probably suggested by the name of Fabia, which Lelia in Gl’ Ingannati assumed in her disguise. [Hunter believed that the present play was founded on Gl’ Ingannati; nay, he could almost persuade himself that Shakespeare had used the identical copy which he had then before him. To him, therefore, this suggestion was ‘probable,’ but to me, who cannot thus circumscribe Shakespeare’s resources, the suggestion is unlikely. Moreover, Fabia is not the name which Lelia assumes, but Fabio; this, however, is hardly material.—ED.]"
       ]
     },
+    "9": {
+      "play": "ORSINO, duke (or count) of Illyria Valentine",
+      "notes": []
+    },
     "10": {
-      "play": "Orsino, duke (or count) of Illyria Valentine",
+      "play": "CURIO",
       "notes": []
     },
-    "12": {
-      "play": "Curio",
-      "notes": []
-    },
-    "13": {
+    "11": {
       "play": "Gentlemen serving Orsino",
       "notes": [
         "Orsino.] SARRAZIN (Jahrb. xxxii, 168): In the winter of 1600–1 a certain Duke Orsino attracted the attention of London. Virginio Orsino, Duke of Bracciano, ‘the most brilliant nobleman of his day,’ was at that time ambassador to the English court, and was entertained by Queen Elizabeth and her nobility with elaborate festivities, among others on Twelfth Night. Possibly, this suggested to Shakespeare the present name. [The date of Duke Orsino’s presence at the English court is somewhat too late for the composition of Twelfth Night, if it were already a popular play when Manningham saw it in February, 1601–2.—ED.]"
       ]
     },
+    "12": {
+      "play": "SEBASTIAN, Viola’s brother",
+      "notes": []
+    },
+    "13": {
+      "play": "ANTONIO, friend to Sebastian Captain",
+      "notes": []
+    },
     "14": {
-      "play": "Sebastian, Viola’s brother",
-      "notes": []
-    },
-    "15": {
-      "play": "Antonio, friend to Sebastian Captain",
-      "notes": []
-    },
-    "17": {
       "play": "Priest Two Officers",
       "notes": []
     },
-    "19": {
+    "15": {
       "play": "Lords, Sailors, Musicians, and other Attendants",
       "notes": []
     }

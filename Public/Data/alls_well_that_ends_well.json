@@ -1,39 +1,43 @@
 {
   "DRAMATIS PERSONAE": {
     "1": {
-      "play": "King of France.",
+      "play": "KING OF FRANCE.",
       "notes": []
     },
     "2": {
-      "play": "Duke of Florence.",
+      "play": "DUKE OF FLORENCE.",
       "notes": []
     },
     "3": {
-      "play": "Bertram, Count of Rossillion.",
+      "play": "BERTRAM, Count of Rossillion.",
       "notes": []
     },
     "4": {
-      "play": "Lafeu, an old lord.",
+      "play": "LAFEU, an old lord.",
       "notes": []
     },
     "5": {
       "play": "The two brothers Dumaine, French lords, later captains serving the Duke of Florence.",
-      "notes": ["See Introduction pp. xv ff. and IV. iii. 171 n."]
+      "notes": [
+        "See Introduction pp. xv ff. and IV. iii. 171 n."
+      ]
     },
     "6": {
-      "play": "Parolles, a follower of Bertram.",
+      "play": "PAROLLES, a follower of Bertram.",
       "notes": []
     },
     "7": {
       "play": "A French gentleman.",
-      "notes": ["See V. i. 6 n."]
+      "notes": [
+        "See V. i. 6 n."
+      ]
     },
     "8": {
-      "play": "Rynaldo, steward to the Countess of Rossillion.",
+      "play": "RYNALDO, steward to the Countess of Rossillion.",
       "notes": []
     },
     "9": {
-      "play": "Lavatch, clown in her household.",
+      "play": "LAVATCH, clown in her household.",
       "notes": []
     },
     "10": {
@@ -41,35 +45,33 @@
       "notes": []
     },
     "11": {
-      "play": "Countess of Rossillion, mother to Bertram.",
+      "play": "COUNTESS OF ROSSILLION, mother to Bertram.",
       "notes": []
     },
     "12": {
-      "play": "Helena, an orphan protected by the countess.",
+      "play": "HELENA, an orphan protected by the countess.",
       "notes": []
     },
     "13": {
-      "play": "Widow Capilet of Florence.",
+      "play": "WIDOW CAPILET OF FLORENCE.",
       "notes": []
     },
     "14": {
-      "play": "Diana, daughter to the widow.",
+      "play": "DIANA, daughter to the widow.",
       "notes": []
     },
     "15": {
-      "play": "Violenta, neighbour and friend to the widow.",
-      "notes": ["See III. v. Entry n."]
+      "play": "VIOLENTA, neighbour and friend to the widow.",
+      "notes": [
+        "See III. v. Entry n."
+      ]
     },
     "16": {
-      "play": "Mariana, neighbour and friend to the widow.",
+      "play": "MARIANA, neighbour and friend to the widow.",
       "notes": []
     },
     "17": {
       "play": "Lords, Attendants, Soldiers, etc., French and Florentine.",
-      "notes": []
-    },
-    "18": {
-      "play": "Scene: Rossillion; Paris; Florence; Marseilles.",
       "notes": []
     }
   },
