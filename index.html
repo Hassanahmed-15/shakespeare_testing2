@@ -665,6 +665,61 @@
             margin: var(--s-4) 0 var(--s-3);
             text-align: center;
         }
+        .about .about-ornament {
+            text-align: center;
+            color: var(--ink-3);
+            font-size: 14px;
+            margin: var(--s-3) 0;
+            letter-spacing: 0.25em;
+        }
+        .about .nvs-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            margin: var(--s-3) 0;
+        }
+        .about .nvs-table th {
+            font: 600 12px Inter, system-ui;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--ink-2);
+            border-bottom: 2px solid var(--line);
+            padding: 8px 10px;
+            text-align: left;
+        }
+        .about .nvs-table td {
+            color: var(--ink-2);
+            padding: 6px 10px;
+            border-bottom: 1px solid var(--line);
+        }
+        .about .nvs-table td:first-child {
+            color: var(--ink-3);
+            text-align: center;
+            width: 36px;
+        }
+        .about .nvs-table tr:last-child td {
+            border-bottom: none;
+        }
+        .about .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            margin: var(--s-3) 0;
+        }
+        .about .summary-table td {
+            color: var(--ink-2);
+            padding: 6px 10px;
+            border-bottom: 1px solid var(--line);
+        }
+        .about .summary-table td:last-child {
+            text-align: right;
+            font-weight: 600;
+            color: var(--ink-1);
+            width: 50px;
+        }
+        .about .summary-table tr:last-child td {
+            border-bottom: none;
+        }
 
         /* Progress display for multi-call analysis */
         .analysis-progress {
@@ -3231,17 +3286,19 @@
             
             <div class="modal-body">
                 <div class="about">
+                    <p class="about-ornament" aria-hidden="true">&mdash; ✦ &mdash;</p>
                     <p class="about-kicker">About This Project</p>
                     <p class="about-hero-title">The Shakespeare Digital Variorum</p>
-                    <p class="about-hero-tagline"><em>Scholarly Tradition · Artificial Intelligence · Universal Access</em></p>
+                    <p class="about-hero-tagline"><em>Scholarly Tradition &middot; Artificial Intelligence &middot; Universal Access</em></p>
+                    <p class="about-ornament" aria-hidden="true">✶ ❧ ✶</p>
 
-                    <p><strong>The <a href="#" onclick="openNVModal(); return false;">New Variorum Shakespeare</a></strong> editions have been the gold standard of Shakespearean scholarship for over a century, bringing together the most important critical commentary, textual analysis, and historical context in comprehensive annotated volumes. The <em>Shakespeare Digital Variorum</em> builds on this tradition, harnessing the power of artificial intelligence to make centuries of scholarly insight accessible to everyone — from high school students to veteran researchers.</p>
+                    <p>The <a href="#" onclick="openNVModal(); return false;">New Variorum Shakespeare</a> editions have been the gold standard of Shakespearean scholarship for over a century, bringing together the most important critical commentary, textual analysis, and historical context in comprehensive annotated volumes. The <em>Shakespeare Digital Variorum</em> builds on this tradition, harnessing the power of artificial intelligence to make centuries of scholarly insight accessible to everyone &mdash; from high school students to veteran researchers.</p>
 
                     <p>Our platform integrates authoritative texts based on the Folger Shakespeare Library editions of each play, with commentary from major variorum editions, scholarly databases, and historical sources. We include references to film adaptations, stage productions, and cultural interpretations that show how Shakespeare’s works have lived and evolved across different media and eras. Using advanced AI, we can instantly provide plain-language explanations of complex passages, trace the etymology of Early Modern English words as they appear in context, analyze prosodic patterns across scenes and plays, and illuminate the historical events and cultural forces that shaped each work.</p>
 
-                    <p class="about-star-divider" aria-hidden="true">✦</p>
+                    <p class="about-star-divider" aria-hidden="true">✶</p>
 
-                    <h2 class="about-section-kicker">Radical accessibility</h2>
+                    <h2 class="about-section-kicker">Radical Accessibility</h2>
 
                     <p>The goal is radical accessibility. Whether you’re encountering Hamlet’s soliloquies for the first time or you’re a seasoned scholar investigating textual variants, the <em>Shakespeare Digital Variorum</em> meets you where you are. Students can receive immediate clarification of archaic language and historical references. Researchers can discover thematic connections across the complete canon. Theater practitioners can access centuries of performance history, from Garrick to Branagh to contemporary productions worldwide.</p>
 
@@ -3249,38 +3306,71 @@
 
                     <p>This isn’t about replacing human scholarship but about democratizing it. Every AI-generated insight is grounded in the work of generations of Shakespeare scholars, from the earliest editors to contemporary critics. We’ve simply made it possible for anyone to access that collective wisdom instantly, searchably, and in conversation with the texts themselves.</p>
 
-                    <p class="about-star-divider" aria-hidden="true">✦</p>
+                    <p class="about-star-divider" aria-hidden="true">✶</p>
 
-                    <p><em>Created by Jack David Carson, Massachusetts Institute of Technology • 2026</em></p>
+                    <h2 class="about-section-kicker">New Variorum Coverage</h2>
 
-                    <div class="meta">
-                        <div class="badge">Version <strong>1.0.0</strong></div>
-                        <div class="badge">Build <span id="build-id">auto</span></div>
-                        <div class="badge">Texts: Folger base</div>
-                        <div class="badge">Commentary: NVSh + secondary</div>
-                    </div>
+                    <p>The pre-1956 New Variorum Shakespeare series includes 23 plays out of copyright, along with 2 non-dramatic poetry volumes. This site presents the complete NVS scholarly notes for 20 of those 23 plays &mdash; all volumes that were available in full text. Three plays are forthcoming as access permits.</p>
 
-                    <h2>Purpose</h2>
-                    <p>Bring variorum-grade scholarship to a modern, accessible reading tool powered by AI.</p>
+                    <table class="nvs-table">
+                        <thead>
+                            <tr><th>#</th><th>Play</th><th>Year</th><th>Editor</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1</td><td>Romeo and Juliet</td><td>1871</td><td>H.&nbsp;H.&nbsp;Furness</td></tr>
+                            <tr><td>2</td><td>Macbeth</td><td>1873</td><td>H.&nbsp;H.&nbsp;Furness</td></tr>
+                            <tr><td>3</td><td>Hamlet</td><td>1877</td><td>H.&nbsp;H.&nbsp;Furness</td></tr>
+                            <tr><td>4</td><td>King Lear</td><td>1880</td><td>H.&nbsp;H.&nbsp;Furness</td></tr>
+                            <tr><td>5</td><td>Othello</td><td>1886</td><td>H.&nbsp;H.&nbsp;Furness</td></tr>
+                            <tr><td>6</td><td>The Merchant of Venice</td><td>1888</td><td>H.&nbsp;H.&nbsp;Furness</td></tr>
+                            <tr><td>7</td><td>As You Like It</td><td>1890</td><td>H.&nbsp;H.&nbsp;Furness</td></tr>
+                            <tr><td>8</td><td>The Tempest</td><td>1892</td><td>H.&nbsp;H.&nbsp;Furness</td></tr>
+                            <tr><td>9</td><td>A Midsummer Night’s Dream</td><td>1895</td><td>H.&nbsp;H.&nbsp;Furness</td></tr>
+                            <tr><td>10</td><td>The Winter’s Tale</td><td>1898</td><td>H.&nbsp;H.&nbsp;Furness</td></tr>
+                            <tr><td>11</td><td>Much Ado About Nothing</td><td>1899</td><td>H.&nbsp;H.&nbsp;Furness</td></tr>
+                            <tr><td>12</td><td>Twelfth Night</td><td>1901</td><td>H.&nbsp;H.&nbsp;Furness</td></tr>
+                            <tr><td>13</td><td>Love’s Labour’s Lost</td><td>1904</td><td>H.&nbsp;H.&nbsp;Furness</td></tr>
+                            <tr><td>14</td><td>Antony and Cleopatra</td><td>1907</td><td>H.&nbsp;H.&nbsp;Furness</td></tr>
+                            <tr><td>15</td><td>Richard III</td><td>1908</td><td>H.&nbsp;H.&nbsp;Furness</td></tr>
+                            <tr><td>16</td><td>Julius Caesar</td><td>1913</td><td>H.&nbsp;H.&nbsp;Furness</td></tr>
+                            <tr><td>17</td><td>Cymbeline</td><td>1913</td><td>H.&nbsp;H.&nbsp;Furness</td></tr>
+                            <tr><td>18</td><td>King John</td><td>1919</td><td>H.&nbsp;H.&nbsp;Furness&nbsp;Jr.</td></tr>
+                            <tr><td>19</td><td>Coriolanus</td><td>1928</td><td>H.&nbsp;H.&nbsp;Furness&nbsp;Jr.</td></tr>
+                            <tr><td>20</td><td>Henry IV, Part 1</td><td>1936</td><td>S.&nbsp;B.&nbsp;Hemingway</td></tr>
+                        </tbody>
+                    </table>
 
-                    <h2>What's inside</h2>
+                    <h2>Three Plays Forthcoming</h2>
+                    <p>The following three volumes were accessible only as Google Books snippets and could not be fully processed. They will be added as access permits.</p>
                     <ul>
-                        <li>Authoritative texts (Folger editions).</li>
-                        <li>Cross-references to major variorum editions and scholarly databases.</li>
-                        <li>AI explanations, paraphrase, performance notes, and research links.</li>
+                        <li>Henry IV, Part 2 (1940, ed. M.&nbsp;A.&nbsp;Shaaber)</li>
+                        <li>Troilus and Cressida (1953, ed. H.&nbsp;N.&nbsp;Hillebrand &amp; T.&nbsp;W.&nbsp;Baldwin)</li>
+                        <li>Richard II (1955, ed. M.&nbsp;W.&nbsp;Black)</li>
                     </ul>
 
-                    <div class="callout">
-                        We do not replace editors. AI outputs are aids; verify before citing.
-                    </div>
-
-                    <h2>Sources & Attribution</h2>
+                    <h2>Non-Dramatic Volumes</h2>
                     <ul>
-                        <li>Texts: Based on the Folger Shakespeare Library editions, edited by Barbara Mowat, Paul Werstine, Michael Poston, and Rebecca Niles</li>
+                        <li>The Poems (1938, ed. H.&nbsp;E.&nbsp;Rollins)</li>
+                        <li>The Sonnets (1944, ed. H.&nbsp;E.&nbsp;Rollins, 2 vols.)</li>
                     </ul>
 
-                    <h2>Contact & License</h2>
-                    <p>Issues or corrections: <a href="mailto:jack@example.com">email</a>. License: CC BY-NC-SA 4.0 - Free to use for non-commercial, educational purposes with attribution.</p>
+                    <h2>Summary</h2>
+                    <table class="summary-table">
+                        <tbody>
+                            <tr><td>Out-of-copyright NVS plays (total)</td><td>23</td></tr>
+                            <tr><td>Plays fully included on this site</td><td>20</td></tr>
+                            <tr><td>Plays forthcoming (Google Books snippets only)</td><td>3</td></tr>
+                            <tr><td>Non-dramatic poetry volumes</td><td>2</td></tr>
+                        </tbody>
+                    </table>
+
+                    <p class="about-star-divider" aria-hidden="true">✶</p>
+
+                    <h2 class="about-section-kicker">The Next Evolution</h2>
+
+                    <p>The <em>Shakespeare Digital Variorum</em> represents the next evolution of the variorum tradition: comprehensive, scholarly, and designed for universal access. Shakespeare’s world is vast &mdash; and now everyone can explore all of it.</p>
+
+                    <p class="about-ornament" aria-hidden="true">&mdash; ✦ ❧ ✦ &mdash;</p>
                 </div>
             </div>
         </div>
