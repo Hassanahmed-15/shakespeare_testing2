@@ -627,6 +627,45 @@
             text-decoration: underline;
         }
 
+        /* About modal — hero & section rhythm (site typography) */
+        .about .about-kicker {
+            font: 600 11px Inter, system-ui;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--ink-3);
+            margin: 0 0 var(--s-2);
+            text-align: center;
+        }
+        .about .about-hero-title {
+            font: 700 22px/1.25 Inter, system-ui;
+            color: var(--ink-1);
+            margin: 0 0 var(--s-2);
+            letter-spacing: -0.02em;
+            text-align: center;
+        }
+        .about .about-hero-tagline {
+            font-size: 15px;
+            color: var(--ink-2);
+            margin: 0 0 var(--s-3);
+            text-align: center;
+            line-height: 1.5;
+        }
+        .about .about-star-divider {
+            text-align: center;
+            color: var(--ink-3);
+            font-size: 13px;
+            margin: var(--s-4) 0;
+            letter-spacing: 0.2em;
+        }
+        .about h2.about-section-kicker {
+            font: 600 12px Inter, system-ui;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--ink-2);
+            margin: var(--s-4) 0 var(--s-3);
+            text-align: center;
+        }
+
         /* Progress display for multi-call analysis */
         .analysis-progress {
             background: var(--surface);
@@ -3099,6 +3138,7 @@
         <h1>Shakespeare Digital Variorum</h1>
         <div class="header-nav">
             <span class="nav-text" onclick="openHowToUse()">How To Use</span>
+            <span class="nav-text" onclick="openHowToHelp()">How To Help</span>
             <!-- Settings button hidden for public release; uncomment to re-enable for admin use -->
             <!-- <button class="nav-btn" onclick="openSettings()">Settings</button> -->
             <button class="nav-btn" onclick="openAbout()">About</button>
@@ -3191,18 +3231,26 @@
             
             <div class="modal-body">
                 <div class="about">
-                    <p>The <a href="#" onclick="openNVModal(); return false;" style="color: #2563eb; text-decoration: underline;">New Variorum Shakespeare</a> editions have been the gold standard of Shakespearean scholarship for over a century, bringing together the most important critical commentary, textual analysis, and historical context in comprehensive annotated volumes. The Shakespeare Digital Variorum builds on this tradition, harnessing the power of artificial intelligence to make centuries of scholarly insight accessible to everyone, from high school students to veteran researchers.</p>
-                    
-                    <p>Our platform integrates authoritative texts based on the Folger Shakespeare Library editions of each play, with commentary from major variorum editions, scholarly databases, and historical sources. We include references to film adaptations, stage productions, and cultural interpretations that show how Shakespeare's works have lived and evolved across different media and eras. Using advanced AI, we can instantly provide plain-language explanations of complex passages, trace the etymology of Early Modern English words as they appear in context, analyze prosodic patterns across scenes and plays, and illuminate the historical events and cultural forces that shaped each work.</p>
-                    
-                    <p>The goal is radical accessibility. Whether you're encountering Hamlet's soliloquies for the first time or you're a seasoned scholar investigating textual variants, the Shakespeare Digital Variorum meets you where you are. Students can receive immediate clarification of archaic language and historical references. Researchers can discover thematic connections across the complete canon. Theater practitioners can access centuries of performance history, from Garrick to Branagh to contemporary productions worldwide.</p>
-                    
-                    <p>We believe Shakespeare belongs to everyone, not just academics. By connecting scholarly commentary with film clips, performance videos, and multimedia resources, we show how these 400-year-old plays continue to speak to modern audiences. A teenager reading Romeo and Juliet can instantly see how Baz Luhrmann reimagined the balcony scene, while a graduate student can access the full textual apparatus from multiple critical editions.</p>
-                    
-                    <p>This isn't about replacing human scholarship but about democratizing it. Every AI-generated insight is grounded in the work of generations of Shakespeare scholars, from the earliest editors to contemporary critics. We've simply made it possible for anyone to access that collective wisdom instantly, searchably, and in conversation with the texts themselves.</p>
-                    
-                    <p>The Shakespeare Digital Variorum represents the next evolution of the variorum tradition: comprehensive, scholarly, and designed for universal access. Shakespeare's world is vast, and now everyone can explore all of it.</p>
-                    
+                    <p class="about-kicker">About This Project</p>
+                    <p class="about-hero-title">The Shakespeare Digital Variorum</p>
+                    <p class="about-hero-tagline"><em>Scholarly Tradition · Artificial Intelligence · Universal Access</em></p>
+
+                    <p><strong>The <a href="#" onclick="openNVModal(); return false;">New Variorum Shakespeare</a></strong> editions have been the gold standard of Shakespearean scholarship for over a century, bringing together the most important critical commentary, textual analysis, and historical context in comprehensive annotated volumes. The <em>Shakespeare Digital Variorum</em> builds on this tradition, harnessing the power of artificial intelligence to make centuries of scholarly insight accessible to everyone — from high school students to veteran researchers.</p>
+
+                    <p>Our platform integrates authoritative texts based on the Folger Shakespeare Library editions of each play, with commentary from major variorum editions, scholarly databases, and historical sources. We include references to film adaptations, stage productions, and cultural interpretations that show how Shakespeare’s works have lived and evolved across different media and eras. Using advanced AI, we can instantly provide plain-language explanations of complex passages, trace the etymology of Early Modern English words as they appear in context, analyze prosodic patterns across scenes and plays, and illuminate the historical events and cultural forces that shaped each work.</p>
+
+                    <p class="about-star-divider" aria-hidden="true">✦</p>
+
+                    <h2 class="about-section-kicker">Radical accessibility</h2>
+
+                    <p>The goal is radical accessibility. Whether you’re encountering Hamlet’s soliloquies for the first time or you’re a seasoned scholar investigating textual variants, the <em>Shakespeare Digital Variorum</em> meets you where you are. Students can receive immediate clarification of archaic language and historical references. Researchers can discover thematic connections across the complete canon. Theater practitioners can access centuries of performance history, from Garrick to Branagh to contemporary productions worldwide.</p>
+
+                    <p>We believe Shakespeare belongs to everyone, not just academics. By connecting scholarly commentary with film clips, performance videos, and multimedia resources, we show how these 400-year-old plays continue to speak to modern audiences. A teenager reading <em>Romeo and Juliet</em> can instantly see how Baz Luhrmann reimagined the balcony scene, while a graduate student can access the full textual apparatus from multiple critical editions.</p>
+
+                    <p>This isn’t about replacing human scholarship but about democratizing it. Every AI-generated insight is grounded in the work of generations of Shakespeare scholars, from the earliest editors to contemporary critics. We’ve simply made it possible for anyone to access that collective wisdom instantly, searchably, and in conversation with the texts themselves.</p>
+
+                    <p class="about-star-divider" aria-hidden="true">✦</p>
+
                     <p><em>Created by Jack David Carson, Massachusetts Institute of Technology • 2026</em></p>
 
                     <div class="meta">
@@ -3624,7 +3672,7 @@
     <div id="howToUseModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <div class="modal-title">How To Use</div>
+                <div class="modal-title" id="how-to-use-modal-title">How To Use</div>
                 <button class="modal-close" onclick="closeHowToUse()">&times;</button>
             </div>
             
@@ -3652,6 +3700,35 @@
                     <p>Beyond the written annotations, the site also connects each line to its broader cultural life. Buttons alongside the text may bring up film scene drawn from YouTube's extensive catalog of Shakespeare production that dramatize the very line you have selected. Other buttons link to JSTOR articles and additional scholarly resources on the Internet, offering direct access to research that situates the passage in its academic and historical context.</p>
                     
                     <p>Taken together, these features transform each line into a gateway: to the play's language, its centuries of interpretation, and its continuing presence on stage and screen.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- How To Help Modal -->
+    <div id="howToHelpModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title" id="how-to-help-modal-title">How To Help</div>
+                <button class="modal-close" onclick="closeHowToHelp()">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <div class="about">
+                    <p class="about-hero-title">How To Help</p>
+                    <p class="about-hero-tagline"><em>Shakespeare Digital Variorum</em></p>
+
+                    <p>This site is attempting to make accessible more than 10,000 pages of the 20 New Variorum Shakespeare volumes we have processed — dense, double-columned pages containing centuries&rsquo; worth of notes drawn from multi-lingual sources and curated with the attention of a forensic accountant. Across those volumes, editors like Horace Howard Furness and his scholarly successors tracked every significant emendation, variant reading, and critical comment produced by generations of editors working in English, Latin, German, French, and beyond.</p>
+
+                    <p>We are quite sure that mistakes have crept into our work — whether by omission, mistranscription, or the ordinary failures of automated processing applied to nineteenth-century typography. A misread word in a footnote, a dropped citation, a garbled German gloss: these are the kinds of errors that no algorithm catches and no single reader finds. Only the collective attention of many readers, over time, will surface them.</p>
+
+                    <p><strong>What to Look For</strong></p>
+                    <p>If you are reading a play and notice that a commentary note seems truncated, misattributed, or simply wrong — that a quotation from a critic has been mangled, that a textual variant has gone missing, or that a passage in the original Variorum volume does not match what appears here — we want to know. Corrections of any size are welcome, from a transposed date to a missing paragraph. The original volumes, many of which are freely available on HathiTrust and the Internet Archive, are the authoritative source against which our text can always be checked.</p>
+
+                    <p><strong>Get in Touch</strong></p>
+                    <p>We welcome reports from anyone — students, scholars, enthusiasts, and casual readers alike. There is no error too small to mention and no expertise required to spot one. Please write to us describing what you found, which play and passage it concerns, and, if possible, what the correct text should be.</p>
+
+                    <p>You can reach the project team at: <strong><a href="mailto:help@newvariorum.org">help@newvariorum.org</a></strong>. We read every message and will acknowledge corrections as we incorporate them. If you would like attribution for a correction, please say so and we will be glad to include your name in the acknowledgments.</p>
                 </div>
             </div>
         </div>
@@ -9601,6 +9678,14 @@
             document.getElementById('howToUseModal').style.display = 'none';
         }
 
+        function openHowToHelp() {
+            document.getElementById('howToHelpModal').style.display = 'block';
+        }
+
+        function closeHowToHelp() {
+            document.getElementById('howToHelpModal').style.display = 'none';
+        }
+
         function openCriticsModal() {
             // Show the appropriate critics modal based on current play
             if (currentPlay === 'hamlet') {
@@ -9682,6 +9767,7 @@
             const settingsModal = document.getElementById('settingsModal');
             const aboutModal = document.getElementById('aboutModal');
             const howToUseModal = document.getElementById('howToUseModal');
+            const howToHelpModal = document.getElementById('howToHelpModal');
             const criticsModal = document.getElementById('criticsModal');
             const nvModal = document.getElementById('nvModal');
             const rightsModal = document.getElementById('rightsModal');
@@ -9710,6 +9796,9 @@
             }
             if (event.target === howToUseModal) {
                 closeHowToUse();
+            }
+            if (event.target === howToHelpModal) {
+                closeHowToHelp();
             }
             if (event.target === criticsModal || event.target === hamletCriticsModal || 
                 event.target === kingLearCriticsModal || event.target === romeoJulietCriticsModal || 
@@ -11393,6 +11482,8 @@
             // Add ARIA attributes to modals
             const settingsModal = document.getElementById('settingsModal');
             const aboutModal = document.getElementById('aboutModal');
+            const howToUseModal = document.getElementById('howToUseModal');
+            const howToHelpModal = document.getElementById('howToHelpModal');
             const criticsModal = document.getElementById('criticsModal');
             const nvModal = document.getElementById('nvModal');
             
@@ -11418,6 +11509,18 @@
                 nvModal.setAttribute('role', 'dialog');
                 nvModal.setAttribute('aria-modal', 'true');
                 nvModal.setAttribute('aria-labelledby', 'nv-modal-title');
+            }
+
+            if (howToUseModal) {
+                howToUseModal.setAttribute('role', 'dialog');
+                howToUseModal.setAttribute('aria-modal', 'true');
+                howToUseModal.setAttribute('aria-labelledby', 'how-to-use-modal-title');
+            }
+
+            if (howToHelpModal) {
+                howToHelpModal.setAttribute('role', 'dialog');
+                howToHelpModal.setAttribute('aria-modal', 'true');
+                howToHelpModal.setAttribute('aria-labelledby', 'how-to-help-modal-title');
             }
 
             // Settings nav switching
@@ -11450,6 +11553,9 @@
                     }
                     if (howToUseModal && howToUseModal.style.display === 'block') {
                         closeHowToUse();
+                    }
+                    if (howToHelpModal && howToHelpModal.style.display === 'block') {
+                        closeHowToHelp();
                     }
                     if (criticsModal && criticsModal.style.display === 'block') {
                         closeCriticsModal();
@@ -16484,6 +16590,14 @@
             document.getElementById('howToUseModal').style.display = 'none';
         }
 
+        function openHowToHelp() {
+            document.getElementById('howToHelpModal').style.display = 'block';
+        }
+
+        function closeHowToHelp() {
+            document.getElementById('howToHelpModal').style.display = 'none';
+        }
+
         function openRights() {
             document.getElementById('rightsModal').style.display = 'block';
         }
@@ -16797,6 +16911,7 @@
             const settingsModal = document.getElementById('settingsModal');
             const aboutModal = document.getElementById('aboutModal');
             const howToUseModal = document.getElementById('howToUseModal');
+            const howToHelpModal = document.getElementById('howToHelpModal');
             const rightsModal = document.getElementById('rightsModal');
             const criticsModal = document.getElementById('criticsModal');
             const nvModal = document.getElementById('nvModal');
@@ -16815,6 +16930,9 @@
             }
             if (event.target === howToUseModal) {
                 closeHowToUse();
+            }
+            if (event.target === howToHelpModal) {
+                closeHowToHelp();
             }
             if (event.target === rightsModal) {
                 closeRights();
