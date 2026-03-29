@@ -3193,7 +3193,6 @@
         <h1>Shakespeare Digital Variorum</h1>
         <div class="header-nav">
             <span class="nav-text" onclick="openHowToUse()">How To Use</span>
-            <span class="nav-text" onclick="openBrad()">Brad</span>
             <span class="nav-text" onclick="openHowToHelp()">How To Help</span>
             <!-- Settings button hidden for public release; uncomment to re-enable for admin use -->
             <!-- <button class="nav-btn" onclick="openSettings()">Settings</button> -->
@@ -4011,19 +4010,6 @@
                     
                     <p>Taken together, these features transform each line into a gateway: to the play's language, its centuries of interpretation, and its continuing presence on stage and screen.</p>
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Brad (test) Modal -->
-    <div id="bradModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="modal-title" id="brad-modal-title">Brad</div>
-                <button type="button" class="modal-close" onclick="closeBrad()" aria-label="Close">&times;</button>
-            </div>
-            <div class="modal-body">
-                <p>If you see this, the header action and modal wiring are working.</p>
             </div>
         </div>
     </div>
@@ -15552,14 +15538,6 @@
             document.getElementById('howToUseModal').style.display = 'none';
         }
 
-        function openBrad() {
-            document.getElementById('bradModal').style.display = 'block';
-        }
-
-        function closeBrad() {
-            document.getElementById('bradModal').style.display = 'none';
-        }
-
         function openHowToHelp() {
             document.getElementById('howToHelpModal').style.display = 'block';
         }
@@ -15658,7 +15636,6 @@
             const settingsModal = document.getElementById('settingsModal');
             const aboutModal = document.getElementById('aboutModal');
             const howToUseModal = document.getElementById('howToUseModal');
-            const bradModal = document.getElementById('bradModal');
             const howToHelpModal = document.getElementById('howToHelpModal');
             const criticsModal = document.getElementById('criticsModal');
             const nvModal = document.getElementById('nvModal');
@@ -15691,9 +15668,6 @@
             }
             if (event.target === howToUseModal) {
                 closeHowToUse();
-            }
-            if (event.target === bradModal) {
-                closeBrad();
             }
             if (event.target === howToHelpModal) {
                 closeHowToHelp();
@@ -17383,7 +17357,6 @@
             const aboutModal = document.getElementById('aboutModal');
             const howToUseModal = document.getElementById('howToUseModal');
             const howToHelpModal = document.getElementById('howToHelpModal');
-            const bradModal = document.getElementById('bradModal');
             const criticsModal = document.getElementById('criticsModal');
             const nvModal = document.getElementById('nvModal');
             
@@ -17423,12 +17396,6 @@
                 howToHelpModal.setAttribute('aria-labelledby', 'how-to-help-modal-title');
             }
 
-            if (bradModal) {
-                bradModal.setAttribute('role', 'dialog');
-                bradModal.setAttribute('aria-modal', 'true');
-                bradModal.setAttribute('aria-labelledby', 'brad-modal-title');
-            }
-
             // Settings nav switching
             document.querySelectorAll('.settings-nav .item').forEach((el, i) => {
                 el.addEventListener('click', () => {
@@ -17459,9 +17426,6 @@
                     }
                     if (howToUseModal && howToUseModal.style.display === 'block') {
                         closeHowToUse();
-                    }
-                    if (bradModal && bradModal.style.display === 'block') {
-                        closeBrad();
                     }
                     if (howToHelpModal && howToHelpModal.style.display === 'block') {
                         closeHowToHelp();
@@ -22500,14 +22464,6 @@
             document.getElementById('howToUseModal').style.display = 'none';
         }
 
-        function openBrad() {
-            document.getElementById('bradModal').style.display = 'block';
-        }
-
-        function closeBrad() {
-            document.getElementById('bradModal').style.display = 'none';
-        }
-
         function openHowToHelp() {
             document.getElementById('howToHelpModal').style.display = 'block';
         }
@@ -22838,7 +22794,6 @@
             const settingsModal = document.getElementById('settingsModal');
             const aboutModal = document.getElementById('aboutModal');
             const howToUseModal = document.getElementById('howToUseModal');
-            const bradModal = document.getElementById('bradModal');
             const howToHelpModal = document.getElementById('howToHelpModal');
             const rightsModal = document.getElementById('rightsModal');
             const criticsModal = document.getElementById('criticsModal');
@@ -22871,9 +22826,6 @@
             }
             if (event.target === howToUseModal) {
                 closeHowToUse();
-            }
-            if (event.target === bradModal) {
-                closeBrad();
             }
             if (event.target === howToHelpModal) {
                 closeHowToHelp();
