@@ -14569,7 +14569,7 @@
             // Show/hide critics button based on current play (New Variorum plays only)
             // Include Macbeth explicitly so the "Who are the New Variorum Critics?"
             // button appears for Macbeth as well.
-            const playsWithCriticsButtons = ['macbeth', 'midsummer', 'asyoulikeit', 'henryiv1', 'juliuscaesar', 'kingjohn', 'kinglear', 'loveslabourslost', 'richardiii', 'romeo', 'merchantofvenice', 'tempest', 'winterstale', 'twelfthnight'];
+            const playsWithCriticsButtons = ['macbeth', 'midsummer', 'asyoulikeit', 'henryiv1', 'juliuscaesar', 'kingjohn', 'kinglear', 'loveslabourslost', 'richardiii', 'romeo', 'merchantofvenice', 'tempest', 'winterstale', 'twelfthnight', 'hamlet', 'othello', 'muchado', 'antony', 'coriolanus', 'cymbeline'];
             const shouldShowCriticsButton = playsWithCriticsButtons.includes(currentPlay) && tabName === 'fullfathomfive';
             const criticsButton = document.getElementById('criticsButton');
             if (criticsButton) {
@@ -15580,7 +15580,7 @@
                 document.getElementById('winterstaleCriticsModal').style.display = 'flex';
             } else if (currentPlay === 'twelfthnight') {
                 document.getElementById('twelfthnightCriticsModal').style.display = 'flex';
-                        } else if (currentPlay === 'antony') {
+            } else if (currentPlay === 'antony') {
                 document.getElementById('antonyCriticsModal').style.display = 'flex';
             } else if (currentPlay === 'coriolanus') {
                 document.getElementById('coriolanusCriticsModal').style.display = 'flex';
@@ -22739,7 +22739,7 @@
                 document.getElementById('winterstaleCriticsModal').style.display = 'flex';
             } else if (currentPlay === 'twelfthnight') {
                 document.getElementById('twelfthnightCriticsModal').style.display = 'flex';
-                        } else if (currentPlay === 'antony') {
+            } else if (currentPlay === 'antony') {
                 document.getElementById('antonyCriticsModal').style.display = 'flex';
             } else if (currentPlay === 'coriolanus') {
                 document.getElementById('coriolanusCriticsModal').style.display = 'flex';
