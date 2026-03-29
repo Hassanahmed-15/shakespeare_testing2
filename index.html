@@ -13882,8 +13882,6 @@
                 <p>Highlight text in the play to get AI-powered analysis.</p>
             </div>
             <div class="analysis-instruction" id="analysisInstruction">
-                Select text in the play to get AI-powered analysis.
-                <br>
                 Click lines in the play to select them for analysis. Click a selected line again to deselect it. Press Escape or the Clear Selection button to start over.
             </div>
             <div id="analysisResult"></div>
@@ -14597,7 +14595,7 @@
                         <p>Highlight text in the play to get AI-powered analysis.</p>
                     </div>
                     <div class="analysis-instruction" id="analysisInstruction">
-                        Select text in the play to get AI-powered analysis.
+                        Click lines in the play to select them for analysis. Click a selected line again to deselect it. Press Escape or the Clear Selection button to start over.
                     </div>
                     <button class="force-display-button" onclick="forceDisplayPlayContent()" style="display: none; background: #3498db; color: white; margin-left: 10px;">Show Play Content</button>
                     <div id="analysisResult"></div>
@@ -14866,8 +14864,8 @@
             const analyzeButton = document.getElementById('analyzeButton');
             
             // Clear analysis content
-            if (analysisContent) analysisContent.innerHTML = 'Select text in the play to get AI-powered analysis.';
-            if (analysisInstruction) analysisInstruction.innerHTML = 'Select text in the play to get AI-powered analysis.';
+            if (analysisContent) analysisContent.innerHTML = '<p>Highlight text in the play to get AI-powered analysis.</p>';
+            if (analysisInstruction) analysisInstruction.innerHTML = 'Click lines in the play to select them for analysis. Click a selected line again to deselect it. Press Escape or the Clear Selection button to start over.';
             if (analysisResult) analysisResult.innerHTML = '';
             if (variorumResult) variorumResult.innerHTML = '';
             if (variorumContent) variorumContent.innerHTML = 'Traditional commentary will appear here for Full Fathom Five mode.';
@@ -14956,7 +14954,7 @@
                 // Reset instruction text
                 const analysisInstruction = analysisPanel.querySelector('.analysis-instruction');
                 if (analysisInstruction) {
-                    analysisInstruction.textContent = 'Select text in the play to get AI-powered analysis.';
+                    analysisInstruction.textContent = 'Click lines in the play to select them for analysis. Click a selected line again to deselect it. Press Escape or the Clear Selection button to start over.';
                 }
             }
             
@@ -14981,8 +14979,8 @@
             if (analysisResult) analysisResult.innerHTML = '';
             if (variorumResult) variorumResult.innerHTML = '';
             if (variorumContent) variorumContent.innerHTML = '';
-            if (analysisContent) analysisContent.innerHTML = 'Select text in the play to get AI-powered analysis.';
-            if (analysisInstruction) analysisInstruction.innerHTML = 'Select text in the play to get AI-powered analysis.';
+            if (analysisContent) analysisContent.innerHTML = '<p>Highlight text in the play to get AI-powered analysis.</p>';
+            if (analysisInstruction) analysisInstruction.innerHTML = 'Click lines in the play to select them for analysis. Click a selected line again to deselect it. Press Escape or the Clear Selection button to start over.';
             
             // Hide elements
             if (criticsInfo) criticsInfo.style.display = 'none';
