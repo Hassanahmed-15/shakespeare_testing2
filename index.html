@@ -3193,6 +3193,7 @@
         <h1>Shakespeare Digital Variorum</h1>
         <div class="header-nav">
             <span class="nav-text" onclick="openHowToUse()">How To Use</span>
+            <span class="nav-text" onclick="openBrad()">Brad</span>
             <span class="nav-text" onclick="openHowToHelp()">How To Help</span>
             <!-- Settings button hidden for public release; uncomment to re-enable for admin use -->
             <!-- <button class="nav-btn" onclick="openSettings()">Settings</button> -->
@@ -4010,6 +4011,19 @@
                     
                     <p>Taken together, these features transform each line into a gateway: to the play's language, its centuries of interpretation, and its continuing presence on stage and screen.</p>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Brad (test) Modal -->
+    <div id="bradModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title" id="brad-modal-title">Brad</div>
+                <button type="button" class="modal-close" onclick="closeBrad()" aria-label="Close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>If you see this, the header action and modal wiring are working.</p>
             </div>
         </div>
     </div>
@@ -15538,6 +15552,14 @@
             document.getElementById('howToUseModal').style.display = 'none';
         }
 
+        function openBrad() {
+            document.getElementById('bradModal').style.display = 'block';
+        }
+
+        function closeBrad() {
+            document.getElementById('bradModal').style.display = 'none';
+        }
+
         function openHowToHelp() {
             document.getElementById('howToHelpModal').style.display = 'block';
         }
@@ -15636,6 +15658,7 @@
             const settingsModal = document.getElementById('settingsModal');
             const aboutModal = document.getElementById('aboutModal');
             const howToUseModal = document.getElementById('howToUseModal');
+            const bradModal = document.getElementById('bradModal');
             const howToHelpModal = document.getElementById('howToHelpModal');
             const criticsModal = document.getElementById('criticsModal');
             const nvModal = document.getElementById('nvModal');
@@ -15668,6 +15691,9 @@
             }
             if (event.target === howToUseModal) {
                 closeHowToUse();
+            }
+            if (event.target === bradModal) {
+                closeBrad();
             }
             if (event.target === howToHelpModal) {
                 closeHowToHelp();
@@ -17357,6 +17383,7 @@
             const aboutModal = document.getElementById('aboutModal');
             const howToUseModal = document.getElementById('howToUseModal');
             const howToHelpModal = document.getElementById('howToHelpModal');
+            const bradModal = document.getElementById('bradModal');
             const criticsModal = document.getElementById('criticsModal');
             const nvModal = document.getElementById('nvModal');
             
@@ -17396,6 +17423,12 @@
                 howToHelpModal.setAttribute('aria-labelledby', 'how-to-help-modal-title');
             }
 
+            if (bradModal) {
+                bradModal.setAttribute('role', 'dialog');
+                bradModal.setAttribute('aria-modal', 'true');
+                bradModal.setAttribute('aria-labelledby', 'brad-modal-title');
+            }
+
             // Settings nav switching
             document.querySelectorAll('.settings-nav .item').forEach((el, i) => {
                 el.addEventListener('click', () => {
@@ -17426,6 +17459,9 @@
                     }
                     if (howToUseModal && howToUseModal.style.display === 'block') {
                         closeHowToUse();
+                    }
+                    if (bradModal && bradModal.style.display === 'block') {
+                        closeBrad();
                     }
                     if (howToHelpModal && howToHelpModal.style.display === 'block') {
                         closeHowToHelp();
@@ -18336,7 +18372,7 @@
             
             try {
                 const fileName = play.originalFileName;
-                const response = await fetch(`/Public/Data/${fileName}?v=${Date.now()}`);
+                const response = await fetch(encodeURI(`/Public/Data/${fileName}`) + `?v=${Date.now()}`);
                 
                 if (!response.ok) {
                     console.error(`❌ Failed to load ${playKey}: ${response.status}`);
@@ -18350,7 +18386,7 @@
                 window[playKey + 'Data'] = playData;
                 console.log(`✅ Stored ${playKey}Data globally for variorum notes`);
                 
-                // Parse the play data
+                // Parse the play data (must include scenes where play text is "" but notes exist — same rules as loadHamlet)
                 let sceneCount = 0;
                 let lineCount = 0;
                 
@@ -18362,46 +18398,49 @@
                             const lineData = sceneData[lineNum];
                             if (!lineData) return;
                             
-                            // Extract text from the lineData object
                             let text = null;
                             if (typeof lineData === 'string') {
                                 text = lineData;
-                            } else if (lineData.play) {
+                            } else if (lineData.play !== undefined && lineData.play !== null) {
                                 text = lineData.play;
-                            } else if (lineData.text) {
+                            } else if (lineData.text !== undefined && lineData.text !== null) {
                                 text = lineData.text;
-                            } else if (lineData.line) {
+                            } else if (lineData.line !== undefined && lineData.line !== null) {
                                 text = lineData.line;
                             }
                             
-                            if (text && text.trim()) {
-                                // Add numbering for DRAMATIS PERSONAE entries
-                                if (sceneKey === 'DRAMATIS PERSONAE') {
-                                    text = `${lineNum}. ${text.trim()}`;
+                            if (text === null || text === undefined) return;
+                            
+                            if (sceneKey === 'DRAMATIS PERSONAE') {
+                                const trimmed = typeof text === 'string' ? text.trim() : String(text).trim();
+                                if (trimmed) {
+                                    sceneContent.push(`${lineNum}. ${trimmed}`);
+                                    lineCount++;
                                 }
-                                sceneContent.push(text.trim());
+                            } else {
+                                sceneContent.push(typeof text === 'string' ? text : String(text));
                                 lineCount++;
                             }
                         });
                         
-                        if (sceneContent.length > 0) {
+                        if (sceneContent.length > 0 || Object.keys(sceneData).length > 0) {
                             let processedContent;
                             
-                            // Special handling for Dramatis Personae
                             if (sceneKey === 'DRAMATIS PERSONAE' && sceneContent.length === 1 && sceneContent[0].includes('\n')) {
                                 processedContent = sceneContent[0].split('\n').map(line => line.trim()).filter(line => line.length > 0);
                             } else {
-                                processedContent = sceneContent;
+                                processedContent = optimizeSpeakerNames(sceneContent);
+                                if (processedContent.length === 0 && Object.keys(sceneData).length > 0) {
+                                    processedContent = ['[Scene text not available - notes exist in database]'];
+                                }
                             }
                             
-                            // Normalize the scene key to ensure consistent format
                             const normalizedKey = normalizeSceneKey(sceneKey);
                             play.scenes[normalizedKey] = processedContent;
                             sceneCount++;
                             
                             console.log(`✅ Parsed scene ${normalizedKey} (original: ${sceneKey}): ${processedContent.length} lines`);
                             
-                            // Parse act information from normalized scene key
                             const actName = parseActFromScene(normalizedKey);
                             if (actName) {
                                 if (!play.acts[actName]) {
@@ -18413,8 +18452,6 @@
                             } else {
                                 console.warn(`⚠️ Could not parse act from scene key: ${normalizedKey}`);
                             }
-                        } else {
-                            console.warn(`⚠️ Scene ${sceneKey} has no content`);
                         }
                     }
                 });
@@ -22463,6 +22500,14 @@
             document.getElementById('howToUseModal').style.display = 'none';
         }
 
+        function openBrad() {
+            document.getElementById('bradModal').style.display = 'block';
+        }
+
+        function closeBrad() {
+            document.getElementById('bradModal').style.display = 'none';
+        }
+
         function openHowToHelp() {
             document.getElementById('howToHelpModal').style.display = 'block';
         }
@@ -22793,6 +22838,7 @@
             const settingsModal = document.getElementById('settingsModal');
             const aboutModal = document.getElementById('aboutModal');
             const howToUseModal = document.getElementById('howToUseModal');
+            const bradModal = document.getElementById('bradModal');
             const howToHelpModal = document.getElementById('howToHelpModal');
             const rightsModal = document.getElementById('rightsModal');
             const criticsModal = document.getElementById('criticsModal');
@@ -22825,6 +22871,9 @@
             }
             if (event.target === howToUseModal) {
                 closeHowToUse();
+            }
+            if (event.target === bradModal) {
+                closeBrad();
             }
             if (event.target === howToHelpModal) {
                 closeHowToHelp();
