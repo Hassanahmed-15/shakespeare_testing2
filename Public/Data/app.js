@@ -1,4 +1,4 @@
-// Shakespeare Digital Variorum - Modern App
+// Shakespeare Digital New Variorum - Modern App
 // Enhanced functionality with bug fixes and improved UX
 
 class ShakespeareApp {
@@ -15,7 +15,7 @@ class ShakespeareApp {
     }
 
     async init() {
-        console.log('🎭 Shakespeare Digital Variorum - Modern Edition');
+        console.log('🎭 Shakespeare Digital New Variorum - Modern Edition');
         
         // Initialize notes integration
         this.notesIntegration = new NotesIntegration();

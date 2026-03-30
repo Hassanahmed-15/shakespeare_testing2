@@ -1,4 +1,4 @@
-// Notes Integration System for Shakespeare Digital Variorum
+// Notes Integration System for Shakespeare Digital New Variorum
 // This file handles the integration of pre-existing notes from macbeth_notes.json
 
 class NotesIntegration {

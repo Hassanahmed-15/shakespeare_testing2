@@ -1,7 +1,7 @@
 {
   "name": "shakespeare-variorum",
   "version": "1.0.0",
-  "description": "Shakespeare Digital Variorum with server-side API",
+  "description": "Shakespeare Digital New Variorum with server-side API",
   "main": "index.html",
   "scripts": {
     "build": "echo 'No build step required'"
