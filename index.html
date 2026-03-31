@@ -13894,7 +13894,7 @@
                     </button>
                 </div>
                 <div class="analysis-content" id="variorumContent">
-                    Traditional commentary will appear here for Full Fathom Five mode.
+                    New Variorum Annotations will appear here in Full Fathom Five mode.
                 </div>
                 <div id="variorumResult"></div>
             </div>
@@ -14608,7 +14608,7 @@
                             </button>
                         </div>
                         <div class="analysis-content" id="variorumContent">
-                            Traditional commentary will appear here for Full Fathom Five mode.
+                            New Variorum Annotations will appear here in Full Fathom Five mode.
                         </div>
                         <div id="variorumResult"></div>
                     </div>
@@ -14862,7 +14862,7 @@
             if (analysisInstruction) analysisInstruction.innerHTML = 'Click lines in the play to select them for analysis. Click a selected line again to deselect it. Press Escape or the Clear Selection button to start over.';
             if (analysisResult) analysisResult.innerHTML = '';
             if (variorumResult) variorumResult.innerHTML = '';
-            if (variorumContent) variorumContent.innerHTML = 'Traditional commentary will appear here for Full Fathom Five mode.';
+            if (variorumContent) variorumContent.innerHTML = 'New Variorum Annotations will appear here in Full Fathom Five mode.';
             
             // Hide elements
             if (criticsInfo) criticsInfo.style.display = 'none';
@@ -15435,7 +15435,7 @@
                         <h3 style="color: #856404;">New Variorum Analysis - TEST</h3>
                         <p><strong>Line:</strong> First Witch: In thunder, lightning, or in rain?</p>
                         <div style="background: #f8f9fa; padding: 15px; margin: 10px 0; border-left: 3px solid #f59e0b;">
-                            <h4>Traditional Commentary:</h4>
+                            <h4>New Variorum Annotations:</h4>
                             <p>This is a test message to show that the variorum section is working. The real commentary from the database should appear here when the line matching is working correctly.</p>
                             <p><em>If you can see this message, the variorum section is displaying properly!</em></p>
                         </div>
@@ -19889,7 +19889,7 @@
             
             let formattedHTML = `
                 <div class="notes-header">
-                    <h4 style="color: #f59e0b; margin-bottom: 10px;">Traditional Commentary</h4>
+                    <h4 style="color: #f59e0b; margin-bottom: 10px;">New Variorum Annotations</h4>
                     <p style="font-style: italic; color: #9ca3af; margin-bottom: 15px;">
                         ${notesData.lineNumber ? `Line ${notesData.lineNumber}: ` : ''}"${notesData.playLine}"
                     </p>
@@ -19974,7 +19974,7 @@
             // Reset variorumContent based on mode
             if (variorumContent) {
                 if (currentTab === 'fullfathomfive') {
-                    variorumContent.innerHTML = 'Traditional commentary will appear here for Full Fathom Five mode.';
+                    variorumContent.innerHTML = 'New Variorum Annotations will appear here in Full Fathom Five mode.';
                 } else {
                     variorumContent.innerHTML = '';
                 }
@@ -20361,6 +20361,16 @@
             }
         }
 
+        function shouldOmitAnalysisSectionHeading(sectionName) {
+            const n = (sectionName || '').toLowerCase().replace(/\s+/g, ' ').trim();
+            // NV notes live only in variorumSection, not in the main analysis stack
+            if (n === 'new variorum analysis' || n.includes('variorum analysis')) return true;
+            // Omit textual variant / "Textual Analysis" blocks (user-requested); model may still emit these
+            if (n === 'textual variants' || n === 'textual variant') return true;
+            if (n === 'textual analysis' || n.startsWith('textual analysis')) return true;
+            return false;
+        }
+
         function formatStructuredAnalysis(analysis, relevantNotes) {
             console.log('=== FORMATTING STRUCTURED ANALYSIS ===');
             console.log('Analysis sections:', Object.keys(analysis));
@@ -20381,6 +20391,10 @@
                         sectionName === 'New Variorum Analysis') {
                         console.log('🚫 Skipping "New Variorum Analysis" section from formatted content');
                         continue; // Skip this section entirely
+                    }
+                    if (shouldOmitAnalysisSectionHeading(sectionName)) {
+                        console.log('🚫 Skipping omitted section from formatted content:', sectionName);
+                        continue;
                     }
                     
                     formattedContent += '<div class="analysis-section">';
@@ -20681,7 +20695,6 @@
             const standardSections = [
                 'Plain-Language Paraphrase',
                 'Synopsis',
-                'Textual Variants',
                 'Key Words & Glosses',
                 'Historical Context',
                 'Literary Analysis',
@@ -20827,6 +20840,9 @@
              // Add any remaining sections that weren't in the standard order
              Object.keys(sectionContent).forEach(sectionName => {
                  if (!standardSections.includes(sectionName) && sectionName !== 'Notes') {
+                     if (shouldOmitAnalysisSectionHeading(sectionName)) {
+                         return;
+                     }
                      const content = sectionContent[sectionName];
                      formattedContent += `<div class="section">`;
                      formattedContent += `<h3><strong>${sectionName}</strong></h3>`;

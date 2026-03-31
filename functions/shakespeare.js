@@ -560,7 +560,6 @@ exports.handler = async (event, context) => {
         'Literary and Thematic Analysis'
       ],
       fullfathomfive: [
-        'Textual Variants',
         'Plain-Language Paraphrase',
         'Language and Rhetoric',
         'Synopsis',
@@ -668,7 +667,7 @@ FORMAT REQUIREMENTS:
 - CRITICAL: Always italicize play titles using <em>italics</em>, never use asterisks (*) or quotes around titles. Example: <em>Macbeth</em> not *Macbeth* or "Macbeth"
 - Always reference "${currentPlayName}"`
     } else if (analysisMode === 'fullfathomfive') {
-      console.log('Full Fathom Five level detected - using comprehensive prompt with Textual Variants and Language and Rhetoric sections');
+      console.log('Full Fathom Five level detected - using comprehensive prompt with Language and Rhetoric sections');
       console.log('DEBUG: Function version updated at', new Date().toISOString());
       
       // Check if this play should EXCLUDE New Variorum Analysis - 21 plays without NV editions
@@ -681,8 +680,7 @@ IMPORTANT CONTEXT: The input text will consist of 1–3 consecutive lines select
 
 CRITICAL: You MUST provide responses for ALL of these sections in exactly this order. Do not skip any sections. EVERY section must be included:
 
-**Textual Variants:** (REQUIRED - FIRST SECTION)  
-**Plain-Language Paraphrase:** (REQUIRED)  
+**Plain-Language Paraphrase:** (REQUIRED - FIRST SECTION)  
 **Language and Rhetoric:** (REQUIRED - NEW SECTION)  
 **Synopsis:** (REQUIRED - Focus on the content and meaning of the selected text without mentioning specific scenes)  
 **Key Words & Glosses:** (REQUIRED)  
@@ -699,7 +697,6 @@ FORMAT REQUIREMENTS:
 - Always italicize titles using \`<em>italics</em>\`, never quote them or italicize author names.  
 - Use exact scholar names (e.g., A.C. Bradley), with full citation format.  
 - **Key Words & Glosses**: Use format \`"word" means [definition]; "word" means [definition]\`.  
-- **Textual Variants**: If none exist, say "Early editions are identical to Folger."  
 - **Language and Rhetoric**: Include (1) etymology from 1914 OED, (2) rhetorical devices, (3) meter & rhythm, with citations.
 
 CRITICAL CITATION REQUIREMENTS:  
