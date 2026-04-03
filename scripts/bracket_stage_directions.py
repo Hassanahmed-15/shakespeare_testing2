@@ -19,7 +19,7 @@ PLAY_FILES = [
     "macbeth_notes_cleaned_play.json",
     "hamlet_notes (1).json",
     "ROMEO_notes.json",
-    "othello_notes.json",
+    "othello_notes_folger.json",
     "kinglear_notes.json",
     "as_you_like_it.json",
     "Coriolanus.json",

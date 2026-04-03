@@ -1,3 +1,6 @@
 # Large PDF files (exceed GitHub 100MB limit)
 macbeth.pdf
 tutu2.pdf
+
+# Folger full XML zip (re-download from folgerdigitaltexts.org if needed)
+Public/Data/folger_tei/complete.zip

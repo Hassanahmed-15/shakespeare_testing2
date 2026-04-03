@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "description": "Post-alignment moves for notes that belong on a different Folger anchor than legacy integer keys implied. Regenerate othello_notes_folger.json after editing; paths use merged JSON line keys (e.g. SD_2.3.0 for stage).",
+  "moves": [
+    {
+      "scene": "ACT 2, SCENE 3",
+      "fromLineKey": "2.3.30",
+      "toLineKey": "2.3.1",
+      "noteContains": "Good Michael] Cowden-Clarke",
+      "reason": "Gloss refers to Othello's line; automated match followed legacy keying."
+    }
+  ]
+}

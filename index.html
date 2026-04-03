@@ -2119,7 +2119,7 @@
         
         .play-line[data-line-index] {
             cursor: pointer;
-            overflow: hidden;
+            overflow: visible;
         }
 
         .play-line[data-line-index]:hover:not(.selected):not(.range-selected) {
@@ -7786,6 +7786,7 @@
                 <div class="rights-content">
                     <h4>Shakespeare Texts</h4>
                     <p>Public domain. Based on editions from the Folger Shakespeare Library and other scholarly sources.</p>
+                    <p><strong>Othello (Folger TEI layer):</strong> Speech and stage-direction lineation shown in the reader is derived from Folger Digital Texts TEI/XML. That XML is licensed under Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). Source: Folger Shakespeare Library.</p>
                     
                     <h4>Scholarly Commentary</h4>
                     <p>Used under fair use for educational purposes. Sources include JSTOR, academic publications, and historical editions. Full citations provided with each annotation.</p>
@@ -13880,10 +13881,10 @@
             </div>
             <div id="analysisResult"></div>
             
-            <!-- New Variorum Analysis Section (Full Fathom Five Only) - Hidden by default, only shown for variorum plays -->
+C            <!-- New Variorum Annotations (Full Fathom Five) - Hidden by default, only shown for variorum plays -->
             <div class="analysis-section" id="variorumSection" style="display: none !important; visibility: hidden !important; height: 0 !important; margin: 0 !important; padding: 0 !important; overflow: hidden !important;">
                 <div class="analysis-title">
-                    <span>New Variorum Analysis</span>
+                    <span>New Variorum Annotations</span>
                 </div>
                 <div class="critics-button-container" id="criticsButtonContainer" style="margin-top: 10px; margin-bottom: 15px;">
                     <button class="btn btn-secondary" id="criticsButton" onclick="openCriticsModal()" style="width: 100%; margin-bottom: 10px; display: none;">
@@ -13894,7 +13895,7 @@
                     </button>
                 </div>
                 <div class="analysis-content" id="variorumContent">
-                    New Variorum Annotations will appear here in Full Fathom Five mode.
+                    New Variorum annotations will appear here in Full Fathom Five mode.
                 </div>
                 <div id="variorumResult"></div>
             </div>
@@ -14594,10 +14595,10 @@
                     <button class="force-display-button" onclick="forceDisplayPlayContent()" style="display: none; background: #3498db; color: white; margin-left: 10px;">Show Play Content</button>
                     <div id="analysisResult"></div>
                     
-                    <!-- New Variorum Analysis Section (Full Fathom Five Only) - Hidden by default, only shown for variorum plays -->
+                    <!-- New Variorum Annotations (Full Fathom Five) - Hidden by default, only shown for variorum plays -->
                     <div class="analysis-section" id="variorumSection" style="display: none !important; visibility: hidden !important; height: 0 !important; margin: 0 !important; padding: 0 !important; overflow: hidden !important;">
                         <div class="analysis-title">
-                            <span>New Variorum Analysis</span>
+                            <span>New Variorum Annotations</span>
                         </div>
                         <div class="critics-button-container" id="criticsButtonContainer" style="margin-top: 10px; margin-bottom: 15px;">
                             <button class="btn btn-secondary" id="criticsButton" onclick="openCriticsModal()" style="width: 100%; margin-bottom: 10px; display: none;">
@@ -14608,7 +14609,7 @@
                             </button>
                         </div>
                         <div class="analysis-content" id="variorumContent">
-                            New Variorum Annotations will appear here in Full Fathom Five mode.
+                            New Variorum annotations will appear here in Full Fathom Five mode.
                         </div>
                         <div id="variorumResult"></div>
                     </div>
@@ -14862,7 +14863,7 @@
             if (analysisInstruction) analysisInstruction.innerHTML = 'Click lines in the play to select them for analysis. Click a selected line again to deselect it. Press Escape or the Clear Selection button to start over.';
             if (analysisResult) analysisResult.innerHTML = '';
             if (variorumResult) variorumResult.innerHTML = '';
-            if (variorumContent) variorumContent.innerHTML = 'New Variorum Annotations will appear here in Full Fathom Five mode.';
+            if (variorumContent) variorumContent.innerHTML = 'New Variorum annotations will appear here in Full Fathom Five mode.';
             
             // Hide elements
             if (criticsInfo) criticsInfo.style.display = 'none';
@@ -15122,10 +15123,8 @@
                     playTextElement.style.pointerEvents = 'auto';
                     playTextElement.classList.remove('loading', 'stuck');
                     
-                    // Try to load first available scene
-                    const firstAct = Object.keys(play.acts)[0];
-                    if (firstAct && play.acts[firstAct] && play.acts[firstAct].length > 0) {
-                        const firstScene = play.acts[firstAct][0];
+                    const firstScene = getDefaultOpeningScene(play);
+                    if (firstScene && play.scenes[firstScene]) {
                         console.log('🔄 Force loading first scene:', firstScene);
                         loadScene(firstScene);
                     } else {
@@ -15432,7 +15431,7 @@
             if (variorumContent) {
                 variorumContent.innerHTML = `
                     <div style="background: #fff3cd; padding: 20px; border: 2px solid #ffc107; border-radius: 8px;">
-                        <h3 style="color: #856404;">New Variorum Analysis - TEST</h3>
+                        <h3 style="color: #856404;">New Variorum Annotations - TEST</h3>
                         <p><strong>Line:</strong> First Witch: In thunder, lightning, or in rain?</p>
                         <div style="background: #f8f9fa; padding: 15px; margin: 10px 0; border-left: 3px solid #f59e0b;">
                             <h4>New Variorum Annotations:</h4>
@@ -15769,6 +15768,128 @@
             return sceneKey;
         }
 
+        /** Numeric scene index for ordering "ACT 1, SCENE 2" / "ACT I, SCENE II" (Folger uses Arabic in keys). */
+        function sceneKeyToSceneNumber(sceneKey) {
+            const m = String(sceneKey).match(/SCENE\s+([IVXLCDM0-9]+)/i);
+            if (!m) return 0;
+            const cap = m[1];
+            if (/^\d+$/.test(cap)) return parseInt(cap, 10) || 0;
+            const arabic = convertRomanToArabic(cap);
+            const n = parseInt(String(arabic), 10);
+            return Number.isFinite(n) ? n : 0;
+        }
+
+        function compareSceneKeysForNav(a, b) {
+            return sceneKeyToSceneNumber(a) - sceneKeyToSceneNumber(b);
+        }
+
+        /** Keep each act's scene list in play order (do not rely on object insertion order alone). */
+        function sortActSceneListsInPlay(play) {
+            if (!play || !play.acts) return;
+            Object.keys(play.acts).forEach((actName) => {
+                if (!Array.isArray(play.acts[actName])) return;
+                play.acts[actName].sort(compareSceneKeysForNav);
+            });
+        }
+
+        /** Resolve JSON under Public/Data/ relative to this page (works for file:// and same-folder deploys). */
+        function publicDataUrlRelative(fileName) {
+            const name = String(fileName || '').trim().replace(/^\/+/, '');
+            const u = new URL('Public/Data/' + encodeURI(name), window.location.href);
+            u.searchParams.set('v', String(Date.now()));
+            return u.href;
+        }
+
+        /** Fallback: absolute path from site origin (Netlify / root hosting). */
+        function publicDataUrlSiteRoot(fileName) {
+            const name = String(fileName || '').trim().replace(/^\/+/, '');
+            const u = new URL('/Public/Data/' + encodeURI(name), window.location.origin);
+            u.searchParams.set('v', String(Date.now()));
+            return u.href;
+        }
+
+        /** Try page-relative first, then /Public/Data/ on origin (covers most deploy + local file layouts). */
+        async function fetchPublicDataJson(fileName) {
+            const candidates = [publicDataUrlRelative(fileName), publicDataUrlSiteRoot(fileName)];
+            const seen = new Set();
+            let lastStatus = 0;
+            for (const url of candidates) {
+                const base = url.replace(/\?.*$/, '');
+                if (seen.has(base)) continue;
+                seen.add(base);
+                try {
+                    const response = await fetch(url, { cache: 'no-store' });
+                    lastStatus = response.status;
+                    if (response.ok) {
+                        return response;
+                    }
+                } catch (e) {
+                    console.warn('fetchPublicDataJson attempt failed:', url, e);
+                }
+            }
+            console.error('fetchPublicDataJson: no OK response for', fileName, 'last HTTP', lastStatus);
+            return null;
+        }
+
+        /** First scene of the first act (skips Dramatis — not in acts). */
+        function getDefaultOpeningScene(play) {
+            if (!play || !play.scenes) return null;
+            // Prefer canonical Folger opening when that scene has text (avoids nav/act ordering edge cases).
+            const preferredKeys = ['ACT 1, SCENE 1', 'ACT I, SCENE I'];
+            for (const pk of preferredKeys) {
+                const nk = normalizeSceneKey(pk);
+                if (play.scenes[nk] && play.scenes[nk].length > 0) {
+                    const hasText = play.scenes[nk].some((line) => String(line || '').trim().length > 0);
+                    if (hasText) return nk;
+                }
+            }
+            if (!play.acts) return null;
+            const sortedActs = Object.keys(play.acts).sort((a, b) => {
+                const na = parseInt(String(a).replace(/^ACT\s+/i, ''), 10) || 0;
+                const nb = parseInt(String(b).replace(/^ACT\s+/i, ''), 10) || 0;
+                return na - nb;
+            });
+            const firstAct = sortedActs[0];
+            if (!firstAct || !play.acts[firstAct] || !play.acts[firstAct].length) return null;
+            const scenes = [...play.acts[firstAct]].sort(compareSceneKeysForNav);
+            return scenes[0];
+        }
+
+        /**
+         * Folger TEI line keys: order by anchor numbers in document order (speech + SD interleaved).
+         * SD_1.1.0 → [1,1,0]; 1.1.1 → [1,1,1]. Do NOT bucket all SD_* before speech (that hid 1.1.1…).
+         */
+        function sortOthelloSceneLineKeys(sceneKey, keys) {
+            if (sceneKey === 'DRAMATIS PERSONAE') {
+                return [...keys].sort((a, b) => {
+                    const na = parseInt(a, 10), nb = parseInt(b, 10);
+                    if (!isNaN(na) && !isNaN(nb)) return na - nb;
+                    return String(a).localeCompare(String(b));
+                });
+            }
+            const folgerAnchorOrder = (k) => {
+                const s = String(k);
+                const rest = s.startsWith('SD_') ? s.slice(3).replace(/_/g, '.') : s;
+                return rest.split('.').map((x) => parseInt(x, 10));
+            };
+            return [...keys].sort((a, b) => {
+                const A = folgerAnchorOrder(a);
+                const B = folgerAnchorOrder(b);
+                if (A.some((n) => isNaN(n)) || B.some((n) => isNaN(n))) {
+                    return String(a).localeCompare(String(b));
+                }
+                const len = Math.max(A.length, B.length);
+                for (let i = 0; i < len; i++) {
+                    const da = A[i];
+                    const db = B[i];
+                    if (da === undefined) return -1;
+                    if (db === undefined) return 1;
+                    if (da !== db) return da - db;
+                }
+                return 0;
+            });
+        }
+
         // Settings navigation functionality
         document.addEventListener('DOMContentLoaded', async function() {
             console.log('🚀 Loading all plays in parallel for faster performance...');
@@ -16048,7 +16169,7 @@
             const loadOthello = async () => {
                 try {
                     console.log('🔄 Loading Othello...');
-                    const response = await fetch('/Public/Data/othello_notes.json?v=' + Date.now());
+                    const response = await fetch('/Public/Data/othello_notes_folger.json?v=' + Date.now());
                     
                     if (response.ok) {
                         const othelloData = await response.json();
@@ -16056,7 +16177,7 @@
                         
                         plays['othello'] = {
                             name: 'Othello',
-                            originalFileName: 'othello',
+                            originalFileName: 'othello_notes_folger.json',
                             characters: [],
                             acts: {},
                             scenes: {}
@@ -16066,14 +16187,16 @@
                             let sceneCount = 0;
                             let lineCount = 0;
                             Object.keys(othelloData).forEach(originalSceneKey => {
+                                if (originalSceneKey.startsWith('_')) return;
                                 const sceneData = othelloData[originalSceneKey];
                                 if (sceneData && typeof sceneData === 'object') {
                                     const sceneContent = [];
-                                    Object.keys(sceneData).forEach(lineNum => {
+                                    const lineKeys = Object.keys(sceneData).filter((k) => !String(k).startsWith('_'));
+                                    lineKeys.forEach(lineNum => {
                                         const lineData = sceneData[lineNum];
                                         if (!lineData) return;
                                         const text = (typeof lineData === 'string') ? lineData : (lineData.play ?? lineData.text ?? lineData.line ?? null);
-                                        if (text) {
+                                        if (text !== null && text !== undefined) {
                                             sceneContent.push(text);
                                             lineCount++;
                                         }
@@ -16086,8 +16209,7 @@
                                             // Split the single string into individual lines
                                             processedContent = sceneContent[0].split('\n').map(line => line.trim()).filter(line => line.length > 0);
                                         } else {
-                                            // Apply speaker name optimization to the scene content
-                                            processedContent = optimizeSpeakerNames(sceneContent);
+                                            processedContent = sceneContent;
                                         }
                                         
                                         const normalizedKey = normalizeSceneKey(originalSceneKey);
@@ -17281,7 +17403,7 @@
                     'macbeth': { name: 'Macbeth', fileName: 'macbeth_notes_cleaned_play.json', loaded: false },
                     'hamlet': { name: 'Hamlet', fileName: 'hamlet_notes (1).json', loaded: false },
                     'romeo': { name: 'Romeo and Juliet', fileName: 'ROMEO_notes.json', loaded: false },
-                    'othello': { name: 'Othello', fileName: 'othello_notes.json', loaded: false },
+                    'othello': { name: 'Othello', fileName: 'othello_notes_folger.json', loaded: false },
                     'kinglear': { name: 'King Lear', fileName: 'kinglear_notes.json', loaded: false },
                     'asyoulikeit': { name: 'As You Like It', fileName: 'as_you_like_it.json', loaded: false },
                     'coriolanus': { name: 'Coriolanus', fileName: 'Coriolanus.json', loaded: false },
@@ -17972,11 +18094,7 @@
             // Set as current play if it's the first one
             if (Object.keys(plays).length === 1) {
                 currentPlay = fileName;
-                try {
-                    loadPlay(currentPlay);
-                } catch (loadError) {
-                    console.error('Error in loadPlay:', loadError);
-                }
+                loadPlay(currentPlay).catch((loadError) => console.error('Error in loadPlay:', loadError));
             }
         }
 
@@ -18243,34 +18361,14 @@
                 // FORCE display content immediately
                 currentPlay = selectedPlay;
                 const play = plays[selectedPlay];
-                
-                // Get first available scene
-                let firstScene = null;
-                if (play.scenes && Object.keys(play.scenes).length > 0) {
-                    const sceneKeys = Object.keys(play.scenes);
-                    firstScene = sceneKeys[0];
-                }
+
+                updateNavigation(play);
+
+                // First key in play.scenes is often DRAMATIS PERSONAE — do not use that as the opening scene.
+                const firstScene = getDefaultOpeningScene(play);
 
                 if (firstScene && play.scenes[firstScene]) {
-                    // Load the scene immediately
-                    currentScene = firstScene;
-                    const sceneContent = play.scenes[firstScene];
-                    
-                    // Force format and display content
-                    const formattedContent = formatSceneContent(sceneContent, firstScene);
-                    
-                    if (playTextElement) {
-                        playTextElement.innerHTML = `
-                            <div class="scene-title">${firstScene}</div>
-                            <div class="scene-separator"></div>
-                            ${formattedContent}
-                        `;
-                    }
-                    
-                    // Update navigation
-                    updateNavigation(play);
-                    updateActiveNavigation(firstScene);
-                    
+                    loadScene(firstScene);
                 } else {
                     // Show play info if no scenes
                     if (playTextElement) {
@@ -18328,10 +18426,10 @@
             
             try {
                 const fileName = play.originalFileName;
-                const response = await fetch(encodeURI(`/Public/Data/${fileName}`) + `?v=${Date.now()}`);
+                const response = await fetchPublicDataJson(fileName);
                 
-                if (!response.ok) {
-                    console.error(`❌ Failed to load ${playKey}: ${response.status}`);
+                if (!response) {
+                    console.error(`❌ Failed to load ${playKey}: no response`);
                     return false;
                 }
                 
@@ -18342,15 +18440,26 @@
                 window[playKey + 'Data'] = playData;
                 console.log(`✅ Stored ${playKey}Data globally for variorum notes`);
                 
+                play.scenes = {};
+                play.acts = {};
+                
                 // Parse the play data (must include scenes where play text is "" but notes exist — same rules as loadHamlet)
                 let sceneCount = 0;
                 let lineCount = 0;
                 
                 Object.keys(playData).forEach(sceneKey => {
+                    if (String(sceneKey).startsWith('_')) return;
                     const sceneData = playData[sceneKey];
                     if (sceneData && typeof sceneData === 'object') {
                         const sceneContent = [];
-                        Object.keys(sceneData).forEach(lineNum => {
+                        const rawLineKeys = Object.keys(sceneData);
+                        // Othello (Folger): preserve JSON insertion order — same as TEI spine (speech + SD interleaved).
+                        const lineKeys =
+                            playKey === 'othello'
+                                ? rawLineKeys.filter((k) => !String(k).startsWith('_'))
+                                : sortOthelloSceneLineKeys(sceneKey, rawLineKeys);
+                        lineKeys.forEach(lineNum => {
+                            if (String(lineNum).startsWith('_')) return;
                             const lineData = sceneData[lineNum];
                             if (!lineData) return;
                             
@@ -18384,6 +18493,11 @@
                             
                             if (sceneKey === 'DRAMATIS PERSONAE' && sceneContent.length === 1 && sceneContent[0].includes('\n')) {
                                 processedContent = sceneContent[0].split('\n').map(line => line.trim()).filter(line => line.length > 0);
+                            } else if (playKey === 'othello') {
+                                processedContent = sceneContent;
+                                if (processedContent.length === 0 && Object.keys(sceneData).length > 0) {
+                                    processedContent = ['[Scene text not available - notes exist in database]'];
+                                }
                             } else {
                                 processedContent = optimizeSpeakerNames(sceneContent);
                                 if (processedContent.length === 0 && Object.keys(sceneData).length > 0) {
@@ -18412,6 +18526,8 @@
                     }
                 });
                 
+                sortActSceneListsInPlay(play);
+
                 // Mark as loaded
                 play.loaded = true;
                 
@@ -18460,8 +18576,8 @@
             }
         }, 3000);
 
-        // Load a play
-        function loadPlay(playName) {
+        // Load a play (async: fetches JSON via loadPlayData when not yet loaded)
+        async function loadPlay(playName) {
             console.log('🎭 loadPlay called with:', playName);
             console.log('🎭 Available plays:', Object.keys(plays).length, 'plays');
             
@@ -18493,6 +18609,23 @@
             }
 
             const play = plays[playName];
+            if (!play.loaded) {
+                playTextElement.innerHTML = `
+                    <div class="scene-title">Loading ${play.name}…</div>
+                    <div class="scene-separator"></div>
+                    <p>Please wait…</p>
+                `;
+                const ok = await loadPlayData(playName);
+                if (!ok) {
+                    playTextElement.innerHTML = `
+                        <div class="scene-title">Error</div>
+                        <div class="scene-separator"></div>
+                        <p>Could not load play data (<code>${(play.originalFileName || '').replace(/</g, '&lt;')}</code>). Open the browser devtools Network tab and confirm <code>Public/Data/</code> requests return JSON (not 404 or HTML).</p>
+                    `;
+                    return;
+                }
+            }
+
             currentPlay = playName;
             
             console.log('✅ Loading play:', playName);
@@ -18542,10 +18675,9 @@
             // Update navigation
             updateNavigation(play);
             
-            // Load first scene automatically
-            const firstAct = Object.keys(play.acts)[0];
-            if (firstAct && play.acts[firstAct] && play.acts[firstAct].length > 0) {
-                const firstScene = play.acts[firstAct][0];
+            // Load first scene automatically (numeric act order, stable scene order)
+            const firstScene = getDefaultOpeningScene(play);
+            if (firstScene && play.scenes[firstScene]) {
                 console.log('✅ Loading first scene:', firstScene);
                 
                 // Ensure play text element is ready
@@ -18597,10 +18729,10 @@
                 navList.appendChild(dramatisItem);
             }
             
-            // Add Acts and Scenes - Sort acts numerically
+            // Add Acts and Scenes - Sort acts numerically (not lexicographic: ACT 10 before ACT 2 is wrong)
             const sortedActNames = Object.keys(play.acts).sort((a, b) => {
-                const actNumA = parseInt(a.replace('ACT ', ''));
-                const actNumB = parseInt(b.replace('ACT ', ''));
+                const actNumA = parseInt(String(a).replace(/^ACT\s+/i, ''), 10) || 0;
+                const actNumB = parseInt(String(b).replace(/^ACT\s+/i, ''), 10) || 0;
                 return actNumA - actNumB;
             });
             
@@ -18610,13 +18742,8 @@
                 navList.appendChild(actItem);
                 
                 if (play.acts[actName] && play.acts[actName].length > 0) {
-                    // Sort scenes within each act
-                    const sortedScenes = play.acts[actName].sort((a, b) => {
-                        const sceneNumA = parseInt(a.match(/SCENE\s+([IVX0-9]+)/i)?.[1]?.replace(/[IVX]/g, (m) => ({'I':1,'V':5,'X':10}[m] || m)) || '0');
-                        const sceneNumB = parseInt(b.match(/SCENE\s+([IVX0-9]+)/i)?.[1]?.replace(/[IVX]/g, (m) => ({'I':1,'V':5,'X':10}[m] || m)) || '0');
-                        return sceneNumA - sceneNumB;
-                    });
-                    
+                    const sortedScenes = [...play.acts[actName]].sort(compareSceneKeysForNav);
+                    play.acts[actName] = sortedScenes;
                     sortedScenes.forEach(sceneName => {
                         const sceneItem = document.createElement('li');
                         sceneItem.className = 'sub-item';
@@ -18632,11 +18759,8 @@
             
             // Set initial active state if no scene is currently selected
             if (!currentScene && Object.keys(play.acts).length > 0) {
-                const firstAct = Object.keys(play.acts)[0];
-                if (play.acts[firstAct] && play.acts[firstAct].length > 0) {
-                    const firstScene = play.acts[firstAct][0];
-                    updateActiveNavigation(firstScene);
-                }
+                const opening = getDefaultOpeningScene(play);
+                if (opening) updateActiveNavigation(opening);
             }
         }
 
@@ -18773,6 +18897,10 @@
                 <div class="scene-separator"></div>
                 ${contentToDisplay}
             `;
+            playText.scrollTop = 0;
+            requestAnimationFrame(() => {
+                playText.scrollTop = 0;
+            });
             
             console.log('✅ Play text updated successfully');
             
@@ -19091,11 +19219,11 @@
         }
 
         // Change play
-        function changePlay() {
+        async function changePlay() {
             const selector = document.getElementById('playSelector');
             const selectedPlay = selector.value;
             if (selectedPlay) {
-                loadPlay(selectedPlay);
+                await loadPlay(selectedPlay);
             }
         }
 
@@ -19593,7 +19721,7 @@
                 }
                 showCriticsButton();
                 } else {
-                const noCommentaryMsg = '<div class="loading" style="padding: 20px; color: #9ca3af; font-style: italic;">No traditional commentary found for the selected lines in the database.</div>';
+                const noCommentaryMsg = '<div class="loading" style="padding: 20px; color: #9ca3af; font-style: italic;">No New Variorum annotations found for the selected lines in the database.</div>';
                     if (variorumContent) {
                         variorumContent.innerHTML = noCommentaryMsg;
                     }
@@ -19812,14 +19940,15 @@
                     
                     if (matches) {
                         console.log('✅ Found matching line:', lineData.play);
-                        console.log('📝 Notes available:', lineData.notes ? lineData.notes.length : 0);
-                        if (lineData.notes && lineData.notes.length > 0) {
-                            console.log('📖 Notes content:', lineData.notes);
+                        const mergedNotes = mergeSpanNotesForLine(sceneNotes, lineNumber, lineData.notes || []);
+                        console.log('📝 Notes available:', mergedNotes.length);
+                        if (mergedNotes.length > 0) {
+                            console.log('📖 Notes content:', mergedNotes);
                         }
                         return {
                             lineNumber: lineNumber,
                             playLine: lineData.play,
-                            notes: lineData.notes || [],
+                            notes: mergedNotes,
                             scene: actualSceneName
                         };
                     }
@@ -19831,6 +19960,30 @@
             
             console.log('❌ No matching line found for text:', text);
             return null;
+        }
+        
+        /** Multi-line Furness notes: same commentary attached to every line_key in the span (click any covered line). */
+        function mergeSpanNotesForLine(sceneNotes, lineNumber, baseNotes) {
+            const spans = sceneNotes && sceneNotes._noteSpans;
+            if (!Array.isArray(spans) || !spans.length) {
+                return baseNotes || [];
+            }
+            const lineKey = String(lineNumber);
+            const extra = [];
+            for (const span of spans) {
+                if (!span || !Array.isArray(span.line_keys) || !Array.isArray(span.notes)) continue;
+                if (span.line_keys.includes(lineKey)) {
+                    extra.push(...span.notes);
+                }
+            }
+            const base = baseNotes || [];
+            const combined = extra.concat(base);
+            const seen = new Set();
+            return combined.filter((n) => {
+                if (seen.has(n)) return false;
+                seen.add(n);
+                return true;
+            });
         }
         
         function matchesText(playLine, searchText) {
@@ -19974,7 +20127,7 @@
             // Reset variorumContent based on mode
             if (variorumContent) {
                 if (currentTab === 'fullfathomfive') {
-                    variorumContent.innerHTML = 'New Variorum Annotations will appear here in Full Fathom Five mode.';
+                    variorumContent.innerHTML = 'New Variorum annotations will appear here in Full Fathom Five mode.';
                 } else {
                     variorumContent.innerHTML = '';
                 }
@@ -20361,16 +20514,6 @@
             }
         }
 
-        function shouldOmitAnalysisSectionHeading(sectionName) {
-            const n = (sectionName || '').toLowerCase().replace(/\s+/g, ' ').trim();
-            // NV notes live only in variorumSection, not in the main analysis stack
-            if (n === 'new variorum analysis' || n.includes('variorum analysis')) return true;
-            // Omit textual variant / "Textual Analysis" blocks (user-requested); model may still emit these
-            if (n === 'textual variants' || n === 'textual variant') return true;
-            if (n === 'textual analysis' || n.startsWith('textual analysis')) return true;
-            return false;
-        }
-
         function formatStructuredAnalysis(analysis, relevantNotes) {
             console.log('=== FORMATTING STRUCTURED ANALYSIS ===');
             console.log('Analysis sections:', Object.keys(analysis));
@@ -20386,15 +20529,19 @@
                     // COMPLETELY REMOVE "New Variorum Analysis" section from formatted content
                     // It should never appear in the analysis content - only in the dedicated variorumSection element
                     const normalizedSectionName = sectionName.toLowerCase().trim();
+                    if (normalizedSectionName === 'textual variants' || sectionName === 'Textual Variants') {
+                        console.log('🚫 Skipping Textual Variants section from formatted content');
+                        continue;
+                    }
+                    if (normalizedSectionName === 'traditional analysis' || normalizedSectionName === 'traditional commentary') {
+                        console.log('🚫 Skipping Traditional Analysis/Commentary section from formatted content');
+                        continue;
+                    }
                     if (normalizedSectionName === 'new variorum analysis' || 
                         normalizedSectionName.includes('variorum') ||
                         sectionName === 'New Variorum Analysis') {
                         console.log('🚫 Skipping "New Variorum Analysis" section from formatted content');
                         continue; // Skip this section entirely
-                    }
-                    if (shouldOmitAnalysisSectionHeading(sectionName)) {
-                        console.log('🚫 Skipping omitted section from formatted content:', sectionName);
-                        continue;
                     }
                     
                     formattedContent += '<div class="analysis-section">';
@@ -20576,6 +20723,9 @@
 
         function updateAnalysis(content, text) {
             content = fixAIScholarNames(content);
+            if (currentTab === 'fullfathomfive') {
+                content = stripOmittedAnalysisSections(content);
+            }
             const analysisContent = document.getElementById('analysisContent');
             const metaElement = document.querySelector('.meta');
             const analysisTitleElement = document.querySelector('.analysis-title');
@@ -20670,6 +20820,37 @@
 
 
 
+        /**
+         * Remove section blocks the UI does not show (FFF). Handles **Header**, ## Header, case variants.
+         */
+        function stripOmittedAnalysisSections(text) {
+            if (!text || typeof text !== 'string') return text;
+            let s = text;
+            const mdHeaders = [
+                'Textual Variants',
+                'Textual variants',
+                'Traditional Analysis',
+                'Traditional analysis',
+                'Traditional Commentary',
+                'Traditional commentary'
+            ];
+            for (let pass = 0; pass < 12; pass++) {
+                const before = s;
+                for (const h of mdHeaders) {
+                    const esc = h.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+                    s = s.replace(
+                        new RegExp('\\*\\*' + esc + '\\*\\*\\s*:?[^\\n]*\\r?\\n?[\\s\\S]*?(?=\\r?\\n+\\*\\*[A-Za-z&]|$)', 'gi'),
+                        ''
+                    );
+                }
+                if (s === before) break;
+            }
+            s = s.replace(/^#{1,6}\s*Textual Variants[^\n]*\r?\n[\s\S]*?(?=^#{1,6}\s|^\*\*[A-Za-z&]|$)/gim, '');
+            s = s.replace(/^#{1,6}\s*Traditional (Analysis|Commentary)[^\n]*\r?\n[\s\S]*?(?=^#{1,6}\s|^\*\*[A-Za-z&]|$)/gim, '');
+            s = s.replace(/\r?\n{3,}/g, '\n\n').trim();
+            return s;
+        }
+
         function fixAIScholarNames(text) {
             return text
                 .replace(/A\.?\s*circa\s+Bradley/gi, 'A.C. Bradley')
@@ -20682,6 +20863,9 @@
 
         function formatAnalysisContent(content) {
             content = fixAIScholarNames(content);
+            if (currentTab === 'fullfathomfive') {
+                content = stripOmittedAnalysisSections(content);
+            }
             // Debug: Log the raw content to see what the AI is returning
             console.log('=== NEW FORMATTING CODE IS RUNNING ===');
             console.log('Raw AI content:', content);
@@ -20756,6 +20940,18 @@
                 const originalSectionTitle = sectionTitle;
                 sectionTitle = sectionTitle.replace(/\*\*(.*?)\*\*/g, '$1').trim();
                 
+                if (currentTab === 'fullfathomfive') {
+                    const sl = sectionTitle.toLowerCase();
+                    if (sl.includes('textual variant')) {
+                        console.log('Skipping Textual Variants section (not shown in UI)');
+                        return;
+                    }
+                    if (sl.includes('traditional analysis') || sl.includes('traditional commentary')) {
+                        console.log('Skipping Traditional Analysis/Commentary section (not shown in UI)');
+                        return;
+                    }
+                }
+                
                                  // Map to standard section names
                  let mappedTitle = '';
                  console.log(`Trying to map section title: "${sectionTitle}"`);
@@ -20766,13 +20962,6 @@
                          console.log(`Found match: "${sectionTitle}" matches "${standardSection}"`);
                          break;
                      }
-                 }
-                 
-                 // Handle specific section mappings
-                 if (sectionTitle.toLowerCase().includes('textual check') || 
-                     sectionTitle.toLowerCase().includes('textual variant') ||
-                     sectionTitle.toLowerCase().includes('apparatus criticus')) {
-                     mappedTitle = 'Textual Variants';
                  }
                  
                  if (sectionTitle.toLowerCase().includes('key words') && 
@@ -20818,12 +21007,6 @@
                         formattedContent += `<h3><strong>${sectionName}</strong></h3>`;
                         formattedContent += formatFurtherReading(content);
                         formattedContent += `</div>`;
-                    } else if (sectionName === 'Textual Variants') {
-                        formattedContent += `<div class="section">`;
-                        formattedContent += `<h3><strong>${sectionName}</strong></h3>`;
-                        formattedContent += formatTextualVariants(content);
-                        formattedContent += `</div>`;
-
                     } else if (sectionName === 'Notes') {
                         // Store notes for later integration into relevant sections
                         notesContent = content;
@@ -20840,9 +21023,6 @@
              // Add any remaining sections that weren't in the standard order
              Object.keys(sectionContent).forEach(sectionName => {
                  if (!standardSections.includes(sectionName) && sectionName !== 'Notes') {
-                     if (shouldOmitAnalysisSectionHeading(sectionName)) {
-                         return;
-                     }
                      const content = sectionContent[sectionName];
                      formattedContent += `<div class="section">`;
                      formattedContent += `<h3><strong>${sectionName}</strong></h3>`;
@@ -20897,72 +21077,6 @@
             return formattedList || `<p>${processContentForFormatting(content)}</p>`;
         }
         
-                 function formatTextualVariants(content) {
-             const lines = content.split('\n');
-             let formattedContent = '';
-             let hasTable = false;
-             
-             // Check if content contains a variant table
-             const tableMatch = content.match(/\|.*First.*Quarto.*\|.*Second.*Quarto.*\|.*First.*Folio.*\|/);
-             
-             if (tableMatch) {
-                 // Extract and format the variant table
-                 const tableLines = lines.filter(line => line.includes('|'));
-                 if (tableLines.length > 0) {
-                     formattedContent += `<table class="variant-table">`;
-                     formattedContent += `<thead><tr><th>Edition</th><th>Reading</th><th>Effect</th></tr></thead>`;
-                     formattedContent += `<tbody>`;
-                     
-                     tableLines.forEach(line => {
-                         if (line.includes('|')) {
-                             const cells = line.split('|').map(cell => cell.trim()).filter(cell => cell);
-                             if (cells.length >= 3) {
-                                 formattedContent += `<tr>`;
-                                 formattedContent += `<td><strong>${cells[0]}</strong></td>`;
-                                 formattedContent += `<td>"${cells[1]}"</td>`;
-                                 formattedContent += `<td>${cells[2]}</td>`;
-                                 formattedContent += `</tr>`;
-                             }
-                         }
-                     });
-                     
-                     formattedContent += `</tbody></table>`;
-                     hasTable = true;
-                 }
-             }
-             
-             // Add any descriptive text before or after the table
-             const descriptiveText = lines.filter(line => !line.includes('|') && line.trim()).join(' ');
-             if (descriptiveText) {
-                 const processedText = processContentForFormatting(descriptiveText);
-                 if (hasTable) {
-                     formattedContent = `<p>${processedText}</p>` + formattedContent;
-                 } else {
-                     formattedContent = `<p>${processedText}</p>`;
-                 }
-             }
-             
-             // If no table and content mentions "no material variance" or similar, use the new language
-             if (!hasTable) {
-                 const noVariancePhrases = [
-                     'no material variance',
-                     'no variance',
-                     'identical',
-                     'matches folger'
-                 ];
-                 
-                 const hasNoVariance = noVariancePhrases.some(phrase => 
-                     content.toLowerCase().includes(phrase.toLowerCase())
-                 );
-                 
-                 if (hasNoVariance) {
-                     return `<p>Early editions are identical to Folger.</p>`;
-                 }
-             }
-             
-             return formattedContent || `<p>${processContentForFormatting(content)}</p>`;
-         }
-         
          function formatFurtherReading(content) {
              // Process the content first to handle asterisks and formatting
              const processedContent = processContentForFormatting(content);
@@ -21001,7 +21115,6 @@
                  'Historical Context': [],
                  'Literary Analysis': [],
                  'Critical Reception': [],
-                 'Textual Variants': [],
                  'Performance History': []
              };
              
@@ -21016,10 +21129,10 @@
                  } else if (lowerNote.includes('critic') || lowerNote.includes('scholar') || lowerNote.includes('interpretation')) {
                      sectionNotes['Critical Reception'].push(note);
                  } else if (lowerNote.includes('performance') || lowerNote.includes('stage') || lowerNote.includes('production')) {
-                     sectionNotes['Performance History'].push(note);
-                 } else if (lowerNote.includes('variant') || lowerNote.includes('edition') || lowerNote.includes('folio')) {
-                     sectionNotes['Textual Variants'].push(note);
-                 } else {
+                    sectionNotes['Performance History'].push(note);
+                } else if (lowerNote.includes('variant') || lowerNote.includes('edition') || lowerNote.includes('folio')) {
+                    sectionNotes['Literary Analysis'].push(note);
+                } else {
                      // Default to Literary Analysis for general notes
                      sectionNotes['Literary Analysis'].push(note);
                  }
@@ -23044,7 +23157,7 @@
         <div class="footer-title">About This Project</div>
         <div>
             Shakespeare Digital New Variorum combines centuries of scholarly commentary with AI analysis.
-            All Shakespeare texts are public domain and based on the Folger Shakespeare Library editions.
+            Play texts are public domain; for Othello, the displayed line spine follows Folger Digital Texts (CC BY-NC). See Rights for details.
         </div>
         <div>
             Created by Jack David Carson, Massachusetts Institute of Technology · 2026 ·
