@@ -1303,6 +1303,33 @@
             color: #6c757d;
         }
 
+        /* Site footer — attribution & rights link only */
+        .footer-site {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--panel);
+            border-top: 1px solid var(--line);
+            padding: var(--s-3) var(--s-5);
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--ink-3);
+            text-align: center;
+            box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.03);
+            z-index: 15;
+        }
+
+        .footer-site a {
+            color: #000000;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .footer-site a:hover {
+            text-decoration: underline;
+        }
+
         /* Rights Modal */
         .rights-content {
             line-height: 1.7;
@@ -23165,6 +23192,11 @@
         }
 
     </script>
+
+    <footer class="footer-site">
+        Created by Jack David Carson, Massachusetts Institute of Technology · 2026 ·
+        <a href="#" onclick="openRights(); return false;">Full Rights & Usage Information</a>
+    </footer>
 
 </body>
 </html>
