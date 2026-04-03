@@ -142,6 +142,35 @@ def is_standalone_stage_direction(play: str) -> bool:
 
 
 def bracket_play_field(play: str) -> tuple[str, bool]:
+    # Normalize common bracket-tag prefixes that are not wrapped as a full
+    # stage-direction line (UI only treats `[ ... ]` as stage directions).
+    #
+    # Examples in data:
+    #   "[Aside] Wormwood, wormwood."
+    #   "[To QUEEN ELINOR]  So shall it be; ..."
+    #   "[Stage direction]: Enter Sailor."
+    #
+    # We convert these to a single fully bracketed line so the reader styles
+    # them consistently and they aren't misclassified as speaker labels.
+    p = play.strip()
+    if p.startswith("[") and not p.endswith("]"):
+        first_close = p.find("]")
+        if first_close > 1:
+            tag = p[1:first_close].strip()
+            rest = p[first_close + 1 :].strip()
+            if rest:
+                if rest.startswith(":"):
+                    body = f"{tag}{rest}"
+                elif tag.lower().startswith("to "):
+                    body = f"{tag}: {rest}"
+                else:
+                    body = f"{tag} {rest}"
+            else:
+                body = tag
+            normalized = f"[{body}]"
+            if normalized != play:
+                return normalized, True
+
     if not is_standalone_stage_direction(play):
         return play, False
     p = play.strip()
