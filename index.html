@@ -15768,6 +15768,46 @@ C            <!-- New Variorum Annotations (Full Fathom Five) - Hidden by defaul
             return sceneKey;
         }
 
+        /**
+         * Folger lines repeat "SPEAKER: …" on every verse line. Collapse repeats for display only.
+         * (Raw text stays in plays.scenes; note matching uses matchesText/stripSpeaker.)
+         */
+        function collapseFolgerSpeakerPrefixes(sceneContent) {
+            if (!sceneContent || sceneContent.length === 0) return sceneContent;
+            const out = [];
+            let lastSpeaker = null;
+            const folgerLine = /^([A-Z][A-Z0-9\s\.'’\u2019-]{0,70}):\s*(.*)$/;
+            for (let i = 0; i < sceneContent.length; i++) {
+                const raw = sceneContent[i];
+                const line = typeof raw === 'string' ? raw : String(raw);
+                const trimmed = line.replace(/\u00a0/g, ' ').trim();
+                if (trimmed === '') {
+                    out.push(line);
+                    continue;
+                }
+                if (trimmed.startsWith('[') && trimmed.endsWith(']')) {
+                    lastSpeaker = null;
+                    out.push(line);
+                    continue;
+                }
+                const m = trimmed.match(folgerLine);
+                if (m) {
+                    const speaker = m[1].replace(/\s+/g, ' ').trim();
+                    const rest = m[2];
+                    if (lastSpeaker === speaker && rest.length > 0) {
+                        out.push(rest);
+                    } else {
+                        out.push(line);
+                        lastSpeaker = speaker;
+                    }
+                } else {
+                    lastSpeaker = null;
+                    out.push(line);
+                }
+            }
+            return out;
+        }
+
         /** Numeric scene index for ordering "ACT 1, SCENE 2" / "ACT I, SCENE II" (Folger uses Arabic in keys). */
         function sceneKeyToSceneNumber(sceneKey) {
             const m = String(sceneKey).match(/SCENE\s+([IVXLCDM0-9]+)/i);
@@ -18494,6 +18534,7 @@ C            <!-- New Variorum Annotations (Full Fathom Five) - Hidden by defaul
                             if (sceneKey === 'DRAMATIS PERSONAE' && sceneContent.length === 1 && sceneContent[0].includes('\n')) {
                                 processedContent = sceneContent[0].split('\n').map(line => line.trim()).filter(line => line.length > 0);
                             } else if (playKey === 'othello') {
+                                // Raw Folger lines; repeated speaker tags are stripped in formatSceneContent for display
                                 processedContent = sceneContent;
                                 if (processedContent.length === 0 && Object.keys(sceneData).length > 0) {
                                     processedContent = ['[Scene text not available - notes exist in database]'];
@@ -18946,10 +18987,16 @@ C            <!-- New Variorum Annotations (Full Fathom Five) - Hidden by defaul
                     console.warn('⚠️ Scene content is not an array, converting...');
                     sceneContent = [sceneContent.toString()];
             }
+
+                // Othello (Folger): hide repeated "SPEAKER:" on continuation lines (always at render time)
+                let displayLines = sceneContent;
+                if (currentPlay === 'othello') {
+                    displayLines = collapseFolgerSpeakerPrefixes(sceneContent.slice());
+                }
             
             // Display each line exactly as it appears in the file, preserving whitespace
             // Lines use data attributes instead of inline onclick to avoid quote-escaping issues
-            sceneContent.forEach((line, index) => {
+            displayLines.forEach((line, index) => {
                 if (line === '') {
                     html += `<div class="play-line">&nbsp;</div>`;
                 } else {
@@ -18973,7 +19020,11 @@ C            <!-- New Variorum Annotations (Full Fathom Five) - Hidden by defaul
                 // EMERGENCY FALLBACK: Force display raw content
                 let fallbackHtml = '';
                 if (sceneContent && sceneContent.length > 0) {
-                    sceneContent.forEach((line, index) => {
+                    let fb = sceneContent;
+                    if (currentPlay === 'othello' && Array.isArray(sceneContent)) {
+                        fb = collapseFolgerSpeakerPrefixes(sceneContent.slice());
+                    }
+                    fb.forEach((line, index) => {
                         if (line && line.toString().trim()) {
                             const escaped = line.toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
                             fallbackHtml += `<div class="play-line" data-line-index="${index}">${escaped}</div>`;
