@@ -20598,9 +20598,13 @@
                     formattedContent += '<div class="analysis-section">';
                     formattedContent += `<h4>${sectionName}</h4>`;
                     
-                    // Apply the same formatting as other modes
-                    const processedContent = processContentForFormatting(sectionContent);
-                    formattedContent += `<div class="section-content">${processedContent}</div>`;
+                    let sectionHtml;
+                    if (normalizedSectionName === 'key words & glosses') {
+                        sectionHtml = formatKeyWords(sectionContent);
+                    } else {
+                        sectionHtml = processContentForFormatting(sectionContent);
+                    }
+                    formattedContent += `<div class="section-content">${sectionHtml}</div>`;
                     formattedContent += '</div>';
                 }
             }
@@ -21092,19 +21096,21 @@
             return formattedContent;
         }
         
-        /** Ensure Basic Analysis gloss lines use "word" means … (match Full Fathom Five style). */
+        /** Normalize gloss clauses: "headword" means [definition] (Full Fathom Five style). */
         function quoteKeyWordInGlossClause(clause) {
             let t = clause.trim();
             if (!t) return t;
-            t = t.replace(/(?:["'\u201c\u201d\u2018\u2019`])+$/g, '').trim();
-            if (/^["'\u201c\u201d\u2018\u2019`]/.test(t)) return t;
-            const m = t.match(/^(.+?)\s+means\s+(.+)$/is);
-            if (m) {
-                const word = m[1].trim();
-                const gloss = m[2].trim();
-                return `"${word}" means ${gloss}`;
+            const meansMatch = t.match(/\s+means\s+/i);
+            if (!meansMatch) return t;
+            const idx = meansMatch.index;
+            let head = t.slice(0, idx).trim();
+            let gloss = t.slice(idx + meansMatch[0].length).trim();
+            head = head.replace(/^["'\u201c\u201d\u2018\u2019`]+|["'\u201c\u201d\u2018\u2019`]+$/g, '').trim();
+            if (!head) return t;
+            if (!/^\[[\s\S]*\]$/.test(gloss)) {
+                gloss = '[' + gloss + ']';
             }
-            return t;
+            return `"${head}" means ${gloss}`;
         }
 
         function formatKeyWords(content) {

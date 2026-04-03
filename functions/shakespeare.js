@@ -645,7 +645,7 @@ FORMAT REQUIREMENTS:
 - Clear, accessible language
 - Always reference "${currentPlayName}" directly
 - CRITICAL: Always italicize play titles using <em>italics</em>, never use asterisks (*) or quotes around titles
-- Key Words format: "word" means definition; "word" means definition (preserve capitalization)`
+- Key Words format: "word" means [definition]; "word" means [definition] (preserve capitalization)`
     } else if (analysisMode === 'expert') {
       systemPrompt = `You are a Shakespeare scholar writing for advanced students.
 
