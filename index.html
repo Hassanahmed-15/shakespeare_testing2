@@ -21096,6 +21096,28 @@
             return formattedContent;
         }
         
+        /** Single bracket pair around definition; unwrap AI output like [x]. or [[x]]. */
+        function normalizeBracketedGloss(gloss) {
+            let g = gloss.trim();
+            if (!g) return '[]';
+            while (g.startsWith('[') && g.endsWith(']')) {
+                const inner = g.slice(1, -1).trim();
+                if (inner.startsWith('[')) {
+                    g = inner;
+                    continue;
+                }
+                break;
+            }
+            const bracketed = g.match(/^\[([^\]]+)\]([.\s,;]*)$/);
+            if (bracketed) {
+                return '[' + bracketed[1].trim() + ']';
+            }
+            if (!g.startsWith('[')) {
+                return '[' + g + ']';
+            }
+            return g;
+        }
+
         /** Normalize gloss clauses: "headword" means [definition] (Full Fathom Five style). */
         function quoteKeyWordInGlossClause(clause) {
             let t = clause.trim();
@@ -21107,9 +21129,7 @@
             let gloss = t.slice(idx + meansMatch[0].length).trim();
             head = head.replace(/^["'\u201c\u201d\u2018\u2019`]+|["'\u201c\u201d\u2018\u2019`]+$/g, '').trim();
             if (!head) return t;
-            if (!/^\[[\s\S]*\]$/.test(gloss)) {
-                gloss = '[' + gloss + ']';
-            }
+            gloss = normalizeBracketedGloss(gloss);
             return `"${head}" means ${gloss}`;
         }
 
