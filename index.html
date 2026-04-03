@@ -1303,7 +1303,7 @@
             color: #6c757d;
         }
 
-        /* Site footer — attribution & rights link only */
+        /* Site footer — About, license, attribution */
         .footer-site {
             position: fixed;
             bottom: 0;
@@ -1311,23 +1311,50 @@
             right: 0;
             background: var(--panel);
             border-top: 1px solid var(--line);
-            padding: var(--s-3) var(--s-5);
-            font-size: 14px;
-            line-height: 1.5;
+            padding: var(--s-3) var(--s-4);
+            font-family: var(--ui);
+            font-size: 13px;
+            line-height: 1.45;
             color: var(--ink-3);
             text-align: center;
             box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.03);
             z-index: 15;
         }
 
-        .footer-site a {
-            color: #000000;
+        .footer-site-inner {
+            max-width: 52rem;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+
+        .footer-site-line {
+            margin: 0;
+        }
+
+        .footer-site-line a {
+            color: var(--ink-1);
             text-decoration: none;
             font-weight: 500;
         }
 
-        .footer-site a:hover {
+        .footer-site-line a:hover {
             text-decoration: underline;
+        }
+
+        .footer-site-cc a[href^="http"] {
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .footer-site-cc a[href^="http"]:hover {
+            text-decoration: underline;
+        }
+
+        .footer-site-attrib {
+            font-size: 12px;
+            color: var(--ink-3);
         }
 
         /* Rights Modal */
@@ -2528,6 +2555,8 @@
             color: var(--ink-3);
             font-size: 14px;
             margin: 10px 0;
+            font-family: Inter, system-ui, sans-serif;
+            line-height: 1.5;
         }
         
         .analyze-button {
@@ -23194,8 +23223,20 @@
     </script>
 
     <footer class="footer-site">
-        Created by Jack David Carson, Massachusetts Institute of Technology · 2026 ·
-        <a href="#" onclick="openRights(); return false;">Full Rights & Usage Information</a>
+        <div class="footer-site-inner">
+            <p class="footer-site-line">
+                <a href="#" onclick="openAbout(); return false;">About this project</a>
+            </p>
+            <p class="footer-site-line footer-site-cc">
+                This website is licensed under
+                <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-NC-SA 4.0</a>
+                (Creative Commons Attribution-NonCommercial-ShareAlike): free for non-commercial, educational use with attribution.
+                <a href="#" onclick="openRights(); return false;">Full rights &amp; usage information</a>
+            </p>
+            <p class="footer-site-line footer-site-attrib">
+                Created by Jack David Carson, Massachusetts Institute of Technology · 2026
+            </p>
+        </div>
     </footer>
 
 </body>
