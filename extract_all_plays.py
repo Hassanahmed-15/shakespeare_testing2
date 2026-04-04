@@ -105,6 +105,42 @@ def discover_scene_structure(play_path: str) -> Dict[int, List[int]]:
     
     return scenes_structure
 
+
+def mit_speaker_tag_ok(char_name: str) -> bool:
+    """MIT pages use ALL CAPS names; prologues sometimes use 'Chorus' in title case."""
+    if not char_name:
+        return False
+    if char_name.isupper():
+        return True
+    return char_name.lower() in ("chorus",)
+
+
+def extract_prologue_numbered_lines_only(body) -> List[str]:
+    """
+    Prologue pages with no <a name=speechN> header: a single blockquote of
+    <A NAME=1>line</A> ... (e.g. Romeo and Juliet Act 1 Prologue on MIT).
+    """
+    out: List[str] = []
+    for blockquote in body.find_all("blockquote"):
+        numbered: List[Tuple[int, str]] = []
+        for a in blockquote.find_all("a"):
+            nm = a.get("name")
+            if nm is None:
+                continue
+            s = str(nm).strip()
+            if s.isdigit():
+                t = a.get_text(strip=True)
+                if t:
+                    numbered.append((int(s), t))
+        if not numbered:
+            continue
+        numbered.sort(key=lambda x: x[0])
+        texts = [t for _, t in numbered]
+        out.append(f"CHORUS: {texts[0]}")
+        out.extend(texts[1:])
+    return out
+
+
 def extract_text_from_scene(play_path: str, act: int, scene: int) -> List[str]:
     """Extract text from a specific act and scene"""
     url = f"https://shakespeare.mit.edu/{play_path}/{play_path}.{act}.{scene}.html"
@@ -136,7 +172,7 @@ def extract_text_from_scene(play_path: str, act: int, scene: int) -> List[str]:
             bold = speech_link.find('b')
             if bold:
                 char_name = bold.get_text(strip=True)
-                if char_name and char_name.isupper():
+                if char_name and mit_speaker_tag_ok(char_name):
                     # Find the following blockquote
                     next_elem = speech_link.next_sibling
                     found_blockquote = None
@@ -166,8 +202,15 @@ def extract_text_from_scene(play_path: str, act: int, scene: int) -> List[str]:
                                 dialogue_lines.append(dialogue_text)
                         
                         if dialogue_lines:
+                            display_name = (
+                                char_name.upper()
+                                if char_name.lower() == "chorus"
+                                else char_name
+                            )
                             # Store with speech link position
-                            elements_with_pos.append(('speech', speech_link.sourceline or 0, char_name, dialogue_lines, found_blockquote))
+                            elements_with_pos.append(
+                                ("speech", speech_link.sourceline or 0, display_name, dialogue_lines, found_blockquote)
+                            )
         
         # Find all stage direction blockquotes
         all_blockquotes = body.find_all('blockquote')
@@ -192,6 +235,9 @@ def extract_text_from_scene(play_path: str, act: int, scene: int) -> List[str]:
                     all_lines.append(f"{content}: {dialogue}")
             elif elem_type == 'stage':
                 all_lines.append(content)
+
+        if not all_lines:
+            all_lines = extract_prologue_numbered_lines_only(body)
         
         # Group consecutive lines from the same speaker
         grouped_lines = []
