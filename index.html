@@ -16007,7 +16007,7 @@
             const loadHamlet = async () => {
                 try {
                     console.log('🔄 Loading Hamlet...');
-                    const hamletUrl = encodeURI('/Public/Data/hamlet_notes (1).json');
+                    const hamletUrl = encodeURI('/Public/Data/hamlet.json');
                     const response = await fetch(hamletUrl + '?v=' + Date.now());
                     
                     if (response.ok) {
@@ -16116,7 +16116,7 @@
             const loadRomeo = async () => {
                 try {
                     console.log('🔄 Loading Romeo and Juliet...');
-                    const response = await fetch('/Public/Data/ROMEO_notes.json?v=' + Date.now());
+                    const response = await fetch('/Public/Data/romeo_and_juliet.json?v=' + Date.now());
                     
                     if (response.ok) {
                         const romeoData = await response.json();
@@ -17421,8 +17421,8 @@
                 // Define all play metadata (no actual loading yet)
                 const playMetadata = {
                     'macbeth': { name: 'Macbeth', fileName: 'macbeth_notes_cleaned_play.json', loaded: false },
-                    'hamlet': { name: 'Hamlet', fileName: 'hamlet_notes (1).json', loaded: false },
-                    'romeo': { name: 'Romeo and Juliet', fileName: 'ROMEO_notes.json', loaded: false },
+                    'hamlet': { name: 'Hamlet', fileName: 'hamlet.json', loaded: false },
+                    'romeo': { name: 'Romeo and Juliet', fileName: 'romeo_and_juliet.json', loaded: false },
                     'othello': { name: 'Othello', fileName: 'othello_notes_folger.json', loaded: false },
                     'kinglear': { name: 'King Lear', fileName: 'kinglear_notes.json', loaded: false },
                     'asyoulikeit': { name: 'As You Like It', fileName: 'as_you_like_it.json', loaded: false },
