@@ -533,7 +533,7 @@ def convert_docx_to_json(docx_path: str, output_json_path: Optional[str] = None,
     notes_sections = []
     for i, para in enumerate(doc.paragraphs):
         text = get_paragraph_text(para)
-        if is_separator(text) and "NOTES" in text:
+        if is_separator(text) and ("NOTES" in text or "COMMENTARY" in text):
             notes_sections.append(i)
     
     print(f"\nFound {len(notes_sections)} NOTES sections")
@@ -753,7 +753,7 @@ def convert_docx_to_json(docx_path: str, output_json_path: Optional[str] = None,
         # Check if this is a NOTES separator
         # Check for NOTES separator - it might be standalone or combined with first note
         is_notes_separator = False
-        if is_separator(text) and "NOTES" in text:
+        if is_separator(text) and ("NOTES" in text or "COMMENTARY" in text):
             is_notes_separator = True
         elif "====NOTES====" in text:
             # NOTES separator might be in same paragraph as first note
