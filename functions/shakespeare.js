@@ -81,7 +81,11 @@ async function findRelevantNotes(text, scene = null, playName = 'macbeth') {
     console.log('Input text:', text)
     
     let notesData = null;
-    const baseUrl = process.env.URL || 'https://shakespeare-variorum.netlify.app';
+    // Netlify sets URL to the site’s primary URL (custom domain when configured).
+    const baseUrl =
+      process.env.URL ||
+      process.env.DEPLOY_PRIME_URL ||
+      'https://www.newvariorum.com';
     const timestamp = Date.now();
     
     // Map play names to their JSON files
@@ -112,8 +116,8 @@ async function findRelevantNotes(text, scene = null, playName = 'macbeth') {
     const possibleUrls = [
       `${baseUrl}/Public/Data/${encodedFileName}?v=${timestamp}`,
       `${baseUrl}/${encodedFileName}?v=${timestamp}`,
-      `https://raw.githubusercontent.com/Hassanahmed-15/Shakespeare-Variorum/main/Public/Data/${encodedFileName}`,
-      `https://raw.githubusercontent.com/Hassanahmed-15/Shakespeare-Variorum/main/${encodedFileName}`
+      `https://raw.githubusercontent.com/bradrcarson/Shakespeare-Variorum/main/Public/Data/${encodedFileName}`,
+      `https://raw.githubusercontent.com/bradrcarson/Shakespeare-Variorum/main/${encodedFileName}`
     ];
     
     for (const url of possibleUrls) {

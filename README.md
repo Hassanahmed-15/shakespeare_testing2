@@ -48,6 +48,16 @@ This project provides an interactive web application that combines Shakespeare's
 - **`netlify.toml`** sets `publish = "."` — the live site uses **`index.html` in the repo root only**.
 - **`My Website/index.html`** is a symlink to that root file so local work in either place stays aligned. **Edit the root `index.html` for changes to go live.**
 
+#### Production domain (`www.newvariorum.com`)
+The public site should use the custom domain, not only the default `*.netlify.app` URL.
+
+1. In **Netlify** → your site → **Domain management** → **Add domain** → enter `newvariorum.com` and `www.newvariorum.com` (or add `www` first, as you prefer).
+2. Follow Netlify’s **DNS** instructions at your registrar: typically a **CNAME** for `www` pointing to Netlify’s target (e.g. `your-site-name.netlify.app`), and for the apex `newvariorum.com` either Netlify’s **A records** / **ALIAS** as shown, or redirect apex to `www`.
+3. In Netlify, set **`www.newvariorum.com`** as the **primary domain** (and enable **HTTPS**; Netlify provisions certificates automatically).
+4. Redeploy or wait for DNS to propagate; then open the site at **`https://www.newvariorum.com`**.
+
+Serverless functions (`functions/shakespeare.js`) load play JSON from the same host using `URL` / `DEPLOY_PRIME_URL` when present, with **`https://www.newvariorum.com`** as fallback so API calls resolve to the live site after the domain is attached.
+
 ### File Organization
 ```
 ├── index.html              # Main application file (this is what Netlify serves)
