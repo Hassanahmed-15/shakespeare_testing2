@@ -139,8 +139,8 @@ class NotesIntegration {
     formatNoteText(note) {
         // Clean up the note text
         let formatted = note
-            .replace(/\*\*/g, '<strong>') // Bold text
-            .replace(/\*/g, '<em>') // Italic text
+            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>') // Bold text
+            .replace(/\*(.*?)\*/g, '$1') // Strip italic markers (e.g. *Samuel Johnson* → Samuel Johnson)
             .replace(/\n/g, '<br>') // Line breaks
             .replace(/\[([^\]]+)\]/g, '<em>$1</em>') // Stage directions in italics
             .replace(/--/g, '—') // Em dashes

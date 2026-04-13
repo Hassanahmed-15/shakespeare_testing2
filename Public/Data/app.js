@@ -455,6 +455,7 @@ class ShakespeareApp {
         // Enhanced formatting for better readability
         return content
             .replace(/\*\*(.*?)\*\*/g, '<h4>$1</h4>')
+            .replace(/\*(.*?)\*/g, '$1') // Strip italic markers (e.g. *Samuel Johnson* → Samuel Johnson)
             .replace(/\n\n/g, '</p><p>')
             .replace(/\n/g, '<br>')
             .replace(/<p><\/p>/g, '') // Remove empty paragraphs
