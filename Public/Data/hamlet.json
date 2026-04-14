@@ -127,7 +127,7 @@
   },
   "ACT 1, SCENE 1": {
     "1": {
-      "play": "Enter Barnardo and Francisco, two sentinels.",
+      "play": "[Enter Barnardo and Francisco, two sentinels.]",
       "notes": []
     },
     "2": {
@@ -205,7 +205,7 @@
       ]
     },
     "16": {
-      "play": "Enter Horatio and Marcellus.",
+      "play": "[Enter Horatio and Marcellus.]",
       "notes": []
     },
     "17": {
@@ -240,7 +240,7 @@
       "notes": []
     },
     "24": {
-      "play": "Francisco exits.",
+      "play": "[Francisco exits.]",
       "notes": []
     },
     "25": {
@@ -447,7 +447,7 @@
       "notes": []
     },
     "67": {
-      "play": "Ghost exits.",
+      "play": "[Ghost exits.]",
       "notes": []
     },
     "68": {
@@ -852,7 +852,7 @@
       ]
     },
     "144": {
-      "play": "Enter Ghost.",
+      "play": "[Enter Ghost.]",
       "notes": []
     },
     "145": {
@@ -951,7 +951,7 @@
       "notes": []
     },
     "165": {
-      "play": "Ghost exits.",
+      "play": "[Ghost exits.]",
       "notes": []
     },
     "166": {
@@ -1129,13 +1129,13 @@
       "notes": []
     },
     "200": {
-      "play": "They exit.",
+      "play": "[They exit.]",
       "notes": []
     }
   },
   "ACT 1, SCENE 2": {
     "1": {
-      "play": "Flourish. Enter Claudius, King of Denmark, Gertrude the",
+      "play": "[Flourish. Enter Claudius, King of Denmark, Gertrude the",
       "notes": []
     },
     "2": {
@@ -1147,7 +1147,7 @@
       "notes": []
     },
     "4": {
-      "play": "Cornelius.",
+      "play": "Cornelius.]",
       "notes": []
     },
     "5": {
@@ -1372,7 +1372,7 @@
       ]
     },
     "48": {
-      "play": "Voltemand and Cornelius exit.",
+      "play": "[Voltemand and Cornelius exit.]",
       "notes": []
     },
     "49": {
@@ -1826,7 +1826,7 @@
       "notes": []
     },
     "141": {
-      "play": "Flourish. All but Hamlet exit.",
+      "play": "[Flourish. All but Hamlet exit.]",
       "notes": []
     },
     "142": {
@@ -1998,7 +1998,7 @@
       ]
     },
     "174": {
-      "play": "Enter Horatio, Marcellus, and Barnardo.",
+      "play": "[Enter Horatio, Marcellus, and Barnardo.]",
       "notes": []
     },
     "175": {
@@ -2525,7 +2525,7 @@
       ]
     },
     "287": {
-      "play": "All but Hamlet exit.",
+      "play": "[All but Hamlet exit.]",
       "notes": []
     },
     "288": {
@@ -2551,13 +2551,13 @@
       "notes": []
     },
     "293": {
-      "play": "He exits.",
+      "play": "[He exits.]",
       "notes": []
     }
   },
   "ACT 1, SCENE 3": {
     "1": {
-      "play": "Enter Laertes and Ophelia, his sister.",
+      "play": "[Enter Laertes and Ophelia, his sister.]",
       "notes": []
     },
     "2": {
@@ -2855,7 +2855,7 @@
       "notes": []
     },
     "58": {
-      "play": "Enter Polonius.",
+      "play": "[Enter Polonius.]",
       "notes": []
     },
     "59": {
@@ -3303,7 +3303,7 @@
       "notes": []
     },
     "148": {
-      "play": "They exit.",
+      "play": "[They exit.]",
       "notes": []
     },
     "157": {
@@ -3324,7 +3324,7 @@
   },
   "ACT 1, SCENE 4": {
     "1": {
-      "play": "Enter Hamlet, Horatio, and Marcellus.",
+      "play": "[Enter Hamlet, Horatio, and Marcellus.]",
       "notes": []
     },
     "2": {
@@ -3559,7 +3559,7 @@
       "notes": []
     },
     "44": {
-      "play": "Enter Ghost.",
+      "play": "[Enter Ghost.]",
       "notes": []
     },
     "45": {
@@ -3827,7 +3827,7 @@
       "notes": []
     },
     "101": {
-      "play": "Ghost and Hamlet exit.",
+      "play": "[Ghost and Hamlet exit.]",
       "notes": []
     },
     "102": {
@@ -3859,7 +3859,7 @@
       "notes": []
     },
     "108": {
-      "play": "They exit.",
+      "play": "[They exit.]",
       "notes": []
     },
     "120": {
@@ -3870,7 +3870,7 @@
   },
   "ACT 1, SCENE 5": {
     "1": {
-      "play": "Enter Ghost and Hamlet.",
+      "play": "[Enter Ghost and Hamlet.]",
       "notes": []
     },
     "2": {
@@ -4441,7 +4441,7 @@
       "notes": []
     },
     "118": {
-      "play": "He writes.",
+      "play": "[He writes.]",
       "notes": []
     },
     "119": {
@@ -4459,7 +4459,7 @@
       "notes": []
     },
     "122": {
-      "play": "Enter Horatio and Marcellus.",
+      "play": "[Enter Horatio and Marcellus.]",
       "notes": []
     },
     "123": {
@@ -4908,13 +4908,13 @@
       "notes": []
     },
     "216": {
-      "play": "They exit.",
+      "play": "[They exit.]",
       "notes": []
     }
   },
   "ACT 2, SCENE 1": {
     "1": {
-      "play": "Enter old Polonius with his man Reynaldo.",
+      "play": "[Enter old Polonius with his man Reynaldo.]",
       "notes": []
     },
     "2": {
@@ -5319,7 +5319,7 @@
       "notes": []
     },
     "85": {
-      "play": "Enter Ophelia.",
+      "play": "[Enter Ophelia.]",
       "notes": []
     },
     "86": {
@@ -5575,7 +5575,7 @@
       ]
     },
     "137": {
-      "play": "They exit.",
+      "play": "[They exit.]",
       "notes": [
         "too] CAPELL (i, 128): The most emphatical word in this sentence is ‘too.’ CORSON: There should be only a comma after this word. Hamlet refers to the wrong which, he has just learned, had been done his father: ‘Yes, by Saint Patrick, but there is, my Lord, And much offence too, touching this Vision here.’"
       ]
@@ -5721,11 +5721,11 @@
   },
   "ACT 2, SCENE 2": {
     "1": {
-      "play": "Flourish. Enter King and Queen, Rosencrantz and",
+      "play": "[Flourish. Enter King and Queen, Rosencrantz and",
       "notes": []
     },
     "2": {
-      "play": "Guildenstern and Attendants.",
+      "play": "Guildenstern and Attendants.]",
       "notes": []
     },
     "3": {
@@ -5946,7 +5946,7 @@
       "notes": []
     },
     "47": {
-      "play": "Enter Polonius.",
+      "play": "[Enter Polonius.]",
       "notes": []
     },
     "48": {
@@ -6016,7 +6016,7 @@
       "notes": []
     },
     "62": {
-      "play": "Polonius exits.",
+      "play": "[Polonius exits.]",
       "notes": []
     },
     "63": {
@@ -6044,11 +6044,11 @@
       "notes": []
     },
     "68": {
-      "play": "Enter Ambassadors Voltemand and Cornelius with",
+      "play": "[Enter Ambassadors Voltemand and Cornelius with",
       "notes": []
     },
     "69": {
-      "play": "Polonius.",
+      "play": "Polonius.]",
       "notes": []
     },
     "70": {
@@ -6197,7 +6197,7 @@
       "notes": []
     },
     "101": {
-      "play": "Voltemand and Cornelius exit.",
+      "play": "[Voltemand and Cornelius exit.]",
       "notes": []
     },
     "102": {
@@ -6639,7 +6639,7 @@
       "notes": []
     },
     "194": {
-      "play": "Enter Hamlet reading on a book.",
+      "play": "[Enter Hamlet reading on a book.]",
       "notes": []
     },
     "195": {
@@ -6907,7 +6907,7 @@
       "notes": []
     },
     "251": {
-      "play": "Enter Guildenstern and Rosencrantz.",
+      "play": "[Enter Guildenstern and Rosencrantz.]",
       "notes": []
     },
     "252": {
@@ -6921,7 +6921,7 @@
       "notes": []
     },
     "254": {
-      "play": "Polonius exits.",
+      "play": "[Polonius exits.]",
       "notes": []
     },
     "255": {
@@ -7719,7 +7719,7 @@
       ]
     },
     "420": {
-      "play": "Enter Polonius.",
+      "play": "[Enter Polonius.]",
       "notes": []
     },
     "421": {
@@ -7915,7 +7915,7 @@
       "notes": []
     },
     "462": {
-      "play": "Enter the Players.",
+      "play": "[Enter the Players.]",
       "notes": []
     },
     "463": {
@@ -8528,7 +8528,7 @@
       "notes": []
     },
     "594": {
-      "play": "Rosencrantz and Guildenstern exit.",
+      "play": "[Rosencrantz and Guildenstern exit.]",
       "notes": []
     },
     "595": {
@@ -8829,17 +8829,17 @@
       "notes": []
     },
     "654": {
-      "play": "He exits.",
+      "play": "[He exits.]",
       "notes": []
     }
   },
   "ACT 3, SCENE 1": {
     "1": {
-      "play": "Enter King, Queen, Polonius, Ophelia, Rosencrantz,",
+      "play": "[Enter King, Queen, Polonius, Ophelia, Rosencrantz,",
       "notes": []
     },
     "2": {
-      "play": "Guildenstern, and Lords.",
+      "play": "Guildenstern, and Lords.]",
       "notes": []
     },
     "3": {
@@ -9069,7 +9069,7 @@
       "notes": []
     },
     "51": {
-      "play": "Queen exits.",
+      "play": "[Queen exits.]",
       "notes": []
     },
     "52": {
@@ -9146,11 +9146,11 @@
       "notes": []
     },
     "68": {
-      "play": "They withdraw.",
+      "play": "[They withdraw.]",
       "notes": []
     },
     "69": {
-      "play": "Enter Hamlet.",
+      "play": "[Enter Hamlet.]",
       "notes": []
     },
     "70": {
@@ -9853,7 +9853,7 @@
       "notes": []
     },
     "211": {
-      "play": "They exit.",
+      "play": "[They exit.]",
       "notes": []
     },
     "380": {
@@ -9864,7 +9864,7 @@
   },
   "ACT 3, SCENE 2": {
     "1": {
-      "play": "Enter Hamlet and three of the Players.",
+      "play": "[Enter Hamlet and three of the Players.]",
       "notes": []
     },
     "2": {
@@ -10104,11 +10104,11 @@
       "notes": []
     },
     "49": {
-      "play": "Players exit.",
+      "play": "[Players exit.]",
       "notes": []
     },
     "50": {
-      "play": "Enter Polonius, Guildenstern, and Rosencrantz.",
+      "play": "[Enter Polonius, Guildenstern, and Rosencrantz.]",
       "notes": []
     },
     "51": {
@@ -10144,7 +10144,7 @@
       "notes": []
     },
     "58": {
-      "play": "Enter Horatio.",
+      "play": "[Enter Horatio.]",
       "notes": []
     },
     "59": {
@@ -10357,7 +10357,7 @@
       ]
     },
     "100": {
-      "play": "Sound a flourish.",
+      "play": "[Sound a flourish.]",
       "notes": []
     },
     "101": {
@@ -10371,7 +10371,7 @@
       "notes": []
     },
     "103": {
-      "play": "Enter Trumpets and Kettle Drums. Enter King, Queen,",
+      "play": "[Enter Trumpets and Kettle Drums. Enter King, Queen,",
       "notes": []
     },
     "104": {
@@ -10383,7 +10383,7 @@
       "notes": []
     },
     "106": {
-      "play": "torches.",
+      "play": "torches.]",
       "notes": []
     },
     "107": {
@@ -10620,7 +10620,7 @@
       ]
     },
     "155": {
-      "play": "Enter a King and a Queen, very lovingly, the Queen",
+      "play": "[Enter a King and a Queen, very lovingly, the Queen",
       "notes": []
     },
     "156": {
@@ -10664,13 +10664,13 @@
       "notes": []
     },
     "166": {
-      "play": "awhile but in the end accepts his love.",
+      "play": "awhile but in the end accepts his love.]",
       "notes": [
         "your] Here used ethically; see I, v, 167; also ABBOTT, § 221."
       ]
     },
     "167": {
-      "play": "Players exit.",
+      "play": "[Players exit.]",
       "notes": []
     },
     "168": {
@@ -10696,7 +10696,7 @@
       "notes": []
     },
     "173": {
-      "play": "Enter Prologue.",
+      "play": "[Enter Prologue.]",
       "notes": []
     },
     "174": {
@@ -10758,7 +10758,7 @@
       "notes": []
     },
     "188": {
-      "play": "Enter the Player King and Queen.",
+      "play": "[Enter the Player King and Queen.]",
       "notes": []
     },
     "189": {
@@ -11129,7 +11129,7 @@
       "notes": []
     },
     "266": {
-      "play": "Player Queen exits.",
+      "play": "[Player Queen exits.]",
       "notes": []
     },
     "267": {
@@ -11209,7 +11209,7 @@
       "notes": []
     },
     "282": {
-      "play": "Enter Lucianus.",
+      "play": "[Enter Lucianus.]",
       "notes": []
     },
     "283": {
@@ -11364,7 +11364,7 @@
       "notes": []
     },
     "314": {
-      "play": "All but Hamlet and Horatio exit.",
+      "play": "[All but Hamlet and Horatio exit.]",
       "notes": []
     },
     "315": {
@@ -11490,7 +11490,7 @@
       "notes": []
     },
     "340": {
-      "play": "Enter Rosencrantz and Guildenstern.",
+      "play": "[Enter Rosencrantz and Guildenstern.]",
       "notes": []
     },
     "341": {
@@ -11731,7 +11731,7 @@
       "notes": []
     },
     "393": {
-      "play": "Enter the Players with recorders.",
+      "play": "[Enter the Players with recorders.]",
       "notes": []
     },
     "394": {
@@ -11877,7 +11877,7 @@
       ]
     },
     "423": {
-      "play": "Enter Polonius.",
+      "play": "[Enter Polonius.]",
       "notes": []
     },
     "424": {
@@ -11930,7 +11930,7 @@
       ]
     },
     "435": {
-      "play": "Aside. They fool me to the top of my bent.—I will",
+      "play": "[Aside.] They fool me to the top of my bent.—I will",
       "notes": [
         "bent] JOHNSON: ‘Bent’ is used by Sh. for the utmost degree of any passion or mental quality. The expression is derived from archery; the bow has its bent when it is drawn as far as it can be. [See WELLESLEY, II, ii, 328; also II, ii, 30.]"
       ]
@@ -11952,7 +11952,7 @@
       "notes": []
     },
     "440": {
-      "play": "All but Hamlet exit.",
+      "play": "[All but Hamlet exit.]",
       "notes": []
     },
     "441": {
@@ -12023,13 +12023,13 @@
       ]
     },
     "455": {
-      "play": "He exits.",
+      "play": "[He exits.]",
       "notes": []
     }
   },
   "ACT 3, SCENE 3": {
     "1": {
-      "play": "Enter King, Rosencrantz, and Guildenstern.",
+      "play": "[Enter King, Rosencrantz, and Guildenstern.]",
       "notes": []
     },
     "2": {
@@ -12167,11 +12167,11 @@
       "notes": []
     },
     "30": {
-      "play": "Rosencrantz and Guildenstern exit.",
+      "play": "[Rosencrantz and Guildenstern exit.]",
       "notes": []
     },
     "31": {
-      "play": "Enter Polonius.",
+      "play": "[Enter Polonius.]",
       "notes": [
         "Polonius] COLERIDGE: Polonius’s volunteer obtrusion of himself into this business, while it is appropriate to his character, still itching after former importance, removes all likelihood that Ham. should suspect his presence, and prevents us from making his death injure Ham. in our opinion."
       ]
@@ -12229,7 +12229,7 @@
       "notes": []
     },
     "43": {
-      "play": "Polonius exits.",
+      "play": "[Polonius exits.]",
       "notes": []
     },
     "44": {
@@ -12417,7 +12417,7 @@
       ]
     },
     "81": {
-      "play": "Enter Hamlet.",
+      "play": "[Enter Hamlet.]",
       "notes": [
         "Enter Hamlet] COLLIER: When Ham. enters behind, another stage-direction by the (MS) states that he has his sword drawn ready to kill the King, if his resolution hold. The old mode of acting the scene appears to have been, that, when"
       ]
@@ -12555,7 +12555,7 @@
       ]
     },
     "108": {
-      "play": "Hamlet exits.",
+      "play": "[Hamlet exits.]",
       "notes": []
     },
     "109": {
@@ -12571,13 +12571,13 @@
       "notes": []
     },
     "112": {
-      "play": "He exits.",
+      "play": "[He exits.]",
       "notes": []
     }
   },
   "ACT 3, SCENE 4": {
     "1": {
-      "play": "Enter Queen and Polonius.",
+      "play": "[Enter Queen and Polonius.]",
       "notes": []
     },
     "2": {
@@ -12629,7 +12629,7 @@
       ]
     },
     "13": {
-      "play": "Enter Hamlet.",
+      "play": "[Enter Hamlet.]",
       "notes": []
     },
     "14": {
@@ -13158,7 +13158,7 @@
       "notes": []
     },
     "125": {
-      "play": "Enter Ghost.",
+      "play": "[Enter Ghost.]",
       "notes": [
         "Enter Ghost] COLLIER (ed. 2): The stage direction of Q1 shows that at"
       ]
@@ -13355,7 +13355,7 @@
       ]
     },
     "165": {
-      "play": "Ghost exits.",
+      "play": "[Ghost exits.]",
       "notes": []
     },
     "166": {
@@ -13775,17 +13775,17 @@
       ]
     },
     "251": {
-      "play": "They exit, Hamlet tugging in Polonius.",
+      "play": "[They exit, Hamlet tugging in Polonius.]",
       "notes": []
     }
   },
   "ACT 4, SCENE 1": {
     "1": {
-      "play": "Enter King and Queen, with Rosencrantz and",
+      "play": "[Enter King and Queen, with Rosencrantz and",
       "notes": []
     },
     "2": {
-      "play": "Guildenstern.",
+      "play": "Guildenstern.]",
       "notes": []
     },
     "3": {
@@ -13807,7 +13807,7 @@
       "notes": []
     },
     "7": {
-      "play": "Rosencrantz and Guildenstern exit.",
+      "play": "[Rosencrantz and Guildenstern exit.]",
       "notes": []
     },
     "8": {
@@ -13945,7 +13945,7 @@
       "notes": []
     },
     "37": {
-      "play": "Enter Rosencrantz and Guildenstern.",
+      "play": "[Enter Rosencrantz and Guildenstern.]",
       "notes": []
     },
     "38": {
@@ -13971,7 +13971,7 @@
       "notes": []
     },
     "43": {
-      "play": "Rosencrantz and Guildenstern exit.",
+      "play": "[Rosencrantz and Guildenstern exit.]",
       "notes": []
     },
     "44": {
@@ -14011,7 +14011,7 @@
       "notes": []
     },
     "52": {
-      "play": "They exit.",
+      "play": "[They exit.]",
       "notes": []
     },
     "488": {
@@ -14022,7 +14022,7 @@
   },
   "ACT 4, SCENE 2": {
     "1": {
-      "play": "Enter Hamlet.",
+      "play": "[Enter Hamlet.]",
       "notes": []
     },
     "2": {
@@ -14042,7 +14042,7 @@
       "notes": []
     },
     "6": {
-      "play": "Enter Rosencrantz, Guildenstern, and others.",
+      "play": "[Enter Rosencrantz, Guildenstern, and others.]",
       "notes": [
         "Compounded] JENNESS retains the reading of Q1Q2 and interprets it as an imperative, otherwise Ham. tells an untruth, for he had not buried the body."
       ]
@@ -14178,13 +14178,13 @@
       ]
     },
     "34": {
-      "play": "They exit.",
+      "play": "[They exit.]",
       "notes": []
     }
   },
   "ACT 4, SCENE 3": {
     "1": {
-      "play": "Enter King and two or three.",
+      "play": "[Enter King and two or three.]",
       "notes": []
     },
     "2": {
@@ -14232,7 +14232,7 @@
       "notes": []
     },
     "13": {
-      "play": "Enter Rosencrantz.",
+      "play": "[Enter Rosencrantz.]",
       "notes": []
     },
     "14": {
@@ -14477,7 +14477,7 @@
       "notes": []
     },
     "70": {
-      "play": "All but the King exit.",
+      "play": "[All but the King exit.]",
       "notes": []
     },
     "71": {
@@ -14536,13 +14536,13 @@
       ]
     },
     "82": {
-      "play": "He exits.",
+      "play": "[He exits.]",
       "notes": []
     }
   },
   "ACT 4, SCENE 4": {
     "1": {
-      "play": "Enter Fortinbras with his army over the stage.",
+      "play": "[Enter Fortinbras with his army over the stage.]",
       "notes": []
     },
     "2": {
@@ -14586,7 +14586,7 @@
       ]
     },
     "11": {
-      "play": "Enter Hamlet, Rosencrantz, Guildenstern, and others.",
+      "play": "[Enter Hamlet, Rosencrantz, Guildenstern, and others.]",
       "notes": []
     },
     "12": {
@@ -14696,7 +14696,7 @@
       "notes": []
     },
     "36": {
-      "play": "All but Hamlet exit.",
+      "play": "[All but Hamlet exit.]",
       "notes": []
     },
     "37": {
@@ -14867,13 +14867,13 @@
       "notes": []
     },
     "73": {
-      "play": "He exits.",
+      "play": "[He exits.]",
       "notes": []
     }
   },
   "ACT 4, SCENE 5": {
     "1": {
-      "play": "Enter Horatio, Queen, and a Gentleman.",
+      "play": "[Enter Horatio, Queen, and a Gentleman.]",
       "notes": []
     },
     "2": {
@@ -14976,7 +14976,7 @@
       "notes": []
     },
     "23": {
-      "play": "Aside. To my sick soul (as sin’s true nature is),",
+      "play": "[Aside.] To my sick soul (as sin’s true nature is),",
       "notes": []
     },
     "24": {
@@ -14996,7 +14996,7 @@
       "notes": []
     },
     "27": {
-      "play": "Enter Ophelia distracted.",
+      "play": "[Enter Ophelia distracted.]",
       "notes": [
         "Ophelia] HUNTER (ii, 258): Perhaps the ‘lute’ of Q1 was banished when line 21 was added, which must be said running wildly up to the Queen, when the lute would have been an incumbrance. SIR JOSHUA REYNOLDS: There is no part of this play in its representation on the stage, more pathetic than this scene; which, I suppose, proceeds from the utter insensibility Oph. has to her own misfortunes. A great sensibility, or none at all, seems to produce the same effect. In the latter the audience supply what she wants, and with the former they sympathize. COLERIDGE: Ophelia singing. O, note the conjunction here of these two thoughts that had never subsisted in disjunction, the love of Hamlet and her filial love, with the guileless floating on the surface of her pure imagination of the cautions so lately expressed, and the fears not too delicately avowed, by her father and brother, concerning the dangers to which her honor lay exposed. This play of association is instanced in lines 67, 68."
       ]
@@ -15046,7 +15046,7 @@
       "notes": []
     },
     "37": {
-      "play": "Sings.    He is dead and gone, lady,",
+      "play": "[Sings.] He is dead and gone, lady,",
       "notes": []
     },
     "38": {
@@ -15078,7 +15078,7 @@
       "notes": []
     },
     "44": {
-      "play": "Sings.    White his shroud as the mountain snow—",
+      "play": "[Sings.] White his shroud as the mountain snow—",
       "notes": []
     },
     "45": {
@@ -15148,7 +15148,7 @@
       "notes": []
     },
     "58": {
-      "play": "Sings.    Tomorrow is Saint Valentine’s day,",
+      "play": "[Sings.] Tomorrow is Saint Valentine’s day,",
       "notes": [
         "[Sings] Chappell (Popular Music of the ‘Olden Time,' vol. i, p. 227): This song is found in several of the ballad-operas, such as The Cobblers’ Opera (1729), The Quaker’s Opera (1728), &c. In Pills to purge Melancholy (1707), ii, 44) it is printed to a song in Heywood’s Rape of Lucrece, beginning, ‘Arise, arise, my juggy, my puggy.’ Other versions will be found under the name of ‘Who list to lead a soldier’s life?’ and ‘Lord Thomas and Fair Ellinor.’",
         "Saint Valentine’s day] Halliwell: This song alludes to the custom of the first girl seen by a man on the morning of this day being considered his Valentine or true-love. The custom continued until the last century, and is graphically alluded to by Gay. The custom of the different sexes choosing themselves mates on St Valentine’s day, 14th February, the names being selected either by lots or methods of divination, is of great antiquity in England. The name so drawn was the Valentine of the drawer. Douce traces the custom to the Lupercalia of Rome, during which"
@@ -15193,7 +15193,7 @@
       "notes": []
     },
     "68": {
-      "play": "Sings.    By Gis and by Saint Charity,",
+      "play": "[Sings.] By Gis and by Saint Charity,",
       "notes": [
         "Gis] JOHNSON: Rather, ‘By Cis’; i. e. By St Cecily. RIDLEY: There is not the least mention of any saint whose name corresponds with this, either in the Roman Calendar, the service in Usum Sarum, or in the Benedictionary of Bishop Athelwold. I believe the word to be only a corrupted abbreviation of Jesus, the letters J. H. S. being anciently all that was set down to denote that sacred name, on altars, the covers of books, &c. RITSON: Though Gis may be, and I believe is, only a contraction of Jesus, there is certainly a Saint Gislen, with whose name it corresponds. DOUCE: Ridley's conjecture is the true one; but the corruption is not in the way he has stated. The letters I H S would not be pronounced Gis, even by those who understood them as a Greek contraction",
         "Saint Charity] STEEVENS: This is a known saint among the Roman Catholics. Spenser mentions her, Eclog. V, 255."
@@ -15268,7 +15268,7 @@
       "notes": []
     },
     "85": {
-      "play": "Horatio exits.",
+      "play": "[Horatio exits.]",
       "notes": []
     },
     "86": {
@@ -15405,7 +15405,7 @@
       ]
     },
     "114": {
-      "play": "Enter a Messenger.",
+      "play": "[Enter a Messenger.]",
       "notes": []
     },
     "115": {
@@ -15489,7 +15489,7 @@
       "notes": []
     },
     "131": {
-      "play": "Enter Laertes with others.",
+      "play": "[Enter Laertes with others.]",
       "notes": []
     },
     "132": {
@@ -15745,7 +15745,7 @@
       "notes": []
     },
     "188": {
-      "play": "Enter Ophelia.",
+      "play": "[Enter Ophelia.]",
       "notes": []
     },
     "189": {
@@ -15905,7 +15905,7 @@
       "notes": []
     },
     "222": {
-      "play": "Sings. For bonny sweet Robin is all my joy.",
+      "play": "[Sings.] For bonny sweet Robin is all my joy.",
       "notes": []
     },
     "223": {
@@ -16080,13 +16080,13 @@
       "notes": []
     },
     "259": {
-      "play": "They exit.",
+      "play": "[They exit.]",
       "notes": []
     }
   },
   "ACT 4, SCENE 6": {
     "1": {
-      "play": "Enter Horatio and others.",
+      "play": "[Enter Horatio and others.]",
       "notes": []
     },
     "2": {
@@ -16114,7 +16114,7 @@
       "notes": []
     },
     "8": {
-      "play": "Enter Sailors.",
+      "play": "[Enter Sailors.]",
       "notes": []
     },
     "9": {
@@ -16245,13 +16245,13 @@
       "notes": []
     },
     "37": {
-      "play": "They exit.",
+      "play": "[They exit.]",
       "notes": []
     }
   },
   "ACT 4, SCENE 7": {
     "1": {
-      "play": "Enter King and Laertes.",
+      "play": "[Enter King and Laertes.]",
       "notes": [
         "acquittance seal] For other similar instances of Shakespeare’s use of legal phraseology in reference to seals, see RUSHTON, Sh. a Lawyer, p. 29"
       ]
@@ -17146,7 +17146,7 @@
       "notes": []
     },
     "189": {
-      "play": "Enter Queen.",
+      "play": "[Enter Queen.]",
       "notes": []
     },
     "190": {
@@ -17328,13 +17328,13 @@
       "notes": []
     },
     "225": {
-      "play": "They exit.",
+      "play": "[They exit.]",
       "notes": []
     }
   },
   "ACT 5, SCENE 1": {
     "1": {
-      "play": "Enter Gravedigger and Another.",
+      "play": "[Enter Gravedigger and Another.]",
       "notes": []
     },
     "2": {
@@ -17586,7 +17586,7 @@
       "notes": []
     },
     "58": {
-      "play": "Enter Hamlet and Horatio afar off.",
+      "play": "[Enter Hamlet and Horatio afar off.]",
       "notes": [
         "Vaughan] COLLIER (ed. i): It is just possible that this was a misspelt stage-direction to inform the player that he was to yawn at this point. COLLIER (ed. 2): The emendation of the (MS), which we accept, is as much as to say, ‘get thee to yon alehouse; fetch me a jug of liquor.’ We must suppose the alehouse understood, and pointed to by the First Clo. WHITE: I suspect that this is a misprint for Tavern. But some local allusion understood at the day may lurk under it. J. SAN (N. & Qu., 5 Oct. 1861): This is merely Shakespeare’s English way of representing the Danish Johan,—John. NICHOLSON (N. & Qu., 29 July, 1871): Most probably Vaughan was the well-known keeper of a tavern near the theatre; and we have three items of corroborative evidence which show: First, that a little before the time of this allusion by Sh., which is not found in the Qq, there was about town ‘a Jew, one Yohan,’ most probably a German Jew, who was a perruquier,—he is mentioned by Jonson in Every Man out of his Humour, V, vi; Second, in The Alchemist, I, i, which was produced eleven years afterwards, Subtle speaks of ‘an alehouse, darker than deaf John,’ a name which sounds like that of our foreign John, anglicised, and its owner grown deaf by lapse of time; Third, that there was actually an alehouse attached to the Globe Theatre is proved by the ‘Sonnett upon the Burneing’ of that playhouse: ‘see Collier’s Annals of the Stage, i, 388). Is it then unlikely that"
       ]
@@ -17928,7 +17928,7 @@
       "notes": []
     },
     "130": {
-      "play": "Sings.    O, a pit of clay for to be made",
+      "play": "[Sings.] O, a pit of clay for to be made",
       "notes": []
     },
     "131": {
@@ -18383,11 +18383,11 @@
       ]
     },
     "232": {
-      "play": "Enter King, Queen, Laertes, Lords attendant, and the",
+      "play": "[Enter King, Queen, Laertes, Lords attendant, and the",
       "notes": []
     },
     "233": {
-      "play": "corpse of Ophelia, with a Doctor of Divinity.",
+      "play": "corpse of Ophelia, with a Doctor of Divinity.]",
       "notes": []
     },
     "234": {
@@ -18823,7 +18823,7 @@
       ]
     },
     "327": {
-      "play": "Hamlet exits.",
+      "play": "[Hamlet exits.]",
       "notes": []
     },
     "328": {
@@ -18831,7 +18831,7 @@
       "notes": []
     },
     "329": {
-      "play": "Horatio exits.",
+      "play": "[Horatio exits.]",
       "notes": []
     },
     "330": {
@@ -18865,13 +18865,13 @@
       "notes": []
     },
     "337": {
-      "play": "They exit.",
+      "play": "[They exit.]",
       "notes": []
     }
   },
   "ACT 5, SCENE 2": {
     "1": {
-      "play": "Enter Hamlet and Horatio.",
+      "play": "[Enter Hamlet and Horatio.]",
       "notes": []
     },
     "2": {
@@ -19320,7 +19320,7 @@
       "notes": []
     },
     "94": {
-      "play": "Enter Osric, a courtier.",
+      "play": "[Enter Osric, a courtier.]",
       "notes": [
         "Osric] C. ELLIOT BROWNE (The Athenaeum, 29 July, 1876): This was a name well known at the time. Henslowe's company performed an Osteryck in 1597, perhaps Heywood's lost play of Marshal Osrick."
       ]
@@ -19881,7 +19881,7 @@
       "notes": []
     },
     "213": {
-      "play": "Enter a Lord.",
+      "play": "[Enter a Lord.]",
       "notes": []
     },
     "214": {
@@ -20315,7 +20315,7 @@
       "notes": []
     },
     "310": {
-      "play": "Trumpets the while.",
+      "play": "[Trumpets the while.]",
       "notes": []
     },
     "311": {
@@ -20767,7 +20767,7 @@
       "notes": []
     },
     "410": {
-      "play": "Enter Osric.",
+      "play": "[Enter Osric.]",
       "notes": []
     },
     "411": {
@@ -20842,11 +20842,11 @@
       "notes": []
     },
     "426": {
-      "play": "Enter Fortinbras with the English Ambassadors with",
+      "play": "[Enter Fortinbras with the English Ambassadors with",
       "notes": []
     },
     "427": {
-      "play": "Drum, Colors, and Attendants.",
+      "play": "Drum, Colors, and Attendants.]",
       "notes": []
     },
     "428": {
@@ -21079,11 +21079,11 @@
       "notes": []
     },
     "478": {
-      "play": "They exit, marching, after the which, a peal of",
+      "play": "[They exit, marching, after the which, a peal of",
       "notes": []
     },
     "479": {
-      "play": "ordnance are shot off.",
+      "play": "ordnance are shot off.]",
       "notes": []
     }
   }

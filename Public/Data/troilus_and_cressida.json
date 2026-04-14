@@ -91,7 +91,7 @@
   },
   "ACT 1, SCENE 1": {
     "1": {
-      "play": "Enter Pandarus and Troilus.",
+      "play": "[Enter Pandarus and Troilus.]",
       "notes": []
     },
     "2": {
@@ -486,7 +486,7 @@
       "notes": []
     },
     "92": {
-      "play": "Sound alarum.",
+      "play": "[Sound alarum.]",
       "notes": []
     },
     "93": {
@@ -558,7 +558,7 @@
       "notes": []
     },
     "109": {
-      "play": "Alarum. Enter Aeneas.",
+      "play": "[Alarum. Enter Aeneas.]",
       "notes": []
     },
     "110": {
@@ -600,7 +600,7 @@
       "notes": []
     },
     "119": {
-      "play": "Alarum.",
+      "play": "[Alarum.]",
       "notes": []
     },
     "120": {
@@ -626,13 +626,13 @@
       ]
     },
     "125": {
-      "play": "They exit.",
+      "play": "[They exit.]",
       "notes": []
     }
   },
   "ACT 1, SCENE 2": {
     "1": {
-      "play": "Enter Cressida and her man Alexander.",
+      "play": "[Enter Cressida and her man Alexander.]",
       "notes": []
     },
     "2": {
@@ -811,7 +811,7 @@
       "notes": []
     },
     "42": {
-      "play": "Enter Pandarus.",
+      "play": "[Enter Pandarus.]",
       "notes": [
         "Enter Pandarus] Mackenzie (Women in Sh.’s Plays, 1924, p. 189): The clipped flat prose of the dialogue has a curious cheapness about it that is not likely to be unintentional. “... Cressida says nothing in it at which one need feel offended, and yet, in the long run, we are uncomfortably aware of the ironic difference between her and Troilus. It may be, perhaps, that although she snubs her uncle, we are left with the impression that it is out of mere contrariness rather than from any objection to what he is or says, and that the two are familiar associates.—Snider (System of Sh.’s Dramas, 1877, II, 200): The adroit Cressida listens to the encomiums bestowed by her uncle with a complete penetration of their object, parrying his questions, tormenting him with a feigned opposition, uttering words of detraction against Troilus. ... Her character comes out plain in this interview; she is shrewd, witty, and wanton; no person of the caliber of Pandarus can touch the depths of her mind—the cool understanding effectually controls the emotions."
       ]
@@ -1449,7 +1449,7 @@
       "notes": []
     },
     "194": {
-      "play": "Enter Aeneas and crosses the stage.",
+      "play": "[Enter Aeneas and crosses the stage.]",
       "notes": []
     },
     "195": {
@@ -1465,7 +1465,7 @@
       "notes": []
     },
     "198": {
-      "play": "Enter Antenor and crosses the stage.",
+      "play": "[Enter Antenor and crosses the stage.]",
       "notes": [
         "Enter Antenor] LAWRENCE (Sh.’s Workshop, 1928, p. 43): The fact that Antenor ... comes on the stage, in all, three times, and on no occasion condescends to open his mouth, is fairly good proof that, whatever his earlier office, in the later version of the play, he had absolutely no place. To admit as much, however, is likewise to concede that Pandarus’s description of him in the first act must also have gone by the board; otherwise we have the absurdity of a character distinguished as “a shrewd wit” and demonstrating his expertness of tongue by his silence. If Antenor really remained, he must have been the enviable possessor of a most sagacious nod, a quality that made him lineal ancestor of Burleigh in The Critic. But, so far from being able to take that"
       ]
@@ -1513,7 +1513,7 @@
       "notes": []
     },
     "209": {
-      "play": "Enter Hector and crosses the stage.",
+      "play": "[Enter Hector and crosses the stage.]",
       "notes": []
     },
     "210": {
@@ -1575,7 +1575,7 @@
       "notes": []
     },
     "224": {
-      "play": "Enter Paris and crosses the stage.",
+      "play": "[Enter Paris and crosses the stage.]",
       "notes": []
     },
     "225": {
@@ -1603,7 +1603,7 @@
       "notes": []
     },
     "231": {
-      "play": "Enter Helenus and crosses the stage.",
+      "play": "[Enter Helenus and crosses the stage.]",
       "notes": []
     },
     "232": {
@@ -1639,7 +1639,7 @@
       "notes": []
     },
     "240": {
-      "play": "Enter Troilus and crosses the stage.",
+      "play": "[Enter Troilus and crosses the stage.]",
       "notes": []
     },
     "241": {
@@ -1703,7 +1703,7 @@
       "notes": []
     },
     "256": {
-      "play": "Enter Common Soldiers and cross the stage.",
+      "play": "[Enter Common Soldiers and cross the stage.]",
       "notes": []
     },
     "257": {
@@ -1846,7 +1846,7 @@
       ]
     },
     "289": {
-      "play": "Enter Troilus’s Boy.",
+      "play": "[Enter Troilus’s Boy.]",
       "notes": []
     },
     "290": {
@@ -1892,7 +1892,7 @@
       "notes": []
     },
     "300": {
-      "play": "Pandarus exits.",
+      "play": "[Pandarus exits.]",
       "notes": []
     },
     "301": {
@@ -1958,19 +1958,19 @@
       "notes": []
     },
     "315": {
-      "play": "She exits.",
+      "play": "[She exits.]",
       "notes": []
     }
   },
   "ACT 1, SCENE 3": {
     "1": {
-      "play": "Sennet. Enter Agamemnon, Nestor, Ulysses, Diomedes,",
+      "play": "[Sennet. Enter Agamemnon, Nestor, Ulysses, Diomedes,",
       "notes": [
         "iii.1. Diomedes] WHITE (ed. 1865): The folio brings in Diomedes with the rest of the Grecian leaders; it being plain that there is a general council. But because he has nothing to say, modern editors hitherto have omitted his name."
       ]
     },
     "2": {
-      "play": "Menelaus, with others.",
+      "play": "Menelaus, with others.]",
       "notes": []
     },
     "3": {
@@ -2964,7 +2964,7 @@
       "notes": []
     },
     "221": {
-      "play": "Enter Aeneas, with a Trumpeter.",
+      "play": "[Enter Aeneas, with a Trumpeter.]",
       "notes": []
     },
     "222": {
@@ -3180,7 +3180,7 @@
       "notes": []
     },
     "271": {
-      "play": "Sound trumpet.",
+      "play": "[Sound trumpet.]",
       "notes": []
     },
     "272": {
@@ -3402,7 +3402,7 @@
       "notes": []
     },
     "323": {
-      "play": "All but Ulysses and Nestor exit.",
+      "play": "[All but Ulysses and Nestor exit.]",
       "notes": []
     },
     "324": {
@@ -3764,13 +3764,13 @@
       ]
     },
     "406": {
-      "play": "They exit.",
+      "play": "[They exit.]",
       "notes": []
     }
   },
   "ACT 2, SCENE 1": {
     "1": {
-      "play": "Enter Ajax and Thersites.",
+      "play": "[Enter Ajax and Thersites.]",
       "notes": []
     },
     "2": {
@@ -4029,7 +4029,7 @@
       "notes": []
     },
     "58": {
-      "play": "Enter Achilles and Patroclus.",
+      "play": "[Enter Achilles and Patroclus.]",
       "notes": []
     },
     "59": {
@@ -4317,7 +4317,7 @@
       "notes": []
     },
     "126": {
-      "play": "He exits.",
+      "play": "[He exits.]",
       "notes": []
     },
     "127": {
@@ -4373,13 +4373,13 @@
       ]
     },
     "139": {
-      "play": "He exits.",
+      "play": "[He exits.]",
       "notes": []
     }
   },
   "ACT 2, SCENE 2": {
     "1": {
-      "play": "Enter Priam, Hector, Troilus, Paris and Helenas.",
+      "play": "[Enter Priam, Hector, Troilus, Paris and Helenas.]",
       "notes": []
     },
     "2": {
@@ -4856,7 +4856,7 @@
       "notes": []
     },
     "110": {
-      "play": "Enter Cassandra raving.",
+      "play": "[Enter Cassandra raving.]",
       "notes": [
         "Enter Cassandra] KNIGHT (ed. 1841, p. 143): One of the most extraordinary subtleties of Shakspere's Troilus and Cressida arises out of the circumstance that the real heroic tragedy is found side by side with the ironical heroic. Cassandra, short as the character is, may be classed among the finest creations of art. Dryden omits Cassandra altogether. Was this a want of real perception of “the grounds” of tragedy; or an instinct which avoided the higher heroic, when it would come into contrast with his own feebler conceptions? The Cassandra of Shakspere is introduced to heighten the effect of the petty passions, the worldliness, which are everywhere around her. The solemn and the earnest are in alliance with madness.—[The lament of Cassandra occurs in Lydgate and Caxton in connection with the debate which precedes the expedition of Paris to the court of Menelaus (see first note on this scene). But it is placed after the conclusion of the debate, when the news of the decision reaches her. Sh. has given a more dramatic turn by plunging her into the conference, at the same time strengthening the impression that the Trojans are stubbornly bent on their own destruction.—ED.]",
         "old] THEOBALD (letter to Warburton, 3 March, 1729/30): As all the rest are substantives, I think, this should rather be, “eld,” i.e. elders, old folks. As, Merry Wives [iv.iv.35], “The superstitious idle-headed eld.”"
@@ -5373,13 +5373,13 @@
       "notes": []
     },
     "227": {
-      "play": "They exit.",
+      "play": "[They exit.]",
       "notes": []
     }
   },
   "ACT 2, SCENE 3": {
     "1": {
-      "play": "Enter Thersites, alone.",
+      "play": "[Enter Thersites, alone.]",
       "notes": []
     },
     "2": {
@@ -5541,7 +5541,7 @@
       "notes": []
     },
     "37": {
-      "play": "Enter Patroclus.",
+      "play": "[Enter Patroclus.]",
       "notes": []
     },
     "38": {
@@ -5577,7 +5577,7 @@
       "notes": []
     },
     "46": {
-      "play": "Enter Achilles.",
+      "play": "[Enter Achilles.]",
       "notes": []
     },
     "47": {
@@ -5703,11 +5703,11 @@
       "notes": []
     },
     "76": {
-      "play": "Enter at a distance Agamemnon, Ulysses, Nestor,",
+      "play": "[Enter at a distance Agamemnon, Ulysses, Nestor,",
       "notes": []
     },
     "77": {
-      "play": "Diomedes, Ajax, and Calchas.",
+      "play": "Diomedes, Ajax, and Calchas.]",
       "notes": []
     },
     "78": {
@@ -5747,7 +5747,7 @@
       "notes": []
     },
     "86": {
-      "play": "He exits.",
+      "play": "[He exits.]",
       "notes": []
     },
     "87": {
@@ -5875,7 +5875,7 @@
       "notes": []
     },
     "116": {
-      "play": "Enter Patroclus.",
+      "play": "[Enter Patroclus.]",
       "notes": []
     },
     "117": {
@@ -6151,7 +6151,7 @@
       "notes": []
     },
     "180": {
-      "play": "Enter Ulysses.",
+      "play": "[Enter Ulysses.]",
       "notes": []
     },
     "181": {
@@ -6663,17 +6663,17 @@
       "notes": []
     },
     "297": {
-      "play": "They exit.",
+      "play": "[They exit.]",
       "notes": []
     }
   },
   "ACT 3, SCENE 1": {
     "1": {
-      "play": "Music sounds within. Enter Pandarus and Paris’s",
+      "play": "[Music sounds within. Enter Pandarus and Paris’s",
       "notes": []
     },
     "2": {
-      "play": "Servingman.",
+      "play": "Servingman.]",
       "notes": []
     },
     "3": {
@@ -6851,7 +6851,7 @@
       ]
     },
     "44": {
-      "play": "Enter Paris and Helen with Attendants.",
+      "play": "[Enter Paris and Helen with Attendants.]",
       "notes": [
         "Enter Paris and Helena] ARTHUR SYMONS (Harper’s Mag., cxv, 1907, 662): The wonderful scene between Paris and Helen ... gives, with its touch of luxurious, almost lascivious satire, the Renaissance picture of the two most famous lovers of the world. There is a refrain of “love, love, love,” grossly, luxuriously, mockingly. “Let thy song be love,” murmurs Helen; “this love will undo us all. O Cupid, Cupid, Cupid!” And Pari- echoes: “Aye, ove now, love, love, nothing but love.” ... In the dispraise of Helen, from the mouth of Diomedes (Act IV., Scene I), Shakespeare forces the note, making even those who had least cause rail on the woman with all the contempt of hate. Yet the noblest praise that has ever been said of Helen comes to her in this play from the undistinguished mouth of a punning servant, who calls her “the mortal Venus, the heart-blood of beauty, love’s invisible soul.” Later on, in Cleopatra, Shakespeare is to give us the supreme enchantress, taking her wholly from her own point of view, or at least with sympathetic impartiality. Here he seems to ask with Pandarus, “Is love a generation of vipers?” His cruelty with Helen is but a part of his protest, his criticism, his valuation of love. Love in this cloying scene between Paris and Helen appears before us sickly, a thing of effeminate horror, which can be escaped only by turning it into laughter."
       ]
@@ -7319,7 +7319,7 @@
       "notes": []
     },
     "150": {
-      "play": "Sound a retreat.",
+      "play": "[Sound a retreat.]",
       "notes": []
     },
     "151": {
@@ -7371,13 +7371,13 @@
       "notes": []
     },
     "163": {
-      "play": "They exit.",
+      "play": "[They exit.]",
       "notes": []
     }
   },
   "ACT 3, SCENE 2": {
     "1": {
-      "play": "Enter Pandarus and Troilus’s Man, meeting.",
+      "play": "[Enter Pandarus and Troilus’s Man, meeting.]",
       "notes": []
     },
     "2": {
@@ -7393,7 +7393,7 @@
       "notes": []
     },
     "5": {
-      "play": "Enter Troilus.",
+      "play": "[Enter Troilus.]",
       "notes": []
     },
     "6": {
@@ -7453,7 +7453,7 @@
       "notes": []
     },
     "19": {
-      "play": "Pandarus exits.",
+      "play": "[Pandarus exits.]",
       "notes": []
     },
     "20": {
@@ -7514,7 +7514,7 @@
       "notes": []
     },
     "32": {
-      "play": "Enter Pandarus.",
+      "play": "[Enter Pandarus.]",
       "notes": []
     },
     "33": {
@@ -7540,7 +7540,7 @@
       "notes": []
     },
     "38": {
-      "play": "Pandarus exits.",
+      "play": "[Pandarus exits.]",
       "notes": []
     },
     "39": {
@@ -7568,7 +7568,7 @@
       "notes": []
     },
     "44": {
-      "play": "Enter Pandarus, and Cressida veiled.",
+      "play": "[Enter Pandarus, and Cressida veiled.]",
       "notes": []
     },
     "45": {
@@ -7675,7 +7675,7 @@
       "notes": []
     },
     "67": {
-      "play": "Pandarus exits.",
+      "play": "[Pandarus exits.]",
       "notes": []
     },
     "68": {
@@ -7847,7 +7847,7 @@
       "notes": []
     },
     "107": {
-      "play": "Enter Pandarus.",
+      "play": "[Enter Pandarus.]",
       "notes": []
     },
     "108": {
@@ -8355,17 +8355,17 @@
       "notes": []
     },
     "225": {
-      "play": "He exits.",
+      "play": "[He exits.]",
       "notes": []
     }
   },
   "ACT 3, SCENE 3": {
     "1": {
-      "play": "Flourish. Enter Ulysses, Diomedes, Nestor,",
+      "play": "[Flourish. Enter Ulysses, Diomedes, Nestor,",
       "notes": []
     },
     "2": {
-      "play": "Agamemnon, Calchas, Menelaus, and Ajax.",
+      "play": "Agamemnon, Calchas, Menelaus, and Ajax.]",
       "notes": []
     },
     "3": {
@@ -9365,7 +9365,7 @@
       ]
     },
     "232": {
-      "play": "He exits.",
+      "play": "[He exits.]",
       "notes": []
     },
     "233": {
@@ -9487,7 +9487,7 @@
       "notes": []
     },
     "261": {
-      "play": "Enter Thersites.",
+      "play": "[Enter Thersites.]",
       "notes": []
     },
     "262": {
@@ -9741,7 +9741,7 @@
       "notes": []
     },
     "323": {
-      "play": "He pretends to exit.",
+      "play": "[He pretends to exit.]",
       "notes": []
     },
     "324": {
@@ -9793,7 +9793,7 @@
       "notes": []
     },
     "335": {
-      "play": "Achilles and Patroclus exit.",
+      "play": "[Achilles and Patroclus exit.]",
       "notes": []
     },
     "336": {
@@ -9809,13 +9809,13 @@
       "notes": []
     },
     "339": {
-      "play": "He exits.",
+      "play": "[He exits.]",
       "notes": []
     }
   },
   "ACT 4, SCENE 1": {
     "1": {
-      "play": "Enter at one door Aeneas with a Torchbearer, at",
+      "play": "[Enter at one door Aeneas with a Torchbearer, at",
       "notes": []
     },
     "2": {
@@ -9823,7 +9823,7 @@
       "notes": []
     },
     "3": {
-      "play": "Grecians with torches.",
+      "play": "Grecians with torches.]",
       "notes": []
     },
     "4": {
@@ -10196,13 +10196,13 @@
       "notes": []
     },
     "90": {
-      "play": "They exit.",
+      "play": "[They exit.]",
       "notes": []
     }
   },
   "ACT 4, SCENE 2": {
     "1": {
-      "play": "Enter Troilus and Cressida.",
+      "play": "[Enter Troilus and Cressida.]",
       "notes": []
     },
     "2": {
@@ -10316,7 +10316,7 @@
       "notes": []
     },
     "28": {
-      "play": "Enter Pandarus.",
+      "play": "[Enter Pandarus.]",
       "notes": []
     },
     "29": {
@@ -10416,7 +10416,7 @@
       "notes": []
     },
     "51": {
-      "play": "Troilus and Cressida exit.",
+      "play": "[Troilus and Cressida exit.]",
       "notes": []
     },
     "52": {
@@ -10428,7 +10428,7 @@
       "notes": []
     },
     "54": {
-      "play": "Enter Aeneas.",
+      "play": "[Enter Aeneas.]",
       "notes": []
     },
     "55": {
@@ -10494,7 +10494,7 @@
       "notes": []
     },
     "70": {
-      "play": "Enter Troilus.",
+      "play": "[Enter Troilus.]",
       "notes": []
     },
     "71": {
@@ -10568,7 +10568,7 @@
       "notes": []
     },
     "88": {
-      "play": "Troilus and Aeneas exit.",
+      "play": "[Troilus and Aeneas exit.]",
       "notes": []
     },
     "89": {
@@ -10588,7 +10588,7 @@
       "notes": []
     },
     "93": {
-      "play": "Enter Cressida.",
+      "play": "[Enter Cressida.]",
       "notes": []
     },
     "94": {
@@ -10722,17 +10722,17 @@
       "notes": []
     },
     "126": {
-      "play": "They exit.",
+      "play": "[They exit.]",
       "notes": []
     }
   },
   "ACT 4, SCENE 3": {
     "1": {
-      "play": "Enter Paris, Troilus, Aeneas, Deiphobus, Antenor,",
+      "play": "[Enter Paris, Troilus, Aeneas, Deiphobus, Antenor,",
       "notes": []
     },
     "2": {
-      "play": "and Diomedes.",
+      "play": "and Diomedes.]",
       "notes": []
     },
     "3": {
@@ -10792,13 +10792,13 @@
       "notes": []
     },
     "16": {
-      "play": "They exit.",
+      "play": "[They exit.]",
       "notes": []
     }
   },
   "ACT 4, SCENE 4": {
     "1": {
-      "play": "Enter Pandarus and Cressida, weeping.",
+      "play": "[Enter Pandarus and Cressida, weeping.]",
       "notes": []
     },
     "2": {
@@ -10846,7 +10846,7 @@
       "notes": []
     },
     "12": {
-      "play": "Enter Troilus.",
+      "play": "[Enter Troilus.]",
       "notes": []
     },
     "13": {
@@ -11044,7 +11044,7 @@
       "notes": []
     },
     "59": {
-      "play": "He exits.",
+      "play": "[He exits.]",
       "notes": [
         "] PORTER and CLARKE (ed. 1910) think that Act IV ended here, \"the use of the rear-stage structure as Pandarus's house being concluded.\""
       ]
@@ -11330,11 +11330,11 @@
       "notes": []
     },
     "124": {
-      "play": "Enter Aeneas, Paris, Antenor, Deiphobus, and",
+      "play": "[Enter Aeneas, Paris, Antenor, Deiphobus, and",
       "notes": []
     },
     "125": {
-      "play": "Diomedes.",
+      "play": "Diomedes.]",
       "notes": []
     },
     "126": {
@@ -11482,11 +11482,11 @@
       "notes": []
     },
     "159": {
-      "play": "Cressida, Diomedes, and Troilus exit.",
+      "play": "[Cressida, Diomedes, and Troilus exit.]",
       "notes": []
     },
     "160": {
-      "play": "Sound trumpet within.",
+      "play": "[Sound trumpet within.]",
       "notes": []
     },
     "161": {
@@ -11536,17 +11536,17 @@
       ]
     },
     "172": {
-      "play": "They exit.",
+      "play": "[They exit.]",
       "notes": []
     }
   },
   "ACT 4, SCENE 5": {
     "1": {
-      "play": "Enter Ajax, armed, Achilles, Patroclus, Agamemnon,",
+      "play": "[Enter Ajax, armed, Achilles, Patroclus, Agamemnon,",
       "notes": []
     },
     "2": {
-      "play": "Menelaus, Ulysses, Nestor, etc. and Trumpeter.",
+      "play": "Menelaus, Ulysses, Nestor, etc. and Trumpeter.]",
       "notes": []
     },
     "3": {
@@ -11626,7 +11626,7 @@
       ]
     },
     "19": {
-      "play": "Enter Cressida and Diomedes.",
+      "play": "[Enter Cressida and Diomedes.]",
       "notes": []
     },
     "20": {
@@ -11905,11 +11905,11 @@
       ]
     },
     "82": {
-      "play": "Diomedes and Cressida exit.",
+      "play": "[Diomedes and Cressida exit.]",
       "notes": []
     },
     "83": {
-      "play": "Flourish.",
+      "play": "[Flourish.]",
       "notes": []
     },
     "84": {
@@ -11917,13 +11917,13 @@
       "notes": []
     },
     "85": {
-      "play": "Enter all of Troy: Hector, armed, Paris, Aeneas,",
+      "play": "[Enter all of Troy: Hector, armed, Paris, Aeneas,",
       "notes": [
         "Troians] DELIUS (ed. 1856) suggests “Trojan’s” (instead of the usual “Trojans'”), linking it with iv.iv.149: “Harke, Hector’s Trumpet.”"
       ]
     },
     "86": {
-      "play": "Helenus, Troilus, and Attendants.",
+      "play": "Helenus, Troilus, and Attendants.]",
       "notes": []
     },
     "87": {
@@ -12050,7 +12050,7 @@
       ]
     },
     "115": {
-      "play": "Enter Diomedes.",
+      "play": "[Enter Diomedes.]",
       "notes": []
     },
     "116": {
@@ -12172,7 +12172,7 @@
       ]
     },
     "142": {
-      "play": "Alarum. The fight begins.",
+      "play": "[Alarum. The fight begins.]",
       "notes": []
     },
     "143": {
@@ -12192,7 +12192,7 @@
       "notes": []
     },
     "147": {
-      "play": "Trumpets cease.",
+      "play": "[Trumpets cease.]",
       "notes": []
     },
     "148": {
@@ -12986,11 +12986,11 @@
       "notes": []
     },
     "332": {
-      "play": "Flourish.",
+      "play": "[Flourish.]",
       "notes": []
     },
     "333": {
-      "play": "All but Troilus and Ulysses exit.",
+      "play": "[All but Troilus and Ulysses exit.]",
       "notes": []
     },
     "334": {
@@ -13066,13 +13066,13 @@
       "notes": []
     },
     "352": {
-      "play": "They exit.",
+      "play": "[They exit.]",
       "notes": []
     }
   },
   "ACT 5, SCENE 1": {
     "1": {
-      "play": "Enter Achilles and Patroclus.",
+      "play": "[Enter Achilles and Patroclus.]",
       "notes": []
     },
     "2": {
@@ -13092,7 +13092,7 @@
       "notes": []
     },
     "6": {
-      "play": "Enter Thersites.",
+      "play": "[Enter Thersites.]",
       "notes": []
     },
     "7": {
@@ -13399,11 +13399,11 @@
       "notes": []
     },
     "72": {
-      "play": "Enter Hector, Troilus, Ajax, Agamemnon, Ulysses,",
+      "play": "[Enter Hector, Troilus, Ajax, Agamemnon, Ulysses,",
       "notes": []
     },
     "73": {
-      "play": "Nestor, Menelaus, and Diomedes, with lights.",
+      "play": "Nestor, Menelaus, and Diomedes, with lights.]",
       "notes": []
     },
     "74": {
@@ -13429,7 +13429,7 @@
       "notes": []
     },
     "79": {
-      "play": "Enter Achilles.",
+      "play": "[Enter Achilles.]",
       "notes": []
     },
     "80": {
@@ -13491,7 +13491,7 @@
       "notes": []
     },
     "94": {
-      "play": "Agamemnon and Menelaus exit.",
+      "play": "[Agamemnon and Menelaus exit.]",
       "notes": []
     },
     "95": {
@@ -13545,7 +13545,7 @@
       ]
     },
     "107": {
-      "play": "Achilles, Ajax, Nestor, and Hector exit.",
+      "play": "[Achilles, Ajax, Nestor, and Hector exit.]",
       "notes": []
     },
     "108": {
@@ -13597,13 +13597,13 @@
       "notes": []
     },
     "119": {
-      "play": "He exits.",
+      "play": "[He exits.]",
       "notes": []
     }
   },
   "ACT 5, SCENE 2": {
     "1": {
-      "play": "Enter Diomedes.",
+      "play": "[Enter Diomedes.]",
       "notes": []
     },
     "2": {
@@ -13627,11 +13627,11 @@
       "notes": []
     },
     "7": {
-      "play": "Enter Troilus and Ulysses, at a distance, and then,",
+      "play": "[Enter Troilus and Ulysses, at a distance, and then,",
       "notes": []
     },
     "8": {
-      "play": "apart from them, Thersites.",
+      "play": "apart from them, Thersites.]",
       "notes": []
     },
     "9": {
@@ -13643,7 +13643,7 @@
       "notes": []
     },
     "11": {
-      "play": "Enter Cressida.",
+      "play": "[Enter Cressida.]",
       "notes": []
     },
     "12": {
@@ -13983,7 +13983,7 @@
       "notes": []
     },
     "93": {
-      "play": "Enter Cressida with Troilus’s sleeve.",
+      "play": "[Enter Cressida with Troilus’s sleeve.]",
       "notes": []
     },
     "94": {
@@ -14233,7 +14233,7 @@
       "notes": []
     },
     "153": {
-      "play": "He exits.",
+      "play": "[He exits.]",
       "notes": []
     },
     "154": {
@@ -14613,7 +14613,7 @@
       "notes": []
     },
     "238": {
-      "play": "Enter Aeneas.",
+      "play": "[Enter Aeneas.]",
       "notes": []
     },
     "239": {
@@ -14655,7 +14655,7 @@
       "notes": []
     },
     "248": {
-      "play": "Troilus, Aeneas, and Ulysses exit.",
+      "play": "[Troilus, Aeneas, and Ulysses exit.]",
       "notes": []
     },
     "249": {
@@ -14687,13 +14687,13 @@
       "notes": []
     },
     "256": {
-      "play": "He exits.",
+      "play": "[He exits.]",
       "notes": []
     }
   },
   "ACT 5, SCENE 3": {
     "1": {
-      "play": "Enter Hector, armed, and Andromache.",
+      "play": "[Enter Hector, armed, and Andromache.]",
       "notes": []
     },
     "2": {
@@ -14729,7 +14729,7 @@
       "notes": []
     },
     "9": {
-      "play": "Enter Cassandra.",
+      "play": "[Enter Cassandra.]",
       "notes": []
     },
     "10": {
@@ -14848,7 +14848,7 @@
       ]
     },
     "35": {
-      "play": "Enter Troilus, armed.",
+      "play": "[Enter Troilus, armed.]",
       "notes": []
     },
     "36": {
@@ -14860,7 +14860,7 @@
       "notes": []
     },
     "38": {
-      "play": "Cassandra exits.",
+      "play": "[Cassandra exits.]",
       "notes": []
     },
     "39": {
@@ -14999,7 +14999,7 @@
       "notes": []
     },
     "70": {
-      "play": "Enter Priam and Cassandra.",
+      "play": "[Enter Priam and Cassandra.]",
       "notes": []
     },
     "71": {
@@ -15105,7 +15105,7 @@
       "notes": []
     },
     "96": {
-      "play": "Andromache exits.",
+      "play": "[Andromache exits.]",
       "notes": []
     },
     "97": {
@@ -15181,7 +15181,7 @@
       "notes": []
     },
     "115": {
-      "play": "Alarum.",
+      "play": "[Alarum.]",
       "notes": []
     },
     "116": {
@@ -15193,7 +15193,7 @@
       "notes": []
     },
     "118": {
-      "play": "Enter Pandarus, with a paper.",
+      "play": "[Enter Pandarus, with a paper.]",
       "notes": []
     },
     "119": {
@@ -15271,13 +15271,13 @@
       "notes": []
     },
     "136": {
-      "play": "They exit.",
+      "play": "[They exit.]",
       "notes": []
     }
   },
   "ACT 5, SCENE 4": {
     "1": {
-      "play": "Alarum. Excursions. Enter Thersites.",
+      "play": "[Alarum. Excursions. Enter Thersites.]",
       "notes": []
     },
     "2": {
@@ -15366,7 +15366,7 @@
       "notes": []
     },
     "20": {
-      "play": "Enter Diomedes, and Troilus pursuing him.",
+      "play": "[Enter Diomedes, and Troilus pursuing him.]",
       "notes": []
     },
     "21": {
@@ -15425,7 +15425,7 @@
       ]
     },
     "33": {
-      "play": "Enter Hector.",
+      "play": "[Enter Hector.]",
       "notes": []
     },
     "34": {
@@ -15475,7 +15475,7 @@
       "notes": []
     },
     "45": {
-      "play": "He exits.",
+      "play": "[He exits.]",
       "notes": []
     },
     "54": {
@@ -15491,7 +15491,7 @@
   },
   "ACT 5, SCENE 5": {
     "1": {
-      "play": "Enter Diomedes and Servingman.",
+      "play": "[Enter Diomedes and Servingman.]",
       "notes": []
     },
     "2": {
@@ -15519,7 +15519,7 @@
       "notes": []
     },
     "8": {
-      "play": "Enter Agamemnon.",
+      "play": "[Enter Agamemnon.]",
       "notes": []
     },
     "9": {
@@ -15569,11 +15569,11 @@
       "notes": []
     },
     "20": {
-      "play": "Enter Nestor, with Soldiers bearing the body of",
+      "play": "[Enter Nestor, with Soldiers bearing the body of",
       "notes": []
     },
     "21": {
-      "play": "Patroclus.",
+      "play": "Patroclus.]",
       "notes": []
     },
     "22": {
@@ -15637,7 +15637,7 @@
       "notes": []
     },
     "36": {
-      "play": "Enter Ulysses.",
+      "play": "[Enter Ulysses.]",
       "notes": []
     },
     "37": {
@@ -15701,7 +15701,7 @@
       "notes": []
     },
     "51": {
-      "play": "Enter Ajax.",
+      "play": "[Enter Ajax.]",
       "notes": []
     },
     "52": {
@@ -15717,7 +15717,7 @@
       "notes": []
     },
     "55": {
-      "play": "Enter Achilles.",
+      "play": "[Enter Achilles.]",
       "notes": []
     },
     "56": {
@@ -15743,7 +15743,7 @@
   },
   "ACT 5, SCENE 6": {
     "1": {
-      "play": "Enter Ajax.",
+      "play": "[Enter Ajax.]",
       "notes": []
     },
     "2": {
@@ -15751,7 +15751,7 @@
       "notes": []
     },
     "3": {
-      "play": "Enter Diomedes.",
+      "play": "[Enter Diomedes.]",
       "notes": []
     },
     "4": {
@@ -15775,7 +15775,7 @@
       "notes": []
     },
     "9": {
-      "play": "Enter Troilus.",
+      "play": "[Enter Troilus.]",
       "notes": []
     },
     "10": {
@@ -15808,7 +15808,7 @@
       "notes": []
     },
     "16": {
-      "play": "Enter Hector.",
+      "play": "[Enter Hector.]",
       "notes": []
     },
     "17": {
@@ -15820,7 +15820,7 @@
       "notes": []
     },
     "19": {
-      "play": "Enter Achilles.",
+      "play": "[Enter Achilles.]",
       "notes": [
         "dragon wing of night] ANDERS (Sh.'s Books, 1904, p. 101) cites Midsummer-Night's Dream, iii.ii.379: \"For night's swift dragons cut the clouds full fast\"; and Cymbeline, ii.ii.48: \"Swift, swift, you dragons of the night.\""
       ]
@@ -15879,7 +15879,7 @@
       "notes": []
     },
     "31": {
-      "play": "Enter Troilus.",
+      "play": "[Enter Troilus.]",
       "notes": []
     },
     "32": {
@@ -15907,11 +15907,11 @@
       "notes": []
     },
     "38": {
-      "play": "He exits.",
+      "play": "[He exits.]",
       "notes": []
     },
     "39": {
-      "play": "Enter one in Greek armor.",
+      "play": "[Enter one in Greek armor.]",
       "notes": []
     },
     "40": {
@@ -15939,13 +15939,13 @@
       "notes": []
     },
     "46": {
-      "play": "He exits.",
+      "play": "[He exits.]",
       "notes": []
     }
   },
   "ACT 5, SCENE 7": {
     "1": {
-      "play": "Enter Achilles, with Myrmidons.",
+      "play": "[Enter Achilles, with Myrmidons.]",
       "notes": []
     },
     "2": {
@@ -15983,7 +15983,7 @@
       "notes": []
     },
     "10": {
-      "play": "They exit.",
+      "play": "[They exit.]",
       "notes": [
         "fmlie] WARBURTON (ed. 1747): Here Troilus is made to invoke the Gods to “frown” in one line, and to “smile” in the other: And, as if he had not talked nonsense enough, after having made them do and undo, and protract the fate of Troy, in the next line he begs them to be speedy and “brief,” and dispatch them at once. We should read ... “smite.”—UPTON (Critical Ob-"
       ]
@@ -15991,7 +15991,7 @@
   },
   "ACT 5, SCENE 8": {
     "1": {
-      "play": "Enter Thersites; then Menelaus fighting Paris.",
+      "play": "[Enter Thersites; then Menelaus fighting Paris.]",
       "notes": []
     },
     "2": {
@@ -16015,7 +16015,7 @@
       "notes": []
     },
     "7": {
-      "play": "Enter Bastard.",
+      "play": "[Enter Bastard.]",
       "notes": []
     },
     "8": {
@@ -16063,13 +16063,13 @@
       "notes": []
     },
     "19": {
-      "play": "He exits.",
+      "play": "[He exits.]",
       "notes": []
     }
   },
   "ACT 5, SCENE 9": {
     "1": {
-      "play": "Enter Hector, with the body of the Greek in armor.",
+      "play": "[Enter Hector, with the body of the Greek in armor.]",
       "notes": []
     },
     "2": {
@@ -16093,7 +16093,7 @@
       "notes": []
     },
     "7": {
-      "play": "Enter Achilles and his Myrmidons.",
+      "play": "[Enter Achilles and his Myrmidons.]",
       "notes": []
     },
     "8": {
@@ -16145,7 +16145,7 @@
       "notes": []
     },
     "19": {
-      "play": "Retreat sounded from both armies.",
+      "play": "[Retreat sounded from both armies.]",
       "notes": []
     },
     "20": {
@@ -16190,7 +16190,7 @@
       ]
     },
     "29": {
-      "play": "They exit with the bodies.",
+      "play": "[They exit with the bodies.]",
       "notes": []
     },
     "39": {
@@ -16236,7 +16236,7 @@
   },
   "ACT 5, SCENE 10": {
     "1": {
-      "play": "Sound retreat. Enter Agamemnon, Ajax, Menelaus,",
+      "play": "[Sound retreat. Enter Agamemnon, Ajax, Menelaus,",
       "notes": []
     },
     "2": {
@@ -16244,7 +16244,7 @@
       "notes": []
     },
     "3": {
-      "play": "drums. Shout within.",
+      "play": "drums. Shout within.]",
       "notes": []
     },
     "4": {
@@ -16292,17 +16292,17 @@
       "notes": []
     },
     "15": {
-      "play": "They exit, marching.",
+      "play": "[They exit, marching.]",
       "notes": []
     }
   },
   "ACT 5, SCENE 11": {
     "1": {
-      "play": "Enter Aeneas, Paris, Antenor, Deiphobus, and Trojan",
+      "play": "[Enter Aeneas, Paris, Antenor, Deiphobus, and Trojan",
       "notes": []
     },
     "2": {
-      "play": "soldiers.",
+      "play": "soldiers.]",
       "notes": []
     },
     "3": {
@@ -16314,7 +16314,7 @@
       "notes": []
     },
     "5": {
-      "play": "Enter Troilus.",
+      "play": "[Enter Troilus.]",
       "notes": []
     },
     "6": {
@@ -16442,7 +16442,7 @@
       "notes": []
     },
     "37": {
-      "play": "Enter Pandarus.",
+      "play": "[Enter Pandarus.]",
       "notes": []
     },
     "38": {
@@ -16458,7 +16458,7 @@
       "notes": []
     },
     "41": {
-      "play": "All but Pandarus exit.",
+      "play": "[All but Pandarus exit.]",
       "notes": []
     },
     "42": {
@@ -16554,7 +16554,7 @@
       "notes": []
     },
     "65": {
-      "play": "He exits.",
+      "play": "[He exits.]",
       "notes": []
     }
   }

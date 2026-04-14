@@ -119,7 +119,7 @@
   },
   "ACT 1 SCENE 1": {
     "1": {
-      "play": "Enter Camillo and Archidamus.",
+      "play": "[Enter Camillo and Archidamus.]",
       "notes": [
         "[winters tale.]—LLOYD (p. 133): The title suggests that it is in some manner a pendant of the Midsummer Night's Dream. The classic and romantic, the pagan and chivalric, are huddled and combined here as there, and still more glaringly and unscrupulously. In this play, however, we have no night scenes; the sea side storm is wintry; there is a hint of season once at the fall of summer, and more significantly in the words of Mamilius, that note a tale of sadness as fittest for winter. Perhaps, again, the length of time covered by the story is in the spirit of a winter's tale, when time is to spare for unstinted narrative; but the main appropriateness of the title depends, after all, on the certain abruptness and violence of transition and combination which pervade the play, of which the anachronisms are minor types, associated with incongruities, to the full as startling, in the province of History's other handmaid, Geography.—R. G. WHITE (ed. i, 272): Shakespeare sought only to put a very popular story into a dramatic form; and of this he advertised his hearers by calling this play a Tale, just as before he had called a play similarly wanting in dramatic interest a Dream.—HALLIWELL (Introd. p. 45): The title, an acknowledgment that although a regular drama it was also a romance or tale suited for the evenings of winter, is, perhaps, a reason for the supposition that it originally appeared at the Blackfriars, a theatre which restricted its season to the winter months. The words of Mamilius in the Second Act can scarcely be imagined to have any intimate connection with the selection of the title of the comedy. In Shakespeare's time the country fire-side attracted many a narrator, whose knowledge of the vernacular traditional and imaginary tales current at the time would have sufficed to explain more than one allusion in contemporary literature that has baffled the collective efforts of modern enquirers. Many a winter's tale has shared the fate of Wade and his boat Guingelot, which was then so universally known that an editor of the time excuses himself from giving even an outline of the story, but the slightest further trace of which has escaped the careful researches of all who have treated on the series of romances to which it is supposed to have belonged. [See Tyrwhitt's note on v. 9298, Canterbury Tales.—Ed.]—WARD (i, 437): It is possible that the pretty title was suggested to Shakespeare by that of A Winter Night's Vision, an addition to The Mirror for Magistrates, published by Nichols in 1610, the year when The Winter's Tale was perhaps written."
       ]
@@ -333,17 +333,17 @@
       "notes": []
     },
     "50": {
-      "play": "They exit.",
+      "play": "[They exit.]",
       "notes": []
     }
   },
   "ACT 1 SCENE 2": {
     "1": {
-      "play": "Enter Leontes, Hermione, Mamillius, Polixenes, Camillo,",
+      "play": "[Enter Leontes, Hermione, Mamillius, Polixenes, Camillo,",
       "notes": []
     },
     "2": {
-      "play": "and Attendants.",
+      "play": "and Attendants.]",
       "notes": []
     },
     "3": {
@@ -1432,7 +1432,7 @@
       ]
     },
     "234": {
-      "play": "Exit Hermione, Polixenes, and Attendants.",
+      "play": "[Exit Hermione, Polixenes, and Attendants.]",
       "notes": []
     },
     "235": {
@@ -1572,7 +1572,7 @@
       ]
     },
     "266": {
-      "play": "Mamillius exits.",
+      "play": "[Mamillius exits.]",
       "notes": []
     },
     "267": {
@@ -1608,7 +1608,7 @@
       "notes": []
     },
     "274": {
-      "play": "Aside. They’re here with me already, whisp’ring,",
+      "play": "[Aside.] They’re here with me already, whisp’ring,",
       "notes": [
         "They’re here with me] THIRLBY: Not Polixenes and Hermione, but casual observers. [Be it remembered that, as in Hanmer’s text, this is an aside.—ED.] COLLIER: This means ‘they are aware of my condition.’ [STAUNTON, after quoting both of these observations, exclaims, ‘Strange forgetfulness of a common form of speech!’ and then continues]. By ‘They’re here with me already,’ the king means,—the people are already mocking me with this opprobrious gesture (the cuckold’s emblem with their fingers), and whispering, etc. So in Cor. III, ii, 74—‘Go to them, with this bonnet in thy hand; And thus far having stretch’d it (here be with them).’ [Staunton strangely omits the next line wherein lies the whole point of the speech:—‘Thy knee bussing the stones.’ It is this action of kneeling to which Volumnia refers when she says to Coriolanus: ‘here be with them.’",
         "They're here with me] THIRLBY: Not Polixenes and Hermione, but casual observers. [Be it remembered that, as in Hanmer’s text, this is an aside.—ED.] COLLIER: This means ‘they are aware of my condition.’ [STAUNTON, after quoting both of these observations, exclaims, ‘Strange forgetfulness of a common form of speech!’ and then continues]. By ‘They’re here with me already,’ the king means,—the people are already mocking me with this opprobrious gesture (the cuckold’s emblem with their fingers), and whispering, etc. So in Cor. III, ii, 74,—‘Go to them, with this bonnet in thy hand; And thus far having stretch’d it (here be with them).’ [Staunton strangely omits the next line wherein lies the whole point of the speech:—‘Thy knee bussing the stones.’ It is this action of kneeling to which Volumnia refers when she says to Coriolanus: ‘here be with them.’ In his",
@@ -2317,7 +2317,7 @@
       "notes": []
     },
     "428": {
-      "play": "He exits.",
+      "play": "[He exits.]",
       "notes": []
     },
     "429": {
@@ -2389,7 +2389,7 @@
       "notes": []
     },
     "443": {
-      "play": "Enter Polixenes.",
+      "play": "[Enter Polixenes.]",
       "notes": []
     },
     "444": {
@@ -2946,13 +2946,13 @@
       "notes": []
     },
     "563": {
-      "play": "They exit.",
+      "play": "[They exit.]",
       "notes": []
     }
   },
   "ACT 2 SCENE 1": {
     "1": {
-      "play": "Enter Hermione, Mamillius, and Ladies.",
+      "play": "[Enter Hermione, Mamillius, and Ladies.]",
       "notes": [
         "Hermione, Mamillius] See Dorastus and Fawnia."
       ]
@@ -3144,7 +3144,7 @@
       "notes": []
     },
     "45": {
-      "play": "Enter Leontes, Antigonus, and Lords.",
+      "play": "[Enter Leontes, Antigonus, and Lords.]",
       "notes": []
     },
     "46": {
@@ -4046,13 +4046,13 @@
       "notes": []
     },
     "246": {
-      "play": "They exit.",
+      "play": "[They exit.]",
       "notes": []
     }
   },
   "ACT 2 SCENE 2": {
     "1": {
-      "play": "Enter Paulina, a Gentleman, and Paulina’s Attendants.",
+      "play": "[Enter Paulina, a Gentleman, and Paulina’s Attendants.]",
       "notes": [
         "Enter Paulina] LADY MARTIN (p. 353): Paulina, the wife of Antigonus, a lady of high position, henceforth fills a most important part in the drama, and should be impersonated in any adequate representation of the play by an actress of the first order. She is a woman of no ordinary sagacity, with a warm heart, a vigorous brain, and an ardent temper. Her love for Hermione has its roots in admiration and reverence for all the good and gracious qualities of which the queen's daily life has given witness. She has been much about her royal mistress, and much esteemed and trusted by her. Leontes, knowing this, obviously anticipates that she will not remain quiet when she hears of the charge he has brought against the queen, and that he has thrust her into prison. Accordingly, he has given express orders that Paulina is not to be admitted to the prison, and this fresh act of cruelty she learns from the governor only when she arrives there in the hope of being some comfort to her much-wronged mistress."
       ]
@@ -4072,7 +4072,7 @@
       ]
     },
     "5": {
-      "play": "Gentleman exits.",
+      "play": "[Gentleman exits.]",
       "notes": []
     },
     "6": {
@@ -4090,7 +4090,7 @@
       ]
     },
     "9": {
-      "play": "Enter Jailer, with the Gentleman.",
+      "play": "[Enter Jailer, with the Gentleman.]",
       "notes": []
     },
     "10": {
@@ -4160,7 +4160,7 @@
       ]
     },
     "26": {
-      "play": "Attendants and Gentleman exit.",
+      "play": "[Attendants and Gentleman exit.]",
       "notes": []
     },
     "27": {
@@ -4180,7 +4180,7 @@
       "notes": []
     },
     "31": {
-      "play": "Enter Emilia with Jailer.",
+      "play": "[Enter Emilia with Jailer.]",
       "notes": []
     },
     "32": {
@@ -4432,13 +4432,13 @@
       "notes": []
     },
     "88": {
-      "play": "They exit.",
+      "play": "[They exit.]",
       "notes": []
     }
   },
   "ACT 2 SCENE 3": {
     "1": {
-      "play": "Enter Leontes.",
+      "play": "[Enter Leontes.]",
       "notes": []
     },
     "2": {
@@ -4484,7 +4484,7 @@
       "notes": []
     },
     "11": {
-      "play": "Enter a Servant.",
+      "play": "[Enter a Servant.]",
       "notes": []
     },
     "12": {
@@ -4579,11 +4579,11 @@
       "notes": []
     },
     "32": {
-      "play": "Enter Paulina, carrying the baby, with Servants,",
+      "play": "[Enter Paulina, carrying the baby, with Servants,",
       "notes": []
     },
     "33": {
-      "play": "Antigonus, and Lords.",
+      "play": "Antigonus, and Lords.]",
       "notes": []
     },
     "34": {
@@ -5532,7 +5532,7 @@
       "notes": []
     },
     "245": {
-      "play": "Enter a Servant.",
+      "play": "[Enter a Servant.]",
       "notes": []
     },
     "246": {
@@ -5616,13 +5616,13 @@
       ]
     },
     "263": {
-      "play": "They exit.",
+      "play": "[They exit.]",
       "notes": []
     }
   },
   "ACT 3 SCENE 1": {
     "1": {
-      "play": "Enter Cleomenes and Dion.",
+      "play": "[Enter Cleomenes and Dion.]",
       "notes": [
         "Actus Tertius] THEOBALD (Nichols, ii, 361): I think this ought rather to be the last scene of the Second Act. We find, at II, iii, 234, that Cleomines and Dion are arrived from Delphos, but at line 28 of the present scene, they are not yet arrived to Court, but want fresh horses for their last stage; and yet the very next scene opens with the session convened for the queen’s trial, the determination of which was to await the answer of the Oracle. This hurries the action on with somewhat too much precipitation; and, besides, the interval of an Act is absolutely necessary, for placing the benches, and other formalities, requisite to represent a Court of Judicature. [Theobald did not repeat this in his subsequent edition.]—KOPPEL (Sh. Jahrbuch, ix, 289): The ‘Sea-port in Sicilia’ of the Cam. Ed. is erroneous; for in the last scene of the preceding Act the messenger has already reached the Court who had left them at the harbour, and since they were hasting thence on their way to the Court, they could not possibly be still at the sea-port. Moreover, if, while still at the sea-port, they called for ‘fresh horses,’ we should have to assume that they had performed a sea-voyage on horseback.—HALLIWELL: The present scene takes place apparently in Delphi, soon after Cleomenes and Dion had visited the Oracle, the allusion to the happy issue of the journey referring to the accomplishment of the object of their mission, not necessarily including their return to Sicily. It is to be assumed the temple was some distance from the sea, and they required fresh horses, not for their",
         "LADY MARTIN (p. 358): Here follows one of those exquisite scenes with which Shakespeare so often enriches his plays, in the creative exuberance of his imagination, and prompted by the subtle sense of what is wanted to put his audience in the right mood for what is next to follow. After all the prophetic vehemence of Paulina and the insane passion of Leontes, he seems to have felt that something in a gentler strain was needed to calm the emotions of his hearers, and lift them into a serener air, before showing Hermione upon her trial."
@@ -5747,13 +5747,13 @@
       "notes": []
     },
     "29": {
-      "play": "They exit.",
+      "play": "[They exit.]",
       "notes": []
     }
   },
   "ACT 3 SCENE 2": {
     "1": {
-      "play": "Enter Leontes, Lords, and Officers.",
+      "play": "[Enter Leontes, Lords, and Officers.]",
       "notes": [
         "LADY MARTIN (p. 359): This is a scene which makes a large demand upon the resources of an actress, both personal and mental. With enfeebled health, and placed in a most ignominious position, Hermione must be shown to maintain her queenly dignity, and to control her passionate emotion under an outward bearing of resigned fortitude and almost inconceivable forbearance. In my early studies for the impersonation of Hermione, and in my acting of the character, I used to find myself imagining the procession of the queen and her suite through the streets, ‘i’ the open air,’ from the prison, where she had spent the last few weeks, to the Hall of Justice. Her ladies are by her side, not weeping now, for their mistress had shown them how to bear affliction. The fragile form, the sad, far-away looking eyes, the pale but lovely face, so stricken with suffering, reveal too well all that she has been passing through. Whatever impression of the queen’s guilt may have been raised in the people’s mind by the sudden flight of Polixenes and his followers, her look and bearing, I felt, must dispel every thought save that of the cruel indignity with which she had been treated. No taunting voice would be raised. The rumour would have gone abroad that the young Prince Mamillius had been denied access to her, that the newly born babe, her one solace in her prison, had been taken from her and cast out to die a cruel death. The people would think, too, of the indecent haste which was now hurrying her to her trial before the Court of Justice, with no allowance for the time of rest, which, after the pains of maternity, ‘longs to women of all fashion.’ Had she turned her head towards the crowd, she would have seen the men with bowed heads and looks of reverence and pity,—the women with streaming eyes bent tenderly and sympathisingly upon her. But, no! her thoughts were away upon the scene that awaited her. Would her strength avail for the strain which she knew was presently to be put upon it, when alone, unaided, she must plead her cause, with more than her life,—her honour,—at stake, and with him for her accuser who should best have known how her whole nature belied his accusation? Sorely, indeed, does she need that the heavens shall look ‘with an aspect more favourable’ upon her."
       ]
@@ -5806,7 +5806,7 @@
       "notes": []
     },
     "12": {
-      "play": "Enter Hermione, as to her trial, Paulina, and Ladies.",
+      "play": "[Enter Hermione, as to her trial, Paulina, and Ladies.]",
       "notes": []
     },
     "13": {
@@ -6348,7 +6348,7 @@
       "notes": []
     },
     "134": {
-      "play": "Enter Cleomenes, Dion, with Officers.",
+      "play": "[Enter Cleomenes, Dion, with Officers.]",
       "notes": []
     },
     "135": {
@@ -6446,7 +6446,7 @@
       "notes": []
     },
     "157": {
-      "play": "Enter a Servant.",
+      "play": "[Enter a Servant.]",
       "notes": []
     },
     "158": {
@@ -6622,7 +6622,7 @@
       "notes": []
     },
     "197": {
-      "play": "Enter Paulina.",
+      "play": "[Enter Paulina.]",
       "notes": []
     },
     "198": {
@@ -6986,13 +6986,13 @@
       "notes": []
     },
     "279": {
-      "play": "They exit.",
+      "play": "[They exit.]",
       "notes": []
     }
   },
   "ACT 3 SCENE 3": {
     "1": {
-      "play": "Enter Antigonus carrying the babe, and a Mariner.",
+      "play": "[Enter Antigonus carrying the babe, and a Mariner.]",
       "notes": [
         "Scæna Tertia] HUDSON (p. 14): It is to be noted that while the play divides itself into two parts, these are skillfully woven together by a happy stroke of art. The last scene of the Third Act not only finishes the action of the first three, but by an apt and unforced transition begins that of the other two; the two parts of the drama being smoothly drawn into the unity of a continuous whole by the introduction of the old Shepherd and his son at the close of the one and the opening of the other. This natural arrangement saves the imagination from being disturbed by any yawning or obtrusive gap of time, notwithstanding the lapse of so many years in the interval.",
         "HALLIWELL: This stage-direction is merely a note for the actors as to what players were to be in readiness, not a direction for them all to appear upon the stage at the commencement of the scene. There were probably more than one mariner entering with Antigonus, at least if we may be guided by the note in Drummond's account of his Conversations with Ben Jonson, [where the latter speaks of ‘a number of men’ who had suffered ‘ship-wrack.’ See note, below.]"
@@ -7297,7 +7297,7 @@
       "notes": []
     },
     "68": {
-      "play": "Enter Shepherd.",
+      "play": "[Enter Shepherd.]",
       "notes": [
         "Shep.] COLLIER (ed. ii): It is worth noting that ‘Crooke’ is written in the margin of the corrected F, to indicate that the Shepherd was to be furnished with that appropriate property."
       ]
@@ -7394,7 +7394,7 @@
       ]
     },
     "88": {
-      "play": "Enter Shepherd’s Son.",
+      "play": "[Enter Shepherd’s Son.]",
       "notes": []
     },
     "89": {
@@ -7672,13 +7672,13 @@
       "notes": []
     },
     "151": {
-      "play": "They exit.",
+      "play": "[They exit.]",
       "notes": []
     }
   },
   "ACT 4 SCENE 1": {
     "1": {
-      "play": "Enter Time, the Chorus.",
+      "play": "[Enter Time, the Chorus.]",
       "notes": [
         "Actus Quartus] HUDSON (p. 28): During the first three Acts the interest of the play is mainly tragic; the scene is densely crowded with incidents; the action hurried, abrupt, almost spasmodic; the style quick and sharp, flashing off point after point in brief, sinewy strokes; and all is rapidity and dispatch; what with the insane fury of the King, the noble agony of the Queen, the enthusiasm of the Court in her behalf, and the King's violence toward both them and her, the mind is kept on the jump; all which, if continued to the end, would generate rather a tumult and hubbub in the thoughts, than that inward music which the title of the play promises; not to say, that such a prolonged hurry of movement would at length become monotonous and wearisome. Far otherwise the latter half of the play. Here the anticipations proper to a long, leisurely winter evening are fully met; the general effect is soothing and composing; the tones, dipped in sweetness, fall gently on the ear, disposing the mind to be still and listen and contemplate; thus making the play, as Coleridge describes it, 'exquisitely respondent to the title.' It would seem, indeed, that in these scenes the Poet had specially endeavoured how much of silent effect he could produce, without diverging from the dramatic form. To this end, he provides resting-places for thought; suspending or retarding the action by musical pauses and periods of lyrical movement, and breathing-in the mellowest strains of poetical harmony, till the eye is 'made quiet by the power of beauty,' and all tumult of mind is hushed by the very intensity of feeling."
       ]
@@ -7835,13 +7835,13 @@
       "notes": []
     },
     "35": {
-      "play": "He exits.",
+      "play": "[He exits.]",
       "notes": []
     }
   },
   "ACT 4 SCENE 2": {
     "1": {
-      "play": "Enter Polixenes and Camillo.",
+      "play": "[Enter Polixenes and Camillo.]",
       "notes": []
     },
     "2": {
@@ -8086,13 +8086,13 @@
       "notes": []
     },
     "59": {
-      "play": "They exit.",
+      "play": "[They exit.]",
       "notes": []
     }
   },
   "ACT 4 SCENE 3": {
     "1": {
-      "play": "Enter Autolycus singing.",
+      "play": "[Enter Autolycus singing.]",
       "notes": [
         "singing] Fynes Moryson (Itinerary, Part III, Bk i, Chap. 3, p. 48) gives the following, as a ‘Prouerbe’ which he had heard in his travels: ‘For singing Art, [they say that] The Spaniards weep, the Italians sigh, the English bleate like Goats, the Germans bellow, the French sing.’ Evidently a proverb of French origin.—Ed. See Appendix, Autolycus, for Roffe’s conclusion that ‘Autolycus, with his evident abilities, his enjoyment in the Daffodils, the songs of the birds (not forgetting the tirra-lirra of the lark), his real love for, and talents in Music, all weighed together, will ultimately turn over a new leaf.’"
       ]
@@ -8257,7 +8257,7 @@
       "notes": []
     },
     "33": {
-      "play": "Enter Shepherd’s Son.",
+      "play": "[Enter Shepherd’s Son.]",
       "notes": []
     },
     "34": {
@@ -8700,7 +8700,7 @@
       "notes": []
     },
     "133": {
-      "play": "Sings.    Jog on, jog on, the footpath way,",
+      "play": "[Sings.] Jog on, jog on, the footpath way,",
       "notes": [
         "Song.] The old tune of the song will be found in the Appendix: Music."
       ]
@@ -8720,13 +8720,13 @@
       "notes": []
     },
     "137": {
-      "play": "He exits.",
+      "play": "[He exits.]",
       "notes": []
     }
   },
   "ACT 4 SCENE 4": {
     "1": {
-      "play": "Enter Florizell and Perdita.",
+      "play": "[Enter Florizell and Perdita.]",
       "notes": [
         "Scena Quarta] HUDSON (p. 29): For simple purity and sweetness, the scene which unfolds the loves and characters of the Prince and Princess is not surpassed by anything in Shakespeare. Whatsoever is enchanting in romance, lovely in innocence, elevated in feeling, and sacred in faith, is here concentrated; forming, all together, one of those things which we always welcome as we do the return of Spring, and over which our feelings may renew their youth for ever. So long as flowers bloom and hearts love, they will do it in the spirit of this scene."
       ]
@@ -9030,7 +9030,7 @@
       "notes": []
     },
     "65": {
-      "play": "Enter Shepherd, Shepherd’s Son, Mopsa, Dorcas,",
+      "play": "[Enter Shepherd, Shepherd’s Son, Mopsa, Dorcas,",
       "notes": []
     },
     "66": {
@@ -9038,7 +9038,7 @@
       "notes": []
     },
     "67": {
-      "play": "and Polixenes and Camillo in disguise.",
+      "play": "and Polixenes and Camillo in disguise.]",
       "notes": []
     },
     "68": {
@@ -9756,7 +9756,7 @@
       "notes": []
     },
     "221": {
-      "play": "Enter a Servant.",
+      "play": "[Enter a Servant.]",
       "notes": []
     },
     "222": {
@@ -9950,7 +9950,7 @@
       "notes": []
     },
     "262": {
-      "play": "Enter Autolycus, wearing a false beard, singing.",
+      "play": "[Enter Autolycus, wearing a false beard, singing.]",
       "notes": []
     },
     "263": {
@@ -10319,7 +10319,7 @@
       "notes": []
     },
     "345": {
-      "play": "Song.",
+      "play": "[Song.]",
       "notes": []
     },
     "346": {
@@ -10429,7 +10429,7 @@
       "notes": []
     },
     "371": {
-      "play": "Song.",
+      "play": "[Song.]",
       "notes": []
     },
     "372": {
@@ -10473,11 +10473,11 @@
       ]
     },
     "381": {
-      "play": "He exits.",
+      "play": "[He exits.]",
       "notes": []
     },
     "382": {
-      "play": "Enter a Servant.",
+      "play": "[Enter a Servant.]",
       "notes": []
     },
     "383": {
@@ -10587,7 +10587,7 @@
       "notes": []
     },
     "406": {
-      "play": "Herdsmen, Musicians, and Servants exit.",
+      "play": "[Herdsmen, Musicians, and Servants exit.]",
       "notes": []
     },
     "407": {
@@ -12060,7 +12060,7 @@
       "notes": []
     },
     "733": {
-      "play": "Enter Autolycus.",
+      "play": "[Enter Autolycus.]",
       "notes": []
     },
     "734": {
@@ -12450,7 +12450,7 @@
       "notes": []
     },
     "823": {
-      "play": "Camillo, Florizell, and Perdita exit.",
+      "play": "[Camillo, Florizell, and Perdita exit.]",
       "notes": []
     },
     "824": {
@@ -12512,11 +12512,11 @@
       "notes": []
     },
     "838": {
-      "play": "Enter Shepherd’s Son and Shepherd, carrying the",
+      "play": "[Enter Shepherd’s Son and Shepherd, carrying the",
       "notes": []
     },
     "839": {
-      "play": "bundle and the box.",
+      "play": "bundle and the box.]",
       "notes": []
     },
     "840": {
@@ -13268,17 +13268,17 @@
       "notes": []
     },
     "1009": {
-      "play": "He exits.",
+      "play": "[He exits.]",
       "notes": []
     }
   },
   "ACT 5 SCENE 1": {
     "1": {
-      "play": "Enter Leontes, Cleomenes, Dion, Paulina, and",
+      "play": "[Enter Leontes, Cleomenes, Dion, Paulina, and",
       "notes": []
     },
     "2": {
-      "play": "Servants.",
+      "play": "Servants.]",
       "notes": []
     },
     "3": {
@@ -13752,7 +13752,7 @@
       "notes": []
     },
     "109": {
-      "play": "Enter a Servant.",
+      "play": "[Enter a Servant.]",
       "notes": [
         "Servant] COLLIER (ed. ii): It is obvious from what this character says, and is said to him, that he is above the rank of a ‘servant.’ In the MS a singular, and perhaps unprecedented, title is given to him, in the words ‘Enter a Servant-poet,’ as if he were a poet retained in the service and pay of Leontes; such, indeed, appears to have been his capacity."
       ]
@@ -13926,7 +13926,7 @@
       "notes": []
     },
     "148": {
-      "play": "Cleomenes and others exit.",
+      "play": "[Cleomenes and others exit.]",
       "notes": []
     },
     "149": {
@@ -13982,7 +13982,7 @@
       "notes": []
     },
     "161": {
-      "play": "Enter Florizell, Perdita, Cleomenes, and others.",
+      "play": "[Enter Florizell, Perdita, Cleomenes, and others.]",
       "notes": []
     },
     "162": {
@@ -14254,7 +14254,7 @@
       "notes": []
     },
     "224": {
-      "play": "Enter a Lord.",
+      "play": "[Enter a Lord.]",
       "notes": []
     },
     "225": {
@@ -14548,13 +14548,13 @@
       "notes": []
     },
     "294": {
-      "play": "They exit.",
+      "play": "[They exit.]",
       "notes": []
     }
   },
   "ACT 5 SCENE 2": {
     "1": {
-      "play": "Enter Autolycus and a Gentleman.",
+      "play": "[Enter Autolycus and a Gentleman.]",
       "notes": [
         "GILDON (p. 336): The narration of the Discovery in the last Act is not only entertaining but moving, and [Shakespeare] seems accidentally to have hit on something like the Ancients, whose catastrophes were generally in narration. And is a proof that if our Poets had the genius of Shakespear, the shocking representations of the stage might easily and with beauty be thrown into narration, and so leave room for the poet to show his eloquence and imagery.—JOHNSON: It was, I suppose, only to spare his own labour that the poet put this whole scene into narrative, for though part of the transaction was already known to the audience, and therefore could not properly be shewn again, yet the two kings might have met upon the stage, and, after the examination of the old Shepherd, the young lady might have been recognised in sight of the spectators.—HARNESS: Probably this scene is given in narrative that the paramount interest of the play may rest, as it ought to do, with the restoration of Hermione.—HARTLEY COLRIDGE (ii, 150): What was Shakespeare’s motive for conveying by narrative what he might have made so pathetic in representation? This is the more strange and provoking, inasmuch as narrative is by no means his forte, except when it is combined with action or passion; and those euphuistic gentlemen talk mere epigram and antithesis, very like, I dare say, the newsmongers of that day, when it was as essential to be quaint as at present to be commonplace. I suspect Shakespeare was hurried in his latter scenes, and could compose this sort of dialogue with the least aid from inspiration.—GERVINUS (p. 815): The poet has wisely placed this recognition of Perdita behind the scenes, otherwise the play would have been too full of powerful scenes. . . . The mere relation of this meeting is in itself a rare masterpiece of prose description.—GUIZOT (p. 406): It is easy to see that Shakespeare was here in a hurry to conclude; the play would have been complete had that which is here narrated been placed on the stage. Segnius irritant animos demissa per aurem, etc.—DELIUS (Sh. Jahrbuch, 1870, p. 251): Shakespeare gives merely a description of the reconciliation of Leontes and Polixenes and of the recognition of Perdita, either out of regard to the scheme of the play, which is already long drawn out, or else to avoid weakening the effect of the final scene by having it preceded by one of a similar purport. For a mere narrative, prose was here all-sufficient, but for the pathetic and touching subject of this narrative there was needed a euphuistic prose adorned with all delicacies of style, such as the fashion of Shakespeare’s day deemed befitting and natural in the mouths of cultivated courtiers. It is manifest that the Poet devoted an especial care to this portion of his drama; the antitheses and parallelisms are arranged artistically, the metaphors and the style are harmoniously rounded. We have an amusing offset to the ceremonious and artistic"
       ]
@@ -14650,7 +14650,7 @@
       "notes": []
     },
     "23": {
-      "play": "Enter another Gentleman.",
+      "play": "[Enter another Gentleman.]",
       "notes": []
     },
     "24": {
@@ -14680,7 +14680,7 @@
       ]
     },
     "30": {
-      "play": "Enter another Gentleman.",
+      "play": "[Enter another Gentleman.]",
       "notes": []
     },
     "31": {
@@ -15082,7 +15082,7 @@
       "notes": []
     },
     "124": {
-      "play": "The Three Gentlemen exit.",
+      "play": "[The Three Gentlemen exit.]",
       "notes": []
     },
     "125": {
@@ -15136,11 +15136,11 @@
       "notes": []
     },
     "137": {
-      "play": "Enter Shepherd and Shepherd’s Son,",
+      "play": "[Enter Shepherd and Shepherd’s Son,",
       "notes": []
     },
     "138": {
-      "play": "both dressed in rich clothing.",
+      "play": "both dressed in rich clothing.]",
       "notes": []
     },
     "139": {
@@ -15379,17 +15379,17 @@
       ]
     },
     "194": {
-      "play": "They exit.",
+      "play": "[They exit.]",
       "notes": []
     }
   },
   "ACT 5 SCENE 3": {
     "1": {
-      "play": "Enter Leontes, Polixenes, Florizell, Perdita, Camillo,",
+      "play": "[Enter Leontes, Polixenes, Florizell, Perdita, Camillo,",
       "notes": []
     },
     "2": {
-      "play": "Paulina, and Lords.",
+      "play": "Paulina, and Lords.]",
       "notes": []
     },
     "3": {
@@ -15935,7 +15935,7 @@
       ]
     },
     "130": {
-      "play": "Music sounds.",
+      "play": "[Music sounds.]",
       "notes": []
     },
     "131": {
@@ -16242,7 +16242,7 @@
       "notes": []
     },
     "200": {
-      "play": "They exit.",
+      "play": "[They exit.]",
       "notes": [
         "Exeunt] WARBURTON: This play, throughout, is written in the very spirit of its author. And in telling this homely and simple, tho' agreeable, country tale, 'Our sweetest Shakespeare, fancy's child, Warbles his native wood-notes wild.' This was necessary to observe in mere justice to the Play, as the meanness of the fable, and the extravagant conduct of it, had misled some of great name into a wrong judgement of its merit: which, as far as it regards sentiment and character, is scarce inferior to any in the whole collection.—Dr JOHNSON: This play, as Dr Warburton justly observes, is, with all its absurdities, very entertaining. The character of Autolycus is naturally conceived, and strongly represented. [By 'some of great name' Warburton refers to Pope and Dryden, for whose remarks see APPENDIX, Unity of Time, etc.—Ed.]"
       ]
