@@ -107,11 +107,12 @@ def parse_source_txt(txt_path):
             pending_speaker = text
             continue
 
-        caps_match = re.match(r"^([A-Z][A-Z\s\'\.\-]{0,30})\s+(.+)$", text)
+        caps_match = re.match(r"^([A-Z][A-Z\s\'\.\-]{0,30}[A-Z])\s{2,}(.+)$", text)
         if caps_match:
             speaker, rest = caps_match.group(1).strip(), caps_match.group(2).strip()
-            stop = {"A", "AN", "THE", "AND", "OR", "BUT", "FOR", "TO", "OF", "IN", "ON", "LIKE"}
-            if not any(w in stop for w in speaker.upper().split()):
+            stop = {"A", "AN", "THE", "AND", "OR", "BUT", "FOR", "TO", "OF", "IN", "ON", "LIKE", "I", "O"}
+            speaker_words = speaker.upper().split()
+            if len(speaker_words[-1]) >= 2 and not any(w in stop for w in speaker_words):
                 current_lines.append(f"{speaker}: {rest}")
                 pending_speaker = None
                 continue
@@ -202,13 +203,14 @@ def parse_source_docx(doc_path):
             continue
 
         # Speaker + dialogue on same line (e.g. "CAPTAIN Doubtful it stood,")
-        caps_match = re.match(r"^([A-Z][A-Z\s\'\.\-]{0,30})\s+(.+)$", text)
+        caps_match = re.match(r"^([A-Z][A-Z\s\'\.\-]{0,30}[A-Z])\s{2,}(.+)$", text)
         if caps_match:
             speaker = caps_match.group(1).strip()
             rest = caps_match.group(2).strip()
             # Only treat as speaker if it looks like a name (short, no common words)
-            stop = {"A", "AN", "THE", "AND", "OR", "BUT", "FOR", "TO", "OF", "IN", "ON", "LIKE"}
-            if not any(w in stop for w in speaker.upper().split()):
+            stop = {"A", "AN", "THE", "AND", "OR", "BUT", "FOR", "TO", "OF", "IN", "ON", "LIKE", "I", "O"}
+            speaker_words = speaker.upper().split()
+            if len(speaker_words[-1]) >= 2 and not any(w in stop for w in speaker_words):
                 line = f"{speaker}: {rest}"
                 current_lines.append(line)
                 pending_speaker = None
