@@ -1,95 +1,87 @@
 {
   "DRAMATIS PERSONAE": {
     "1": {
-      "play": "The Tempest",
+      "play": "PROSPERO, the former duke of Milan, now a magician on a Mediterranean",
       "notes": []
     },
     "2": {
-      "play": "1. The Tempest",
+      "play": "island",
       "notes": []
     },
     "3": {
-      "play": "2. PROSPERO, the former duke of Milan, now a magician on a Mediterranean",
+      "play": "MIRANDA, Prospero’s daughter",
       "notes": []
     },
     "4": {
-      "play": "3. island",
+      "play": "ARIEL, a spirit, servant to Prospero",
       "notes": []
     },
     "5": {
-      "play": "4. MIRANDA, Prospero’s daughter",
+      "play": "CALIBAN, an inhabitant of the island, servant to Prospero",
       "notes": []
     },
     "6": {
-      "play": "5. ARIEL, a spirit, servant to Prospero",
+      "play": "FERDINAND, prince of Naples",
       "notes": []
     },
     "7": {
-      "play": "6. CALIBAN, an inhabitant of the island, servant to Prospero",
+      "play": "ALONSO, king of Naples",
       "notes": []
     },
     "8": {
-      "play": "7. FERDINAND, prince of Naples",
+      "play": "ANTONIO, duke of Milan and Prospero’s brother",
       "notes": []
     },
     "9": {
-      "play": "8. ALONSO, king of Naples",
+      "play": "SEBASTIAN, Alonso’s brother",
       "notes": []
     },
     "10": {
-      "play": "9. ANTONIO, duke of Milan and Prospero’s brother",
+      "play": "GONZALO, councillor to Alonso and friend to Prospero",
       "notes": []
     },
     "11": {
-      "play": "10. SEBASTIAN, Alonso’s brother",
+      "play": "Courtiers in attendance on Alonso:",
       "notes": []
     },
     "12": {
-      "play": "11. GONZALO, councillor to Alonso and friend to Prospero",
+      "play": "ADRIAN",
       "notes": []
     },
     "13": {
-      "play": "12. Courtiers in attendance on Alonso:",
+      "play": "FRANCISCO",
       "notes": []
     },
     "14": {
-      "play": "13. ADRIAN",
+      "play": "TRINCULO, servant to Alonso",
       "notes": []
     },
     "15": {
-      "play": "14. FRANCISCO",
+      "play": "STEPHANO, Alonso’s butler",
       "notes": []
     },
     "16": {
-      "play": "15. TRINCULO, servant to Alonso",
+      "play": "SHIPMASTER",
       "notes": []
     },
     "17": {
-      "play": "16. STEPHANO, Alonso’s butler",
+      "play": "BOATSWAIN",
       "notes": []
     },
     "18": {
-      "play": "17. SHIPMASTER",
+      "play": "MARINERS",
       "notes": []
     },
     "19": {
-      "play": "18. BOATSWAIN",
+      "play": "Players who, as spirits, take the roles of Iris, Ceres, Juno, Nymphs, and",
       "notes": []
     },
     "20": {
-      "play": "19. MARINERS",
+      "play": "Reapers in Prospero’s masque, and who, in other scenes, take the roles of",
       "notes": []
     },
     "21": {
-      "play": "20. Players who, as spirits, take the roles of Iris, Ceres, Juno, Nymphs, and",
-      "notes": []
-    },
-    "22": {
-      "play": "21. Reapers in Prospero’s masque, and who, in other scenes, take the roles of",
-      "notes": []
-    },
-    "23": {
-      "play": "22. “islanders” and of hunting dogs",
+      "play": "“islanders” and of hunting dogs",
       "notes": []
     }
   },

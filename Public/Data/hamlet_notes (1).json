@@ -1,135 +1,127 @@
 {
   "DRAMATIS PERSONAE": {
     "1": {
-      "play": "Hamlet",
+      "play": "THE GHOST",
       "notes": []
     },
     "2": {
-      "play": "1. Hamlet",
+      "play": "HAMLET, Prince of Denmark, son of the late King Hamlet and Queen Gertrude",
       "notes": []
     },
     "3": {
-      "play": "2. THE GHOST",
+      "play": "QUEEN GERTRUDE, widow of King Hamlet, now married to Claudius",
       "notes": []
     },
     "4": {
-      "play": "3. HAMLET, Prince of Denmark, son of the late King Hamlet and Queen Gertrude",
+      "play": "KING CLAUDIUS, brother to the late King Hamlet",
       "notes": []
     },
     "5": {
-      "play": "4. QUEEN GERTRUDE, widow of King Hamlet, now married to Claudius",
+      "play": "OPHELIA",
       "notes": []
     },
     "6": {
-      "play": "5. KING CLAUDIUS, brother to the late King Hamlet",
+      "play": "LAERTES, her brother",
       "notes": []
     },
     "7": {
-      "play": "6. OPHELIA",
+      "play": "POLONIUS, father of Ophelia and Laertes, councillor to King Claudius",
       "notes": []
     },
     "8": {
-      "play": "7. LAERTES, her brother",
+      "play": "REYNALDO, servant to Polonius",
       "notes": []
     },
     "9": {
-      "play": "8. POLONIUS, father of Ophelia and Laertes, councillor to King Claudius",
+      "play": "HORATIO, Hamlet's friend and confidant",
       "notes": []
     },
     "10": {
-      "play": "9. REYNALDO, servant to Polonius",
+      "play": "Courtiers at the Danish court:",
       "notes": []
     },
     "11": {
-      "play": "10. HORATIO, Hamlet's friend and confidant",
+      "play": "VOLTEMAND",
       "notes": []
     },
     "12": {
-      "play": "11. Courtiers at the Danish court:",
+      "play": "CORNELIUS",
       "notes": []
     },
     "13": {
-      "play": "12. VOLTEMAND",
+      "play": "ROSENCRANTZ",
       "notes": []
     },
     "14": {
-      "play": "13. CORNELIUS",
+      "play": "GUILDENSTERN",
       "notes": []
     },
     "15": {
-      "play": "14. ROSENCRANTZ",
+      "play": "OSRIC",
       "notes": []
     },
     "16": {
-      "play": "15. GUILDENSTERN",
+      "play": "Gentlemen",
       "notes": []
     },
     "17": {
-      "play": "16. OSRIC",
+      "play": "A Lord",
       "notes": []
     },
     "18": {
-      "play": "17. Gentlemen",
+      "play": "Danish soldiers:",
       "notes": []
     },
     "19": {
-      "play": "18. A Lord",
+      "play": "FRANCISCO",
       "notes": []
     },
     "20": {
-      "play": "19. Danish soldiers:",
+      "play": "BARNARDO",
       "notes": []
     },
     "21": {
-      "play": "20. FRANCISCO",
+      "play": "MARCELLUS",
       "notes": []
     },
     "22": {
-      "play": "21. BARNARDO",
+      "play": "FORTINBRAS, Prince of Norway",
       "notes": []
     },
     "23": {
-      "play": "22. MARCELLUS",
+      "play": "A Captain in Fortinbras's army",
       "notes": []
     },
     "24": {
-      "play": "23. FORTINBRAS, Prince of Norway",
+      "play": "Ambassadors to Denmark from England",
       "notes": []
     },
     "25": {
-      "play": "24. A Captain in Fortinbras's army",
+      "play": "Players who take the roles of Prologue, Player King, Player Queen, and Lucianus in The Murder of Gonzago",
       "notes": []
     },
     "26": {
-      "play": "25. Ambassadors to Denmark from England",
+      "play": "Two Messengers",
       "notes": []
     },
     "27": {
-      "play": "26. Players who take the roles of Prologue, Player King, Player Queen, and Lucianus in The Murder of Gonzago",
+      "play": "Sailors",
       "notes": []
     },
     "28": {
-      "play": "27. Two Messengers",
+      "play": "Gravedigger",
       "notes": []
     },
     "29": {
-      "play": "28. Sailors",
+      "play": "Gravedigger's companion",
       "notes": []
     },
     "30": {
-      "play": "29. Gravedigger",
+      "play": "Doctor of Divinity",
       "notes": []
     },
     "31": {
-      "play": "30. Gravedigger's companion",
-      "notes": []
-    },
-    "32": {
-      "play": "31. Doctor of Divinity",
-      "notes": []
-    },
-    "33": {
-      "play": "32. Attendants, Lords, Guards, Musicians, Laertes's Followers, Soldiers, Officers",
+      "play": "Attendants, Lords, Guards, Musicians, Laertes's Followers, Soldiers, Officers",
       "notes": []
     }
   },

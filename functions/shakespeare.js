@@ -694,19 +694,21 @@ CRITICAL: You MUST provide responses for ALL of these sections in exactly this o
 **Critical Reception:** (REQUIRED)  
 **Similar phrases or themes in other plays:** (REQUIRED)${includeNewVariorum ? '\n**New Variorum Analysis:** (REQUIRED)' : ''}
 
-FORMAT REQUIREMENTS:  
-- Start each section with the exact heading format shown above (colons are already included).  
-- Provide 6–12 sentences per section; use complete, scholarly style.  
-- Use extensive critical citations from a broad range of critics.  
-- Always italicize titles using \`<em>italics</em>\`, never quote them or italicize author names.  
-- Use exact scholar names (e.g., A.C. Bradley), with full citation format.  
-- **Key Words & Glosses**: Use format \`"word" means [definition]; "word" means [definition]\`.  
+FORMAT REQUIREMENTS:
+- Start each section with the exact heading format shown above (colons are already included).
+- Provide 6–12 sentences per section; use complete, scholarly style.
+- Always italicize titles using \`<em>italics</em>\`, never quote them or italicize author names.
+- **Key Words & Glosses**: Use format \`"word" means [definition]; "word" means [definition]\`.
 - **Language and Rhetoric**: Include (1) etymology from 1914 OED, (2) rhetorical devices, (3) meter & rhythm, with citations.
 
-CRITICAL CITATION REQUIREMENTS:  
-- Include at least one critic per century (18th–21st), at least one Marxist critic, plus 2–3 random others.  
-- Use full publication details.  
-- Do not modify scholar names.
+LITERARY ANALYSIS REQUIREMENTS:
+- Do NOT name any specific critics or scholars — no personal names whatsoever.
+- Instead, structure the section as a series of readings, each attributed to a critical school.
+- For each school that has something meaningful to say about this passage, write 2–4 sentences presenting what a scholar from that school would argue.
+- Include only the schools genuinely relevant to the passage; omit those with nothing substantial to contribute.
+- Draw on any of the following schools where applicable: Traditional/Humanist Criticism, New Criticism/Formalism, Historical and Biographical Criticism, Psychoanalytic Criticism, Feminist Criticism, New Historicism, Cultural Materialism, Marxist Criticism, Postcolonial Criticism, Race Studies, Queer Theory, Performance and Theater History Criticism, Ecocriticism, Disability Studies, Cognitive/Evolutionary Criticism, Textual/Editorial Criticism.
+- Label each school clearly, e.g. "From a feminist perspective," "A Marxist reading would note," "New Historicist criticism situates…"
+- Do not invent critic names, book titles, or publication details.
 
 LENGTH: 800–1200 words total`
 

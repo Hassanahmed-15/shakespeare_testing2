@@ -1,103 +1,99 @@
 {
   "DRAMATIS PERSONAE": {
     "1": {
-      "play": "A Midsummer Night's Dream",
+      "play": "HERMIA",
       "notes": []
     },
     "2": {
-      "play": "1. HERMIA",
+      "play": "LYSANDER",
       "notes": []
     },
     "3": {
-      "play": "2. LYSANDER",
+      "play": "HELENA",
       "notes": []
     },
     "4": {
-      "play": "3. HELENA",
+      "play": "DEMETRIUS } four lovers",
       "notes": []
     },
     "5": {
-      "play": "4. DEMETRIUS } four lovers",
+      "play": "THESEUS, duke of Athens",
       "notes": []
     },
     "6": {
-      "play": "5. THESEUS, duke of Athens",
+      "play": "HIPPOLYTA, queen of the Amazons",
       "notes": []
     },
     "7": {
-      "play": "6. HIPPOLYTA, queen of the Amazons",
+      "play": "EGEUS, father to Hermia",
       "notes": []
     },
     "8": {
-      "play": "7. EGEUS, father to Hermia",
+      "play": "PHILOSTRATE, master of the revels to Theseus",
       "notes": []
     },
     "9": {
-      "play": "8. PHILOSTRATE, master of the revels to Theseus",
+      "play": "NICK BOTTOM, weaver",
       "notes": []
     },
     "10": {
-      "play": "9. NICK BOTTOM, weaver",
+      "play": "PETER QUINCE, carpenter",
       "notes": []
     },
     "11": {
-      "play": "10. PETER QUINCE, carpenter",
+      "play": "FRANCIS FLUTE, bellows-mender",
       "notes": []
     },
     "12": {
-      "play": "11. FRANCIS FLUTE, bellows-mender",
+      "play": "TOM SNOUT, tinker",
       "notes": []
     },
     "13": {
-      "play": "12. TOM SNOUT, tinker",
+      "play": "SNUG, joiner",
       "notes": []
     },
     "14": {
-      "play": "13. SNUG, joiner",
+      "play": "ROBIN STARVELING, tailor",
       "notes": []
     },
     "15": {
-      "play": "14. ROBIN STARVELING, tailor",
+      "play": "OBERON, king of the Fairies",
       "notes": []
     },
     "16": {
-      "play": "15. OBERON, king of the Fairies",
+      "play": "TITANIA, queen of the Fairies",
       "notes": []
     },
     "17": {
-      "play": "16. TITANIA, queen of the Fairies",
+      "play": "ROBIN GOODFELLOW, a \"puck,\" or hobgoblin, in Oberon's service",
       "notes": []
     },
     "18": {
-      "play": "17. ROBIN GOODFELLOW, a \"puck,\" or hobgoblin, in Oberon's service",
+      "play": "A FAIRY, in the service of Titania",
       "notes": []
     },
     "19": {
-      "play": "18. A FAIRY, in the service of Titania",
+      "play": "PEASEBLOSSOM",
       "notes": []
     },
     "20": {
-      "play": "19. PEASEBLOSSOM",
+      "play": "COBWEB",
       "notes": []
     },
     "21": {
-      "play": "20. COBWEB",
+      "play": "MOTE",
       "notes": []
     },
     "22": {
-      "play": "21. MOTE",
+      "play": "MUSTARDSEED } fairies attending upon Titania",
       "notes": []
     },
     "23": {
-      "play": "22. MUSTARDSEED } fairies attending upon Titania",
+      "play": "Lords and Attendants on Theseus and Hippolyta",
       "notes": []
     },
     "24": {
-      "play": "23. Lords and Attendants on Theseus and Hippolyta",
-      "notes": []
-    },
-    "25": {
-      "play": "24. Other Fairies in the trains of Titania and Oberon",
+      "play": "Other Fairies in the trains of Titania and Oberon",
       "notes": []
     }
   },
@@ -2607,7 +2603,7 @@
       ]
     },
     "159": {
-      "play": "159. The next thing then she waking looks upon,",
+      "play": "The next thing then she waking looks upon,",
       "notes": []
     },
     "160": {

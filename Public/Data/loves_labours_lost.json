@@ -1,83 +1,79 @@
 {
   "DRAMATIS PERSONAE": {
     "1": {
-      "play": "Love's Labour's Lost",
+      "play": "KING OF NAVARRE, also known as Ferdinand",
       "notes": []
     },
     "2": {
-      "play": "1. KING OF NAVARRE, also known as Ferdinand",
+      "play": "BEROWNE",
       "notes": []
     },
     "3": {
-      "play": "2. BEROWNE",
+      "play": "LONGAVILLE, lords attending the King",
       "notes": []
     },
     "4": {
-      "play": "3. LONGAVILLE, lords attending the King",
+      "play": "DUMAINE",
       "notes": []
     },
     "5": {
-      "play": "4. DUMAINE",
+      "play": "The PRINCESS of France",
       "notes": []
     },
     "6": {
-      "play": "5. The PRINCESS of France",
+      "play": "ROSALINE",
       "notes": []
     },
     "7": {
-      "play": "6. ROSALINE",
+      "play": "MARIA, ladies attending the Princess",
       "notes": []
     },
     "8": {
-      "play": "7. MARIA, ladies attending the Princess",
+      "play": "KATHERINE",
       "notes": []
     },
     "9": {
-      "play": "8. KATHERINE",
+      "play": "BOYET, a lord attending the Princess",
       "notes": []
     },
     "10": {
-      "play": "9. BOYET, a lord attending the Princess",
+      "play": "ARMADO, the BRAGGART, also known as Don Adriano de Armado",
       "notes": []
     },
     "11": {
-      "play": "10. ARMADO, the BRAGGART, also known as Don Adriano de Armado",
+      "play": "BOY, Armado’s PAGE, also known as MOTE",
       "notes": []
     },
     "12": {
-      "play": "11. BOY, Armado’s PAGE, also known as MOTE",
+      "play": "JAQUENETTA, the WENCH",
       "notes": []
     },
     "13": {
-      "play": "12. JAQUENETTA, the WENCH",
+      "play": "COSTARD, the CLOWN or SWAIN",
       "notes": []
     },
     "14": {
-      "play": "13. COSTARD, the CLOWN or SWAIN",
+      "play": "DULL, the CONSTABLE",
       "notes": []
     },
     "15": {
-      "play": "14. DULL, the CONSTABLE",
+      "play": "HOLOFERNES, the PEDANT, or schoolmaster",
       "notes": []
     },
     "16": {
-      "play": "15. HOLOFERNES, the PEDANT, or schoolmaster",
+      "play": "NATHANIEL, the CURATE",
       "notes": []
     },
     "17": {
-      "play": "16. NATHANIEL, the CURATE",
+      "play": "FORESTER",
       "notes": []
     },
     "18": {
-      "play": "17. FORESTER",
+      "play": "MONSIEUR MARCADE, a messenger from France",
       "notes": []
     },
     "19": {
-      "play": "18. MONSIEUR MARCADE, a messenger from France",
-      "notes": []
-    },
-    "20": {
-      "play": "19. Lords, Blackamoors, Musicians",
+      "play": "Lords, Blackamoors, Musicians",
       "notes": []
     }
   },

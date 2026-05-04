@@ -1,111 +1,103 @@
 {
   "DRAMATIS PERSONAE": {
     "1": {
-      "play": "King Lear",
+      "play": "LEAR, king of Britain",
       "notes": []
     },
     "2": {
-      "play": "1. King Lear",
+      "play": "GONERIL, Lear’s eldest daughter",
       "notes": []
     },
     "3": {
-      "play": "2. 1. LEAR, king of Britain",
+      "play": "DUKE OF ALBANY, her husband",
       "notes": []
     },
     "4": {
-      "play": "3. 2. GONERIL, Lear’s eldest daughter",
+      "play": "OSWALD, her steward",
       "notes": []
     },
     "5": {
-      "play": "4. 3. DUKE OF ALBANY, her husband",
+      "play": "REGAN, Lear’s second daughter",
       "notes": []
     },
     "6": {
-      "play": "5. 4. OSWALD, her steward",
+      "play": "DUKE OF CORNWALL, her husband",
       "notes": []
     },
     "7": {
-      "play": "6. 5. REGAN, Lear’s second daughter",
+      "play": "CORDELIA, Lear’s youngest daughter",
       "notes": []
     },
     "8": {
-      "play": "7. 6. DUKE OF CORNWALL, her husband",
+      "play": "KING OF FRANCE, her suitor and then husband",
       "notes": []
     },
     "9": {
-      "play": "8. 7. CORDELIA, Lear’s youngest daughter",
+      "play": "DUKE OF BURGUNDY, her suitor",
       "notes": []
     },
     "10": {
-      "play": "9. 8. KING OF FRANCE, her suitor and then husband",
+      "play": "EARL OF KENT",
       "notes": []
     },
     "11": {
-      "play": "10. 9. DUKE OF BURGUNDY, her suitor",
+      "play": "FOOL",
       "notes": []
     },
     "12": {
-      "play": "11. 10. EARL OF KENT",
+      "play": "EARL OF GLOUCESTER",
       "notes": []
     },
     "13": {
-      "play": "12. 11. FOOL",
+      "play": "EDGAR, his elder son",
       "notes": []
     },
     "14": {
-      "play": "13. 12. EARL OF GLOUCESTER",
+      "play": "EDMUND, his younger and illegitimate son",
       "notes": []
     },
     "15": {
-      "play": "14. 13. EDGAR, his elder son",
+      "play": "CURAN, gentleman of Gloucester’s household",
       "notes": []
     },
     "16": {
-      "play": "15. 14. EDMUND, his younger and illegitimate son",
+      "play": "OLD MAN, a tenant of Gloucester’s",
       "notes": []
     },
     "17": {
-      "play": "16. 15. CURAN, gentleman of Gloucester’s household",
+      "play": "KNIGHT, serving Lear",
       "notes": []
     },
     "18": {
-      "play": "17. 16. OLD MAN, a tenant of Gloucester’s",
+      "play": "GENTLEMEN",
       "notes": []
     },
     "19": {
-      "play": "18. 17. KNIGHT, serving Lear",
+      "play": "Three SERVANTS",
       "notes": []
     },
     "20": {
-      "play": "19. 18. GENTLEMEN",
+      "play": "MESSENGERS",
       "notes": []
     },
     "21": {
-      "play": "20. 19. Three SERVANTS",
+      "play": "DOCTOR",
       "notes": []
     },
     "22": {
-      "play": "21. 20. MESSENGERS",
+      "play": "CAPTAINS",
       "notes": []
     },
     "23": {
-      "play": "22. 21. DOCTOR",
+      "play": "HERALD",
       "notes": []
     },
     "24": {
-      "play": "23. 22. CAPTAINS",
+      "play": "Knights in Lear’s train, Servants, Officers, Soldiers, Attendants,",
       "notes": []
     },
     "25": {
-      "play": "24. 23. HERALD",
-      "notes": []
-    },
-    "26": {
-      "play": "25. 24. Knights in Lear’s train, Servants, Officers, Soldiers, Attendants,",
-      "notes": []
-    },
-    "27": {
-      "play": "26. 25. Gentlemen",
+      "play": "Gentlemen",
       "notes": []
     }
   },

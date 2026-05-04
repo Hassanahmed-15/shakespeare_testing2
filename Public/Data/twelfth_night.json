@@ -1,67 +1,63 @@
 {
   "DRAMATIS PERSONAE": {
     "1": {
-      "play": "Twelfth Night",
+      "play": "VIOLA, a lady of Messaline shipwrecked on the coast of Illyria (later disguised as Cesario)",
       "notes": []
     },
     "2": {
-      "play": "1. VIOLA, a lady of Messaline shipwrecked on the coast of Illyria (later disguised as Cesario)",
+      "play": "OLIVIA, an Illyrian countess",
       "notes": []
     },
     "3": {
-      "play": "2. OLIVIA, an Illyrian countess",
+      "play": "MARIA, her waiting-gentlewoman",
       "notes": []
     },
     "4": {
-      "play": "3. MARIA, her waiting-gentlewoman",
+      "play": "SIR TOBY BELCH, Olivia’s kinsman",
       "notes": []
     },
     "5": {
-      "play": "4. SIR TOBY BELCH, Olivia’s kinsman",
+      "play": "SIR ANDREW AGUECHEEK, Sir Toby’s companion",
       "notes": []
     },
     "6": {
-      "play": "5. SIR ANDREW AGUECHEEK, Sir Toby’s companion",
+      "play": "MALVOLIO, steward in Olivia’s household",
       "notes": []
     },
     "7": {
-      "play": "6. MALVOLIO, steward in Olivia’s household",
+      "play": "FOOL, Olivia’s jester, named Feste",
       "notes": []
     },
     "8": {
-      "play": "7. FOOL, Olivia’s jester, named Feste",
+      "play": "FABIAN, a gentleman in Olivia’s household",
       "notes": []
     },
     "9": {
-      "play": "8. FABIAN, a gentleman in Olivia’s household",
+      "play": "ORSINO, duke (or count) of Illyria Valentine",
       "notes": []
     },
     "10": {
-      "play": "9. ORSINO, duke (or count) of Illyria Valentine",
+      "play": "CURIO",
       "notes": []
     },
     "11": {
-      "play": "10. CURIO",
+      "play": "Gentlemen serving Orsino",
       "notes": []
     },
     "12": {
-      "play": "11. Gentlemen serving Orsino",
+      "play": "SEBASTIAN, Viola’s brother",
       "notes": []
     },
     "13": {
-      "play": "12. SEBASTIAN, Viola’s brother",
+      "play": "ANTONIO, friend to Sebastian Captain",
       "notes": []
     },
     "14": {
-      "play": "13. ANTONIO, friend to Sebastian Captain",
+      "play": "Priest Two Officers",
       "notes": []
     },
     "15": {
-      "play": "14. Priest Two Officers",
-      "notes": []
-    },
-    "16": {
-      "play": "15. Lords, Sailors, Musicians, and other Attendants",
+      "play": "Lords, Sailors, Musicians, and other Attendants",
       "notes": []
     }
   },

@@ -1,123 +1,115 @@
 {
   "DRAMATIS PERSONAE": {
     "1": {
-      "play": "Antony and Cleopatra",
+      "play": "ANTONY, a triumvir of Rome",
       "notes": []
     },
     "2": {
-      "play": "1. Antony And Cleopatra",
+      "play": "CLEOPATRA, Queen of Egypt",
       "notes": []
     },
     "3": {
-      "play": "2. ANTONY, a triumvir of Rome",
+      "play": "OCTAVIUS CAESAR, a triumvir of Rome",
       "notes": []
     },
     "4": {
-      "play": "3. CLEOPATRA, Queen of Egypt",
+      "play": "OCTAVIA, sister to Caesar, later wife to Antony",
       "notes": []
     },
     "5": {
-      "play": "4. OCTAVIUS CAESAR, a triumvir of Rome",
+      "play": "LEPIDUS, a triumvir of Rome",
       "notes": []
     },
     "6": {
-      "play": "5. OCTAVIA, sister to Caesar, later wife to Antony",
+      "play": "ENOBARBUS, also called DOMITIUS",
       "notes": []
     },
     "7": {
-      "play": "6. LEPIDUS, a triumvir of Rome",
+      "play": "Accompanying Antony in Egypt and elsewhere: VENTIDIUS",
       "notes": []
     },
     "8": {
-      "play": "7. ENOBARBUS, also called DOMITIUS",
+      "play": "SILIUS EROS",
       "notes": []
     },
     "9": {
-      "play": "8. Accompanying Antony in Egypt and elsewhere: VENTIDIUS",
+      "play": "CANIDIUS SCARUS",
       "notes": []
     },
     "10": {
-      "play": "10. SILIUS EROS",
+      "play": "DERCETUS DEMETRIUS",
       "notes": []
     },
     "11": {
-      "play": "12. CANIDIUS SCARUS",
+      "play": "PHILO",
       "notes": []
     },
     "12": {
-      "play": "14. DERCETUS DEMETRIUS",
+      "play": "A SCHOOLMASTER, Antony’s AMBASSADOR to Caesar",
       "notes": []
     },
     "13": {
-      "play": "16. PHILO",
+      "play": "Serving in Cleopatra’s court: CHARMIAN",
       "notes": []
     },
     "14": {
-      "play": "17. A SCHOOLMASTER, Antony’s AMBASSADOR to Caesar",
+      "play": "IRAS ALEXAS",
       "notes": []
     },
     "15": {
-      "play": "18. Serving in Cleopatra’s court: CHARMIAN",
+      "play": "MARDIAN, a Eunuch",
       "notes": []
     },
     "16": {
-      "play": "20. IRAS ALEXAS",
+      "play": "SELEUCUS, Cleopatra’s treasurer DIOMEDES",
       "notes": []
     },
     "17": {
-      "play": "22. MARDIAN, a Eunuch",
+      "play": "Supporting and accompanying Caesar: MAECENAS",
       "notes": []
     },
     "18": {
-      "play": "23. SELEUCUS, Cleopatra’s treasurer DIOMEDES",
+      "play": "AGRIPPA TAURUS",
       "notes": []
     },
     "19": {
-      "play": "25. Supporting and accompanying Caesar: MAECENAS",
+      "play": "THIDIAS DOLABELLA",
       "notes": []
     },
     "20": {
-      "play": "27. AGRIPPA TAURUS",
+      "play": "GALLUS PROCULEIUS",
       "notes": []
     },
     "21": {
-      "play": "29. THIDIAS DOLABELLA",
+      "play": "SEXTUS POMPEIUS, also called POMPEY MENAS",
       "notes": []
     },
     "22": {
-      "play": "31. GALLUS PROCULEIUS",
+      "play": "MENECRATES VARRIUS",
       "notes": []
     },
     "23": {
-      "play": "33. SEXTUS POMPEIUS, also called POMPEY MENAS",
+      "play": "MESSENGERS SOLDIERS",
       "notes": []
     },
     "24": {
-      "play": "35. MENECRATES VARRIUS",
+      "play": "SENTRIES GUARDSMEN",
       "notes": []
     },
     "25": {
-      "play": "37. MESSENGERS SOLDIERS",
+      "play": "A SOOTHSAYER SERVANTS",
       "notes": []
     },
     "26": {
-      "play": "39. SENTRIES GUARDSMEN",
+      "play": "A BOY A CAPTAIN",
       "notes": []
     },
     "27": {
-      "play": "41. A SOOTHSAYER SERVANTS",
+      "play": "AN EGYPTIAN A COUNTRYMAN",
       "notes": []
     },
     "28": {
-      "play": "43. A BOY A CAPTAIN",
-      "notes": []
-    },
-    "29": {
-      "play": "45. AN EGYPTIAN A COUNTRYMAN",
-      "notes": []
-    },
-    "30": {
-      "play": "47. Ladies, Eunuchs, Captains, Officers, Soldiers, Attendants, Servants (Lamprius, Rannius, Lucillius: mute characters named in the opening stage direction to 1.2)",
+      "play": "Ladies, Eunuchs, Captains, Officers, Soldiers, Attendants, Servants (Lamprius, Rannius, Lucillius: mute characters named in the opening stage direction to 1.2)",
       "notes": []
     }
   },

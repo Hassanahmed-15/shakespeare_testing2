@@ -1,135 +1,127 @@
 {
   "DRAMATIS PERSONAE": {
     "1": {
-      "play": "Romeo and Juliet",
+      "play": "ROMEO",
       "notes": []
     },
     "2": {
-      "play": "1. Romeo And Juliet",
+      "play": "MONTAGUE, his father",
       "notes": []
     },
     "3": {
-      "play": "2. 1. ROMEO",
+      "play": "LADY MONTAGUE, his mother",
       "notes": []
     },
     "4": {
-      "play": "3. 2. MONTAGUE, his father",
+      "play": "BENVOLIO, their kinsman",
       "notes": []
     },
     "5": {
-      "play": "4. 3. LADY MONTAGUE, his mother",
+      "play": "ABRAM, a Montague servingman",
       "notes": []
     },
     "6": {
-      "play": "5. 4. BENVOLIO, their kinsman",
+      "play": "BALTHASAR, Romeo’s servingman",
       "notes": []
     },
     "7": {
-      "play": "6. 5. ABRAM, a Montague servingman",
+      "play": "JULIET",
       "notes": []
     },
     "8": {
-      "play": "7. 6. BALTHASAR, Romeo’s servingman",
+      "play": "CAPULET, her father",
       "notes": []
     },
     "9": {
-      "play": "8. 7. JULIET",
+      "play": "LADY CAPULET, her mother",
       "notes": []
     },
     "10": {
-      "play": "9. 8. CAPULET, her father",
+      "play": "NURSE to Juliet",
       "notes": []
     },
     "11": {
-      "play": "10. 9. LADY CAPULET, her mother",
+      "play": "TYBALT, kinsman to the Capulets",
       "notes": []
     },
     "12": {
-      "play": "11. 10. NURSE to Juliet",
+      "play": "PETRUCHIO, Tybalt’s companion",
       "notes": []
     },
     "13": {
-      "play": "12. 11. TYBALT, kinsman to the Capulets",
+      "play": "Capulet’s Cousin",
       "notes": []
     },
     "14": {
-      "play": "13. 12. PETRUCHIO, Tybalt’s companion",
+      "play": "Servingmen:",
       "notes": []
     },
     "15": {
-      "play": "14. 13. Capulet’s Cousin",
+      "play": "SAMPSON",
       "notes": []
     },
     "16": {
-      "play": "15. 14. Servingmen:",
+      "play": "GREGORY",
       "notes": []
     },
     "17": {
-      "play": "16. 15. SAMPSON",
+      "play": "PETER",
       "notes": []
     },
     "18": {
-      "play": "17. 16. GREGORY",
+      "play": "Other Servingmen",
       "notes": []
     },
     "19": {
-      "play": "18. 17. PETER",
+      "play": "ESCALUS, Prince of Verona",
       "notes": []
     },
     "20": {
-      "play": "19. 18. Other Servingmen",
+      "play": "PARIS, the Prince’s kinsman and Juliet’s suitor",
       "notes": []
     },
     "21": {
-      "play": "20. 19. ESCALUS, Prince of Verona",
+      "play": "MERCUTIO, the Prince’s kinsman and Romeo’s friend",
       "notes": []
     },
     "22": {
-      "play": "21. 20. PARIS, the Prince’s kinsman and Juliet’s suitor",
+      "play": "Paris’ Page",
       "notes": []
     },
     "23": {
-      "play": "22. 21. MERCUTIO, the Prince’s kinsman and Romeo’s friend",
+      "play": "FRIAR LAWRENCE",
       "notes": []
     },
     "24": {
-      "play": "23. 22. Paris’ Page",
+      "play": "FRIAR JOHN",
       "notes": []
     },
     "25": {
-      "play": "24. 23. FRIAR LAWRENCE",
+      "play": "APOTHECARY",
       "notes": []
     },
     "26": {
-      "play": "25. 24. FRIAR JOHN",
+      "play": "Three or four Citizens",
       "notes": []
     },
     "27": {
-      "play": "26. 25. APOTHECARY",
+      "play": "Three Musicians",
       "notes": []
     },
     "28": {
-      "play": "27. 26. Three or four Citizens",
+      "play": "Three Watchmen",
       "notes": []
     },
     "29": {
-      "play": "28. 27. Three Musicians",
+      "play": "CHORUS",
       "notes": []
     },
     "30": {
-      "play": "29. 28. Three Watchmen",
+      "play": "Attendants, Maskers, Torchbearers, a Boy with a drum, Gentlemen,",
       "notes": []
     },
     "31": {
-      "play": "30. 29. CHORUS",
-      "notes": []
-    },
-    "32": {
-      "play": "31. 30. Attendants, Maskers, Torchbearers, a Boy with a drum, Gentlemen,",
-      "notes": []
-    },
-    "33": {
-      "play": "32. 31. Gentlewomen, Tybalt’s Page, Servingmen.",
+      "play": "Gentlewomen, Tybalt’s Page, Servingmen.",
       "notes": []
     }
   },

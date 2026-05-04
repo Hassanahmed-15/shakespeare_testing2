@@ -1,111 +1,107 @@
 {
   "DRAMATIS PERSONAE": {
     "1": {
-      "play": "The Merchant of Venice",
+      "play": "PORTIA, an heiress of Belmont",
       "notes": []
     },
     "2": {
-      "play": "1. PORTIA, an heiress of Belmont",
+      "play": "NERISSA, her waiting-gentlewoman",
       "notes": []
     },
     "3": {
-      "play": "2. NERISSA, her waiting-gentlewoman",
+      "play": "BALTHAZAR, servant to Portia",
       "notes": []
     },
     "4": {
-      "play": "3. BALTHAZAR, servant to Portia",
+      "play": "STEPHANO, servant to Portia",
       "notes": []
     },
     "5": {
-      "play": "4. STEPHANO, servant to Portia",
+      "play": "PRINCE OF MOROCCO, suitor to Portia",
       "notes": []
     },
     "6": {
-      "play": "5. PRINCE OF MOROCCO, suitor to Portia",
+      "play": "PRINCE OF ARRAGON, suitor to Portia",
       "notes": []
     },
     "7": {
-      "play": "6. PRINCE OF ARRAGON, suitor to Portia",
+      "play": "ANTONIO, a merchant of Venice",
       "notes": []
     },
     "8": {
-      "play": "7. ANTONIO, a merchant of Venice",
+      "play": "BASSANIO, a Venetian gentleman, suitor to Portia",
       "notes": []
     },
     "9": {
-      "play": "8. BASSANIO, a Venetian gentleman, suitor to Portia",
+      "play": "SOLANIO, companion of Antonio and Bassanio",
       "notes": []
     },
     "10": {
-      "play": "9. SOLANIO, companion of Antonio and Bassanio",
+      "play": "SALARINO, companion of Antonio and Bassanio",
       "notes": []
     },
     "11": {
-      "play": "10. SALARINO, companion of Antonio and Bassanio",
+      "play": "GRATIANO, companion of Antonio and Bassanio",
       "notes": []
     },
     "12": {
-      "play": "11. GRATIANO, companion of Antonio and Bassanio",
+      "play": "LORENZO, companion of Antonio and Bassanio",
       "notes": []
     },
     "13": {
-      "play": "12. LORENZO, companion of Antonio and Bassanio",
+      "play": "LEONARDO, servant to Bassanio",
       "notes": []
     },
     "14": {
-      "play": "13. LEONARDO, servant to Bassanio",
+      "play": "SHYLOCK, a Jewish moneylender in Venice",
       "notes": []
     },
     "15": {
-      "play": "14. SHYLOCK, a Jewish moneylender in Venice",
+      "play": "JESSICA, his daughter",
       "notes": []
     },
     "16": {
-      "play": "15. JESSICA, his daughter",
+      "play": "TUBAL, another Jewish moneylender",
       "notes": []
     },
     "17": {
-      "play": "16. TUBAL, another Jewish moneylender",
+      "play": "LANCELET GOBBO, servant to Shylock and later to Bassanio",
       "notes": []
     },
     "18": {
-      "play": "17. LANCELET GOBBO, servant to Shylock and later to Bassanio",
+      "play": "OLD GOBBO, Lancelet’s father",
       "notes": []
     },
     "19": {
-      "play": "18. OLD GOBBO, Lancelet’s father",
+      "play": "SALERIO, a messenger from Venice",
       "notes": []
     },
     "20": {
-      "play": "19. SALERIO, a messenger from Venice",
+      "play": "JAILER",
       "notes": []
     },
     "21": {
-      "play": "20. JAILER",
+      "play": "DUKE OF VENICE",
       "notes": []
     },
     "22": {
-      "play": "21. DUKE OF VENICE",
+      "play": "Magnificoes of Venice",
       "notes": []
     },
     "23": {
-      "play": "22. Magnificoes of Venice",
+      "play": "Servants",
       "notes": []
     },
     "24": {
-      "play": "23. Servants",
+      "play": "Attendants and followers",
       "notes": []
     },
     "25": {
-      "play": "24. Attendants and followers",
+      "play": "Messenger",
       "notes": []
     },
     "26": {
-      "play": "25. Messenger",
-      "notes": []
-    },
-    "27": {
-      "play": "26. Musicians",
+      "play": "Musicians",
       "notes": []
     }
   },
