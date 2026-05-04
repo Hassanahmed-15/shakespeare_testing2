@@ -703,12 +703,12 @@ FORMAT REQUIREMENTS:
 
 LITERARY ANALYSIS REQUIREMENTS:
 - Do NOT name any specific critics or scholars — no personal names whatsoever.
-- Instead, structure the section as a series of readings, each attributed to a critical school.
-- For each school that has something meaningful to say about this passage, write 2–4 full sentences of substantive argument — not a single-sentence summary. Each entry must develop a genuine critical case, not merely gesture at one.
-- Include only the schools genuinely relevant to the passage; omit those with nothing substantial to contribute. Aim for at least 6 schools per passage.
-- Do not dismiss a school as inapplicable without first genuinely trying to apply it. For example, feminist criticism can engage with male-only scenes by analysing the structural exclusion of women and what that reveals ideologically.
-- Draw on any of the following schools where applicable: Traditional/Humanist Criticism, New Criticism/Formalism, Historical and Biographical Criticism, Psychoanalytic Criticism, Feminist Criticism, New Historicism, Cultural Materialism, Marxist Criticism, Postcolonial Criticism, Race Studies, Queer Theory, Performance and Theater History Criticism, Ecocriticism, Disability Studies, Cognitive/Evolutionary Criticism, Textual/Editorial Criticism.
-- Label each school clearly, e.g. "From a feminist perspective," "A Marxist reading would note," "New Historicist criticism situates…"
+- Structure the section as a series of school-based readings. For each school included, write EXACTLY 3–4 full sentences that build a genuine critical argument: state the school's interpretive lens, apply it specifically to this passage, develop the implication, and draw a conclusion. A single sentence or a vague gesture is not acceptable — every entry must read as a short critical paragraph.
+- Select only the schools that have something genuinely meaningful to say about this specific passage. Do NOT force schools that do not apply — quality over quantity. Do NOT pad with superficial entries just to reach a number.
+- For the schools you do include: go deep, not broad. A tight 3-sentence argument from 5 schools is far better than a 1-sentence mention of 15 schools.
+- Feminist criticism must engage substantively even in male-dominated passages — analyse what the structural exclusion of women reveals about ideology, power, or the limits of the text's moral world. Do not use "absence of women" as a way to dismiss the school in one sentence.
+- Draw on any of the following schools where genuinely applicable: Traditional/Humanist Criticism, New Criticism/Formalism, Historical and Biographical Criticism, Psychoanalytic Criticism, Feminist Criticism, New Historicism, Cultural Materialism, Marxist Criticism, Postcolonial Criticism, Race Studies, Queer Theory, Performance and Theater History Criticism, Ecocriticism, Disability Studies, Cognitive/Evolutionary Criticism, Textual/Editorial Criticism.
+- Label each school clearly at the start of its paragraph, e.g. "From a feminist perspective,", "A Marxist reading would note,", "New Historicist criticism situates…"
 - Do not invent critic names, book titles, or publication details.
 
 LENGTH: 800–1200 words total`
