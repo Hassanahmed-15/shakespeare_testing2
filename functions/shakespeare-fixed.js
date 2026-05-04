@@ -525,8 +525,9 @@ FORMAT REQUIREMENTS:
 LITERARY ANALYSIS REQUIREMENTS:
 - Do NOT name any specific critics or scholars — no personal names whatsoever.
 - Instead, structure the section as a series of readings, each attributed to a critical school.
-- For each school that has something meaningful to say about this passage, write 2–4 sentences presenting what a scholar from that school would argue.
-- Include only the schools genuinely relevant to the passage; omit those with nothing substantial to contribute.
+- For each school that has something meaningful to say about this passage, write 2–4 full sentences of substantive argument — not a single-sentence summary. Each entry must develop a genuine critical case, not merely gesture at one.
+- Include only the schools genuinely relevant to the passage; omit those with nothing substantial to contribute. Aim for at least 6 schools per passage.
+- Do not dismiss a school as inapplicable without first genuinely trying to apply it. For example, feminist criticism can engage with male-only scenes by analysing the structural exclusion of women and what that reveals ideologically.
 - Draw on any of the following schools where applicable: Traditional/Humanist Criticism, New Criticism/Formalism, Historical and Biographical Criticism, Psychoanalytic Criticism, Feminist Criticism, New Historicism, Cultural Materialism, Marxist Criticism, Postcolonial Criticism, Race Studies, Queer Theory, Performance and Theater History Criticism, Ecocriticism, Disability Studies, Cognitive/Evolutionary Criticism, Textual/Editorial Criticism.
 - Label each school clearly, e.g. "From a feminist perspective," "A Marxist reading would note," "New Historicist criticism situates…"
 - Do not invent critic names, book titles, or publication details.
