@@ -18986,24 +18986,21 @@
             
             const { act, scene } = extractActScene(safeScene);
             
-            // Prefer clicked-line selection (`selectedLines`) over free highlight (`selectedText`)
-            let phrase = '';
+            // Build per-line phrases. Multi-line selections become an OR disjunction.
+            const trimPhrase = (s) => {
+                let p = (s || '').trim().replace(/^["']+|["']+$/g, '');
+                const w = p.split(/\s+/).filter(Boolean);
+                if (w.length > 10) p = w.slice(0, 8).join(' ');
+                return p;
+            };
+            let phrases = [];
             if (Array.isArray(selectedLines) && selectedLines.length > 0) {
-                phrase = selectedLines.join(' ').trim();
+                phrases = selectedLines.map(trimPhrase).filter(Boolean);
             } else if (selectedText && typeof selectedText === 'string') {
-                phrase = selectedText.trim();
+                const t = trimPhrase(selectedText);
+                if (t) phrases = [t];
             }
-            
-            // Keep the phrase short + meaningful (JSTOR queries get noisy if too long)
-            // - If it's a single word/short phrase (<= 10 words), keep it
-            // - Otherwise, use the first 8 words as a phrase snippet
-            const phraseWords = phrase.split(/\s+/).filter(Boolean);
-            if (phraseWords.length > 10) {
-                phrase = phraseWords.slice(0, 8).join(' ');
-            }
-            // Remove wrapping quotes to avoid breaking the query
-            phrase = phrase.replace(/^["']+|["']+$/g, '');
-            
+
             const clauses = [];
             // Require play name
             clauses.push(`"${playName}"`);
@@ -19015,11 +19012,12 @@
             } else if (safeScene) {
                 clauses.push(`"${safeScene.replace(/\s+/g, ' ').trim()}"`);
             }
-            // Add the selected term/phrase if present
-            if (phrase) {
-                clauses.push(`"${phrase}"`);
+            if (phrases.length === 1) {
+                clauses.push(`"${phrases[0]}"`);
+            } else if (phrases.length > 1) {
+                clauses.push('(' + phrases.map(p => `"${p}"`).join(' OR ') + ')');
             }
-            
+
             const searchQuery = clauses.join(' AND ');
             
             console.log('🔍 JSTOR search query (scoped):', searchQuery);
@@ -19043,18 +19041,20 @@
             const act = actMatch ? convertRomanToArabic(actMatch[1]) : null;
             const scene = sceneMatch ? convertRomanToArabic(sceneMatch[1]) : null;
 
-            // Prefer clicked-line selection (`selectedLines`) over free highlight (`selectedText`)
-            let phrase = '';
+            // Build per-line phrases — multi-line selections become an OR disjunction
+            const trimPhrase = (s) => {
+                let p = (s || '').trim().replace(/^["']+|["']+$/g, '');
+                const w = p.split(/\s+/).filter(Boolean);
+                if (w.length > 10) p = w.slice(0, 8).join(' ');
+                return p;
+            };
+            let phrases = [];
             if (Array.isArray(selectedLines) && selectedLines.length > 0) {
-                phrase = selectedLines.join(' ').trim();
+                phrases = selectedLines.map(trimPhrase).filter(Boolean);
             } else if (selectedText && typeof selectedText === 'string') {
-                phrase = selectedText.trim();
+                const t = trimPhrase(selectedText);
+                if (t) phrases = [t];
             }
-
-            // Keep phrase short to avoid noisy/overbroad results
-            const phraseWords = phrase.split(/\s+/).filter(Boolean);
-            if (phraseWords.length > 10) phrase = phraseWords.slice(0, 8).join(' ');
-            phrase = phrase.replace(/^["']+|["']+$/g, '');
 
             const clauses = [];
             clauses.push(`"${playName}"`);
@@ -19066,7 +19066,11 @@
             } else if (safeScene) {
                 clauses.push(`"${safeScene.replace(/\s+/g, ' ').trim()}"`);
             }
-            if (phrase) clauses.push(`"${phrase}"`);
+            if (phrases.length === 1) {
+                clauses.push(`"${phrases[0]}"`);
+            } else if (phrases.length > 1) {
+                clauses.push('(' + phrases.map(p => `"${p}"`).join(' OR ') + ')');
+            }
             clauses.push('Shakespeare');
 
             const searchQuery = clauses.join(' ');
