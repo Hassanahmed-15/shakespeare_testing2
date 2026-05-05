@@ -18986,7 +18986,8 @@
             
             const { act, scene } = extractActScene(safeScene);
             
-            // Build per-line phrases. Multi-line selections become an OR disjunction.
+            try { if (typeof rebuildSelectedLines === 'function') rebuildSelectedLines(); } catch (e) {}
+
             const trimPhrase = (s) => {
                 let p = (s || '').trim().replace(/^["']+|["']+$/g, '');
                 const w = p.split(/\s+/).filter(Boolean);
@@ -18997,8 +18998,8 @@
             if (Array.isArray(selectedLines) && selectedLines.length > 0) {
                 phrases = selectedLines.map(trimPhrase).filter(Boolean);
             } else if (selectedText && typeof selectedText === 'string') {
-                const t = trimPhrase(selectedText);
-                if (t) phrases = [t];
+                const segs = selectedText.split(/[\r\n]+/).map(trimPhrase).filter(Boolean);
+                phrases = segs.length > 0 ? segs : [];
             }
 
             const clauses = [];
@@ -19041,7 +19042,8 @@
             const act = actMatch ? convertRomanToArabic(actMatch[1]) : null;
             const scene = sceneMatch ? convertRomanToArabic(sceneMatch[1]) : null;
 
-            // Build per-line phrases — multi-line selections become an OR disjunction
+            try { if (typeof rebuildSelectedLines === 'function') rebuildSelectedLines(); } catch (e) {}
+
             const trimPhrase = (s) => {
                 let p = (s || '').trim().replace(/^["']+|["']+$/g, '');
                 const w = p.split(/\s+/).filter(Boolean);
@@ -19052,8 +19054,8 @@
             if (Array.isArray(selectedLines) && selectedLines.length > 0) {
                 phrases = selectedLines.map(trimPhrase).filter(Boolean);
             } else if (selectedText && typeof selectedText === 'string') {
-                const t = trimPhrase(selectedText);
-                if (t) phrases = [t];
+                const segs = selectedText.split(/[\r\n]+/).map(trimPhrase).filter(Boolean);
+                phrases = segs.length > 0 ? segs : [];
             }
 
             const clauses = [];
