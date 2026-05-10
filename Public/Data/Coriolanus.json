@@ -1931,17 +1931,17 @@
   },
   "ACT 1 SCENE 3": {
     "1": {
-      "play": "[Enter Volumnia and Virgilia, mother and wife]",
+      "play": "[Enter Volumnia and Virgilia, mother and wife to Martius. They set them down on two low stools and sew.]",
       "notes": [
         "Enter Volumnia and Virgilia] VERITY (Student's Sh.): The main purpose of this scene is to show up the character of Volumnia, the typical Roman matron, to whom Virgilia is obviously meant as a foil. Volumnia is important not only per se in that she has so much to do with the actual working of the plot but also in relation to Coriolanus, who is what he is largely through her and her training. As a scene of domestic interest set in a framework of natural stress this scene may be compared with the scene between Lady Macduff and Ross in Macbeth, IV, ii. The resemblance is heightened by the introduction of the little boy. There are not very many portraits of children in Shakespeare's plays, and (as has been well said) about almost all of them clings a certain pathos. Witness, above all, Prince Arthur in King John. Perhaps, indeed, this lies not in the presentment of the individual child, but in the ever-felt contrast between simple childhood and great surroundings."
       ]
     },
     "2": {
-      "play": "to Martius. They set them down on two low stools",
+      "play": "",
       "notes": []
     },
     "3": {
-      "play": "and sew.",
+      "play": "",
       "notes": []
     },
     "4": {
@@ -2903,13 +2903,13 @@
       "notes": []
     },
     "98": {
-      "play": "[Enter Martius, bleeding, as if from Corioles, assaulted]",
+      "play": "[Enter Martius, bleeding, as if from Corioles, assaulted by the enemy.]",
       "notes": [
         "Enter Martius . . . the Enemy] Delius: The entrance of Martius bleeding must be imagined as within the town and therefore does not correspond with the stage-direction, Before Corioli, which editors place at the beginning of this scene. —Ulrici (Zusätze und Berichtigungen, p. 175): The stage-direction of the Folio evidently does not mean that Coriolanus comes out of the Gate on to the stage, since then there would be no need of Lartius and the Romans to enter the town in"
       ]
     },
     "99": {
-      "play": "by the enemy.",
+      "play": "",
       "notes": []
     },
     "100": {
@@ -5271,15 +5271,15 @@
       "notes": []
     },
     "172": {
-      "play": "[Enter Cominius the General and Titus Lartius, between]",
+      "play": "[Enter Cominius the General and Titus Lartius, between them Coriolanus crowned with an oaken garland, with Captains and Soldiers and a Herald. Trumpets sound.]",
       "notes": []
     },
     "173": {
-      "play": "them Coriolanus crowned with an oaken garland, with",
+      "play": "",
       "notes": []
     },
     "174": {
-      "play": "Captains and Soldiers and a Herald. Trumpets sound.",
+      "play": "",
       "notes": []
     },
     "175": {
@@ -5957,13 +5957,13 @@
   },
   "ACT 2 SCENE 2": {
     "1": {
-      "play": "[Enter two Officers, to lay cushions, as it were]",
+      "play": "[Enter two Officers, to lay cushions, as it were in the Capitol.]",
       "notes": [
         "as it were] MALONE: This ‘as it were’ was inserted because, there being no scenes in the theatres in our author’s time, no exhibition of the inside of the Capitol could be given. See The Account of our old Theatres, vol. iii. [To this last STEEVENS subjoins, ‘In the same place the reader will find this position controverted.’ The controversy occupies pages 81 to 106 in vol. iii. of the Prolegomena to the Variorum of 1821. The question is, however, one that concerns the history of the stage rather than the present play.—Ed.]—R. C. RHODES (Stagery of Sh., p. 88) compares, for this form of stage-direction, ‘Martius . . . as before the City Coriatus, . . .’ I, iv, 1-3, and Richard II: ‘Enter as to the Parliament, Bullingbroke,’ etc., remarking: ‘Here the directions are clearly opposed to the use of “perspective.” The place was merely “supposed” without any pictorial device. Actually they prescribe manner as much as place, or rather the manner imposed by the place, like the “as to her trial” in Winter’s Tale.’ [In a letter to the Editor of The Times Literary Supplement, August 31, 1922, Rhodes, on this same point, says: ‘As an example of Elizabethan stagery Coriolanus bears a close affinity to 1 Henry VI. in its continuous exploitation of the permanent and peculiar architectural features of an Elizabethan playhouse. I retain the word “stagery,” which Milton used in a cognate but slightly different sense, because I mean much less than “stage-craft”—indeed, only that part of stage-craft which concerns the problems of the producer or stage manager, who has to move his actors and appointments about the stage like pieces on a chess-board. For that reason I should like to make what may seem the trivial suggestion that a comma in the First Folio"
       ]
     },
     "2": {
-      "play": "in the Capitol.",
+      "play": "",
       "notes": []
     },
     "3": {
@@ -11278,11 +11278,11 @@
       "notes": []
     },
     "42": {
-      "play": "[Enter Coriolanus, Menenius, and Cominius, with]",
+      "play": "[Enter Coriolanus, Menenius, and Cominius, with others (Senators).]",
       "notes": []
     },
     "43": {
-      "play": "others (Senators).",
+      "play": "",
       "notes": []
     },
     "44": {
@@ -18234,11 +18234,11 @@
       "notes": []
     },
     "61": {
-      "play": "[Drums and trumpets sounds, with great shouts]",
+      "play": "[Drums and trumpets sounds, with great shouts of the people.]",
       "notes": []
     },
     "62": {
-      "play": "of the people.",
+      "play": "",
       "notes": []
     },
     "63": {

@@ -3040,11 +3040,11 @@
   },
   "ACT 2 SCENE 1": {
     "1": {
-      "play": "[Enter Duke Senior, Amiens, and two or three Lords, like]",
+      "play": "[Enter Duke Senior, Amiens, and two or three Lords, like foresters.]",
       "notes": []
     },
     "2": {
-      "play": "foresters.",
+      "play": "",
       "notes": []
     },
     "3": {
@@ -10807,14 +10807,14 @@
   },
   "ACT 4 SCENE 3": {
     "1": {
-      "play": "[Enter Rosalind dressed as Ganymede and Celia]",
-      "notes": []
-    },
-    "2": {
-      "play": "dressed as Aliena.",
+      "play": "[Enter Rosalind dressed as Ganymede and Celia dressed as Aliena.]",
       "notes": [
         "FLOWER (Memorial Theatre Edition): On the occasion of the first representation of As You Like It in the Memorial Theatre, April 30th, 1879, a fallow deer was carried on the stage by the foresters [in this scene] which had been that morning shot by H. S. Lucy, Esq., of Charlecote Park, out of the herd descended from that upon which Shakespeare is credited with having made a raid in his youth. The deer is now stuffed, and carried on whenever the play is acted in Stratford."
       ]
+    },
+    "2": {
+      "play": "",
+      "notes": []
     },
     "3": {
       "play": "ROSALIND: How say you now? Is it not past two o’clock?",
