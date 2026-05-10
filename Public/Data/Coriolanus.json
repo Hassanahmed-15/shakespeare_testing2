@@ -2479,15 +2479,15 @@
   },
   "ACT 1 SCENE 4": {
     "1": {
-      "play": "[Enter Martius, Titus Lartius, with Trumpet, Drum,]",
+      "play": "[Enter Martius, Titus Lartius, with Trumpet, Drum, and Colors, with Captains and Soldiers, as before the city of Corioles. To them a Messenger.]",
       "notes": []
     },
     "2": {
-      "play": "and Colors, with Captains and Soldiers, as before",
+      "play": "",
       "notes": []
     },
     "3": {
-      "play": "the city of Corioles. To them a Messenger.",
+      "play": "",
       "notes": []
     },
     "4": {
@@ -4491,13 +4491,13 @@
   },
   "ACT 2 SCENE 1": {
     "1": {
-      "play": "[Enter Menenius with the two Tribunes of the people,]",
+      "play": "[Enter Menenius with the two Tribunes of the people, Sicinius and Brutus.]",
       "notes": [
         "Actus Secundus] BEECHING (Falcon Sh.): The first part of this scene is an amusing study in manners. Notice the superior tone Menenius adopts towards the Tribunes, soon passing into downright rudeness, which they hardly resent, while he loses his temper at once when they in turn only hint at a home-truth. The entry of the ladies makes us forget plebeian Rome, and leads up to the triumph. The last part of the scene is a reminder that to ridicule or ignore the Tribunes is not to draw their sting.—VERITY (Student’s Sh.): The purpose of this prelude is to show that Coriolanus’s brilliant exploits and services to his country have not affected the causes of dissension between the patricians and the people (represented by the Tribunes) nor the popular feeling of grievance against Coriolanus himself.—E. K. CHAMBERS (Warwick Sh.): The subject of the first act was the nobility of Coriolanus; for all his faults he is lifted before our eyes to an heroic level. The subject of the second act is his inherent weakness, leading up to and explaining the tragic crisis of his fate in the third act. The first need for a would-be leader of men is a certain sympathy with average every-day humanity. Of this Coriolanus has nothing; he is too completely self-centered and self-absorbed. It is the function of the second act to bring this out, and to show how irreconcilable is the hostility between him and the plebeians. The crucial test of this is the canvassing for the consulship in which Coriolanus’s insolent demeanor gives occasion to his enemies the Tribunes to destroy the momentary popularity which he has won by his valour.—Miss C. PORTER (First Folio Sh.): This scene passes on the fore-stage. At l. 98 the stage-direction of the Folio shows that Brutus and Sicinius go Aside, not off the stage. Since the rest, after Coriolanus enters in triumph, pass in procession following him across the stage, it may be that the Tribunes pass way out upon the projecting fore-stage, and, standing with their backs to the audience and at one side, at the back of the procession, come forward after it has passed out at the opposite side, presumably on its way to the Capitol. After the Messenger comes to summon them they follow in the same direction."
       ]
     },
     "2": {
-      "play": "Sicinius and Brutus.",
+      "play": "",
       "notes": []
     },
     "3": {
@@ -8229,13 +8229,13 @@
   },
   "ACT 3 SCENE 1": {
     "1": {
-      "play": "[Cornets. Enter Coriolanus, Menenius, all the Gentry,]",
+      "play": "[Cornets. Enter Coriolanus, Menenius, all the Gentry, Cominius, Titus Lartius, and other Senators.]",
       "notes": [
         "Actus Tertius] E. K. CHAMBERS (Warwick Sh.): Act I. showed us Coriolanus in his nobility, Act II. in his inherent and fatal weakness. The present Act leads him on inevitably to his ruin. At the beginning of it he is the champion of Rome, and, as he and the Patricians think, her chosen Consul; at the end he is a disgraced exile. His better and his worse qualities have combined to bring about this result. If he had had that sympathy with the people which alone can make"
       ]
     },
     "2": {
-      "play": "Cominius, Titus Lartius, and other Senators.",
+      "play": "",
       "notes": []
     },
     "3": {
@@ -11923,14 +11923,14 @@
   },
   "ACT 4 SCENE 1": {
     "1": {
-      "play": "[Enter Coriolanus, Volumnia, Virgilia, Menenius,]",
+      "play": "[Enter Coriolanus, Volumnia, Virgilia, Menenius, Cominius, with the young nobility of Rome.]",
       "notes": [
         "Actus Quartus] E. K. CHAMBERS (Warwick Sh.): Coriolanus’s career in Rome has ended in disaster; but he is not a man to put up with disaster contentedly. Already a vague scheme, soon to take dreadful shape, has suggested itself to him, whereby he may re-establish himself in his own eyes, and once more play a brave part in new scenes and under new conditions. The attempt to carry out this scheme forms the subject of the Fourth Act; the Fifth is concerned with its ultimate failure. In the first three scenes, however, Coriolanus’s designs are not directly revealed. For a time our sympathies are allowed to turn towards him in his misfortune. His departure is touched with pathos, though beneath there is the tragic undertone of an austere and terrible intention. Shakespeare adds a dramatic touch in making Coriolanus depart alone, and not ‘with three or four of his friends,’ [as in North’s Plutarch].",
         "Enter Coriolanus, etc.] Miss C. PORTER (First Folio Sh.): Shakespeare’s way to represent this on his stage was presumably to represent the group as entering from one of the side doors, and bringing Coriolanus out the double doors in the rear stage. These could be made to look enough like the gates in a city-wall to be so supposed, as already they had been supposed (I, iv, v, vii.), to be the fortified gates of Corioli."
       ]
     },
     "2": {
-      "play": "Cominius, with the young nobility of Rome.",
+      "play": "",
       "notes": []
     },
     "3": {
@@ -12258,11 +12258,11 @@
   },
   "ACT 4 SCENE 2": {
     "1": {
-      "play": "[Enter the two Tribunes, Sicinius, and Brutus,]",
+      "play": "[Enter the two Tribunes, Sicinius, and Brutus, with the Aedile.]",
       "notes": []
     },
     "2": {
-      "play": "with the Aedile.",
+      "play": "",
       "notes": []
     },
     "3": {
@@ -12848,11 +12848,11 @@
   },
   "ACT 4 SCENE 4": {
     "1": {
-      "play": "[Enter Coriolanus in mean apparel, disguised,]",
+      "play": "[Enter Coriolanus in mean apparel, disguised, and muffled.]",
       "notes": []
     },
     "2": {
-      "play": "and muffled.",
+      "play": "",
       "notes": []
     },
     "3": {
@@ -13122,11 +13122,11 @@
       "notes": []
     },
     "25": {
-      "play": "[Enter Third Servingman; the First, entering,]",
+      "play": "[Enter Third Servingman; the First, entering, meets him.]",
       "notes": []
     },
     "26": {
-      "play": "meets him.",
+      "play": "",
       "notes": []
     },
     "27": {
@@ -16554,11 +16554,11 @@
       ]
     },
     "26": {
-      "play": "[Enter Virgilia, Volumnia, Valeria, young Martius,]",
+      "play": "[Enter Virgilia, Volumnia, Valeria, young Martius, with Attendants.]",
       "notes": []
     },
     "27": {
-      "play": "with Attendants.",
+      "play": "",
       "notes": []
     },
     "28": {
@@ -17921,11 +17921,11 @@
   },
   "ACT 5 SCENE 5": {
     "1": {
-      "play": "[Enter two Senators, with Ladies (Volumnia, Virgilia,]",
+      "play": "[Enter two Senators, with Ladies (Volumnia, Virgilia, Valeria) passing over the stage, with other Lords.]",
       "notes": []
     },
     "2": {
-      "play": "Valeria) passing over the stage, with other Lords.",
+      "play": "",
       "notes": []
     },
     "3": {
