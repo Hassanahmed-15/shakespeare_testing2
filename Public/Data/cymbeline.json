@@ -9085,13 +9085,13 @@
   },
   "ACT 3 SCENE 5": {
     "1": {
-      "play": "[Enter Cymbeline, Queen, Cloten, Lucius, Lords, and]",
+      "play": "[Enter Cymbeline, Queen, Cloten, Lucius, Lords, and Attendants.]",
       "notes": [
         "Scena Quinta] ECCLES: This I assign to the afternoon of the same day to which the last two scenes belong, so as to leave time for Pisanio to perform his journey back to court after his separation from Imogen somewhere in the neighbourhood of Milford-Haven. As haste was necessary, and he may be imagined to travel when alone with greater expedition, he may, perhaps, have accomplished in less than a day what, during his attendance upon his mistress, may have required a somewhat longer period. That so little time was necessary, however, for going and returning, obliges us to suppose the residence of Cymbeline at no very remote distance from the above-mentioned harbour, since the whole of Pisanio’s absence is here conceived to be included within a compass of time equal to about two days and nights. Lucius here takes leave of the king upon setting out for Milford-Haven, where he was either to embark, or be joined by the Roman troops from Gaul. Cloten had said, in the concluding scene of the last act as it is now disposed of, to Lucius, 'His majesty bids you welcome—Make pastime with us a day, or two, or longer,’ &c. But we shall find it necessary to conceive Lucius to have remained many more days at the court of Cymbeline, according to the system here laid down, namely, while Iachimo was proceeding to Rome, and the letter of Posthumus on the road from thence, and even somewhat longer, since we find him here setting out just before the reappearance of Pisanio, after his return from his attendance upon Imogen.—DANIEL (New Sh. Soc. Trans., 1877–79, p. 244): DAY 8. In Cymbeline’s Palace. The ambassador Lucius takes his departure, and desires ‘a conduct over-land to Milford-Haven.’ Lucius has sojourned in Cymbeline’s court since Day No. 4; since then the space between Rome and Britain has been twice traversed—by Iachimo going to Rome, and by the post bringing letters from Posthumus to Pisanio—and Lucius himself appears to have informed the emperor of the failure of his embassy, and to have received a reply; for he says— 'My emperor hath wrote, I must from hence.’ The ‘day or two longer’ during which he was invited to rest at Court would hardly suffice for this, unless we are to imagine that Rome is only ‘behind the scenes, in the green-room.’ Yet more than a day or two is inconsistent with Cymbeline’s remark immediately after Lucius’s departure. He misses his daughter— 'She hath not appear’d Before the Roman, nor to us hath tender’d The duty of the day,’ etc. And this scene, be it observed, cannot be put earlier in time, as with Act III, sc. i."
       ]
     },
     "2": {
-      "play": "Attendants.",
+      "play": "",
       "notes": []
     },
     "3": {
@@ -10105,11 +10105,11 @@
       "notes": []
     },
     "31": {
-      "play": "[Enter Belarius as Morgan, Guiderius as Polydor, and]",
+      "play": "[Enter Belarius as Morgan, Guiderius as Polydor, and Arviragus as Cadwal.]",
       "notes": []
     },
     "32": {
-      "play": "Arviragus as Cadwal.",
+      "play": "",
       "notes": []
     },
     "33": {
@@ -11495,11 +11495,11 @@
       "notes": []
     },
     "157": {
-      "play": "[Enter Belarius as Morgan and Arviragus as]",
+      "play": "[Enter Belarius as Morgan and Arviragus as Cadwal.]",
       "notes": []
     },
     "158": {
-      "play": "Cadwal.",
+      "play": "",
       "notes": []
     },
     "159": {
@@ -15750,15 +15750,15 @@
   },
   "ACT 5 SCENE 5": {
     "1": {
-      "play": "[Enter Cymbeline, Belarius as Morgan, Guiderius as]",
+      "play": "[Enter Cymbeline, Belarius as Morgan, Guiderius as Polydor, Arviragus as Cadwal, Pisanio, Attendants, and Lords.]",
       "notes": []
     },
     "2": {
-      "play": "Polydor, Arviragus as Cadwal, Pisanio, Attendants,",
+      "play": "",
       "notes": []
     },
     "3": {
-      "play": "and Lords.",
+      "play": "",
       "notes": []
     },
     "4": {

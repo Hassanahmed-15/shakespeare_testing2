@@ -3455,7 +3455,9 @@
     "119": {
       "play": "[They exit.]",
       "notes": [
-        "power] See note on I.i.149."
+        "power] See note on I.i.149.",
+        "] BÜTTNER (1904, p. 83) argues that the archbishop is not justified in the event because of the jubilation in the rebel camp when the truce is announced (iv.ii.94 ff.).",
+        "] Miss WINSTANLEY (ed. 1918): As many men as we can possibly expect."
       ]
     },
     "154": {
@@ -3463,14 +3465,12 @@
       "play": ""
     },
     "215": {
-      "notes": [
-        "] BÜTTNER (1904, p. 83) argues that the archbishop is not justified in the event because of the jubilation in the rebel camp when the truce is announced (iv.ii.94 ff.)."
-      ]
+      "notes": [],
+      "play": ""
     },
     "237": {
-      "notes": [
-        "] Miss WINSTANLEY (ed. 1918): As many men as we can possibly expect."
-      ]
+      "notes": [],
+      "play": ""
     }
   },
   "ACT 2, SCENE 1": {
@@ -5255,7 +5255,8 @@
     "183": {
       "play": "[They exit.]",
       "notes": [
-        "] AX (1912, p. 65): To judge from Harry’s very first words, he seems to have just arrived from Wales.—[Cf. ii.iv.297.]"
+        "] AX (1912, p. 65): To judge from Harry’s very first words, he seems to have just arrived from Wales.—[Cf. ii.iv.297.]",
+        "idly] N.E.D. (Idly adv. 1): Vainly; uselessly; ineffectively."
       ]
     },
     "311": {
@@ -5263,9 +5264,8 @@
       "play": ""
     },
     "382": {
-      "notes": [
-        "idly] N.E.D. (Idly adv. 1): Vainly; uselessly; ineffectively."
-      ]
+      "notes": [],
+      "play": ""
     }
   },
   "ACT 2, SCENE 3": {
@@ -5664,7 +5664,10 @@
     "74": {
       "play": "[They exit.]",
       "notes": [
-        "all] Cowl (ed. 1923) understands this to mean both."
+        "all] Cowl (ed. 1923) understands this to mean both.",
+        "am] CLARKE (ed. 1865): [An example of] how peculiarly Shakespeare uses the present tense of a verb at the very time that he is using past or future tenses of other verbs in the same passage. ... This peculiar mode of Shakespeare’s has admirably concentrative force.",
+        "when] On the difference between Q and F see p. 506.",
+        "Booke] N.E.D. (Book sb. 4a): fig. That in which we may read, and find instruction and lessons. [Quotes As You Like It ii.i.16, \"books in the running brooks\".]"
       ]
     },
     "79": {
@@ -5672,19 +5675,16 @@
       "play": ""
     },
     "84": {
-      "notes": [
-        "am] CLARKE (ed. 1865): [An example of] how peculiarly Shakespeare uses the present tense of a verb at the very time that he is using past or future tenses of other verbs in the same passage. ... This peculiar mode of Shakespeare’s has admirably concentrative force."
-      ]
+      "notes": [],
+      "play": ""
     },
     "96": {
-      "notes": [
-        "when] On the difference between Q and F see p. 506."
-      ]
+      "notes": [],
+      "play": ""
     },
     "110": {
-      "notes": [
-        "Booke] N.E.D. (Book sb. 4a): fig. That in which we may read, and find instruction and lessons. [Quotes As You Like It ii.i.16, \"books in the running brooks\".]"
-      ]
+      "notes": [],
+      "play": ""
     }
   },
   "ACT 2, SCENE 4": {
@@ -16404,7 +16404,9 @@
     "19": {
       "play": "[Sings. Do nothing but eat and make good cheer, And praise God for the merry year, When flesh is cheap and females dear, And lusty lads roam here and there So merrily, And ever among so merrily.]",
       "notes": [
-        "make good cheer] N.E.D. (Cheer sb. 6): To make good (etc.) cheer: to feast and make merry."
+        "make good cheer] N.E.D. (Cheer sb. 6): To make good (etc.) cheer: to feast and make merry.",
+        "dear] FARMER (Var. ’73, Appendix II) calls attention to the punning sense of the word in antithesis to cheape.",
+        "ever among] N.E.D. (Among adv. 1): During this (period), meanwhile, all the while, at the same time. Obs. [Quotes this line.]"
       ]
     },
     "20": {
@@ -16413,9 +16415,7 @@
     },
     "21": {
       "play": "",
-      "notes": [
-        "dear] FARMER (Var. ’73, Appendix II) calls attention to the punning sense of the word in antithesis to cheape."
-      ]
+      "notes": []
     },
     "22": {
       "play": "",
@@ -16427,9 +16427,7 @@
     },
     "24": {
       "play": "",
-      "notes": [
-        "ever among] N.E.D. (Among adv. 1): During this (period), meanwhile, all the while, at the same time. Obs. [Quotes this line.]"
-      ]
+      "notes": []
     },
     "25": {
       "play": "FALSTAFF: There’s a merry heart!—Good Master Silence,",

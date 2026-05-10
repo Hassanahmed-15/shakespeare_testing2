@@ -3908,11 +3908,11 @@
   },
   "ACT 2 SCENE 4": {
     "1": {
-      "play": "[Enter Rosalind for Ganymede, Celia for Aliena, and]",
+      "play": "[Enter Rosalind for Ganymede, Celia for Aliena, and Clown, alias Touchstone.]",
       "notes": []
     },
     "2": {
-      "play": "Clown, alias Touchstone.",
+      "play": "",
       "notes": []
     },
     "3": {
@@ -8979,11 +8979,11 @@
       ]
     },
     "10": {
-      "play": "[Enter, unobserved, Rosalind as Ganymede, Celia as]",
+      "play": "[Enter, unobserved, Rosalind as Ganymede, Celia as Aliena, and Corin.]",
       "notes": []
     },
     "11": {
-      "play": "Aliena, and Corin.",
+      "play": "",
       "notes": []
     },
     "12": {
