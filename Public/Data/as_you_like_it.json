@@ -127,7 +127,7 @@
   },
   "ACT 1 SCENE 1": {
     "1": {
-      "play": "Enter Orlando and Adam.",
+      "play": "[Enter Orlando and Adam.]",
       "notes": []
     },
     "2": {
@@ -248,7 +248,7 @@
       "notes": []
     },
     "27": {
-      "play": "Enter Oliver.",
+      "play": "[Enter Oliver.]",
       "notes": []
     },
     "28": {
@@ -509,7 +509,7 @@
       "notes": []
     },
     "87": {
-      "play": "Orlando and Adam exit.",
+      "play": "[Orlando and Adam exit.]",
       "notes": []
     },
     "88": {
@@ -527,7 +527,7 @@
       "notes": []
     },
     "91": {
-      "play": "Enter Dennis.",
+      "play": "[Enter Dennis.]",
       "notes": []
     },
     "92": {
@@ -561,7 +561,7 @@
       "notes": []
     },
     "99": {
-      "play": "Enter Charles.",
+      "play": "[Enter Charles.]",
       "notes": []
     },
     "100": {
@@ -864,7 +864,7 @@
       "notes": []
     },
     "166": {
-      "play": "OLIVER: Farewell, good Charles.   Charles exits.",
+      "play": "OLIVER: Farewell, good Charles.    [Charles exits.]",
       "notes": []
     },
     "167": {
@@ -922,13 +922,13 @@
       ]
     },
     "177": {
-      "play": "He exits.",
+      "play": "[He exits.]",
       "notes": []
     }
   },
   "ACT 1 SCENE 2": {
     "1": {
-      "play": "Enter Rosalind and Celia.",
+      "play": "[Enter Rosalind and Celia.]",
       "notes": [
         "Rosalind] MRS JAMESON (ii, 143): It is easy to seize on the prominent features in the mind of Beatrice, but extremely difficult to catch and fix the more fanciful graces of Rosalind. She is like a compound of essences, so volatile in their nature, and so exquisitely blended, that on any attempt to analyze them, they seem to escape us. To what else shall we compare her, all-enchanting as she is?—to the silvery summer clouds, which, even while we gaze on them, shift their hues and forms, dissolving into air, and light, and rainbow showers?—to the May-morning, flush with opening blossoms and the roseate dews, and ‘charm of earliest birds’?—to some wild and beautiful melody, such as some shepherd-boy might pipe to ‘Amarillis in the shade’?—to a mountain streamlet, now smooth as a mirror, in which the skies may glass themselves, and anon leaping and sparkling in the sunshine—or rather to the very sunshine itself? for so her genial spirit touches into life and beauty whatever it shines on! BLACKWOOD'S MAGAZINE (April, 1833, p. 547. Qu. Thomas Campbell?): But lo! One more delightful, more alluring, more fascinating, more enchanting, more captivating than Beatrice! In pure nature and sweet simplicity, more delightful is Rosalind; in courteous coquetry and quaint disguise, more alluring is Rosalind; in feeling, playing with fancy, and in fancy by feeling tempered, (ah! shall we call her serpent?) more fascinating is Rosalind; in sinless spells and gracious glamoury, (what a witch!) more enchanting is Rosalind; and when to ‘still musick’ enters Hymen, leading her in woman’s cloathes’ and singing ‘Then is there mirth in Heaven, When earthly things made even Atone together,’ feelest thou not that more captivating is Rosalind—a snow-white lily with a wimple of dew, in bride-like joyance flowering in the forest! LADY MARTIN (p. 409): What the courtisy Le Beau had so plainly seen to be the state of the Duke’s mind was not likely to have escaped Rosalind’s quick, sensitive nature. She feels the cloud of her uncle’s displeasure hanging over her and ready to burst at any moment. She will not pain Celia with her forebodings, who is so far from surmising the truth that these first lines she speaks are a gentle reproach to Rosalind for her want of gayety. . . . It is obvious that Celia has no idea that Rosalind has fallen out of favour with the usurping Duke. . . . Rosalind will hide from Celia the trouble she sees looming for herself in the not far distance."
       ]
@@ -1140,7 +1140,7 @@
       "notes": []
     },
     "46": {
-      "play": "Enter Touchstone.",
+      "play": "[Enter Touchstone.]",
       "notes": [
         "Clowne] DOUCE (i, 309): Touchstone is the domestic fool of Frederick, the Duke's brother, and belongs to the class of witty or allowed fools. He is threatened with the whip, a mode of chastisement which was often inflicted on this motley personage. His dress should be a party-coloured garment. He should occasionally carry a bauble in his hand, and wear asses' ears to his hood, which is probably the head-dress intended by Shakespeare, there being no allusion whatever to a cock's head or comb. The three-cornered hat which Touchstone is made to wear on the modern stage is an innovation, and totally unconnected with the genuine costume of the domestic fool. [See Appendix, p. 309, 'Source of the Plot.']"
       ]
@@ -1356,7 +1356,7 @@
       "notes": []
     },
     "93": {
-      "play": "Enter Le Beau.",
+      "play": "[Enter Le Beau.]",
       "notes": []
     },
     "94": {
@@ -1602,11 +1602,11 @@
       "notes": []
     },
     "146": {
-      "play": "Flourish. Enter Duke Frederick, Lords, Orlando,",
+      "play": "[Flourish. Enter Duke Frederick, Lords, Orlando,",
       "notes": []
     },
     "147": {
-      "play": "Charles, and Attendants.",
+      "play": "Charles, and Attendants.]",
       "notes": []
     },
     "148": {
@@ -2175,7 +2175,7 @@
       "notes": []
     },
     "274": {
-      "play": "Rosalind and Celia exit.",
+      "play": "[Rosalind and Celia exit.]",
       "notes": []
     },
     "275": {
@@ -2197,7 +2197,7 @@
       ]
     },
     "279": {
-      "play": "Enter Le Beau.",
+      "play": "[Enter Le Beau.]",
       "notes": []
     },
     "280": {
@@ -2315,7 +2315,7 @@
       "notes": []
     },
     "306": {
-      "play": "Le Beau exits.",
+      "play": "[Le Beau exits.]",
       "notes": []
     },
     "307": {
@@ -2335,13 +2335,13 @@
       ]
     },
     "310": {
-      "play": "He exits.",
+      "play": "[He exits.]",
       "notes": []
     }
   },
   "ACT 1 SCENE 3": {
     "1": {
-      "play": "Enter Celia and Rosalind.",
+      "play": "[Enter Celia and Rosalind.]",
       "notes": [
         "Duke Senior] In a note on I, ii,"
       ]
@@ -2517,7 +2517,7 @@
       "notes": []
     },
     "39": {
-      "play": "Enter Duke Frederick with Lords.",
+      "play": "[Enter Duke Frederick with Lords.]",
       "notes": []
     },
     "40": {
@@ -2782,7 +2782,7 @@
       "notes": []
     },
     "97": {
-      "play": "Duke and Lords exit.",
+      "play": "[Duke and Lords exit.]",
       "notes": []
     },
     "98": {
@@ -3034,13 +3034,13 @@
       "notes": []
     },
     "150": {
-      "play": "They exit.",
+      "play": "[They exit.]",
       "notes": []
     }
   },
   "ACT 2 SCENE 1": {
     "1": {
-      "play": "Enter Duke Senior, Amiens, and two or three Lords, like",
+      "play": "[Enter Duke Senior, Amiens, and two or three Lords, like]",
       "notes": []
     },
     "2": {
@@ -3417,13 +3417,13 @@
       "notes": []
     },
     "76": {
-      "play": "They exit.",
+      "play": "[They exit.]",
       "notes": []
     }
   },
   "ACT 2 SCENE 2": {
     "1": {
-      "play": "Enter Duke Frederick with Lords.",
+      "play": "[Enter Duke Frederick with Lords.]",
       "notes": []
     },
     "2": {
@@ -3528,13 +3528,13 @@
       "notes": []
     },
     "23": {
-      "play": "They exit.",
+      "play": "[They exit.]",
       "notes": []
     }
   },
   "ACT 2 SCENE 3": {
     "1": {
-      "play": "Enter Orlando and Adam, meeting.",
+      "play": "[Enter Orlando and Adam, meeting.]",
       "notes": []
     },
     "2": {
@@ -3902,13 +3902,13 @@
       "notes": []
     },
     "79": {
-      "play": "They exit.",
+      "play": "[They exit.]",
       "notes": []
     }
   },
   "ACT 2 SCENE 4": {
     "1": {
-      "play": "Enter Rosalind for Ganymede, Celia for Aliena, and",
+      "play": "[Enter Rosalind for Ganymede, Celia for Aliena, and]",
       "notes": []
     },
     "2": {
@@ -4000,7 +4000,7 @@
       "notes": []
     },
     "21": {
-      "play": "Enter Corin and Silvius.",
+      "play": "[Enter Corin and Silvius.]",
       "notes": []
     },
     "22": {
@@ -4118,7 +4118,7 @@
       "notes": []
     },
     "48": {
-      "play": "O Phoebe, Phoebe, Phoebe!  He exits.",
+      "play": "[O Phoebe, Phoebe, Phoebe!  He exits.]",
       "notes": []
     },
     "49": {
@@ -4434,13 +4434,13 @@
       "notes": []
     },
     "115": {
-      "play": "They exit.",
+      "play": "[They exit.]",
       "notes": []
     }
   },
   "ACT 2 SCENE 5": {
     "1": {
-      "play": "Enter Amiens, Jaques, and others.",
+      "play": "[Enter Amiens, Jaques, and others.]",
       "notes": []
     },
     "2": {
@@ -4742,13 +4742,13 @@
       ]
     },
     "67": {
-      "play": "They exit.",
+      "play": "[They exit.]",
       "notes": []
     }
   },
   "ACT 2 SCENE 6": {
     "1": {
-      "play": "Enter Orlando and Adam.",
+      "play": "[Enter Orlando and Adam.]",
       "notes": []
     },
     "2": {
@@ -4839,7 +4839,7 @@
       "notes": []
     },
     "20": {
-      "play": "They exit.",
+      "play": "[They exit.]",
       "notes": [
         "The last line of this Scene is, in the Folio, the last line of the page, and I strongly suspect that the division into verse of what Dyce calls 'stark prose,' is due simply to the effort of the compositors to spread out the lines in order to avoid the necessity of having the heading of a Scene at the foot of the page, that is, the heading Scena Septima merely, with, perhaps, not a line of text.—ED."
       ]
@@ -4847,7 +4847,7 @@
   },
   "ACT 2 SCENE 7": {
     "1": {
-      "play": "Enter Duke Senior and Lords, like outlaws.",
+      "play": "[Enter Duke Senior and Lords, like outlaws.]",
       "notes": []
     },
     "2": {
@@ -4890,7 +4890,7 @@
       "notes": []
     },
     "9": {
-      "play": "Enter Jaques.",
+      "play": "[Enter Jaques.]",
       "notes": []
     },
     "10": {
@@ -5313,7 +5313,7 @@
       "notes": []
     },
     "94": {
-      "play": "Enter Orlando, brandishing a sword.",
+      "play": "[Enter Orlando, brandishing a sword.]",
       "notes": []
     },
     "95": {
@@ -5567,7 +5567,7 @@
       "notes": []
     },
     "149": {
-      "play": "He exits.",
+      "play": "[He exits.]",
       "notes": []
     },
     "150": {
@@ -5739,7 +5739,7 @@
       ]
     },
     "182": {
-      "play": "Enter Orlando, carrying Adam.",
+      "play": "[Enter Orlando, carrying Adam.]",
       "notes": []
     },
     "183": {
@@ -5943,13 +5943,13 @@
       "notes": []
     },
     "227": {
-      "play": "They exit.",
+      "play": "[They exit.]",
       "notes": []
     }
   },
   "ACT 3 SCENE 1": {
     "1": {
-      "play": "Enter Duke Frederick, Lords, and Oliver.",
+      "play": "[Enter Duke Frederick, Lords, and Oliver.]",
       "notes": []
     },
     "2": {
@@ -6043,13 +6043,13 @@
       ]
     },
     "21": {
-      "play": "They exit.",
+      "play": "[They exit.]",
       "notes": []
     }
   },
   "ACT 3 SCENE 2": {
     "1": {
-      "play": "Enter Orlando, with a paper.",
+      "play": "[Enter Orlando, with a paper.]",
       "notes": []
     },
     "2": {
@@ -6101,13 +6101,13 @@
       ]
     },
     "12": {
-      "play": "He exits.",
+      "play": "[He exits.]",
       "notes": [
         "still] That is, constantly. See Shakespeare, passim."
       ]
     },
     "13": {
-      "play": "Enter Corin and Touchstone.",
+      "play": "[Enter Corin and Touchstone.]",
       "notes": []
     },
     "14": {
@@ -6447,7 +6447,7 @@
       "notes": []
     },
     "89": {
-      "play": "Enter Rosalind, as Ganymede.",
+      "play": "[Enter Rosalind, as Ganymede.]",
       "notes": []
     },
     "90": {
@@ -6637,7 +6637,7 @@
       "notes": []
     },
     "130": {
-      "play": "Enter Celia, as Aliena, with a writing.",
+      "play": "[Enter Celia, as Aliena, with a writing.]",
       "notes": []
     },
     "131": {
@@ -6834,7 +6834,7 @@
       "notes": []
     },
     "171": {
-      "play": "retreat, though not with bag and baggage, yet",
+      "play": "[retreat, though not with bag and baggage, yet]",
       "notes": []
     },
     "172": {
@@ -6842,7 +6842,7 @@
       "notes": []
     },
     "173": {
-      "play": "Touchstone and Corin exit.",
+      "play": "[Touchstone and Corin exit.]",
       "notes": []
     },
     "174": {
@@ -7267,7 +7267,7 @@
       ]
     },
     "264": {
-      "play": "Enter Orlando and Jaques.",
+      "play": "[Enter Orlando and Jaques.]",
       "notes": []
     },
     "265": {
@@ -7463,7 +7463,7 @@
       "notes": []
     },
     "308": {
-      "play": "Monsieur Melancholy.      Jaques exits.",
+      "play": "[Monsieur Melancholy.      Jaques exits.]",
       "notes": []
     },
     "309": {
@@ -8129,13 +8129,13 @@
       "notes": []
     },
     "454": {
-      "play": "They exit.",
+      "play": "[They exit.]",
       "notes": []
     }
   },
   "ACT 3 SCENE 3": {
     "1": {
-      "play": "Enter Touchstone and Audrey, followed by Jaques.",
+      "play": "[Enter Touchstone and Audrey, followed by Jaques.]",
       "notes": []
     },
     "2": {
@@ -8432,7 +8432,7 @@
       "notes": []
     },
     "64": {
-      "play": "Enter Sir Oliver Martext.",
+      "play": "[Enter Sir Oliver Martext.]",
       "notes": []
     },
     "65": {
@@ -8620,7 +8620,7 @@
       "notes": []
     },
     "108": {
-      "play": "Audrey, Touchstone, and Jaques exit.",
+      "play": "[Audrey, Touchstone, and Jaques exit.]",
       "notes": []
     },
     "109": {
@@ -8632,17 +8632,17 @@
       "notes": []
     },
     "111": {
-      "play": "He exits.",
+      "play": "[He exits.]",
       "notes": []
     }
   },
   "ACT 3 SCENE 4": {
     "1": {
-      "play": "Enter Rosalind, dressed as Ganymede, and Celia,",
+      "play": "[Enter Rosalind, dressed as Ganymede, and Celia,",
       "notes": []
     },
     "2": {
-      "play": "dressed as Aliena.",
+      "play": "dressed as Aliena.]",
       "notes": []
     },
     "3": {
@@ -8855,7 +8855,7 @@
       "notes": []
     },
     "46": {
-      "play": "Enter Corin.",
+      "play": "[Enter Corin.]",
       "notes": []
     },
     "47": {
@@ -8931,13 +8931,13 @@
       "notes": []
     },
     "64": {
-      "play": "They exit.",
+      "play": "[They exit.]",
       "notes": []
     }
   },
   "ACT 3 SCENE 5": {
     "1": {
-      "play": "Enter Silvius and Phoebe.",
+      "play": "[Enter Silvius and Phoebe.]",
       "notes": []
     },
     "2": {
@@ -8979,7 +8979,7 @@
       ]
     },
     "10": {
-      "play": "Enter, unobserved, Rosalind as Ganymede, Celia as",
+      "play": "[Enter, unobserved, Rosalind as Ganymede, Celia as]",
       "notes": []
     },
     "11": {
@@ -9656,17 +9656,17 @@
       "notes": []
     },
     "158": {
-      "play": "They exit.",
+      "play": "[They exit.]",
       "notes": []
     }
   },
   "ACT 4 SCENE 1": {
     "1": {
-      "play": "Enter Rosalind as Ganymede, and Celia as Aliena,",
+      "play": "[Enter Rosalind as Ganymede, and Celia as Aliena,",
       "notes": []
     },
     "2": {
-      "play": "and Jaques.",
+      "play": "and Jaques.]",
       "notes": []
     },
     "3": {
@@ -9811,7 +9811,7 @@
       "notes": []
     },
     "35": {
-      "play": "Enter Orlando.",
+      "play": "[Enter Orlando.]",
       "notes": []
     },
     "36": {
@@ -9857,7 +9857,7 @@
       ]
     },
     "45": {
-      "play": "Jaques exits.",
+      "play": "[Jaques exits.]",
       "notes": [
         "Nearly every modern edition follows the Ff in putting Exit at the end of this line. Dyce placed it after 'gondola' in line 38, and is followed by Cowden-Clarke, Hudson, and the Irving. Dyce (Remarks, p. 63) quotes Rosalind's speech from line 33 down to her address to Orlando in line 38, and asks: 'Does Rosalind say all this to Jaques after he has left the stage?' He then goes on to say, in regard to the Exit of the Ff, that 'Exits as well as Entrances were very frequently marked much earlier than they were really intended to take place; and nothing can be more evident than that here the exit of Jaques ought to follow \"gondola.\"' White (ed. i): The question has been raised, whether Jaques should go out when he takes leave, or just before Rosalind addresses Orlando. It seems plain that in the latter case a charming and characteristic incident would be lost. Rosalind is a little vexed with Orlando for not keeping tryst. She sees him when he comes in, but purposely does not look at him, no woman needs be told why. He speaks, but she, with her little heart thumping at her breast all the while, refuses to notice her lover, and pretends to be absorbed in Jaques; and as he retires, driven off by the coming scene of sentiment, the approach of which he detects, she still ignores the presence of the poor delinquent, and continues to talk to Jaques till a curve in the path takes him out of sight; then turning, she seems to see Orlando for the first time, and breaks upon him with, 'Why, how now?' &c. Well might the old printer in Promos and Cassandra say that there are some speeches 'which in reading will seeme hard, and in action appeare plaine.' Dyce quotes this note of White's, and adds: 'All this is, no doubt, very ingenious; but I cannot help thinking that it shows little knowledge of stage-business. The modern acting-copies of As You Like It do not allow Jaques to take any part in the present scene.' White, however, did not lay to heart this criticism and improve his 'knowledge of stage-business.' In his second edition he says: 'Rosalind's speech, until she chooses to notice the tardy Orlando, is addressed to the retiring Jaques.' [I cannot avoid thinking that Dyce is entirely right. There is something humiliating in the idea of Rosalind talking to Jaques's back, and if he walked away at even a leisurely pace Rosalind's final words must have been pitched, if he is to hear them, almost in the scream of a virago. We must note the effect on Jaques of these final thrusts, we must count the wounds, or else Rosalind's victory is small. If Jaques's back is turned, his ears are deaf, and the victory is his rather than Rosalind's. At the same time that I give in my adhesion to Dyce, I must confess that he does not explain Orlando's address to Rosalind, nor her disregard of it. It may be that he would accept that much of Grant White's interpretation which attributes her silence to a punishment for his tardiness, but then one of Dyce's strong points is that the entrances are marked (for stage purposes) many lines in advance. Here the entrance is marked, and Orlando speaks, many lines before he is addressed by Rosalind.—Ed.]"
       ]
@@ -10605,7 +10605,7 @@
       "notes": []
     },
     "218": {
-      "play": "Orlando exits.",
+      "play": "[Orlando exits.]",
       "notes": []
     },
     "219": {
@@ -10694,13 +10694,13 @@
       "notes": []
     },
     "237": {
-      "play": "They exit.",
+      "play": "[They exit.]",
       "notes": []
     }
   },
   "ACT 4 SCENE 2": {
     "1": {
-      "play": "Enter Jaques and Lords, like foresters.",
+      "play": "[Enter Jaques and Lords, like foresters.]",
       "notes": [
         "FLOWER (Memorial Theatre Edition): On the occasion of the first representation of As You Like It in the Memorial Theatre, April 30th, 1879, a fallow deer was carried on the stage by the foresters [in this scene] which had been that morning shot by H. S. Lucy, Esq., of Charlecote Park, out of the herd descended from that upon which Shakespeare is credited with having made a raid in his youth. The deer is now stuffed, and carried on whenever the play is acted in Stratford."
       ]
@@ -10801,13 +10801,13 @@
       "notes": []
     },
     "24": {
-      "play": "They exit.",
+      "play": "[They exit.]",
       "notes": []
     }
   },
   "ACT 4 SCENE 3": {
     "1": {
-      "play": "Enter Rosalind dressed as Ganymede and Celia",
+      "play": "[Enter Rosalind dressed as Ganymede and Celia]",
       "notes": []
     },
     "2": {
@@ -10843,7 +10843,7 @@
       "notes": []
     },
     "8": {
-      "play": "Enter Silvius.",
+      "play": "[Enter Silvius.]",
       "notes": []
     },
     "9": {
@@ -11218,11 +11218,11 @@
       "notes": []
     },
     "90": {
-      "play": "company. Silvius exits.",
+      "play": "[company. Silvius exits.]",
       "notes": []
     },
     "91": {
-      "play": "Enter Oliver.",
+      "play": "[Enter Oliver.]",
       "notes": []
     },
     "92": {
@@ -11796,13 +11796,13 @@
       "notes": []
     },
     "218": {
-      "play": "They exit.",
+      "play": "[They exit.]",
       "notes": []
     }
   },
   "ACT 5 SCENE 1": {
     "1": {
-      "play": "Enter Touchstone and Audrey.",
+      "play": "[Enter Touchstone and Audrey.]",
       "notes": []
     },
     "2": {
@@ -11846,7 +11846,7 @@
       "notes": []
     },
     "11": {
-      "play": "Enter William.",
+      "play": "[Enter William.]",
       "notes": []
     },
     "12": {
@@ -12071,11 +12071,11 @@
       "notes": []
     },
     "63": {
-      "play": "He exits.",
+      "play": "[He exits.]",
       "notes": []
     },
     "64": {
-      "play": "Enter Corin.",
+      "play": "[Enter Corin.]",
       "notes": []
     },
     "65": {
@@ -12097,13 +12097,13 @@
       "notes": []
     },
     "69": {
-      "play": "They exit.",
+      "play": "[They exit.]",
       "notes": []
     }
   },
   "ACT 5 SCENE 2": {
     "1": {
-      "play": "Enter Orlando, with his arm in a sling, and Oliver.",
+      "play": "[Enter Orlando, with his arm in a sling, and Oliver.]",
       "notes": [
         "DYCE: Here, perhaps, the Scene ought to be marked: ‘Another part of the Forest. Before a Cottage.’"
       ]
@@ -12167,7 +12167,7 @@
       "notes": []
     },
     "14": {
-      "play": "Enter Rosalind, as Ganymede.",
+      "play": "[Enter Rosalind, as Ganymede.]",
       "notes": []
     },
     "15": {
@@ -12195,7 +12195,7 @@
       "notes": []
     },
     "21": {
-      "play": "OLIVER: And you, fair sister.     He exits.",
+      "play": "OLIVER: And you, fair sister.    [He exits.]",
       "notes": [
         "faire sister] JOHNSON: I know not why Oliver should call Rosalind ‘sister.’ He takes her yet to be a man. I suppose we should read: ‘And you, and your fair sister.’ CHAMIER: Oliver speaks to her in the character she had assumed, of a woman courted by Orlando, his brother. WHITE: Much wonder is expressed as to how the knowledge of Rosalind’s sex, which this reply evinces, was obtained; and forgetfulness is attributed to Shakespeare. But those who wonder must themselves forget that since the end of the last Act Oliver has wooed and won Celia; for to suppose that she kept Rosalind’s secret from him one moment longer than was necessary to give her own due precedence, would be to exhibit an ignorance in such matters quite deplorable. DYCE: To me none of these notes is satisfactory. HALLIWELL: The words in the text seem, under any explanation, improperly assigned to Oliver, who had probably taken his departure just previously. All difficulty is obviated by giving them to Orlando. [But would Rosalind address Orlando as ‘brother’?—ED.] COWDEN-CLARKE: Oliver has a double reason for calling Rosalind ‘sister’: he calls her so, because she is the girlish-looking brother of the woman he hopes to marry, and because she is the youth whom his own brother courts under the name of a woman. It should be remembered, that in the very first scene where they meet, Oliver thus addresses her: ‘I must bear answer back how you excuse my brother, Rosalind.’ He at once acknowledges the assumed character, humours its assumption by giving her the name she is supposed to assume, and now follows up this playful make-believe by giving her the title and relationship she has a claim to, as the feigned Rosalind. WRIGHT: Oliver enters into Orlando’s humour in regarding the apparent Ganymede as Rosalind. [The explanation of the Cowden-Clarkes and of Wright carry conviction. Gervinus has here one of those disheartening remarks (in which it must be sadly confessed he abounds) which reveal his incapacity, partly owing to his nationality, thoroughly to appreciate Shakespeare. He says (i, 492, ed. 1872), ‘Nothing prevents us from so interpreting the action as to see that Orlando, at Oliver’s suggestion, after the fainting fit, has detected the disguise of the fair Ganymede, and suffers him to play the game through to the end only that his joy may not be marred; if this can be made clear in the performance, the exquisite delicacy (Feinheit) of the play will be extraordinarily increased.’—Ed.]"
       ]
@@ -12468,7 +12468,7 @@
       "notes": []
     },
     "81": {
-      "play": "Enter Silvius and Phoebe.",
+      "play": "[Enter Silvius and Phoebe.]",
       "notes": []
     },
     "82": {
@@ -12708,13 +12708,13 @@
       "notes": []
     },
     "137": {
-      "play": "They exit.",
+      "play": "[They exit.]",
       "notes": []
     }
   },
   "ACT 5 SCENE 3": {
     "1": {
-      "play": "Enter Touchstone and Audrey.",
+      "play": "[Enter Touchstone and Audrey.]",
       "notes": []
     },
     "2": {
@@ -12742,7 +12742,7 @@
       ]
     },
     "7": {
-      "play": "Enter two Pages.",
+      "play": "[Enter two Pages.]",
       "notes": []
     },
     "8": {
@@ -12942,17 +12942,17 @@
       "notes": []
     },
     "53": {
-      "play": "They rise and exit.",
+      "play": "[They rise and exit.]",
       "notes": []
     }
   },
   "ACT 5 SCENE 4": {
     "1": {
-      "play": "Enter Duke Senior, Amiens, Jaques, Orlando, Oliver,",
+      "play": "[Enter Duke Senior, Amiens, Jaques, Orlando, Oliver,",
       "notes": []
     },
     "2": {
-      "play": "and Celia as Aliena.",
+      "play": "and Celia as Aliena.]",
       "notes": []
     },
     "3": {
@@ -12974,7 +12974,7 @@
       ]
     },
     "7": {
-      "play": "Enter Rosalind as Ganymede, Silvius, and Phoebe.",
+      "play": "[Enter Rosalind as Ganymede, Silvius, and Phoebe.]",
       "notes": []
     },
     "8": {
@@ -13102,7 +13102,7 @@
       ]
     },
     "36": {
-      "play": "Rosalind and Celia exit.",
+      "play": "[Rosalind and Celia exit.]",
       "notes": []
     },
     "37": {
@@ -13146,7 +13146,7 @@
       "notes": []
     },
     "46": {
-      "play": "Enter Touchstone and Audrey.",
+      "play": "[Enter Touchstone and Audrey.]",
       "notes": []
     },
     "47": {
@@ -13504,7 +13504,7 @@
       ]
     },
     "123": {
-      "play": "Enter Hymen, Rosalind, and Celia. Still music.",
+      "play": "[Enter Hymen, Rosalind, and Celia. Still music.]",
       "notes": [
         "Still Musicke] Staunton: That is, soft, low, gentle music: 'then calling softly to the gentlemen who were witnesses about him, he bade them that they should command some still musicke to sound.'—A Pattern of the painefull Adventures of Pericles, prince of Tyre, 1608. Again: 'After which ensued a still noyse of recorders and flutes.'—A true reportarie . . of the Baptisme of . . Prince Frederik Henry, &c., 1594."
       ]
@@ -13752,7 +13752,7 @@
       ]
     },
     "178": {
-      "play": "Enter Second Brother, Jaques de Boys.",
+      "play": "[Enter Second Brother, Jaques de Boys.]",
       "notes": []
     },
     "179": {
@@ -13991,7 +13991,7 @@
       "notes": []
     },
     "230": {
-      "play": "I’ll stay to know at your abandoned cave.   He exits.",
+      "play": "I’ll stay to know at your abandoned cave.    [He exits.]",
       "notes": []
     },
     "231": {
@@ -14003,7 +14003,7 @@
       "notes": []
     },
     "233": {
-      "play": "Dance. All but Rosalind exit.",
+      "play": "[Dance. All but Rosalind exit.]",
       "notes": [
         "Exit] COLLIER: The universal modern stage-direction here [see Text. Notes] is ‘a dance,’ which probably followed the Duke’s speech. . . . There seems no sufficient reason why the Duke should go out before the conclusion of the Epilogue—nevertheless, according to the custom of our old stage, he may have done so. [Apparently, he did not do it in 1632. See Text. Notes.—ED.] WHITE: It appears that this ‘Exit’ is an accidental repetition of that intended for Jaques just above."
       ]
@@ -14118,7 +14118,7 @@
       ]
     },
     "257": {
-      "play": "She exits.",
+      "play": "[She exits.]",
       "notes": []
     }
   }

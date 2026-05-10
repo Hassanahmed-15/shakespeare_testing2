@@ -7,7 +7,7 @@
   },
   "ACT 1 SCENE 1": {
     "1": {
-      "play": "Enter RODERIGO and IAGO"
+      "play": "[Enter RODERIGO and IAGO]"
     },
     "2": {
       "play": "RODERIGO: Tush! never tell me; I take it much unkindly"
@@ -597,7 +597,7 @@
   },
   "ACT 1 SCENE 2": {
     "1": {
-      "play": "Enter OTHELLO, IAGO, and Attendants with torches"
+      "play": "[Enter OTHELLO, IAGO, and Attendants with torches]"
     },
     "2": {
       "play": "IAGO: Though in the trade of war I have slain men,"
@@ -965,7 +965,7 @@
       "play": "In fearful sense."
     },
     "8": {
-      "play": "Enter a Sailor"
+      "play": "[Enter a Sailor]"
     },
     "9": {
       "play": "DUKE OF VENICE: Now, what's the business?"
@@ -977,7 +977,7 @@
       "play": "Nay, in all confidence, he's not for Rhodes."
     },
     "12": {
-      "play": "Enter a Messenger"
+      "play": "[Enter a Messenger]"
     },
     "13": {
       "play": "DUKE OF VENICE: 'Tis certain, then, for Cyprus."
@@ -989,7 +989,7 @@
       "play": "Write from us to him; post-post-haste dispatch."
     },
     "16": {
-      "play": "Enter BRABANTIO, OTHELLO, IAGO, RODERIGO, and Officers"
+      "play": "[Enter BRABANTIO, OTHELLO, IAGO, RODERIGO, and Officers]"
     },
     "17": {
       "play": "DUKE OF VENICE: Valiant Othello, we must straight employ you"
@@ -2095,7 +2095,7 @@
   },
   "ACT 2 SCENE 1": {
     "1": {
-      "play": "Enter MONTANO and two Gentlemen"
+      "play": "[Enter MONTANO and two Gentlemen]"
     },
     "2": {
       "play": "MONTANO: What from the cape can you discern at sea?"
@@ -2152,7 +2152,7 @@
       "play": "An indistinct regard."
     },
     "20": {
-      "play": "Enter CASSIO"
+      "play": "[Enter CASSIO]"
     },
     "21": {
       "play": "CASSIO: Thanks, you the valiant of this warlike isle,"
@@ -2194,7 +2194,7 @@
       "play": "And give us truth who 'tis that is arrived."
     },
     "34": {
-      "play": "Exit"
+      "play": "[Exit]"
     },
     "35": {
       "play": "MONTANO: But, good lieutenant, is your general wived?"
@@ -2997,15 +2997,15 @@
   },
   "ACT 2 SCENE 2": {
     "1": {
-      "play": "Enter a Herald with a proclamation; People following"
+      "play": "[Enter a Herald with a proclamation; People following]"
     },
     "2": {
-      "play": "Exeunt"
+      "play": "[Exeunt]"
     }
   },
   "ACT 2 SCENE 3": {
     "1": {
-      "play": "Enter OTHELLO, DESDEMONA, CASSIO, and Attendants"
+      "play": "[Enter OTHELLO, DESDEMONA, CASSIO, and Attendants]"
     },
     "2": {
       "play": "OTHELLO: Good Michael, look you to the guard to-night:"
@@ -4186,7 +4186,7 @@
   },
   "ACT 3 SCENE 1": {
     "1": {
-      "play": "Enter CASSIO and some Musicians"
+      "play": "[Enter CASSIO and some Musicians]"
     },
     "2": {
       "play": "CASSIO: Masters, play here; I will content your pains;"
@@ -4195,7 +4195,7 @@
       "play": "Something that's brief; and bid 'Good morrow, general.'"
     },
     "4": {
-      "play": "Exeunt Musicians"
+      "play": "[Exeunt Musicians]"
     },
     "5": {
       "play": "CASSIO: Dost thou hear, my honest friend?"
@@ -4317,7 +4317,7 @@
   },
   "ACT 3 SCENE 2": {
     "1": {
-      "play": "Enter OTHELLO, IAGO, and Gentlemen"
+      "play": "[Enter OTHELLO, IAGO, and Gentlemen]"
     },
     "2": {
       "play": "OTHELLO: These letters give, Iago, to the pilot;"
@@ -4338,12 +4338,12 @@
       "play": "OTHELLO: This fortification, gentlemen, shall we see't?"
     },
     "8": {
-      "play": "Exeunt"
+      "play": "[Exeunt]"
     }
   },
   "ACT 3 SCENE 3": {
     "1": {
-      "play": "Enter DESDEMONA, CASSIO, and EMILIA"
+      "play": "[Enter DESDEMONA, CASSIO, and EMILIA]"
     },
     "2": {
       "play": "DESDEMONA: Be thou assured, good Cassio, I will do"
@@ -5947,7 +5947,7 @@
   },
   "ACT 3 SCENE 4": {
     "1": {
-      "play": "Enter DESDEMONA, EMILIA, and Clown"
+      "play": "[Enter DESDEMONA, EMILIA, and Clown]"
     },
     "2": {
       "play": "DESDEMONA: Do you know, sirrah, where Lieutenant Cassio lies?"
@@ -5971,7 +5971,7 @@
       "play": "moved my lord on his behalf, and hope all will be well."
     },
     "9": {
-      "play": "Exit"
+      "play": "[Exit]"
     },
     "10": {
       "play": "DESDEMONA: Where should I lose that handkerchief, Emilia?"
@@ -6603,7 +6603,7 @@
   },
   "ACT 4 SCENE 1": {
     "1": {
-      "play": "Enter OTHELLO and IAGO"
+      "play": "[Enter OTHELLO and IAGO]"
     },
     "2": {
       "play": "IAGO: Will you think so?"
@@ -7538,7 +7538,7 @@
   },
   "ACT 4 SCENE 2": {
     "1": {
-      "play": "Enter OTHELLO and EMILIA"
+      "play": "[Enter OTHELLO and EMILIA]"
     },
     "2": {
       "play": "OTHELLO: You have seen nothing then?"
@@ -8350,7 +8350,7 @@
   },
   "ACT 4 SCENE 3": {
     "1": {
-      "play": "Enter OTHELLO, LODOVICO, DESDEMONA, EMILIA and Attendants"
+      "play": "[Enter OTHELLO, LODOVICO, DESDEMONA, EMILIA and Attendants]"
     },
     "2": {
       "play": "LODOVICO: I do beseech you, sir, trouble yourself no further."
@@ -8700,7 +8700,7 @@
   },
   "ACT 5 SCENE 1": {
     "1": {
-      "play": "Enter IAGO and RODERIGO"
+      "play": "[Enter IAGO and RODERIGO]"
     },
     "2": {
       "play": "IAGO: Here, stand behind this bulk; straight will he come:"
@@ -9137,7 +9137,7 @@
   },
   "ACT 5 SCENE 2": {
     "1": {
-      "play": "Enter OTHELLO"
+      "play": "[Enter OTHELLO]"
     },
     "2": {
       "play": "OTHELLO: It is the cause, it is the cause, my soul,--"

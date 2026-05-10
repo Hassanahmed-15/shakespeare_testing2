@@ -1,133 +1,133 @@
 {
-"DRAMATIS PERSONAE": {
-  "1": {
-    "play": "DUNCAN, King of Scotland.",
-    "notes": [
-      "Dramatis Personæ] As given by Dyce. First given by Rowe."
-    ]
+  "DRAMATIS PERSONAE": {
+    "1": {
+      "play": "DUNCAN, King of Scotland.",
+      "notes": [
+        "Dramatis Personæ] As given by Dyce. First given by Rowe."
+      ]
+    },
+    "2": {
+      "play": "MALCOLM, his sons.",
+      "notes": []
+    },
+    "3": {
+      "play": "DONALBAIN,",
+      "notes": []
+    },
+    "4": {
+      "play": "MACBETH, generals of the King's army.",
+      "notes": [
+        "Macbeth] Macbeth, his cousin and general of his forces. Cap."
+      ]
+    },
+    "5": {
+      "play": "BANQUO,",
+      "notes": [
+        "Banquo] The pronunciation of this name is perhaps noteworthy. Holinshed spells it uniformly \"Banquho.\" Sir Walter Scott (iii, 135, foot-note) says: \"It is well known to all who have looked in a Scottish book of antiquity, that the letters qh, absurdly printed quh, are almost uniformly placed for wh, of which it has the power and force. So whom is printed quhom, what is printed quhat, &c., to the very unnecessary encumbrance of the Southron. This mode of expressing the sound is not, however, peculiar to Scotland. In the English chronicles, Guildhall is often printed Whidhall. In the Spanish, the same mode of writing is universally adopted, as alguazil is pronounced ahwasil. From this it would seem that Holinshed's Banquho was, in reality, Banqho, where the guttural qh was represented by qu, and pronounced Banwo. When the name first appears in the text (I, ii, 41) it is spelt Banqouh, which suggests that the compositor simply reversed the last two letters. At its next appearance (I, iii, 73) it is spelt without the final h, and so continues throughout the play. Forman, in his account (see Appendix), spells the name Banko, Bancko, Banco, and possibly wrote the name phonetically, just as he wrote Mackdowe, Mackbeth, &c. Also Burton, Anatomy of Melancholy, Pt. i, sect. 2, memb. i, subse. 2, p. 64, ed. 1621, in a passage referring to the meeting of Macbeth and Banquo with the Witches, spells the name Banco. The old form \"banket\" for banquet, and these two illustrations from Forman and from Burton, suggest that this name, in the time of Shakespeare, was possibly pronounced Banko. —Ed. ii.",
+        "5–12. Banquo… Fleance] Chalmers (Caledonia, i, 411)."
+      ]
+    },
+    "6": {
+      "play": "MACDUFF, noblemen of Scotland.",
+      "notes": []
+    },
+    "7": {
+      "play": "LENNOX,",
+      "notes": [
+        "7, 9, 11. Lennox, Menteith, Caithness] Lennox, Menteith, Cathness in all editions before Dyce's."
+      ]
+    },
+    "8": {
+      "play": "ROSS,",
+      "notes": []
+    },
+    "9": {
+      "play": "MENTEITH,",
+      "notes": [
+        "7, 9, 11. Lennox, Menteith, Caithness] Lennox, Menteith, Cathness in all editions before Dyce's."
+      ]
+    },
+    "10": {
+      "play": "ANGUS,",
+      "notes": []
+    },
+    "11": {
+      "play": "CAITHNESS,",
+      "notes": [
+        "7, 9, 11. Lennox, Menteith, Caithness] Lennox, Menteith, Cathness in all editions before Dyce's."
+      ]
+    },
+    "12": {
+      "play": "FLEANCE, son to Banquo.",
+      "notes": [
+        "5–12. Banquo… Fleance] Chalmers (Caledonia, i, 411)."
+      ]
+    },
+    "13": {
+      "play": "SIWARD, Earl of Northumberland, general of the English forces.",
+      "notes": []
+    },
+    "14": {
+      "play": "YOUNG SIWARD, his son.",
+      "notes": []
+    },
+    "15": {
+      "play": "SEYTON, an officer attending on Macbeth.",
+      "notes": []
+    },
+    "16": {
+      "play": "Son to Macduff.",
+      "notes": []
+    },
+    "17": {
+      "play": "An English Doctor.",
+      "notes": []
+    },
+    "18": {
+      "play": "A Scottish Doctor.",
+      "notes": []
+    },
+    "19": {
+      "play": "A Porter.",
+      "notes": []
+    },
+    "20": {
+      "play": "An Old Man.",
+      "notes": []
+    },
+    "21": {
+      "play": "Three Murderers.",
+      "notes": []
+    },
+    "22": {
+      "play": "LADY MACBETH.",
+      "notes": []
+    },
+    "23": {
+      "play": "LADY MACDUFF.",
+      "notes": []
+    },
+    "24": {
+      "play": "A Gentlewoman, attending on Lady Macbeth.",
+      "notes": []
+    },
+    "25": {
+      "play": "HECATE.",
+      "notes": []
+    },
+    "26": {
+      "play": "Witches.",
+      "notes": []
+    },
+    "27": {
+      "play": "Apparitions.",
+      "notes": []
+    },
+    "28": {
+      "play": "Lords, Officers, Soldiers, Attendants, and Messengers.",
+      "notes": []
+    }
   },
-  "2": {
-    "play": "MALCOLM, his sons.",
-    "notes": []
-  },
-  "3": {
-    "play": "DONALBAIN,",
-    "notes": []
-  },
-  "4": {
-    "play": "MACBETH, generals of the King's army.",
-    "notes": [
-      "Macbeth] Macbeth, his cousin and general of his forces. Cap."
-    ]
-  },
-  "5": {
-    "play": "BANQUO,",
-    "notes": [
-      "Banquo] The pronunciation of this name is perhaps noteworthy. Holinshed spells it uniformly \"Banquho.\" Sir Walter Scott (iii, 135, foot-note) says: \"It is well known to all who have looked in a Scottish book of antiquity, that the letters qh, absurdly printed quh, are almost uniformly placed for wh, of which it has the power and force. So whom is printed quhom, what is printed quhat, &c., to the very unnecessary encumbrance of the Southron. This mode of expressing the sound is not, however, peculiar to Scotland. In the English chronicles, Guildhall is often printed Whidhall. In the Spanish, the same mode of writing is universally adopted, as alguazil is pronounced ahwasil. From this it would seem that Holinshed's Banquho was, in reality, Banqho, where the guttural qh was represented by qu, and pronounced Banwo. When the name first appears in the text (I, ii, 41) it is spelt Banqouh, which suggests that the compositor simply reversed the last two letters. At its next appearance (I, iii, 73) it is spelt without the final h, and so continues throughout the play. Forman, in his account (see Appendix), spells the name Banko, Bancko, Banco, and possibly wrote the name phonetically, just as he wrote Mackdowe, Mackbeth, &c. Also Burton, Anatomy of Melancholy, Pt. i, sect. 2, memb. i, subse. 2, p. 64, ed. 1621, in a passage referring to the meeting of Macbeth and Banquo with the Witches, spells the name Banco. The old form \"banket\" for banquet, and these two illustrations from Forman and from Burton, suggest that this name, in the time of Shakespeare, was possibly pronounced Banko. —Ed. ii.",
-      "5–12. Banquo… Fleance] Chalmers (Caledonia, i, 411)."
-    ]
-  },
-  "6": {
-    "play": "MACDUFF, noblemen of Scotland.",
-    "notes": []
-  },
-  "7": {
-    "play": "LENNOX,",
-    "notes": [
-      "7, 9, 11. Lennox, Menteith, Caithness] Lennox, Menteith, Cathness in all editions before Dyce's."
-    ]
-  },
-  "8": {
-    "play": "ROSS,",
-    "notes": []
-  },
-  "9": {
-    "play": "MENTEITH,",
-    "notes": [
-      "7, 9, 11. Lennox, Menteith, Caithness] Lennox, Menteith, Cathness in all editions before Dyce's."
-    ]
-  },
-  "10": {
-    "play": "ANGUS,",
-    "notes": []
-  },
-  "11": {
-    "play": "CAITHNESS,",
-    "notes": [
-      "7, 9, 11. Lennox, Menteith, Caithness] Lennox, Menteith, Cathness in all editions before Dyce's."
-    ]
-  },
-  "12": {
-    "play": "FLEANCE, son to Banquo.",
-    "notes": [
-      "5–12. Banquo… Fleance] Chalmers (Caledonia, i, 411)."
-    ]
-  },
-  "13": {
-    "play": "SIWARD, Earl of Northumberland, general of the English forces.",
-    "notes": []
-  },
-  "14": {
-    "play": "YOUNG SIWARD, his son.",
-    "notes": []
-  },
-  "15": {
-    "play": "SEYTON, an officer attending on Macbeth.",
-    "notes": []
-  },
-  "16": {
-    "play": "Son to Macduff.",
-    "notes": []
-  },
-  "17": {
-    "play": "An English Doctor.",
-    "notes": []
-  },
-  "18": {
-    "play": "A Scottish Doctor.",
-    "notes": []
-  },
-  "19": {
-    "play": "A Porter.",
-    "notes": []
-  },
-  "20": {
-    "play": "An Old Man.",
-    "notes": []
-  },
-  "21": {
-    "play": "Three Murderers.",
-    "notes": []
-  },
-  "22": {
-    "play": "LADY MACBETH.",
-    "notes": []
-  },
-  "23": {
-    "play": "LADY MACDUFF.",
-    "notes": []
-  },
-  "24": {
-    "play": "A Gentlewoman, attending on Lady Macbeth.",
-    "notes": []
-  },
-  "25": {
-    "play": "HECATE.",
-    "notes": []
-  },
-  "26": {
-    "play": "Witches.",
-    "notes": []
-  },
-  "27": {
-    "play": "Apparitions.",
-    "notes": []
-  },
-  "28": {
-    "play": "Lords, Officers, Soldiers, Attendants, and Messengers.",
-    "notes": []
-  }
-},
   "ACT 1 SCENE 1": {
     "1": {
       "play": "[Thunder and Lightning. Enter three Witches.]",
@@ -1282,7 +1282,7 @@
       "notes": []
     },
     "133": {
-      "play": "Aside to Banquo. Do you not hope your children",
+      "play": "[Aside to Banquo. Do you not hope your children]",
       "notes": []
     },
     "134": {
@@ -1496,7 +1496,7 @@
       "notes": []
     },
     "176": {
-      "play": "Aside to Banquo. Think upon what hath chanced,",
+      "play": "[Aside to Banquo. Think upon what hath chanced,",
       "notes": []
     },
     "177": {
@@ -1504,7 +1504,7 @@
       "notes": []
     },
     "178": {
-      "play": "The interim having weighed it, let us speak",
+      "play": "The interim having weighed it, let us speak]",
       "notes": [
         "178. The interim] STEEVENS : This intervening portion of time is personified;"
       ]
@@ -1832,7 +1832,7 @@
       "notes": []
     },
     "64": {
-      "play": "He exits.",
+      "play": "[He exits.]",
       "notes": []
     },
     "65": {
@@ -2102,7 +2102,7 @@
       ]
     },
     "46": {
-      "play": "He brings great news.\tMessenger exits.",
+      "play": "[He brings great news.\tMessenger exits.]",
       "notes": [
         "46. mortal[] JOHNSON: Not the thoughts of mortals, but murderous, deadly, or destructive designs. See III, iv, 101, and IV, iii, 5."
       ]
@@ -2334,7 +2334,7 @@
   },
   "ACT 1 SCENE 6": {
     "1": {
-      "play": "Hautboys and Torches. Enter King Duncan, Malcolm, Donalbain, Banquo, Lennox, Macduff, Ross, Angus, and Attendants.",
+      "play": "[Hautboys and Torches. Enter King Duncan, Malcolm, Donalbain, Banquo, Lennox, Macduff, Ross, Angus, and Attendants.]",
       "notes": [
         "1. Hoboyes, and Torches] ANONYMOUS (Sunday Times, London, 30 Dec. 1888): [In Irving's production at the Lyceum] the scene outside Macbeth's castle is nobly picturesque, the entrance-gates being approached by a sloping road, up which Duncan and his followers come, being greeted by Lady Macbeth, who, with her maids and torch-bearers, comes as hostess to greet the king. This is altogether a new and a very impressive rendering of this scene.—Ed. ii."
       ]
@@ -2553,7 +2553,7 @@
   },
   "ACT 1 SCENE 7": {
     "1": {
-      "play": "Hautboys. Torches. Enter a Sewer and divers Servants with dishes and service over the stage. Then enter Macbeth.",
+      "play": "[Hautboys. Torches. Enter a Sewer and divers Servants with dishes and service over the stage. Then enter Macbeth.]",
       "notes": [
         "1. Sewer] Steevens: In Chapman’s Iliad, lib. xxiv: ‘Automedon as fit was for the reverend sewer’s place; and all the browne joints serv’d On wicker vessel,’ etc. Another part of the sewer’s office was to bring water for the guests to wash their hands with; his chief mark of distinction was a towel round his arm. In Ben Jonson’s Silent Woman: ‘—— clap me a clean towel about you, like a sewer;’ [III, i.].—Clarendon: From the French essayeur, and meant originally one who tasted of each dish to prove that there was no poison in it. Afterwards it was applied to the chief servant, who directed the placing of the dishes on the table. In Palsgrave, Eclaircissement de la Langue Française, we have the verb thus: ‘I sewe at meate. Je taste.’ So again in Holinshed, ii, p. 1129, col. 2, ‘the Esquier that was accustomed, to sew and take the assay before Kyng Richarde.’ What is included in the word ‘service’ may be illustrated by the following stage-direction from Heywood’s A Woman Killed with Kindness: ‘Enter Butler and Jenkin with a table-cloth, bread, trenchers, and salt,’ [p. 265, ed. Dodsley].—Delius: After the sewer and his attendants have passed over the stage, a long pause is to be assumed before the entrance of Macbeth, during which the feast in honor of Duncan begins and continues."
       ]
@@ -3253,7 +3253,7 @@
       "notes": []
     },
     "45": {
-      "play": "Banquo and Fleance exit.",
+      "play": "[Banquo and Fleance exit.]",
       "notes": [
         "45. Exit Banquo] Collier: Fleance no doubt stood back while his father and Macbeth were talking together, and he goes out with Banquo, still carrying the torch. This was part of the economy of the old stage, which could not spare a performer merely for the purpose of carrying a torch, which might be borne by Fleance. When Macbeth enters with a servant, the ‘servant with a torch’ is expressly mentioned in the Ff, and Macbeth has to send a necessary message by him to Lady Macbeth."
       ]
@@ -3272,7 +3272,7 @@
       ]
     },
     "48": {
-      "play": "Servant exits.",
+      "play": "[Servant exits.]",
       "notes": []
     },
     "49": {
@@ -3454,7 +3454,7 @@
       "notes": []
     },
     "84": {
-      "play": "He exits.",
+      "play": "[He exits.]",
       "notes": [
         "84. Exit] COLEMAN (Gent. Maga. March, 1889): Had not one been entirely carried away by the cunning of the scene, [Macready’s] exit into Duncan’s chamber must have excited derision. Up to that moment he had reached the highest pitch of tragic horror, but his desire to over-elaborate made him pause, and when his body was actually off the stage, his left foot and leg remained trembling in sight, it seemed, fully half a minute.—ED. ii."
       ]
@@ -4183,7 +4183,7 @@
       "notes": []
     },
     "49": {
-      "play": "Porter exits.",
+      "play": "[Porter exits.]",
       "notes": []
     },
     "50": {
@@ -4243,7 +4243,7 @@
       ]
     },
     "62": {
-      "play": "For ’tis my limited service.\tMacduff exits.",
+      "play": "[For ’tis my limited service.\tMacduff exits.]",
       "notes": [
         "62. limitted] WARBURTON: That is, appointed.—STEEVENS: So in Timon, IV, iii, 430: ‘For there is boundless theft In limited professions,’ i.e. professions to which people are regularly and legally appointed.—CLARENDON: Such as the church, the bar, and medicine. It must be supposed that Macduff was, as we should say, a Lord of the Bedchamber. See Meas. for Meas. IV, ii, 176."
       ]
@@ -4380,7 +4380,7 @@
       "notes": []
     },
     "90": {
-      "play": "Macbeth and Lennox exit.",
+      "play": "[Macbeth and Lennox exit.]",
       "notes": []
     },
     "91": {
@@ -4762,7 +4762,7 @@
       "notes": []
     },
     "174": {
-      "play": "All but Malcolm and Donalbain exit.",
+      "play": "[All but Malcolm and Donalbain exit.]",
       "notes": []
     },
     "175": {
@@ -5107,7 +5107,7 @@
       "notes": []
     },
     "59": {
-      "play": "All exit.",
+      "play": "[All exit.]",
       "notes": []
     }
   },
@@ -5334,7 +5334,7 @@
       ]
     },
     "45": {
-      "play": "Farewell.\tBanquo exits.",
+      "play": "[Farewell.\tBanquo exits.]",
       "notes": []
     },
     "46": {
@@ -5359,7 +5359,7 @@
       ]
     },
     "50": {
-      "play": "Lords and all but Macbeth and a Servant exit.",
+      "play": "[Lords and all but Macbeth and a Servant exit.]",
       "notes": []
     },
     "51": {
@@ -5518,7 +5518,7 @@
       "notes": []
     },
     "83": {
-      "play": "till we call.\tServant exits.",
+      "play": "[till we call.\tServant exits.]",
       "notes": []
     },
     "84": {
@@ -5894,7 +5894,7 @@
       "notes": []
     },
     "165": {
-      "play": "Murderers exit.",
+      "play": "[Murderers exit.]",
       "notes": []
     },
     "166": {
@@ -5906,7 +5906,7 @@
       "notes": []
     },
     "168": {
-      "play": "He exits.",
+      "play": "[He exits.]",
       "notes": []
     }
   },
@@ -6384,7 +6384,7 @@
       ]
     },
     "31": {
-      "play": "He dies. Fleance exits.",
+      "play": "[He dies. Fleance exits.]",
       "notes": [
         "31. Horn (i, 82): Banquo's death must take place before our eyes in order to prepare us for his ghost at the banquet. His murder must appear important and of moment, but it must pass quickly before us; after the preparation that we had for Duncan’s death, the second victim must have less prominence."
       ]
@@ -6858,7 +6858,7 @@
       "notes": []
     },
     "92": {
-      "play": "Shall be the maws of kites.\tGhost exits.",
+      "play": "[Shall be the maws of kites.\tGhost exits.]",
       "notes": [
         "92. Kytes] STEEVENS: The same thought occurs in Spenser’s Faerie Queene, II, c. viii, v. 16, ‘What herce or steed (said he) should he have dight, But be entombed in the raven or the kight?’—HARRY ROWE: It was a vulgar notion that the food of carnivorous birds passed their stomachs undigested. For this illustration I am indebted to a book written many years ago by Dr Brown, under the title of Vulgar Errors.—CLARENDON: ‘Gorgias Leontinus called vultures “living sepulchres,” γίντες ἐμψυχοι τάφοι, for which he incurred the censure of Longinus.’—Jortin."
       ]
@@ -7067,7 +7067,7 @@
       ]
     },
     "137": {
-      "play": "Unreal mock’ry, hence!\tGhost exits.",
+      "play": "[Unreal mock’ry, hence!\tGhost exits.]",
       "notes": [
         "137. mock’ry] SCHMIDT gives other passages wherein ‘mockery’ is used in the sense of mimickry, counterfeit presentment. He interprets it in Tro. & Cress. III, iii, 153, as meaning subject of laughter and derision.—ED. ii."
       ]
@@ -7178,7 +7178,7 @@
       "notes": []
     },
     "159": {
-      "play": "Lords and all but Macbeth and Lady Macbeth exit.",
+      "play": "[Lords and all but Macbeth and Lady Macbeth exit.]",
       "notes": [
         "159. Exit Lords] BOOTH (p. 56): After dismissing the guests, Lady Macbeth turns sternly and fiercely to Macbeth, but, seeing him so utterly crushed, she relents, and comes, lovingly and very quietly, towards him.—ANON. (Sunday Times, London, 30 Dec. 1888): Macbeth [Irving] throws himself down on a seat quite overcome, at one side of the hall, while the queen [Ellen Terry] drops into the throne at the other. There is a temporary silence, and then they sit together side by side, she trying to comfort him. The feminine side of her nature comes out too strongly, her nerves have given way, and the two guilty, weary creatures break down together.—ED. ii."
       ]
@@ -9924,7 +9924,7 @@
       "notes": []
     },
     "169": {
-      "play": "Doctor exits.",
+      "play": "[Doctor exits.]",
       "notes": []
     },
     "170": {
@@ -10826,7 +10826,7 @@
       "notes": []
     },
     "74": {
-      "play": "bed, to bed.\tLady Macbeth exits.",
+      "play": "[bed, to bed.\tLady Macbeth exits.]",
       "notes": []
     },
     "75": {
@@ -10888,7 +10888,7 @@
   },
   "ACT 5 SCENE 2": {
     "1": {
-      "play": "Drum and Colors. Enter Menteith, Caithness, Angus, Lennox, and Soldiers.",
+      "play": "[Drum and Colors. Enter Menteith, Caithness, Angus, Lennox, and Soldiers.]",
       "notes": []
     },
     "2": {
@@ -11462,7 +11462,7 @@
   },
   "ACT 5 SCENE 4": {
     "1": {
-      "play": "Drum and Colors. Enter Malcolm, Siward, Macduff, Siward’s son, Menteith, Caithness, Angus, and Soldiers, marching.",
+      "play": "[Drum and Colors. Enter Malcolm, Siward, Macduff, Siward’s son, Menteith, Caithness, Angus, and Soldiers, marching.]",
       "notes": [
         "1. Scena Quarta] IRVING (Acting Vers. p. 7) mentions that the invading army, as he presents it on the stage, is seen approaching Birnam by moonlight, and, in support of this, quotes the following from Holinshed, v, 276, ed. 1808, ‘Malcolme following hastile after Makbeth, came the night before the battell vnto Birnane wood . . . ,’ etc.—ED. ii."
       ]
@@ -11912,7 +11912,7 @@
   },
   "ACT 5 SCENE 6": {
     "1": {
-      "play": "Drum and Colors. Enter Malcolm, Siward, Macduff, and their army, with boughs.",
+      "play": "[Drum and Colors. Enter Malcolm, Siward, Macduff, and their army, with boughs.]",
       "notes": []
     },
     "2": {
@@ -12070,7 +12070,7 @@
       ]
     },
     "22": {
-      "play": "He exits.",
+      "play": "[He exits.]",
       "notes": []
     },
     "23": {
