@@ -3454,12 +3454,13 @@
     },
     "119": {
       "play": "[They exit.]",
-      "notes": []
-    },
-    "154": {
       "notes": [
         "power] See note on I.i.149."
       ]
+    },
+    "154": {
+      "notes": [],
+      "play": ""
     },
     "215": {
       "notes": [
@@ -5253,12 +5254,13 @@
     },
     "183": {
       "play": "[They exit.]",
-      "notes": []
-    },
-    "311": {
       "notes": [
         "] AX (1912, p. 65): To judge from Harry’s very first words, he seems to have just arrived from Wales.—[Cf. ii.iv.297.]"
       ]
+    },
+    "311": {
+      "notes": [],
+      "play": ""
     },
     "382": {
       "notes": [
@@ -5661,12 +5663,13 @@
     },
     "74": {
       "play": "[They exit.]",
-      "notes": []
-    },
-    "79": {
       "notes": [
         "all] Cowl (ed. 1923) understands this to mean both."
       ]
+    },
+    "79": {
+      "notes": [],
+      "play": ""
     },
     "84": {
       "notes": [
@@ -13011,25 +13014,26 @@
     },
     "144": {
       "play": "[They exit.]",
-      "notes": []
-    },
-    "227": {
       "notes": [
         "that] So that. See note on I.i.198.",
         "that] So that. See note on 1.i.198."
       ]
+    },
+    "227": {
+      "notes": [],
+      "play": ""
     }
   },
   "ACT 4, SCENE 3": {
     "1": {
       "play": "[Enter the King in a chair, Warwick, Thomas Duke of Clarence, Humphrey Duke of Gloucester, and Attendants.]",
-      "notes": []
-    },
-    "2": {
-      "play": "",
       "notes": [
         "Clarence] Ax (1912, pp. 87 f.): As to the persons who attend on the King ..., none is explicitly named by the chronicler except the Prince of Wales. But it is possible that all may have been present, especially his sons, save Thomas, Duke of Clarence, whom the King, in the play, advises how to treat his eldest brother. Thomas, as Sh. could have seen in the chronicle, was at that time in France; for we read in iii. 541: \"The duke of Clarence immediatlie vpon knowledge had of his father king Henrie the fourth his death, returned out of Guien into England.\""
       ]
+    },
+    "2": {
+      "play": "",
+      "notes": []
     },
     "3": {
       "play": "",
@@ -17264,12 +17268,13 @@
     },
     "34": {
       "play": "[They exit.]",
-      "notes": []
-    },
-    "65": {
       "notes": [
         "thing] See note on iv.v.76."
       ]
+    },
+    "65": {
+      "notes": [],
+      "play": ""
     }
   },
   "ACT 5, SCENE 5": {
