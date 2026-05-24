@@ -3178,7 +3178,43 @@
             <!-- Settings button hidden for public release; uncomment to re-enable for admin use -->
             <!-- <button class="nav-btn" onclick="openSettings()">Settings</button> -->
             <button class="nav-btn" onclick="openAbout()">About</button>
+            <button class="nav-btn" onclick="openAnnotationSearch()">Search Annotations</button>
             <span class="instruction-text">Use your cursor to highlight text in the play for analysis.</span>
+        </div>
+    </div>
+
+    <!-- Annotation Search Modal -->
+    <div id="annotationSearchModal" class="modal" style="z-index:10000;">
+        <div class="modal-content" style="max-width:760px;width:94vw;max-height:88vh;display:flex;flex-direction:column;">
+            <div class="modal-header">
+                <div class="modal-title">Search Annotations</div>
+                <button class="modal-close" onclick="closeAnnotationSearch()">&times;</button>
+            </div>
+            <div style="padding:16px 20px 12px;border-bottom:1px solid #e5e7eb;flex-shrink:0;">
+                <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+                    <input id="annotSearchInput" type="text" placeholder='e.g. "knife" or "Samuel Johnson"'
+                        style="flex:1;min-width:200px;padding:9px 13px;border:1px solid #d1d5db;border-radius:8px;font-size:14px;font-family:inherit;outline:none;"
+                        onkeydown="if(event.key==='Enter')runAnnotationSearch()" />
+                    <div style="display:flex;gap:6px;flex-shrink:0;">
+                        <button id="annotScopePlay" onclick="setAnnotScope('play')"
+                            style="padding:8px 14px;border-radius:8px;border:1.5px solid #374151;background:#374151;color:#fff;font-size:13px;font-family:inherit;cursor:pointer;font-weight:600;">
+                            This Play
+                        </button>
+                        <button id="annotScopeAll" onclick="setAnnotScope('all')"
+                            style="padding:8px 14px;border-radius:8px;border:1.5px solid #d1d5db;background:#fff;color:#374151;font-size:13px;font-family:inherit;cursor:pointer;">
+                            All Plays
+                        </button>
+                        <button onclick="runAnnotationSearch()"
+                            style="padding:8px 16px;border-radius:8px;border:none;background:#1d4ed8;color:#fff;font-size:13px;font-family:inherit;cursor:pointer;font-weight:600;">
+                            Search
+                        </button>
+                    </div>
+                </div>
+                <div id="annotSearchStatus" style="margin-top:8px;font-size:12px;color:#6b7280;min-height:16px;"></div>
+            </div>
+            <div id="annotSearchResults" style="overflow-y:auto;flex:1;padding:12px 20px 20px;">
+                <p style="color:#9ca3af;font-size:14px;text-align:center;margin-top:40px;">Enter a search term above to find annotations.</p>
+            </div>
         </div>
     </div>
 
@@ -15515,6 +15551,206 @@
         function closeHowToHelp() {
             document.getElementById('howToHelpModal').style.display = 'none';
         }
+
+        // ── Annotation Search ──────────────────────────────────────────────────
+        let _annotScope = 'play';
+
+        // Each entry: [displayName, fetchPath]
+        // Paths starting with "Public/" are relative to site root; others are in Public/Data/
+        const PLAY_FILES = {
+            "All's Well That Ends Well":    "Public/Data/alls_well_that_ends_well.json",
+            "As You Like It":               "Public/Data/as_you_like_it.json",
+            "Comedy of Errors":             "Public/Data/comedy_of_errors.json",
+            "Coriolanus":                   "Public/Data/Coriolanus.json",
+            "Cymbeline":                    "Public/Data/cymbeline.json",
+            "Hamlet":                       "Public/Data/hamlet.json",
+            "Henry IV Part 1":              "Public/Data/henry_iv_part1.json",
+            "Henry IV Part 2":              "Public/Data/henry_iv_part2.json",
+            "Henry V":                      "Public/Data/henry_v.json",
+            "Henry VI Part 1":              "Public/Data/henry_vi_part1.json",
+            "Henry VI Part 2":              "Public/Data/henry_vi_part2.json",
+            "Henry VI Part 3":              "Public/Data/henry_vi_part3.json",
+            "Henry VIII":                   "Public/Data/henry_viii.json",
+            "Julius Caesar":                "Public/Data/julius_caesar.json",
+            "King John":                    "Public/Data/king_john.json",
+            "King Lear":                    "Public/Data/kinglear_notes.json",
+            "Love's Labour's Lost":         "Public/Data/loves_labours_lost.json",
+            "Macbeth":                      "Public/Data/macbeth_correct.json",
+            "Measure for Measure":          "Public/Data/measure_for_measure.json",
+            "Merchant of Venice":           "Public/Data/merchant_of_venice.json",
+            "Merry Wives of Windsor":       "Public/Data/merry_wives_of_windsor.json",
+            "A Midsummer Night's Dream":    "Public/Data/midsummer_nights_dream.json",
+            "Much Ado About Nothing":       "Public/Data/much_ado_about_nothing.json",
+            "Othello":                      "Public/Data/othello.json",
+            "Pericles":                     "Public/Data/pericles.json",
+            "Richard II":                   "Public/Data/richard_ii.json",
+            "Richard III":                  "Public/Data/richard_iii.json",
+            "Romeo and Juliet":             "Public/Data/romeo_and_juliet.json",
+            "Taming of the Shrew":          "Public/Data/taming_of_the_shrew.json",
+            "The Tempest":                  "Public/Data/the_tempest.json",
+            "Antony and Cleopatra":         "Public/Data/antony_and_cleopatra.json",
+            "Timon of Athens":              "Public/Data/timon_of_athens.json",
+            "Titus Andronicus":             "Public/Data/titus_andronicus.json",
+            "Troilus and Cressida":         "Public/Data/troilus_and_cressida.json",
+            "Twelfth Night":                "Public/Data/twelfth_night.json",
+            "Two Gentlemen of Verona":      "Public/Data/two_gentlemen_of_verona.json",
+            "The Winter's Tale":            "Public/Data/the_winters_tale.json",
+        };
+
+        // Map play keys (used internally) to PLAY_FILES names
+        const PLAY_KEY_TO_NAME = {
+            'hamlet': 'Hamlet', 'macbeth': 'Macbeth', 'othello': 'Othello',
+            'romeo': 'Romeo and Juliet', 'midsummer': "A Midsummer Night's Dream",
+            'merchant': 'Merchant of Venice', 'julius_caesar': 'Julius Caesar',
+            'king_lear': 'King Lear', 'twelfth_night': 'Twelfth Night',
+            'as_you_like_it': 'As You Like It', 'tempest': 'The Tempest',
+            'antony': 'Antony and Cleopatra', 'coriolanus': 'Coriolanus',
+            'cymbeline': 'Cymbeline', 'winters_tale': "The Winter's Tale",
+        };
+
+        function openAnnotationSearch() {
+            document.getElementById('annotationSearchModal').style.display = 'block';
+            setTimeout(() => document.getElementById('annotSearchInput').focus(), 80);
+        }
+
+        function closeAnnotationSearch() {
+            document.getElementById('annotationSearchModal').style.display = 'none';
+        }
+
+        function setAnnotScope(scope) {
+            _annotScope = scope;
+            const btnPlay = document.getElementById('annotScopePlay');
+            const btnAll  = document.getElementById('annotScopeAll');
+            if (scope === 'play') {
+                btnPlay.style.cssText = 'padding:8px 14px;border-radius:8px;border:1.5px solid #374151;background:#374151;color:#fff;font-size:13px;font-family:inherit;cursor:pointer;font-weight:600;';
+                btnAll.style.cssText  = 'padding:8px 14px;border-radius:8px;border:1.5px solid #d1d5db;background:#fff;color:#374151;font-size:13px;font-family:inherit;cursor:pointer;';
+            } else {
+                btnAll.style.cssText  = 'padding:8px 14px;border-radius:8px;border:1.5px solid #374151;background:#374151;color:#fff;font-size:13px;font-family:inherit;cursor:pointer;font-weight:600;';
+                btnPlay.style.cssText = 'padding:8px 14px;border-radius:8px;border:1.5px solid #d1d5db;background:#fff;color:#374151;font-size:13px;font-family:inherit;cursor:pointer;';
+            }
+        }
+
+        async function _loadPlayDataForSearch(path) {
+            // path is already the full relative URL (e.g. "Public/Data/macbeth_correct.json")
+            const resp = await fetch(encodeURI(path));
+            if (!resp.ok) throw new Error(`Not found: ${path}`);
+            return resp.json();
+        }
+
+        function _searchNotesInData(data, query, playName) {
+            const q = query.toLowerCase();
+            const results = [];
+            for (const [sceneKey, sceneVal] of Object.entries(data)) {
+                if (sceneKey === 'DRAMATIS PERSONAE' || typeof sceneVal !== 'object' || !sceneVal) continue;
+                for (const [lineNum, item] of Object.entries(sceneVal)) {
+                    if (!item || typeof item !== 'object') continue;
+                    const notes = item.notes || [];
+                    const playText = (item.play || item.text || item.line || '').trim();
+                    notes.forEach((note) => {
+                        if (typeof note === 'string' && note.toLowerCase().includes(q)) {
+                            const idx = note.toLowerCase().indexOf(q);
+                            const start = Math.max(0, idx - 80);
+                            const end = Math.min(note.length, idx + query.length + 140);
+                            let snippet = (start > 0 ? '…' : '') + note.slice(start, end) + (end < note.length ? '…' : '');
+                            const re = new RegExp(query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
+                            snippet = snippet.replace(re, m => `<strong style="background:#fef08a;padding:0 1px;border-radius:2px;">${m}</strong>`);
+                            results.push({ play: playName, scene: sceneKey, line: lineNum, playText, snippet });
+                        }
+                    });
+                }
+            }
+            return results;
+        }
+
+        async function runAnnotationSearch() {
+            const query = document.getElementById('annotSearchInput').value.trim();
+            if (!query) return;
+            const resultsDiv = document.getElementById('annotSearchResults');
+            const statusDiv  = document.getElementById('annotSearchStatus');
+            resultsDiv.innerHTML = '<p style="color:#6b7280;font-size:14px;text-align:center;margin-top:40px;">Searching…</p>';
+            statusDiv.textContent = '';
+
+            try {
+                let allResults = [];
+
+                if (_annotScope === 'play') {
+                    // Find the file for the current play
+                    let filename = null;
+                    let displayName = 'Current Play';
+                    const sel = document.getElementById('playSelector');
+                    const selectedText = sel ? (sel.options[sel.selectedIndex]?.text || '') : '';
+                    for (const [name, file] of Object.entries(PLAY_FILES)) {
+                        if (name.toLowerCase() === selectedText.toLowerCase()) { filename = file; displayName = name; break; }
+                    }
+                    // Fallback: match by currentPlay key
+                    if (!filename && typeof currentPlay !== 'undefined') {
+                        const mapped = PLAY_KEY_TO_NAME[currentPlay];
+                        if (mapped && PLAY_FILES[mapped]) { filename = PLAY_FILES[mapped]; displayName = mapped; }
+                        if (!filename) {
+                            for (const [name, file] of Object.entries(PLAY_FILES)) {
+                                if (name.toLowerCase().includes(currentPlay.toLowerCase()) || currentPlay.toLowerCase().includes(name.toLowerCase().split(' ')[0])) {
+                                    filename = file; displayName = name; break;
+                                }
+                            }
+                        }
+                    }
+                    if (!filename) {
+                        statusDiv.textContent = 'Could not identify current play. Try "All Plays".';
+                        resultsDiv.innerHTML = '';
+                        return;
+                    }
+                    statusDiv.textContent = `Searching ${displayName}…`;
+                    const data = await _loadPlayDataForSearch(filename);
+                    allResults = _searchNotesInData(data, query, displayName);
+
+                } else {
+                    const entries = Object.entries(PLAY_FILES);
+                    let loaded = 0;
+                    for (const [playName, filename] of entries) {
+                        try {
+                            statusDiv.textContent = `Searching all plays… (${loaded}/${entries.length})`;
+                            const data = await _loadPlayDataForSearch(filename);
+                            allResults = allResults.concat(_searchNotesInData(data, query, playName));
+                            loaded++;
+                        } catch(e) { loaded++; }
+                    }
+                }
+
+                if (allResults.length === 0) {
+                    statusDiv.textContent = '';
+                    resultsDiv.innerHTML = `<p style="color:#6b7280;font-size:14px;text-align:center;margin-top:40px;">No annotations found matching <em>"${query}"</em>.</p>`;
+                    return;
+                }
+
+                statusDiv.textContent = `${allResults.length.toLocaleString()} match${allResults.length !== 1 ? 'es' : ''} found`;
+
+                const byPlay = {};
+                allResults.forEach(r => { if (!byPlay[r.play]) byPlay[r.play] = []; byPlay[r.play].push(r); });
+
+                let html = '';
+                for (const [playName, results] of Object.entries(byPlay)) {
+                    html += `<div style="margin-bottom:24px;">
+                        <div style="font-weight:700;font-size:15px;color:#111827;margin-bottom:8px;padding-bottom:5px;border-bottom:2px solid #e5e7eb;">
+                            ${playName} <span style="font-weight:400;font-size:12px;color:#6b7280;">(${results.length} match${results.length !== 1 ? 'es' : ''})</span>
+                        </div>`;
+                    results.forEach(r => {
+                        const sceneLabel = r.scene.replace(/^ACT\s*/i,'Act ').replace(/SCENE\s*/i,'Scene ');
+                        const lineText = r.playText ? `<span style="font-weight:400;color:#9ca3af;"> — ${r.playText.slice(0,55).replace(/[<>]/g, c => c==='<'?'&lt;':'&gt;')}${r.playText.length>55?'…':''}</span>` : '';
+                        html += `<div style="margin-bottom:10px;padding:10px 14px;background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;border-left:3px solid #1d4ed8;">
+                            <div style="font-size:11px;color:#6b7280;margin-bottom:5px;font-weight:600;letter-spacing:0.03em;">${sceneLabel}, Line ${r.line}${lineText}</div>
+                            <div style="font-size:13px;color:#374151;line-height:1.65;">${r.snippet}</div>
+                        </div>`;
+                    });
+                    html += '</div>';
+                }
+                resultsDiv.innerHTML = html;
+
+            } catch(e) {
+                statusDiv.textContent = '';
+                resultsDiv.innerHTML = `<p style="color:#dc2626;font-size:14px;padding:20px;">Error: ${e.message}</p>`;
+            }
+        }
+        // ── End Annotation Search ──────────────────────────────────────────────
 
         function openCriticsModal() {
             // Show the appropriate critics modal based on current play
