@@ -3326,19 +3326,31 @@
         </div>
     </div>
 
-    <!-- ── Bookmarks Modal ────────────────────────────────────────────── -->
+    <!-- ── Bookmarks + Progress Modal ───────────────────────────────── -->
     <div id="bookmarksModal" class="modal" style="z-index:10001;">
-        <div class="modal-content" style="max-width:520px;width:94vw;max-height:88vh;padding:0;border-radius:14px;overflow:hidden;display:flex;flex-direction:column;">
+        <div class="modal-content" style="max-width:540px;width:94vw;max-height:88vh;padding:0;border-radius:14px;overflow:hidden;display:flex;flex-direction:column;">
             <!-- Header -->
             <div style="background:#fff;border-bottom:1px solid #e5e7eb;padding:20px 24px 16px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;">
-                <div>
-                    <div style="font-weight:700;font-size:17px;color:#1d1d1f;letter-spacing:-0.01em;">Bookmarks</div>
-                    <div style="font-size:12px;color:#86868b;margin-top:2px;">Your saved scenes and passages</div>
-                </div>
+                <div style="font-weight:700;font-size:17px;color:#1d1d1f;letter-spacing:-0.01em;">My Library</div>
                 <button onclick="closeBookmarksModal()" style="background:none;border:none;font-size:22px;cursor:pointer;color:#6e6e73;line-height:1;padding:2px 6px;">&times;</button>
             </div>
-            <!-- Body -->
-            <div id="bookmarksList" style="overflow-y:auto;flex:1;padding:16px 24px 20px;">
+            <!-- Tabs -->
+            <div style="display:flex;border-bottom:1px solid #e5e7eb;background:#f9f9f9;flex-shrink:0;">
+                <button id="tabProgress" onclick="switchLibraryTab('progress')"
+                    style="flex:1;padding:11px 0;border:none;border-bottom:2px solid #1d1d1f;background:transparent;font-size:13px;font-weight:600;color:#1d1d1f;cursor:pointer;font-family:inherit;">
+                    Reading Progress
+                </button>
+                <button id="tabBookmarks" onclick="switchLibraryTab('bookmarks')"
+                    style="flex:1;padding:11px 0;border:none;border-bottom:2px solid transparent;background:transparent;font-size:13px;font-weight:500;color:#86868b;cursor:pointer;font-family:inherit;">
+                    Bookmarks
+                </button>
+            </div>
+            <!-- Progress panel -->
+            <div id="progressPanel" style="overflow-y:auto;flex:1;padding:16px 24px 20px;">
+                <div style="color:#86868b;font-size:13px;text-align:center;padding:32px 0;">Loading progress…</div>
+            </div>
+            <!-- Bookmarks panel -->
+            <div id="bookmarksList" style="display:none;overflow-y:auto;flex:1;padding:16px 24px 20px;">
                 <div style="color:#86868b;font-size:13px;text-align:center;padding:32px 0;">Loading bookmarks…</div>
             </div>
         </div>
@@ -23835,8 +23847,8 @@
                 localStorage.setItem('sv_user',  JSON.stringify(_authUser));
                 _applyLoggedInState(_authUser);
                 closeAuthModal();
-                // Restore last scene if available
-                _restoreLastScene();
+                // Show resume prompt from server-side progress
+                _fetchLatestProgressAndPrompt();
             } catch (e) {
                 errEl.textContent = e.message;
                 errEl.style.display = 'block';
@@ -24028,11 +24040,20 @@
         }
 
         // ── Restore last visited scene on login ────────────────────────────
-        function _restoreLastScene() {
-            const lastPlay  = localStorage.getItem('sv_last_play');
-            const lastScene = localStorage.getItem('sv_last_scene');
-            if (!lastPlay || !lastScene) return;
-            goToBookmark(plays[lastPlay]?.name || lastPlay, lastScene);
+        async function _fetchLatestProgressAndPrompt() {
+            if (!_authToken) return;
+            try {
+                const res  = await fetch('/.netlify/functions/progress', {
+                    headers: { 'Authorization': 'Bearer ' + _authToken }
+                });
+                const data = await res.json();
+                if (!res.ok || !data.progress || data.progress.length === 0) return;
+                // Most recently read play
+                const latest = data.progress[0];
+                if (latest && latest.play && latest.scene) {
+                    _showResumePrompt(latest.play, latest.scene);
+                }
+            } catch (e) { /* silent */ }
         }
 
         // Track scene changes to update last-seen location
@@ -24120,6 +24141,170 @@
             } finally {
                 btn.textContent = 'Reset Password'; btn.disabled = false;
             }
+        }
+
+        // ════════════════════════════════════════════════════════════════════
+        //  READING PROGRESS
+        // ════════════════════════════════════════════════════════════════════
+
+        let _progressCache = {}; // { playName: { scene, scene_index, total_scenes, last_read_at } }
+
+        // ── Library modal tab switching ────────────────────────────────────
+        function switchLibraryTab(tab) {
+            const isProgress = tab === 'progress';
+            document.getElementById('progressPanel').style.display  = isProgress ? '' : 'none';
+            document.getElementById('bookmarksList').style.display  = isProgress ? 'none' : '';
+            document.getElementById('tabProgress').style.borderBottomColor  = isProgress ? '#1d1d1f' : 'transparent';
+            document.getElementById('tabProgress').style.color              = isProgress ? '#1d1d1f' : '#86868b';
+            document.getElementById('tabProgress').style.fontWeight         = isProgress ? '600' : '500';
+            document.getElementById('tabBookmarks').style.borderBottomColor = isProgress ? 'transparent' : '#1d1d1f';
+            document.getElementById('tabBookmarks').style.color             = isProgress ? '#86868b' : '#1d1d1f';
+            document.getElementById('tabBookmarks').style.fontWeight        = isProgress ? '500' : '600';
+        }
+
+        // ── Open bookmarks modal (override to load both panels) ───────────
+        const _origOpenBookmarksModal = openBookmarksModal;
+        function openBookmarksModal(e) {
+            if (e) e.stopPropagation();
+            if (!_authToken) { openLoginModal(); return; }
+            document.getElementById('bookmarksModal').style.display = 'block';
+            switchLibraryTab('progress');
+            _loadAndRenderProgress();
+            _loadAndRenderBookmarks();
+        }
+
+        // ── Save progress (called on every scene load) ─────────────────────
+        async function _saveProgress(playName, sceneName, sceneIndex, totalScenes) {
+            if (!_authToken) return;
+            try {
+                await fetch('/.netlify/functions/progress', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + _authToken },
+                    body: JSON.stringify({ play: playName, scene: sceneName, scene_index: sceneIndex, total_scenes: totalScenes })
+                });
+                // Update cache
+                _progressCache[playName] = { scene: sceneName, scene_index: sceneIndex, total_scenes: totalScenes, last_read_at: new Date().toISOString() };
+            } catch (e) {
+                // Silent fail — don't interrupt reading
+            }
+        }
+
+        // ── Load and render progress panel ────────────────────────────────
+        async function _loadAndRenderProgress() {
+            const el = document.getElementById('progressPanel');
+            el.innerHTML = '<div style="color:#86868b;font-size:13px;text-align:center;padding:32px 0;">Loading…</div>';
+            try {
+                const res  = await fetch('/.netlify/functions/progress', {
+                    headers: { 'Authorization': 'Bearer ' + _authToken }
+                });
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.error || 'Failed to load progress');
+                _renderProgress(data.progress);
+            } catch (e) {
+                el.innerHTML = `<div style="color:#dc2626;font-size:13px;text-align:center;padding:24px 0;">${_escHtml(e.message)}</div>`;
+            }
+        }
+
+        function _renderProgress(progressList) {
+            const el = document.getElementById('progressPanel');
+            if (!progressList || progressList.length === 0) {
+                el.innerHTML = `
+                    <div style="text-align:center;padding:40px 0 20px;">
+                        <div style="font-size:28px;margin-bottom:10px;">📖</div>
+                        <div style="color:#1d1d1f;font-weight:600;font-size:14px;margin-bottom:6px;">No reading history yet</div>
+                        <div style="color:#86868b;font-size:12.5px;">Open a play and start reading — your progress saves automatically.</div>
+                    </div>`;
+                return;
+            }
+
+            el.innerHTML = progressList.map(p => {
+                const pct     = p.total_scenes > 0 ? Math.round((p.scene_index / p.total_scenes) * 100) : 0;
+                const dateStr = new Date(p.last_read_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                const barColor = pct === 100 ? '#16a34a' : '#1d1d1f';
+                return `
+                <div style="margin-bottom:20px;">
+                    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+                        <div style="font-weight:600;font-size:13.5px;color:#1d1d1f;">${_escHtml(p.play)}</div>
+                        <div style="font-size:11.5px;color:#86868b;">${pct}%${pct===100?' ✓':''}</div>
+                    </div>
+                    <!-- Progress bar -->
+                    <div style="height:5px;background:#e5e7eb;border-radius:99px;overflow:hidden;margin-bottom:6px;">
+                        <div style="height:100%;width:${pct}%;background:${barColor};border-radius:99px;transition:width 0.4s;"></div>
+                    </div>
+                    <div style="display:flex;align-items:center;justify-content:space-between;">
+                        <div style="font-size:11.5px;color:#6e6e73;">Last read: <em>${_escHtml(p.scene)}</em></div>
+                        <div style="display:flex;gap:6px;align-items:center;">
+                            <div style="font-size:11px;color:#a1a1aa;">${dateStr}</div>
+                            <button onclick="goToBookmark('${_escHtml(p.play)}','${_escHtml(p.scene)}')"
+                                style="padding:3px 10px;border-radius:12px;border:1.5px solid #1d1d1f;background:transparent;color:#1d1d1f;font-size:11px;cursor:pointer;font-family:inherit;font-weight:500;"
+                                onmouseover="this.style.background='#1d1d1f';this.style.color='#fff'"
+                                onmouseout="this.style.background='transparent';this.style.color='#1d1d1f'">Resume</button>
+                        </div>
+                    </div>
+                </div>`;
+            }).join('');
+        }
+
+        // ── Hook into loadScene to auto-save progress ─────────────────────
+        // Wrap the existing loadScene so every scene load also saves progress
+        (function patchLoadScene() {
+            const _original = window.loadScene;
+            if (typeof _original !== 'function') return;
+            window.loadScene = function(sceneName) {
+                _original.call(this, sceneName);
+                // Auto-save after a short delay (let currentPlay/currentScene update first)
+                setTimeout(() => {
+                    if (!_authToken || !currentPlay || !currentScene) return;
+                    const playObj   = plays && plays[currentPlay];
+                    const playName  = playObj?.name || currentPlay;
+                    const allScenes = playObj ? Object.keys(playObj.scenes || {}) : [];
+                    const idx       = allScenes.indexOf(currentScene);
+                    const total     = allScenes.length;
+                    _saveProgress(playName, currentScene, idx >= 0 ? idx + 1 : 0, total);
+                    // Also update last-scene for restore
+                    localStorage.setItem('sv_last_play', currentPlay);
+                    localStorage.setItem('sv_last_scene', currentScene);
+                }, 300);
+            };
+        })();
+
+        // ── Resume prompt after login ──────────────────────────────────────
+        function _showResumePrompt(play, scene) {
+            // Small toast at bottom of screen
+            const toast = document.createElement('div');
+            toast.id = 'resumeToast';
+            toast.innerHTML = `
+                <div style="display:flex;align-items:center;gap:14px;">
+                    <div>
+                        <div style="font-weight:600;font-size:13px;color:#1d1d1f;">Continue reading?</div>
+                        <div style="font-size:12px;color:#6e6e73;margin-top:1px;">${_escHtml(play)} — ${_escHtml(scene)}</div>
+                    </div>
+                    <button onclick="_dismissResumeToast(true,'${_escHtml(play)}','${_escHtml(scene)}')"
+                        style="padding:6px 14px;background:#1d1d1f;color:#fff;border:none;border-radius:8px;font-size:12.5px;font-weight:600;cursor:pointer;font-family:inherit;white-space:nowrap;">
+                        Resume
+                    </button>
+                    <button onclick="_dismissResumeToast(false)"
+                        style="background:none;border:none;font-size:18px;cursor:pointer;color:#6e6e73;line-height:1;padding:2px;">
+                        &times;
+                    </button>
+                </div>`;
+            toast.style.cssText = 'position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#fff;border:1.5px solid #e5e7eb;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.12);padding:14px 18px;z-index:99999;animation:slideUp 0.25s ease;min-width:280px;max-width:90vw;';
+            // Add animation keyframe once
+            if (!document.getElementById('resumeToastStyle')) {
+                const s = document.createElement('style');
+                s.id = 'resumeToastStyle';
+                s.textContent = '@keyframes slideUp{from{opacity:0;transform:translateX(-50%) translateY(16px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}';
+                document.head.appendChild(s);
+            }
+            document.body.appendChild(toast);
+            // Auto-dismiss after 12s
+            setTimeout(() => _dismissResumeToast(false), 12000);
+        }
+
+        function _dismissResumeToast(doResume, play, scene) {
+            const t = document.getElementById('resumeToast');
+            if (t) t.remove();
+            if (doResume && play && scene) goToBookmark(play, scene);
         }
 
     </script>

@@ -35,6 +35,12 @@
   force = true
 
 [[redirects]]
+  from = "/api/progress"
+  to = "/.netlify/functions/progress"
+  status = 200
+  force = true
+
+[[redirects]]
   from = "/api/test-shakespeare"
   to = "/.netlify/functions/test-shakespeare"
   status = 200
