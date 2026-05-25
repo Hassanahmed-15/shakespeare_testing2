@@ -48,6 +48,10 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+        @keyframes chatDot {
+            0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+            30% { transform: translateY(-5px); opacity: 1; }
+        }
         
         .error-message {
             padding: 40px;
@@ -3178,42 +3182,90 @@
             <!-- Settings button hidden for public release; uncomment to re-enable for admin use -->
             <!-- <button class="nav-btn" onclick="openSettings()">Settings</button> -->
             <button class="nav-btn" onclick="openAbout()">About</button>
-            <button class="nav-btn" onclick="openAnnotationSearch()">Search Annotations</button>
+            <button class="nav-btn" onclick="openAnnotationSearchAll()">Search NV Annotations</button>
             <span class="instruction-text">Use your cursor to highlight text in the play for analysis.</span>
         </div>
     </div>
 
-    <!-- Annotation Search Modal -->
+    <!-- Annotation Chatbot Modal -->
     <div id="annotationSearchModal" class="modal" style="z-index:10000;">
-        <div class="modal-content" style="max-width:760px;width:94vw;max-height:88vh;display:flex;flex-direction:column;">
-            <div class="modal-header">
-                <div class="modal-title">Search Annotations</div>
-                <button class="modal-close" onclick="closeAnnotationSearch()">&times;</button>
+        <div class="modal-content" style="max-width:780px;width:94vw;max-height:90vh;display:flex;flex-direction:column;padding:0;border-radius:14px;overflow:hidden;">
+            <!-- Header -->
+            <div style="background:#fff;border-bottom:1px solid #e5e7eb;padding:20px 24px 16px;flex-shrink:0;">
+                <div style="display:flex;align-items:flex-start;justify-content:space-between;">
+                    <div>
+                        <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px;">
+                            <div style="width:30px;height:30px;background:#f3f4f6;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;">🔍</div>
+                            <div id="annotSearchModalTitle" style="font-weight:700;font-size:17px;color:#1d1d1f;letter-spacing:-0.01em;">Search Annotations</div>
+                        </div>
+                        <div id="annotSearchModalSubtitle" style="font-size:12px;color:#6e6e73;padding-left:40px;">Search the full text of all New Variorum scholarly annotations</div>
+                    </div>
+                    <button onclick="closeAnnotationSearch()" style="background:transparent;border:none;color:#6e6e73;cursor:pointer;font-size:20px;width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background 0.15s;" onmouseover="this.style.background='#f3f4f6'" onmouseout="this.style.background='transparent'">&times;</button>
+                </div>
+
+                <!-- Example chips -->
+                <div style="margin-top:12px;padding-left:40px;">
+                    <div style="font-size:11px;color:#86868b;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.06em;">Try searching for</div>
+                    <div style="display:flex;gap:6px;flex-wrap:wrap;">
+                        <button onclick="document.getElementById('annotSearchInput').value=this.dataset.q;runAnnotationSearch();" data-q="Samuel Johnson" style="padding:4px 10px;background:#fff;border:1px solid #d2d2d7;border-radius:20px;color:#1d1d1f;font-size:12px;cursor:pointer;font-family:inherit;transition:all 0.15s;" onmouseover="this.style.background='#1d1d1f';this.style.color='#fff'" onmouseout="this.style.background='#fff';this.style.color='#1d1d1f'">Samuel Johnson</button>
+                        <button onclick="document.getElementById('annotSearchInput').value=this.dataset.q;runAnnotationSearch();" data-q="Steevens" style="padding:4px 10px;background:#fff;border:1px solid #d2d2d7;border-radius:20px;color:#1d1d1f;font-size:12px;cursor:pointer;font-family:inherit;transition:all 0.15s;" onmouseover="this.style.background='#1d1d1f';this.style.color='#fff'" onmouseout="this.style.background='#fff';this.style.color='#1d1d1f'">Steevens</button>
+                        <button onclick="document.getElementById('annotSearchInput').value=this.dataset.q;runAnnotationSearch();" data-q="Malone" style="padding:4px 10px;background:#fff;border:1px solid #d2d2d7;border-radius:20px;color:#1d1d1f;font-size:12px;cursor:pointer;font-family:inherit;transition:all 0.15s;" onmouseover="this.style.background='#1d1d1f';this.style.color='#fff'" onmouseout="this.style.background='#fff';this.style.color='#1d1d1f'">Malone</button>
+                        <button onclick="document.getElementById('annotSearchInput').value=this.dataset.q;runAnnotationSearch();" data-q="folio" style="padding:4px 10px;background:#fff;border:1px solid #d2d2d7;border-radius:20px;color:#1d1d1f;font-size:12px;cursor:pointer;font-family:inherit;transition:all 0.15s;" onmouseover="this.style.background='#1d1d1f';this.style.color='#fff'" onmouseout="this.style.background='#fff';this.style.color='#1d1d1f'">folio</button>
+                        <button onclick="document.getElementById('annotSearchInput').value=this.dataset.q;runAnnotationSearch();" data-q="corruption" style="padding:4px 10px;background:#fff;border:1px solid #d2d2d7;border-radius:20px;color:#1d1d1f;font-size:12px;cursor:pointer;font-family:inherit;transition:all 0.15s;" onmouseover="this.style.background='#1d1d1f';this.style.color='#fff'" onmouseout="this.style.background='#fff';this.style.color='#1d1d1f'">corruption</button>
+                        <button onclick="document.getElementById('annotSearchInput').value=this.dataset.q;runAnnotationSearch();" data-q="emendation" style="padding:4px 10px;background:#fff;border:1px solid #d2d2d7;border-radius:20px;color:#1d1d1f;font-size:12px;cursor:pointer;font-family:inherit;transition:all 0.15s;" onmouseover="this.style.background='#1d1d1f';this.style.color='#fff'" onmouseout="this.style.background='#fff';this.style.color='#1d1d1f'">emendation</button>
+                    </div>
+                </div>
             </div>
-            <div style="padding:16px 20px 12px;border-bottom:1px solid #e5e7eb;flex-shrink:0;">
-                <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
-                    <input id="annotSearchInput" type="text" placeholder='e.g. "knife" or "Samuel Johnson"'
-                        style="flex:1;min-width:200px;padding:9px 13px;border:1px solid #d1d5db;border-radius:8px;font-size:14px;font-family:inherit;outline:none;"
-                        onkeydown="if(event.key==='Enter')runAnnotationSearch()" />
-                    <div style="display:flex;gap:6px;flex-shrink:0;">
-                        <button id="annotScopePlay" onclick="setAnnotScope('play')"
-                            style="padding:8px 14px;border-radius:8px;border:1.5px solid #374151;background:#374151;color:#fff;font-size:13px;font-family:inherit;cursor:pointer;font-weight:600;">
-                            This Play
-                        </button>
-                        <button id="annotScopeAll" onclick="setAnnotScope('all')"
-                            style="padding:8px 14px;border-radius:8px;border:1.5px solid #d1d5db;background:#fff;color:#374151;font-size:13px;font-family:inherit;cursor:pointer;">
-                            All Plays
-                        </button>
+
+            <!-- Search bar -->
+            <div style="padding:14px 20px 10px;border-bottom:1px solid #e5e7eb;background:#fff;flex-shrink:0;">
+                <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+                    <div style="flex:1;min-width:200px;position:relative;">
+                        <span style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:#86868b;font-size:15px;pointer-events:none;">🔍</span>
+                        <input id="annotSearchInput" type="text" placeholder="Type a word, name, or phrase…"
+                            style="width:100%;padding:10px 14px 10px 36px;border:1.5px solid #d2d2d7;border-radius:10px;font-size:14px;font-family:inherit;outline:none;box-sizing:border-box;transition:border-color 0.15s;"
+                            onfocus="this.style.borderColor='#1d1d1f'" onblur="this.style.borderColor='#d2d2d7'"
+                            onkeydown="if(event.key==='Enter')runAnnotationSearch()" />
+                    </div>
+                    <div style="display:flex;gap:6px;flex-shrink:0;align-items:center;">
+                        <div style="display:flex;background:#f3f4f6;border-radius:8px;padding:3px;gap:2px;">
+                            <button id="annotScopePlay" onclick="setAnnotScope('play')"
+                                style="padding:6px 12px;border-radius:6px;border:none;background:#1d1d1f;color:#fff;font-size:12px;font-family:inherit;cursor:pointer;font-weight:600;transition:all 0.15s;">
+                                This Play
+                            </button>
+                            <button id="annotScopeAll" onclick="setAnnotScope('all')"
+                                style="padding:6px 12px;border-radius:6px;border:none;background:transparent;color:#6e6e73;font-size:12px;font-family:inherit;cursor:pointer;transition:all 0.15s;">
+                                All Plays
+                            </button>
+                        </div>
                         <button onclick="runAnnotationSearch()"
-                            style="padding:8px 16px;border-radius:8px;border:none;background:#1d4ed8;color:#fff;font-size:13px;font-family:inherit;cursor:pointer;font-weight:600;">
+                            style="padding:9px 18px;border-radius:10px;border:none;background:#1d1d1f;color:#fff;font-size:13px;font-family:inherit;cursor:pointer;font-weight:600;letter-spacing:0.01em;transition:background 0.15s;"
+                            onmouseover="this.style.background='#3a3a3c'" onmouseout="this.style.background='#1d1d1f'">
                             Search
                         </button>
                     </div>
                 </div>
-                <div id="annotSearchStatus" style="margin-top:8px;font-size:12px;color:#6b7280;min-height:16px;"></div>
+                <div style="display:flex;align-items:center;justify-content:space-between;margin-top:8px;">
+                    <div id="annotSearchStatus" style="font-size:12px;color:#6e6e73;min-height:16px;"></div>
+                    <div style="font-size:11px;color:#86868b;">Press <kbd style="background:#f3f4f6;border:1px solid #d2d2d7;border-radius:4px;padding:1px 5px;font-size:11px;color:#1d1d1f;">Enter</kbd> to search</div>
+                </div>
             </div>
-            <div id="annotSearchResults" style="overflow-y:auto;flex:1;padding:12px 20px 20px;">
-                <p style="color:#9ca3af;font-size:14px;text-align:center;margin-top:40px;">Enter a search term above to find annotations.</p>
+
+            <!-- Results -->
+            <div id="annotSearchResults" style="overflow-y:auto;flex:1;padding:0;background:#f8fafc;">
+                <!-- Empty state -->
+                <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px 32px;text-align:center;">
+                    <div style="font-size:40px;margin-bottom:14px;opacity:0.25;">📜</div>
+                    <div style="font-weight:600;font-size:15px;color:#1d1d1f;margin-bottom:6px;">Search the Variorum annotations</div>
+                    <div style="font-size:13px;color:#86868b;max-width:380px;line-height:1.6;">
+                        Find every annotation that mentions a keyword, critic, or phrase. Use <strong style="color:#1d1d1f;">This Play</strong> for the current play, or <strong style="color:#1d1d1f;">All Plays</strong> to search the entire New Variorum corpus.
+                    </div>
+                    <div style="margin-top:20px;display:flex;flex-direction:column;gap:8px;text-align:left;background:#fff;border:1px solid #d2d2d7;border-radius:10px;padding:14px 18px;font-size:12.5px;color:#6e6e73;max-width:380px;">
+                        <div><span style="color:#1d1d1f;font-weight:600;">Critic search:</span> Type a scholar's name — e.g. <em>Theobald</em>, <em>Capell</em>, <em>Warburton</em></div>
+                        <div><span style="color:#1d1d1f;font-weight:600;">Word search:</span> Find every annotation where a word appears — e.g. <em>knife</em>, <em>ghost</em></div>
+                        <div><span style="color:#1d1d1f;font-weight:600;">Textual:</span> Search for editorial terms — e.g. <em>quarto</em>, <em>folio</em>, <em>emendation</em></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -3305,15 +3357,15 @@
                 <div class="about">
                     <p>The <a href="#" onclick="openNVModal(); return false;">New Variorum Shakespeare</a> editions have been the gold standard of Shakespearean scholarship for over a century, bringing together the most important critical commentary, textual analysis, and historical context in comprehensive annotated volumes. The <em>Shakespeare Digital New Variorum</em> builds on this tradition, harnessing the power of artificial intelligence to make centuries of scholarly insight accessible to everyone &mdash; from high school students to veteran researchers.</p>
 
-                    <p>Our platform integrates authoritative texts based on the Folger Shakespeare Library editions of each play, with commentary from major variorum editions, scholarly databases, and historical sources. We include references to film adaptations, stage productions, and cultural interpretations that show how Shakespeare’s works have lived and evolved across different media and eras. Using advanced AI, we can instantly provide plain-language explanations of complex passages, trace the etymology of Early Modern English words as they appear in context, analyze prosodic patterns across scenes and plays, and illuminate the historical events and cultural forces that shaped each work.</p>
+                    <p>Our platform integrates authoritative texts based on the Folger Shakespeare Library editions of each play, with commentary from major variorum editions, scholarly databases, and historical sources. We include references to film adaptations, stage productions, and cultural interpretations that show how Shakespeare's works have lived and evolved across different media and eras. Using advanced AI, we can instantly provide plain-language explanations of complex passages, trace the etymology of Early Modern English words as they appear in context, analyze prosodic patterns across scenes and plays, and illuminate the historical events and cultural forces that shaped each work.</p>
 
                     <p><strong>Radical Accessibility</strong></p>
 
-                    <p>The goal is radical accessibility. Whether you’re encountering Hamlet’s soliloquies for the first time or you’re a seasoned scholar investigating textual variants, the <em>Shakespeare Digital New Variorum</em> meets you where you are. Students can receive immediate clarification of archaic language and historical references. Researchers can discover thematic connections across the complete canon. Theater practitioners can access centuries of performance history, from Garrick to Branagh to contemporary productions worldwide.</p>
+                    <p>The goal is radical accessibility. Whether you're encountering Hamlet's soliloquies for the first time or you're a seasoned scholar investigating textual variants, the <em>Shakespeare Digital New Variorum</em> meets you where you are. Students can receive immediate clarification of archaic language and historical references. Researchers can discover thematic connections across the complete canon. Theater practitioners can access centuries of performance history, from Garrick to Branagh to contemporary productions worldwide.</p>
 
                     <p>We believe Shakespeare belongs to everyone, not just academics. By connecting scholarly commentary with film clips, performance videos, and multimedia resources, we show how these 400-year-old plays continue to speak to modern audiences. A teenager reading <em>Romeo and Juliet</em> can instantly see how Baz Luhrmann reimagined the balcony scene, while a graduate student can access the full textual apparatus from multiple critical editions.</p>
 
-                    <p>This isn’t about replacing human scholarship but about democratizing it. Every AI-generated insight is grounded in the work of generations of Shakespeare scholars, from the earliest editors to contemporary critics. We’ve simply made it possible for anyone to access that collective wisdom instantly, searchably, and in conversation with the texts themselves.</p>
+                    <p>This isn't about replacing human scholarship but about democratizing it. Every AI-generated insight is grounded in the work of generations of Shakespeare scholars, from the earliest editors to contemporary critics. We've simply made it possible for anyone to access that collective wisdom instantly, searchably, and in conversation with the texts themselves.</p>
 
                     <p><strong>New Variorum Coverage</strong></p>
 
@@ -3332,11 +3384,11 @@
                             <tr><td>6</td><td>The Merchant of Venice</td><td>1888</td><td>H.&nbsp;H.&nbsp;Furness</td></tr>
                             <tr><td>7</td><td>As You Like It</td><td>1890</td><td>H.&nbsp;H.&nbsp;Furness</td></tr>
                             <tr><td>8</td><td>The Tempest</td><td>1892</td><td>H.&nbsp;H.&nbsp;Furness</td></tr>
-                            <tr><td>9</td><td>A Midsummer Night’s Dream</td><td>1895</td><td>H.&nbsp;H.&nbsp;Furness</td></tr>
-                            <tr><td>10</td><td>The Winter’s Tale</td><td>1898</td><td>H.&nbsp;H.&nbsp;Furness</td></tr>
+                            <tr><td>9</td><td>A Midsummer Night's Dream</td><td>1895</td><td>H.&nbsp;H.&nbsp;Furness</td></tr>
+                            <tr><td>10</td><td>The Winter's Tale</td><td>1898</td><td>H.&nbsp;H.&nbsp;Furness</td></tr>
                             <tr><td>11</td><td>Much Ado About Nothing</td><td>1899</td><td>H.&nbsp;H.&nbsp;Furness</td></tr>
                             <tr><td>12</td><td>Twelfth Night</td><td>1901</td><td>H.&nbsp;H.&nbsp;Furness</td></tr>
-                            <tr><td>13</td><td>Love’s Labour’s Lost</td><td>1904</td><td>H.&nbsp;H.&nbsp;Furness</td></tr>
+                            <tr><td>13</td><td>Love's Labour's Lost</td><td>1904</td><td>H.&nbsp;H.&nbsp;Furness</td></tr>
                             <tr><td>14</td><td>Antony and Cleopatra</td><td>1907</td><td>H.&nbsp;H.&nbsp;Furness</td></tr>
                             <tr><td>15</td><td>Richard III</td><td>1908</td><td>H.&nbsp;H.&nbsp;Furness</td></tr>
                             <tr><td>16</td><td>Julius Caesar</td><td>1913</td><td>H.&nbsp;H.&nbsp;Furness</td></tr>
@@ -3373,7 +3425,7 @@
 
                     <p><strong>The Next Evolution</strong></p>
 
-                    <p>The <em>Shakespeare Digital New Variorum</em> represents the next evolution of the variorum tradition: comprehensive, scholarly, and designed for universal access. Shakespeare’s world is vast &mdash; and now everyone can explore all of it.</p>
+                    <p>The <em>Shakespeare Digital New Variorum</em> represents the next evolution of the variorum tradition: comprehensive, scholarly, and designed for universal access. Shakespeare's world is vast &mdash; and now everyone can explore all of it.</p>
                 </div>
             </div>
         </div>
@@ -15552,11 +15604,9 @@
             document.getElementById('howToHelpModal').style.display = 'none';
         }
 
-        // ── Annotation Search ──────────────────────────────────────────────────
+        // ── Annotation Search ─────────────────────────────────────────────────
         let _annotScope = 'play';
 
-        // Each entry: [displayName, fetchPath]
-        // Paths starting with "Public/" are relative to site root; others are in Public/Data/
         const PLAY_FILES = {
             "All's Well That Ends Well":    "Public/Data/alls_well_that_ends_well.json",
             "As You Like It":               "Public/Data/as_you_like_it.json",
@@ -15613,6 +15663,28 @@
             setTimeout(() => document.getElementById('annotSearchInput').focus(), 80);
         }
 
+        function openAnnotationSearchAll() {
+            setAnnotScope('all');
+            document.getElementById('annotationSearchModal').style.display = 'block';
+            const title    = document.getElementById('annotSearchModalTitle');
+            const subtitle = document.getElementById('annotSearchModalSubtitle');
+            if (title)    title.textContent    = 'Search New Variorum Annotations';
+            if (subtitle) subtitle.textContent = 'Search across all plays in the New Variorum corpus';
+            setTimeout(() => document.getElementById('annotSearchInput').focus(), 80);
+        }
+
+        function openAnnotationSearchPlay() {
+            setAnnotScope('play');
+            document.getElementById('annotationSearchModal').style.display = 'block';
+            const sel      = document.getElementById('playSelector');
+            const playName = sel ? (sel.options[sel.selectedIndex]?.text || 'current play') : 'current play';
+            const title    = document.getElementById('annotSearchModalTitle');
+            const subtitle = document.getElementById('annotSearchModalSubtitle');
+            if (title)    title.textContent    = `Search NV annotations on ${playName}`;
+            if (subtitle) subtitle.textContent = `Searching annotations for ${playName} only`;
+            setTimeout(() => document.getElementById('annotSearchInput').focus(), 80);
+        }
+
         function closeAnnotationSearch() {
             document.getElementById('annotationSearchModal').style.display = 'none';
         }
@@ -15622,16 +15694,15 @@
             const btnPlay = document.getElementById('annotScopePlay');
             const btnAll  = document.getElementById('annotScopeAll');
             if (scope === 'play') {
-                btnPlay.style.cssText = 'padding:8px 14px;border-radius:8px;border:1.5px solid #374151;background:#374151;color:#fff;font-size:13px;font-family:inherit;cursor:pointer;font-weight:600;';
-                btnAll.style.cssText  = 'padding:8px 14px;border-radius:8px;border:1.5px solid #d1d5db;background:#fff;color:#374151;font-size:13px;font-family:inherit;cursor:pointer;';
+                btnPlay.style.cssText = 'padding:6px 12px;border-radius:6px;border:none;background:#1d1d1f;color:#fff;font-size:12px;font-family:inherit;cursor:pointer;font-weight:600;transition:all 0.15s;';
+                btnAll.style.cssText  = 'padding:6px 12px;border-radius:6px;border:none;background:transparent;color:#6e6e73;font-size:12px;font-family:inherit;cursor:pointer;transition:all 0.15s;';
             } else {
-                btnAll.style.cssText  = 'padding:8px 14px;border-radius:8px;border:1.5px solid #374151;background:#374151;color:#fff;font-size:13px;font-family:inherit;cursor:pointer;font-weight:600;';
-                btnPlay.style.cssText = 'padding:8px 14px;border-radius:8px;border:1.5px solid #d1d5db;background:#fff;color:#374151;font-size:13px;font-family:inherit;cursor:pointer;';
+                btnAll.style.cssText  = 'padding:6px 12px;border-radius:6px;border:none;background:#1d1d1f;color:#fff;font-size:12px;font-family:inherit;cursor:pointer;font-weight:600;transition:all 0.15s;';
+                btnPlay.style.cssText = 'padding:6px 12px;border-radius:6px;border:none;background:transparent;color:#6e6e73;font-size:12px;font-family:inherit;cursor:pointer;transition:all 0.15s;';
             }
         }
 
         async function _loadPlayDataForSearch(path) {
-            // path is already the full relative URL (e.g. "Public/Data/macbeth_correct.json")
             const resp = await fetch(encodeURI(path));
             if (!resp.ok) throw new Error(`Not found: ${path}`);
             return resp.json();
@@ -15667,14 +15738,13 @@
             if (!query) return;
             const resultsDiv = document.getElementById('annotSearchResults');
             const statusDiv  = document.getElementById('annotSearchStatus');
-            resultsDiv.innerHTML = '<p style="color:#6b7280;font-size:14px;text-align:center;margin-top:40px;">Searching…</p>';
+            resultsDiv.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;padding:48px;gap:10px;color:#6b7280;font-size:14px;"><div style="width:18px;height:18px;border:2px solid #e5e7eb;border-top-color:#1d1d1f;border-radius:50%;animation:spin 0.7s linear infinite;flex-shrink:0;"></div>Searching annotations…</div>';
             statusDiv.textContent = '';
 
             try {
                 let allResults = [];
 
                 if (_annotScope === 'play') {
-                    // Find the file for the current play
                     let filename = null;
                     let displayName = 'Current Play';
                     const sel = document.getElementById('playSelector');
@@ -15682,7 +15752,6 @@
                     for (const [name, file] of Object.entries(PLAY_FILES)) {
                         if (name.toLowerCase() === selectedText.toLowerCase()) { filename = file; displayName = name; break; }
                     }
-                    // Fallback: match by currentPlay key
                     if (!filename && typeof currentPlay !== 'undefined') {
                         const mapped = PLAY_KEY_TO_NAME[currentPlay];
                         if (mapped && PLAY_FILES[mapped]) { filename = PLAY_FILES[mapped]; displayName = mapped; }
@@ -15718,31 +15787,39 @@
 
                 if (allResults.length === 0) {
                     statusDiv.textContent = '';
-                    resultsDiv.innerHTML = `<p style="color:#6b7280;font-size:14px;text-align:center;margin-top:40px;">No annotations found matching <em>"${query}"</em>.</p>`;
+                    resultsDiv.innerHTML = `<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;padding:48px 32px;text-align:center;">
+                        <div style="font-size:36px;margin-bottom:12px;opacity:0.3;">🔎</div>
+                        <div style="font-weight:600;font-size:14px;color:#374151;margin-bottom:4px;">No matches found</div>
+                        <div style="font-size:13px;color:#9ca3af;">No annotations contain <em>"${query}"</em>. Try a different word or switch to <strong>All Plays</strong>.</div>
+                    </div>`;
                     return;
                 }
 
-                statusDiv.textContent = `${allResults.length.toLocaleString()} match${allResults.length !== 1 ? 'es' : ''} found`;
+                statusDiv.innerHTML = `<span style="color:#1d1d1f;font-weight:600;">${allResults.length.toLocaleString()}</span> match${allResults.length !== 1 ? 'es' : ''} found`;
 
                 const byPlay = {};
                 allResults.forEach(r => { if (!byPlay[r.play]) byPlay[r.play] = []; byPlay[r.play].push(r); });
 
-                let html = '';
+                let html = '<div style="padding:16px 20px 24px;">';
                 for (const [playName, results] of Object.entries(byPlay)) {
-                    html += `<div style="margin-bottom:24px;">
-                        <div style="font-weight:700;font-size:15px;color:#111827;margin-bottom:8px;padding-bottom:5px;border-bottom:2px solid #e5e7eb;">
-                            ${playName} <span style="font-weight:400;font-size:12px;color:#6b7280;">(${results.length} match${results.length !== 1 ? 'es' : ''})</span>
+                    html += `<div style="margin-bottom:28px;">
+                        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+                            <div style="font-weight:700;font-size:14px;color:#1d1d1f;">${playName}</div>
+                            <div style="background:#f3f4f6;color:#1d1d1f;font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;">${results.length} match${results.length !== 1 ? 'es' : ''}</div>
+                            <div style="flex:1;height:1px;background:#e5e7eb;"></div>
                         </div>`;
                     results.forEach(r => {
                         const sceneLabel = r.scene.replace(/^ACT\s*/i,'Act ').replace(/SCENE\s*/i,'Scene ');
-                        const lineText = r.playText ? `<span style="font-weight:400;color:#9ca3af;"> — ${r.playText.slice(0,55).replace(/[<>]/g, c => c==='<'?'&lt;':'&gt;')}${r.playText.length>55?'…':''}</span>` : '';
-                        html += `<div style="margin-bottom:10px;padding:10px 14px;background:#f9fafb;border:1px solid #e5e7eb;border-radius:8px;border-left:3px solid #1d4ed8;">
-                            <div style="font-size:11px;color:#6b7280;margin-bottom:5px;font-weight:600;letter-spacing:0.03em;">${sceneLabel}, Line ${r.line}${lineText}</div>
-                            <div style="font-size:13px;color:#374151;line-height:1.65;">${r.snippet}</div>
+                        const lineText = r.playText ? `<div style="font-style:italic;color:#86868b;font-size:12px;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">"${r.playText.slice(0,70).replace(/[<>]/g, c => c==='<'?'&lt;':'&gt;')}${r.playText.length>70?'…':''}"</div>` : '';
+                        html += `<div style="margin-bottom:8px;padding:11px 14px;background:#fff;border:1px solid #d2d2d7;border-radius:10px;border-left:3px solid #1d1d1f;box-shadow:0 1px 3px rgba(0,0,0,0.04);">
+                            <div style="font-size:11px;color:#1d1d1f;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;">${sceneLabel} · Line ${r.line}</div>
+                            ${lineText}
+                            <div style="font-size:13px;color:#1d1d1f;line-height:1.7;margin-top:6px;">${r.snippet}</div>
                         </div>`;
                     });
                     html += '</div>';
                 }
+                html += '</div>';
                 resultsDiv.innerHTML = html;
 
             } catch(e) {
@@ -15750,7 +15827,7 @@
                 resultsDiv.innerHTML = `<p style="color:#dc2626;font-size:14px;padding:20px;">Error: ${e.message}</p>`;
             }
         }
-        // ── End Annotation Search ──────────────────────────────────────────────
+        // ── End Annotation Search ─────────────────────────────────────────────
 
         function openCriticsModal() {
             // Show the appropriate critics modal based on current play
@@ -15991,7 +16068,7 @@
             if (!sceneContent || sceneContent.length === 0) return sceneContent;
             const out = [];
             let lastSpeaker = null;
-            const folgerLine = /^([A-Z][A-Z0-9\s\.'’\u2019-]{0,70}):\s*(.*)$/;
+            const folgerLine = /^([A-Z][A-Z0-9\s\.''\u2019-]{0,70}):\s*(.*)$/;
             for (let i = 0; i < sceneContent.length; i++) {
                 const raw = sceneContent[i];
                 const line = typeof raw === 'string' ? raw : String(raw);
@@ -19148,8 +19225,17 @@
             // Ensure we have content to display
             const contentToDisplay = formattedContent || '<p><em>No content found for this scene.</em></p>';
             
+            const playDisplayName = plays[currentPlay]?.name || currentPlay;
             playText.innerHTML = `
-                <div class="scene-title">${displayTitle}</div>
+                <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;">
+                    <div class="scene-title" style="margin:0;">${displayTitle}</div>
+                    <button onclick="openAnnotationSearchPlay()" title="Search annotations for ${playDisplayName}"
+                        style="flex-shrink:0;padding:5px 13px;border-radius:20px;border:1.5px solid #1d1d1f;background:transparent;color:#1d1d1f;font-size:11.5px;font-family:inherit;cursor:pointer;font-weight:500;white-space:nowrap;transition:all 0.15s;line-height:1.4;letter-spacing:0.01em;"
+                        onmouseover="this.style.background='#1d1d1f';this.style.color='#fff'"
+                        onmouseout="this.style.background='transparent';this.style.color='#1d1d1f'">
+                        Search NV annotations on ${playDisplayName}
+                    </button>
+                </div>
                 <div class="scene-separator"></div>
                 ${contentToDisplay}
             `;
