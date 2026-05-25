@@ -15,6 +15,16 @@
   status = 200
 
 [[redirects]]
+  from = "/api/auth"
+  to = "/.netlify/functions/auth"
+  status = 200
+
+[[redirects]]
+  from = "/api/bookmarks"
+  to = "/.netlify/functions/bookmarks"
+  status = 200
+
+[[redirects]]
   from = "/api/test-shakespeare"
   to = "/.netlify/functions/test-shakespeare"
   status = 200

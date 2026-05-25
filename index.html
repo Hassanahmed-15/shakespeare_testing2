@@ -3183,6 +3183,96 @@
             <!-- <button class="nav-btn" onclick="openSettings()">Settings</button> -->
             <button class="nav-btn" onclick="openAbout()">About</button>
             <span class="nav-text" onclick="openAnnotationSearchAll()">Search Annotations</span>
+            <span class="nav-text" id="authNavItem" onclick="openLoginModal()">Log In</span>
+        </div>
+    </div>
+
+    <!-- ── Auth Modal (Login / Register) ─────────────────────────────── -->
+    <div id="authModal" class="modal" style="z-index:10001;">
+        <div class="modal-content" style="max-width:440px;width:94vw;padding:0;border-radius:14px;overflow:hidden;">
+            <!-- Header -->
+            <div style="background:#fff;border-bottom:1px solid #e5e7eb;padding:22px 24px 18px;display:flex;align-items:center;justify-content:space-between;">
+                <div>
+                    <div style="font-weight:700;font-size:17px;color:#1d1d1f;letter-spacing:-0.01em;" id="authModalTitle">Log In</div>
+                    <div style="font-size:12px;color:#86868b;margin-top:2px;" id="authModalSub">Access your bookmarks and reading history</div>
+                </div>
+                <button onclick="closeAuthModal()" style="background:none;border:none;font-size:22px;cursor:pointer;color:#6e6e73;line-height:1;padding:2px 6px;">&times;</button>
+            </div>
+            <!-- Tab switcher -->
+            <div style="display:flex;border-bottom:1px solid #e5e7eb;background:#f9f9f9;">
+                <button id="authTabLogin" onclick="switchAuthTab('login')" style="flex:1;padding:11px 0;border:none;border-bottom:2px solid #1d1d1f;background:transparent;font-size:13px;font-weight:600;color:#1d1d1f;cursor:pointer;font-family:inherit;">Log In</button>
+                <button id="authTabRegister" onclick="switchAuthTab('register')" style="flex:1;padding:11px 0;border:none;border-bottom:2px solid transparent;background:transparent;font-size:13px;font-weight:500;color:#86868b;cursor:pointer;font-family:inherit;">Create Account</button>
+            </div>
+            <!-- Body -->
+            <div style="padding:22px 24px 24px;">
+                <!-- Login form -->
+                <div id="authFormLogin">
+                    <div style="margin-bottom:14px;">
+                        <label style="display:block;font-size:12px;font-weight:600;color:#1d1d1f;margin-bottom:5px;">Email</label>
+                        <input id="loginEmail" type="email" placeholder="your@email.com" autocomplete="email"
+                            style="width:100%;padding:9px 11px;border:1.5px solid #d1d5db;border-radius:8px;font-size:13.5px;font-family:inherit;outline:none;box-sizing:border-box;"
+                            onfocus="this.style.borderColor='#1d1d1f'" onblur="this.style.borderColor='#d1d5db'"
+                            onkeydown="if(event.key==='Enter')doLogin()">
+                    </div>
+                    <div style="margin-bottom:18px;">
+                        <label style="display:block;font-size:12px;font-weight:600;color:#1d1d1f;margin-bottom:5px;">Password</label>
+                        <input id="loginPassword" type="password" placeholder="••••••••" autocomplete="current-password"
+                            style="width:100%;padding:9px 11px;border:1.5px solid #d1d5db;border-radius:8px;font-size:13.5px;font-family:inherit;outline:none;box-sizing:border-box;"
+                            onfocus="this.style.borderColor='#1d1d1f'" onblur="this.style.borderColor='#d1d5db'"
+                            onkeydown="if(event.key==='Enter')doLogin()">
+                    </div>
+                    <div id="loginError" style="display:none;color:#dc2626;font-size:12.5px;margin-bottom:12px;padding:8px 10px;background:#fef2f2;border-radius:6px;"></div>
+                    <button onclick="doLogin()" id="loginBtn"
+                        style="width:100%;padding:11px;background:#1d1d1f;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;transition:opacity 0.15s;"
+                        onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Log In</button>
+                </div>
+                <!-- Register form -->
+                <div id="authFormRegister" style="display:none;">
+                    <div style="margin-bottom:14px;">
+                        <label style="display:block;font-size:12px;font-weight:600;color:#1d1d1f;margin-bottom:5px;">Name</label>
+                        <input id="regName" type="text" placeholder="Your name" autocomplete="name"
+                            style="width:100%;padding:9px 11px;border:1.5px solid #d1d5db;border-radius:8px;font-size:13.5px;font-family:inherit;outline:none;box-sizing:border-box;"
+                            onfocus="this.style.borderColor='#1d1d1f'" onblur="this.style.borderColor='#d1d5db'"
+                            onkeydown="if(event.key==='Enter')doRegister()">
+                    </div>
+                    <div style="margin-bottom:14px;">
+                        <label style="display:block;font-size:12px;font-weight:600;color:#1d1d1f;margin-bottom:5px;">Email</label>
+                        <input id="regEmail" type="email" placeholder="your@email.com" autocomplete="email"
+                            style="width:100%;padding:9px 11px;border:1.5px solid #d1d5db;border-radius:8px;font-size:13.5px;font-family:inherit;outline:none;box-sizing:border-box;"
+                            onfocus="this.style.borderColor='#1d1d1f'" onblur="this.style.borderColor='#d1d5db'"
+                            onkeydown="if(event.key==='Enter')doRegister()">
+                    </div>
+                    <div style="margin-bottom:18px;">
+                        <label style="display:block;font-size:12px;font-weight:600;color:#1d1d1f;margin-bottom:5px;">Password <span style="font-weight:400;color:#86868b;">(min 8 chars)</span></label>
+                        <input id="regPassword" type="password" placeholder="••••••••" autocomplete="new-password"
+                            style="width:100%;padding:9px 11px;border:1.5px solid #d1d5db;border-radius:8px;font-size:13.5px;font-family:inherit;outline:none;box-sizing:border-box;"
+                            onfocus="this.style.borderColor='#1d1d1f'" onblur="this.style.borderColor='#d1d5db'"
+                            onkeydown="if(event.key==='Enter')doRegister()">
+                    </div>
+                    <div id="regError" style="display:none;color:#dc2626;font-size:12.5px;margin-bottom:12px;padding:8px 10px;background:#fef2f2;border-radius:6px;"></div>
+                    <button onclick="doRegister()" id="regBtn"
+                        style="width:100%;padding:11px;background:#1d1d1f;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;transition:opacity 0.15s;"
+                        onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Create Account</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── Bookmarks Modal ────────────────────────────────────────────── -->
+    <div id="bookmarksModal" class="modal" style="z-index:10001;">
+        <div class="modal-content" style="max-width:520px;width:94vw;max-height:88vh;padding:0;border-radius:14px;overflow:hidden;display:flex;flex-direction:column;">
+            <!-- Header -->
+            <div style="background:#fff;border-bottom:1px solid #e5e7eb;padding:20px 24px 16px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;">
+                <div>
+                    <div style="font-weight:700;font-size:17px;color:#1d1d1f;letter-spacing:-0.01em;">Bookmarks</div>
+                    <div style="font-size:12px;color:#86868b;margin-top:2px;">Your saved scenes and passages</div>
+                </div>
+                <button onclick="closeBookmarksModal()" style="background:none;border:none;font-size:22px;cursor:pointer;color:#6e6e73;line-height:1;padding:2px 6px;">&times;</button>
+            </div>
+            <!-- Body -->
+            <div id="bookmarksList" style="overflow-y:auto;flex:1;padding:16px 24px 20px;">
+                <div style="color:#86868b;font-size:13px;text-align:center;padding:32px 0;">Loading bookmarks…</div>
+            </div>
         </div>
     </div>
 
@@ -19226,14 +19316,22 @@
             
             const playDisplayName = plays[currentPlay]?.name || currentPlay;
             playText.innerHTML = `
-                <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap;">
+                <div style="display:flex;align-items:baseline;justify-content:space-between;gap:8px;flex-wrap:wrap;">
                     <div class="scene-title" style="margin:0;">${displayTitle}</div>
-                    <button onclick="openAnnotationSearchPlay()" title="Search annotations for ${playDisplayName}"
-                        style="flex-shrink:0;padding:5px 13px;border-radius:20px;border:1.5px solid #1d1d1f;background:transparent;color:#1d1d1f;font-size:11.5px;font-family:inherit;cursor:pointer;font-weight:500;white-space:nowrap;transition:all 0.15s;line-height:1.4;letter-spacing:0.01em;"
-                        onmouseover="this.style.background='#1d1d1f';this.style.color='#fff'"
-                        onmouseout="this.style.background='transparent';this.style.color='#1d1d1f'">
-                        Search NV annotations on ${playDisplayName}
-                    </button>
+                    <div style="display:flex;gap:8px;flex-shrink:0;align-items:center;">
+                        <button onclick="openAnnotationSearchPlay()" title="Search annotations for ${playDisplayName}"
+                            style="padding:5px 13px;border-radius:20px;border:1.5px solid #1d1d1f;background:transparent;color:#1d1d1f;font-size:11.5px;font-family:inherit;cursor:pointer;font-weight:500;white-space:nowrap;transition:all 0.15s;line-height:1.4;letter-spacing:0.01em;"
+                            onmouseover="this.style.background='#1d1d1f';this.style.color='#fff'"
+                            onmouseout="this.style.background='transparent';this.style.color='#1d1d1f'">
+                            Search NV annotations on ${playDisplayName}
+                        </button>
+                        <button onclick="addBookmark()" id="bookmarkSceneBtn" title="Bookmark this scene"
+                            style="padding:5px 11px;border-radius:20px;border:1.5px solid #1d1d1f;background:transparent;color:#1d1d1f;font-size:11.5px;font-family:inherit;cursor:pointer;font-weight:500;white-space:nowrap;transition:all 0.15s;line-height:1.4;letter-spacing:0.01em;"
+                            onmouseover="this.style.background='#1d1d1f';this.style.color='#fff'"
+                            onmouseout="this.style.background='transparent';this.style.color='#1d1d1f'">
+                            &#9733; Bookmark
+                        </button>
+                    </div>
                 </div>
                 <div class="scene-separator"></div>
                 ${contentToDisplay}
@@ -23547,11 +23645,318 @@
         
         function formatTime(seconds) {
             if (!seconds || isNaN(seconds)) return '0:00';
-            
+
             const mins = Math.floor(seconds / 60);
             const secs = Math.floor(seconds % 60);
             return mins + ':' + (secs < 10 ? '0' : '') + secs;
         }
+
+        // ════════════════════════════════════════════════════════════════════
+        //  AUTH + BOOKMARKS
+        // ════════════════════════════════════════════════════════════════════
+
+        let _authToken = localStorage.getItem('sv_token') || null;
+        let _authUser  = JSON.parse(localStorage.getItem('sv_user') || 'null');
+
+        // ── Bootstrap on page load ─────────────────────────────────────────
+        (function initAuth() {
+            if (_authToken && _authUser) {
+                _applyLoggedInState(_authUser);
+                // Silently verify token is still valid
+                fetch('/api/auth', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ action: 'verify', token: _authToken })
+                }).then(r => r.json()).then(d => {
+                    if (!d.valid) { _clearAuth(); }
+                }).catch(() => {});
+            }
+        })();
+
+        function _applyLoggedInState(user) {
+            const el = document.getElementById('authNavItem');
+            if (!el) return;
+            el.innerHTML = `<span style="display:inline-flex;gap:10px;align-items:center;">
+                <span style="font-weight:600;">${_escHtml(user.name)}</span>
+                <span onclick="openBookmarksModal(event)" style="cursor:pointer;text-decoration:underline;text-underline-offset:2px;">Bookmarks</span>
+                <span onclick="doLogout(event)" style="cursor:pointer;text-decoration:underline;text-underline-offset:2px;">Log Out</span>
+            </span>`;
+            el.onclick = null;
+        }
+
+        function _applyLoggedOutState() {
+            const el = document.getElementById('authNavItem');
+            if (!el) return;
+            el.innerHTML = 'Log In';
+            el.onclick = openLoginModal;
+        }
+
+        function _clearAuth() {
+            _authToken = null;
+            _authUser  = null;
+            localStorage.removeItem('sv_token');
+            localStorage.removeItem('sv_user');
+            _applyLoggedOutState();
+        }
+
+        function _escHtml(str) {
+            return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+        }
+
+        // ── Modal helpers ──────────────────────────────────────────────────
+        function openLoginModal() {
+            switchAuthTab('login');
+            document.getElementById('authModal').style.display = 'block';
+            setTimeout(() => document.getElementById('loginEmail').focus(), 80);
+        }
+
+        function closeAuthModal() {
+            document.getElementById('authModal').style.display = 'none';
+            document.getElementById('loginError').style.display = 'none';
+            document.getElementById('regError').style.display = 'none';
+        }
+
+        function switchAuthTab(tab) {
+            const isLogin = tab === 'login';
+            document.getElementById('authFormLogin').style.display    = isLogin ? '' : 'none';
+            document.getElementById('authFormRegister').style.display = isLogin ? 'none' : '';
+            document.getElementById('authTabLogin').style.borderBottomColor    = isLogin ? '#1d1d1f' : 'transparent';
+            document.getElementById('authTabLogin').style.color                = isLogin ? '#1d1d1f' : '#86868b';
+            document.getElementById('authTabLogin').style.fontWeight           = isLogin ? '600' : '500';
+            document.getElementById('authTabRegister').style.borderBottomColor = isLogin ? 'transparent' : '#1d1d1f';
+            document.getElementById('authTabRegister').style.color             = isLogin ? '#86868b' : '#1d1d1f';
+            document.getElementById('authTabRegister').style.fontWeight        = isLogin ? '500' : '600';
+        }
+
+        // ── Login ──────────────────────────────────────────────────────────
+        async function doLogin() {
+            const email    = document.getElementById('loginEmail').value.trim();
+            const password = document.getElementById('loginPassword').value;
+            const errEl    = document.getElementById('loginError');
+            const btn      = document.getElementById('loginBtn');
+
+            errEl.style.display = 'none';
+            if (!email || !password) {
+                errEl.textContent = 'Please enter your email and password.';
+                errEl.style.display = 'block'; return;
+            }
+            btn.textContent = 'Logging in…'; btn.disabled = true;
+            try {
+                const res  = await fetch('/api/auth', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ action: 'login', email, password })
+                });
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.error || 'Login failed');
+                _authToken = data.token;
+                _authUser  = data.user;
+                localStorage.setItem('sv_token', _authToken);
+                localStorage.setItem('sv_user',  JSON.stringify(_authUser));
+                _applyLoggedInState(_authUser);
+                closeAuthModal();
+                // Restore last scene if available
+                _restoreLastScene();
+            } catch (e) {
+                errEl.textContent = e.message;
+                errEl.style.display = 'block';
+            } finally {
+                btn.textContent = 'Log In'; btn.disabled = false;
+            }
+        }
+
+        // ── Register ───────────────────────────────────────────────────────
+        async function doRegister() {
+            const name     = document.getElementById('regName').value.trim();
+            const email    = document.getElementById('regEmail').value.trim();
+            const password = document.getElementById('regPassword').value;
+            const errEl    = document.getElementById('regError');
+            const btn      = document.getElementById('regBtn');
+
+            errEl.style.display = 'none';
+            if (!name || !email || !password) {
+                errEl.textContent = 'Please fill in all fields.';
+                errEl.style.display = 'block'; return;
+            }
+            btn.textContent = 'Creating account…'; btn.disabled = true;
+            try {
+                const res  = await fetch('/api/auth', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ action: 'register', name, email, password })
+                });
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.error || 'Registration failed');
+                _authToken = data.token;
+                _authUser  = data.user;
+                localStorage.setItem('sv_token', _authToken);
+                localStorage.setItem('sv_user',  JSON.stringify(_authUser));
+                _applyLoggedInState(_authUser);
+                closeAuthModal();
+            } catch (e) {
+                errEl.textContent = e.message;
+                errEl.style.display = 'block';
+            } finally {
+                btn.textContent = 'Create Account'; btn.disabled = false;
+            }
+        }
+
+        // ── Logout ─────────────────────────────────────────────────────────
+        function doLogout(e) {
+            if (e) e.stopPropagation();
+            _clearAuth();
+        }
+
+        // ── Bookmarks modal ────────────────────────────────────────────────
+        function openBookmarksModal(e) {
+            if (e) e.stopPropagation();
+            if (!_authToken) { openLoginModal(); return; }
+            document.getElementById('bookmarksModal').style.display = 'block';
+            _loadAndRenderBookmarks();
+        }
+
+        function closeBookmarksModal() {
+            document.getElementById('bookmarksModal').style.display = 'none';
+        }
+
+        async function _loadAndRenderBookmarks() {
+            const el = document.getElementById('bookmarksList');
+            el.innerHTML = '<div style="color:#86868b;font-size:13px;text-align:center;padding:32px 0;">Loading…</div>';
+            try {
+                const res  = await fetch('/api/bookmarks', {
+                    headers: { 'Authorization': 'Bearer ' + _authToken }
+                });
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.error || 'Failed to load bookmarks');
+                _renderBookmarks(data.bookmarks);
+            } catch (e) {
+                el.innerHTML = `<div style="color:#dc2626;font-size:13px;text-align:center;padding:24px 0;">${_escHtml(e.message)}</div>`;
+            }
+        }
+
+        function _renderBookmarks(bookmarks) {
+            const el = document.getElementById('bookmarksList');
+            if (!bookmarks || bookmarks.length === 0) {
+                el.innerHTML = `
+                    <div style="text-align:center;padding:40px 0 20px;">
+                        <div style="font-size:28px;margin-bottom:10px;">&#9733;</div>
+                        <div style="color:#1d1d1f;font-weight:600;font-size:14px;margin-bottom:6px;">No bookmarks yet</div>
+                        <div style="color:#86868b;font-size:12.5px;">Open a play and click the <strong>★ Bookmark</strong> button to save your spot.</div>
+                    </div>`;
+                return;
+            }
+            el.innerHTML = bookmarks.map(b => `
+                <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid #f3f4f6;">
+                    <div style="flex:1;min-width:0;">
+                        <div style="font-weight:600;font-size:13.5px;color:#1d1d1f;margin-bottom:2px;">${_escHtml(b.label || b.scene)}</div>
+                        <div style="font-size:12px;color:#6e6e73;">${_escHtml(b.play)} &mdash; ${_escHtml(b.scene)}</div>
+                        <div style="font-size:11px;color:#a1a1aa;margin-top:2px;">${new Date(b.created_at).toLocaleDateString()}</div>
+                    </div>
+                    <div style="display:flex;gap:6px;flex-shrink:0;align-items:center;">
+                        <button onclick="goToBookmark('${_escHtml(b.play)}','${_escHtml(b.scene)}')"
+                            style="padding:5px 11px;border-radius:16px;border:1.5px solid #1d1d1f;background:transparent;color:#1d1d1f;font-size:11.5px;cursor:pointer;font-family:inherit;font-weight:500;"
+                            onmouseover="this.style.background='#1d1d1f';this.style.color='#fff'"
+                            onmouseout="this.style.background='transparent';this.style.color='#1d1d1f'">Go</button>
+                        <button onclick="deleteBookmark('${b.id}',this)"
+                            style="padding:5px 10px;border-radius:16px;border:1.5px solid #dc2626;background:transparent;color:#dc2626;font-size:11.5px;cursor:pointer;font-family:inherit;font-weight:500;"
+                            onmouseover="this.style.background='#dc2626';this.style.color='#fff'"
+                            onmouseout="this.style.background='transparent';this.style.color='#dc2626'">Remove</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // ── Add bookmark ───────────────────────────────────────────────────
+        async function addBookmark() {
+            if (!_authToken) { openLoginModal(); return; }
+            if (!currentPlay || !currentScene) {
+                alert('Please open a scene first before bookmarking.'); return;
+            }
+            const btn = document.getElementById('bookmarkSceneBtn');
+            if (btn) { btn.textContent = '…'; btn.disabled = true; }
+
+            const playName  = plays[currentPlay]?.name || currentPlay;
+            const sceneLabel = currentScene;
+
+            try {
+                const res  = await fetch('/api/bookmarks', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + _authToken },
+                    body: JSON.stringify({ play: playName, scene: sceneLabel, label: playName + ' — ' + sceneLabel })
+                });
+                const data = await res.json();
+                if (res.status === 409) {
+                    if (btn) { btn.innerHTML = '&#9733; Bookmarked'; btn.disabled = false; }
+                    return;
+                }
+                if (!res.ok) throw new Error(data.error || 'Failed to bookmark');
+                if (btn) { btn.innerHTML = '&#9733; Bookmarked!'; btn.disabled = false; }
+                // Save as last scene for restore
+                localStorage.setItem('sv_last_play', currentPlay);
+                localStorage.setItem('sv_last_scene', currentScene);
+            } catch (e) {
+                alert('Could not save bookmark: ' + e.message);
+                if (btn) { btn.innerHTML = '&#9733; Bookmark'; btn.disabled = false; }
+            }
+        }
+
+        // ── Delete bookmark ────────────────────────────────────────────────
+        async function deleteBookmark(id, btnEl) {
+            if (!_authToken) return;
+            btnEl.textContent = '…'; btnEl.disabled = true;
+            try {
+                const res = await fetch('/api/bookmarks', {
+                    method: 'DELETE',
+                    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + _authToken },
+                    body: JSON.stringify({ id })
+                });
+                if (!res.ok) throw new Error('Failed to delete');
+                // Remove the row
+                btnEl.closest('div[style*="border-bottom"]').remove();
+                // If empty after deletion, re-render empty state
+                const list = document.getElementById('bookmarksList');
+                if (!list.querySelector('div[style*="border-bottom"]')) {
+                    _renderBookmarks([]);
+                }
+            } catch (e) {
+                btnEl.textContent = 'Remove'; btnEl.disabled = false;
+            }
+        }
+
+        // ── Navigate to bookmark ───────────────────────────────────────────
+        function goToBookmark(playKey, scene) {
+            closeBookmarksModal();
+            // playKey may be display name; try to find the internal key
+            const internalKey = Object.keys(plays || {}).find(k => (plays[k]?.name || k) === playKey) || playKey;
+            if (currentPlay !== internalKey) {
+                // Switch play first, then load scene
+                const sel = document.getElementById('playSelector');
+                if (sel) {
+                    for (let i = 0; i < sel.options.length; i++) {
+                        if (sel.options[i].value === internalKey || sel.options[i].text === playKey) {
+                            sel.selectedIndex = i;
+                            loadSelectedPlay();
+                            break;
+                        }
+                    }
+                }
+                // Wait for play to load then load scene
+                setTimeout(() => { if (typeof loadScene === 'function') loadScene(scene); }, 800);
+            } else {
+                if (typeof loadScene === 'function') loadScene(scene);
+            }
+        }
+
+        // ── Restore last visited scene on login ────────────────────────────
+        function _restoreLastScene() {
+            const lastPlay  = localStorage.getItem('sv_last_play');
+            const lastScene = localStorage.getItem('sv_last_scene');
+            if (!lastPlay || !lastScene) return;
+            goToBookmark(plays[lastPlay]?.name || lastPlay, lastScene);
+        }
+
+        // Track scene changes to update last-seen location
+        const _origLoadScene = typeof loadScene === 'function' ? loadScene : null;
 
     </script>
 
