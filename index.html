@@ -3215,7 +3215,10 @@
                             onkeydown="if(event.key==='Enter')doLogin()">
                     </div>
                     <div style="margin-bottom:18px;">
-                        <label style="display:block;font-size:12px;font-weight:600;color:#1d1d1f;margin-bottom:5px;">Password</label>
+                        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px;">
+                            <label style="font-size:12px;font-weight:600;color:#1d1d1f;">Password</label>
+                            <span onclick="openResetModal()" style="font-size:11.5px;color:#6e6e73;cursor:pointer;text-decoration:underline;text-underline-offset:2px;">Forgot password?</span>
+                        </div>
                         <input id="loginPassword" type="password" placeholder="••••••••" autocomplete="current-password"
                             style="width:100%;padding:9px 11px;border:1.5px solid #d1d5db;border-radius:8px;font-size:13.5px;font-family:inherit;outline:none;box-sizing:border-box;"
                             onfocus="this.style.borderColor='#1d1d1f'" onblur="this.style.borderColor='#d1d5db'"
@@ -3253,6 +3256,71 @@
                     <button onclick="doRegister()" id="regBtn"
                         style="width:100%;padding:11px;background:#1d1d1f;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;transition:opacity 0.15s;"
                         onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Create Account</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── Reset Password Modal ─────────────────────────────────────── -->
+    <div id="resetPasswordModal" class="modal" style="z-index:10002;">
+        <div class="modal-content" style="max-width:420px;width:94vw;padding:0;border-radius:14px;overflow:hidden;">
+            <div style="background:#fff;border-bottom:1px solid #e5e7eb;padding:22px 24px 18px;display:flex;align-items:center;justify-content:space-between;">
+                <div>
+                    <div style="font-weight:700;font-size:17px;color:#1d1d1f;letter-spacing:-0.01em;">Reset Password</div>
+                    <div style="font-size:12px;color:#86868b;margin-top:2px;" id="resetModalSub">Enter your email to receive a verification code</div>
+                </div>
+                <button onclick="closeResetModal()" style="background:none;border:none;font-size:22px;cursor:pointer;color:#6e6e73;line-height:1;padding:2px 6px;">&times;</button>
+            </div>
+            <div style="padding:22px 24px 24px;">
+                <!-- Step 1: Email -->
+                <div id="resetStep1">
+                    <div style="margin-bottom:16px;">
+                        <label style="display:block;font-size:12px;font-weight:600;color:#1d1d1f;margin-bottom:5px;">Email address</label>
+                        <input id="resetEmail" type="email" placeholder="your@email.com" autocomplete="email"
+                            style="width:100%;padding:9px 11px;border:1.5px solid #d1d5db;border-radius:8px;font-size:13.5px;font-family:inherit;outline:none;box-sizing:border-box;"
+                            onfocus="this.style.borderColor='#1d1d1f'" onblur="this.style.borderColor='#d1d5db'"
+                            onkeydown="if(event.key==='Enter')sendResetCode()">
+                    </div>
+                    <div id="resetStep1Error" style="display:none;color:#dc2626;font-size:12.5px;margin-bottom:12px;padding:8px 10px;background:#fef2f2;border-radius:6px;"></div>
+                    <button onclick="sendResetCode()" id="sendCodeBtn"
+                        style="width:100%;padding:11px;background:#1d1d1f;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;transition:opacity 0.15s;"
+                        onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Send Code</button>
+                </div>
+                <!-- Step 2: OTP code -->
+                <div id="resetStep2" style="display:none;">
+                    <div style="background:#f3f4f6;border-radius:8px;padding:12px 14px;font-size:13px;color:#6e6e73;margin-bottom:18px;">
+                        A 6-digit code was sent to <strong id="resetEmailDisplay"></strong>. Check your inbox (and spam folder).
+                    </div>
+                    <div style="margin-bottom:16px;">
+                        <label style="display:block;font-size:12px;font-weight:600;color:#1d1d1f;margin-bottom:5px;">Verification code</label>
+                        <input id="resetOTP" type="text" placeholder="000000" maxlength="6" autocomplete="one-time-code"
+                            style="width:100%;padding:9px 11px;border:1.5px solid #d1d5db;border-radius:8px;font-size:22px;font-family:monospace;letter-spacing:6px;outline:none;box-sizing:border-box;text-align:center;"
+                            onfocus="this.style.borderColor='#1d1d1f'" onblur="this.style.borderColor='#d1d5db'"
+                            onkeydown="if(event.key==='Enter')verifyResetCode()">
+                    </div>
+                    <div style="margin-bottom:16px;">
+                        <label style="display:block;font-size:12px;font-weight:600;color:#1d1d1f;margin-bottom:5px;">New password <span style="font-weight:400;color:#86868b;">(min 8 chars)</span></label>
+                        <input id="resetNewPassword" type="password" placeholder="••••••••" autocomplete="new-password"
+                            style="width:100%;padding:9px 11px;border:1.5px solid #d1d5db;border-radius:8px;font-size:13.5px;font-family:inherit;outline:none;box-sizing:border-box;"
+                            onfocus="this.style.borderColor='#1d1d1f'" onblur="this.style.borderColor='#d1d5db'"
+                            onkeydown="if(event.key==='Enter')verifyResetCode()">
+                    </div>
+                    <div id="resetStep2Error" style="display:none;color:#dc2626;font-size:12.5px;margin-bottom:12px;padding:8px 10px;background:#fef2f2;border-radius:6px;"></div>
+                    <button onclick="verifyResetCode()" id="verifyCodeBtn"
+                        style="width:100%;padding:11px;background:#1d1d1f;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;transition:opacity 0.15s;"
+                        onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Reset Password</button>
+                    <div style="text-align:center;margin-top:12px;">
+                        <span onclick="sendResetCode()" style="font-size:12px;color:#6e6e73;cursor:pointer;text-decoration:underline;text-underline-offset:2px;">Resend code</span>
+                    </div>
+                </div>
+                <!-- Step 3: Success -->
+                <div id="resetStep3" style="display:none;text-align:center;padding:16px 0;">
+                    <div style="font-size:36px;margin-bottom:12px;">&#10003;</div>
+                    <div style="font-weight:700;font-size:15px;color:#1d1d1f;margin-bottom:6px;">Password updated!</div>
+                    <div style="font-size:13px;color:#6e6e73;margin-bottom:20px;">You can now log in with your new password.</div>
+                    <button onclick="closeResetModal();openLoginModal();"
+                        style="padding:10px 28px;background:#1d1d1f;color:#fff;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;"
+                        onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">Log In</button>
                 </div>
             </div>
         </div>
@@ -23969,6 +24037,90 @@
 
         // Track scene changes to update last-seen location
         const _origLoadScene = typeof loadScene === 'function' ? loadScene : null;
+
+        // ── RESET PASSWORD ─────────────────────────────────────────────────
+        function openResetModal() {
+            // Pre-fill email from login form if present
+            const loginEmail = document.getElementById('loginEmail');
+            if (loginEmail && loginEmail.value) {
+                document.getElementById('resetEmail').value = loginEmail.value;
+            }
+            // Reset to step 1
+            document.getElementById('resetStep1').style.display = '';
+            document.getElementById('resetStep2').style.display = 'none';
+            document.getElementById('resetStep3').style.display = 'none';
+            document.getElementById('resetStep1Error').style.display = 'none';
+            document.getElementById('resetStep2Error').style.display = 'none';
+            document.getElementById('resetPasswordModal').style.display = 'block';
+            setTimeout(() => document.getElementById('resetEmail').focus(), 80);
+        }
+
+        function closeResetModal() {
+            document.getElementById('resetPasswordModal').style.display = 'none';
+        }
+
+        async function sendResetCode() {
+            const email  = document.getElementById('resetEmail').value.trim();
+            const errEl  = document.getElementById('resetStep1Error');
+            const btn    = document.getElementById('sendCodeBtn');
+
+            errEl.style.display = 'none';
+            if (!email) { errEl.textContent = 'Please enter your email address.'; errEl.style.display = 'block'; return; }
+
+            btn.textContent = 'Sending…'; btn.disabled = true;
+            try {
+                const res  = await fetch('/.netlify/functions/reset-password', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ action: 'send-otp', email })
+                });
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.error || 'Failed to send code');
+
+                // Move to step 2
+                document.getElementById('resetEmailDisplay').textContent = email;
+                document.getElementById('resetStep1').style.display = 'none';
+                document.getElementById('resetStep2').style.display = '';
+                setTimeout(() => document.getElementById('resetOTP').focus(), 80);
+            } catch (e) {
+                errEl.textContent = e.message;
+                errEl.style.display = 'block';
+            } finally {
+                btn.textContent = 'Send Code'; btn.disabled = false;
+            }
+        }
+
+        async function verifyResetCode() {
+            const email       = document.getElementById('resetEmail').value.trim();
+            const otp         = document.getElementById('resetOTP').value.trim();
+            const newPassword = document.getElementById('resetNewPassword').value;
+            const errEl       = document.getElementById('resetStep2Error');
+            const btn         = document.getElementById('verifyCodeBtn');
+
+            errEl.style.display = 'none';
+            if (!otp)         { errEl.textContent = 'Please enter the verification code.'; errEl.style.display = 'block'; return; }
+            if (!newPassword) { errEl.textContent = 'Please enter a new password.'; errEl.style.display = 'block'; return; }
+
+            btn.textContent = 'Resetting…'; btn.disabled = true;
+            try {
+                const res  = await fetch('/.netlify/functions/reset-password', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ action: 'reset', email, otp, newPassword })
+                });
+                const data = await res.json();
+                if (!res.ok) throw new Error(data.error || 'Reset failed');
+
+                // Show success step
+                document.getElementById('resetStep2').style.display = 'none';
+                document.getElementById('resetStep3').style.display = '';
+            } catch (e) {
+                errEl.textContent = e.message;
+                errEl.style.display = 'block';
+            } finally {
+                btn.textContent = 'Reset Password'; btn.disabled = false;
+            }
+        }
 
     </script>
 
