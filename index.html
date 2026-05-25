@@ -24296,55 +24296,52 @@
             return voices.find(v => v.lang.toLowerCase().startsWith('en')) || voices[0] || null;
         }
 
-        // Group DOM lines into speeches: SPEAKER: text... blocks
+        function _isAudioStageDir(text) {
+            if (!text) return true;
+            if (text.startsWith('[') || text.startsWith('(')) return true;
+            if (/^(Enter|Exit|Exeunt|Re-enter|Flourish|Alarum|Sennet|Music|Dance)\b/i.test(text)) return true;
+            return false;
+        }
+
+        // Build a flat list of {speaker, text} speech chunks from the scene lines
         function _extractSpeeches() {
             const contentEl = document.getElementById('sceneContent') || document.getElementById('playText');
             if (!contentEl) return [];
 
-            // Use all .play-line elements in DOM order
             const playLines = contentEl.querySelectorAll('.play-line');
             if (!playLines.length) return [];
 
             const speeches = [];
             let current = null;
             let lastSpeaker = '';
-            let afterStageDir = false; // flag: stage direction just passed
 
             for (const el of playLines) {
-                // Stage directions have the class applied by the renderer
-                if (el.classList.contains('stage-direction')) {
-                    // Save current speech, mark that we just passed a stage direction
-                    if (current && current.text.trim()) speeches.push(current);
-                    current = null;
-                    afterStageDir = true;
-                    continue;
-                }
-
                 const text = el.textContent.trim();
                 if (!text) continue;
 
-                // Detect "SPEAKER: line text"
+                // Skip stage directions — by class OR by text pattern
+                if (el.classList.contains('stage-direction') || _isAudioStageDir(text)) {
+                    // Flush current speech and reset so lines after SD start fresh
+                    if (current && current.text.trim()) { speeches.push(current); current = null; }
+                    continue;
+                }
+
                 const speakerMatch = text.match(/^([A-Z][A-Z\s\.]{1,30}):\s*(.*)/);
                 if (speakerMatch) {
                     if (current && current.text.trim()) speeches.push(current);
-                    const speaker = speakerMatch[1].trim();
-                    const rest    = speakerMatch[2].trim();
-                    lastSpeaker   = speaker;
-                    afterStageDir = false;
-                    current = { speaker, text: rest, els: rest ? [el] : [] };
-                } else if (afterStageDir && lastSpeaker) {
-                    // Lines after a stage direction with no new speaker prefix —
-                    // resume under the last known speaker as a fresh speech chunk
-                    afterStageDir = false;
-                    current = { speaker: lastSpeaker, text, els: [el] };
+                    lastSpeaker = speakerMatch[1].trim();
+                    const rest  = speakerMatch[2].trim();
+                    current = { speaker: lastSpeaker, text: rest };
                 } else if (current) {
                     current.text += ' ' + text;
-                    current.els.push(el);
+                } else if (lastSpeaker) {
+                    // Lines after a stage direction, continuing under last known speaker
+                    current = { speaker: lastSpeaker, text };
                 }
-                // else: before the first speaker ever — skip
+                // else: before first speaker — skip
             }
             if (current && current.text.trim()) speeches.push(current);
-            return speeches.filter(s => s.text.trim().length > 0 && s.els.length > 0);
+            return speeches.filter(s => s.text.trim().length > 0);
         }
 
         function startListening() {
@@ -24367,27 +24364,9 @@
 
         function _audioSpeak(idx) {
             if (idx >= _audio.speeches.length) { audioStop(); return; }
-            _audioClearHighlight();
             const speech = _audio.speeches[idx];
 
-            // Use the exact same style as text selection: dark bg + white text
-            speech.els.forEach(el => {
-                el.classList.add('play-line', 'selected');
-                el.style.transition = 'background 0.15s, color 0.15s';
-            });
-            // Scroll inside the reader panel only — never move the whole page
-            const firstEl = speech.els[0];
-            const panel = document.getElementById('playText');
-            if (firstEl && panel) {
-                const panelRect = panel.getBoundingClientRect();
-                const elRect    = firstEl.getBoundingClientRect();
-                const margin    = 80;
-                if (elRect.bottom > panelRect.bottom - margin || elRect.top < panelRect.top + margin) {
-                    panel.scrollBy({ top: elRect.top - panelRect.top - (panelRect.height / 3), behavior: 'smooth' });
-                }
-            }
-
-            // Announce speaker name first, then the speech
+            // Announce speaker name first, then the speech — no text highlighting
             const fullText = speech.speaker ? `${speech.speaker}. ${speech.text}` : speech.text;
 
             const utt    = new SpeechSynthesisUtterance(fullText);
@@ -24401,10 +24380,7 @@
         }
 
         function _audioClearHighlight() {
-            _audio.speeches.forEach(s => s.els.forEach(el => {
-                el.classList.remove('play-line', 'selected');
-                el.style.transition = '';
-            }));
+            // No highlighting used — nothing to clear
         }
 
         function _audioUpdateUI() {
