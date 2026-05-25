@@ -23663,7 +23663,7 @@
             if (_authToken && _authUser) {
                 _applyLoggedInState(_authUser);
                 // Silently verify token is still valid
-                fetch('/api/auth', {
+                fetch('/.netlify/functions/auth', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ action: 'verify', token: _authToken })
@@ -23742,7 +23742,7 @@
             }
             btn.textContent = 'Logging in…'; btn.disabled = true;
             try {
-                const res  = await fetch('/api/auth', {
+                const res  = await fetch('/.netlify/functions/auth', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ action: 'login', email, password })
@@ -23780,7 +23780,7 @@
             }
             btn.textContent = 'Creating account…'; btn.disabled = true;
             try {
-                const res  = await fetch('/api/auth', {
+                const res  = await fetch('/.netlify/functions/auth', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ action: 'register', name, email, password })
@@ -23823,7 +23823,7 @@
             const el = document.getElementById('bookmarksList');
             el.innerHTML = '<div style="color:#86868b;font-size:13px;text-align:center;padding:32px 0;">Loading…</div>';
             try {
-                const res  = await fetch('/api/bookmarks', {
+                const res  = await fetch('/.netlify/functions/bookmarks', {
                     headers: { 'Authorization': 'Bearer ' + _authToken }
                 });
                 const data = await res.json();
@@ -23879,7 +23879,7 @@
             const sceneLabel = currentScene;
 
             try {
-                const res  = await fetch('/api/bookmarks', {
+                const res  = await fetch('/.netlify/functions/bookmarks', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + _authToken },
                     body: JSON.stringify({ play: playName, scene: sceneLabel, label: playName + ' — ' + sceneLabel })
@@ -23905,7 +23905,7 @@
             if (!_authToken) return;
             btnEl.textContent = '…'; btnEl.disabled = true;
             try {
-                const res = await fetch('/api/bookmarks', {
+                const res = await fetch('/.netlify/functions/bookmarks', {
                     method: 'DELETE',
                     headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + _authToken },
                     body: JSON.stringify({ id })
