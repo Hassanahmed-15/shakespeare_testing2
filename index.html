@@ -19599,11 +19599,13 @@
                     return; // skip empty lines — no blank gap rendered
                 } else {
                     const escaped = line.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-                    html += `<div class="play-line" data-line-index="${index}">${escaped}</div>`;
                     const trimmedLine = line.trim();
+                    const isSD = isStageDirection(trimmedLine);
+                    const extraClass = isSD ? ' stage-direction' : '';
+                    html += `<div class="play-line${extraClass}" data-line-index="${index}">${escaped}</div>`;
                     if (isSpeakerName(line)) {
                         currentSpeaker = line;
-                    } else if (!trimmedLine || isSpeakerName(trimmedLine) || isStageDirection(trimmedLine)) {
+                    } else if (!trimmedLine || isSpeakerName(trimmedLine) || isSD) {
                         currentSpeaker = '';
                     }
                 }
@@ -19625,7 +19627,8 @@
                     fb.forEach((line, index) => {
                         if (line && line.toString().trim()) {
                             const escaped = line.toString().replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-                            fallbackHtml += `<div class="play-line" data-line-index="${index}">${escaped}</div>`;
+                            const isSD = isStageDirection(line.toString().trim());
+                            fallbackHtml += `<div class="play-line${isSD ? ' stage-direction' : ''}" data-line-index="${index}">${escaped}</div>`;
                         }
                     });
                 }
@@ -19666,7 +19669,12 @@
         
         // Check if a line is a stage direction
         function isStageDirection(line) {
-            return line.startsWith('[') && line.endsWith(']');
+            const t = line.trim();
+            if (!t) return false;
+            if (t.startsWith('[') && t.endsWith(']')) return true;
+            if (t.startsWith('(') && t.endsWith(')')) return true;
+            if (/^(Enter|Exit|Exeunt|Re-enter|Flourish|Alarum|Sennet|Music|Dance)\b/i.test(t)) return true;
+            return false;
         }
 
         // Analyze the text to identify speaker patterns
@@ -24289,56 +24297,54 @@
         }
 
         // Group DOM lines into speeches: SPEAKER: text... blocks
-        function _isStageDirectionEl(el) {
-            // Primary: element has the .stage-direction CSS class
-            if (el.classList.contains('stage-direction')) return true;
-            // Secondary: text content matches known stage direction patterns
-            const text = el.textContent.trim();
-            if (/^\[.*\]$/.test(text) || /^\(.*\)$/.test(text)) return true;
-            if (/^\s*(Enter|Exit|Exeunt|Re-enter|Flourish|Alarum|Sennet|Music|Dance)\b/i.test(text)) return true;
-            // All-caps-only short lines that aren't speaker lines (no colon) — scene headings like "ACT 1, SCENE 1"
-            if (/^[A-Z0-9,\s\.]+$/.test(text) && !text.includes(':') && text.length < 60) return true;
-            return false;
-        }
-
         function _extractSpeeches() {
-            // Only walk the scene content — NOT the header with buttons
             const contentEl = document.getElementById('sceneContent') || document.getElementById('playText');
             if (!contentEl) return [];
 
-            // Grab all play-line divs in document order — these are the rendered text lines
+            // Use all .play-line elements in DOM order
             const playLines = contentEl.querySelectorAll('.play-line');
             if (!playLines.length) return [];
 
             const speeches = [];
             let current = null;
+            let lastSpeaker = '';
+            let afterStageDir = false; // flag: stage direction just passed
 
             for (const el of playLines) {
-                // Skip stage directions — don't read or highlight them
-                if (_isStageDirectionEl(el)) continue;
+                // Stage directions have the class applied by the renderer
+                if (el.classList.contains('stage-direction')) {
+                    // Save current speech, mark that we just passed a stage direction
+                    if (current && current.text.trim()) speeches.push(current);
+                    current = null;
+                    afterStageDir = true;
+                    continue;
+                }
 
                 const text = el.textContent.trim();
                 if (!text) continue;
 
-                // Detect "SPEAKER: line text" or standalone "SPEAKER:" on its own line
+                // Detect "SPEAKER: line text"
                 const speakerMatch = text.match(/^([A-Z][A-Z\s\.]{1,30}):\s*(.*)/);
                 if (speakerMatch) {
-                    if (current) speeches.push(current);
+                    if (current && current.text.trim()) speeches.push(current);
                     const speaker = speakerMatch[1].trim();
                     const rest    = speakerMatch[2].trim();
+                    lastSpeaker   = speaker;
+                    afterStageDir = false;
                     current = { speaker, text: rest, els: rest ? [el] : [] };
-                } else if (!current) {
-                    // Before the first speaker — skip (scene titles, opening stage directions missed above)
-                    continue;
-                } else {
-                    // Continuation line of current speech
+                } else if (afterStageDir && lastSpeaker) {
+                    // Lines after a stage direction with no new speaker prefix —
+                    // resume under the last known speaker as a fresh speech chunk
+                    afterStageDir = false;
+                    current = { speaker: lastSpeaker, text, els: [el] };
+                } else if (current) {
                     current.text += ' ' + text;
                     current.els.push(el);
                 }
+                // else: before the first speaker ever — skip
             }
-            if (current) speeches.push(current);
-            // Drop entries with no readable text
-            return speeches.filter(s => s.text.trim().length > 0);
+            if (current && current.text.trim()) speeches.push(current);
+            return speeches.filter(s => s.text.trim().length > 0 && s.els.length > 0);
         }
 
         function startListening() {
