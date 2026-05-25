@@ -24289,11 +24289,15 @@
         }
 
         // Group DOM lines into speeches: SPEAKER: text... blocks
-        function _isStageDirection(text) {
-            // Bracketed directions: [Enter Hamlet.] or (Aside)
+        function _isStageDirectionEl(el) {
+            // Primary: element has the .stage-direction CSS class
+            if (el.classList.contains('stage-direction')) return true;
+            // Secondary: text content matches known stage direction patterns
+            const text = el.textContent.trim();
             if (/^\[.*\]$/.test(text) || /^\(.*\)$/.test(text)) return true;
-            // Italic-style directions often start with Enter/Exit/Exeunt/Re-enter
-            if (/^\s*(Enter|Exit|Exeunt|Re-enter|Aside|Flourish|Alarum|Sennet|Music|Dance|He |She |They )/i.test(text)) return true;
+            if (/^\s*(Enter|Exit|Exeunt|Re-enter|Flourish|Alarum|Sennet|Music|Dance)\b/i.test(text)) return true;
+            // All-caps-only short lines that aren't speaker lines (no colon) — scene headings like "ACT 1, SCENE 1"
+            if (/^[A-Z0-9,\s\.]+$/.test(text) && !text.includes(':') && text.length < 60) return true;
             return false;
         }
 
@@ -24302,45 +24306,38 @@
             const contentEl = document.getElementById('sceneContent') || document.getElementById('playText');
             if (!contentEl) return [];
 
-            // Collect leaf elements (no block children)
-            const raw = [];
-            const walker = document.createTreeWalker(contentEl, NodeFilter.SHOW_ELEMENT, {
-                acceptNode(node) {
-                    const tag = node.tagName.toLowerCase();
-                    if (!['p','div','span'].includes(tag)) return NodeFilter.FILTER_SKIP;
-                    const hasBlock = [...node.children].some(c => ['p','div'].includes(c.tagName.toLowerCase()));
-                    return hasBlock ? NodeFilter.FILTER_SKIP : NodeFilter.FILTER_ACCEPT;
-                }
-            });
-            let node;
-            while ((node = walker.nextNode())) {
-                const text = node.textContent.trim();
-                if (text.length > 1) raw.push({ text, el: node });
-            }
+            // Grab all play-line divs in document order — these are the rendered text lines
+            const playLines = contentEl.querySelectorAll('.play-line');
+            if (!playLines.length) return [];
 
-            // Group into speeches — a new speech starts when line matches "NAME:" or "NAME NAME:"
             const speeches = [];
             let current = null;
-            for (const { text, el } of raw) {
-                // Skip stage directions entirely — don't read or highlight them
-                if (_isStageDirection(text)) continue;
 
-                // Detect speaker prefix e.g. "HAMLET:" or "FIRST CITIZEN:"
+            for (const el of playLines) {
+                // Skip stage directions — don't read or highlight them
+                if (_isStageDirectionEl(el)) continue;
+
+                const text = el.textContent.trim();
+                if (!text) continue;
+
+                // Detect "SPEAKER: line text" or standalone "SPEAKER:" on its own line
                 const speakerMatch = text.match(/^([A-Z][A-Z\s\.]{1,30}):\s*(.*)/);
                 if (speakerMatch) {
                     if (current) speeches.push(current);
                     const speaker = speakerMatch[1].trim();
                     const rest    = speakerMatch[2].trim();
-                    current = { speaker, text: rest, els: [el] };
-                } else if (current) {
+                    current = { speaker, text: rest, els: rest ? [el] : [] };
+                } else if (!current) {
+                    // Before the first speaker — skip (scene titles, opening stage directions missed above)
+                    continue;
+                } else {
+                    // Continuation line of current speech
                     current.text += ' ' + text;
                     current.els.push(el);
-                } else {
-                    // Pre-speech narration (scene title lines, etc.) — skip
-                    continue;
                 }
             }
             if (current) speeches.push(current);
+            // Drop entries with no readable text
             return speeches.filter(s => s.text.trim().length > 0);
         }
 
@@ -24372,7 +24369,17 @@
                 el.classList.add('play-line', 'selected');
                 el.style.transition = 'background 0.15s, color 0.15s';
             });
-            speech.els[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+            // Scroll inside the reader panel only — never move the whole page
+            const firstEl = speech.els[0];
+            const panel = document.getElementById('playText');
+            if (firstEl && panel) {
+                const panelRect = panel.getBoundingClientRect();
+                const elRect    = firstEl.getBoundingClientRect();
+                const margin    = 80;
+                if (elRect.bottom > panelRect.bottom - margin || elRect.top < panelRect.top + margin) {
+                    panel.scrollBy({ top: elRect.top - panelRect.top - (panelRect.height / 3), behavior: 'smooth' });
+                }
+            }
 
             // Announce speaker name first, then the speech
             const fullText = speech.speaker ? `${speech.speaker}. ${speech.text}` : speech.text;
