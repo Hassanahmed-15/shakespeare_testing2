@@ -19510,7 +19510,7 @@
             
             const playDisplayName = plays[currentPlay]?.name || currentPlay;
             playText.innerHTML = `
-                <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:nowrap;">
+                <div id="sceneHeader" style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:nowrap;">
                     <div class="scene-title" style="margin:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;">${displayTitle}</div>
                     <div style="display:flex;gap:6px;flex-shrink:0;align-items:center;">
                         <button onclick="openAnnotationSearchPlay()" title="Search NV annotations on ${playDisplayName}"
@@ -19534,7 +19534,7 @@
                     </div>
                 </div>
                 <div class="scene-separator"></div>
-                ${contentToDisplay}
+                <div id="sceneContent">${contentToDisplay}</div>
             `;
             playText.scrollTop = 0;
             requestAnimationFrame(() => {
@@ -24289,13 +24289,22 @@
         }
 
         // Group DOM lines into speeches: SPEAKER: text... blocks
-        function _extractSpeeches() {
-            const playTextEl = document.getElementById('playText');
-            if (!playTextEl) return [];
+        function _isStageDirection(text) {
+            // Bracketed directions: [Enter Hamlet.] or (Aside)
+            if (/^\[.*\]$/.test(text) || /^\(.*\)$/.test(text)) return true;
+            // Italic-style directions often start with Enter/Exit/Exeunt/Re-enter
+            if (/^\s*(Enter|Exit|Exeunt|Re-enter|Aside|Flourish|Alarum|Sennet|Music|Dance|He |She |They )/i.test(text)) return true;
+            return false;
+        }
 
-            // Collect all leaf text nodes with their elements
+        function _extractSpeeches() {
+            // Only walk the scene content — NOT the header with buttons
+            const contentEl = document.getElementById('sceneContent') || document.getElementById('playText');
+            if (!contentEl) return [];
+
+            // Collect leaf elements (no block children)
             const raw = [];
-            const walker = document.createTreeWalker(playTextEl, NodeFilter.SHOW_ELEMENT, {
+            const walker = document.createTreeWalker(contentEl, NodeFilter.SHOW_ELEMENT, {
                 acceptNode(node) {
                     const tag = node.tagName.toLowerCase();
                     if (!['p','div','span'].includes(tag)) return NodeFilter.FILTER_SKIP;
@@ -24313,23 +24322,22 @@
             const speeches = [];
             let current = null;
             for (const { text, el } of raw) {
-                // Stage directions — skip for TTS but keep el for reference
-                if (/^\[.*\]$/.test(text) || /^\(.*\)$/.test(text)) continue;
+                // Skip stage directions entirely — don't read or highlight them
+                if (_isStageDirection(text)) continue;
 
                 // Detect speaker prefix e.g. "HAMLET:" or "FIRST CITIZEN:"
-                const speakerMatch = text.match(/^([A-Z][A-Z\s]{1,30}):\s*(.*)/);
+                const speakerMatch = text.match(/^([A-Z][A-Z\s\.]{1,30}):\s*(.*)/);
                 if (speakerMatch) {
                     if (current) speeches.push(current);
                     const speaker = speakerMatch[1].trim();
                     const rest    = speakerMatch[2].trim();
                     current = { speaker, text: rest, els: [el] };
                 } else if (current) {
-                    // Continuation of current speech
                     current.text += ' ' + text;
                     current.els.push(el);
                 } else {
-                    // No speaker yet — treat as narrator/scene text
-                    current = { speaker: '', text, els: [el] };
+                    // Pre-speech narration (scene title lines, etc.) — skip
+                    continue;
                 }
             }
             if (current) speeches.push(current);
@@ -24348,7 +24356,8 @@
             _audio.playing = true;
             _audio.voice   = _pickVoice();
             document.getElementById('audioPlayerBar').style.display = 'block';
-            document.getElementById('playText').style.paddingBottom = '80px';
+            const sc = document.getElementById('sceneContent');
+            if (sc) sc.style.paddingBottom = '90px';
             _audioSpeak(_audio.index);
             _audioUpdateUI();
         }
@@ -24442,8 +24451,8 @@
             window.speechSynthesis.cancel();
             _audioClearHighlight();
             document.getElementById('audioPlayerBar').style.display = 'none';
-            const pt = document.getElementById('playText');
-            if (pt) pt.style.paddingBottom = '';
+            const sc = document.getElementById('sceneContent');
+            if (sc) sc.style.paddingBottom = '';
         }
 
         if (window.speechSynthesis) {
