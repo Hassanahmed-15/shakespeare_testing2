@@ -24244,13 +24244,10 @@
             _audioClearHighlight();
             const speech = _audio.speeches[idx];
 
-            // Highlight all els of this speech with bold black left border
+            // Use the exact same style as text selection: dark bg + white text
             speech.els.forEach(el => {
-                el.style.borderLeft   = '3px solid #1d1d1f';
-                el.style.paddingLeft  = '10px';
-                el.style.background   = '#f3f4f6';
-                el.style.borderRadius = '0 4px 4px 0';
-                el.style.transition   = 'all 0.2s';
+                el.classList.add('play-line', 'selected');
+                el.style.transition = 'background 0.15s, color 0.15s';
             });
             speech.els[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
 
@@ -24269,10 +24266,8 @@
 
         function _audioClearHighlight() {
             _audio.speeches.forEach(s => s.els.forEach(el => {
-                el.style.borderLeft  = '';
-                el.style.paddingLeft = '';
-                el.style.background  = '';
-                el.style.borderRadius = '';
+                el.classList.remove('play-line', 'selected');
+                el.style.transition = '';
             }));
         }
 
