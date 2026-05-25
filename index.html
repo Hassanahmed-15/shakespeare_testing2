@@ -24150,58 +24150,76 @@
         }
 
         // ════════════════════════════════════════════════════════════════════
-        //  AUDIO PLAYER — line-by-line TTS with highlighting
+        //  AUDIO PLAYER — speech-by-speech TTS with black highlight
         // ════════════════════════════════════════════════════════════════════
 
         const _audio = {
-            lines: [],       // array of { text, el } for each speakable line
+            speeches: [],    // array of { speaker, text, els[] } grouped per speech
             index: 0,
             playing: false,
-            utterance: null,
-            speed: 0.8,
-            speeds: [0.75, 0.8, 0.9, 1.0, 1.1],
+            speed: 0.82,
+            speeds: [0.75, 0.82, 0.9, 1.0],
             speedIdx: 1,
             voice: null,
         };
 
-        // Pick the best available voice — prefer deep British male
+        // Prefer deep British male voice
         function _pickVoice() {
             const voices = window.speechSynthesis.getVoices();
-            // Priority list of voice name fragments (case-insensitive)
-            const preferred = ['daniel', 'george', 'arthur', 'james', 'oliver', 'british', 'uk english', 'en-gb', 'en_gb'];
+            const preferred = ['daniel', 'george', 'arthur', 'james', 'oliver', 'rishi', 'british', 'en-gb', 'en_gb'];
             for (const frag of preferred) {
                 const v = voices.find(v => v.name.toLowerCase().includes(frag) && v.lang.toLowerCase().startsWith('en'));
                 if (v) return v;
             }
-            // Fallback: any English voice
             return voices.find(v => v.lang.toLowerCase().startsWith('en')) || voices[0] || null;
         }
 
-        // Extract speakable lines from the current playText DOM
-        function _extractLines() {
+        // Group DOM lines into speeches: SPEAKER: text... blocks
+        function _extractSpeeches() {
             const playTextEl = document.getElementById('playText');
             if (!playTextEl) return [];
-            const lines = [];
-            // Grab all paragraph-level elements and text nodes with content
+
+            // Collect all leaf text nodes with their elements
+            const raw = [];
             const walker = document.createTreeWalker(playTextEl, NodeFilter.SHOW_ELEMENT, {
                 acceptNode(node) {
-                    const tag = node.tagName && node.tagName.toLowerCase();
-                    if (['p', 'div', 'span'].includes(tag) && node.textContent.trim().length > 2) {
-                        // Skip nested elements — only leaf-ish nodes
-                        const hasBlockChild = [...node.children].some(c => ['p','div'].includes(c.tagName.toLowerCase()));
-                        return hasBlockChild ? NodeFilter.FILTER_SKIP : NodeFilter.FILTER_ACCEPT;
-                    }
-                    return NodeFilter.FILTER_SKIP;
+                    const tag = node.tagName.toLowerCase();
+                    if (!['p','div','span'].includes(tag)) return NodeFilter.FILTER_SKIP;
+                    const hasBlock = [...node.children].some(c => ['p','div'].includes(c.tagName.toLowerCase()));
+                    return hasBlock ? NodeFilter.FILTER_SKIP : NodeFilter.FILTER_ACCEPT;
                 }
             });
             let node;
             while ((node = walker.nextNode())) {
                 const text = node.textContent.trim();
-                if (text.length > 2 && !text.startsWith('[') ) { // skip stage directions in brackets
-                    lines.push({ text, el: node });
+                if (text.length > 1) raw.push({ text, el: node });
+            }
+
+            // Group into speeches — a new speech starts when line matches "NAME:" or "NAME NAME:"
+            const speeches = [];
+            let current = null;
+            for (const { text, el } of raw) {
+                // Stage directions — skip for TTS but keep el for reference
+                if (/^\[.*\]$/.test(text) || /^\(.*\)$/.test(text)) continue;
+
+                // Detect speaker prefix e.g. "HAMLET:" or "FIRST CITIZEN:"
+                const speakerMatch = text.match(/^([A-Z][A-Z\s]{1,30}):\s*(.*)/);
+                if (speakerMatch) {
+                    if (current) speeches.push(current);
+                    const speaker = speakerMatch[1].trim();
+                    const rest    = speakerMatch[2].trim();
+                    current = { speaker, text: rest, els: [el] };
+                } else if (current) {
+                    // Continuation of current speech
+                    current.text += ' ' + text;
+                    current.els.push(el);
+                } else {
+                    // No speaker yet — treat as narrator/scene text
+                    current = { speaker: '', text, els: [el] };
                 }
             }
-            return lines;
+            if (current) speeches.push(current);
+            return speeches.filter(s => s.text.trim().length > 0);
         }
 
         function startListening() {
@@ -24210,67 +24228,70 @@
                 return;
             }
             window.speechSynthesis.cancel();
-            _audio.lines = _extractLines();
-            if (_audio.lines.length === 0) { alert('No readable text found in this scene.'); return; }
+            _audio.speeches = _extractSpeeches();
+            if (_audio.speeches.length === 0) { alert('No readable text found in this scene.'); return; }
             _audio.index   = 0;
             _audio.playing = true;
             _audio.voice   = _pickVoice();
             document.getElementById('audioPlayerBar').style.display = 'block';
-            // Pad bottom of playText so bar doesn't cover content
-            const pt = document.getElementById('playText');
-            if (pt) pt.style.paddingBottom = '72px';
+            document.getElementById('playText').style.paddingBottom = '80px';
             _audioSpeak(_audio.index);
             _audioUpdateUI();
         }
 
         function _audioSpeak(idx) {
-            if (idx >= _audio.lines.length) { audioStop(); return; }
+            if (idx >= _audio.speeches.length) { audioStop(); return; }
             _audioClearHighlight();
-            const { text, el } = _audio.lines[idx];
-            // Highlight current line
-            el.style.background = '#f5f0e8';
-            el.style.borderRadius = '4px';
-            el.style.transition = 'background 0.2s';
-            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            const speech = _audio.speeches[idx];
 
-            const utt = new SpeechSynthesisUtterance(text);
-            utt.rate  = _audio.speed;
-            utt.pitch = 0.85;      // slightly lower = more dramatic
-            utt.volume = 1;
+            // Highlight all els of this speech with bold black left border
+            speech.els.forEach(el => {
+                el.style.borderLeft   = '3px solid #1d1d1f';
+                el.style.paddingLeft  = '10px';
+                el.style.background   = '#f3f4f6';
+                el.style.borderRadius = '0 4px 4px 0';
+                el.style.transition   = 'all 0.2s';
+            });
+            speech.els[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+            // Announce speaker name first, then the speech
+            const fullText = speech.speaker ? `${speech.speaker}. ${speech.text}` : speech.text;
+
+            const utt    = new SpeechSynthesisUtterance(fullText);
+            utt.rate     = _audio.speed;
+            utt.pitch    = 0.88;
+            utt.volume   = 1;
             if (_audio.voice) utt.voice = _audio.voice;
-            utt.onend = () => {
-                if (_audio.playing) {
-                    _audio.index++;
-                    _audioSpeak(_audio.index);
-                    _audioUpdateUI();
-                }
-            };
-            utt.onerror = () => {
-                if (_audio.playing) { _audio.index++; _audioSpeak(_audio.index); }
-            };
-            _audio.utterance = utt;
+            utt.onend    = () => { if (_audio.playing) { _audio.index++; _audioSpeak(_audio.index); _audioUpdateUI(); } };
+            utt.onerror  = () => { if (_audio.playing) { _audio.index++; _audioSpeak(_audio.index); } };
             window.speechSynthesis.speak(utt);
         }
 
         function _audioClearHighlight() {
-            _audio.lines.forEach(({ el }) => {
-                el.style.background = '';
+            _audio.speeches.forEach(s => s.els.forEach(el => {
+                el.style.borderLeft  = '';
+                el.style.paddingLeft = '';
+                el.style.background  = '';
                 el.style.borderRadius = '';
-            });
+            }));
         }
 
         function _audioUpdateUI() {
-            const total = _audio.lines.length;
+            const total = _audio.speeches.length;
             const idx   = Math.min(_audio.index, total - 1);
-            document.getElementById('audioPlayBtn').innerHTML  = _audio.playing ? '&#9646;&#9646;' : '&#9654;';
-            document.getElementById('audioLineCount').textContent = `Line ${idx + 1} / ${total}`;
+            const sp    = _audio.speeches[idx];
+            document.getElementById('audioPlayBtn').innerHTML = _audio.playing ? '&#9646;&#9646;' : '&#9654;';
+            document.getElementById('audioLineCount').textContent = `${idx + 1} / ${total}`;
             document.getElementById('audioProgressBar').style.width = total > 0 ? `${((idx + 1) / total) * 100}%` : '0%';
-            const lineText = _audio.lines[idx] ? _audio.lines[idx].text : '';
-            document.getElementById('audioLineText').textContent = lineText.length > 80 ? lineText.slice(0, 80) + '…' : lineText;
+            if (sp) {
+                document.getElementById('audioSpeaker').textContent  = sp.speaker || 'Narration';
+                const preview = sp.text.length > 70 ? sp.text.slice(0, 70) + '…' : sp.text;
+                document.getElementById('audioLineText').textContent = preview;
+            }
         }
 
         function audioToggle() {
-            if (!_audio.lines.length) return;
+            if (!_audio.speeches.length) return;
             if (_audio.playing) {
                 _audio.playing = false;
                 window.speechSynthesis.pause();
@@ -24288,7 +24309,7 @@
 
         function audioNext() {
             window.speechSynthesis.cancel();
-            _audio.index = Math.min(_audio.index + 1, _audio.lines.length - 1);
+            _audio.index = Math.min(_audio.index + 1, _audio.speeches.length - 1);
             if (_audio.playing) _audioSpeak(_audio.index);
             _audioUpdateUI();
         }
@@ -24304,11 +24325,7 @@
             _audio.speedIdx = (_audio.speedIdx + 1) % _audio.speeds.length;
             _audio.speed    = _audio.speeds[_audio.speedIdx];
             document.getElementById('audioSpeedBtn').textContent = _audio.speed + 'x';
-            // Restart current line at new speed
-            if (_audio.playing) {
-                window.speechSynthesis.cancel();
-                _audioSpeak(_audio.index);
-            }
+            if (_audio.playing) { window.speechSynthesis.cancel(); _audioSpeak(_audio.index); }
         }
 
         function audioStop() {
@@ -24318,27 +24335,18 @@
             document.getElementById('audioPlayerBar').style.display = 'none';
             const pt = document.getElementById('playText');
             if (pt) pt.style.paddingBottom = '';
-            // Reset listen button
-            const btn = document.getElementById('listenSceneBtn');
-            if (btn) btn.innerHTML = '&#9654; Listen';
         }
 
-        // Re-pick voice once voices load (async in some browsers)
         if (window.speechSynthesis) {
-            window.speechSynthesis.onvoiceschanged = () => {
-                _audio.voice = _pickVoice();
-            };
+            window.speechSynthesis.onvoiceschanged = () => { _audio.voice = _pickVoice(); };
         }
 
-        // Stop audio when scene changes
-        const _audioOrigLoadScene = window.loadScene;
-        if (typeof _audioOrigLoadScene === 'function') {
-            const _prevLoadScene = window.loadScene;
-            window.loadScene = function(sceneName) {
-                if (_audio.playing) audioStop();
-                _prevLoadScene.call(this, sceneName);
-            };
-        }
+        // Stop audio on scene change
+        (function() {
+            const _prev = window.loadScene;
+            if (typeof _prev !== 'function') return;
+            window.loadScene = function(s) { if (_audio.playing) audioStop(); _prev.call(this, s); };
+        })();
 
         // ════════════════════════════════════════════════════════════════════
         //  READING PROGRESS
@@ -24559,41 +24567,37 @@
     </footer>
 
     <!-- ── Audio Player Bar ──────────────────────────────────────────────── -->
-    <div id="audioPlayerBar" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:99998;background:#1d1d1f;color:#fff;padding:12px 20px;box-shadow:0 -2px 20px rgba(0,0,0,0.25);">
-        <div style="max-width:900px;margin:0 auto;display:flex;align-items:center;gap:14px;flex-wrap:nowrap;">
-            <!-- Play info -->
+    <div id="audioPlayerBar" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:99998;background:#1d1d1f;color:#fff;padding:10px 20px 12px;box-shadow:0 -4px 24px rgba(0,0,0,0.3);">
+        <!-- Progress track full width -->
+        <div style="position:absolute;top:0;left:0;right:0;height:2px;background:#3d3d3f;">
+            <div id="audioProgressBar" style="height:100%;width:0%;background:#fff;transition:width 0.4s ease;"></div>
+        </div>
+        <div style="max-width:860px;margin:0 auto;display:flex;align-items:center;gap:16px;">
+            <!-- Speaker + text -->
             <div style="flex:1;min-width:0;">
-                <div id="audioLineText" style="font-size:12.5px;color:#e5e7eb;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-style:italic;"></div>
-                <div style="display:flex;align-items:center;gap:6px;margin-top:4px;">
-                    <div style="font-size:10.5px;color:#86868b;" id="audioLineCount">Line 0 / 0</div>
-                    <!-- Progress track -->
-                    <div style="flex:1;height:3px;background:#3d3d3f;border-radius:99px;overflow:hidden;">
-                        <div id="audioProgressBar" style="height:100%;width:0%;background:#fff;border-radius:99px;transition:width 0.3s;"></div>
-                    </div>
+                <div style="display:flex;align-items:baseline;gap:8px;">
+                    <span id="audioSpeaker" style="font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#86868b;white-space:nowrap;"></span>
+                    <span style="font-size:10px;color:#4d4d4f;" id="audioLineCount">1 / 1</span>
                 </div>
+                <div id="audioLineText" style="font-size:13px;color:#e5e7eb;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px;font-style:italic;line-height:1.4;"></div>
             </div>
             <!-- Controls -->
-            <div style="display:flex;align-items:center;gap:8px;flex-shrink:0;">
-                <!-- Prev -->
-                <button onclick="audioPrev()" title="Previous line"
-                    style="background:none;border:none;color:#fff;font-size:16px;cursor:pointer;padding:4px 6px;border-radius:6px;line-height:1;opacity:0.8;transition:opacity 0.15s;"
-                    onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">&#9664;</button>
-                <!-- Play/Pause -->
-                <button onclick="audioToggle()" id="audioPlayBtn" title="Play / Pause"
-                    style="background:#fff;border:none;color:#1d1d1f;font-size:14px;cursor:pointer;padding:7px 12px;border-radius:99px;font-weight:700;line-height:1;transition:opacity 0.15s;"
-                    onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">&#9646;&#9646;</button>
-                <!-- Next -->
-                <button onclick="audioNext()" title="Next line"
-                    style="background:none;border:none;color:#fff;font-size:16px;cursor:pointer;padding:4px 6px;border-radius:6px;line-height:1;opacity:0.8;transition:opacity 0.15s;"
-                    onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.8'">&#9654;</button>
-                <!-- Speed -->
-                <button onclick="audioCycleSpeed()" id="audioSpeedBtn" title="Playback speed"
-                    style="background:#3d3d3f;border:none;color:#fff;font-size:11px;cursor:pointer;padding:5px 9px;border-radius:8px;font-weight:600;font-family:inherit;line-height:1;min-width:36px;"
-                    onmouseover="this.style.background='#4d4d4f'" onmouseout="this.style.background='#3d3d3f'">0.8x</button>
-                <!-- Close -->
-                <button onclick="audioStop()" title="Stop listening"
-                    style="background:none;border:none;color:#86868b;font-size:18px;cursor:pointer;padding:2px 4px;line-height:1;margin-left:4px;"
-                    onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#86868b'">&times;</button>
+            <div style="display:flex;align-items:center;gap:6px;flex-shrink:0;">
+                <button onclick="audioPrev()" title="Previous speech"
+                    style="background:none;border:none;color:#9ca3af;font-size:13px;cursor:pointer;padding:6px;border-radius:6px;line-height:1;transition:color 0.15s;"
+                    onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#9ca3af'">&#9664;&#9664;</button>
+                <button onclick="audioToggle()" id="audioPlayBtn"
+                    style="background:#fff;border:none;color:#1d1d1f;font-size:13px;cursor:pointer;width:36px;height:36px;border-radius:50%;font-weight:700;line-height:1;display:flex;align-items:center;justify-content:center;transition:transform 0.1s;flex-shrink:0;"
+                    onmouseover="this.style.transform='scale(1.08)'" onmouseout="this.style.transform='scale(1)'">&#9646;&#9646;</button>
+                <button onclick="audioNext()" title="Next speech"
+                    style="background:none;border:none;color:#9ca3af;font-size:13px;cursor:pointer;padding:6px;border-radius:6px;line-height:1;transition:color 0.15s;"
+                    onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#9ca3af'">&#9654;&#9654;</button>
+                <button onclick="audioCycleSpeed()" id="audioSpeedBtn"
+                    style="background:#2d2d2f;border:1px solid #3d3d3f;color:#d1d5db;font-size:11px;cursor:pointer;padding:5px 9px;border-radius:6px;font-weight:600;font-family:inherit;line-height:1;min-width:38px;transition:background 0.15s;"
+                    onmouseover="this.style.background='#3d3d3f'" onmouseout="this.style.background='#2d2d2f'">0.82x</button>
+                <button onclick="audioStop()" title="Stop"
+                    style="background:none;border:none;color:#6b7280;font-size:20px;cursor:pointer;padding:2px 4px;line-height:1;margin-left:2px;transition:color 0.15s;"
+                    onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#6b7280'">&times;</button>
             </div>
         </div>
     </div>
