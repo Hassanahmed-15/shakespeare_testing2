@@ -23676,11 +23676,23 @@
         function _applyLoggedInState(user) {
             const el = document.getElementById('authNavItem');
             if (!el) return;
-            el.innerHTML = `<span style="display:inline-flex;gap:10px;align-items:center;">
-                <span style="font-weight:600;">${_escHtml(user.name)}</span>
-                <span onclick="openBookmarksModal(event)" style="cursor:pointer;text-decoration:underline;text-underline-offset:2px;">Bookmarks</span>
-                <span onclick="doLogout(event)" style="cursor:pointer;text-decoration:underline;text-underline-offset:2px;">Log Out</span>
-            </span>`;
+            const firstName = _escHtml(user.name.split(' ')[0]);
+            el.innerHTML = `
+                <span style="position:relative;display:inline-block;" id="userMenuWrap">
+                    <span style="cursor:pointer;font-weight:600;font-size:14px;display:inline-flex;align-items:center;gap:4px;padding:6px 10px;border-radius:8px;transition:background 0.15s;"
+                        onmouseover="document.getElementById('userDropdown').style.display='block';this.style.background='#f3f4f6'"
+                        onmouseout="setTimeout(()=>{const d=document.getElementById('userDropdown');if(d&&!d.matches(':hover'))d.style.display='none'},200);this.style.background='transparent'">
+                        ${firstName} <span style="font-size:10px;opacity:0.5;">▾</span>
+                    </span>
+                    <div id="userDropdown" style="display:none;position:absolute;right:0;top:100%;background:#fff;border:1px solid #e5e7eb;border-radius:10px;box-shadow:0 4px 16px rgba(0,0,0,0.1);min-width:140px;z-index:9999;overflow:hidden;"
+                        onmouseover="this.style.display='block'" onmouseout="this.style.display='none'">
+                        <div onclick="openBookmarksModal(event)" style="padding:10px 16px;cursor:pointer;font-size:13px;color:#1d1d1f;font-weight:500;transition:background 0.1s;"
+                            onmouseover="this.style.background='#f3f4f6'" onmouseout="this.style.background='transparent'">&#9733; Bookmarks</div>
+                        <div style="height:1px;background:#f3f4f6;"></div>
+                        <div onclick="doLogout(event)" style="padding:10px 16px;cursor:pointer;font-size:13px;color:#6e6e73;transition:background 0.1s;"
+                            onmouseover="this.style.background='#f3f4f6'" onmouseout="this.style.background='transparent'">Log Out</div>
+                    </div>
+                </span>`;
             el.onclick = null;
         }
 
