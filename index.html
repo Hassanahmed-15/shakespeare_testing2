@@ -3190,8 +3190,6 @@
             <!-- Settings button hidden for public release; uncomment to re-enable for admin use -->
             <!-- <button class="nav-btn" onclick="openSettings()">Settings</button> -->
             <button class="nav-btn" onclick="openAbout()">About</button>
-            <span class="nav-text" onclick="openAnnotationSearchAll()">Search Annotations</span>
-            <span class="nav-text" id="authNavItem" onclick="openLoginModal()">Log In</span>
         </div>
     </div>
 
@@ -15878,10 +15876,160 @@
             return resp.json();
         }
 
-        // Extract annotator name from note prefix "Name: text"
+        // Words that look like ALL-CAPS names but are not annotators
+        const _ANNOT_STOPWORDS = new Set([
+            'THE','AND','OR','OF','IN','ON','AT','TO','FOR','BUT','SO','BY','FROM','WITH','AS','IF','THAT','THIS','THESE','THOSE',
+            'MR','MRS','DR','SIR','MS','PHD','OED','NED','MS','MSS','MR.','DR.','MRS.',
+            'I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII','XIII','XIV','XV','XVI','XVII','XVIII','XIX','XX',
+            'ACT','SCENE','ENTER','EXIT','EXEUNT','EXIT.','ENTER.','EXEUNT.','PART','LINE','PAGE','PP','VOL',
+            'F1','F2','F3','F4','Q1','Q2','Q3','Q4','QQ','FF',
+            'AN','A','HE','SHE','IT','WE','YOU','THEY','HIS','HER','THEIR','MY','OUR','MINE','OURS','HERS','HIMSELF',
+            'NOT','NO','YES','NOR','YET','ALSO','TOO','BOTH','EACH','ANY','ALL','SOME','ONE','TWO','THREE','FOUR','FIVE',
+            'KING','QUEEN','LORD','LADY','PRINCE','PRINCESS','DUKE','DUCHESS','EARL','SIR','SAINT','ST',
+            'SHAKESPEARE','HAMLET','MACBETH','OTHELLO','LEAR','TEMPEST','VARIORUM','FOLIO','QUARTO',
+            'ED','EDS','ED.','EDS.','REV','REV.','TR','TR.','ETC','ETC.','EG','EG.','IE','IE.','CF','CF.','VIZ','VIZ.',
+            'GOD','LORD','HEAVEN','JOHN','PAUL','MARY','BOOK','CH','CHAP','CHAPTER','NOTE','NOTES',
+            'JESUS','CHRIST','BIBLE','PSALM','GENESIS','EXODUS','GHOST','GHOSTS','LOST','FOUND','TRUE','FALSE',
+        ]);
+
+        // Trim trailing common-word tail from a candidate name match (e.g. "Dyce in his first edition" -> "Dyce")
+        function _trimNameTail(s) {
+            // Keep up to 4 capitalised words; stop at lowercase
+            const parts = s.split(/\s+/);
+            const keep = [];
+            for (const p of parts) {
+                if (/^[A-Z][a-zA-Z\.\-’']*$/.test(p) || /^[A-Z]+$/.test(p) || /^(de|von|van|der|den|of)$/i.test(p)) {
+                    keep.push(p);
+                } else break;
+                if (keep.length >= 4) break;
+            }
+            return keep.join(' ').replace(/[.,;]$/,'').trim();
+        }
+
+        // Normalize a name for comparison: lowercase, strip punctuation, collapse spaces
+        function _normName(s) {
+            return (s || '').toLowerCase().replace(/[.,;:’'"`]/g, '').replace(/\s+/g, ' ').trim();
+        }
+
+        // Extract ALL likely annotator names from a New Variorum note.
+        // Notes have many formats:
+        //   "Johnson: ..."                          (plain prefix)
+        //   "Hunter (ii, 212): ..."                 (prefix with parenthetical)
+        //   "Abbott, §51: ..."                      (prefix with section)
+        //   "Enter . . .] BULLOCH (p. 267): ..."    (lemma + prefix)
+        //   "1. Gent] DELIUS (Sh. Soc., p. 213) ..." (lemma + ALL-CAPS name + paren)
+        //   "lemma] Dyce in his first edition ..."  (lemma + name + verb)
+        //   "...—WALKER (Crit., iii, 313) asks ..." (mid-note ALL-CAPS reference)
+        //   "STEEVENS said ... —INGLEBY asserted"   (multiple annotators)
+        // Returns an array of unique name strings (preserving the form found, but de-duped case-insensitively).
+        function _extractAnnotators(note) {
+            if (typeof note !== 'string') return [];
+            const out = [];
+            const seen = new Set();
+            const add = (raw) => {
+                if (!raw) return;
+                let n = _trimNameTail(String(raw).trim());
+                if (!n) return;
+                // Filter noise
+                if (n.length < 3 || n.length > 50) return;
+                const up = n.toUpperCase();
+                if (_ANNOT_STOPWORDS.has(up)) return;
+                if (/^[IVXLCDM]+$/i.test(n)) return;          // pure roman numeral
+                if (/^\d/.test(n)) return;                     // starts with digit
+                if (!/[A-Za-z]/.test(n)) return;
+                const key = _normName(n);
+                if (!key || seen.has(key)) return;
+                seen.add(key);
+                out.push(n);
+            };
+
+            // ── 1. After a lemma "]" — e.g. "Enter . . .] BULLOCH" or "lemma] Dyce in his..."
+            //    Capture the name immediately following the first ] then trim.
+            const afterLemma = note.match(/\][^\]\n]{0,5}([A-Z][A-Za-z\.\-’']{1,30}(?:\s+[A-Z][A-Za-z\.\-’']{1,30}){0,3})/);
+            if (afterLemma) add(afterLemma[1]);
+
+            // ── 2. Plain prefix: "Name:" or "Name (...):" or "Name, §51:"
+            const startPrefix = note.match(/^\s*([A-Z][A-Za-z\.\-’']{1,30}(?:\s+[A-Z][a-zA-Z\.\-’']{1,30}){0,3})\s*(?:\([^)]{0,80}\))?\s*(?:,\s*[§A-Za-z0-9\.\-\s]{0,30})?\s*:/);
+            if (startPrefix) add(startPrefix[1]);
+
+            // ── 3. Mid-note: ALL-CAPS names (very strong signal of an editorial reference)
+            //    Match 2+ chars to avoid initials; followed by optional parenthetical and a verb/colon/comma.
+            const allCapsRe = /\b([A-Z][A-Z\-’']{2,})(?:\s+[A-Z][A-Z\-’']{2,})?\b/g;
+            let m;
+            while ((m = allCapsRe.exec(note)) !== null) {
+                add(m[1]);
+            }
+
+            // ── 4. Title-case names that introduce a clause via colon or after a dash/period
+            //    e.g. "Johnson: ..." mid-note, or "—Coleridge: ..."
+            const titleColon = /(?:[—–]\s*|\.\s+|;\s+)([A-Z][a-zA-Z\.\-’']{2,30}(?:\s+[A-Z][a-zA-Z\.\-’']{2,30})?)\s*(?:\([^)]{0,80}\))?\s*:/g;
+            while ((m = titleColon.exec(note)) !== null) {
+                add(m[1]);
+            }
+
+            return out;
+        }
+
+        // Back-compat shim: original code returned a single string-or-null
         function _extractAnnotator(note) {
-            const m = note.match(/^([A-Z][a-zA-Z\s\.\-]{1,40}):\s*/);
-            return m ? m[1].trim() : null;
+            const arr = _extractAnnotators(note);
+            return arr.length ? arr[0] : null;
+        }
+
+        // Extract only PRIMARY annotators — i.e. names that are the voice speaking in the note,
+        // not names merely cited in passing. Used for the annotator filter so that "Coleridge"
+        // returns only notes where Coleridge is annotating, not notes that quote/cite him.
+        //
+        // A name is "primary" when it introduces a clause via colon: at the start of the note,
+        // right after a lemma "]", or after a sentence break (".", "—", ";"). Names appearing
+        // only as ALL-CAPS without a colon are accepted ONLY when followed by an editorial verb
+        // (said, asserts, conjectures, emends, etc.) — strong signal that the name is the voice.
+        function _extractPrimaryAnnotators(note) {
+            if (typeof note !== 'string') return [];
+            const out = [];
+            const seen = new Set();
+            const add = (raw) => {
+                if (!raw) return;
+                let n = _trimNameTail(String(raw).trim());
+                if (!n) return;
+                if (n.length < 3 || n.length > 50) return;
+                const up = n.toUpperCase();
+                if (_ANNOT_STOPWORDS.has(up)) return;
+                if (/^[IVXLCDM]+$/i.test(n)) return;
+                if (/^\d/.test(n)) return;
+                if (!/[A-Za-z]/.test(n)) return;
+                const key = _normName(n);
+                if (!key || seen.has(key)) return;
+                seen.add(key);
+                out.push(n);
+            };
+
+            // The "name [optional parenthetical] [optional ,§ref] :" shape, used at clause starts.
+            const NAME_COLON = "([A-Z][A-Za-z\\.\\-’']{1,30}(?:\\s+[A-Z][a-zA-Z\\.\\-’']{1,30}){0,3})\\s*(?:\\([^)]{0,80}\\))?\\s*(?:,\\s*§[^:]{1,30})?\\s*:";
+
+            // (A) Start of note
+            let m = note.match(new RegExp("^\\s*" + NAME_COLON));
+            if (m) add(m[1]);
+
+            // (B) Right after a lemma "]"
+            const reAfterLemma = new RegExp("\\]\\s*" + NAME_COLON, 'g');
+            while ((m = reAfterLemma.exec(note)) !== null) add(m[1]);
+
+            // (C) After a sentence break / dash / semicolon — handles "Johnson: ... Coleridge: ..."
+            const reClauseStart = new RegExp("(?:[—–]\\s*|\\.\\s{1,3}|;\\s+)" + NAME_COLON, 'g');
+            while ((m = reClauseStart.exec(note)) !== null) add(m[1]);
+
+            // (D) "lemma] BULLOCH" — ALL-CAPS name right after lemma, even without colon
+            m = note.match(/\]\s*([A-Z]{3,}[A-Z\-]*)\b/);
+            if (m) add(m[1]);
+
+            // (E) ALL-CAPS name at clause start followed by an editorial verb
+            //     "STEEVENS said", "MALONE gives a long note", "WALKER conjectured"
+            const VERBS = "said|says|gives|writes|asks|asserts?|argues?|observes?|remarks?|notes?|suggests?|believes?|holds?|maintains?|conjectures?|reads?|prints?|prefers?|adopt(?:s|ed)?|inserts?|substitut(?:es?|ed)?|emend(?:s|ed)?|follow(?:s|ed)?|paraphrases?|interprets?|explains?|wisely|happily|truly|justly|rightly|erroneously";
+            const reAllCapsVerb = new RegExp("(?:^|[—–]\\s*|\\.\\s{1,3}|;\\s+|\\]\\s*)([A-Z]{3,}[A-Z\\-]*)\\s+(?:\\([^)]{0,80}\\)\\s*)?(?:" + VERBS + ")\\b", 'g');
+            while ((m = reAllCapsVerb.exec(note)) !== null) add(m[1]);
+
+            return out;
         }
 
         // Tokenize query into keywords, stripping common stop words
@@ -15926,17 +16074,37 @@
             return snippet;
         }
 
-        // Collect all unique annotator names from loaded play data (for autocomplete)
+        // Collect all unique annotator names from loaded play data (for autocomplete).
+        // Stores a normalized→display map so "JOHNSON" and "Johnson" merge to one entry.
         function _collectAnnotators(data) {
-            const names = new Set();
+            const byNorm = new Map(); // normName -> display form (prefer title-case if available)
+            const counts = new Map(); // normName -> count (for ranking)
             for (const [sceneKey, sceneVal] of Object.entries(data)) {
                 if (sceneKey === 'DRAMATIS PERSONAE' || typeof sceneVal !== 'object' || !sceneVal) continue;
                 for (const [, item] of Object.entries(sceneVal)) {
                     if (!item || !item.notes) continue;
-                    item.notes.forEach(n => { const a = _extractAnnotator(n); if (a) names.add(a); });
+                    item.notes.forEach(n => {
+                        const names = _extractAnnotators(n);
+                        names.forEach(name => {
+                            const k = _normName(name);
+                            if (!k) return;
+                            counts.set(k, (counts.get(k) || 0) + 1);
+                            const existing = byNorm.get(k);
+                            // Prefer title-case (Johnson) over ALL-CAPS (JOHNSON)
+                            const isTitleCase = /^[A-Z][a-z]/.test(name);
+                            if (!existing || (isTitleCase && !/^[A-Z][a-z]/.test(existing))) {
+                                byNorm.set(k, name);
+                            }
+                        });
+                    });
                 }
             }
-            return names;
+            // Only keep names that appear at least twice — single occurrences are usually noise
+            const result = new Set();
+            for (const [k, display] of byNorm.entries()) {
+                if ((counts.get(k) || 0) >= 2) result.add(display);
+            }
+            return result;
         }
 
         // Global cache for annotators (populated on first search of a play)
@@ -15980,7 +16148,7 @@
 
         function _searchNotesInData(data, query, playName, annotatorFilter) {
             const tokens = _tokenize(query);
-            const annotF = annotatorFilter ? annotatorFilter.toLowerCase().trim() : '';
+            const annotF = _normName(annotatorFilter || '');
             const results = [];
 
             // Cache annotators for autocomplete
@@ -15996,15 +16164,26 @@
                     const playText = (item.play || item.text || item.line || '').trim();
                     notes.forEach((note) => {
                         if (typeof note !== 'string') return;
-                        const annotator = _extractAnnotator(note) || '';
-                        // Apply annotator filter
-                        if (annotF && !annotator.toLowerCase().includes(annotF)) return;
+                        // Only match against primary annotators — names that are the voice of the note,
+                        // not names merely cited in passing. This is what users actually want when
+                        // they filter by "Coleridge".
+                        const primaryAnnotators = _extractPrimaryAnnotators(note);
+                        if (annotF) {
+                            const match = primaryAnnotators.some(a => _normName(a).includes(annotF));
+                            if (!match) return;
+                        }
                         const noteLower = note.toLowerCase();
                         // If only annotator filter (no real search terms), include all notes for that annotator
                         const score = tokens.length ? _scoreNote(noteLower, tokens) : (annotF ? 1 : 0);
                         if (score === 0) return;
                         const snippet = _buildSnippet(note, tokens);
-                        results.push({ play: playName, scene: sceneKey, line: lineNum, playText, snippet, annotator, score });
+                        // Prefer the primary annotator matching the filter for the badge; else first primary
+                        let badge = primaryAnnotators[0] || '';
+                        if (annotF) {
+                            const hit = primaryAnnotators.find(a => _normName(a).includes(annotF));
+                            if (hit) badge = hit;
+                        }
+                        results.push({ play: playName, scene: sceneKey, line: lineNum, playText, snippet, annotator: badge, allAnnotators: primaryAnnotators, score });
                     });
                 }
             }
@@ -19526,18 +19705,6 @@
                             onmouseover="this.style.background='#1d1d1f';this.style.color='#fff'"
                             onmouseout="this.style.background='transparent';this.style.color='#1d1d1f'">
                             Search Annotations
-                        </button>
-                        <button onclick="addBookmark()" id="bookmarkSceneBtn" title="Bookmark this scene"
-                            style="padding:5px 11px;border-radius:20px;border:1.5px solid #1d1d1f;background:transparent;color:#1d1d1f;font-size:11px;font-family:inherit;cursor:pointer;font-weight:500;white-space:nowrap;transition:all 0.15s;line-height:1.4;"
-                            onmouseover="this.style.background='#1d1d1f';this.style.color='#fff'"
-                            onmouseout="this.style.background='transparent';this.style.color='#1d1d1f'">
-                            &#9733; Bookmark
-                        </button>
-                        <button onclick="startListening()" id="listenSceneBtn" title="Listen to this scene"
-                            style="padding:5px 11px;border-radius:20px;border:1.5px solid #1d1d1f;background:transparent;color:#1d1d1f;font-size:11px;font-family:inherit;cursor:pointer;font-weight:500;white-space:nowrap;transition:all 0.15s;line-height:1.4;"
-                            onmouseover="this.style.background='#1d1d1f';this.style.color='#fff'"
-                            onmouseout="this.style.background='transparent';this.style.color='#1d1d1f'">
-                            &#9654; Listen
                         </button>
                     </div>
                 </div>
