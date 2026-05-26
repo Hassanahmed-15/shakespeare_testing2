@@ -3190,6 +3190,7 @@
             <!-- Settings button hidden for public release; uncomment to re-enable for admin use -->
             <!-- <button class="nav-btn" onclick="openSettings()">Settings</button> -->
             <button class="nav-btn" onclick="openAbout()">About</button>
+            <span class="nav-text" onclick="openAnnotationSearchAll()">Search Annotations</span>
         </div>
     </div>
 
@@ -3386,7 +3387,7 @@
                         <!-- Annotator autocomplete dropdown -->
                         <div id="annotatorSuggest" style="display:none;position:absolute;top:calc(100% + 4px);left:0;right:0;background:#fff;border:1.5px solid #1d1d1f;border-radius:9px;box-shadow:0 4px 16px rgba(0,0,0,0.1);z-index:100;max-height:180px;overflow-y:auto;"></div>
                     </div>
-                    <div style="display:flex;background:#f3f4f6;border-radius:8px;padding:3px;gap:2px;flex-shrink:0;">
+                    <div id="annotScopeToggle" style="display:flex;background:#f3f4f6;border-radius:8px;padding:3px;gap:2px;flex-shrink:0;">
                         <button id="annotScopePlay" onclick="setAnnotScope('play')"
                             style="padding:6px 13px;border-radius:6px;border:none;background:#1d1d1f;color:#fff;font-size:12px;font-family:inherit;cursor:pointer;font-weight:600;transition:all 0.15s;">This Play</button>
                         <button id="annotScopeAll" onclick="setAnnotScope('all')"
@@ -15831,6 +15832,21 @@
             setTimeout(() => document.getElementById('annotSearchInput').focus(), 80);
         }
 
+        // Scope-pill: small indicator inserted next to the modal title so users know
+        // exactly what corpus they're searching. Replaces any existing pill on each open.
+        function _setScopePill(label) {
+            const title = document.getElementById('annotSearchModalTitle');
+            if (!title) return;
+            const existing = document.getElementById('annotScopePill');
+            if (existing) existing.remove();
+            if (!label) return;
+            const pill = document.createElement('span');
+            pill.id = 'annotScopePill';
+            pill.textContent = label;
+            pill.style.cssText = 'display:inline-block;margin-left:10px;padding:2px 9px;background:#1d1d1f;color:#fff;font-size:10.5px;font-weight:600;letter-spacing:0.04em;border-radius:20px;vertical-align:middle;text-transform:uppercase;';
+            title.appendChild(pill);
+        }
+
         function openAnnotationSearchAll() {
             setAnnotScope('all');
             document.getElementById('annotationSearchModal').style.display = 'block';
@@ -15838,6 +15854,10 @@
             const subtitle = document.getElementById('annotSearchModalSubtitle');
             if (title)    title.textContent    = 'Search New Variorum Annotations';
             if (subtitle) subtitle.textContent = 'Search across all plays in the New Variorum corpus';
+            _setScopePill('All Plays');
+            // Top-right entry is locked to All Plays — hide the scope toggle
+            const toggle = document.getElementById('annotScopeToggle');
+            if (toggle) toggle.style.display = 'none';
             setTimeout(() => document.getElementById('annotSearchInput').focus(), 80);
         }
 
@@ -15850,6 +15870,10 @@
             const subtitle = document.getElementById('annotSearchModalSubtitle');
             if (title)    title.textContent    = `Search NV annotations on ${playName}`;
             if (subtitle) subtitle.textContent = `Searching annotations for ${playName} only`;
+            _setScopePill('This Play');
+            // In-play entry is locked to the current play — hide the scope toggle
+            const toggle = document.getElementById('annotScopeToggle');
+            if (toggle) toggle.style.display = 'none';
             setTimeout(() => document.getElementById('annotSearchInput').focus(), 80);
         }
 
@@ -16055,23 +16079,21 @@
             return score;
         }
 
-        // Build highlighted snippet around first matched token
+        // Return the FULL annotation text with the search terms highlighted.
+        // (Per spec: any note that contains the search term is returned in full.)
         function _buildSnippet(note, tokens) {
-            const noteLower = note.toLowerCase();
-            let bestIdx = -1;
+            // HTML-escape first so the note body is safe to inject
+            let html = String(note)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;');
+            // Highlight each search token (case-insensitive, word-fragment OK)
             for (const t of tokens) {
-                const idx = noteLower.indexOf(t);
-                if (idx !== -1 && (bestIdx === -1 || idx < bestIdx)) bestIdx = idx;
-            }
-            const start = Math.max(0, bestIdx === -1 ? 0 : bestIdx - 80);
-            const end   = Math.min(note.length, start + 280);
-            let snippet = (start > 0 ? '…' : '') + note.slice(start, end) + (end < note.length ? '…' : '');
-            // Highlight all tokens
-            for (const t of tokens) {
+                if (!t) continue;
                 const re = new RegExp(t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'gi');
-                snippet = snippet.replace(re, m => `<strong style="background:#fef08a;padding:0 1px;border-radius:2px;">${m}</strong>`);
+                html = html.replace(re, m => `<strong style="background:#fef08a;padding:0 1px;border-radius:2px;">${m}</strong>`);
             }
-            return snippet;
+            return html;
         }
 
         // Collect all unique annotator names from loaded play data (for autocomplete).
